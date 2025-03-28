@@ -1,0 +1,72 @@
+{
+    "key": "edredon-abrazo-feria",
+    "productId": "2024048",
+    "title": "Edredón Abrazo Feria Calm",
+    "titleDescription": "Así es como el Edredón Abrazo mejora tu descanso.",
+    "selectedLink": "feria",
+    "dreamDelivery": false,
+    "skus": "BLACUBEDR100000;BLACUBEDR140000;BLACUBEDR180000;BLACUBEDR200000",
+    "skusFeria": "OBLCUBEDR100000;OBLCUBEDR140000;OBLCUBEDR180000;OBLCUBEDR200000",
+    "benefitsProduct": [
+        {
+            "imagen": "Cloud",
+            "texto": "Relleno de Vellón Siliconado."
+        },
+        {
+            "imagen": "BiggerDosCapas",
+            "texto": "Tela de microfibra 70 gramos."
+        },
+        {
+            "imagen": "Acaro",
+            "texto": "Antbacteriano."
+        },
+        {
+            "imagen": "Moon",
+            "texto": "Suave y liviano."
+        },
+        {
+            "imagen": "Ruler",
+            "texto": "Nuestro Edredón Abrazo está milimétricamente calculado para que calce a la perfección en la funda de Tusor 4 Estaciones."
+        }
+    ],
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/cb213bde-b7cc-4ed1-f8d7-bea8d4311f00/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/c459775d-f5e4-4735-c06c-ac7d14ec9200/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/05/edredon3.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/05/edredon4.webp"
+    ],
+    "layoutImagesHaveVideo": false,
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Qué beneficios tiene usar el edredón con la funda de tusor 4 estaciones?",
+            "description":"<p>La funda es ligera y transpirable. El edredón combate el frío y la humedad. Además, están diseñados milimétricamente para complementarse. Entre ambos son la combinación perfecta para el invierno.</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para enamorarte de tu nueva cama necesitas pasar tiempo con ella. En el caso que no te guste te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi edredón abrazo?",
+            "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+        },
+        {
+            "title":"¿Cómo lavar mi edredón abrazo?",
+            "description":"<p><b>Lavado en lavarropas:</b><br/><br/><ul><li><b>¿Cómo cuidar la microfibra?</b> Usá jabón neutro y líquido, que no incluya cloro ni perfumes. No utilizar nunca suavizantes. Tampoco uses blanqueadores o lejías.</li><li><b>¿Cómo cuidar el edredón en el lavado?</b> El lavado del edredón de microfibra debe ser con agua fría. Utilizar un ciclo de lavado de ropa delicada, por lo sensible de la pieza. Los detergentes para lavar deben ser suaves. Evitar el uso de productos fuertes.</li><li><b>¿Cuál es la mejor lavadora para edredones?</b>Te recomendamos una lavadora de 8kg.</li></ul><br/><br/><b>Lavado a mano:</b><br/><br/>Si querés saber en detalle cómo lavar <b>a mano</b> tu edredón abrazo, <a href='https://calmessimple.com.ar/como-lavar-un-edredon-una-guia-paso-a-paso/' target='_blank'>hace click acá</a>.</p>"
+        }
+    ],
+    "reviewsTitle": {
+        "title":"Opiniones de ",
+        "bold": "clientes reales"
+    }
+}

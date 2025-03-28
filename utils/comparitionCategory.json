@@ -1,0 +1,20 @@
+{
+    "colchones" : {
+        "title" : "Encontrá el colchón perfecto para vos.",
+        "description" : "Completá este test para descubrir cuál es tu colchón ideal, toma solo 5 minutos :)",
+        "quizz": "WEN74OMX",
+        "srcImage": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/272c2ff2-4d1c-4848-fb8c-f62edeaade00/fit=cover"
+    },
+    "almohadas" : {
+        "title" : "Encontrá tu almohada ideal.",
+        "description" : "Completá este test para descubrir cuál es la almohada perfecta para vos, toma solo 5 minutos :)",
+        "quizz": "FB7U3xzq",
+        "srcImage": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/ab2735a7-f5bd-4c36-8981-38f1e330ed00/fit=cover"
+    },
+    "bases" : {
+        "title" : "Encontrá la cama perfecta para vos.",
+        "description" : "Completá este test para descubrir cuál es tu cama ideal, toma solo 5 minutos :)",
+        "quizz": "g3s71tdk",
+        "srcImage": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/b4e0e87f-4f56-485a-5501-d89deb5c7900/fit=cover"
+    }
+}

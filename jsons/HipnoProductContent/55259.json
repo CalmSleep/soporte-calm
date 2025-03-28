@@ -1,0 +1,118 @@
+{
+    "key": "respaldo-horizonte",
+    "productId": "55259",
+    "title": "Respaldo Horizonte",
+    "titleDescription": "Así es como el Respaldo Horizonte mejora tu descanso.",
+    "selectedLink": "accesorios",
+    "dreamDelivery": false,
+    "tranferDiscount": "30OFF",
+    "headPills" : "LANZAMIENTO",
+    "skus": "ACCRESHOR080000;ACCRESHOR100000;ACCRESHOR140000;ACCRESHOR160000",
+    "benefitsProduct": [
+        {
+            "imagen": "AlmohadaCapa",
+            "texto": "Llega en caja, podés subirlo por ascensor"
+        },
+        {
+            "imagen": "Cloud",
+            "texto": "Espuma con Tecnología EQUO®."
+        },
+        {
+            "imagen": "Laundry",
+            "texto": "Funda removible y lavable."
+        },
+        {
+            "imagen": "ArgentineFlag",
+            "texto": "100% producido en Argentina."
+        },
+        {
+            "imagen": "Treatment",
+            "texto": "Tratamiento antimanchas"
+        }
+    ],
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/bf3dbf04-829f-47f7-655a-7ad81d629100/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/2b3efd48-f6a9-4b40-1153-b724c0615e00/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/341b5b8d-b238-451a-6455-1c0fdc902700/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/61a242bf-e8ce-4c50-5cff-946df626c700/fit=cover"
+    ],
+    "textImages": {
+        "firstText": "Transformá tu cama, a través de lo simple.",
+        "secondText": "Un horizonte claro, despierta cosas nuevas."
+    },
+    "layoutImagesHaveVideo": false,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": false,
+        "image2": false,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que hagas la compra vamos a estar actualizándote paso a paso del estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"12 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>12 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"Medidas y tamaños",
+            "description":"<p><ul><li>1 plaza: 106 x 100 x 8 cm</li><li>1 plaza y media: 126 x 100 x 8 cm</li><li>2 plazas: 166 x 100 x 8 cm</li><li>Queen: 186 x 100 x 8 cm</li></ul></p>"
+        },
+        {
+            "title":"¿Por qué el Respaldo Horizonte?",
+            "description":"<p>Porque está diseñado para darle a tu descanso el soporte que necesita. Funciona como una barrera entre la pared, bloqueando el sonido externo y la temperatura. Además, gracias a su tela Bouclé gris, se adapta perfectamente a cualquier ambiente.</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para enamorarte de tu nuevo respaldo, necesitás pasar tiempo con él. En el caso que no te guste, te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi respaldo?",
+            "description":"<p>Una vez que hagas la compra, vas a recibir el paso a paso actualizado del estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento/'>este</a> link.</p>"
+        },
+        {
+            "title":"¿Qué garantía tiene el respaldo?",
+            "description":"<p>Ofrecemos una garantía de 5 años que cubre defectos de fabricación, no de uso.</p>"
+        },
+        {
+            "title":"¿Cómo puedo lavar la funda del respaldo?",
+            "description":"<p>Quitás la funda del respaldo y podés lavarla a mano con agua fría. Podés usar quita manchas y aspirarla. No secar al sol.</p>"
+        },
+        {
+            "title":"¿La espuma se puede lavar?",
+            "description":"<p>La espuma puede dañarse si entra en contacto con el agua. En el caso de que esto suceda accidentalmente, exponela lo antes posible al aire libre o al sol para que se seque.</p>"
+        },
+        {
+            "title":"¿Cómo se arma el respaldo?",
+            "description":"<p>Rompé el vació, desenrrollá tu respaldo y desplegalo para que pueda tomar su forma definitiva. Apoyalo en la pared donde quieras colocarlo y desliza tu cama hasta quede contra el respaldo. <a href='https://drive.google.com/file/d/1_OfAcpP6nGOiOM0CiKseBaYKq4tv8xgs/view' target='_blank'>Acá</a> te dejamos el instructivo para que compruebes lo fácil que es! </p>"
+        }
+    ],
+    "renders" : {
+        "2196420": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/49e6a9c8-e289-49ec-5eb4-bdd312b35900/fit=cover",
+        "2196422": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/1ef934d1-1acf-4411-2eb6-c907d69a0100/fit=cover",
+        "2196421": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/9ba25833-54a6-4aab-d078-b9dde1249500/fit=cover",
+        "2196423": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/12e83aae-87c6-4722-302d-35cb45373c00/fit=cover"
+    },
+    "estructuraInfo": [
+        {
+            "title": "Estructura Interior y Exterior",
+            "description": "Espuma con Tecnología EQUO®, la misma que usamos para la capa de soporte de nuestros colchones. La funda es de tela buclé gris, removible y lavable. Lo mejor: combina con todo ;)"
+        },
+        {
+            "title": "Como llega tu respaldo",
+            "description": "Al tener la misma espuma que nuestros colchones logramos compactarlo al vacío y enrollarlo para que sea super simple de mover y colocar."
+        }  
+    ],
+    "estructuraImagen": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/0a378e0e-43b0-4b34-b34b-2e4d9d37c300/fit=cover",
+    "ATCImage": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/1e2645d6-a1ce-4f48-f482-0596c0918b00/fit=cover"
+}

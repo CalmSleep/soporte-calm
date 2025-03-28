@@ -1,0 +1,100 @@
+{
+    "key": "base",
+    "productId": "339",
+    "title": "Base de Hierro Calm",
+    "titleDescription": "Así es como la Base de Hierro Calm mejora tu descanso.",
+    "selectedLink": "bases",
+    "dreamDelivery": true,
+    "skus": "B80;B100;B140;B160;B180;B200",
+    "headPills" : "EL MÁS VENDIDO",
+    "tranferDiscount": "30OFF",
+    "benefitsProduct": [
+        {
+            "imagen": "SuitCase",
+            "texto": "Nuestra base tiene 35cm de alto, siendo un muy buen lugar para aprovechar."
+        },
+        {
+            "imagen": "Herramienta",
+            "texto": "Armado en 15 minutos."
+        },
+        {
+            "imagen": "Caja",
+            "texto": "Viene en caja."
+        },
+        {
+            "imagen": "Insignia",
+            "texto": "Sello buen diseño."
+        },
+        {
+            "imagen": "ArgentineFlag",
+            "texto": "100% producido en Argentina."
+        }
+    ],
+    "textImages": {
+        "firstText": "Fácil de armar ",
+        "secondText": "Va muy bien con tu colchón"
+    },
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/b8223002-02e2-4326-849e-75ddc076f700/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Base-Hierro_1.mp4",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Base-Hierro_2.mp4",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/7dedacbd-e1aa-489b-b965-52823e988b00/fit=cover"
+    ],
+    "layoutImagesHaveVideo": true,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": true,
+        "image2": true,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"12 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>12 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "specsSectionTitles": [
+        {"title": "Dimensiones de la ", "bold": "base para tu colchón"}
+    ],
+    "specsImages": "https://calmessimple.com.ar/wp-content/uploads/2019/10/base-1-pata.webp",
+    "specsValues": [
+        { "name": "1 Plaza", "size": "80 x 190 cm" },
+        { "name": "Plaza y 1/2", "size": "100 x 190 cm" },
+        { "name": "2 Plazas", "size": "140 x 190 cm" },
+        { "name": "Queen", "size": "160 x 200 cm" },
+        { "name": "King", "size": "180 x 200 cm" },
+        { "name": "Superking", "size": "200 x 200 cm" }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para enamorarte de tu nueva cama necesitas pasar tiempo con ella. En el caso que no te guste te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Qué garantía tiene la base?",
+            "description":"<p>Ofrecemos 5 años de garantía. La misma, aplica para defectos de fábrica, no de mal uso.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi base?",
+            "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+        },
+        {
+            "title":"¿Cuánto peso soporta?",
+            "description":"<p>Soporta hasta 150kg por lado.</p>"
+        },
+        {
+            "title":"¿Cómo se arma?",
+            "description":"<p>La base es muy fácil de armar, en menos de 15 minutos la tenés lista! <a href='https://drive.google.com/file/d/1eUD3NytvawcwYOXQ1s-v66qNhibfMhwd/view' target='_blank'>Acá</a> te dejamos el instructivo para que lo compruebes con tus propios ojos.</p>"
+        }
+    ]
+}

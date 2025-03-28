@@ -1,0 +1,107 @@
+{
+  "Products": [
+    {
+      "title": "¿Son reales las 30 noches de prueba?",
+      "description": "<p>Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para enamorarte de tus productos necesitas pasar tiempo con ellos. En el caso que no te guste te devolvemos el 100% de tu dinero.</p><br><a href='https://calmessimple.com.ar/30-noches-de-prueba-en-casa/'>mirá como funciona</a>"
+    },
+    {
+      "title": "¿Qué garantía tienen los productos?",
+      "description": "<p>Ofrecemos 5 años de garantía para nuestro colchón y base y 18 meses para la almohada. La garantía sirve para cubrir a los clientes frente a defectos de fábrica, no de mal uso.</p> "
+    },
+    {
+      "title": "¿De qué está hecho el colchón?",
+      "description":"<p>La espuma es 100% producida en Argentina y tiene dos niveles.</br></br>Nivel Sensación</br><b>Con espuma de tecnología ERGO</b></br>Es el equilibrio entre suavidad y firmeza, generando así un descanso de calidad, cómodo y reparador. Está compuesto por una capa de 4 cm de altura de nuestra espuma con tecnología ERGO, un material de calidad premium que tiene una muy buena capacidad de adaptación, moldeandose a la perfección según el peso del cuerpo. </br></br>Su estructura innovadora, con celdas abiertas, garantiza frescura a través de un flujo de aire continuo, manteniendo así una temperatura constante a lo largo de la noche.</br></br>Nivel Soporte</br><b>Con espuma de tecnología EQUO</b></br></br>Es el principio de una experiencia innovadora en sueño. Compuesto de espuma con tecnología EQUO de alta densidad, una fundación sólida y segura, para un descanso sumamente reparador. </br></br>En el Original esta capa es de 18 cm de alto y en el Original Plus de 24 cm. Ambas alturas aportan la misma durabilidad, soporte y firmeza.</p>"
+    },
+    {
+      "title": "¿Qué altura tiene el colchón?",
+      "description": "<p>Tenemos dos modelos de colchón de dos alturas diferentes:</p> <p> El Colchón Original mide 22 cm de alto y tiene una capa de soporte de 18 cm y una capa confort de 4 cm.</p> <p>El Colchón Original Plus mide 28 cm de alto y tiene una capa de soporte de 24 cm y una capa confort de 4 cm.</p>"
+    },
+    {
+      "title": "¿Cuánto tiempo puede estar el colchón en la caja?",
+      "description": "<p>Un colchón Calm puede estar máximo 2 meses dentro de su caja sin perder las propiedades.</p>"
+    }
+  ],
+  "PaymentMethods": [
+    {
+      "title": "¿Se puede comprar en cuotas sin interés?",
+      "answer": "<p>¡Sí! Tenemos hasta 12 cuotas sin interés en Colchones, Bases y Sommiers, y hasta 6 cuotas sin interés en el resto de los productos con cualquier tarjeta de crédito Master Card, Visa o American Express bancarizadas.</p> <p>Antes de finalizar tu compra, cuando elijas tu tarjeta de crédito, vas a poder elegir en cuantas cuotas pagar.</p>"
+    },
+    {
+      "title": "¿Qué medios de pago aceptan?",
+      "description": "<p>Nuestros medios de pago son:</p> <ul> <li>Tarjeta de crédito Visa, Amex o Master bancarias en hasta 12 cuotas sin interés.</li> <li>Tarjeta de crédito no bancaria en un pago.</li> <li>Tarjeta Naranja con 6 cuotas sin interés.</li> <li>Tarjeta de debito.</li> <li>Transferencia o depósito con un 10% de descuento</li> </ul>"
+    },
+    {
+      "title": "¿Cómo uso un cupón de descuento?",
+      "description": "<p>En el carrito vas a encontrar una opción que dice “agregar cupón». Después de hacer click ingresá el código, dale a “aplicar”, y ¡Listo!</p>"
+    }
+  ],
+  "Shipment": [
+    {
+      "title": "¿Cómo hago el seguimiento de mi pedido?",
+      "description": "<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+    },
+    {
+      "title": "¿Cuál es el costo del envío?",
+      "description": "<p>Las compras de un valor mayor al precio de una almohada tienen envío gratis a todo el país. Las de menor valor tienen un costo de $6400 para todo el país. Este costo lo vas a ver reflejado en el carrito luego de agregar los productos.</p>"
+    },
+    {
+      "title": "¿Se hacen entregas los fines de semana?",
+      "description": "<p>Las entregas se hacen de lunes a sábados en CABA y primer cordón del AMBA. De lunes a viernes en el resto del país.</p>"
+    }
+  ],
+  "PickUp": [
+    {
+      "title": "¿Dónde se hace el retiro?",
+      "description": "<p>Podés retirar tu compra en nuestros locales ubicados en: <ul><li>Godoy Cruz 1737, CABA</li><li>Santos Dumont 3507, CABA</li><li>Santa Fe 2999, CABA</li><li>Av. del Libertador 6401, CABA</li></ul></p>"
+    },
+    {
+      "title": "¿En qué horarios puedo pasar?",
+      "description": "<p>Palermo, Chacarita y Núñez: de lunes a domingos de 11 a 20hs / Recoleta: de lunes a domingos de 10 a 20hs.</p>"
+    },
+    {
+      "title": "¿En qué vehiculo entran los productos?",
+      "description": "<p>Podés encontrar los tamaños de nuestros productos y algunos consejos en relación a los vehículos acá. Si tenés alguna duda, <a target='_blank' href='https://wa.me/message/XBAEHPNQMBD4A1'>¡Preguntanos!</a></p>"
+    }
+  ],
+"TestNights":[
+    {
+        "title":"¿Cuánto tiempo tengo para hacer la devolución?",
+        "description":"<p>Desde que te llega el producto, empiezan a contar las 30 noches de prueba. Dentro de ese plazo, podés contactarnos para empezar el proceso de devolución. Recomendamos siempre probar nuestros productos al menos 12 días.</p>"
+    },
+    {
+        "title":"¿Cómo tiene que estar el producto para poder devolverlo",
+        "description":"<p>El producto tiene que estar en buen estado (ni roto ni manchado).</p><p>Colchón: Debe entregarse envuelto en el plástico en el que llegó. Si no lo tenés, podés envolverlo con bolsas de plástico para que no se manche ni dañe durante su traslado.Base: Tiene que estar desarmada e incluir todos los artículos con los que se entregó idealmente en su caja original. Almohada: Tiene que estar dentro de una caja (idealmente en la que se entregó). Los retiros son siempre en la puerta del domicilio.</p>"
+
+    },
+    {
+        "title":"¿Cómo y cuándo me devuelven el  dínero?",
+        "description":"<p>El reembolso se realiza al mismo medio con el que se hizo la compra, una vez que el producto se retira. El tiempo de acreditación varía según cada banco: una vez que hagamos el reembolso, te enviamos el comprobante para que puedas consultarlo con el tuyo.</p>"
+    }
+  ],
+  "RuedaDeLaCalma": [
+    {
+      "title": "¿Cómo recibo mi recompensa por referir?",
+      "description": "<p>Una vez que tu referido compre su colchón o base calm y pasen las 30 noches de prueba, vamos a reembolsarte $2000 ó $4000 de tu compra. El reembolso lo hacemos por transferencia bancaria a una cuenta que nos proporciones.</p>"
+    },
+    {
+      "title": "¿Cuáles son las condiciones para referir?",
+      "description": "<p>Es necesario que hayas comprado algún producto calm y hayan pasado tus 30 noches de prueba. Una vez que esto suceda podés ingresar a esta página e ingresar el mail utilizado en tu compra para obtener tu código y compartirlo con tus amigxs</p>"
+    },
+    {
+      "title": "¿Cómo sé si un amigx compró usando mi código de referido?",
+      "description": "<p>Te vamos a notificar por mail cada vez que uno de tus amigxs haga una compra con tu cupón de referido. De la misma manera te vamos a avisar cuando hayan pasado las 30 noches de prueba de tu amigx y ya puedas recibir tu platita.</p>"
+    },
+    {
+      "title": "¿Qué pasa si mi amigx devuelve el colchón que compró?",
+      "description": "<p>Si tu amigx devuelve el colchón que compró en el período de las 30 noches de prueba, le haremos un reembolso y no vas a poder recibir la platita de ese pedido.</p>"
+    },
+    {
+      "title": "¿Cómo hace mi amigx para recibir su almohada de regalo?",
+      "description": "<p>Si usa tu link de referido se le va a incorporar en el carrito automáticamente o sino cuando esté en el carrito va a tener que ingresar tu código en la opción que dice «Tenes un cupón? Hace click acá.» La almohada de regalo es sólo en la compra de colchones o bases de cama.</p>"
+    },
+    {
+      "title": "¿Qué almohada recibe mi amigx?",
+      "description": "<p>La almohada de regalo que recibe tu amigx al usar el cupón es nuestra «Almohada Inteligente» de 65x35cm. Podés verla en el siguiente link: <a href=`https://calmessimple.com.ar/producto/almohada-calm`>hacé clic.</a></p>"
+    }
+  ]
+}

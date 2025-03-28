@@ -1,0 +1,79 @@
+html {
+  ​-webkit-text-size-adjust​: ​none​;
+}
+
+main {
+  overflow-x: hidden;
+}
+
+* {
+  /*   font-family: "Gilroy-Regular", "Arial"; */
+  font-family: var(--font-vietnam-pro), Arial;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  word-wrap: break-word;
+
+  @media (min-width: 1024px) {
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 5px;
+      border-radius: 5%;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  }
+}
+
+@font-face {
+  font-family: "LoRes12OT";
+  src: url("/fonts/LoRes12OT-Regular.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+}
+/* 
+@font-face {
+  font-family: 'Gilroy-Regular';
+  src: url('/fonts/Gilroy-Regular.woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy-Medium';
+  src: url('/fonts/Gilroy-Medium.woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy-Bold';
+  src: url('/fonts/Gilroy-Bold.woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy-ExtraBold';
+  src: url('/fonts/Gilroy-ExtraBold.woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy-Light';
+  src: url('/fonts/Gilroy-Light.woff2');
+  font-display: swap;
+} */

@@ -1,0 +1,80 @@
+{
+    "key": "sabanas-suavidad",
+    "productId": "54161",
+    "title": "Sábanas Suavidad",
+    "titleDescription": "Así es como las Sábanas Suavidad mejoran tu descanso.",
+    "selectedLink": "ropa de cama",
+    "dreamDelivery": false,
+    "tranferDiscount": "15OFF",
+    "skus": "BLASABMIC160003;BLASABMIC160002;BLASABMIC160001;BLASABMIC16000;BLASABMIC100000;BLASABMIC100001;BLASABMIC100002;BLASABMIC100003;BLASABMIC200000;BLASABMIC200001;BLASABMIC200002;BLASABMIC200003",
+    "benefitsProduct": [
+        {
+            "imagen": "Generic",
+            "texto": "100% microfibra piel de durazno (poliéster)."
+        },
+        {
+            "imagen": "Shield",
+            "texto": "Resistente a manchas, desgarros humedad y olores"
+        },
+        {
+            "imagen": "Laundry",
+            "texto": "No se estira ni se encoge."
+        },
+        {
+            "imagen": "Acaro",
+            "texto": "Antibacteriana."
+        }
+    ],
+    "textImages": {
+        "firstText": "Suave como la brisa del verano",
+        "secondText": "Vestí de gala tu colchón"
+    },
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/2a497db5-f7be-446a-6188-2139158fa800/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Grilla-2-4.mp4",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Grilla-3-4.mp4",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/b054cedb-46e0-4b9e-fa65-1b239aaacf00/fit=cover"
+    ],
+    "layoutImagesHaveVideo": true,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": true,
+        "image2": true,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"6 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>6 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"Medidas y tamaños",
+            "description":"<p><ul><li><b>PLAZA O PLAZA Y 1/2:</b><ul><li>Superior o plana: 180 x 240 cm</li><li>Ajustable: 100 x 200 cm (35 cm de altura por lado)</li><li>Funda: 81 x 53 cm (1 unidad)</li><li>Quedan holgadas para colchones de 80 cm de ancho</li><li>Calzan perfecto para colchones de 100 cm de ancho</li></ul></li></ul><ul><li><b>2 PLAZAS:</b><ul><li>Sabana plana 230 cm x 245 cm</li><li>Sabana ajustable 193 cm x 143 cm x 32 cm</li><li>Fundas: 81 x 53 cm (2 unidades)</li><li>Calzan perfecto para colchones de 140 cm de ancho</li><li>Para colchón de: 140 x 190 x 30 cm</li></ul></li></ul><ul><li><b>QUEEN:</b><ul><li>Superior o plana: 235 x 265 cm</li><li>Ajustable: 160 x 200 cm (35 cm de altura por lado)</li><li>Fundas: 81 x 53 cm (2 unidades)</li><li>Quedan holgadas para colchones de 140 cm de ancho</li><li>Calzan perfecto para colchones de 160 cm de ancho</li></ul></li></ul><ul><li><b>KING O SUPERKING:</b><ul><li>Superior o plana: 265 x 275 cm</li><li>Ajustable: 200 x 200 cm (+35 de altura por lado)</li><li>Fundas: 98 x 53 cm (2 unidades)</li><li>Quedan holgadas para colchones de 180 cm de ancho</li><li>Calzan perfecto para colchones de 200 cm de ancho</li></ul></li></ul></p>"
+        },
+        {
+            "title":"¿Por qué las Sábanas Suavidad?",
+            "description":"<p>Porque son duraderas y muuuy suaves, posta. Tienen una alta resistencia a desgarros y manchas, repelen humedad y también olores. Además, no se estiran ni se encogen.</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Ofrecemos 30 noches de prueba reales en tu casa. Creemos que para enamorarte de tu nueva cama, necesitas más de 5 minutos. En el caso de que no te guste, te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mis sábanas?",
+            "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+        }
+    ]
+}
+

@@ -1,0 +1,108 @@
+{
+    "key": "sommier",
+    "productId": "1993786",
+    "title": "Sommier Calm",
+    "titleDescription": "Así es como el Sommier Calm mejora tu descanso.",
+    "selectedLink": "bases",
+    "dreamDelivery": true,
+    "tranferDiscount": "30OFF",
+    "headPills" : "PRIMER SOMMIER EN CAJA",
+    "skus": "BASORISOM080000;BASORISOM100000;BASORISOM140000;BASORISOM160000;BASORISOM180000;BASORISOM200000;BASORISOM080001;BASORISOM100001;BASORISOM140001;BASORISOM160001;BASORISOM180001;BASORISOM200001",
+    "benefitsProduct": [
+        {
+            "imagen": "Herramienta",
+            "texto": "Armado en 15 minutos."
+        },
+        {
+            "imagen": "Caja",
+            "texto": "Viene en caja."
+        },
+        {
+            "imagen": "Lavarropa",
+            "texto": "Funda removible, fácil de limpiar."
+        },
+        {
+            "imagen": "ArgentineFlag",
+            "texto": "100% producido en Argentina."
+        }
+    ],
+    "textImages": {
+        "firstText": "Fácil de armar ",
+        "secondText": "Va muy bien con tu colchón"
+    },
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/314dbcec-31f5-4a3c-d3da-9908799be700/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Grilla-2-5.mp4",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Grilla-3-5.mp4",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/bc3c8a3b-af5e-4ff3-207b-5743acbe0700/fit=cover"
+    ],
+    "layoutImagesHaveVideo": true,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": true,
+        "image2": true,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"12 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>12 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "specsSectionTitles": [
+        {"title": "Dimensiones del ", "bold": "sommier calm"}
+    ],
+    "specsImages": "https://calmessimple.com.ar/wp-content/uploads/2022/12/Sommier-frente-fondo-blanco-King.webp",
+    "specsValues": [
+        { "name": "1 Plaza", "size": "80 x 190 cm x 32 cm" },
+        { "name": "Plaza y 1/2", "size": "100 x 190 cm x 32 cm" },
+        { "name": "2 Plazas", "size": "140 x 190 cm x 32 cm" },
+        { "name": "Queen", "size": "160 x 200 cm x 32 cm" },
+        { "name": "King", "size": "180 x 200 cm x 32 cm" },
+        { "name": "Superking", "size": "200 x 200 cm x 32 cm" }
+    ],
+    "unboxing": {
+        "title": "armalo en menos",
+        "boldTitle": "de 15 minutos",
+        "subtitle": "así se arma nuestro sommier, es simple.",
+        "image": "https://i.ytimg.com/vi/upluGcGL_dU/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgVihQMA8=&rs=AOn4CLDWSYNyx-rNOv6cwVC4GUyhffsoCw",
+        "videoId": "upluGcGL_dU"
+    },
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para enamorarte de tu nueva cama necesitas pasar tiempo con ella. En el caso que no te guste te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Qué garantía tiene el sommier?",
+            "description":"<p>Ofrecemos 5 años de garantía. La misma, aplica para defectos de fábrica, no de mal uso.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi sommier?",
+            "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+        },
+        {
+            "title":"¿Cómo se arma?",
+            "description":"<p>El sommier es muy fácil de armar, en menos de 15 minutos la tenés lista! <a href='https://www.youtube.com/watch?v=upluGcGL_dU' target='_blank'> Acá</a> te dejamos el video instructivo para que lo compruebes con tus propios ojos. También te dejamos el <a href='https://drive.google.com/file/d/1gxuVvujFlZK_Xa938Lbs2K2lDS5wFQpJ/view' target='_blank'> paso a paso</a> en su versión digital.</p>"
+        },
+        {
+            "title":"¿Cómo puedo lavar la funda?",
+            "description":"<p>La funda puede lavarse en lavarropas a temperatura menor a 30 °C. No debe secarse en secarropas, solamente puede secarse tendida en un espacio ventilado y sin sol directo. No debe plancharse.</p>"
+        }
+    ],
+    "RRSSLinks": [
+        "https://www.instagram.com/reel/CmPrjufAxUd/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        "https://www.instagram.com/reel/CmFILbPgtoa/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    ]
+}
+

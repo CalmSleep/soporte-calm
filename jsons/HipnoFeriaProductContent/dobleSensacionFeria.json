@@ -1,0 +1,80 @@
+{
+    "key": "doble-sensacion-feria",
+    "productId": "55054",
+    "title": "Almohada doble sensación",
+    "titleDescription": "Así es como la Almohada doble sensación mejora tu descanso.",
+    "selectedLink": "feria",
+    "dreamDelivery": false,
+    "skus": "ALMALMDOB065000;ALMALMDOB080000",
+    "skusFeria": "OALALMDOB065000;OALALMDOB080000",
+    "benefitsProduct": [
+        {
+            "imagen": "Cloud",
+            "texto": "Espuma de soft de 26kg/m3 de densidad."
+        },
+        {
+            "imagen": "BiggerTresCapas",
+            "texto": "Viscoelástica de 40kg/m3 de densidad."
+        },
+        {
+            "imagen": "Funda",
+            "texto": "Funda de tejido de punto de 300 gramos."
+        },
+        {
+            "imagen": "ArgentineFlag",
+            "texto": "100% producido en Argentina."
+        }
+    ],
+    "layoutImages": [
+        "https://calmessimple.com.ar/wp-content/uploads/2022/05/interior.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/05/almohada-sobre-colchon.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/05/almohada-apoyada.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/05/almohada-funda.webp"
+    ],
+    "layoutImagesHaveVideo": false,
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        }
+    ],
+    "specsSectionTitles": [
+        {"title": "dimensiones de la ", "bold": "almohada doble sensación"}
+    ],
+    "specsImages": "https://calmessimple.com.ar/wp-content/uploads/2022/05/Doble-Sensacion.webp",
+    "specsValues": [
+        { "name": "Mediana", "size": "65 x 45cm" },
+        { "name": "Grande", "size": "80 x 45cm" }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Qué almohada le corresponde a mi colchón?",
+            "description":"<p><ul><li><b>Estándar: 65 cm x 45 cm</b><br/>ideal para colchones de una plaza, plaza y media, dos plazas y queen.</li><li><b>Grande: 80 cm x 45 cm</b><br/>Ideal para colchones de plaza y media, queen, king y superking.</li></ul></p>"
+        },
+        {
+            "title":"¿Cómo puedo sacar la funda?",
+            "description":"<p>Al principio te va a costar un poquito porque la funda está hecha para calzar perfecto. Con el tiempo va a ir cediendo y será más fácil. Hacelo despacito y con amor.</p>"
+        },
+        {
+            "title":"¿Qué color es el modo nube y qué color es el modo firme?",
+            "description":"<p>El modo <b>firme</b> es color amarillo y el modo <b>nube</b> es rosa.</p>"
+        },
+        {
+            "title":"¿Puedo lavar la funda?",
+            "description":"<p>La funda puede lavarse en seco de forma sectorizada en donde presente la mancha, utilizando aerosoles de espuma, máquinas de tintorería o detergente/jabón neutro diluido en agua y un paño escurrido. También recomendamos lavarla completa 2 veces por año a mano, con agua a temperatura ambiente. No lavar en lavarropas porque puede achicarse. </p>"
+        },
+        {
+            "title":"¿Puedo lavar la espuma?",
+            "description":"<p>No 🙁 Por acción del agua las almohadas viscoelásticas tienden a perder sus propiedades de adaptabilidad y memoria. Se puede exponer al aire libre y al sol para que se seque en caso de haberse mojado accidentalmente.</p>"
+        },
+        {
+            "title":"¿Cada cuánto debería lavar la funda?",
+            "description":"<p>Te recomendamos lavarla cada 6 meses para mantenerla 10 puntos. Encontrá más información en ¿Puedo lavar la funda? para saber cómo hacerlo.</p>"
+        }
+    ]
+}

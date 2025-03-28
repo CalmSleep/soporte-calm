@@ -1,0 +1,84 @@
+{
+    "key": "colchon-perro",
+    "productId": "54145",
+    "title": "Colchón Para Perros",
+    "titleDescription": "Así es como el Colchón Para Perros mejora su descanso.",
+    "selectedLink": "accesorios",
+    "tranferDiscount": "15OFF",
+    "dreamDelivery": false,
+    "skus": "MASCOLPER060000;MASCOLPER085000;MASCOLPER110000",
+    "benefitsProduct": [
+        {
+            "imagen": "BiggerTresCapas",
+            "texto": "Tela Chenille con relleno de vellón siliconado en fibroesferas. Guau"
+        },
+        {
+            "imagen": "HandOk",
+            "texto": "La suavidad que tu pichicho se merece para tener la misma calidad de descanso que vos."
+        },
+        {
+            "imagen": "Shield",
+            "texto": "Suave y resistente."
+        }
+    ],
+    "textImages": {
+        "firstText": "El colchón que tu mejor amigx merece",
+        "secondText": "Suave y resistente"
+    },
+    "layoutImages": [
+        "https://calmessimple.com.ar/wp-content/uploads/2022/06/Perro_1.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/06/Perros_Cierre.mp4",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/06/Perro_2.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/06/Perro_3.webp"
+    ],
+    "layoutImagesHaveVideo": true,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": true,
+        "image2": false,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"6 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>6 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "specsSectionTitles": [
+        {"title": "Dimensiones del ", "bold": "colchón para perros"}
+    ],
+    "specsImages": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/7daaa6a8-5ee6-4f59-b3f0-93d38ed3b700/fit=cover",
+    "specsValues": [
+        { "name": "Pequeño", "size": "60 x 40 cm","description": "*ideal para perros hasta 10kg" },
+        { "name": "Mediano", "size": "85 x 60 cm","description": "*ideal para perros hasta 20kg"  },
+        { "name": "Grande", "size": "110 x 80 cm","description": "*ideal para perros hasta 35kg"  }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Por qué el colchón para perros Calm?",
+            "description":"<p>Porque tiene una tela con mayor resistencia a desgarros, cuenta con funda desmontable para lavar por separado, relleno de vellón siliconado extra virgen para garantizar un descanso súper placentero.  Cuenta con un pequeño efecto nido generado mediante costuras para mayor comodidad.</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para enamorarte de tu nueva cama necesitas pasar tiempo con ella. En el caso que no te guste te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi colchón para perros?",
+            "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+        },
+        {
+            "title":"¿Puedo lavar la funda por separado?",
+            "description":"<p>¡Claro! Recomendamos poner la funda en remojo en un recipiente con abundante agua fría y jabón neutro durante 20 minutos y removerla suavemente. No recomendamos lavarla en lavarropas.</p>"
+        }
+    ]
+}

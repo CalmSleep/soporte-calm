@@ -1,0 +1,46 @@
+{
+    "Especification":
+    [
+    {
+        "title":"Materiales",
+        "description":"<p>Utilizamos los mejores materiales: hierro soldado y madera de eucalipto.</p>"
+    },
+    {
+        "title":"Tamaño y peso",
+        "description":"<p><div><p><b>1 Plaza</b></p><p><b>Dimensiones de la base: 190cm x 80cm x 35cm.</b></p><p><b>Tamaño de la caja: 18cm x 38cm x 198cm.</b></p><p><b>Peso del envío: 24kg.</b></p><br /><p><b>Plaza y 1/2</b></p><p><b>Dimensiones de la base: 190cm x 100cm x 35cm.</b></p><p><b>Tamaño de la caja: 18cm x 38cm x 198cm.</b></p><p><b>Peso del envío: 26kg.</b></p><br /><p><b>2 Plazas</b></p><p><b>Dimensiones de la base: 190cm x 140cm x 35cm.</b></p><p><b>Tamaño de la caja: 18cm x 38cm x 198cm.</b></p><p><b>Peso del envío: 32kg.</b></p><br /><p><b>Queen</b></p><p><b>Dimensiones de la base: 200cm x 160cm x 35cm.</b></p><p><b>Tamaño de la caja: 18cm x 38cm x 198cm.</b></p><p><b>Peso del envío: 37kg</b></p><br /><p><b>King</b></p><p><b>Dimensiones de la base: 200cm x 180cm x 35cm.</b></p><p><b>Tamaño de la caja: 18cm x 38cm x 198cm.</b></p><p><b>Peso del envío: 40kg.</b></p><br /><p><b>Superking</b></p><p><b>Dimensiones de la base: 200cm x 200cm x 35cm.</b></p><p><b>Tamaño de la caja: 18cm x 38cm x 198cm.</b></p><p><b>Peso del envío: 42kg.</b></p></div></p>"
+    },
+    {
+        "title":"País de fabricación",
+        "description":"<p>Orgullosamente hecha 100% en argentina</p>"
+    }
+
+],
+"FrequentQuestions":
+[
+    {
+        "title":"¿Por qué las Mesas de Luz Hábito?",
+        "description":"<p>Es una compañera indispensable para el descanso. Su estructura de madera cuenta con un estante y un cajón para tener, siempre con vos, los esenciales de todos los días. Sus formas son orgánicas y simples para que se adapten fácilmente al estilo de tu habitación. Además, es súper simple de armar.</p>"
+    },
+    {
+        "title":"¿Son reales las 30 noches de prueba?",
+        "description":"<p>¡Sí! Te ofrecemos 30 noches de prueba reales en tu casa. Creemos que para enamorarte de tus muebles, necesitás pasar tiempo con ellos. En el caso que no te guste, te devolvemos el 100% de tu dinero.</p>"
+    },
+    {
+        "title":"¿Cuándo voy a recibir mi Mueble Calm?",
+        "description":"<p>Una vez que hagas la compra, vas a recibir el paso a paso actualizado del estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento con tu mail y número de pedido en este link.</p>"
+    },
+    {
+        "title":"¿Cuál es la diferencia entre la Mesa de Luz Hábito y la Mesa de Luz Hábito Flotante?",
+        "description":"<p>La mesa de luz Hábito se apoya en el piso y tiene un estante de guardado abierto y un cajón. La mesa de luz flotante va amurada a la pared y tiene un cajón para tener tus cosas siempre cerca ♥ </p>"
+    },
+    {
+        "title":"¿Qué garantía tienen las mesas de luz Hábito?",
+        "description":"<p>Ofrecemos una garantía de 1 año por defectos de fabricación, no de uso. Si tiene algún defecto estético, escribinos durante los 14 días posteriores a la entrega. Podés ver más información de la garantía en nuestros términos y condiciones.</p>"
+    },
+    {
+        "title":"¿Cómo se arma? ¿Necesito herramientas?",
+        "description":"<p>La mesa de luz es super fácil de armar, en solamente 4 pasos vas a tener lista tu mesita para tener tus hábitos cerca. No te preocupes que el instructivo y todo lo que necesites viene adentro de la caja ;) </p>"
+    }
+]
+
+}

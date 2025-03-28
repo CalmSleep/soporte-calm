@@ -1,0 +1,38 @@
+{
+    "paymentMethods" : [
+        {
+            "image" : "https://calmessimple.com.ar/wp-content/uploads/2020/07/Diseño-sin-título-54-768x307.png",
+            "altImage": "visa",
+            "text": "Hasta 12 cuotas sin interés"
+        },
+        {
+            "image" : "https://calmessimple.com.ar/wp-content/uploads/2020/07/Diseño-sin-título-55-300x120.png",
+            "altImage": "mastercard",
+            "text": "Hasta 12 cuotas sin interés"
+        },
+        {
+            "image" : "https://calmessimple.com.ar/wp-content/uploads/2020/07/Diseño-sin-título-58-300x120.png",
+            "altImage": "americanExpress",
+            "text": "Hasta 12 cuotas sin interés"
+        },
+        {
+            "image" : "https://calmessimple.com.ar/wp-content/uploads/2021/08/NaranjaX_LOGO_RGB-01-copia-1024x295.png",
+            "altImage": "NaranjaX",
+            "text": "6 cuotas sin interés",
+            "subtext": "Todos los dias"
+        }
+    ],
+    "others" : 
+    [
+        {
+            "image" : "https://calmessimple.com.ar/wp-content/uploads/2020/07/Diseño-sin-título-59-300x120.png",
+            "altImage": "marcadoPago",
+            "text": "Disponible"
+        },
+        {
+            "image" : "https://calmessimple.com.ar/wp-content/uploads/2020/07/Transferencia-300x120.png",
+            "altImage": "transferenciaBnacaria",
+            "text": "Hasta 25% off extra"
+        }
+    ]
+}

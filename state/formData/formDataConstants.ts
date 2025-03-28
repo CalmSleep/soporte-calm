@@ -1,0 +1,1 @@
+export const ON_GET_IS_PICKUP = "ON_GET_IS_PICKUP";

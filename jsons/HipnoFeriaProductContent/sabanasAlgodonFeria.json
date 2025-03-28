@@ -1,0 +1,56 @@
+{
+    "key": "sabanas-algodon-feria",
+    "productId": "54835",
+    "title": "Sábanas Algodón Feria Calm",
+    "titleDescription": "Así es como las Sábanas de Algodón mejoran tu descanso.",
+    "selectedLink": "feria",
+    "dreamDelivery": false,
+    "skus": "BLASABALG100000;BLASABALG140000;BLASABALG180000;BLASABALG200000;BLASABALG100001;BLASABALG140001;BLASABALG180001;BLASABALG200001;BLASABALG100002;BLASABALG140002;BLASABALG180002;BLASABALG200002",
+    "skusFeria": "OBLSABALG100001;OBLSABALG100000;OBLSABALG100002;OBLSABALG140001;OBLSABALG140000;OBLSABALG140002;OBLSABALG180001;OBLSABALG180000;OBLSABALG180002;OBLSABALG200001;OBLSABALG200000;OBLSABALG200002",
+    "benefitsProduct": [
+        {
+            "imagen": "Cloud",
+            "texto": "100% algodón de 200 hilos."
+        },
+        {
+            "imagen": "Acaro",
+            "texto": "Hipoalergénica y antibacteriana."
+        },
+        {
+            "imagen": "Laundry",
+            "texto": "Anti-peeling (no hace pelotitas)"
+        }
+    ],
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/5031bb8c-42e8-4de3-9b17-bd5850c0ec00/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/05/sabalg2.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/05/sabalg3.webp",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/1c59a3f2-859d-4439-2aea-f74aeb8cf600/fit=cover"
+    ],
+    "layoutImagesHaveVideo": false,
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Por qué las Sábanas Algodón & Frescura?",
+            "description":"<p>Porque refrescan en verano y dan calor en invierno. Son hipoalergénicas y no hacen pelotitas. Permiten que tu piel respire libremente y no generan estática.</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Ofrecemos 30 noches de prueba reales en tu casa. Creemos que para enamorarte de tu nueva cama, necesitas más de 5 minutos. En el caso de que no te guste, te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mis sábanas?",
+            "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+        }
+    ]
+}

@@ -1,0 +1,88 @@
+{
+    "key": "colchon-hibrido-feria-seo",
+    "productId": "55207",
+    "titleDescription": "Así es como el Colchon Híbrido mejora tu descanso.",
+    "title": "Colchón híbrido feria calm",
+    "selectedLink": "feria",
+    "dreamDelivery": false,
+    "skus": "COLHIBORI080000;COLHIBPLU080000;COLHIBORI100000;COLHIBPLU100000;COLHIBORI140000;COLHIBPLU140000;COLHIBORI160000;COLHIBPLU160000;COLHIBORI180000;COLHIBPLU180000;COLHIBORI200000;COLHIBPLU200000;",
+    "skusFeria": "OCOHIBORI080000;OCOHIBORI100000;OCOHIBORI140000;OCOHIBORI160000;OCOHIBORI180000;OCOHIBORI200000;OCOHIBPLU080000;OCOHIBPLU100000;OCOHIBPLU140000;OCOHIBPLU160000;OCOHIBPLU180000;OCOHIBPLU200000",
+    "benefitsProduct": [
+        {
+            "imagen": "Levels",
+            "texto": "Tiene 2 niveles de espuma de primera calidad."
+        },
+        {
+            "imagen": "noSlipBase",
+            "texto": "Tiene base antideslizante."
+        },
+        {
+            "imagen": "ArgentineFlag",
+            "texto": "100% producido en Argentina."
+        },
+        {
+            "imagen": "Acaro",
+            "texto": "Es anti ácaros."
+        }
+    ],
+    "layoutImages": [
+        "https://calmessimple.com.ar/wp-content/uploads/2023/06/Hibrido_5.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2019/10/Hibrido_2-1.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2019/10/Hibrido_3.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2019/10/Hibrido_4-1.webp"
+    ],
+    "layoutImagesHaveVideo": false,
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        }
+    ],
+    "specsSectionTitles": [
+        {"title": "Dimensiones del ", "bold": "colchón calm"}
+    ],
+    "specsImages": "https://calmessimple.com.ar/wp-content/uploads/2019/10/dimensiones_hibrido.webp",
+    "specsValues": [
+        { "name": "1 Plaza", "size": "80 x 190 cm"},
+        { "name": "Plaza y 1/2", "size": "100 x 190 cm"},
+        { "name": "2 Plazas", "size": "140 x 190 cm"},
+        { "name": "Queen", "size": "160 x 200 cm"},
+        { "name": "King", "size": "180 x 200 cm"},
+        { "name": "Superking", "size": "200 x 200 cm"}
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Qué garantía tiene el colchón?",
+            "description":"<p>Ofrecemos 5 años de garantía. La misma, aplica para defectos de fábrica, no de mal uso.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi colchón?",
+            "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para enamorarte de tu nueva cama necesitas pasar tiempo con ella. En el caso que no te guste te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuánto peso soporta?",
+            "description":"<p>Nuestro colchón soporta hasta <b>120kg por lado</b>, sin perder sus beneficios. </p>"
+        },
+        {
+            "title":"¿Cuánto tiempo puede estar el colchón en la caja?",
+            "description":"<p>Un colchón Calm puede estar máximo 2 meses dentro de su caja sin perder las propiedades.</p>"
+        },
+        {
+            "title":"¿Con qué base es compatible mi colchón?",
+            "description":"<p>Cualquier base que permite un flujo de aire continuo para tu colchón. Si tu base es similar a la base Calm, con tabiques que tienen espacios entre sí y ventilación, va perfecto.<br/><br/>Si seguís en duda, mandanos una foto de tu actual base y te asesoramos 🙂</p>"
+        },
+        {
+            "title":"¿Cuál es la diferencia entre el Colchón Original y el Híbrido?",
+            "description":"<p>El colchón Original tiene 2 capas de espuma, a diferencia del Colchón Híbrido, que contiene tres capas de espuma, más un núcleo de resortes pocket, que proporciona una mayor circulación de aire. Ambos productos son igual de cómodos y firmes, uno se caracteriza por su soporte y suavidad, y el otro por sus resortes y su respirabilidad.</p>"
+        }
+    ]
+}

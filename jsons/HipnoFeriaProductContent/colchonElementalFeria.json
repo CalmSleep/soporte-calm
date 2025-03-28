@@ -1,0 +1,84 @@
+{
+    "key": "colchon-elemental-feria-seo",
+    "productId": "54566",
+    "titleDescription": "Así es como el Colchón Elemental mejora tu descanso.",
+    "title": "Colchón de espuma Calm Elemental ",
+    "selectedLink": "feria",
+    "dreamDelivery": false,
+    "skus": "CE80;CE100;CE140;CE160;CE180;CE200",
+    "skusFeria": "OCOESPELE080000;OCOESPELE100000;OCOESPELE140000;OCOESPELE160000;OCOESPELE180000;OCOESPELE200000",
+    "benefitsProduct": [
+        {
+            "imagen": "Ruler",
+            "texto": "20 cm de Altura."
+        },
+        {
+            "imagen": "DosCapas",
+            "texto": "4 cm de altura de una espuma soft de 24 kg/m3."
+        },
+        {
+            "imagen": "DosCapas",
+            "texto": "16 cm de altura de espuma de alta densidad de 30kg/m3."
+        },
+        {
+            "imagen": "SuitCase",
+            "texto": "Funda de tejido de punto."
+        },
+        {
+            "imagen": "ArgentineFlag",
+            "texto": "100% producido en Argentina."
+        }
+    ],
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/66425e77-8746-4211-c8e2-3de99a532000/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/4e9f065a-20b3-47c2-51fa-7d5dd0861800/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/815cbf61-8073-4381-0b95-e52a977b4300/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/b21ecd99-84fc-455a-edea-043d3107ce00/fit=cover"
+    ],
+    "layoutImagesHaveVideo": false,
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        }
+    ],
+    "specsSectionTitles": [
+        {"title": "Dimensiones del ", "bold": "colchón elemental"}
+    ],
+    "specsImages": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/b9d6a574-3a9c-4e2d-5ef5-11d05bd6c300/fit=cover",
+    "specsValues": [
+        { "name": "1 Plaza", "size": "80 x 190 x 20 cm"},
+        { "name": "Plaza y 1/2", "size": "100 x 190 x 20 cm"},
+        { "name": "2 Plazas", "size": "140 x 190 x 20 cm"},
+        { "name": "Queen", "size": "160 x 200 x 20 cm"},
+        { "name": "King", "size": "180 x 200 x 20 cm"},
+        { "name": "Superking", "size": "200 x 200 x 20 cm"}
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Qué garantía tiene el colchón?",
+            "description":"<p>Ofrecemos 5 años de garantía. La misma, aplica para defectos de fábrica, no de mal uso.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi colchón?",
+            "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para enamorarte de tu nueva cama necesitas pasar tiempo con ella. En el caso que no te guste te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuánto peso soporta?",
+            "description":"<p>Nuestro colchón soporta hasta <b>120kg por lado</b>, sin perder sus beneficios. </p>"
+        },
+        {
+            "title":"¿Con qué base es compatible mi colchón?",
+            "description":"<p>Cualquier base que permite un flujo de aire continuo para tu colchón. Si tu base es similar a la base Calm, con tabiques que tienen espacios entre sí y ventilación, va perfecto.<br/><br/>Si seguís en duda, mandanos una foto de tu actual base y te asesoramos 🙂</p>"
+        }
+    ]
+}

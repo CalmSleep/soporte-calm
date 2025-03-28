@@ -1,0 +1,125 @@
+{
+    "key": "cama-suavidad",
+    "productId": "55263",
+    "title": "Cama Suavidad",
+    "titleDescription": "Así es como la Cama Suavidad mejora tu descanso.",
+    "selectedLink": "bases",
+    "dreamDelivery": true,
+    "tranferDiscount": "30OFF",
+    "headPills" : "LANZAMIENTO",
+    "skus": "BASCAMSUA080000;BASCAMSUA100000;BASCAMSUA140000;BASCAMSUA160000",
+    "benefitsProduct": [
+        {
+            "imagen": "AlmohadaCapa",
+            "texto": "Llega en caja, podés subirlo por ascensor."
+        },
+        {
+            "imagen": "Laundry",
+            "texto": "Funda removible y lavable."
+        },
+        {
+            "imagen": "Tissue",
+            "texto": "Tiene tejido antideslizante."
+        },
+        {
+            "imagen": "ArgentineFlag",
+            "texto": "100% producido en Argentina."
+        },
+        {
+            "imagen": "Match",
+            "texto": "Compatible con nuestro Respaldo Horizonte."
+        }
+    ],
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/aea25bfc-f197-4803-e786-04b1d8262c00/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/297d5ed8-8dbc-459e-1dce-43ee238b5e00/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/528f941e-9688-4eb1-d36a-ec24ef6fb100/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/51a7ab16-35c2-48ed-0d57-d7972587c700/fit=cover"
+    ],
+    "textImages": {
+        "firstText": "Es tan pero tan suave, que te dan ganas de abrazarla.",
+        "secondText": "Contiene tu descanso, envuelve tus noches."
+    },
+    "layoutImagesHaveVideo": false,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": false,
+        "image2": false,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que hagas la compra vamos a estar actualizándote paso a paso del estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"12 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>12 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Por qué la Cama Suavidad?",
+            "description":"<p>Porque envuelve el perímetro de tu cama, generando así una carcasa protectora, esponjosa y suave. Gracias a su tela Bouclé se integra con armonía a su entorno, y a su vez, es tan pero tan suavecita que te dan ganas de abrazarla.</p>"
+        },
+        {
+            "title":"¿Cuál es la diferencia entre Cama Suavidad y Marco Suavidad?",
+            "description":"<p>Cuando compres la Cama Suavidad te van a llegar dos cajas: una con el sommier sin patas y otra con el marco, es el combo completo ;). <br> Si vos ya tenés un sommier y sólo querés agregarle un toque de suavidad a tu cama, podés comprar el Marco Suavidad por separado en nuestra sección de Accesorios. </p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>¡Sí! Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para enamorarte de tu nueva cama, necesitás pasar tiempo con ella.. En el caso que no te guste, te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi Cama Suavidad?",
+            "description":"<p>Una vez que hagas la compra, vas a recibir el paso a paso actualizado del estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento/'>este</a> link.</p>"
+        },
+        {
+            "title":"¿Qué garantía tiene la Cama Suavidad?",
+            "description":"<p>Ofrecemos una garantía de 5 años que cubre defectos de fabricación, no de uso.</p>"
+        },
+        {
+            "title":"¿Cómo cuidar el Marco Suavidad?",
+            "description":"<p>Evitá derramar líquidos que puedan manchar la tela, tales como café, mate, etc. Al limpiar el piso, procurá que los líquidos de limpieza no tomen contacto con la tela. </p>"
+        },
+        {
+            "title":"¿Cómo puedo lavar mi Marco Suavidad?",
+            "description":"<p>Remover la funda y lavar a mano, siempre con agua fría. Podés usar productos quitamanchas y pasarle la aspiradora. No secar al sol.</p>"
+        },
+        {
+            "title":"¿Cómo se arma mi Cama Suavidad?",
+            "description":"<p>Primero, tenés que armar la estructura. Tiene el mismo procedimiento que nuestro sommier y podés ver el video instructivo <a href='https://www.youtube.com/watch?v=MFlXbw1sjjE' target='_blank'> en nuestro canal</a>. Luego, abrís la caja del marco, rompés el vacío y lo colocas directamente. Podés ver el paso a paso digital <a href='https://drive.google.com/file/d/1UTFjm1td13lSyQ-xXpU3mWVIje5lX6WW/view' target='_blank'> acá</a>.</p>"
+        }
+    ],
+    "renders" : {
+        "2196431": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/dfd50076-e344-4fcd-28d6-d77045d77a00/fit=cover",
+        "2196432": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/1db749bf-eb05-4dd6-b8c2-21aaaba8fb00/fit=cover",
+        "2196433": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/f6d3635c-7411-4150-a925-117a43391000/fit=cover",
+        "2196434": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/7f78ede2-723e-4b2c-8de1-bb5c03fd1f00/fit=cover"
+    },
+    "estructuraInfo": [
+        {
+            "title": "Estructura Interior",
+            "description": "Su estructura interna es de madera, igual a la de nuestro Sommier Calm, pero, en este caso, no tiene patas para que se pueda ubicar a nivel del piso."
+        },
+        {
+            "title": "Estructura Exterior",
+            "description": "Su estructura exterior contiene una tela ultra suave, Bouclé Gris, y listones de espuma con tecnología EQUO®, que en conjunto le dan la suavidad y el soporte que la caracterizan."
+        }  
+    ],
+    "estructuraImagen": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/7c7f779e-94dc-445e-b412-abc9ed935e00/fit=cover",
+    "ATCImage" : "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/a46231b4-1bc9-44a0-5923-5fcd0896d700/fit=cover",
+    "titleAndVideo":{
+        "title": "¿Todavía tenes dudas? En estos videos te explicamos más",
+        "video": "aBMgvMKlXPc",
+        "imgVideo": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/8824bbc6-8144-4feb-38be-9369b8a09b00/fit=cover",
+        "secondVideoUrl": "dqXDCJU3cTE",
+        "secondImgVideo": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/7eb69154-7707-4148-1f64-5e5abf21bf00/fit=cover"
+    }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "title": "¿Puedo ir con acompañante al Siestario?",
+    "description": "<p>No, la experiencia es individual y para mayores de 18 años por cuestiones de seguridad.</p>"
+  },
+  {
+    "title": "¿Cómo es la seguridad del Siestario?",
+    "description": "<p>Antes de entrar vamos a necesitar que se firme un consentimiento para poder asegurarnos de que tanto las personas que nos visiten como la habitación en sí misma sean cuidadas. La siesta va a estar siendo grabada y monitoreada por nuestras personas de atención al cliente del LoCalm.</p>"
+  },
+  {
+    "title": "¿Cuál es el valor de la experiencia?",
+    "description": "<p>Nuestro siestario es gratuito pero, para reducir la tasa de cancelación y que más personas puedan disfrutar de esta experiencia, incluimos un seguro de cancelación.<br/><br/>¿Cómo funciona?<br/>Al reservar tenés que ingresar los datos de tu tarjeta por medio de Meitre, una plataforma de reservas 100% segura. No te preocupes! No vas a percibir ningún gasto en tu tarjeta al momento de poner los datos.<br/><br/>En caso de asistir no se te va a cobrar nada pero, si cancelás con menos de 24hs de anticipación o no asistís el día reservado, se va a cobrar un monto de $2.000 a la tarjeta que ingresaste.</p>"
+  },
+  {
+    "title": "¿Tengo que llevar algo para dormir?",
+    "description": "<p>No, en Calm te damos todo lo que necesites tanto para dormir como para despertarte. Si te sentis mas cómodx con un pijama propio, obvio que lo podes traer.</p>"
+  },
+  {
+    "title": "¿Cuál es la ubicación del Siestario?",
+    "description": "<p>El Siestario se encuentra en la parte de arriba de nuestro LoCalm de Chacarita en Santos Dumont 3507.</p>"
+  },
+  {
+    "title": "¿En qué horarios se puede reservar?",
+    "description": "<p>Las reservas son de Lunes a Viernes, tenemos tres turnos por día dentro del rango ideal para dormir la siesta según la Asociación Argentina de Medicina del Sueño: <ul><li>De 12 a 12:45 hs.</li><li>De 13:45 a 14:30 hs.</li><li>De 15:30 a 16:15 hs.</li></ul></p>"
+  },
+  {
+    "title": "¿Por qué la siesta dura 45 minutos?",
+    "description": "<p>Según la AAMS(Asociación Argentina de Medicina del Sueño) el tiempo ideal de una siesta es de 30 minutos. Como creemos que es importante que puedan ponerse el pijama y acostarse sin estar corriendo, sumamos 15 minutos más.</p>"
+  },
+  {
+    "title": "¿Se pueden reservar dos turnos seguidos?",
+    "description": "<p>No, por un lado porque creemos que más de 30 minutos de siesta no es lo ideal según la AAMS(Asociación Argentina de Medicina del Sueño) y por otro porque entre cada turno hay una hora de diferencia para que nuestro equipo pueda higienizar el espacio y cambiar la ropa de cama.</p>"
+  }
+]

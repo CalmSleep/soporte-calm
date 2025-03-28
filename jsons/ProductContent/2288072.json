@@ -1,0 +1,151 @@
+{
+    "key": "sofa-cama-24-7",
+    "productId": "2288072",
+    "title": "Sofá Cama 24/7",
+    "titleDescription": "La misma calidad para disfrutar, relajarte y descansar. Ese es el concepto que nos permitió desarrollar el Sofá Cama 24/7. Una propuesta que captura la esencia de ambos productos: 100% Sofá, 100% Cama, tan cómodo como nuestros colchones. Gracias a su diseño se puede armar y desarmar en menos de 10 segundos, porque la simpleza, siempre, ante todo.",
+    "selectedLink": "muebles",
+    "dreamDelivery": true,
+    "tranferDiscount": "30OFF",
+    "headPills" : "LANZAMIENTO",
+    "skus": "SOFCAM247160000;SOFCAM247160001",
+    "benefitsProduct": [
+        {
+            "imagen": "Box",
+            "texto": "Llega en 4 cajas, podés subirlo por ascensor"
+        },
+        {
+            "imagen": "Herramienta",
+            "texto": "Primer sofá cama fácil de armar y desarmar"
+        },
+        {
+            "imagen": "ArgentineFlag",
+            "texto": "100% producido en Argentina"
+        },
+        {
+            "imagen": "Moon",
+            "texto": "Dormí como en nuestro colchón original"
+        },
+        {
+            "imagen": "Levels",
+            "texto": "Primer nivel de sensación compuesto por espuma con tecnología ERGO ® "
+        },
+        {
+            "imagen": "Levels",
+            "texto": "Segundo nivel de soporte compuesto por espuma con tecnología EQUO ® de alta densidad"
+        }
+    ],
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/799d1fc9-cdd4-475f-9a6a-f71a2e7c1100/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2024/09/2-1mb.mp4",
+        "https://calmessimple.com.ar/wp-content/uploads/2024/09/3-1mb.mp4",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/9a67c647-0f05-4d81-9ebb-9eaeb5f45200/fit=cover"
+    ],
+    "textImages": {
+        "firstText": "Sofá cama o Cama sofá, como vos quieras.",
+        "secondText": "Fácil de armar y desarmar."
+    },
+    "layoutImagesHaveVideo": true,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": true,
+        "image2": true,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 días y noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"12 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>12 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "specsSectionTitles": [
+        {"title": "Dimensiones y Materiales", "bold": ""}
+    ],
+    "specsImages": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/eb30ff2b-266b-452a-835d-242a1618ee00/fit=cover",
+    "specsValues": [
+        { "name": "Alto", "size": "83 cm" },
+        { "name": "Ancho", "size": "203 cm" },
+        { "name": "Profundidad Sofá", "size": "97 cm" },
+        { "name": "Profundidad Cama", "size": "220 cm" },
+        { "name": "Tamaño Colchón", "size": "160x220 cm" }
+    ],
+    "generalSpecsDescription" : "<b>Estructura interna de fenólico de 18 mm</b>, que garantiza durabilidad y resistencia. <b>Tapicería en tela Majo</b> disponible en color perla o gris, <b>complementada con un tejido de punto 3D de 415 gramos</b> por metro cuadrado, ofreciendo una sensación de suavidad y confort inigualables.",
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Por qué el Sofá Cama 24/7?",
+            "description":"<p>Porque con el Sofá Cama 24/7 ya no tenés que ir de la cama al living, es 100% sofá y 100% cama. En un sólo paso podés convertir tu sofá en una cama que replica la sensación de nuestros colchones. Además, viene en caja, es súper fácil de trasladar. Lo podés desarmar y volver a guardar si te mudás ;)</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>¡Sí! Te ofrecemos 30 noches de prueba reales en tu casa. Creemos que para enamorarte de tu sofá, necesitás pasar tiempo con él. En el caso de que no te guste, te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi Sofá Cama?",
+            "description":"<p>Una vez que hagas la compra, vas a recibir el paso a paso actualizado del estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento/'>este</a> link.</p>"
+        },
+        {
+            "title":"¿Qué garantía tiene el Sofá Cama 24/7?",
+            "description":"<p>Ofrecemos una garantía de 5 años que cubre defectos de fabricación, no de uso. Si tiene algún defecto estético o piezas faltantes, escribinos durante los 14 días posteriores a la entrega. Podés ver más detalle de la garantía en nuestros términos y condiciones.</p>"
+        },
+        {
+            "title":"¿Cómo voy a recibir el Sofá Cama 24/7?",
+            "description":"<p>Cuando recibas tu Sofá Cama 24/7 te van a llegar 4 cajas: una con la base, una con el respaldo, una con el apoyabrazos y una con el colchón. No te preocupes, están numeradas para que sepas en qué orden abrirlas. Tip: la de la base es la nro 1, abrí esa primero para encontrar el instructivo y las herramientas para armarlo ;) </p>"
+        },
+        {
+            "title":"¿Cómo se arma?",
+            "description":"<p>El Sofá Cama es muy simple de armar, sólo vas a necesitar tus manos y una llave allen que viene en la caja ;) <br>Primero lo primero: abrí la caja nro 1 y sacá su contenido para encontrar todo lo necesario para armarlo. No te preocupes, también tenemos un video para ayudarte. Video instructivo <br> Si te quedaron dudas, escribinos y te ayudamos :) </p>"
+        },
+        {
+            "title":"¿De qué tamaño es el Sofá Cama?",
+            "description":"<p>El Sofá Cama Calm, en su versión cama, ofrece una experiencia de descanso de nivel superior, gracias a su colchón de tamaño Queen 160x200cm, ideal para un descanso pleno y reparador.</p>"
+        }
+    ],
+    "titleAndVideo":{
+        "title": "Instructivo de armado",
+        "video": "l3YHF7QvurA",
+        "imgVideo": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/b2cd9d10-5e73-4914-bbbc-40708f82c500/public"
+    },
+    "videoTitle":"¿Qué hace diferente al Sofá 24/7?",
+    "keyFeatures": [
+        {
+            "mediaSrc": "https://calmessimple.com.ar/wp-content/uploads/2024/09/1-facil-armar.mp4",
+            "mediaSrcMobile": "https://calmessimple.com.ar/wp-content/uploads/2024/10/1-facil-armar-500.mp4",
+            "subtitle": "Fácil de armar"
+        },
+        {
+            "mediaSrc": "https://calmessimple.com.ar/wp-content/uploads/2024/09/2-desplegado.mp4",
+            "mediaSrcMobile": "https://calmessimple.com.ar/wp-content/uploads/2024/10/2-desplegado-500.mp4",
+            "subtitle": "Desplegado"
+        },
+        {
+            "mediaSrc": "https://calmessimple.com.ar/wp-content/uploads/2024/09/3-100colchon.mp4",
+            "mediaSrcMobile": "https://calmessimple.com.ar/wp-content/uploads/2024/10/3-100colchon-500.mp4",
+            "subtitle": "100% Colchón"
+        }
+    ],
+    "keyFeatureHaveVideo" :[
+        {
+            "video": true
+        },
+        {
+            "video": true
+        },
+        {
+            "video": true
+        }
+    ],
+    "RRSSLinks": [
+        "https://www.instagram.com/reel/DA6v6aSyv-C/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        "https://www.instagram.com/reel/DBHhFR7yu71/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        "https://www.instagram.com/reel/DCSkRKVRf5B/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    ]
+}

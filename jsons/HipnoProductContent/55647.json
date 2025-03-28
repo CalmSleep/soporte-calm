@@ -1,0 +1,179 @@
+{
+    "key": "cama-articulada-ola",
+    "productId": "55647",
+    "title": "Cama Articulada Ola",
+    "titleDescription": "Subite a la ola del bienestar, ajusta tu cama con precisión para encontrar la postura perfecta y disfrutá de dormir bien.",
+    "selectedLink": "bases",
+    "dreamDelivery": true,
+    "skus": "BASARTOLA140000;BASARTOLA160000;BASARTOLA180000;BASARTOLA200000",
+    "headPills" : "LANZAMIENTO",
+    "tranferDiscount": "30OFF",
+    "benefitsProduct": [
+        {
+            "imagen": "Caja",
+            "texto": "Llega en caja"
+        },
+        {
+            "imagen": "Herramienta",
+            "texto": "Montaje sin herramientas"
+        },
+        {
+            "imagen": "Ruler",
+            "texto": "Altura de patas regulables"
+        },
+        {
+            "imagen": "Stack",
+            "texto": "Ajustá tu cama con control o app"
+        },
+        {
+            "imagen": "Position",
+            "texto": "2 posiciones predefinidas, antirronquidos o gravedad cero"
+        },
+        {
+            "imagen": "Size",
+            "texto": "Capacidad de peso de 315kg, garantiza estabilidad y durabilidad"
+        }
+    ],
+    "textImages": {
+        "firstText": "Ajustá tu cama como quieras y encontrá la postura perfecta.",
+        "secondText": "Funciona perfecto con tu colchón Calm."
+    },
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/5ab15f20-9f36-4676-c1ed-79b62e574e00/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2024/12/560x560px_Grilla1.mp4",
+        "https://calmessimple.com.ar/wp-content/uploads/2024/12/560x560px_Grilla2.mp4",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/2b194f4a-c0d9-4ba2-2f12-ed003d16d600/fit=cover"
+    ],
+    "layoutImagesHaveVideo": true,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": true,
+        "image2": true,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"12 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>12 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "specsSectionTitles": [
+        {"title": "Dimensiones de la ", "bold": "base para tu colchón"}
+    ],
+    "specsImages": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/14c63cb6-544a-45e9-dc16-244ef9382700/fit=cover",
+    "specsValues": [
+        { "name": "2 Plazas", "size": "140 x 190 x 37cm" },
+        { "name": "Queen", "size": "160 x 200 x 37cm" },
+        { "name": "King", "size": "180 x 200 x 37cm" },
+        { "name": "Superking", "size": "2 unidades de 100 x 200 x 37cm" }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Viene con el colchón? ",
+            "description":"<p>No, al comprar la cama articulada Ola estás comprando únicamente la base de cama. Podés ver nuestros modelos de colchones <a href='https://calmessimple.com.ar/colchones'>acá</a></p>"
+        },
+        {
+            "title":"¿Con qué tipo de colchones es compatible?",
+            "description":"<p>La cama articulada Ola es compatible con cualquier colchón de espuma o híbrido (espuma + resortes). De cualquier forma, te recomendamos que mientras no esté en uso, dejes la cama en posición horizontal total para cuidar el colchón ♥</p>"
+        },
+        {
+            "title":"¿Va enchufada?¿Cómo la controlo?",
+            "description":"<p>Sí, tiene un transformador que se enchufa a la pared. Todas las conexiones están protegidas así que es 100% segura. Para controlarla podés usar el control remoto, o bajar a tu dispositivo preferido la app Motion Relax by Logic Data. Seleccioná cualquier modelo de cama y vinculado vía Bluetooth. Por las dudas, revisá que estés conectado a la red 2.4GHz de tu wifi para usar esta opción.</p>"
+        },
+        {
+            "title":"¿Puedo ajustarla en cualquier posición?",
+            "description":"<p>Sí, es 100% regulable! Hay dos modos pre-seteados, pero con el control o la app podés regular el respaldo o los pies de la forma que más cómoda te quede a vos.</p>"
+        },
+        {
+            "title":"¿Es fácil de armar? ¿Qué viene en la caja?",
+            "description":"<p>No te preocupes, la cama Ola es super fácil de armar, viene con el instructivo y todo lo que necesitás para hacerlo. También te dejamos el video con el paso a paso <a target='blank' href='https://www.youtube.com/watch?v=FcD7HBSRzXo'>acá</a> para apoyarte. Además, vas a encontrar sujeta cables y un porta control remoto que te regalamos para hacer tu experiencia más simple todavía ;)</p>"
+        },
+        {
+            "title":"¿Viene en otras medidas y colores?",
+            "description":"<p>Por ahora sólo tenemos disponible en este color, y en las medidas indicadas en la publicación</p>"
+        },
+        {
+            "title":"¿Qué garantía tiene?",
+            "description":"<p>La cama articulada Ola tiene una garantía de 5 años que cubre defectos de fabricación, no de uso. Podés ver más info en nuestros <a href='https://calmessimple.com.ar/terminos-y-condiciones'>términos y condiciones</a>.</p>"
+        },
+        {
+            "title":"¿Cómo funcionan las 30 noches de prueba?",
+            "description":"<p>Como en todos nuestros productos, te ofrecemos 30 noches de prueba reales en tu casa. En el caso de que no te enamores de tu cama, te devolvemos el 100% de tu dinero. Es importante que conserves la caja del producto durante el periodo de prueba. Si hacés uso de las 30 noches, es necesario que la cama vuelva en su caja original y con todos sus componentes. Podés ver más info en nuestros <a href='https://calmessimple.com.ar/terminos-y-condiciones'>términos y condiciones.</p>"
+        },
+        {
+            "title":"¿Qué pasa si se corta la luz?",
+            "description":"<p>No te preocupes, en la caja hay un dispositivo de emergencia a batería para que puedas volver a colocar la cama en la posición que quieras. Te dejamos el paso a paso: <br> Desenchufá la cama de la corriente eléctrica.<br> Desconectá la fuente del cable que va al centro de control de la cama.<br> Reemplazá la fuente por el dispositivo de emergencia, conectándolo al cable que va al centro de control.<br> En el otro extremo del dispositivo, conectá dos baterías de 9V (no vienen incluidas)<br> Listo, ya podés regular tu cama como quieras usando el control o la app.</p>"
+        }
+    ],
+    "titleAndVideo":{
+        "title": "Instructivo de armado",
+        "video": "FcD7HBSRzXo",
+        "imgVideo": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/f8cfb15c-ea2a-4c20-8a12-95b126bf2c00/fit=cover"
+    },
+    "videoTitle":"¿Qué hace diferente a la Cama Ola?",
+    "keyFeatures": [
+        {
+            "mediaSrc": "https://calmessimple.com.ar/wp-content/uploads/2024/12/194x406px_Keyfeatures1.mp4",
+            "mediaSrcMobile": "https://calmessimple.com.ar/wp-content/uploads/2024/12/194x406px_Keyfeatures1.mp4",
+            "subtitle": "Armado sin herramientas"
+        },
+        {
+            "mediaSrc": "https://calmessimple.com.ar/wp-content/uploads/2024/12/194x406px_Keyfeatures2.mp4",
+            "mediaSrcMobile": "https://calmessimple.com.ar/wp-content/uploads/2024/12/194x406px_Keyfeatures2.mp4",
+            "subtitle": "Personalizá tus posiciones"
+        },
+        {
+            "mediaSrc": "https://calmessimple.com.ar/wp-content/uploads/2024/12/194x406px_Keyfeatures3.mp4",
+            "mediaSrcMobile": "https://calmessimple.com.ar/wp-content/uploads/2024/12/194x406px_Keyfeatures3.mp4",
+            "subtitle": "Ajustá tu cama con control o app"
+        }
+    ],
+    "keyFeatureHaveVideo" :[
+        {
+            "video": true
+        },
+        {
+            "video": true
+        },
+        {
+            "video": true
+        }
+    ],
+    "specsCamaOla": [
+        {
+            "title": "Posición Anti Ronquidos",
+            "subtitle": "Menos ruido, más sueño",
+            "description": "Encontrá la postura ideal para disminuir los ronquidos y mejorar la calidad de tu sueño. Porque descansar bien no solo es importante para vos, sino también para quien duerme a tu lado!",
+            "img": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/f4e6fe84-d308-4a61-2922-b01b489e2100/fit=cover"
+        },
+        {
+            "title": "Gravedad Cero",
+            "subtitle": "Alivia tensiones musculares",
+            "description": "Ya hay muchas presiones como para tener otra a la hora de dormir. Esta posición divide el peso de manera uniforme, dejándote flotar y aliviando el dolor de espalda y cuello como nunca.",
+            "img": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/9141f59f-a81f-438c-a81d-dc71fd07eb00/fit=cover"
+        },
+        {
+            "title": "Sueño personalizado",
+            "subtitle": "Programá tus posturas preferidas",
+            "description": "Cada persona duerme distinto. Si tenes apneas de sueño, vas a poder elegir la postura ideal para tus noches de sueño.",
+            "img": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/4b802763-a4a9-42d2-1c69-216ae73dbf00/fit=cover"
+        }
+    ],
+    "renders" : {
+        "2358881": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/ce334e7d-8234-48b8-ac6b-598dfa31fa00/fit=cover",
+        "2358882": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/4694b231-04ca-469a-8649-4d3ce92fef00/fit=cover",
+        "2358883": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/ffe37634-08ab-4567-4bce-afca5f0d4000/fit=cover",
+        "2358884": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/9de8c3f2-4e94-49b6-3640-dad8e8581d00/fit=cover"
+    }
+
+}

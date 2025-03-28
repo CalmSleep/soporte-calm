@@ -1,0 +1,228 @@
+{
+    "colchones": {
+        "title": "Compará nuestros colchones",
+        "description": "Desarrollamos únicamente dos modelos, elegir el colchón perfecto para vos nunca fue tan simple. Si todavía no te decidís por una, te ayudamos complentando este test.<b> No toma más de 5 minutos ;)</b>",
+        "quizzLink": "WEN74OMX", 
+        "cards": [
+            {
+                "title": "Original",
+                "id": "334",
+                "img": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/23e053ff-6ceb-4825-d8e0-4274b28a6c00/fit=cover",
+                "firmeza": 4,
+                "Respirabilidad": 3,
+                "textButton": "Comprar colchon original",
+                "specs": [
+                    {
+                        "icon": "Nucleo",
+                        "text": "Núcleo de espuma"
+                    },
+                    {
+                        "icon": "DosCapas",
+                        "text": "2 capas de espuma"
+                    },
+                    {
+                        "icon": "Garantia",
+                        "text": "5 años de garantía"
+                    },
+                    {
+                        "icon": "Star",
+                        "text": "El colchón mejor puntuado de Argentina"
+                    }
+                ]
+            }, 
+            {
+                "title": "Híbrido",
+                "id": "2067781",
+                "img": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/05dd11a2-bcd7-4eb3-0097-bfc24cff6c00/fit=cover",
+                "firmeza": 3,
+                "Respirabilidad": 4,
+                "textButton": "Comprar colchon híbrido",
+                "specs": [
+                    {
+                        "icon": "Nucleo",
+                        "text": "Núcleo de resortes"
+                    },
+                    {
+                        "icon": "TresCapas",
+                        "text": "3 capas de confort"
+                    },
+                    {
+                        "icon": "Garantia",
+                        "text": "5 años de garantía"
+                    },
+                    {
+                        "icon": "Viento",
+                        "text": "Alta circulación de aire"
+                    }
+                ]
+            }
+        ]
+    },
+    "bases y sommiers": {
+        "title": "Elegí tu cama ideal",
+        "description": "Desarrollamos tres modelos que se adaptan a tu habitación de manera armónica. Si todavía no te decidís por una, te ayudamos complentando este test.<b> No toma más de 5 minutos ;)</b>",
+        "quizzLink": "g3s71tdk", 
+        "cards": [
+            {
+                "title": "Base de Hierro",
+                "id": "339",
+                "img": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/ff019d46-e6d3-4670-c46b-1cb603f33600/fit=cover",
+                "textButton": "Comprar Base de hierro",
+                "specs": [
+                    {
+                        "icon": "Caja",
+                        "text": "Viene en caja"
+                    },
+                    {
+                        "icon": "Herramienta",
+                        "text": "Fácil de armar, sin herramientas"
+                    },
+                    {
+                        "icon": "Maletin",
+                        "text": "Espacio de Guardado"
+                    },
+                    {
+                        "icon": "Insignia",
+                        "text": "Sello Buen Diseño se adapta a cualquier deco"
+                    }
+                ]
+            }, 
+            {
+                "title": "Sommier Calm",
+                "id": "1993786",
+                "img": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/ebd253ec-dc63-4a4e-8d6d-388efe1b0600/fit=cover",
+                "textButton": "Comprar Sommier Calm",
+                "specs": [
+                    {
+                        "icon": "Caja",
+                        "text": "Viene en caja"
+                    },
+                    {
+                        "icon": "Herramienta",
+                        "text": "Fácil de armar, sin herramientas"
+                    },
+                    {
+                        "icon": "Lavarropa",
+                        "text": "Funda removible y lavable"
+                    }
+                ]
+            },
+            {
+                "title": "Cama suavidad",
+                "id": "2196407",
+                "img": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/f6d3635c-7411-4150-a925-117a43391000/fit=cover",
+                "textButton": "Comprar Cama Suavidad",
+                "specs": [
+                    {
+                        "icon": "Caja",
+                        "text": "Viene en caja"
+                    },
+                    {
+                        "icon": "Herramienta",
+                        "text": "Fácil de armar, sin herramientas"
+                    },
+                    {
+                        "icon": "Lavarropa",
+                        "text": "Funda removible y lavable"
+                    },
+                    {
+                        "icon": "Cloud",
+                        "text": "Espuma con tecnología EQUO®"
+                    }
+                ]
+            }
+        ]
+    },
+    "almohadas" : {
+        "title": "Elegí tu almohada ideal",
+        "description": "Desarrollamos cuatro modelos que se adaptan a diferentes necesidades. Si todavía no te decidís por una, te ayudamos complentando este test.<b> No toma más de 5 minutos ;)</b>",
+        "quizzLink": "FB7U3xzq", 
+        "cards": [
+            {
+                "title": "Almohada Inteligente",
+                "id": "724708",
+                "img": "https://calmessimple.com.ar/wp-content/uploads/2019/10/Almohada-Inteligente-Sola.webp",
+                "textButton": "Comprar Almohada Inteligente",
+                "description": "Tecnología viscoelástica, se adapta a la forma de tus hombros, cuello y cabeza.",
+                "specs": [
+                    {
+                        "icon": "HalfBar",
+                        "text": "Suavidad media."
+                    },
+                    {
+                        "icon": "FullBar",
+                        "text": "Más firme."
+                    },
+                    {
+                        "icon": "HalfBar",
+                        "text": "Altura media."
+                    }
+                ]
+            }, 
+            {
+                "title": "Almohada Infinita",
+                "id": "724708",
+                "img": "https://calmessimple.com.ar/wp-content/uploads/2021/06/Render-turno-1-1.webp",
+                "textButton": "Comprar Almohada Infinita",
+                "description": "Su almohada interna permite regular altura y firmeza, además de ser super suave.",
+                "specs": [
+                    {
+                        "icon": "FullBar",
+                        "text": "Más suave."
+                    },
+                    {
+                        "icon": "Adjustable",
+                        "text": "Firmeza regulable."
+                    },
+                    {
+                        "icon": "Adjustable",
+                        "text": "Altura regulable."
+                    }
+                ]
+            }, 
+            {
+                "title": "Almohada Doble Sensación",
+                "id": "1831947",
+                "img": "https://calmessimple.com.ar/wp-content/uploads/2022/05/almohada-doble-sensación.webp",
+                "textButton": "Comprar Almohada Doble Sensación",
+                "description": "Dos espumas de tecnologías diferentes, suave de un lado, firme del otro.",
+                "specs": [
+                    {
+                        "icon": "HalfBar",
+                        "text": "Suavidad media."
+                    },
+                    {
+                        "icon": "Adjustable",
+                        "text": "Firmeza regulable."
+                    },
+                    {
+                        "icon": "HalfBar",
+                        "text": "Altura media."
+                    }
+                ]
+            }, 
+            {
+                "title": "Alta Almohada",
+                "id": "1855350",
+                "img": "https://calmessimple.com.ar/wp-content/uploads/2022/05/Render-turno-1-1-1.webp",
+                "textButton": "Comprar Alta Almohada",
+                "description": "Un clásico suave y esponjoso. Ideal para quienes aman abrazar la almohada.",
+                "specs": [
+                    {
+                        "icon": "FullBar",
+                        "text": "Más suave."
+                    },
+                    {
+                        "icon": "EmptyBar",
+                        "text": "Menos firme."
+                    },
+                    {
+                        "icon": "HalfBar",
+                        "text": "Altura media."
+                    }
+                ]
+            }
+        ]
+    }
+
+}

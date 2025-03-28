@@ -1,0 +1,83 @@
+{
+    "key": "alta-almohada",
+    "productId": "54460",
+    "title": "Alta Almohada",
+    "titleDescription": "Así es como la Alta Almohada mejora tu descanso.",
+    "selectedLink": "almohadas",
+    "dreamDelivery": false,
+    "tranferDiscount": "15OFF",
+    "skus": "ALMALMSIM065000;ALMALMSIM080000",
+    "benefitsProduct": [
+        {
+            "imagen": "Cloud",
+            "texto": "Vellón Siliconado (transpirable  y alergénico)."
+        },
+        {
+            "imagen": "Acaro",
+            "texto": "Tela 100% poliéster 70grs. (antibacteriana)."
+        },
+        {
+            "imagen": "ArgentineFlag",
+            "texto": "100% producido en Argentina."
+        }
+    ],
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/28ccf075-1167-4c22-eeac-da939d65ed00/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Alta-Almohada_1.mp4",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Alta-Almohada_2.mp4",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/68f201e1-748d-4596-4a34-aa8d7ed11000/fit=cover"
+    ],
+    "textImages": {
+        "firstText": "Suave y espumosa, no la vas a poder soltar",
+        "secondText": "Una almohada que se adapta a vos"
+    },
+    "layoutImagesHaveVideo": true,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": true,
+        "image2": true,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"6 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>6 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "specsSectionTitles": [
+        {"title": "Dimensiones de la ", "bold": "alta almohada"}
+    ],
+    "specsImages": "https://calmessimple.com.ar/wp-content/uploads/2022/05/Alta-Almohada-1.webp",
+    "specsValues": [
+        { "name": "Mediana", "size": "65 x 45cm" },
+        { "name": "Grande", "size": "80 x 45cm" }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Qué almohada le corresponde a mi colchón?",
+            "description":"<p><ul><li><b>Estándar: 65 cm x 45 cm</b><br/>ideal para colchones de una plaza, plaza y media, dos plazas y queen.</li><li><b>Grande: 80 cm x 45 cm</b><br/>Ideal para colchones de plaza y media, queen, king y superking.</li></ul></p>"
+        },
+        {
+            "title":"¿Cómo puedo lavar mi almohada?",
+            "description":"<p>Podés lavarla en seco a mano o en el lavarropas, sin otras prendas, con detergente líquido para ropa delicada y en programa para ropa delicada, con temperatura máxima de 30 °C. En este caso tenés que incorporar bolas de lavado así tu almohada no pierde cuerpo.</p>"
+        },
+        {
+            "title":"¿Cómo se seca una vez lavada?",
+            "description":"<p>Recomendamos que el secado sea al aire libre, en horizontal y a la sombra.</p>"
+        },
+        {
+            "title":"¿Cada cuánto tiempo tengo que cambiar mi almohada?",
+            "description":"<p>La almohada tiende a perder un poco de cuerpo luego de 2 años de uso. Si esto representara un inconveniente para tu postura de sueño, te recomendamos cambiarla.</p>"
+        }
+    ]
+}

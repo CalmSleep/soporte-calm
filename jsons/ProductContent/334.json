@@ -1,0 +1,138 @@
+{
+    "key": "colchon-calm",
+    "productId": "334",
+    "title": "Colchón Original",
+    "titleDescription": "Así es como el Colchón Original mejora tu descanso.",
+    "selectedLink": "colchones",
+    "dreamDelivery": true,
+    "tranferDiscount": "30OFF",
+    "headPills" : "EL MAS VENDIDO",
+    "SecondheadPills" : "CON MAS REVIEWS",
+    "skus": "C80;C100;C140;C160;C180;C200;CP80;CP100;CP140;CP160;CP180;CP200",
+    "benefitsProduct": [
+        {
+            "imagen": "Insignia",
+            "texto": "El colchón mejor puntuado de Argentina"
+        },
+        {
+            "imagen": "HandOk",
+            "texto": "El punto justo, ni muy firme ni muy suave."
+        },
+        {
+            "imagen": "BiggerDosCapas",
+            "texto": "2 capas, de confort y soporte."
+        }
+    ],
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/febf8c65-7bc9-408e-cc8d-3207ffd7e100/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Colchon-Original-Plus_1.mp4",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Colchon-Original_1.mp4",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/26989284-1576-41a8-914d-3962f41c0e00/fit=cover"
+    ],
+    "layoutImagesHaveVideo": true,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": true,
+        "image2": true,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"12 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>12 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "textImages": {
+        "firstText": "99 de cada 100 personas eligen quedarse con su calm",
+        "secondText": "Ni muy muy, ni tan tan..."
+    },
+    "specsSectionTitles": [
+        {"title": "Dimensiones del ", "bold": "colchón calm"},
+        {"title": "Radiografía del ", "bold": "colchón calm"}
+    ],
+    "specsImages": "https://calmessimple.com.ar/wp-content/uploads/2019/10/medidas_colchon.webp",
+    "specsValues": [
+        { "name": "1 Plaza", "size": "80 x 190 cm" },
+        { "name": "Plaza y 1/2", "size": "100 x 190 cm" },
+        { "name": "2 Plazas", "size": "140 x 190 cm" },
+        { "name": "Queen", "size": "160 x 200 cm" },
+        { "name": "King", "size": "180 x 200 cm" },
+        { "name": "Superking", "size": "200 x 200 cm" }
+    ],
+    "capasInfo": [
+        {
+            "title": "1. Nivel Sensación",
+            "image": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/c0065645-5a08-4f09-8317-50668d9b5b00/fit=cover",
+            "description": "<p><b>Con espuma de tecnología ERGO </b>®</br></br>Es el equilibrio entre <b>suavidad y firmeza</b>. Está compuesto por una capa de <b>4 cm de altura</b> de nuestra espuma con <b>tecnología ERGO </b>®, un material de calidad premium con buena capacidad de adaptación, que se moldea según el peso del cuerpo.</br></br> Su estructura innovadora, con celdas abiertas, garantiza frescura, a través de un flujo de aire continuo, manteniendo así una temperatura constante, durante toda la noche.</p>"
+        },
+        {
+            "title": "2. Nivel Soporte",
+            "image": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/4c2da34b-6b0a-4a8e-c772-4c249ad56f00/fit=cover",
+            "description": "<p><b>Con espuma de tecnología EQUO </b>®</br></br>Es el principio de una experiencia innovadora en sueño. Compuesto de <b>espuma con tecnología EQUO </b>® de <b>alta densidad</b>, una fundación sólida y segura, para un descanso sumamente reparador. <br/> En el <b>Original</b> esta capa es de <b>18 cm de alto</b> y en el <b>Original Plus</b> de <b>24 cm</b>. Ambas alturas aportan la misma<b> durabilidad, soporte y firmeza</b>.</p>"
+        }  
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Qué garantía tiene el colchón?",
+            "description":"<p>Ofrecemos 5 años de garantía. La misma, aplica para defectos de fábrica, no de mal uso.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi colchón?",
+            "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para enamorarte de tu nueva cama necesitas pasar tiempo con ella. En el caso que no te guste te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuánto peso soporta?",
+            "description":"<p>Nuestro colchón soporta hasta <b>120kg por lado</b>, sin perder sus beneficios. </p>"
+        },
+        {
+            "title":"¿Cuánto tiempo puede estar el colchón en la caja?",
+            "description":"<p>Un colchón Calm puede estar máximo 2 meses dentro de su caja sin perder las propiedades.</p>"
+        },
+        {
+            "title":"¿Con qué base es compatible mi colchón?",
+            "description":"<p>Cualquier base que permite un flujo de aire continuo para tu colchón. Si tu base es similar a la base Calm, con tabiques que tienen espacios entre sí y ventilación, va perfecto.<br/><br/>Si seguís en duda, mandanos una foto de tu actual base y te asesoramos 🙂</p>"
+        },
+        {
+            "title":"¿Cómo se arma? ¿Cómo es el unboxing?",
+            "description":"<p>Abrí la caja, cortá el plástico, desplegá y desenrollá. ¡En menos de 5 minutos lo tenés listo para descansar! <a href='https://drive.google.com/file/d/1rclzwokp7j8uRVkSGTlve0k0Dxp0Fnp3/view' target='_blank'>Acá</a> te dejamos el instructivo para que lo compruebes con tus propios ojos.</p>"
+        }
+    ],
+    "reviewsTitle": {
+        "title":"El colchón ",
+        "bold": "mejor puntuado de Argentina"
+    },
+    "renders" : {
+        "336": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/ccb9496c-e981-44b7-2150-cb77fb1d2700/fit=cover",
+        "525870": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/f0edbe65-ac62-42a8-9512-299497811f00/fit=cover",
+        "11042": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/d23f8eb1-0362-495d-698d-5f01556a7f00/fit=cover",
+        "525871": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/98b14a18-4d4f-47ad-7313-cbe0e3c38000/fit=cover",
+        "335": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/ff019d46-e6d3-4670-c46b-1cb603f33600/fit=cover",
+        "525872": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/3cb1318c-e08c-41d7-74df-784470ba3400/fit=cover",
+        "699": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/b7a49075-6d15-4198-e230-8df717639600/fit=cover",
+        "525873": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/e7b0c69f-ccbc-42a6-a74c-7cdfe66b4f00/fit=cover",
+        "11190": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/9ca07b93-716e-4336-19df-80b3c7aeab00/fit=cover",
+        "525874": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/db997ce6-d119-43ba-622e-9e496e363000/fit=cover",
+        "11191": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/6c5b5e38-b7d6-4a45-2f88-1c87b1204e00/fit=cover",
+        "525878": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/057c6af7-c217-4f5a-8587-65f6639cdd00/fit=cover"
+    },
+    "ATCImage": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/ff019d46-e6d3-4670-c46b-1cb603f33600/fit=cover",
+    "RRSSLinks": [
+        "https://www.instagram.com/reel/C5zPCIvsa9q/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        "https://www.instagram.com/reel/C4wBfIQPIso/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        "https://www.instagram.com/reel/DBZzBw9vSMi/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    ]
+}

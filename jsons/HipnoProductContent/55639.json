@@ -1,0 +1,133 @@
+{
+    "key": "mesa-ratona-ocio",
+    "productId": "55639",
+    "title": "Mesa Ratona Ocio",
+    "titleDescription": "Fabricada a partir de un multilaminado de Guatambú, con una capa de hidrolaca que la protege y mantiene su color natural. Sus pies se encastran mediante un fleje de chapa con pintura microtexturada color arena, lo que le aporta resistencia y estabilidad.",
+    "selectedLink": "muebles",
+    "dreamDelivery": false,
+    "tranferDiscount": "30OFF",
+    "skus": "MOBOCIRAT390000",
+    "headPills" : "LANZAMIENTO",
+    "benefitsProduct": [
+        {
+            "imagen": "Box",
+            "texto": "Llega en caja"
+        },
+        {
+            "imagen": "Herramienta",
+            "texto": "La armás en 2 minutos"
+        },
+        {
+            "imagen": "Guatambu",
+            "texto": "Multilaminado de guatambú."
+        },
+        {
+            "imagen": "ArgentineFlag",
+            "texto": "100% producido en Argentina"
+        },
+        {
+            "imagen": "Complements",
+            "texto": "Complementan cualquier espacio de tu casa"
+        }
+    ],
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/8d0d4ff7-3cbf-415e-1c48-64b340f57900/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/02/Grilla-2.mp4",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/02/Grilla-3.mp4",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/342f2922-c67a-46e6-07d2-31a6d9684500/fit=cover"
+    ],
+    "textImages": {
+        "firstText": "Complementala con tu Sofa 24/7",
+        "secondText": "Armala en 2 minutos."
+    },
+    "layoutImagesHaveVideo": true,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": true,
+        "image2": true,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 días y noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>. <br></p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+             "title":"12 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>12 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "specsSectionTitles": [
+        {"title": "Dimensiones y Materiales ", "bold": ""}
+    ],
+    "specsImages": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/f97bb874-e1aa-48c2-3f32-52f4d6a4ac00/fit=cover",
+    "specsValues": [
+        { "name": "Ancho", "size": "108 cm" },
+        { "name": "Alto", "size": "39 cm" },
+        { "name": "Profundidad", "size": "67 cm" }
+    ],
+    "generalSpecsDescription" : "La Mesa Ratona Ocio está hecha de madera enchapada en Guatambú, con una capa de hidrolaca que la protege y mantiene su color natural. Su base de chapa, con pintura microtexturada color arena, le aporta resistencia y un diseño moderno.",
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Cuánto peso aguanta? ¿La puedo usar como banquito? ",
+            "description":"<p>La mesa ratona aguanta aproximadamente hasta 30kg distribuidos uniformemente sobre la superficie. Te sugerimos no usarlo para sentarse o pararse para evitar accidentes y cuidar la mesa. </p>"
+        },
+        {
+            "title":"¿Cómo limpio la madera?",
+            "description":"<p>Te recomendamos usar un trapito seco para sacarle el polvo de forma diaria. Para una limpieza más profunda, podés usar limpiadores de silicona para madera, aplicando muy poco producto primero sobre el paño y luego sobre la superficie.En el caso de que se vuelque líquido, no te preocupes, secalo lo antes posible para que no quede marcada la madera.</p>"
+        },
+        {
+            "title":"¿Cómo se arma?",
+            "description":"<p>La mesa ratona es super fácil de armar, en 3 pasos vas a tener lista tu mesita para disfrutarla como vos quieras. No te preocupes que el instructivo y todo lo que necesitás para armarla viene adentro de la caja ;)</p>"
+        },
+        {
+            "title": "¿Qué modelos de Mesas Ocio hay? ",
+            "description": "<p>Las Mesas Ocio vienen en 2 modelos distintos: <br> Mesa de arrime: ideal para acercarla al sofá y tener tu cafecito a mano. Mirala <a href='https://calmessimple.com.ar/producto/mesa-de-arrime-ocio'>acá</a> <br> Mesa ratona: tu compañera de desayunos, almuerzos y cenas en el sofá.</p>"
+        },
+        {
+            "title":"¿Qué garantía tienen las Mesas Ocio?",
+            "description":"<p>Ofrecemos una garantía de 1 año por defectos de fabricación, no de uso. Si tiene algún defecto estético, escribinos durante los 14 días posteriores a la entrega. Podés ver más información de la garantía en nuestros términos y condiciones.</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>¡Sí! Te ofrecemos 30 noches de prueba reales en tu casa. Creemos que para enamorarte de tus muebles, necesitás pasar tiempo con ellos. En el caso que no te guste, te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi pedido?",
+            "description":"<p>Una vez que hagas la compra, vas a recibir el paso a paso actualizado del estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento con tu mail y número de pedido en este <a href='https://calmessimple.com.ar/seguimiento'>link</a>.</p>"
+        }
+    ],
+    "titleAndVideo":{
+        "title": "Instructivo de armado",
+        "video": "eRoclbdBSMs",
+        "imgVideo": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/cb409919-6a11-4125-6e30-b2a36f3db500/public"
+
+    },
+    "videoTitle":"¿Qué hace diferente a las mesas auxiliares?",
+    "keyFeatures": [
+        {
+            "mediaSrc": "https://calmessimple.com.ar/wp-content/uploads/2024/09/1-facil-armar.mp4",
+            "mediaSrcMobile": "https://calmessimple.com.ar/wp-content/uploads/2024/10/1-facil-armar-500.mp4",
+            "subtitle": "Armado rápido"
+        },
+        {
+            "mediaSrc": "https://calmessimple.com.ar/wp-content/uploads/2024/09/2-desplegado.mp4",
+            "mediaSrcMobile": "https://calmessimple.com.ar/wp-content/uploads/2024/10/2-desplegado-500.mp4",
+            "subtitle": "Complementarias"
+        }
+    ],
+    "keyFeatureHaveVideo" :[
+        {
+            "video": false
+        },
+        {
+            "video": false
+        }
+    ] 
+}

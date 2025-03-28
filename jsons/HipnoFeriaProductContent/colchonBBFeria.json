@@ -1,0 +1,74 @@
+{
+    "key": "colchon-bb-feria",
+    "productId": "55082",
+    "title": "Colchón bb Feria Calm",
+    "titleDescription": "Así es como el Colchón bb mejora su descanso.",
+    "selectedLink": "feria",
+    "dreamDelivery": false,
+    "skus": "BEBCOLORI100000;BEBCOLORI140000",
+    "skusFeria": "OBECOLORI100000;OBECOLORI140000",
+    "benefitsProduct": [
+        {
+            "imagen": "Laundry",
+            "texto": "Funda desmontable para que puedas lavarla cuando necesites."
+        },
+        {
+            "imagen": "Cloud",
+            "texto": "Armado de tejido de punto para asegurar el descanso de tu bebé."
+        },
+        {
+            "imagen": "Shield",
+            "texto": "Con la firmeza justa para asegurar el cuidado de tu bebé."
+        }
+    ],
+    "textImages": {
+        "firstText": "Funda lavable",
+        "secondText": "La firmeza justa"
+    },
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/14c244e1-f9f0-4211-957d-ec43f6e99d00/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/06/bb_2.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/06/bb_3.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/06/bb_4.webp"
+    ],
+    "layoutImagesHaveVideo": false,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": false,
+        "image2": false,
+        "image3": false
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        }
+    ],
+    "specsSectionTitles": [
+        {"title": "Dimensiones del ", "bold": "colchón bb"}
+    ],
+    "specsImages": "https://calmessimple.com.ar/wp-content/uploads/2022/06/foto-espacio-3-medidas-1.webp",
+    "specsValues": [
+        { "name": "Chico", "size": "100 x 70 x 9 cm" },
+        { "name": "Grande", "size": "140 x 80 x 9 cm" }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Por qué el colchón bb Calm?",
+            "description":"<p>Porque tiene la firmeza justa para evitar las asfixia del bebé manteniendo el confort con la superficie de apoyo de tejido de punto de 200 gramos y cuenta con funda desmontable para lavar por separado en caso de manchas o derrames.</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para enamorarte de tu nueva cama necesitas pasar tiempo con ella. En el caso que no te guste te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi colchón para bebés?",
+            "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+        }
+    ]
+}

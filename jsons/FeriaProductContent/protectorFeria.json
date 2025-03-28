@@ -1,0 +1,75 @@
+{
+    "key": "protector-feria-seo",
+    "productId": "2279959",
+    "title": "Protector de Colchón",
+    "titleDescription": "Así es como el Protector de Colchón mejora tu descanso.",
+    "selectedLink": "feria",
+    "dreamDelivery": false,
+    "skus": "BLAACCPRO080000;BLAACCPRO100000;BLAACCPRO140000;BLAACCPRO160000;BLAACCPRO180000;BLAACCPRO200000",
+    "skusFeria": "OBLACCPRO080000;OBLACCPRO100000;OBLACCPRO140000;OBLACCPRO160000;OBLACCPRO180000;OBLACCPRO200000",
+    "benefitsProduct": [
+        {
+            "imagen": "BiggerDosCapas",
+            "texto": "Tejido soft + PVC (policloruro de vinilo)."
+        },
+        {
+            "imagen": "Insignia",
+            "texto": "Textil impermeable y fácil de lavar."
+        },
+        {
+            "imagen": "Shield",
+            "texto": "Protege al colchón de ácaros y humedad, alargando su vida útil."
+        }
+    ],
+    "textImages": {
+        "firstText": "Alarga la vida de tu colchón",
+        "secondText": "Fácil de lavar"
+    },
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/49baa383-3985-4022-1a35-267e3817a600/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/06/VID_protector_agua-1.mp4",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/06/protector_2.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/06/protector_3.webp"
+    ],
+    "layoutImagesHaveVideo": true,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": true,
+        "image2": false,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"6 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>6 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Por qué el protector de colchón Calm?",
+            "description":"<p>Porque permite proteger el colchón y extender su vida útil ante cualquier tipo de derrames y manchas, sobre todo en casos de incontinencia (por ejemplo si estás en período de lactancia, si dormís con bebés y/o perros, sudás en exceso u orinás la cama). Además, su presencia casi casi que no se nota.</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para que puedas enamorarte del protector de tu colchón necesitas pasar tiempo con él. En el caso que no te guste te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi protector para colchón?",
+            "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+        }
+    ],
+    "reviewsTitle": {
+        "title":"",
+        "bold": "El protector de colchón de tus sueños"
+    }
+}

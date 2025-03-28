@@ -1,0 +1,79 @@
+{
+    "key": "colchones-feria",
+    "productId": "1952731",
+    "title": "Colchón Feria Calm",
+    "titleDescription": "Así es como el Colchón Feria mejora tu descanso.",
+    "selectedLink": "feria",
+    "dreamDelivery": false,
+    "skus": "C80;C100;C140;C160;C180;C200;CP80;CP100;CP140;CP160;CP180;CP200",
+    "skusFeria": "OCOESPORI100000;OCOESPORI080000;OCOESPORI140000;OCOESPORI160000;OCOESPORI180000;OCOESPORI200000;OCOESPPLU080000;OCOESPPLU100000;OCOESPPLU140000;OCOESPPLU160000;OCOESPPLU180000;OCOESPPLU200000",
+    "benefitsProduct": [
+        {
+            "imagen": "Insignia",
+            "texto": "El colchón mejor puntuado de Argentina"
+        },
+        {
+            "imagen": "HandOk",
+            "texto": "El punto justo, ni muy firme ni muy suave."
+        },
+        {
+            "imagen": "BiggerDosCapas",
+            "texto": "2 capas, de confort y soporte."
+        }
+    ],
+    "layoutImages": [
+        "https://calmessimple.com.ar/wp-content/uploads/2019/10/caja.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2019/10/COLOR_AD_2.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2019/10/COLOR_AD_3.webp",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/d8732cea-86fc-41b8-a184-11cd43ae3600/fit=cover"
+    ],
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        }
+    ],
+    "capasInfo": [
+        {
+            "title": "1. Nivel Sensación",
+            "image": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/c0065645-5a08-4f09-8317-50668d9b5b00/fit=cover",
+            "description": "<p><b>Con espuma de tecnología ERGO </b>®</br></br>Es el equilibrio entre <b>suavidad y firmeza</b>. Está compuesto por una capa de <b>4 cm de altura</b> de nuestra espuma con <b>tecnología ERGO </b>®, un material de calidad premium con buena capacidad de adaptación, que se moldea según el peso del cuerpo.</br></br> Su estructura innovadora, con celdas abiertas, garantiza frescura, a través de un flujo de aire continuo, manteniendo así una temperatura constante, durante toda la noche.</p>"
+        },
+        {
+            "title": "2. Nivel Soporte",
+            "image": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/4c2da34b-6b0a-4a8e-c772-4c249ad56f00/fit=cover",
+            "description": "<p><b>Con espuma de tecnología EQUO </b>®</br></br>Es el principio de una experiencia innovadora en sueño. Compuesto de <b>espuma con tecnología EQUO </b>® de <b>alta densidad</b>, una fundación sólida y segura, para un descanso sumamente reparador. <br/> En el <b>Original</b> esta capa es de <b>18 cm de alto</b> y en el <b>Original Plus</b> de <b>24 cm</b>. Ambas alturas aportan la misma<b> durabilidad, soporte y firmeza</b>.</p>"
+        }  
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Qué garantía tiene el colchón?",
+            "description":"<p>Ofrecemos 5 años de garantía. La misma, aplica para defectos de fábrica, no de mal uso.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi colchón?",
+            "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para enamorarte de tu nueva cama necesitas pasar tiempo con ella. En el caso que no te guste te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuánto peso soporta?",
+            "description":"<p>Nuestro colchón soporta hasta <b>120kg por lado</b>, sin perder sus beneficios. </p>"
+        },
+        {
+            "title":"¿Qué es y como funciona la Feria Calm?",
+            "description":"<p>Feria Calm es una alternativa exclusiva para vos que buscás el colchón mejor puntuado de Argentina con un gran descuento. Ofrecemos colchones abiertos en perfecto estado a precio amigue, con un 50% de descuento, pagando en efectivo o transferencia. En esta página realizas el proceso de compra como lo harías normalmente en nuestra web.</p>"
+        }
+    ],
+    "reviewsTitle": {
+        "title":"El colchón ",
+        "bold": "mejor puntuado de Argentina"
+    }
+}

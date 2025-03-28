@@ -1,0 +1,83 @@
+{
+    "capas": {
+        "title" : "Capas",
+        "hibrido": {
+            "arrCapas": [
+                "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/f68c1d8b-b029-4c48-fad7-f1abf96dfa00/fit=cover",
+                "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/03cc2604-80ed-44d5-84d2-e344baf77c00/fit=cover",
+                "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/518e8e65-8846-46a0-a281-3c1e60f3d800/fit=cover",
+                "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/671a0270-f372-4edb-37f7-4c84a4d3fe00/fit=cover"
+            ],
+            "specs": [
+                {
+                    "text": "Núcleo de resortes",
+                    "icon": "NucleoYellowcalm"
+                },
+                {
+                    "text": "3 capas de confort",
+                    "icon": "TresCapasYellowcalm"
+                }
+            ]
+        },
+        "original": {
+            "arrCapas": [
+                "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/c0065645-5a08-4f09-8317-50668d9b5b00/fit=cover",
+                "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/4c2da34b-6b0a-4a8e-c772-4c249ad56f00/fit=cover"
+            ],
+            "specs": [
+                {
+                    "text": "Núcleo de espuma",
+                    "icon": "NucleoYellowcalm"
+                },
+                {
+                    "text": "2 capas de espuma",
+                    "icon": "DosCapasYellowcalm"
+                }
+            ]
+        }
+    },
+    "firmeza": {
+        "original": {
+            "image": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/51c6bc6f-f31c-472e-2e1b-0fabeb59f600/fit=cover",
+            "nivel": 4
+        },
+        "title" : "Firmeza",
+        "hibrido": {
+            "image": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/5c6ff6e4-c5b7-43d0-1237-d02f51414b00/fit=cover",
+            "nivel": 3
+        }
+    },
+    "durabilidad": {
+        "title": "Durabilidad",
+        "original": {
+            "icon":"Shield",
+            "text":"Entre 5 y 8 años"
+          },
+        "hibrido": {
+            "icon":"Shield",
+            "text":"Entre 5 y 8 años"
+        }
+    },
+    "circulación": {
+        "title": "Circulación de aire",
+        "original": {
+            "icon":"AireOriginal",
+            "text":"Buena circulación de aire gracias a su espuma con tecnología de celdas abiertas."
+          },
+        "hibrido": {
+            "icon":"AireHibrido",
+            "text":"Alta circulación de aire debido a su núcleo de resortes."
+        }
+    },
+    "habitos": {
+        "title": "Hábitos",
+        "original": {
+            "icon":"BackPain",
+            "text":"Si tenés problemas de espalda o columna, este es tu colchón."
+          },
+        "hibrido": {
+            "icon":"Temperature",
+            "text":"Si sufris el calor durante la noche, este es tu colchón."
+        }
+    }
+}

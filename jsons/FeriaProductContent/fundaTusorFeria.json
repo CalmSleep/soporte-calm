@@ -1,0 +1,56 @@
+{
+    "key": "funda-tusor-feria",
+    "productId": "2024064",
+    "title": "Funda de Tusor Feria Calm",
+    "titleDescription": "Así es como la Funda de Tusor mejora tu descanso.",
+    "selectedLink": "feria",
+    "dreamDelivery": false,
+    "skus": "BLACUBTUS100000;BLACUBTUS100001;BLACUBTUS100002;BLACUBTUS100003;BLACUBTUS140000;BLACUBTUS140001;BLACUBTUS140002;BLACUBTUS140003;BLACUBTUS180000;BLACUBTUS180001;BLACUBTUS180002;BLACUBTUS180003;BLACUBTUS200000;BLACUBTUS200001;BLACUBTUS200002;BLACUBTUS200003",
+    "skusFeria": "OBLCUBTUS100003;OBLCUBTUS100002;OBLCUBTUS100000;OBLCUBTUS100001;OBLCUBTUS140003;OBLCUBTUS140002;OBLCUBTUS140000;OBLCUBTUS140001;OBLCUBTUS180003;OBLCUBTUS180002;OBLCUBTUS180000;OBLCUBTUS180001;OBLCUBTUS200003;OBLCUBTUS200002;OBLCUBTUS200000;OBLCUBTUS200001",
+    "benefitsProduct": [
+        {
+            "imagen": "Cloud",
+            "texto": "Tusor 100% algodón ."
+        },
+        {
+            "imagen": "Ruler",
+            "texto": "Diseñada con el tamaño y el cierre perfecto para cubrir el Edredón Abrazo."
+        }
+    ],
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/a2c387be-fca8-43a9-bcde-df5e3319f700/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/5aa780bc-13e7-44d5-ce7b-43700d2ec000/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/05/funda3.webp",
+        "https://calmessimple.com.ar/wp-content/uploads/2022/05/funda4.webp"
+    ],
+    "layoutImagesHaveVideo": false,
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"Medidas y tamaños",
+            "description":"<p><ul><li><b>Plaza o plaza y media: 160 x 240</b> (para colchones de 80 y 100 de ancho)</li><li><b>2 plazas: 220 x 240</b> (para colchones de 140 de ancho)</li><li><b>Queen o King: 240 x 240</b> (para colchones de 160 y 180 de ancho)</li><li><b>Super King: 280 x 240</b>(para colchones de 200 de ancho)</li></ul></p>"
+        },
+        {
+            "title":"¿Por qué se llama 4 estaciones?",
+            "description":"<p>Porque podés usarla sin relleno cuando hace calor y con relleno cuando hace frío, vistiendo tu cama con la misma funda durante todo el año.</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para enamorarte de tu nueva cama necesitas pasar tiempo con ella. En el caso que no te guste te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi Funda Tusor 4 Estaciones?",
+            "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+        }
+    ]
+}

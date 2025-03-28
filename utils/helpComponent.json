@@ -1,0 +1,154 @@
+{
+    "cardsCompromisosDescansados": [
+      {
+        "step": "paso 1",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/09/noun_click_2220144.svg",
+          "alt": "Hand"
+        },
+        "text": "Cuando comprás tu colchón Calm seleccioná en el carrito antes de pagarlo la opción <b>Quiero donar</b>"
+      },
+      {
+        "step": "paso 2",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/09/noun_Incoming-Message_2175942.svg",
+          "alt": "Hand"
+        },
+      "text": "Te contactamos para contarte cuáles son los próximos pasos para realizar la donación."
+      },
+      {
+        "step": "paso 3",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/09/noun_gift-tag_2464570.svg",
+          "alt": "Gift"
+        },
+        "text": "Preparás tu ex colchón para que pueda recibirlo una nueva familia."
+      },
+      {
+        "step": "paso 4",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/09/noun_goods-vehicle_2187937-2.svg",
+          "alt": "Withdrawals"
+        },
+        "text": "Lo pasamos a buscar y nos ocupamos de hacerlo llegar a su nuevo hogar."
+      }
+    ],
+    "cardsPickUp": [
+      {
+        "step": "paso 1",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/09/300x300_Ícono_Paso_01.svg",
+          "alt": "Paso-01"
+        },
+        "text": "Seleccionás el método de envío <b>Retiro</b> cuando hacés tu pedido."
+      },
+      {
+        "step": "paso 2",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/09/300x300_Ícono_Paso-02.svg",
+          "alt": "Paso-02"
+        },
+        "text": "Venís a uno de nuestros locales a buscar tu pedido."
+      },
+      {
+        "step": "paso 3",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/09/300x300_Ícono_Paso-03.svg",
+          "alt": "Paso-03"
+        },
+        "text": "Te ayudamos a subir todos los productos a tu vehículo."
+      },
+      {
+        "step": "paso 4",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/09/300x300_Ícono_Paso-04.svg",
+          "alt": "Paso-04"
+        },
+        "text": "¡Disfrutás de tu nuevo descanso!"
+      }
+    ],
+    "cards30Noches": [
+      {
+        "step": "Tiempo de conocerse.",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/09/300x300_Ícono_Paso-04.svg",
+          "alt": "Paso-04"
+        },
+        "text": "Creemos que para encontrar tu colchón ideal necesitas más de 5 minutos en un local.¡Por eso ofrecemos 30 noches de prueba, en tu casa!"
+      },
+      {
+        "step": "¿No lo amas? Avisanos.",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/09/300x300_Ícono_Paso_01.svg",
+          "alt": "Paso_01"
+        },
+        "text": "Contactános y coordinamos la devolución."
+      },
+      {
+        "step": "Retiramos el producto.",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/09/300x300_Ícono_Paso-03.svg",
+          "alt": "Paso"
+        },
+        "text": "Contactános y coordinamos la devolución."
+      },
+      {
+        "step": "Te devolvemos lo que pagaste.",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/10/Sin-título-13_Mesa-de-trabajo-1.svg",
+          "alt": "Mesa-de-trabajo"
+        },
+        "text": "Una vez que llega al depósito lo revisamos y te devolvemos el 100% de tu compra."
+      }
+    ],
+    "hotSale": [
+      {
+        "step": "4.76/5 estrellas",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2019/10/MejorPuntuado.svg",
+          "alt": "gold"
+        },
+        "text": "El puntaje que nos dejaron los clientes por la experiencia completa."
+      },
+      {
+        "step": "+7 millones de views",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/03/icono-casa-1.svg",
+          "alt": "house"
+        },
+        "text": "Llegamos con nuestra propuesta a toda nuestra audiencia objetivo."
+      },
+      {
+        "step": "12.500 conversaciones",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2022/07/mensajs-calm.svg",
+          "alt": "hand"
+        },
+        "text": "12.500 dudas resueltas por nuestro equipo de customer."
+      },
+      {
+        "step": "304 unboxings en redes sociales",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2019/10/EnCaja.svg",
+          "alt": "gift"
+        },
+        "text": "Clientes felices que compartieron su unboxing."
+      },
+      {
+        "step": "194 colchones donados",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/09/LogoHSSolidariX-10.svg",
+          "alt": "compromiso"
+        },
+        "text": "Retiramos ex-colchones para que más personas tengan un mejor descanso."
+      },
+      {
+        "step": "+ 92% productos",
+        "img": {
+          "url": "https://calmessimple.com.ar/wp-content/uploads/2021/03/250x250_ManoColchón-2-150x150.png",
+          "alt": "colchon"
+        },
+        "text": "Vendidos respecto del Hot Sale 2023."
+      }
+    ]
+}

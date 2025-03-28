@@ -1,0 +1,165 @@
+{
+    "key": "colchon-cumbre-dual",
+    "productId": "2381349",
+    "title": "Colchón Cumbre Dual",
+    "titleDescription": "Hecho para todos los movimientos de la vida.",
+    "selectedLink": "colchones",
+    "dreamDelivery": true,
+    "tranferDiscount": "30OFF",
+    "headPills" : "PREVENTA EXCLUSIVA",
+    "skus": "COLCUMDUA140000;COLCUMDUA160000;COLCUMDUA180000;COLCUMDUA200000;",
+    "benefitsProduct": [
+        {
+            "imagen": "Box",
+            "texto": "Llega en 2 cajas, fácil de transportar."
+        },
+        {
+            "imagen": "Stack",
+            "texto": "Pillows personalizables, de un lado firme y otro regular."
+        },
+        {
+            "imagen": "DoubleHearts",
+            "texto": "Diseñado para compartir, cada lado se adapta a quien lo use."
+        },
+        {
+            "imagen": "ArgentineFlag",
+            "texto": "100% producido en Argentina."
+        }
+    ],
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/4481a144-0a06-46d9-b755-4809ef8fd500/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/0c1b3853-b9be-4f58-4131-30bdb8419600/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/631be5fb-e39d-4672-bdc8-fdf47fb06b00/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/94f00bed-5369-49af-a9ba-0c31c3400500/fit=cover"
+    ],
+    "textImages": {
+        "firstText": "",
+        "secondText": ""
+    },
+    "layoutImagesHaveVideo": false,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": false,
+        "image2": false,
+        "image3": false
+
+    },
+    "specsSectionTitles": [
+        {"title": "Dimensiones del ", "bold": "Colchón Cumbre Dual"}
+    ],
+    "specsImages": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/e748b4b9-db6c-4223-ba11-ed02a5713e00/fit=cover",
+    "specsValues": [
+        { "name": "2 Plazas", "size": "140 cm x 190 cm x 34 cm"},
+        { "name": "Queen", "size": "160 cm x 200 cm x 34 cm"},
+        { "name": "King", "size": "180 cm x 200 cm x 34 cm"},
+        { "name": "Superking", "size": "200 cm x 200 cm x 34 cm"}
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Por qué el colchón cumbre dual?",
+            "description":"<p>¿Tenés días en los que querés todo el soporte del mundo? Elegí el lado firme. ¿Otros en los que querés algo más suave? Elegí el lado de firmeza regular ¿No te ponés de acuerdo con tu pareja de descanso? Personalizalo como quieras.</p>"
+        },
+        {
+            "title":"¿Cómo cambio de firmeza?",
+            "description":"<p>Es súper fácil: abrí el cierre, colocá el pillow con el lado de tu preferencia hacia arriba y volvé a cerrar. Podés fijarte en la etiqueta lateral qué lado estás eligiendo ;) <br> Tip: Si no sabés cuál elegir, te recomendamos probar cada lado durante varios días para que tu cuerpo se acostumbre y puedas ver cuál va mejor con vos. ♥</p>"
+        },
+        {
+            "title":"¿Cuánto peso soporta?",
+            "description":"<p>Nuestro colchón soporta hasta <b>120kg por lado</b>, sin perder sus beneficios. </p>"
+        },
+        {
+            "title": "¿Cómo lo voy a recibir?",
+            "description": "<p>El Colchón Cumbre Dual viene en 2 cajas: una con el colchón núcleo y otra con los dos pillows. Dentro de la caja del núcleo vas a encontrar el instructivo con toda la info que necesitás para armar tu colchón ;)</p>"
+        },
+        {
+            "title": "¿Con qué base es compatible el Colchón Cumbre Dual?",
+            "description": "<p>Con cualquier base que permita un flujo de aire continuo para tu colchón. Si tu base es similar a la base Calm, con tabiques que tienen espacios entre sí y ventilación, va perfecto. <br> Si seguís en duda, mandanos una foto de tu actual base y te asesoramos para asegurarnos de que sea adecuada.  <br> Podés ver más información de la garantía en nuestros <a href='https://calmessimple.com.ar/terminos-y-condiciones'> términos y condiciones </a>.</p>"
+        },
+        {
+            "title":"¿Cuánto tiempo puede estar el colchón en la caja?",
+            "description":"<p>Un colchón Calm puede estar máximo 2 meses dentro de su caja sin perder las propiedades. <br> Podés ver más información de la garantía en nuestros <a href='https://calmessimple.com.ar/terminos-y-condiciones'> términos y condiciones </a>.</p>"
+        },
+        {
+            "title":"¿Qué garantía tiene?",
+            "description":"<p>El Colchón Cumbre Dual tiene una garantía de 5 años que cubre defectos de fabricación, no de uso. En el caso de defectos estéticos, tienen que ser comunicados dentro de los 14 días. Podés ver más información de la garantía en nuestros  <a href='https://calmessimple.com.ar/terminos-y-condiciones'> términos y condiciones </a>.</p>"
+        }
+    ],
+    "capasInfo": [
+        {
+            "title": "1. Top Pillow - Firmeza Regular",
+            "image": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/d8a55d08-d970-44bd-7a8e-3d56642d7600/fit=cover",
+            "description": "<p>Un equilibrio perfecto entre comodidad y firmeza, adaptándose a los movimientos naturales del cuerpo para un descanso más flexible.</p>"
+        },
+        {
+            "title": "2. Top Pillow - Firmeza Alta",
+            "image": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/97761454-fbc8-4cd1-f76b-17c5345f4d00/fit=cover",
+            "description": "<p>Diseñada para quienes buscan un soporte más sólido, proporcionando mayor estabilidad y alineación durante el descanso.</p>"
+        },
+        {
+            "title": "Espuma EQUO ® de Soporte de Alta Densidad",
+            "image": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/38acc552-2589-4001-5b4b-2408ab442b00/fit=cover",
+            "description": "<p>Núcleo de alta resistencia, desarrollado para optimizar la alineación de la columna, absorber impactos y garantizar estabilidad, durabilidad y un soporte ergonómico superior.</p>"
+        }
+    ],
+    "accordionSpecsTexts":  [
+        {
+            "title":"30 días y noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"12 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>12 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "reviewsTitle": {
+        "title":"El colchón ",
+        "bold": "mejor puntuado de Argentina"
+    },
+    "ATCImage": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/29c743cc-c301-4ac6-4335-149170fe6300/fit=cover",
+    "videoTitle":"¿Qué hace diferente al Cumbre Dual?",
+    "keyFeatures": [
+        {
+            "mediaSrc": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/f6252a1d-b2a2-494e-e076-5b40ddf3f100/fit=cover",
+            "mediaSrcMobile": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/f6252a1d-b2a2-494e-e076-5b40ddf3f100/fit=cover",
+            "subtitle": "Pillows reversibles"
+        },
+        {
+            "mediaSrc": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/99bc6241-ae3b-454f-89aa-8dd007e04e00/fit=cover",
+            "mediaSrcMobile": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/99bc6241-ae3b-454f-89aa-8dd007e04e00/fit=cover",
+            "subtitle": "Funda desmontable"
+        },
+        {
+            "mediaSrc": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/6421c486-50c6-4d15-fc1d-053c3774c700/fit=cover",
+            "mediaSrcMobile": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/6421c486-50c6-4d15-fc1d-053c3774c700/fit=cover",
+            "subtitle": "Tecnologías internas"
+        }
+    ],
+    "keyFeatureHaveVideo" :[
+        {
+            "video": false
+        },
+        {
+            "video": false
+        },
+        {
+            "video": false
+        }
+    ],
+    "renders" : {
+        "2381351": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/29c743cc-c301-4ac6-4335-149170fe6300/fit=cover",
+        "2381352": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/40e799fd-1b91-4285-c88c-410ba4856f00/fit=cover",
+        "2381353": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/ceebe44b-05be-4bb6-0a38-0cb7b1d45d00/fit=cover",
+        "2381354": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/1cb15053-f820-4a10-c814-4f45d500fd00/fit=cover"
+    },
+    "titleAndVideo":{
+        "title": "Tecnología e innovación en el interior del cumbre dual",
+        "video": "XuPd10QP3QU",
+        "imgVideo": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/81398642-3167-458a-b468-4c52b4aca100/fit=cover"
+
+    }
+}

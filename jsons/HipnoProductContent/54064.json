@@ -1,0 +1,98 @@
+{
+    "key": "almohada-infinita",
+    "productId": "54064",
+    "title": "Almohada Infinita",
+    "titleDescription": "Así es como la Almohada Infinita mejora tu descanso.",
+    "selectedLink": "almohadas",
+    "dreamDelivery": false,
+    "tranferDiscount": "15OFF",
+    "skus": "AI70;AI85",
+    "benefitsProduct": [
+        {
+            "imagen": "noSlipBase",
+            "texto": "Almohada Exterior: microfibra extra virgen de poliéster, que brinda una suavidad increíble al tacto."
+        },
+        {
+            "imagen": "Cloud",
+            "texto": "Almohada interior: fibra siliconada."
+        },
+        {
+            "imagen": "ArgentineFlag",
+            "texto": "100% producido en Argentina."
+        },
+        {
+            "imagen": "Caja",
+            "texto": "Llega en caja."
+        }
+    ],
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/50d30adf-bad5-433f-128b-eb664f89ae00/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Grilla-2-9.mp4",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Grilla-3-9.mp4",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/b619898a-deec-4cc7-c025-5043db283000/fit=cover"
+    ],
+    "textImages": {
+        "firstText": "Para llevar a todos lados",
+        "secondText": "Una almohada que se adapta a vos"
+    },
+    "layoutImagesHaveVideo": true,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": true,
+        "image2": true,
+        "image3": false
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"6 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>6 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "specsSectionTitles": [
+        {"title": "Dimensiones de la ", "bold": "almohada infinita"}
+    ],
+    "specsImages": "https://calmessimple.com.ar/wp-content/uploads/2022/05/Alta-Almohada-1.webp",
+    "specsValues": [
+        { "name": "Mediana", "size": "65 x 45cm" },
+        { "name": "Grande", "size": "80 x 45cm" }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Qué almohada le corresponde a mi colchón?",
+            "description":"<p><ul><li><b>Estándar: 65 cm x 45 cm (almohada interna de 50 cm x 25 cm)</b><br/>ideal para colchones de una plaza, plaza y media, dos plazas y queen.</li><li><b>Grande: 80 cm x 45 cm (almohada interna de 60 cm x 25 cm)</b><br/>Ideal para colchones de plaza y media, queen, king y superking.</li></ul></p>"
+        },
+        {
+            "title":"¿Qué aporta la almohada interna?",
+            "description":"<p>La almohada interna aporta mayor altura y firmeza. Además podés utilizarla por separado, cuando quieras.</p>"
+        },
+        {
+            "title":"¿Cómo se coloca la almohada interna?",
+            "description":"<p>Al abrir el cierre, vas a notar que hay espacio interno para alojarla. Colocás la almohada interna en el centro y cerrás el cierre para que quede fija.</p>"
+        },
+        {
+            "title":"¿Cada cuánto tiempo debo cambiar mi almohada?",
+            "description":"<p>Es recomendable cambiar las almohadas de vellón cada 2 años, porque por las características del relleno, la almohada tiende a perder un poco de cuerpo.</p>"
+        },
+        {
+            "title":"¿Cómo puedo lavar mi almohada?",
+            "description":"<p>Podés lavarla en seco a mano o en el lavarropas, sin otras prendas, con detergente líquido para ropa delicada y en programa para ropa delicada, con temperatura máxima de 30 °C. En este caso tenés que incorporar bolas de lavado así tu almohada no pierde cuerpo.</p>"
+        },
+        {
+            "title":"¿Cómo se seca una vez lavada?",
+            "description":"<p>Recomendamos que el secado sea al aire libre, en horizontal y a la sombra.</p>"
+        },
+        {
+            "title":"¿La almohada interna es de color lila o blanco?",
+            "description":"<p>La almohada interna era lila y ahora es blanca. Esta nueva almohadita se adapta mejor a tu almohada para que puedas sentir la diferencia al regular su altura y firmeza.</p>"
+        }
+    ]
+}

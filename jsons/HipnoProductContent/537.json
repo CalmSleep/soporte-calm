@@ -1,0 +1,91 @@
+{
+    "key": "almohada-inteligente",
+    "productId": "537",
+    "title": "Almohada Inteligente",
+    "titleDescription": "Así es como la Almohada Inteligente mejora tu descanso.",
+    "selectedLink": "almohadas",
+    "dreamDelivery": false,
+    "tranferDiscount": "15OFF",
+    "skus": "A1;AP1",
+    "benefitsProduct": [
+        {
+            "imagen": "noSlipBase",
+            "texto": "Funda con cierre, ideal para poder lavarla y usarla siempre limpia."
+        },
+        {
+            "imagen": "BiggerDosCapas",
+            "texto": "Espuma viscoelástica moldeada."
+        },
+        {
+            "imagen": "Funda",
+            "texto": "Funda de tejido de punto con cierre."
+        },
+        {
+            "imagen": "ArgentineFlag",
+            "texto": "100% producido en Argentina."
+        }
+    ],
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/1e75301d-b0e8-4b8e-4436-c6312965cd00/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Grilla-2-7.mp4",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Grilla-3-7.mp4",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/3f66b99c-9423-4db7-b5c8-49bca4578a00/fit=cover"
+    ],
+    "textImages": {
+        "firstText": "Decile adiós al dolor de cuello",
+        "secondText": "Funda ideal para mantener la frescura"
+    },
+    "layoutImagesHaveVideo": true,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": true,
+        "image2": true,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"6 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>6 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "specsSectionTitles": [
+        {"title": "Dimensiones de la ", "bold": "almohada inteligente"}
+    ],
+    "specsImages": "https://calmessimple.com.ar/wp-content/uploads/2019/10/Inteligente2.webp",
+    "specsValues": [
+        { "name": "Mediana", "size": "65 x 35cm" },
+        { "name": "Grande", "size": "80 x 40cm" }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Qué almohada le corresponde a mi colchón?",
+            "description":"<p><ul><li><b>Estándar: 65 cm x 35 cm x 11 cm</b><br/>ideal para colchones de una plaza, plaza y media, dos plazas y queen.</li><li><b>Grande: 80 cm x 40 cm x 12 cm</b><br/>Ideal para colchones de plaza y media, queen, king y superking.</li></ul></p>"
+        },
+        {
+            "title":"¿Qué diferencia tiene esta almohada frente a las demás?",
+            "description":"<p>Su tecnología viscoelástica se adapta a la forma de tus hombros, cuello y cabeza, permitiendo que tus músculos se relajen durante el descanso.</p>"
+        },
+        {
+            "title":"¿Para qué sirven las perforaciones de lado a lado?",
+            "description":"<p>Estas perforaciones mejoran el flujo del aire para mantener la respirabilidad y frescura mientras dormís.</p>"
+        },
+        {
+            "title":"¿Puedo lavar la funda?",
+            "description":"<p>La funda puede lavarse en seco de forma sectorizada en donde presente la mancha, utilizando aerosoles de espuma, máquinas de tintorería o detergente/jabón neutro diluido en agua y un paño escurrido. También recomendamos lavarla completa 2 veces por año a mano, con agua a temperatura ambiente. No lavar en lavarropas porque puede achicarse. </p>"
+        },
+        {
+            "title":"¿Y puedo lavar la espuma?",
+            "description":"<p>No :( Por acción del agua las almohadas viscoelásticas tienden a perder sus propiedades de adaptabilidad y memoria. Se puede exponer al aire libre y al sol para que se seque en caso de haberse mojado accidentalmente.</p>"
+        }
+    ]
+}

@@ -1,0 +1,121 @@
+{
+    "key": "marco-suavidad",
+    "productId": "55267",
+    "title": "Marco Suavidad",
+    "titleDescription": "Así es como el Marco Suavidad mejora tu descanso",
+    "selectedLink": "accesorios",
+    "dreamDelivery": false,
+    "tranferDiscount": "30OFF",
+    "headPills" : "LANZAMIENTO",
+    "skus": "ACCMARSUA080000;ACCMARSUA100000;ACCMARSUA140000;ACCMARSUA160000",
+    "benefitsProduct": [
+        {
+            "imagen": "AlmohadaCapa",
+            "texto": "Llega en caja, podés subirlo por ascensor"
+        },
+        {
+            "imagen": "Laundry",
+            "texto": "Funda removible y lavable."
+        },
+        {
+            "imagen": "Tissue",
+            "texto": "Tiene tejido antideslizante"
+        },
+        {
+            "imagen": "DoubleHearts",
+            "texto": "Compatible con sommieres entre 24 y 27 cm de altura sin patas."
+        },
+        {
+            "imagen": "Match",
+            "texto": "Compatible con nuestro Respaldo Horizonte"
+        }   
+    ],
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/ac3cd6b0-63a0-432a-8e42-7ef7acafd500/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/63359aa1-c191-448d-08fb-f95b2107c100/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/4991196f-1a35-4ee5-d675-5edd9ba22f00/fit=cover",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/4cefa535-7163-4088-16ca-16a646208300/fit=cover"
+    ],
+    "textImages": {
+        "firstText": "La suavidad que tu cama necesita.",
+        "secondText": "Contiene tu descanso, envuelve tus noches."
+    },
+    "layoutImagesHaveVideo": false,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": false,
+        "image2": false,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que hagas la compra vamos a estar actualizándote paso a paso del estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"12 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>12 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"¿Por qué el Marco Suavidad?",
+            "description":"<p>Porque envuelve el perímetro de tu cama, generando así una carcasa protectora, esponjosa y suave. Gracias a su tela Bouclé se integra con armonía a su entorno, y a su vez, es tan pero tan suavecita que te dan ganas de abrazarla.</p>"
+        },
+        {
+            "title":"¿Cuál es la diferencia entre Cama Suavidad y Marco Suavidad?",
+            "description":"<p>La Cama Suavidad es un conjunto completo que incluye un sommier sin patas y un marco, diseñado para colocarse a nivel del piso y ofrecer un descanso esponjoso. En cambio, el Marco Suavidad es un accesorio que se coloca sobre un sommier existente para agregar suavidad, fabricado con espuma y una funda de tela bouclé. ¡Ambos son geniales para mejorar tu descanso! ☁️✨</p>"
+        },
+        {
+            "title":"¿Cómo sé si es compatible con mi base?",
+            "description":"<p>Primero, asegurate de que a tu sommier se le puedan sacar las patas (¡en general se pueden desenroscar!) <br> Segundo, medí la altura de tu sommier sin las patas. Nuestro Marco Suavidad es compatible con estructuras que midan entre 17 a 24 cm de altura (sin patas).</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>¡Sí! Te ofrecemos 30 noches de pruebas reales en tu casa. Creemos que para enamorarte de tu nueva cama, necesitás pasar tiempo con ella.. En el caso que no te guste, te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mi Marco Suavidad?",
+            "description":"<p>Una vez que hagas la compra, vas a recibir el paso a paso actualizado del estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento/'>este</a> link.</p>"
+        },
+        {
+            "title":"¿Qué garantía tiene el Marco Suavidad?",
+            "description":"<p>Ofrecemos una garantía de 5 años que cubre defectos de fabricación, no de uso.</p>"
+        },
+        {
+            "title":"¿Cómo se arma?",
+            "description":"<p>El marco es muy fácil de armar, en menos de 5 minutos lo tenés listo! <a href='https://drive.google.com/file/d/1yidS18Mrlg8i6x8j5hl8qFa4n-gYtZe9/view' target='_blank'>Acá</a> te dejamos el instructivo para que lo compruebes con tus propios ojos.</p>"
+        }
+    ],
+    "renders" : {
+        "2196415": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/71731de5-f87d-499e-76bb-b96d4bf27c00/fit=cover",
+        "2196416": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/07bdab80-37ce-4940-5e90-738b20755b00/fit=cover",
+        "2196417": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/17b44523-0055-4b05-e68c-fa0a3b1b1f00/fit=cover",
+        "2196418": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/8d97b1b7-efc7-451d-1591-2a6604d21e00/fit=cover"
+    },
+    "estructuraInfo": [
+        {
+            "title": "Marco Suavidad",
+            "description": "El Marco Suavidad es un accesorio para tu sommier que cuenta solo con la estructura exterior de la Cama Suavidad, es decir que se trata de la funda de tela Bouclé y los listones de espuma con tecnología EQUO® que, en conjunto, conforman un marco de suavidad y soporte."
+        },
+        {
+            "title": "Tu Sommier",
+            "description": "En el caso de tener un Sommier, el proceso sería quitarle las patas para que quede al nivel del piso y colocarle el Marco Suavidad."
+        }  
+    ],
+    "estructuraImagen": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/212b1728-6144-43de-5d90-410003230600/fit=cover",
+    "ATCImage": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/8a870129-1f6f-4dce-b8ea-b42e7c11ab00/fit=cover",
+    "titleAndVideo":{
+        "title": "¿Todavía tenes dudas? En estos videos te explicamos más",
+        "video": "uN9Cb0UDi2E",
+        "imgVideo": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/ff47c994-c026-45fe-0c07-7fc37b379400/fit=cover",
+        "secondVideoUrl": "dqXDCJU3cTE",
+        "secondImgVideo": "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/77081d4d-d6bd-4426-b01d-9e70c5a5f900/fit=cover"
+    }
+}

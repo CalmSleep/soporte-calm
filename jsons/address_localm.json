@@ -1,0 +1,22 @@
+[
+    {
+        "address": "1. Godoy Cruz 1737, CABA",
+        "hours": "Lun. a Dom. de 11 a 20 hs.",
+        "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.662307828111!2d-58.435811588020805!3d-34.587410272847514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb59d58aacdfd%3A0x71f98f0b710a8bfe!2sCalm%20es%20simple!5e0!3m2!1ses-419!2sar!4v1724788448766!5m2!1ses-419!2sar"
+    },
+    {
+        "address": "2. Santos Dumont 3507, CABA",
+        "hours": "Lun. a Dom. de 11 a 20 hs.",
+        "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13139.279958989451!2d-58.466855612841826!3d-34.583421099999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb5eeee30144f%3A0x93c17474dd5fad9d!2sSantos%20Dumont%203507%2C%20C1427EIC%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1724792834688!5m2!1ses-419!2sar"
+    },
+    {
+        "address": "3. Santa Fe 2999, CABA",
+        "hours": "Lun. a Dom. de 10 a 20 hs.",
+        "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13138.10459789205!2d-58.4267954128418!3d-34.590854599999986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca84913aebd7%3A0x53ba0d71d481fd63!2sAv.%20Sta.%20Fe%202999%2C%20C1425BGR%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1724792872379!5m2!1ses-419!2sar"
+    },
+    {
+        "address": "4. Av. del Libertador 6401, CABA",
+        "hours": "Lun. a Dom. de 11 a 20 hs.",
+        "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.0456416823386!2d-58.453577124014785!3d-34.55239975479023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb56e63602231%3A0x17907a07fb6460d4!2sCalm%20es%20Simple!5e0!3m2!1ses!2sar!4v1729765702780!5m2!1ses!2sar"
+    }
+]

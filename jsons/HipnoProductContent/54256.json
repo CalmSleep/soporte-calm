@@ -1,0 +1,75 @@
+{
+    "key": "sabanas-algodon",
+    "productId": "54256",
+    "title": "Sábanas Algodón & Frescura",
+    "titleDescription": "Así es como las Sábanas Algodón & Frescura mejoran tu descanso.",
+    "selectedLink": "ropa de cama",
+    "dreamDelivery": false,
+    "tranferDiscount": "15OFF",
+    "skus": "BLASABALG100000;BLASABALG140000;BLASABALG180000;BLASABALG200000;BLASABALG100001;BLASABALG140001;BLASABALG180001;BLASABALG200001;BLASABALG100002;BLASABALG140002;BLASABALG180002;BLASABALG200002",
+    "benefitsProduct": [
+        {
+            "imagen": "Cloud",
+            "texto": "100% algodón de 200 hilos."
+        },
+        {
+            "imagen": "Acaro",
+            "texto": "Hipoalergénica y antibacteriana."
+        },
+        {
+            "imagen": "Laundry",
+            "texto": "Anti-peeling (no hace pelotitas)"
+        }
+    ],
+    "textImages": {
+        "firstText": "Puro algodón. Puro amor.",
+        "secondText": "Vestí de gala tu colchón"
+    },
+    "layoutImages": [
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/4fc40425-b4e3-4658-20e1-bbb22a9c2100/fit=cover",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Grilla-2-3.mp4",
+        "https://calmessimple.com.ar/wp-content/uploads/2025/01/Grilla-3-3.mp4",
+        "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/532ac0a1-26c7-4ece-3628-61fdc73b9f00/fit=cover"
+    ],
+    "layoutImagesHaveVideo": true,
+    "layoutImageHaveVideo" : {
+        "image0": false,
+        "image1": true,
+        "image2": true,
+        "image3": false
+
+    },
+    "accordionSpecsTexts": [
+        {
+            "title":"30 noches de prueba",
+            "description":"<p>Probá cualquier producto de Calm por <b>30 noches</b>. Si no te gusta, te devolvemos <b>todo el dinero</b>. Así de <b>simple</b>. En el caso de querer realizar un cambio podés saber más sobre el proceso <a href='/terminos-y-condiciones#Periododeprueba'>acá</a>.</p>"
+        },
+        {
+            "title":"Envío gratis",
+            "description":"<p>Hacemos envíos gratis a <b>todo el país</b>, en compras a partir de dos almohadas. Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico.</p>"
+        },
+        {
+            "title":"6 cuotas sin interés",
+            "description":"<p>Podés pagar en <b>6 cuotas sin interés</b> con todas las tarjetas que participan del programa <b>CUOTA SIMPLE.</b></p>"
+        }
+    ],
+    "faqAccordionTitle": "Preguntas Frecuentes",
+    "faqAccordion":  [
+        {
+            "title":"Medidas y tamaños",
+            "description":"<p><ul><li><b>PLAZA O PLAZA Y 1/2:</b><ul><li>Superior: 170 × 260 cm</li><li>Ajustable: 100 x 200 x 30 cm</li><li>Funda: 50 x 80 cm</li><li>Quedan holgadas para colchones de 80 cm de ancho</li><li>Calzan perfecto para colchones de 100 cm de ancho</li></ul></li></ul><ul><li><b>2 PLAZAS:</b><ul><li>Superior: 214 x 260 cm</li><li>Ajustable: 140 x 190 x 30 cm</li><li>Funda: 50 x 80 cm</li><li>Calzan perfecto para colchones de 140 cm de ancho</li></ul></li></ul><ul><li><b>QUEEN:</b><ul><li>Superior: 240 x 260 cm</li><li>Ajustable: 160 x 200 x 30 cm</li><li>Funda: 50 x 80 cm</li><li>Quedan holgadas para colchones de 160 cm de ancho</li></ul></li></ul><ul><li><b>KING O SUPERKING:</b><ul><li>Superior: 270 x 260 cm</li><li>Ajustable: 200 x 200 x 30 cm</li><li>Funda: 50 x 100 cm</li><li>Quedan holgadas para colchones de 180 cm de ancho</li><li>Calzan perfecto para colchones de 200 cm de ancho</li></ul></li></ul></p>"
+        },
+        {
+            "title":"¿Por qué las Sábanas Algodón & Frescura?",
+            "description":"<p>Porque refrescan en verano y dan calor en invierno. Son hipoalergénicas y no hacen pelotitas. Permiten que tu piel respire libremente y no generan estática.</p>"
+        },
+        {
+            "title":"¿Son reales las 30 noches de prueba?",
+            "description":"<p>Ofrecemos 30 noches de prueba reales en tu casa. Creemos que para enamorarte de tu nueva cama, necesitas más de 5 minutos. En el caso de que no te guste, te devolvemos el 100% de tu dinero.</p>"
+        },
+        {
+            "title":"¿Cuándo voy a recibir mis sábanas?",
+            "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"
+        }
+    ]
+}
