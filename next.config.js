@@ -29,7 +29,6 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96],
   },
   experimental: {
-    appDir: false, // Deshabilita la carpeta "app/" si no la estás usando
     workerThreads: false,
     cpus: 1,
   },
