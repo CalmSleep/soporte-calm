@@ -1,6 +1,5 @@
 import { theme } from "@/utils/Theme";
-import {MouseEvent, ChangeEvent, FormEvent} from 'react';
-
+import { MouseEvent, ChangeEvent, FormEvent } from "react";
 
 type ThemeColors = keyof typeof theme.colors;
 type Fonts = keyof typeof theme.fonts;
@@ -9,11 +8,11 @@ type responsiveMobile = {
   fontSize?: string;
   width?: string;
   height?: string;
-}
+};
 
 export type ButtonProps = {
   children?: React.ReactNode;
-  targetBlank?: boolean
+  targetBlank?: boolean;
   borderRadius?: string;
   disabled?: boolean;
   onClick?: (e: MouseEvent<HTMLInputElement>) => void;
@@ -26,15 +25,17 @@ export type ButtonProps = {
   href?: string;
   type?: "submit";
   fontSize?: string;
-  font?: Fonts
+  font?: Fonts;
   width?: string;
   height?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement> | FormEvent<HTMLButtonElement>) => void;
+  onChange?: (
+    e: ChangeEvent<HTMLInputElement> | FormEvent<HTMLButtonElement>
+  ) => void;
   className?: string;
   error?: boolean;
   title?: string;
   sizeMobile?: "big" | "medium" | "mediumlarge" | "small" | "xsmall" | "none";
-  disableStyles?: boolean
+  disableStyles?: boolean;
   responsiveMobile?: responsiveMobile;
 };
 
@@ -53,20 +54,20 @@ export type ButtonStyledProps = {
   $responsiveMobile?: responsiveMobile;
   $error?: boolean;
   $sizeMobile?: "big" | "medium" | "mediumlarge" | "small" | "xsmall" | "none";
-  $disableStyles?: boolean
+  $disableStyles?: boolean;
 };
 
 export type ButtonAttributesProps = {
   select: boolean;
   disabled: boolean;
-  style:{
+  style: {
     backgroundColor: string;
-  }
+  };
   onClick: (e: MouseEvent<HTMLInputElement>) => void;
   title: string;
   ariaLabel: string;
-  isRP?: boolean
-}
-export type BtnColor= {
+  isRP?: boolean;
+};
+export type BtnColor = {
   $select: boolean;
-}
+};

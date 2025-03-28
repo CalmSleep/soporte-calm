@@ -3,7 +3,7 @@ import Titles from "@/components/Atoms/Typography/Titles";
 import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
 import SocialNetworks from "@/components/Molecules/SocialNetworks/SocialNetworks";
 import React from "react";
-import { ContainerHero } from "./styled";
+import { Container, ContainerHero } from "./styled";
 
 const HeroForm = () => {
   return (
@@ -14,6 +14,24 @@ const HeroForm = () => {
         height="404px"
         objectFit="cover"
       />
+
+      <Container>
+        <Titles
+          align="center"
+          fontSize="107.331px"
+          fontWeight={600}
+          letterSpacing="-3.22px"
+          color="white"
+          responsiveMobile={{
+            fontSize: "48px",
+            lineHeight: "55.2px",
+            letterSpacing: "-1.44px",
+          }}
+        >
+          Soporte
+        </Titles>
+      </Container>
+
       <SectionHeader
         sectionHeaderStyles={{
           $backgroundColor: "whiteEdgar",
@@ -67,15 +85,7 @@ const HeroForm = () => {
     //       }}
     //     />
     //   </div>
-    //   <Titles
-    //     align="center"
-    //     fontSize="107.331px"
-    //     fontWeight={600}
-    //     letterSpacing="-3.22px"
-    //     //  color="white"
-    //   >
-    //     Soporte
-    //   </Titles>
+
     // </div>
   );
 };

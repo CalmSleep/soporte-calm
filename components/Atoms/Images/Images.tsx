@@ -1,5 +1,5 @@
-import { ImagesProps } from "./types"
-import { ImageStyles, StyledLCPImage } from "./styled"
+import { ImagesProps } from "./types";
+import { ImageStyles, StyledLCPImage } from "./styled";
 
 const Images = ({
   children,
@@ -25,76 +25,77 @@ const Images = ({
   blurDataURL,
   fetchpriority,
   fill,
-  unoptimized
+  unoptimized,
+  opacity,
 }: ImagesProps) => {
   return (
     <>
-    {
-      fill ?
-      <StyledLCPImage
-        src={src} 
-        alt={alt} 
-        fill
-        $objectFit={objectFit}
-        $width={width} 
-        $height={height} 
-        $borderRadius={borderRadius}
-        priority={priority}
-        $responsiveMobile={responsiveMobile}
-        sizes={sizes}
-        layout={layout}
-        placeholder={placeholder}
-        blurDataURL={blurDataURL}
-        $aspectRatio={aspectRatio}
-        title={title ?? undefined}
-        loading={priority ? "eager" : isLazy ? "lazy" : undefined}
-        unoptimized={unoptimized ?? false}
-      />
-      : (widthLCP && heightLCP) ? (
-      <StyledLCPImage
-        src={src} 
-        alt={alt} 
-        width={widthLCP}
-        height={heightLCP}
-        $objectFit={objectFit}
-        $width={width} 
-        $height={height} 
-        $borderRadius={borderRadius}
-        priority={priority}
-        $responsiveMobile={responsiveMobile}
-        sizes={sizes}
-        layout={layout}
-        placeholder={placeholder}
-        blurDataURL={blurDataURL}
-        $aspectRatio={aspectRatio}
-        title={title ?? undefined}
-        loading={priority ? "eager" : isLazy ? "lazy" : undefined}
-        unoptimized={unoptimized ?? false}
-      />
+      {fill ? (
+        <StyledLCPImage
+          src={src}
+          alt={alt}
+          fill
+          $objectFit={objectFit}
+          $width={width}
+          $height={height}
+          $borderRadius={borderRadius}
+          priority={priority}
+          $responsiveMobile={responsiveMobile}
+          sizes={sizes}
+          layout={layout}
+          placeholder={placeholder}
+          blurDataURL={blurDataURL}
+          $aspectRatio={aspectRatio}
+          title={title ?? undefined}
+          loading={priority ? "eager" : isLazy ? "lazy" : undefined}
+          unoptimized={unoptimized ?? false}
+          $opacity={opacity}
+        />
+      ) : widthLCP && heightLCP ? (
+        <StyledLCPImage
+          src={src}
+          alt={alt}
+          width={widthLCP}
+          height={heightLCP}
+          $objectFit={objectFit}
+          $width={width}
+          $height={height}
+          $borderRadius={borderRadius}
+          priority={priority}
+          $responsiveMobile={responsiveMobile}
+          sizes={sizes}
+          layout={layout}
+          placeholder={placeholder}
+          blurDataURL={blurDataURL}
+          $aspectRatio={aspectRatio}
+          title={title ?? undefined}
+          loading={priority ? "eager" : isLazy ? "lazy" : undefined}
+          unoptimized={unoptimized ?? false}
+          $opacity={opacity}
+        />
       ) : (
-        <ImageStyles 
-        src={src} 
-        alt={alt} 
-        $objectFit={objectFit} 
-        $width={width} 
-        $height={height} 
-        $transition={hasTransition ? "transform 1s ease" : "none"}
-        $transform={hasTransition ? "scale(1.05)" : "none"}
-        $responsiveMobile={responsiveMobile}
-        $borderRadius={borderRadius}
-        loading={isLazy ? "lazy" : undefined}
-        width={widthHTML}
-      /*   fetchPriority={fetchpriority ? "high" : isLazy ? "low" : undefined} */
-        height={heightHTML}
-        sizes={sizes}
-        title={title ?? undefined}
-      >
-        {children}
-      </ImageStyles>
-      )
-    }
+        <ImageStyles
+          src={src}
+          alt={alt}
+          $objectFit={objectFit}
+          $width={width}
+          $height={height}
+          $transition={hasTransition ? "transform 1s ease" : "none"}
+          $transform={hasTransition ? "scale(1.05)" : "none"}
+          $responsiveMobile={responsiveMobile}
+          $borderRadius={borderRadius}
+          loading={isLazy ? "lazy" : undefined}
+          width={widthHTML}
+          /*   fetchPriority={fetchpriority ? "high" : isLazy ? "low" : undefined} */
+          height={heightHTML}
+          sizes={sizes}
+          title={title ?? undefined}
+          $opacity={opacity}
+        >
+          {children}
+        </ImageStyles>
+      )}
     </>
-      
   );
 };
 

@@ -18,4 +18,15 @@ export type LabelStyledProps = {
   $backgroundColor?: ThemeColors;
   $color?: ThemeColors;
   $isFocused?: boolean;
+  $input?: boolean;
+  $hasError?: boolean;
+  $hasRequired?: boolean;
+};
+
+export type DniInput = {
+  dni: number;
+};
+
+export type ErrorInput = {
+  [key: string]: string;
 };

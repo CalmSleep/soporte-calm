@@ -1,10 +1,12 @@
 import Button from "@/components/Atoms/Buttons/Button";
 import Input from "@/components/Atoms/Input/Input";
 import FloatingInput from "@/components/Molecules/FloatingInput/FloatingInput";
+import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
 import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
-import React from "react";
+import React, { useState } from "react";
 
 const Steps1 = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <SectionHeader
       sectionHeaderStyles={{
@@ -52,6 +54,7 @@ const Steps1 = () => {
         labelRequired="*"
         labelRequiredColor="brilliantLiquorice"
         input={{
+          type: "number",
           borderColorFocused: "madForMango",
           placeholder: " ",
           required: true,
@@ -59,7 +62,6 @@ const Steps1 = () => {
         }}
         labelColor="brilliantLiquorice"
         labelBackgroundColor="white"
-        required="Ingresá tu dni sin puntos ni espacios"
       />
       {/* Esto va a hacer un modulo dinamico, solo estoy haciendo una prueba */}
       <Button
@@ -70,10 +72,12 @@ const Steps1 = () => {
         responsiveMobile={{
           fontSize: "18px",
         }}
+        onClick={() => setIsOpen(true)} // ✅ Llamada correcta
       >
         Siguiente{" "}
         {/* Esto va a hacer dinamico en base a que paso reciba, solo estoy haciendo una prueba */}
       </Button>
+      {isOpen && <ModalSteps open={isOpen} setModal={setIsOpen} />}
     </SectionHeader>
   );
 };
