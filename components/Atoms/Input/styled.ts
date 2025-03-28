@@ -20,7 +20,7 @@ export const InputStyles = styled.input<InputStyledProps>`
 
   &:not(:placeholder-shown) + span,
   &:focus + span {
-    transform: translateY(-25px)
+    transform: translateY(-30px)
   }
 
   color: ${({ $color, theme }) => ($color ? theme.colors[$color] : "offBlack")};

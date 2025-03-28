@@ -59,7 +59,7 @@ const Steps1 = () => {
         }}
         labelColor="brilliantLiquorice"
         labelBackgroundColor="white"
-        //  required="Ingresá tu dni sin puntos ni espacios"
+        required="Ingresá tu dni sin puntos ni espacios"
       />
       {/* Esto va a hacer un modulo dinamico, solo estoy haciendo una prueba */}
       <Button

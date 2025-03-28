@@ -31,7 +31,7 @@ const FloatingInput = ({
           {labelRequired}
         </Paragraph>
       </Label>
-      {input?.required && <span>{required}</span>}
+      {input?.required && !input?.error && isFocus && <span>{required}</span>}
       {input?.error && <span>{error}</span>}
     </InputWrapper>
   );
