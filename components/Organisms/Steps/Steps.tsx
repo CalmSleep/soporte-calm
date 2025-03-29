@@ -1,17 +1,27 @@
 import Button from "@/components/Atoms/Buttons/Button";
 import Input from "@/components/Atoms/Input/Input";
+import Paragraph from "@/components/Atoms/Typography/Text";
 import FloatingInput from "@/components/Molecules/FloatingInput/FloatingInput";
 import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
 import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
+import { da } from "date-fns/locale";
 import React, { useState } from "react";
 
-const Steps1 = () => {
+const Steps = () => {
   const [isOpen, setIsOpen] = useState(false);
+  //datos del usuario hardcode , despues se cambia por peticion
+  const datesConfirmed = {
+    dni: "41263974",
+    pages: "Sitio web (calmessimple.com)",
+    orden: "Pedido #2404372",
+  };
+
   return (
     <SectionHeader
       sectionHeaderStyles={{
         $padding: "40px 400px",
-        $gap: "16px",
+        $gap: "16px", //  gap dinamico cuando sea por paso
+        // $gap: "5px",
         $responsiveMobile: {
           padding: "24px 16px",
           gap: "24px",
@@ -63,8 +73,14 @@ const Steps1 = () => {
         labelColor="brilliantLiquorice"
         labelBackgroundColor="white"
       />
+
+      {/* <Paragraph color="brilliantLiquorice">{datesConfirmed.dni}</Paragraph>
+      <Paragraph color="brilliantLiquorice">{datesConfirmed.pages}</Paragraph>
+      <Paragraph color="brilliantLiquorice">{datesConfirmed.orden}</Paragraph> */}
+
       {/* Esto va a hacer un modulo dinamico, solo estoy haciendo una prueba */}
-      <Button
+
+      {/*  <Button
         backgroundColor="lead"
         textColor="drWhite"
         borderRadius="1000px"
@@ -75,11 +91,11 @@ const Steps1 = () => {
         onClick={() => setIsOpen(true)} // ✅ Llamada correcta
       >
         Siguiente{" "}
-        {/* Esto va a hacer dinamico en base a que paso reciba, solo estoy haciendo una prueba */}
+      Esto va a hacer dinamico en base a que paso reciba, solo estoy haciendo una prueba 
       </Button>
-      {isOpen && <ModalSteps open={isOpen} setModal={setIsOpen} />}
+      {isOpen && <ModalSteps open={isOpen} setModal={setIsOpen} />}*/}
     </SectionHeader>
   );
 };
 
-export default Steps1;
+export default Steps;

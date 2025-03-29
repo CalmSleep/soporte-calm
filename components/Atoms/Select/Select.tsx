@@ -46,6 +46,7 @@ const Select = ({
       {options.map((option, index) => {
         const label = typeof option === "string" ? option : option.label;
         const value = typeof option === "string" ? option : option.value;
+
         const isDisabled = disableOptions && disabledValues?.includes(value);
         return (
           <OptionStyles
