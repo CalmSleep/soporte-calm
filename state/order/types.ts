@@ -1,3 +1,5 @@
+import { IOrdenMail } from "@/components/Molecules/StepBody/StepDni/types";
+
 export interface IOrderState {
   orderData?: IOrder;
   error?: boolean;
@@ -22,6 +24,7 @@ export interface IOrderState {
   paymentMethod?: string;
   totalWithTranferDiscount?: number;
   date_test?: string;
+  ordensDni?: IOrdenMail[];
 }
 
 export interface ISeguimiento {

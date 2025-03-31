@@ -59,44 +59,49 @@ export const getTransactionError = createSelector(
 export const getOrderExist = createSelector(
   (state: IStore) => state.order.orderExist,
   (orderExist) => orderExist
-)
+);
 
 export const getCheckoutOnlyToPay = createSelector(
   (state: IStore) => state.order.checkoutOnlyToPay,
   (checkoutOnlyToPay) => checkoutOnlyToPay
-)
+);
 
 export const getRDC = createSelector(
   (state: IStore) => state.order.rdcData,
   (rdcData) => rdcData
-)  
+);
 
 export const getSeguimiento = createSelector(
   (state: IStore) => state.order.seguimiento,
   (seguimiento) => seguimiento
-)
+);
 
 export const getForgottenEmail = createSelector(
   (state: IStore) => state.order.forgottenEmail,
   (forgottenEmail) => forgottenEmail
-)
+);
 
 export const getPublicIpClient = createSelector(
   (state: IStore) => state.order.ipClient,
   (ipClient) => ipClient
-)
+);
 
 export const getCheckoutPath = createSelector(
   (state: IStore) => state.order.pathCheckout,
   (pathCheckout) => pathCheckout
-)
+);
 
 export const getNoShippingCPs = createSelector(
   (state: IStore) => state.order.noShippingCPs,
   (noShippingCPs) => noShippingCPs
-)
+);
 
 export const getDateTest = createSelector(
   (state: IStore) => state.order.date_test,
   (date_test) => date_test
-)
+);
+
+export const getOrdensDni = createSelector(
+  (state: IStore) => state.order.ordensDni,
+  (ordensDni) => ordensDni
+);
