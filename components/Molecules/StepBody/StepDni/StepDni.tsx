@@ -10,7 +10,7 @@ import { emailResponse, validateDni } from "./funtions";
 import Button from "@/components/Atoms/Buttons/Button";
 import ModalSteps from "../../Modal/ModalSteps";
 import SkeletonLoader from "../../SkeletonLoader/SkeletonLoader";
-import { getOrderByDni } from "@/state/order/orderServices";
+import { getOrderByDni, sendEmailOrderDni } from "@/state/order/orderServices";
 import FloatingInput from "../../FloatingInput/FloatingInput";
 
 const StepDni = () => {
@@ -52,6 +52,19 @@ const StepDni = () => {
     }
   };
 
+  const sendEmail = async () => {
+    try {
+      if (data.email && data.data.length > 0) {
+        const dataMail = emailResponse(data.data);
+        const response = await sendEmailOrderDni(dataMail);
+        console.log(response);
+      }
+    } catch (error) {
+      console.error(error);
+      console.log(error);
+    }
+  };
+
   const handleDni = async () => {
     setLoading(true);
     try {
@@ -60,8 +73,10 @@ const StepDni = () => {
         if (response.data[0]?.billing?.email) {
           setData({
             data: response.data,
-            email: response.data[0].billing.email,
+            email: "chofiikauffer@gmail.com",
+            //  email: response.data[0].billing.email,
           });
+          sendEmail();
         }
       } else {
         setData({
@@ -96,9 +111,6 @@ const StepDni = () => {
     : errorMessage
     ? "rareRed"
     : "greenGrass";
-
-  const dataMail = emailResponse(data.data);
-  console.log(dataMail);
 
   return (
     <>

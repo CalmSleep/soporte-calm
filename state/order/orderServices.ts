@@ -1,3 +1,4 @@
+import { IOrdenMail } from "@/components/Molecules/StepBody/StepDni/types";
 import axios, { AxiosError } from "axios";
 
 export const getOrder = async (id: string, order_key: string) => {
@@ -259,6 +260,21 @@ export const getOrderByDni = async (dni: string) => {
 
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/order/get_order_by_dni.php?dni=${dni}`,
+    reqConfig
+  );
+  return response.data;
+};
+
+export const sendEmailOrderDni = async (data: IOrdenMail[]) => {
+  const reqConfig = {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  };
+
+  const response = await axios.post(
+    `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/soporte/orders-mail.php`,
+    data,
     reqConfig
   );
   return response.data;
