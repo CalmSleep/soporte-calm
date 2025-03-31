@@ -55,7 +55,11 @@ const StepDni = () => {
   const sendEmail = async () => {
     try {
       if (data.email && data.data.length > 0) {
+        console.log(emailResponse(data.data));
+
         const dataMail = emailResponse(data.data);
+        console.log(dataMail);
+
         const response = await sendEmailOrderDni(dataMail);
         console.log(response);
       }

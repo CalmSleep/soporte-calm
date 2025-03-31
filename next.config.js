@@ -3,25 +3,27 @@ const nextConfig = {
   publicRuntimeConfig: {
     version: process.env.BUILD_ID,
   },
-  transpilePackages: ['three'],
+  transpilePackages: ["three"],
   reactStrictMode: true,
+
   swcMinify: true,
   compiler: {
     styledComponents: true,
+    removeConsole: false,
   },
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'calmessimple.com.ar',
+        protocol: "https",
+        hostname: "calmessimple.com.ar",
       },
       {
-        protocol: 'https',
-        hostname: 'hipno.com.ar',
+        protocol: "https",
+        hostname: "hipno.com.ar",
       },
       {
-        protocol: 'https',
-        hostname: 'imagedelivery.net',
+        protocol: "https",
+        hostname: "imagedelivery.net",
       },
     ],
     minimumCacheTTL: 60 * 60 * 24 * 365,
@@ -75,36 +77,36 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/producto/Colchon%20Hibrido%201400x1900/:path*',
-        destination: '/renders3D/Colchon%20Hibrido%201400x1900/:path*',
+        source: "/producto/Colchon%20Hibrido%201400x1900/:path*",
+        destination: "/renders3D/Colchon%20Hibrido%201400x1900/:path*",
       },
       {
-        source: '/producto/Colchon%20Hibrido%20Plus%201400x1900/:path*',
-        destination: '/renders3D/Colchon%20Hibrido%20Plus%201400x1900/:path*',
+        source: "/producto/Colchon%20Hibrido%20Plus%201400x1900/:path*",
+        destination: "/renders3D/Colchon%20Hibrido%20Plus%201400x1900/:path*",
       },
       {
-        source: '/producto/Colchon%20Original%201400x1900/:path*',
-        destination: '/renders3D/Colchon%20Original%201400x1900/:path*',
+        source: "/producto/Colchon%20Original%201400x1900/:path*",
+        destination: "/renders3D/Colchon%20Original%201400x1900/:path*",
       },
       {
-        source: '/producto/Colchon%20Original%20Plus%201400x1900/:path*',
-        destination: '/renders3D/Colchon%20Original%20Plus%201400x1900/:path*',
+        source: "/producto/Colchon%20Original%20Plus%201400x1900/:path*",
+        destination: "/renders3D/Colchon%20Original%20Plus%201400x1900/:path*",
       },
       {
-        source: '/producto/Sofa%20Cama%20Cerrado_Light/:path*',
-        destination: '/renders3D/Sofa%20Cama%20Cerrado_Light/:path*',
+        source: "/producto/Sofa%20Cama%20Cerrado_Light/:path*",
+        destination: "/renders3D/Sofa%20Cama%20Cerrado_Light/:path*",
       },
       {
-        source: '/producto/Sofa%20Cama%20Abierto_Light/:path*',
-        destination: '/renders3D/Sofa%20Cama%20Abierto_Light/:path*',
+        source: "/producto/Sofa%20Cama%20Abierto_Light/:path*",
+        destination: "/renders3D/Sofa%20Cama%20Abierto_Light/:path*",
       },
       {
-        source: '/producto/Sofa%20Cama%20Cerrado_Dark/:path*',
-        destination: '/renders3D/Sofa%20Cama%20Cerrado_Dark/:path*',
+        source: "/producto/Sofa%20Cama%20Cerrado_Dark/:path*",
+        destination: "/renders3D/Sofa%20Cama%20Cerrado_Dark/:path*",
       },
       {
-        source: '/producto/Sofa%20Cama%20Abierto_Dark/:path*',
-        destination: '/renders3D/Sofa%20Cama%20Abierto_Dark/:path*',
+        source: "/producto/Sofa%20Cama%20Abierto_Dark/:path*",
+        destination: "/renders3D/Sofa%20Cama%20Abierto_Dark/:path*",
       },
     ];
   },
@@ -121,6 +123,4 @@ const nextConfig = {
   }, */
 };
 
-
-
-module.exports = nextConfig
+module.exports = nextConfig;
