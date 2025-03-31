@@ -1,13 +1,13 @@
+import StepsHeaders from "../Molecules/StepBody/StepsHeader/StepsHeaders";
 import HeroForm from "../Organisms/HeroForm/HeroForm";
-import Step2 from "../Organisms/Steps/Step2/Step2";
-import Steps from "../Organisms/Steps/Steps";
+import Step1 from "../Organisms/Steps/Step1/Step1";
 import { ContainerForm } from "./styled";
 
 const FormStatic = () => {
   return (
     <ContainerForm>
       <HeroForm />;
-      <Steps />
+      <Step1 />
     </ContainerForm>
   );
 };

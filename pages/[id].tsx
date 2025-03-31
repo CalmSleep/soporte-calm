@@ -1,15 +1,7 @@
-import HeroForm from "@/components/Organisms/HeroForm/HeroForm";
-import Steps from "@/components/Organisms/Steps/Steps";
-import { ContainerForm } from "@/components/Templates/styled";
-import React from "react";
+import FormDinamic from "@/components/Templates/FormDinamic";
 
 const FormDinamicOrden = () => {
-  return (
-    <ContainerForm>
-      <HeroForm />
-      <Steps />
-    </ContainerForm>
-  );
+  return <FormDinamic />;
 };
 
 export default FormDinamicOrden;

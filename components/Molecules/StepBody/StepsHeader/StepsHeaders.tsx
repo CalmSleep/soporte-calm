@@ -1,21 +1,14 @@
-import Button from "@/components/Atoms/Buttons/Button";
-import Input from "@/components/Atoms/Input/Input";
-import Paragraph from "@/components/Atoms/Typography/Text";
-import FloatingInput from "@/components/Molecules/FloatingInput/FloatingInput";
-import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
 import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
 import StepDni from "@/components/Molecules/StepBody/StepDni/StepDni";
-import { da } from "date-fns/locale";
 import React, { useState } from "react";
+import { StepHeaderProps } from "./types";
 
-const Steps = () => {
-  //datos del usuario hardcode , despues se cambia por peticion
-  const datesConfirmed = {
-    dni: "41263974",
-    pages: "Sitio web (calmessimple.com)",
-    orden: "Pedido #2404372",
-  };
-
+const StepsHeaders = ({
+  span,
+  title,
+  paragraph,
+  children,
+}: StepHeaderProps) => {
   return (
     <SectionHeader
       sectionHeaderStyles={{
@@ -27,9 +20,9 @@ const Steps = () => {
           gap: "24px",
         },
       }}
-      spam="Paso 1/4 - "
-      title="Datos de tu compra"
-      paragraph="Dejanos el DNI que usaste en tu compra y el punto de venta donde la realizaste. Con estos datos vamos a buscar tus pedidos y ayudarte a gestionar tu solicitud."
+      spam={span}
+      title={title}
+      paragraph={paragraph}
       titleStyles={{
         color: "lead",
         fontWeight: 600,
@@ -59,14 +52,9 @@ const Steps = () => {
         color: "madForMango",
       }}
     >
-      <StepDni />
-      {/* <Paragraph color="brilliantLiquorice">{datesConfirmed.dni}</Paragraph>
-      <Paragraph color="brilliantLiquorice">{datesConfirmed.pages}</Paragraph>
-      <Paragraph color="brilliantLiquorice">{datesConfirmed.orden}</Paragraph> */}
-
-      {/* Esto va a hacer un modulo dinamico, solo estoy haciendo una prueba */}
+      {children}
     </SectionHeader>
   );
 };
 
-export default Steps;
+export default StepsHeaders;
