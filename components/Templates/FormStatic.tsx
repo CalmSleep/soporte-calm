@@ -8,7 +8,6 @@ const FormStatic = () => {
     <ContainerForm>
       <HeroForm />;
       <Steps />
-      <Step2 />
     </ContainerForm>
   );
 };

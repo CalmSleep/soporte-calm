@@ -24,7 +24,7 @@ export const getSeguimiento = async (
       "Content-type": "application/json; charset=UTF-8",
     },
   };
-  
+
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/order/get_seguimiento.php?mail=${seguimiento_email}&order=${orden}`,
     requestConfig
@@ -50,27 +50,28 @@ export const getCardInfo = async (bin: number | string) => {
 };
 
 export const onSendOrderAndPaymentData = async (data: any) => {
-
   const token = sessionStorage.getItem("tokenSession");
   const reqConfig = {
     withCredentials: true,
     headers: {
       "Content-type": "application/json",
-      authorization: `Bearer ${token}`
+      authorization: `Bearer ${token}`,
     },
   };
 
-  const req = {formData: data};
-  const url = `${process.env.NEXT_PUBLIC_GANDALF_URL}/${process.env.NEXT_PUBLIC_GANDALF_ENVIROMENT}/orders`
+  const req = { formData: data };
+  const url = `${process.env.NEXT_PUBLIC_GANDALF_URL}/${process.env.NEXT_PUBLIC_GANDALF_ENVIROMENT}/orders`;
 
-  if(url) {
+  if (url) {
     try {
-      const resp = await axios.post(url,
-      {
-        ...req.formData
-      }, reqConfig);
+      const resp = await axios.post(
+        url,
+        {
+          ...req.formData,
+        },
+        reqConfig
+      );
       return resp.data;
-      
     } catch (error: any) {
       return error?.response?.data ?? error?.message;
     }
@@ -78,28 +79,28 @@ export const onSendOrderAndPaymentData = async (data: any) => {
 };
 
 export const onSendLinkToPayOrderAndPaymentData = async (data: any) => {
-
   const token = sessionStorage.getItem("tokenSession");
   const reqConfig = {
     headers: {
       "Content-type": "application/json",
-      authorization: `Bearer ${token}`
+      authorization: `Bearer ${token}`,
     },
   };
 
-  const req = {formData: data};
+  const req = { formData: data };
 
-  const url = `${process.env.NEXT_PUBLIC_GANDALF_PAY}/${process.env.NEXT_PUBLIC_GANDALF_ENVIROMENT}/orders/pay`
+  const url = `${process.env.NEXT_PUBLIC_GANDALF_PAY}/${process.env.NEXT_PUBLIC_GANDALF_ENVIROMENT}/orders/pay`;
 
-  if(url) {
+  if (url) {
     try {
-      const resp = await axios.post(url,         
-      {
-        ...req.formData
-      }, 
-      reqConfig);
+      const resp = await axios.post(
+        url,
+        {
+          ...req.formData,
+        },
+        reqConfig
+      );
       return resp.data;
-      
     } catch (error: any) {
       return error?.response?.data ?? error?.message;
     }
@@ -140,15 +141,14 @@ export const onGetToken = async () => {
       "Content-type": "application/json; charset=UTF-8",
     },
   };
-  const url = `${process.env.NEXT_PUBLIC_GANDALF_URL}/${process.env.NEXT_PUBLIC_GANDALF_ENVIROMENT}/token?param=${Math.random()}_${Math.random()}_${Math.random()}`
-  
-  if(url) {
+  const url = `${process.env.NEXT_PUBLIC_GANDALF_URL}/${
+    process.env.NEXT_PUBLIC_GANDALF_ENVIROMENT
+  }/token?param=${Math.random()}_${Math.random()}_${Math.random()}`;
+
+  if (url) {
     try {
-      const resp = await axios.get(
-        url,
-        reqConfig
-      );
-      
+      const resp = await axios.get(url, reqConfig);
+
       return await resp.data;
     } catch (err) {
       return {};
@@ -156,7 +156,11 @@ export const onGetToken = async () => {
   }
 };
 
-export const getDeliveryTimes = async (date: string, postcode: string, ede: boolean) => {
+export const getDeliveryTimes = async (
+  date: string,
+  postcode: string,
+  ede: boolean
+) => {
   const requestConfig = {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
@@ -164,14 +168,11 @@ export const getDeliveryTimes = async (date: string, postcode: string, ede: bool
   };
 
   let url = `https://mirror.calmessimple.com.ar/ms/delivery-ranges/?date=${date}&postcode=${postcode}`;
-  if(ede) {
+  if (ede) {
     url = `${url}&ede=true`;
   }
 
-  const response = await axios.get(
-    url,
-    requestConfig
-  );
+  const response = await axios.get(url, requestConfig);
   return response.data;
 };
 
@@ -204,7 +205,7 @@ export const getRDC = async (mail: string) => {
       "Content-Type": "text/plain",
       "Access-Control-Allow-Origin": "*",
       mode: "no-cors",
-      "Cache-Control" : "no-cache",
+      "Cache-Control": "no-cache",
     },
   };
 
@@ -230,12 +231,10 @@ export const getForgottenEmail = async (mail: string) => {
 };
 
 export const getPublicIpClient = async () => {
+  const response = await axios.get("https://api.ipify.org/");
 
-  const response = await axios.get("https://api.ipify.org/")
-
-  return response.data
-
-}
+  return response.data;
+};
 
 export const getNoShippingCPs = async () => {
   const reqConfig = {
@@ -249,4 +248,18 @@ export const getNoShippingCPs = async () => {
     reqConfig
   );
   return response;
+};
+
+export const getOrderByDni = async (dni: string) => {
+  const reqConfig = {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  };
+
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/order/get_order_by_dni.php?dni=${dni}`,
+    reqConfig
+  );
+  return response.data;
 };

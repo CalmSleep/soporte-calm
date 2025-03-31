@@ -24,6 +24,9 @@ const Step3Option = () => {
       <Select
         onChange={handleOnchange}
         options={[
+          ...(valueStep3Option.value === ""
+            ? [{ value: "", label: "Selecciona tu caso" }]
+            : []),
           {
             value: "1",
             label: "Mi pedido está incompleto o faltan piezas",

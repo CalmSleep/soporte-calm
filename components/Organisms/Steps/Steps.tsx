@@ -4,11 +4,11 @@ import Paragraph from "@/components/Atoms/Typography/Text";
 import FloatingInput from "@/components/Molecules/FloatingInput/FloatingInput";
 import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
 import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
+import StepDni from "@/components/Molecules/StepBody/StepDni/StepDni";
 import { da } from "date-fns/locale";
 import React, { useState } from "react";
 
 const Steps = () => {
-  const [isOpen, setIsOpen] = useState(false);
   //datos del usuario hardcode , despues se cambia por peticion
   const datesConfirmed = {
     dni: "41263974",
@@ -59,41 +59,12 @@ const Steps = () => {
         color: "madForMango",
       }}
     >
-      <FloatingInput
-        label="DNI"
-        labelRequired="*"
-        labelRequiredColor="brilliantLiquorice"
-        input={{
-          type: "number",
-          borderColorFocused: "madForMango",
-          placeholder: " ",
-          required: true,
-          colorLabel: "madForMango",
-        }}
-        labelColor="brilliantLiquorice"
-        labelBackgroundColor="white"
-      />
-
+      <StepDni />
       {/* <Paragraph color="brilliantLiquorice">{datesConfirmed.dni}</Paragraph>
       <Paragraph color="brilliantLiquorice">{datesConfirmed.pages}</Paragraph>
       <Paragraph color="brilliantLiquorice">{datesConfirmed.orden}</Paragraph> */}
 
       {/* Esto va a hacer un modulo dinamico, solo estoy haciendo una prueba */}
-
-      {/*  <Button
-        backgroundColor="lead"
-        textColor="drWhite"
-        borderRadius="1000px"
-        fontSize="24px"
-        responsiveMobile={{
-          fontSize: "18px",
-        }}
-        onClick={() => setIsOpen(true)} // ✅ Llamada correcta
-      >
-        Siguiente{" "}
-      Esto va a hacer dinamico en base a que paso reciba, solo estoy haciendo una prueba 
-      </Button>
-      {isOpen && <ModalSteps open={isOpen} setModal={setIsOpen} />}*/}
     </SectionHeader>
   );
 };

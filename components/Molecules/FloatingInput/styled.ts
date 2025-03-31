@@ -25,7 +25,7 @@ export const Label = styled.span<LabelStyledProps>`
 export const Menssage = styled.span<LabelStyledProps>`
   color: ${({ theme, $hasError, $hasRequired }) =>
     $hasError
-      ? theme.colors.red
+      ? theme.colors.rareRed
       : $hasRequired
       ? theme.colors.madForMango
       : theme.colors.brilliantLiquorice};

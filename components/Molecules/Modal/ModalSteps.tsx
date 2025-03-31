@@ -5,9 +5,18 @@ import Button from "@/components/Atoms/Buttons/Button";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import { ContainerModal } from "./styled";
 
-const ModalSteps = ({ open, setModal }: ModalStepsProps) => {
-  const handleClose = (e: React.MouseEvent) => {
-    e.preventDefault();
+const ModalSteps = ({
+  open,
+  setModal,
+  title,
+  paragraph,
+  clicHere,
+  clicText,
+  clicText2,
+  buttonText,
+  onClick,
+}: ModalStepsProps) => {
+  const handleClose = () => {
     if (setModal) {
       setModal(!open);
     }
@@ -21,13 +30,8 @@ const ModalSteps = ({ open, setModal }: ModalStepsProps) => {
           $gap: "20px",
           $borderRadius: "22px",
         }}
-        title="¡Muchas gracias!"
-        paragraph={`Te mandamos un mail al correo asociado a tu DNI: \n
-
-g*************m@gmail.com
-
-Ahí vas a encontrar todos los pedidos que hiciste. Solo tenés que elegir sobre cuál querés avanzar y te vamos a llevar al formulario de soporte personalizado para esa orden. 🚀
-`}
+        title={title || ""}
+        paragraph={paragraph}
         titleStyles={{
           color: "lead",
           fontWeight: 600,
@@ -41,12 +45,17 @@ Ahí vas a encontrar todos los pedidos que hiciste. Solo tenés que elegir sobre
           },
         }}
       >
-        <Paragraph textTag="p" color="brilliantLiquorice">
-          Si el correo registrado ya no es accesible,{" "}
-          <Paragraph textTag="span" textDecoration="underline">
-            hace clic acá.
+        {clicHere && (
+          <Paragraph textTag="p" color="brilliantLiquorice">
+            {clicText}{" "}
+            <span
+              style={{ textDecoration: "underline", cursor: "pointer" }}
+              onClick={onClick && onClick}
+            >
+              <Paragraph textTag="span">{clicText2}</Paragraph>
+            </span>
           </Paragraph>
-        </Paragraph>
+        )}
         <Button
           backgroundColor="lead"
           textColor="drWhite"
@@ -57,7 +66,7 @@ Ahí vas a encontrar todos los pedidos que hiciste. Solo tenés que elegir sobre
           }}
           onClick={handleClose}
         >
-          Aceptar
+          {buttonText}
         </Button>
       </SectionHeader>
     </ContainerModal>
