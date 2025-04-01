@@ -15,6 +15,7 @@ import { onGetOrdesDni } from "@/state/order/orderActions";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrdensDni } from "@/state/order/orderSelector";
 import { getLoadingGetOrderDni } from "@/state/loading/loadingSelector";
+import { sendEmailOrderDni } from "@/state/order/orderServices";
 
 const StepDni = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,6 @@ const StepDni = () => {
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [showRequiredMessage, setShowRequiredMessage] = useState<boolean>(true);
   const data = useSelector(getOrdensDni);
-  console.log(data);
 
   const loading = useSelector(getLoadingGetOrderDni);
 
@@ -51,26 +51,26 @@ const StepDni = () => {
     }
   };
 
-  // const sendEmail = async () => {
-  //   try {
-  //     if (data.email && data.data.length > 0) {
-  //       console.log(emailResponse(data.data));
+  const sendEmail = async () => {
+    try {
+      if (data && data.length > 0) {
+        console.log(data);
 
-  //       const dataMail = emailResponse(data.data);
-  //       console.log(dataMail);
+        const response = await sendEmailOrderDni(data);
+        console.log(response);
 
-  //       const response = await sendEmailOrderDni(dataMail);
-  //       console.log(response);
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //     console.log(error);
-  //   }
-  // };
+        // console.log(response);
+      }
+    } catch (error) {
+      console.error(error);
+      console.log(error);
+    }
+  };
 
   const handleDni = async () => {
     try {
       await dispatch(onGetOrdesDni(inputValue.dni.toString()));
+      sendEmail();
     } catch (error) {
       console.error(error);
     } finally {

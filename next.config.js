@@ -4,12 +4,12 @@ const nextConfig = {
     version: process.env.BUILD_ID,
   },
   transpilePackages: ["three"],
-  reactStrictMode: false,
+  reactStrictMode: true,
 
   swcMinify: true,
   compiler: {
     styledComponents: true,
-    removeConsole: true,
+    removeConsole: false,
   },
   images: {
     remotePatterns: [
