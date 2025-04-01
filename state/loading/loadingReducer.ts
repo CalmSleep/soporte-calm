@@ -45,9 +45,10 @@ import {
   ON_ADD_OR_REMOVE_EDE_FROM_CART_START,
   ON_ADD_OR_REMOVE_EDE_FROM_CART_FINISHED,
   ON_GET_KLAVIYO_SUSCRIBERS_START,
-  ON_GET_KLAVIYO_SUSCRIBERS_FINISHED
+  ON_GET_KLAVIYO_SUSCRIBERS_FINISHED,
+  ON_LOADING_GET_DNI_START,
+  ON_LOADING_GET_DNI_FINISHED,
 } from "./loadingConstants";
-
 
 import { ILoadingState } from "./types";
 
@@ -55,7 +56,6 @@ const initialState: ILoadingState = {};
 
 export default (state = initialState, action: AnyAction) => {
   switch (action.type) {
-
     case ON_GET_KLAVIYO_SUSCRIBERS_START:
       return {
         ...state,
@@ -92,16 +92,16 @@ export default (state = initialState, action: AnyAction) => {
         loadingPay: true,
       };
     case ON_POPUP_LOADING_START:
-        return {
-            ...state,
-            loadingPopupEmail: true
-        };
+      return {
+        ...state,
+        loadingPopupEmail: true,
+      };
 
     case ON_GET_CART_LOADING_START:
-        return {
-            ...state,
-            loadingGetCart: true
-        };
+      return {
+        ...state,
+        loadingGetCart: true,
+      };
 
     case ON_ADD_TO_CART_LOADING_START:
       return {
@@ -196,6 +196,11 @@ export default (state = initialState, action: AnyAction) => {
         ...state,
         loadingKlaviyoSuscribers: true,
       };
+    case ON_LOADING_GET_DNI_START:
+      return {
+        ...state,
+        loadingGetOrderDni: true,
+      };
 
     case ON_GET_CART_LOADING_FINISHED:
       return {
@@ -208,20 +213,20 @@ export default (state = initialState, action: AnyAction) => {
         loadingAddToCart: false,
       };
     case ON_GET_CART_LOADING_FINISHED:
-        return {
-            ...state,
-            loadingGetCart: false
-        };
+      return {
+        ...state,
+        loadingGetCart: false,
+      };
     case ON_UPDATE_TO_CART_LOADING_FINISHED:
       return {
         ...state,
         loadingUpdateToCart: false,
       };
     case ON_BIG_BANNER_LOADING_START:
-        return {
-            ...state,
-            loadingBigBannerEmail: true
-        };
+      return {
+        ...state,
+        loadingBigBannerEmail: true,
+      };
 
     case ON_DELETE_TO_CART_LOADING_FINISHED:
       return {
@@ -288,18 +293,18 @@ export default (state = initialState, action: AnyAction) => {
       };
     case ON_PAY_LOADING_FINISHED:
       return {
-          ...state,
-          loadingPay: false
+        ...state,
+        loadingPay: false,
       };
     case ON_BIG_BANNER_LOADING_FINISHED:
       return {
-          ...state,
-          loadingBigBannerEmail: false
+        ...state,
+        loadingBigBannerEmail: false,
       };
     case ON_POPUP_LOADING_FINISHED:
       return {
-          ...state,
-          loadingPopupEmail: false
+        ...state,
+        loadingPopupEmail: false,
       };
     case ON_RDC_LOADING_FINISHED:
       return {
@@ -320,7 +325,7 @@ export default (state = initialState, action: AnyAction) => {
       return {
         ...state,
         loadingPaymentRedirect: false,
-      };  
+      };
     case ON_FORGOTTEN_EMAIL_LOADING_FINISHED:
       return {
         ...state,
@@ -335,6 +340,11 @@ export default (state = initialState, action: AnyAction) => {
       return {
         ...state,
         loadingKlaviyoSuscribers: false,
+      };
+    case ON_LOADING_GET_DNI_FINISHED:
+      return {
+        ...state,
+        loadingGetOrderDni: false,
       };
     default:
       return state;

@@ -44,7 +44,9 @@ import {
   ON_ADD_OR_REMOVE_EDE_FROM_CART_START,
   ON_ADD_OR_REMOVE_EDE_FROM_CART_FINISHED,
   ON_GET_KLAVIYO_SUSCRIBERS_START,
-  ON_GET_KLAVIYO_SUSCRIBERS_FINISHED
+  ON_GET_KLAVIYO_SUSCRIBERS_FINISHED,
+  ON_LOADING_GET_DNI_START,
+  ON_LOADING_GET_DNI_FINISHED,
 } from "./loadingConstants";
 
 export const onGetForgottenEmailLoadingStart = () => ({
@@ -176,56 +178,64 @@ export const onCheckOutNewsLoadingFinished = () => ({
 });
 
 export const onBigBannerLoadingStart = () => ({
-    type: ON_BIG_BANNER_LOADING_START
+  type: ON_BIG_BANNER_LOADING_START,
 });
 
 export const onBigBannerLoadingFinished = () => ({
-    type: ON_BIG_BANNER_LOADING_FINISHED
+  type: ON_BIG_BANNER_LOADING_FINISHED,
 });
 
 export const onPopupLoadingStart = () => ({
-    type: ON_POPUP_LOADING_START
+  type: ON_POPUP_LOADING_START,
 });
 
 export const onPopupLoadingFinished = () => ({
-    type: ON_POPUP_LOADING_FINISHED
+  type: ON_POPUP_LOADING_FINISHED,
 });
 
 export const onRDCLoadingStart = () => ({
-  type: ON_RDC_LOADING_START
+  type: ON_RDC_LOADING_START,
 });
 
 export const onRDCLoadingFinished = () => ({
-  type: ON_RDC_LOADING_FINISHED
+  type: ON_RDC_LOADING_FINISHED,
 });
 export const onRedirectLoadingStart = () => ({
-  type: ON_REDIRECT_LOADING_START
+  type: ON_REDIRECT_LOADING_START,
 });
 
 export const onRedirectLoadingFinished = () => ({
-  type: ON_REDIRECT_LOADING_FINISHED
+  type: ON_REDIRECT_LOADING_FINISHED,
 });
 
 export const onRedirectPaymentLoadingStart = () => ({
-  type: ON_REDIRECT_PAYMENT_LOADING_START
-})
+  type: ON_REDIRECT_PAYMENT_LOADING_START,
+});
 
 export const onRedirectPaymentLoadingFinished = () => ({
-  type: ON_REDIRECT_PAYMENT_LOADING_FINISHED
-})
+  type: ON_REDIRECT_PAYMENT_LOADING_FINISHED,
+});
 
 export const onAddOrRemoveEdeFromCartStart = () => ({
-  type: ON_ADD_OR_REMOVE_EDE_FROM_CART_START
-})
+  type: ON_ADD_OR_REMOVE_EDE_FROM_CART_START,
+});
 
 export const onAddOrRemoveEdeFromCartFinished = () => ({
-  type: ON_ADD_OR_REMOVE_EDE_FROM_CART_FINISHED
-})
+  type: ON_ADD_OR_REMOVE_EDE_FROM_CART_FINISHED,
+});
 
 export const onGetKlaviyoSuscribersStart = () => ({
-  type: ON_GET_KLAVIYO_SUSCRIBERS_START
-})
+  type: ON_GET_KLAVIYO_SUSCRIBERS_START,
+});
 
 export const onGetKlaviyoSuscribersFinished = () => ({
-  type: ON_GET_KLAVIYO_SUSCRIBERS_FINISHED
-})
+  type: ON_GET_KLAVIYO_SUSCRIBERS_FINISHED,
+});
+
+export const onLoadingGetDniStart = () => ({
+  type: ON_LOADING_GET_DNI_START,
+});
+
+export const onLoadingGetDniFinished = () => ({
+  type: ON_LOADING_GET_DNI_FINISHED,
+});

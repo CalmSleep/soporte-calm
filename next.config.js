@@ -5,9 +5,11 @@ const nextConfig = {
   },
   transpilePackages: ["three"],
   reactStrictMode: true,
+
   swcMinify: true,
   compiler: {
     styledComponents: true,
+    removeConsole: true,
   },
   images: {
     remotePatterns: [

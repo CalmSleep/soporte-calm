@@ -3,7 +3,7 @@ import Titles from "@/components/Atoms/Typography/Titles";
 import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
 import SocialNetworks from "@/components/Molecules/SocialNetworks/SocialNetworks";
 import React from "react";
-import { ContainerHero } from "./styled";
+import { Container, ContainerHero } from "./styled";
 
 const HeroForm = () => {
   return (
@@ -14,6 +14,24 @@ const HeroForm = () => {
         height="404px"
         objectFit="cover"
       />
+
+      <Container>
+        <Titles
+          align="center"
+          fontSize="107.331px"
+          fontWeight={600}
+          letterSpacing="-3.22px"
+          color="white"
+          responsiveMobile={{
+            fontSize: "48px",
+            lineHeight: "55.2px",
+            letterSpacing: "-1.44px",
+          }}
+        >
+          Soporte
+        </Titles>
+      </Container>
+
       <SectionHeader
         sectionHeaderStyles={{
           $backgroundColor: "whiteEdgar",
@@ -55,28 +73,6 @@ const HeroForm = () => {
         <SocialNetworks />
       </SectionHeader>
     </ContainerHero>
-    // <div>
-    //   <div className="hero">
-    //     <Images
-    //       src="https://s3-alpha-sig.figma.com/img/79dc/84f7/b2c51e99b7fc48fb51c2201b5874f965?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=DjOdCeMTGd9d2T3f1tedwBOgTLMYkUSA3kCA3VujXRnMn6Zn4TjqOGYALCoKMAW-aLGd9-cu1iOni1rRDAp5RZea2haFXWttoVGDpSND1fFIqLAE8c8l8NTiH5vo0lRjEXPbR-KxD-HCe6lq9bI-DkPnKBCbvy~xphPhcWsQ7moucYHmI8C~8dJMD8nw7XLVbjz4ZbkW2mYG-KJ3kwx-qGjeqcxgRyl8E8XFrhldXzkdxu0KkCkAhxgToT-9ifoEyESDznKu9vHp6aGGzsI1M3oeLidaxA7kyfsZ0~T-PELmvqAwFvULqi8N5jxWknEjbLxlnKTFi2awGlx7KINbyw__"
-    //       alt="logo"
-    //       height="404px"
-    //       objectFit="cover"
-    //       responsiveMobile={{
-    //         width: "399px",
-    //       }}
-    //     />
-    //   </div>
-    //   <Titles
-    //     align="center"
-    //     fontSize="107.331px"
-    //     fontWeight={600}
-    //     letterSpacing="-3.22px"
-    //     //  color="white"
-    //   >
-    //     Soporte
-    //   </Titles>
-    // </div>
   );
 };
 

@@ -43,9 +43,12 @@ main {
   font-style: normal;
 }
 
-.hero {
+.container {
   display: flex;
+  padding: 25px;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 /* 
 @font-face {

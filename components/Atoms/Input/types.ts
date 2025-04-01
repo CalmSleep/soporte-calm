@@ -8,7 +8,7 @@ export type InputProps = {
   type?: string;
   name?: string;
   placeholder?: string;
-  value?: string;
+  value?: string | number;
   onFocus?: (e: ChangeEvent<HTMLInputElement>) => void;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;

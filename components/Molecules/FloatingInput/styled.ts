@@ -12,6 +12,7 @@ export const InputWrapper = styled.div`
 export const Label = styled.span<LabelStyledProps>`
   position: absolute;
   left: 15px;
+  top: ${({ $isFocused, $input }) => ($isFocused || $input ? "14px" : "10px")};
   pointer-events: none;
   transition: 0.3s ease all;
   padding: 5px;
@@ -19,4 +20,14 @@ export const Label = styled.span<LabelStyledProps>`
     $backgroundColor ? $backgroundColor : "white"};
   color: ${({ theme, $color }) =>
     $color ? theme.colors[$color] : theme.colors.brilliantLiquorice};
+`;
+
+export const Menssage = styled.span<LabelStyledProps>`
+  color: ${({ theme, $hasError, $hasRequired }) =>
+    $hasError
+      ? theme.colors.rareRed
+      : $hasRequired
+      ? theme.colors.madForMango
+      : theme.colors.brilliantLiquorice};
+  transition: 0.3s ease all;
 `;

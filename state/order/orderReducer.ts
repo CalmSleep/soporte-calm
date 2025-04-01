@@ -33,7 +33,9 @@ import {
   ON_GET_DEFINE_PAYMENT_METHOD,
   ON_GET_TOTAL_WITH_TRANFER_DISCOUNT,
   ON_SET_DATE_TEST,
-  ON_SET_TOKEN_ERROR_MESSAGE
+  ON_SET_TOKEN_ERROR_MESSAGE,
+  ON_GET_ORDEN_DNI_SUCCEEDED,
+  ON_GET_ORDEN_DNI_FAILED,
 } from "./orderConstants";
 
 const initialState: IOrderState = {};
@@ -46,11 +48,11 @@ export default (state = initialState, action: AnyAction) => {
         dataToken: action.dataToken,
       };
 
-      case ON_GET_TOTAL_WITH_TRANFER_DISCOUNT:
-        return {
-          ...state,
-          totalWithTranferDiscount: action.totalWithTranferDiscount,
-        };
+    case ON_GET_TOTAL_WITH_TRANFER_DISCOUNT:
+      return {
+        ...state,
+        totalWithTranferDiscount: action.totalWithTranferDiscount,
+      };
 
     case ON_GET_FORGOTTEN_EMAIL_SUCCEEDED:
       return {
@@ -84,19 +86,19 @@ export default (state = initialState, action: AnyAction) => {
     case ON_GET_DEFINE_PAYMENT_METHOD:
       return {
         ...state,
-        paymentMethod: action.paymentMethod
-      }
+        paymentMethod: action.paymentMethod,
+      };
     case ON_DEFINE_CHECKOUT_PATH_SUCCEEDED:
       return {
         ...state,
-        pathCheckout: action.path
-      }
+        pathCheckout: action.path,
+      };
 
     case ON_GET_PUBLIC_IP_SUCCEEDED:
       return {
         ...state,
-        ipClient: action.ip_client
-      }
+        ipClient: action.ip_client,
+      };
 
     case ON_SEND_ORDER_DATA_SUCCEEDED:
       return {
@@ -133,18 +135,23 @@ export default (state = initialState, action: AnyAction) => {
     case ON_VERIFY_ORDER_EXIST_SUCCEEDED:
       return {
         ...state,
-        orderExist: action.orderExist
-      }
+        orderExist: action.orderExist,
+      };
     case ON_SET_CHECKOUT_ONLY_TO_PAY:
       return {
         ...state,
-        checkoutOnlyToPay: action.checkoutOnlyToPay
-      }
+        checkoutOnlyToPay: action.checkoutOnlyToPay,
+      };
     case ON_CLEAN_ORDER_EXISTS:
       return {
         ...state,
-        orderExist: null
-      }
+        orderExist: null,
+      };
+    case ON_GET_ORDEN_DNI_SUCCEEDED:
+      return {
+        ...state,
+        ordensDni: action.orders,
+      };
     case ON_VERIFY_ORDER_EXIST_FAILED:
     case ON_GET_ORDER_FAILED:
     case ON_GET_SEGUIMIENTO_FAILED:
@@ -155,6 +162,7 @@ export default (state = initialState, action: AnyAction) => {
     case ON_GET_FORGOTTEN_EMAIL_FAILED:
     case ON_GET_PUBLIC_IP_FAILED:
     case ON_GET_CPCABA_FAILED:
+    case ON_GET_ORDEN_DNI_FAILED:
       return {
         ...state,
         error: true,
@@ -162,18 +170,19 @@ export default (state = initialState, action: AnyAction) => {
     case ON_GET_ALL_CPS_SUCCEEDED:
       return {
         ...state,
-        noShippingCPs: action.noShippingCPs
-      }
+        noShippingCPs: action.noShippingCPs,
+      };
     case ON_SET_DATE_TEST:
       return {
         ...state,
-        date_test: action.date_test
+        date_test: action.date_test,
       };
     case ON_SET_TOKEN_ERROR_MESSAGE:
       return {
         ...state,
-        tokenErrorMessage: action.tokenErrorMessage
-      }
+        tokenErrorMessage: action.tokenErrorMessage,
+      };
+
     default:
       return state;
   }

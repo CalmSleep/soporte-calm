@@ -1,5 +1,5 @@
 import Input from "@/components/Atoms/Input/Input";
-import { InputWrapper, Label } from "./styled";
+import { InputWrapper, Label, Menssage } from "./styled";
 import { FloatingInputProps } from "./types";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import { useState } from "react";
@@ -15,6 +15,7 @@ const FloatingInput = ({
   required,
 }: FloatingInputProps) => {
   const [isFocus, setIsFocus] = useState(false);
+
   return (
     <InputWrapper>
       <Input
@@ -22,8 +23,13 @@ const FloatingInput = ({
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
       />
-      <Label $color={labelColor} $backgroundColor={labelBackgroundColor}>
-        {label}
+      <Label
+        $color={labelColor}
+        $backgroundColor={labelBackgroundColor}
+        $input={!!input?.value}
+        $isFocused={isFocus}
+      >
+        {label}{" "}
         <Paragraph
           textTag="span"
           color={isFocus ? input?.colorLabel : labelRequiredColor}
@@ -31,8 +37,10 @@ const FloatingInput = ({
           {labelRequired}
         </Paragraph>
       </Label>
-      {input?.required && !input?.error && isFocus && <span>{required}</span>}
-      {input?.error && <span>{error}</span>}
+      {required && !input?.error && !input?.value && isFocus && (
+        <Menssage $hasRequired>{required}</Menssage>
+      )}
+      {error && <Menssage $hasError>{error}</Menssage>}
     </InputWrapper>
   );
 };

@@ -18,4 +18,7 @@ export type LabelStyledProps = {
   $backgroundColor?: ThemeColors;
   $color?: ThemeColors;
   $isFocused?: boolean;
+  $input?: boolean;
+  $hasError?: boolean;
+  $hasRequired?: boolean;
 };
