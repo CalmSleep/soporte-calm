@@ -3,6 +3,7 @@ import Select from "@/components/Atoms/Select/Select";
 import React, { useState } from "react";
 import Step3 from "../Step3/Step3Option";
 import Step3Option from "../Step3/Step3Option";
+import StepsHeaders from "@/components/Molecules/StepBody/StepsHeader/StepsHeaders";
 
 const Step2 = () => {
   const [valueStep2, setValueStep2] = useState({
@@ -20,9 +21,11 @@ const Step2 = () => {
   console.log(confirmedValue);
 
   return (
-    <div className="container">
-      <h1>Paso 2/4 - Contanos cómo podemos ayudarte</h1>
-      <p>Seleccioná la opción que mejor describa tu caso</p>
+    <StepsHeaders
+      span="Paso 2/4 - "
+      title="Contanos cómo podemos ayudarte"
+      paragraph="Seleccioná la opción que mejor describa tu caso"
+    >
       {confirmedValue === null ? (
         <>
           <Select
@@ -65,7 +68,7 @@ const Step2 = () => {
       {confirmedValue === "1" && <Step3Option />}
       {confirmedValue === "2" && <p>step3opcion2</p>}
       {confirmedValue === "3" && <p>step3opcion3</p>}
-    </div>
+    </StepsHeaders>
   );
 };
 

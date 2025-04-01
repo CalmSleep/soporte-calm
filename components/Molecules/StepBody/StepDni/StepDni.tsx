@@ -10,25 +10,24 @@ import { emailResponse, validateDni } from "./funtions";
 import Button from "@/components/Atoms/Buttons/Button";
 import ModalSteps from "../../Modal/ModalSteps";
 import SkeletonLoader from "../../SkeletonLoader/SkeletonLoader";
-import { getOrderByDni, sendEmailOrderDni } from "@/state/order/orderServices";
 import FloatingInput from "../../FloatingInput/FloatingInput";
+import { onGetOrdesDni } from "@/state/order/orderActions";
+import { useDispatch, useSelector } from "react-redux";
+import { getOrdensDni } from "@/state/order/orderSelector";
+import { getLoadingGetOrderDni } from "@/state/loading/loadingSelector";
 
 const StepDni = () => {
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState<DniInput>({
     dni: Number(),
   });
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [showRequiredMessage, setShowRequiredMessage] = useState<boolean>(true);
+  const data = useSelector(getOrdensDni);
+  console.log(data);
 
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<{
-    data: IOrderResponse[];
-    email: string;
-  }>({
-    data: [],
-    email: "",
-  });
+  const loading = useSelector(getLoadingGetOrderDni);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -52,50 +51,30 @@ const StepDni = () => {
     }
   };
 
-  const sendEmail = async () => {
-    try {
-      if (data.email && data.data.length > 0) {
-        console.log(emailResponse(data.data));
+  // const sendEmail = async () => {
+  //   try {
+  //     if (data.email && data.data.length > 0) {
+  //       console.log(emailResponse(data.data));
 
-        const dataMail = emailResponse(data.data);
-        console.log(dataMail);
+  //       const dataMail = emailResponse(data.data);
+  //       console.log(dataMail);
 
-        const response = await sendEmailOrderDni(dataMail);
-        console.log(response);
-      }
-    } catch (error) {
-      console.error(error);
-      console.log(error);
-    }
-  };
+  //       const response = await sendEmailOrderDni(dataMail);
+  //       console.log(response);
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     console.log(error);
+  //   }
+  // };
 
   const handleDni = async () => {
-    setLoading(true);
     try {
-      const response = await getOrderByDni(inputValue.dni.toString());
-      if (response.data.length > 0 && response.data[0]?.billing?.email) {
-        if (response.data[0]?.billing?.email) {
-          setData({
-            data: response.data,
-            email: "chofiikauffer@gmail.com",
-            //  email: response.data[0].billing.email,
-          });
-          sendEmail();
-        }
-      } else {
-        setData({
-          data: [],
-          email: "",
-        });
-      }
+      await dispatch(onGetOrdesDni(inputValue.dni.toString()));
     } catch (error) {
       console.error(error);
-      setData({
-        data: [],
-        email: "",
-      });
     } finally {
-      setLoading(false);
+      //  setLoading(false);
       setIsOpen(true);
       setInputValue({ dni: 0 });
     }
@@ -163,19 +142,19 @@ const StepDni = () => {
         <ModalSteps
           open={isOpen}
           setModal={setIsOpen}
-          title={data.data.length > 0 ? "¡Muchas gracias!" : "Dni inválido"}
+          title={data && data.length > 0 ? "¡Muchas gracias!" : "Dni inválido"}
           paragraph={
-            data.data.length > 0
+            data && data?.length > 0
               ? `Te mandamos un mail al correo asociado a tu DNI: \n
-${maskEmail(data.email)} \n
-Ahí vas a encontrar todos los pedidos que hiciste. Solo tenés que elegir sobre cuál querés avanzar y te vamos a llevar al formulario de soporte personalizado para esa orden. 🚀
-`
+        ${maskEmail(data && data[0]?.email)} \n
+        Ahí vas a encontrar todos los pedidos que hiciste. Solo tenés que elegir sobre cuál querés avanzar y te vamos a llevar al formulario de soporte personalizado para esa orden. 🚀
+        `
               : `¡No encontramos pedidos con tu DNI, pero no te preocupes, te vamos a ayudar.
-📩 Enviamos automáticamente un mensaje a nuestro asistente virtual para que te ayude a localizar tu pedido y avanzar con la gestión.
+        📩 Enviamos automáticamente un mensaje a nuestro asistente virtual para que te ayude a localizar tu pedido y avanzar con la gestión.
 
-En unos segundos, vas a ver el chat en pantalla. Si tenés tu número de pedido a mano, podés pasárselo directamente para agilizar el proceso.`
+        En unos segundos, vas a ver el chat en pantalla. Si tenés tu número de pedido a mano, podés pasárselo directamente para agilizar el proceso.`
           }
-          clicHere={data.data.length > 0 ? true : false}
+          clicHere={data && data.length > 0 ? true : false}
           clicText="Si el correo registrado ya no es accesible,"
           clicText2="hace clic acá."
           buttonText="Aceptar"

@@ -1,3 +1,4 @@
+import { IOrdenMail } from "@/components/Molecules/StepBody/StepDni/types";
 import {
   onGetCardInfoLoadingFinished,
   onGetCardInfoLoadingStart,
@@ -7,7 +8,9 @@ import {
   onRedirectLoadingStart,
   onRedirectLoadingFinished,
   onGetForgottenEmailLoadingStart,
-  onGetForgottenEmailLoadingFinished
+  onGetForgottenEmailLoadingFinished,
+  onLoadingGetDniFinished,
+  onLoadingGetDniStart,
 } from "../loading/loadingActions";
 import {
   ON_GET_CARD_INFO_FAILED,
@@ -43,7 +46,9 @@ import {
   ON_GET_DEFINE_PAYMENT_METHOD,
   ON_GET_TOTAL_WITH_TRANFER_DISCOUNT,
   ON_SET_DATE_TEST,
-  ON_SET_TOKEN_ERROR_MESSAGE
+  ON_SET_TOKEN_ERROR_MESSAGE,
+  ON_GET_ORDEN_DNI_SUCCEEDED,
+  ON_GET_ORDEN_DNI_FAILED,
 } from "./orderConstants";
 import {
   getSeguimiento,
@@ -59,14 +64,19 @@ import {
   getForgottenEmail,
   getPublicIpClient,
   getCpCaba,
-  getNoShippingCPs
+  getNoShippingCPs,
+  getOrderByDni,
 } from "./orderServices";
-import { ICardError, ICardInfo, POSSIBLE_TOKEN_ERROR, TOKEN_ERROR_MESSAGE } from "./types";
+import {
+  ICardError,
+  ICardInfo,
+  POSSIBLE_TOKEN_ERROR,
+  TOKEN_ERROR_MESSAGE,
+} from "./types";
+import { emailResponse } from "@/components/Molecules/StepBody/StepDni/funtions";
 
 export const onGetOrder = (id: string, order_key: string) => {
   return async (dispatch: any) => {
-  
-
     const response = await getOrder(id, order_key);
     if (response) {
       dispatch(onGetOrderSucceeded(response));
@@ -78,17 +88,20 @@ export const onGetOrder = (id: string, order_key: string) => {
   };
 };
 
-export const onGetSeguimientoAction = (orden: string, seguimiento_email: string) => {
+export const onGetSeguimientoAction = (
+  orden: string,
+  seguimiento_email: string
+) => {
   return async (dispatch: any) => {
-    dispatch(onRedirectLoadingStart())
+    dispatch(onRedirectLoadingStart());
     const response = await getSeguimiento(seguimiento_email, orden);
 
     if (response && response.status == 200) {
       dispatch(onGetSeguimientoSucceeded(response.data));
-      dispatch(onRedirectLoadingFinished())
+      dispatch(onRedirectLoadingFinished());
     } else {
       dispatch(onGetSeguimientoFailed());
-      dispatch(onRedirectLoadingFinished())
+      dispatch(onRedirectLoadingFinished());
     }
   };
 };
@@ -109,16 +122,18 @@ export const onGetCardInfo = (bin: number | string) => {
 };
 
 export const onSendOrderData = (data: any) => {
-  
   return async (dispatch: any) => {
     const response = await onSendOrderAndPaymentData(data);
-    
+
     if (response?.success === 1) {
       dispatch(onSendOrderDataSucceeded(response));
-      return response.result
+      return response.result;
     } else {
-      if(response?.success == 0 && POSSIBLE_TOKEN_ERROR.includes(response?.message)) {
-        dispatch(onSetTokenErrorMessage(TOKEN_ERROR_MESSAGE))
+      if (
+        response?.success == 0 &&
+        POSSIBLE_TOKEN_ERROR.includes(response?.message)
+      ) {
+        dispatch(onSetTokenErrorMessage(TOKEN_ERROR_MESSAGE));
       }
       dispatch(onSendOrderDataFailed(response));
       return response.result;
@@ -127,27 +142,29 @@ export const onSendOrderData = (data: any) => {
 };
 
 export const onSendOrderLinkToPayData = (data: any) => {
-  
   return async (dispatch: any) => {
     const response = await onSendLinkToPayOrderAndPaymentData(data);
-    
+
     if (response?.success === 1) {
       dispatch(onSendOrderDataSucceeded(response));
-      return response.result
+      return response.result;
     } else {
-      if(response?.success == 0 && POSSIBLE_TOKEN_ERROR.includes(response?.message)) {
-        dispatch(onSetTokenErrorMessage(TOKEN_ERROR_MESSAGE))
+      if (
+        response?.success == 0 &&
+        POSSIBLE_TOKEN_ERROR.includes(response?.message)
+      ) {
+        dispatch(onSetTokenErrorMessage(TOKEN_ERROR_MESSAGE));
       }
       dispatch(onSendOrderDataFailed(response));
-      return response.result
+      return response.result;
     }
   };
 };
 
 export const onSetTokenErrorMessage = (tokenErrorMessage?: string) => ({
   type: ON_SET_TOKEN_ERROR_MESSAGE,
-  tokenErrorMessage
-})
+  tokenErrorMessage,
+});
 
 export const onClearError = () => {
   return async (dispatch: any) => {
@@ -167,10 +184,14 @@ export const onGetCpFlota = () => {
   };
 };
 
-export const onGetDeliveryTimes = (date: string, postcode: string, ede: boolean) => {
+export const onGetDeliveryTimes = (
+  date: string,
+  postcode: string,
+  ede: boolean
+) => {
   return async (dispatch: any) => {
     const response = await getDeliveryTimes(date, postcode, ede);
-    
+
     if (response) {
       dispatch(onGetDeliveryTimesSucceeded(response));
     } else {
@@ -181,9 +202,8 @@ export const onGetDeliveryTimes = (date: string, postcode: string, ede: boolean)
 
 export const onGetCheckoutOnlyToPay = (checkoutOnlyToPay: boolean) => ({
   type: ON_SET_CHECKOUT_ONLY_TO_PAY,
-  checkoutOnlyToPay
-})
-
+  checkoutOnlyToPay,
+});
 
 export const onGetTokenCheckout = () => {
   return async (dispatch: any) => {
@@ -207,7 +227,7 @@ export const onVerifyOrderExistReq = (order_id: number, order_key: string) => {
       dispatch(onVerifyOrderExistFailed());
     }
   };
-}
+};
 
 export const onGetRDC = (mail: string) => {
   return async (dispatch: any) => {
@@ -219,36 +239,59 @@ export const onGetRDC = (mail: string) => {
       dispatch(onGetRDCFailed());
     }
   };
-}
+};
 
 export const onGetTotalWithTranferDiscount = (total: number) => {
   return async (dispatch: any) => {
     dispatch(onGetTotalWithTranferDiscountSucceeded(total));
   };
-}
+};
 
-const onGetTotalWithTranferDiscountSucceeded = (totalWithTranferDiscount: any) => ({
+const onGetTotalWithTranferDiscountSucceeded = (
+  totalWithTranferDiscount: any
+) => ({
   type: ON_GET_TOTAL_WITH_TRANFER_DISCOUNT,
   totalWithTranferDiscount,
 });
 
-
 export const onGetForgottenEmail = (mail: string) => {
   return async (dispatch: any) => {
-    dispatch(onRedirectLoadingStart())
+    dispatch(onRedirectLoadingStart());
     const response = await getForgottenEmail(mail);
 
     if (response) {
       dispatch(onGetForgottenEmailSucceeded(response));
-    dispatch(onRedirectLoadingFinished())
-
+      dispatch(onRedirectLoadingFinished());
     } else {
       dispatch(onGetForgottenEmailFailed());
-    dispatch(onRedirectLoadingFinished())
-
+      dispatch(onRedirectLoadingFinished());
     }
   };
-}
+};
+
+export const onGetOrdesDni = (dni: string) => {
+  return async (dispatch: any) => {
+    dispatch(onLoadingGetDniStart());
+
+    try {
+      const response = await getOrderByDni(dni);
+
+      if (response && Array.isArray(response.data)) {
+        const transformedData = emailResponse(response.data);
+        dispatch(onGetOrderByDni(transformedData));
+        dispatch(onLoadingGetDniFinished());
+      } else {
+        console.error("Error: La respuesta no es un array", response);
+        dispatch(onGetOrderByDniFailed());
+        dispatch(onLoadingGetDniFinished());
+      }
+    } catch (error) {
+      console.error("Error obteniendo orden por DNI:", error);
+      dispatch(onGetOrderByDniFailed());
+      dispatch(onLoadingGetDniFinished());
+    }
+  };
+};
 
 const onGetForgottenEmailSucceeded = (forgottenEmail: any) => ({
   type: ON_GET_FORGOTTEN_EMAIL_SUCCEEDED,
@@ -258,7 +301,6 @@ const onGetForgottenEmailSucceeded = (forgottenEmail: any) => ({
 const onGetForgottenEmailFailed = () => ({
   type: ON_GET_FORGOTTEN_EMAIL_FAILED,
 });
-
 
 const onGetRDCSucceeded = (rdcData: any) => ({
   type: ON_GET_RDC_SUCCEEDED,
@@ -312,7 +354,7 @@ const onSendOrderDataSucceeded = (orderData: any) => ({
 
 export const onSendOrderDataFailed = (transactionError: any) => ({
   type: ON_SEND_ORDER_DATA_FAILED,
-  transactionError
+  transactionError,
 });
 
 const onGetCpFlotaSucceeded = (cpFlota: any) => ({
@@ -338,20 +380,18 @@ const onVerifyOrderExistSucceeded = (orderExist: any) => ({
   orderExist,
 });
 
-
 const onVerifyOrderExistFailed = () => ({
   type: ON_VERIFY_ORDER_EXIST_FAILED,
 });
 
 const onClearErrorSucceeded = (transactionError: any) => ({
   type: ON_SEND_CLEAR_ERROR,
-  transactionError
+  transactionError,
 });
 
-
 export const onCleanInfoOrderExists = () => ({
-  type: ON_CLEAN_ORDER_EXISTS
-})
+  type: ON_CLEAN_ORDER_EXISTS,
+});
 
 export const onGetPublicIpClient = () => {
   return async (dispatch: any) => {
@@ -359,21 +399,18 @@ export const onGetPublicIpClient = () => {
       const response = await getPublicIpClient();
 
       if (response) {
-      dispatch(onGetPublicIpClientSucceeded(response))
+        dispatch(onGetPublicIpClientSucceeded(response));
       } else {
         dispatch(onGetPublicIpClientFailed());
       }
-    } catch (error) {
-    }
-
+    } catch (error) {}
   };
-}
+};
 
 const onGetPublicIpClientSucceeded = (ip_client: any) => ({
   type: ON_GET_PUBLIC_IP_SUCCEEDED,
   ip_client,
 });
-
 
 const onGetPublicIpClientFailed = () => ({
   type: ON_GET_PUBLIC_IP_FAILED,
@@ -382,17 +419,19 @@ const onGetPublicIpClientFailed = () => ({
 export const onDefineCheckoutPath = () => {
   return (dispatch: any) => {
     const sessionCheckoutPath = sessionStorage.getItem("checkoutPath");
-    if(sessionCheckoutPath) {
-      dispatch(onDefineCheckoutSucceeded(sessionCheckoutPath))
-     } else {
-        const pathCheckout = Math.random() < Number(process.env.NEXT_PUBLIC_CHECKOUT_HEADLESS_RATIO) ? "checkout-pago" : "pago";
-        sessionStorage.setItem("checkoutPath", pathCheckout)
-        dispatch(onDefineCheckoutSucceeded(pathCheckout))
-     }
+    if (sessionCheckoutPath) {
+      dispatch(onDefineCheckoutSucceeded(sessionCheckoutPath));
+    } else {
+      const pathCheckout =
+        Math.random() < Number(process.env.NEXT_PUBLIC_CHECKOUT_HEADLESS_RATIO)
+          ? "checkout-pago"
+          : "pago";
+      sessionStorage.setItem("checkoutPath", pathCheckout);
+      dispatch(onDefineCheckoutSucceeded(pathCheckout));
+    }
     //0.9 90% headless 10% woo 0.1 90% woo 10% headless
-    
   };
-}
+};
 
 const onDefineCheckoutSucceeded = (path: string) => ({
   type: ON_DEFINE_CHECKOUT_PATH_SUCCEEDED,
@@ -401,27 +440,30 @@ const onDefineCheckoutSucceeded = (path: string) => ({
 
 export const onGetDefinePaymentMethod = () => {
   return (dispatch: any) => {
-    const sessionPaymentMethod = sessionStorage.getItem("CheckoutpaymentMethod");
-    if(sessionPaymentMethod) {
-      dispatch(onGetDefinePaymentMethodSucceeded(sessionPaymentMethod))
-     } else {
-      
-        // Esto se comenta hasta que se haga 50/50 con PW y MP
-        // const paymentMethod = Math.random() < Number(process.env.NEXT_PUBLIC_RATIO_MP) ? "mp" : "fiserv";
-        const paymentMethod = Math.random() < Number(process.env.NEXT_PUBLIC_RATIO_FISERV) ? "fiserv" : "payway";
-        
-        sessionStorage.setItem("CheckoutpaymentMethod", paymentMethod)
-        dispatch(onGetDefinePaymentMethodSucceeded(paymentMethod))
-     }
+    const sessionPaymentMethod = sessionStorage.getItem(
+      "CheckoutpaymentMethod"
+    );
+    if (sessionPaymentMethod) {
+      dispatch(onGetDefinePaymentMethodSucceeded(sessionPaymentMethod));
+    } else {
+      // Esto se comenta hasta que se haga 50/50 con PW y MP
+      // const paymentMethod = Math.random() < Number(process.env.NEXT_PUBLIC_RATIO_MP) ? "mp" : "fiserv";
+      const paymentMethod =
+        Math.random() < Number(process.env.NEXT_PUBLIC_RATIO_FISERV)
+          ? "fiserv"
+          : "payway";
+
+      sessionStorage.setItem("CheckoutpaymentMethod", paymentMethod);
+      dispatch(onGetDefinePaymentMethodSucceeded(paymentMethod));
+    }
     //0.9 90% mp 10% fiserv 0.1 90% fiserv 10% mp
   };
-}
+};
 
 const onGetDefinePaymentMethodSucceeded = (paymentMethod: string) => ({
   type: ON_GET_DEFINE_PAYMENT_METHOD,
   paymentMethod,
 });
-
 
 export const onGetCpsCaba = () => {
   return async (dispatch: any) => {
@@ -431,10 +473,9 @@ export const onGetCpsCaba = () => {
       dispatch(onGetCpsCabaSucceeded(response.data.data));
     } else {
       dispatch(onGetCpsCabaFailed());
-
     }
   };
-}
+};
 
 const onGetCpsCabaSucceeded = (cpCaba: any) => ({
   type: ON_GET_CPCABA_SUCCEEDED,
@@ -455,7 +496,7 @@ export const onGetNoShippingCPs = () => {
       dispatch(onGetNoShippingCPsFailed());
     }
   };
-}
+};
 
 const onGetNoShippingCPsSucceeded = (noShippingCPs: any) => ({
   type: ON_GET_ALL_CPS_SUCCEEDED,
@@ -469,4 +510,13 @@ const onGetNoShippingCPsFailed = () => ({
 export const onSetDateTestSuccess = (date_test: string) => ({
   type: ON_SET_DATE_TEST,
   date_test,
+});
+
+export const onGetOrderByDni = (orders: IOrdenMail[]) => ({
+  type: ON_GET_ORDEN_DNI_SUCCEEDED,
+  orders,
+});
+
+export const onGetOrderByDniFailed = () => ({
+  type: ON_GET_ORDEN_DNI_FAILED,
 });
