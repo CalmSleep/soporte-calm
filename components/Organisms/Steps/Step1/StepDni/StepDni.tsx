@@ -1,20 +1,14 @@
 import React, { useState } from "react";
-import {
-  DniInput,
-  IItemOrden,
-  IOrdenMail,
-  IOrderItem,
-  IOrderResponse,
-} from "./types";
-import { emailResponse, validateDni } from "./funtions";
 import Button from "@/components/Atoms/Buttons/Button";
-import ModalSteps from "../../Modal/ModalSteps";
-import SkeletonLoader from "../../SkeletonLoader/SkeletonLoader";
-import FloatingInput from "../../FloatingInput/FloatingInput";
 import { onGetOrdesDni } from "@/state/order/orderActions";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrdensDni } from "@/state/order/orderSelector";
 import { getLoadingGetOrderDni } from "@/state/loading/loadingSelector";
+import FloatingInput from "@/components/Molecules/FloatingInput/FloatingInput";
+import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
+import { validateDni } from "./funtions";
+import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
+import { DniInput } from "./types";
 
 const StepDni = () => {
   const dispatch = useDispatch();

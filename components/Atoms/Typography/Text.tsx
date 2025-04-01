@@ -1,9 +1,12 @@
-import { TypographyProps } from "./types"
-import { TypographyStyled, LinkStyled } from "./styled"
+import { TypographyProps } from "./types";
+import { TypographyStyled, LinkStyled } from "./styled";
 import { useRouter } from "next/router";
-import { onRedirectLoadingStart, onRedirectLoadingFinished} from "@/state/loading/loadingActions"
-import { useDispatch } from "react-redux"
-import { topPage } from '@/utils/topPage';
+import {
+  onRedirectLoadingStart,
+  onRedirectLoadingFinished,
+} from "@/state/loading/loadingActions";
+import { useDispatch } from "react-redux";
+import { topPage } from "@/utils/topPage";
 
 const Paragraph = ({
   textTag = "p",
@@ -26,25 +29,25 @@ const Paragraph = ({
   rel,
   handleClick,
   isNextLink,
-  arialLabel
+  arialLabel,
+  onClick,
 }: TypographyProps) => {
-
- if (link && isNextLink) {
+  if (link && isNextLink) {
     const router = useRouter();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const defaultHandleClick = async (e: any) => {
       e.preventDefault();
-      dispatch(onRedirectLoadingStart())
-      topPage()
+      dispatch(onRedirectLoadingStart());
+      topPage();
       await router.push(link);
       setTimeout(() => {
-        dispatch(onRedirectLoadingFinished())
-      }, 1200)
+        dispatch(onRedirectLoadingFinished());
+      }, 1200);
     };
 
     return (
-        <LinkStyled
+      <LinkStyled
         href={link}
         onClick={(e: any) => {
           if (handleClick) {
@@ -69,10 +72,11 @@ const Paragraph = ({
         $fontWeight={fontWeight}
         target={target}
         aria-label={arialLabel}
-        > 
-         {children}
-        </LinkStyled>
-  )} else {
+      >
+        {children}
+      </LinkStyled>
+    );
+  } else {
     return (
       <TypographyStyled
         as={textTag}
@@ -92,10 +96,11 @@ const Paragraph = ({
         $fontWeight={fontWeight}
         target={target}
         rel={rel}
+        onClick={onClick}
       >
         {children}
       </TypographyStyled>
-    )
+    );
   }
-}
-export default Paragraph
+};
+export default Paragraph;

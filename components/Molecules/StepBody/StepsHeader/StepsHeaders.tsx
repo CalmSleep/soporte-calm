@@ -1,5 +1,4 @@
 import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
-import StepDni from "@/components/Molecules/StepBody/StepDni/StepDni";
 import React, { useState } from "react";
 import { StepHeaderProps } from "./types";
 
@@ -13,8 +12,7 @@ const StepsHeaders = ({
     <SectionHeader
       sectionHeaderStyles={{
         $padding: "40px 400px",
-        $gap: "16px", //  gap dinamico cuando sea por paso
-        // $gap: "5px",
+        $gap: "16px",
         $responsiveMobile: {
           padding: "24px 16px",
           gap: "24px",
