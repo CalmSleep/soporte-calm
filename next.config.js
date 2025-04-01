@@ -4,7 +4,7 @@ const nextConfig = {
     version: process.env.BUILD_ID,
   },
   transpilePackages: ["three"],
-  reactStrictMode: true,
+  reactStrictMode: false,
 
   swcMinify: true,
   compiler: {
