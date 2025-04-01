@@ -22,14 +22,19 @@ const Step2 = () => {
         span="Paso 2/4 - "
         title="Contanos cómo podemos ayudarte"
         paragraph="Seleccioná la opción que mejor describa tu caso"
+        onClick={handleConfirm}
+        value={selectedValue || ""}
+        button
       >
         {confirmedValue === null ? (
-          <StepSelectButton
-            button
-            value={selectedValue || ""}
+          <Select
             onChange={handleOnchangeButton}
-            onClick={handleConfirm}
-            option={[
+            value={selectedValue || ""}
+            options={[
+              ...(selectedValue === ""
+                ? [{ value: "", label: "Selecciona tu caso" }]
+                : []),
+
               {
                 value: "1",
                 label: "Tuve un problema con el o los productos que recibí",
@@ -39,6 +44,20 @@ const Step2 = () => {
             ]}
           />
         ) : (
+          // <StepSelectButton
+          //   button
+          //   value={selectedValue || ""}
+          //   onChange={handleOnchangeButton}
+          //   onClick={handleConfirm}
+          // option={[
+          //   {
+          //     value: "1",
+          //     label: "Tuve un problema con el o los productos que recibí",
+          //   },
+          //   { value: "2", label: "Quiero devolver el producto" },
+          //   { value: "3", label: "Quiero cambiar el producto" },
+          // ]}
+          // />
           <StepInfo
             info={[
               `${

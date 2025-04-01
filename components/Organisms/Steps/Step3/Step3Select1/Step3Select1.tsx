@@ -27,6 +27,7 @@ const Step3Option1 = () => {
           value={selectedValue || ""}
           onChange={handleOnchangeWithoutConfirm}
           onClick={handleConfirm}
+          //  button
           option={[
             {
               value: "1",
@@ -45,8 +46,9 @@ const Step3Option1 = () => {
               label: "Recibí un producto con una falla de fábrica",
             },
           ]}
-        />
-        {selectedValue === "1" && <Select1Option />}
+        >
+          {selectedValue === "1" && <Select1Option />}
+        </StepSelectButton>
       </StepsHeaders>
 
       {selectedValue === "2" && <p>Valor 2</p>}

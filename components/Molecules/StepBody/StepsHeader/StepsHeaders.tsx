@@ -1,12 +1,16 @@
 import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
 import React, { useState } from "react";
 import { StepHeaderProps } from "./types";
+import Button from "@/components/Atoms/Buttons/Button";
 
 const StepsHeaders = ({
   span,
   title,
   paragraph,
   children,
+  value,
+  onClick,
+  button,
 }: StepHeaderProps) => {
   return (
     <SectionHeader
@@ -51,6 +55,20 @@ const StepsHeaders = ({
       }}
     >
       {children}
+      {button && (
+        <Button
+          backgroundColor="lead"
+          textColor="drWhite"
+          borderRadius="1000px"
+          fontSize="24px"
+          responsiveMobile={{ fontSize: "18px" }}
+          disabled={value === null || value === ""}
+          disableStyles={true}
+          onClick={onClick}
+        >
+          Siguiente
+        </Button>
+      )}
     </SectionHeader>
   );
 };

@@ -9,6 +9,7 @@ const StepSelectButton = ({
   onClick,
   option,
   button,
+  children,
 }: StepSelectButtonProps) => {
   return (
     <>
@@ -20,6 +21,7 @@ const StepSelectButton = ({
           ...option,
         ]}
       />
+      {children}
       {button && (
         <Button
           backgroundColor="lead"
