@@ -7,10 +7,7 @@ import { getThankuContent } from "@/state/order/orderSelector";
 import { IOrder } from "@/state/order/types";
 import Paragraph from "@/components/Atoms/Typography/Text";
 
-const Step1 = ({ order, orderKey }: StepDniProps) => {
-  const ordensDni: IOrder = useSelector(getThankuContent);
-  console.log(ordensDni);
-
+const Step1 = ({ order }: StepDniProps) => {
   return (
     <>
       {/* Paso estatico  */}
@@ -18,15 +15,15 @@ const Step1 = ({ order, orderKey }: StepDniProps) => {
         span="Paso 1/4 - "
         title="Datos de tu compra"
         paragraph={
-          order && orderKey
+          order
             ? ""
             : "Dejanos el DNI que usaste en tu compra y el punto de venta donde la realizaste. Con estos datos vamos a buscar tus pedidos y ayudarte a gestionar tu solicitud."
         }
       >
-        {order && orderKey ? (
+        {order ? (
           <div>
             <div className="step">
-              <Paragraph>{ordensDni.number}</Paragraph>
+              <Paragraph>{order}</Paragraph>
               <Paragraph>Sitio web (calmessimple.com)</Paragraph>
               <Paragraph>Pedido #Preguntar</Paragraph>
             </div>
