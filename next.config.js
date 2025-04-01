@@ -9,7 +9,7 @@ const nextConfig = {
   swcMinify: true,
   compiler: {
     styledComponents: true,
-    removeConsole: false,
+    removeConsole: true,
   },
   images: {
     remotePatterns: [
