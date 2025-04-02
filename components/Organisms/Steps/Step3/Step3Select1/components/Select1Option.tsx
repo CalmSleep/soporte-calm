@@ -4,8 +4,9 @@ import AccordionUnit from "@/components/Molecules/AccordionUnit/AccordionUnit";
 import FrequentQuestions from "@/components/Organisms/FrequentQuestions/FrequentQuestions";
 import { DivAccordionUnit } from "@/components/Organisms/FrequentQuestions/styled";
 import React, { useState } from "react";
+import { Select1OptionProps } from "../types";
 
-const Select1Option = () => {
+const Select1Option = ({ onCheckboxChange }: Select1OptionProps) => {
   const items = [
     {
       id: "1",
@@ -46,6 +47,20 @@ const Select1Option = () => {
     },
   ];
   const [activeItems, setActiveItems] = useState<string[]>([]);
+  const [checkboxes, setCheckboxes] = useState<{ [key: string]: boolean }>({});
+
+  // ✅ Función para manejar cambios en los checkboxes
+  const handleCheckboxChange = (name: string) => {
+    setCheckboxes((prev) => {
+      const updated = { ...prev, [name]: !prev[name] };
+
+      // ✅ Avisar al padre si al menos un checkbox está seleccionado
+      const isAnyChecked = Object.values(updated).some((checked) => checked);
+      onCheckboxChange(isAnyChecked);
+
+      return updated;
+    });
+  };
 
   const handleClick = (title: string) => {
     setActiveItems((prev) =>
@@ -58,11 +73,23 @@ const Select1Option = () => {
     <>
       <Paragraph>Seleccioná el producto o las piezas faltantes:</Paragraph>
       <div className="flex">
-        <Input width="16px" type="checkbox" color="mangoTango" height="16px" />
+        <Input
+          width="16px"
+          type="checkbox"
+          color="mangoTango"
+          height="16px"
+          onChange={() => handleCheckboxChange("almohada1")}
+        />
         <Paragraph>Alta almohada (65x35cm)</Paragraph>
       </div>
       <div className="flex">
-        <Input width="16px" type="checkbox" color="mangoTango" height="16px" />
+        <Input
+          width="16px"
+          type="checkbox"
+          color="mangoTango"
+          height="16px"
+          onChange={() => handleCheckboxChange("almohada2")}
+        />
         <Paragraph>Alta almohada (65x35cm)</Paragraph>
       </div>
 
@@ -85,6 +112,7 @@ const Select1Option = () => {
                           type="radio"
                           name={item.name}
                           value={item.value}
+                          onChange={() => handleCheckboxChange(item.name)}
                         />
                         {item.description}
                       </label>
@@ -110,7 +138,13 @@ const Select1Option = () => {
           );
         })}
       <div className="flex">
-        <Input width="16px" type="checkbox" color="mangoTango" height="16px" />
+        <Input
+          width="16px"
+          type="checkbox"
+          color="mangoTango"
+          height="16px"
+          onChange={() => handleCheckboxChange("colchon1")}
+        />
         <Paragraph>Colchón Original Plus (140x190cm)</Paragraph>
       </div>
     </>

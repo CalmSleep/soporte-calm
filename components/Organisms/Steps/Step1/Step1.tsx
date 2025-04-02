@@ -18,7 +18,11 @@ const Step1 = ({ order }: StepDniProps) => {
       >
         {order ? (
           <StepInfo
-            info={[order, "Sitio web (calmessimple.com)", "Pedido #Preguntar"]}
+            info={[
+              "6574126", //numero ramdom o preguntar a Giuli que numero va
+              "Sitio web (calmessimple.com)",
+              `Pedido #${order}`,
+            ]}
             link="/"
           />
         ) : (

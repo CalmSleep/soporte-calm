@@ -1,17 +1,19 @@
-import Button from "@/components/Atoms/Buttons/Button";
 import Select from "@/components/Atoms/Select/Select";
 import React from "react";
 import StepsHeaders from "@/components/Molecules/StepBody/StepsHeader/StepsHeaders";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
-import Step3Option1 from "../Step3/Step3Select1/Step3Select1";
 import useValueSelect from "@/hooks/useValueSelect";
-import StepSelectButton from "@/components/Molecules/StepBody/StepSelectButton/StepSelectButton";
+import Step3Select2 from "../Step3/Step3Select2/Step3Select2";
+import Step3Select1 from "../Step3/Step3Select1/Step3Select1";
+import Step3 from "../Step3/Step3";
 
 const Step2 = () => {
   const {
     confirmedValue,
     selectedValue,
+    handleCheckboxChange,
     handleOnchangeButton,
+    handleOnchangeWithoutConfirm,
     handleConfirm,
     setConfirmedValue,
   } = useValueSelect();
@@ -21,17 +23,21 @@ const Step2 = () => {
       <StepsHeaders
         span="Paso 2/4 - "
         title="Contanos cómo podemos ayudarte"
-        paragraph="Seleccioná la opción que mejor describa tu caso"
+        paragraph={
+          confirmedValue !== null
+            ? ""
+            : "Seleccioná la opción que mejor describa tu caso"
+        }
         onClick={handleConfirm}
         value={selectedValue || ""}
-        button
+        button={confirmedValue === null ? true : false}
       >
         {confirmedValue === null ? (
           <Select
             onChange={handleOnchangeButton}
             value={selectedValue || ""}
             options={[
-              ...(selectedValue === ""
+              ...(selectedValue === null
                 ? [{ value: "", label: "Selecciona tu caso" }]
                 : []),
 
@@ -44,20 +50,6 @@ const Step2 = () => {
             ]}
           />
         ) : (
-          // <StepSelectButton
-          //   button
-          //   value={selectedValue || ""}
-          //   onChange={handleOnchangeButton}
-          //   onClick={handleConfirm}
-          // option={[
-          //   {
-          //     value: "1",
-          //     label: "Tuve un problema con el o los productos que recibí",
-          //   },
-          //   { value: "2", label: "Quiero devolver el producto" },
-          //   { value: "3", label: "Quiero cambiar el producto" },
-          // ]}
-          // />
           <StepInfo
             info={[
               `${
@@ -72,9 +64,7 @@ const Step2 = () => {
           />
         )}
       </StepsHeaders>
-      {confirmedValue === "1" && <Step3Option1 />}
-      {confirmedValue === "2" && <p>step3opcion2</p>}
-      {confirmedValue === "3" && <p>step3opcion3</p>}
+      {confirmedValue !== null && <Step3 valueSelect={confirmedValue} />}
     </>
   );
 };

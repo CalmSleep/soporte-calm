@@ -9,6 +9,7 @@ import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 import { validateDni } from "./funtions";
 import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
 import { DniInput } from "./types";
+import { sendEmailOrderDni } from "@/state/order/orderServices";
 
 const StepDni = () => {
   const dispatch = useDispatch();
@@ -45,26 +46,20 @@ const StepDni = () => {
     }
   };
 
-  // const sendEmail = async () => {
-  //   try {
-  //     if (data.email && data.data.length > 0) {
-  //       console.log(emailResponse(data.data));
-
-  //       const dataMail = emailResponse(data.data);
-  //       console.log(dataMail);
-
-  //       const response = await sendEmailOrderDni(dataMail);
-  //       console.log(response);
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //     console.log(error);
-  //   }
-  // };
+  const sendEmail = async () => {
+    try {
+      if (data && data.length > 0) {
+        await sendEmailOrderDni(data);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleDni = async () => {
     try {
       await dispatch(onGetOrdesDni(inputValue.dni.toString()));
+      sendEmail();
     } catch (error) {
       console.error(error);
     } finally {
