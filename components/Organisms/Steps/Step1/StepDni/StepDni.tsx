@@ -20,7 +20,6 @@ const StepDni = () => {
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [showRequiredMessage, setShowRequiredMessage] = useState<boolean>(true);
   const data = useSelector(getOrdensDni);
-  console.log(data);
 
   const loading = useSelector(getLoadingGetOrderDni);
 
