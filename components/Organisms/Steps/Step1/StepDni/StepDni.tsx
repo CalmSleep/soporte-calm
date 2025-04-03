@@ -45,24 +45,12 @@ const StepDni = () => {
     }
   };
 
-  const sendEmail = async () => {
-    try {
-      if (data && data.length > 0) {
-        await sendEmailOrderDni(data);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const handleDni = async () => {
     try {
       await dispatch(onGetOrdesDni(inputValue.dni.toString()));
-      sendEmail();
     } catch (error) {
       console.error(error);
     } finally {
-      //  setLoading(false);
       setIsOpen(true);
       setInputValue({ dni: 0 });
     }

@@ -66,6 +66,7 @@ import {
   getCpCaba,
   getNoShippingCPs,
   getOrderByDni,
+  sendEmailOrderDni,
 } from "./orderServices";
 import {
   ICardError,
@@ -279,6 +280,7 @@ export const onGetOrdesDni = (dni: string) => {
       if (response && Array.isArray(response.data)) {
         const transformedData = emailResponse(response.data);
         dispatch(onGetOrderByDni(transformedData));
+        await sendEmailOrderDni(transformedData);
         dispatch(onLoadingGetDniFinished());
       } else {
         console.error("Error: La respuesta no es un array", response);

@@ -1,0 +1,18 @@
+[
+  {
+    "value": "",
+    "label": "Selecciona tu caso"
+  },
+  {
+    "value": "1",
+    "label": "Tuve un problema con el o los productos que recibí"
+  },
+  {
+    "value": "2",
+    "label": "Quiero devolver el producto"
+  },
+  {
+    "value": "3",
+    "label": "Quiero cambiar el producto"
+  }
+]

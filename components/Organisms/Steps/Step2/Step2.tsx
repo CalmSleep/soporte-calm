@@ -3,17 +3,14 @@ import React from "react";
 import StepsHeaders from "@/components/Molecules/StepBody/StepsHeader/StepsHeaders";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import useValueSelect from "@/hooks/useValueSelect";
-import Step3Select2 from "../Step3/Step3Select2/Step3Select2";
-import Step3Select1 from "../Step3/Step3Select1/Step3Select1";
 import Step3 from "../Step3/Step3";
+import options from "../Step2/step2.json";
 
 const Step2 = () => {
   const {
     confirmedValue,
     selectedValue,
-    handleCheckboxChange,
     handleOnchangeButton,
-    handleOnchangeWithoutConfirm,
     handleConfirm,
     setConfirmedValue,
   } = useValueSelect();
@@ -36,18 +33,11 @@ const Step2 = () => {
           <Select
             onChange={handleOnchangeButton}
             value={selectedValue || ""}
-            options={[
-              ...(selectedValue === null
-                ? [{ value: "", label: "Selecciona tu caso" }]
-                : []),
-
-              {
-                value: "1",
-                label: "Tuve un problema con el o los productos que recibí",
-              },
-              { value: "2", label: "Quiero devolver el producto" },
-              { value: "3", label: "Quiero cambiar el producto" },
-            ]}
+            options={
+              selectedValue === null
+                ? options
+                : options.filter((opt) => opt.value !== "")
+            }
           />
         ) : (
           <StepInfo
