@@ -1,4 +1,4 @@
-import { IOrdenMail } from "@/components/Molecules/StepBody/StepDni/types";
+import { emailResponse } from "@/components/Organisms/Steps/Step1/StepDni/funtions";
 import {
   onGetCardInfoLoadingFinished,
   onGetCardInfoLoadingStart,
@@ -66,6 +66,7 @@ import {
   getCpCaba,
   getNoShippingCPs,
   getOrderByDni,
+  sendEmailOrderDni,
 } from "./orderServices";
 import {
   ICardError,
@@ -73,7 +74,7 @@ import {
   POSSIBLE_TOKEN_ERROR,
   TOKEN_ERROR_MESSAGE,
 } from "./types";
-import { emailResponse } from "@/components/Molecules/StepBody/StepDni/funtions";
+import { IOrdenMail } from "@/components/Organisms/Steps/Step1/StepDni/types";
 
 export const onGetOrder = (id: string, order_key: string) => {
   return async (dispatch: any) => {
@@ -279,6 +280,7 @@ export const onGetOrdesDni = (dni: string) => {
       if (response && Array.isArray(response.data)) {
         const transformedData = emailResponse(response.data);
         dispatch(onGetOrderByDni(transformedData));
+        await sendEmailOrderDni(transformedData);
         dispatch(onLoadingGetDniFinished());
       } else {
         console.error("Error: La respuesta no es un array", response);

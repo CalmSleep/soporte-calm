@@ -1,20 +1,22 @@
 import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
-import StepDni from "@/components/Molecules/StepBody/StepDni/StepDni";
 import React, { useState } from "react";
 import { StepHeaderProps } from "./types";
+import Button from "@/components/Atoms/Buttons/Button";
 
 const StepsHeaders = ({
   span,
   title,
   paragraph,
   children,
+  value,
+  onClick,
+  button,
 }: StepHeaderProps) => {
   return (
     <SectionHeader
       sectionHeaderStyles={{
         $padding: "40px 400px",
-        $gap: "16px", //  gap dinamico cuando sea por paso
-        // $gap: "5px",
+        $gap: "16px",
         $responsiveMobile: {
           padding: "24px 16px",
           gap: "24px",
@@ -53,6 +55,20 @@ const StepsHeaders = ({
       }}
     >
       {children}
+      {button && (
+        <Button
+          backgroundColor="lead"
+          textColor="drWhite"
+          borderRadius="1000px"
+          fontSize="24px"
+          responsiveMobile={{ fontSize: "18px" }}
+          disabled={value === null || value === ""}
+          disableStyles={true}
+          onClick={onClick}
+        >
+          Siguiente
+        </Button>
+      )}
     </SectionHeader>
   );
 };

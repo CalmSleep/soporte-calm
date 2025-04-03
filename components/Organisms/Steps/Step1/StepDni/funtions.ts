@@ -26,7 +26,8 @@ export const emailResponse = (dataResponse: IOrderResponse[]) => {
   return dataResponse.map((item: IOrderResponse): IOrdenMail => {
     return {
       id: item.id,
-      email: item.billing.email,
+      //email: item.billing.email,
+      email: "chofiikauffer@gmail.com",
       dni: item.dni || "",
       name: item.billing.first_name,
       orderNumber: item.number,
@@ -39,10 +40,10 @@ export const emailResponse = (dataResponse: IOrderResponse[]) => {
           (item: IOrderItem): IItemOrden => ({
             name: item.product_name,
             quantity: item.quantity,
-            price: item.total || "0", // Provide a default or dynamic value for price
+            price: item.total || "0",
           })
         ),
-      buttonRedirect: `${process.env.NEXT_PUBLIC_ENDPOINT_URL_SOPORT}/${item.id}`, // Provide a default or dynamic value here
+      buttonRedirect: `${process.env.NEXT_PUBLIC_ENDPOINT_URL_SOPORT}/${item.id}`,
     };
   });
 };
