@@ -3,7 +3,7 @@ export type StepHeaderProps = {
   title: string;
   paragraph: string;
   children?: React.PropsWithChildren<React.ReactNode>;
-  value?: string;
+  value?: boolean;
   onClick?: () => void;
   button?: boolean;
 };

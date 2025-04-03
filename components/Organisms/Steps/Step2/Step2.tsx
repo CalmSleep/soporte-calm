@@ -14,6 +14,7 @@ const Step2 = () => {
     handleConfirm,
     setConfirmedValue,
   } = useValueSelect();
+  console.log(selectedValue);
 
   return (
     <>
@@ -26,7 +27,7 @@ const Step2 = () => {
             : "Seleccioná la opción que mejor describa tu caso"
         }
         onClick={handleConfirm}
-        value={selectedValue || ""}
+        value={selectedValue === null ? true : false}
         button={confirmedValue === null ? true : false}
       >
         {confirmedValue === null ? (

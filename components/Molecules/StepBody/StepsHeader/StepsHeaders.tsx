@@ -62,7 +62,7 @@ const StepsHeaders = ({
           borderRadius="1000px"
           fontSize="24px"
           responsiveMobile={{ fontSize: "18px" }}
-          disabled={value === null || value === ""}
+          disabled={!!value}
           disableStyles={true}
           onClick={onClick}
         >

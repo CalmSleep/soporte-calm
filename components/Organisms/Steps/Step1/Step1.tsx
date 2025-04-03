@@ -3,8 +3,13 @@ import React from "react";
 import { StepDniProps } from "./types";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import StepDni from "./StepDni/StepDni";
+import { useSelector } from "react-redux";
+import { getThankuContent } from "@/state/order/orderSelector";
 
 const Step1 = ({ order }: StepDniProps) => {
+  const dniUser = useSelector(getThankuContent);
+  console.log("dniUser", dniUser);
+
   return (
     <>
       <StepsHeaders
@@ -19,7 +24,7 @@ const Step1 = ({ order }: StepDniProps) => {
         {order ? (
           <StepInfo
             info={[
-              "6574126", //numero ramdom o preguntar a Giuli que numero va
+              dniUser?.dni ? dniUser.dni : "Cargando...",
               "Sitio web (calmessimple.com)",
               `Pedido #${order}`,
             ]}

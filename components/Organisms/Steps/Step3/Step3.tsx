@@ -7,16 +7,14 @@ import Step3Select2 from "./Step3Select2/Step3Select2";
 import Step3Select3 from "./Step3Select3/Step3Select3";
 
 const Step3 = ({ valueSelect }: Step3Props) => {
-  console.log(valueSelect);
-
   const {
     selectedValue,
     handleOnchangeWithoutConfirm,
     handleConfirm,
-    confirmedValue,
     checkSeleccionado,
     handleCheckboxChange,
   } = useValueSelect();
+
   return (
     <StepsHeaders
       span="Paso 3/4 - "
@@ -35,7 +33,7 @@ const Step3 = ({ valueSelect }: Step3Props) => {
           : "¿Necesitas cambiar uno o más productos?¡No hay problema! Avancemos con la gestión..."
       }
       onClick={handleConfirm}
-      value={selectedValue && checkSeleccionado ? "1" : confirmedValue || ""}
+      value={!selectedValue || !checkSeleccionado}
       button={selectedValue !== null ? true : false}
     >
       {valueSelect === "1" ? (
