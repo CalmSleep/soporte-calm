@@ -13,6 +13,28 @@ export const getUserIsLogged = async () => {
   return await response.data;
 }
 
+export const getDataToNotion = async (data: any) => {
+  const requestConfig = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    const response = await axios.post(
+      `/api/notion`,
+      {
+        message: JSON.stringify(data)
+      },
+      requestConfig
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error al enviar datos a Notion:", error);
+    throw error;
+  }
+};
+
 export const getB2bDataToSlack = async (data: /* IPropsToSend */any) => {
   const requestConfig = {
     headers: {

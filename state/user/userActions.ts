@@ -13,12 +13,34 @@ import {
     ON_GET_ABANDONED_POPUP_CLICKED,
     ON_GET_CHAT_NAVIGATION,
     ON_GET_CHAT_LOADED_SUCCEEDED,
-    ON_GET_CHAT_LOADED_FAILED
+    ON_GET_CHAT_LOADED_FAILED,
+    ON_SEND_DATA_TO_NOTION_SUCCEEDED,
+    ON_SEND_DATA_TO_NOTION_FAILED,
 } from "./userConstants";
-import { createClientEvent, getB2bDataToSlack, getUserIsLogged, sendSlackMessage } from "./userService";
+import { createClientEvent, getB2bDataToSlack, getDataToNotion, getUserIsLogged, sendSlackMessage } from "./userService";
 /* import { IPropsToSend } from "@/components/Organisms/B2bForm/types"; */
 import { onRedirectLoadingFinished, onRedirectLoadingStart } from "../loading/loadingActions";
 import { IStore } from "../types";
+
+export const onSendDataToNotion = (data: /* IPropsToSend */any) => {
+  return async (dispatch: any) => {
+    const response = await getDataToNotion(data);
+    if (response) {
+      dispatch(onSendDataToNotionSucceeded(response.success));
+    } else {
+      dispatch(onSendDataToNotionFailed());
+    }
+  };
+};
+
+const onSendDataToNotionSucceeded = (dataToNotion: ILoggedUser) => ({
+  type: ON_SEND_DATA_TO_NOTION_SUCCEEDED,
+  dataToNotion
+})
+
+const onSendDataToNotionFailed = () => ({
+  type: ON_SEND_DATA_TO_NOTION_FAILED
+})
 
 export const onGetChatLoadedSucceeded = () => ({
   type: ON_GET_CHAT_LOADED_SUCCEEDED

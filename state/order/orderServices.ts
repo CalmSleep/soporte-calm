@@ -279,3 +279,26 @@ export const sendEmailOrderDni = async (data: IOrdenMail[]) => {
   );
   return response.data;
 };
+
+interface INotionData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  status?: string;
+}
+
+export const sendToNotion = async (data: INotionData) => {
+  const reqConfig = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  const response = await axios.post(
+    `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/soporte/notion-endpoint.php`,
+    data,
+    reqConfig
+  );
+  return response.data;
+};

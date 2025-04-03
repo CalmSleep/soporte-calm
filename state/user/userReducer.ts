@@ -13,7 +13,9 @@ import {
     ON_GET_ABANDONED_POPUP_CLICKED,
     ON_GET_CHAT_NAVIGATION,
     ON_GET_CHAT_LOADED_SUCCEEDED,
-    ON_GET_CHAT_LOADED_FAILED
+    ON_GET_CHAT_LOADED_FAILED,
+    ON_SEND_DATA_TO_NOTION_SUCCEEDED,
+    ON_SEND_DATA_TO_NOTION_FAILED
 } from "./userConstants";
 
 const initialState: ILoggedUser = {
@@ -24,6 +26,17 @@ const initialState: ILoggedUser = {
 
 export default (state = initialState, action: AnyAction) => {
     switch (action.type) {
+        case ON_SEND_DATA_TO_NOTION_SUCCEEDED:
+            return {
+                ...state,
+                dataToNotion: true
+            };
+        case ON_SEND_DATA_TO_NOTION_FAILED:
+            return {
+                ...state,
+                dataToNotion: false
+            };
+
         case ON_GET_CHAT_LOADED_SUCCEEDED:
             return {
                 ...state,

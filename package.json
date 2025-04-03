@@ -12,6 +12,7 @@
     "@apollo/client": "^3.7.17",
     "@google/model-viewer": "^4.0.0",
     "@netlify/functions": "^2.3.0",
+    "@notionhq/client": "^2.3.0",
     "@react-google-maps/api": "^2.19.2",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.4.5",

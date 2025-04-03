@@ -12,6 +12,7 @@ export interface ILoggedUser {
     abandonedPopupClicked?: boolean
     chatNavigation: boolean
     chatLoaded?: boolean
+    dataToNotion?: boolean
 }
 
 export interface IKlaviyoEventBodyParams {

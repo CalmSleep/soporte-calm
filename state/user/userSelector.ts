@@ -18,3 +18,5 @@ export const getAbandonedPopupClicked = createSelector((state: IStore) => state.
 export const getChatNavigation = createSelector((state: IStore) => state.user.chatNavigation, chatNavigation => chatNavigation);
 
 export const getChatLoaded = createSelector((state: IStore) => state.user.chatLoaded, chatLoaded => chatLoaded);
+
+export const getDataToNotion = createSelector((state: IStore) => state.user.dataToNotion, dataToNotion => dataToNotion);
