@@ -26,8 +26,7 @@ export const emailResponse = (dataResponse: IOrderResponse[]) => {
   return dataResponse.map((item: IOrderResponse): IOrdenMail => {
     return {
       id: item.id,
-      //email: item.billing.email,
-      email: "chofiikauffer@gmail.com",
+      email: item.billing.email,
       dni: item.dni || "",
       name: item.billing.first_name,
       orderNumber: item.number,
