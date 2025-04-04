@@ -3,9 +3,12 @@ export interface Step3Select1Props {
   handleOnchangeWithoutConfirm: (
     e: React.ChangeEvent<HTMLSelectElement>
   ) => void;
-  handleCheckboxChange: (isChecked: boolean) => void;
+  handleCheckboxChange: (isChecked: boolean, title: string) => void;
+  selectedTitles: string[];
+  handleEditCheckbox: () => void;
+  checkboxConfirmed: boolean;
 }
 
-export interface Select1OptionProps {
-  onCheckboxChange: (isChecked: boolean) => void;
+export interface SelectOptionProps {
+  onCheckboxChange: (isChecked: boolean, title: string) => void;
 }
