@@ -6,7 +6,7 @@ import { ContainerForm } from "./styled";
 const FormStatic = () => {
   return (
     <ContainerForm>
-      <HeroForm />;
+      <HeroForm />
       <Step1 />
     </ContainerForm>
   );
