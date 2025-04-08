@@ -1,0 +1,130 @@
+[
+  {
+    "id": "1",
+    "title": "Mesa ratona",
+    "pieces": [
+      { "label": "Maderas" },
+      { "label": "Recuadros", "hasInput": true, "placeholder": "¿Cuántos?" },
+      { "label": "Laterales" },
+      { "label": "Pata media" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Base de hierro",
+    "pieces": [
+      { "label": "Maderas" },
+      { "label": "Recuadros", "hasInput": true, "placeholder": "¿Cuántos?" },
+      { "label": "Laterales" },
+      { "label": "Pata media" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Sommier",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Cama Suavidad",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "5",
+    "title": "Cama Articulada Ola",
+    "pieces": [
+      { "label": "Pieza de hierro" },
+      { "label": "Patas" },
+      { "label": "Cable" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Control" },
+      { "label": "Barra de retención" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "6",
+    "title": "Sofá Cama 24/7",
+    "pieces": [
+      { "label": "Placas" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "7",
+    "title": "Mesa de arrime Ocio",
+    "pieces": [
+      { "label": "Columna" },
+      { "label": "Tapa de madera" },
+      { "label": "Base de chapa" },
+      { "label": "Platina" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Llave" }
+    ]
+  },
+  {
+    "id": "8",
+    "title": "Mesa ratona Ocio",
+    "pieces": [
+      { "label": "Pies" },
+      { "label": "Flejes" },
+      { "label": "Tapa de madera" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "9",
+    "title": "Mesa de luz Hábito",
+    "pieces": [
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "10",
+    "title": "Mesa de luz Hábito flotante",
+    "pieces": [
+      { "label": "Percha metálica" },
+      { "label": "Tarugos", "hasInput": true, "placeholder": "¿Cuántos?" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  }
+]

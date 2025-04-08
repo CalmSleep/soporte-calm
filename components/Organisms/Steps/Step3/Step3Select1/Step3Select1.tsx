@@ -1,7 +1,7 @@
 import Select from "@/components/Atoms/Select/Select";
 import React from "react";
 import Select1Option from "./components/Select1Option";
-import { Step3Select1Props } from "./types";
+import { Step3Select1Props } from "../types";
 import Select2Option from "./components/Select2Option";
 import Select3Option from "./components/Select3Option";
 import Select4Option from "./components/Select4Option";
@@ -18,11 +18,14 @@ const Step3Select1 = ({
   selectedTitles,
   handleEditCheckbox,
   checkboxConfirmed,
-  handleClickAcordion,
+  handleCheckboxChangeConfirmed,
+  handlePaymentChange,
   valueSelect,
 }: Step3Select1Props) => {
   const orders = useSelector(getThankuContent);
-  //console.log(valueSelect);
+  //console.log("orders", orders.items);
+
+  console.log(selectedTitles);
 
   return (
     <>
@@ -38,16 +41,17 @@ const Step3Select1 = ({
             }
           />
           {selectedValue === "1" ? (
-            <Select1Option
-              onCheckboxChange={handleCheckboxChange}
-              handleClickAcordion={handleClickAcordion}
-            />
+            <Select1Option onCheckboxChange={handleCheckboxChange} />
           ) : selectedValue === "2" ? (
-            <Select2Option onCheckboxChange={handleCheckboxChange} />
+            <Select2Option
+              onCheckboxChange={handleCheckboxChangeConfirmed}
+              selectedValue={selectedValue}
+              handlePaymentChange={handlePaymentChange}
+            />
           ) : selectedValue === "3" ? (
             <Select3Option onCheckboxChange={handleCheckboxChange} />
           ) : selectedValue === "4" ? (
-            <Select4Option />
+            <Select4Option onCheckboxChange={handleCheckboxChange} />
           ) : null}
         </>
       ) : (
@@ -62,38 +66,6 @@ const Step3Select1 = ({
           onClick={handleEditCheckbox}
         />
       )}
-
-      {/* {!checkboxConfirmed ? (
-       <Select
-       onChange={handleOnchangeWithoutConfirm}
-       value={selectedValue || ""}
-       options={
-         selectedValue === null
-           ? options
-           : options.filter((opt) => opt.value !== "")
-       }
-     />
-     {selectedValue === "1" ? (
-       <Select1Option onCheckboxChange={handleCheckboxChange} />
-     ) : selectedValue === "2" ? (
-       <Select2Option onCheckboxChange={handleCheckboxChange} />
-     ) : selectedValue === "3" ? (
-       <Select3Option />
-     ) : selectedValue === "4" ? (
-       <Select4Option />
-     ) : null}
-     ) : (
-      <StepInfo
-          info={[
-            `${
-              optionStep3.find((item) => item.value === String(selectedValue))?.label 
-                 || "Opción no encontrada"
-            }`,
-            `${selectedTitles.join(", ")}`,
-          ]}
-          onClick={handleEditCheckbox}
-        />
-     )} */}
     </>
   );
 };

@@ -1,0 +1,311 @@
+[
+  {
+    "id": "1",
+    "title": "Colchón Original",
+    "pieces": [
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Hundimiento" },
+      { "label": "Presencia de hongos en el colchón" },
+      { "label": "Manchas en el producto" },
+      { "label": "No me gusta el olor" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Colchón para bebés",
+    "pieces": [
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Hundimiento" },
+      { "label": "Presencia de hongos en el colchón" },
+      { "label": "Manchas en el producto" },
+      { "label": "No me gusta el olor" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Colchón Híbrido",
+    "pieces": [
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Hundimiento" },
+      { "label": "Presencia de hongos en el colchón" },
+      { "label": "No me gusta el olor" },
+      { "label": "Problema con los resortes" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Colchón Cumbre Dual",
+    "pieces": [
+      { "label": "Falla en el cierre" },
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Hundimiento" },
+      { "label": "Presencia de hongos en el colchón" },
+      { "label": "Manchas en el producto" },
+      { "label": "No me gusta el olor" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "5",
+    "title": "Colchón para perros",
+    "pieces": [
+      { "label": "Falla en el cierre" },
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Compré el producto por error" },
+      { "label": "Hundimiento" },
+      { "label": "Manchas en el producto" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "6",
+    "title": "Base de cama",
+    "pieces": [
+      { "label": "Estructura inestable" },
+      { "label": "Falta de perforaciones o remaches" },
+      { "label": "Maderas en mal estado" },
+      { "label": "Desoldadura en la estructura" },
+      { "label": "El producto hace ruido" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Tuve un problema con los velcros" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "7",
+    "title": "Sommier",
+    "pieces": [
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Estructura despegada" },
+      { "label": "Estructura inestable" },
+      { "label": "Falta de perforaciones o remaches" },
+      { "label": "Maderas en mal estado" },
+      { "label": "Manchas en el producto" },
+      { "label": "El producto hace ruido" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Tuve un problema con los velcros" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "8",
+    "title": "Cama Suavidad",
+    "pieces": [
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Estructura despegada" },
+      { "label": "Estructura inestable" },
+      { "label": "Falta de perforaciones o remaches" },
+      { "label": "Maderas en mal estado" },
+      { "label": "Manchas en el producto" },
+      { "label": "El producto hace ruido" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Tuve un problema con los velcros" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "9",
+    "title": "Cama Articulada Ola",
+    "pieces": [
+      { "label": "Estructura inestable" },
+      { "label": "Falta de perforaciones o remaches" },
+      { "label": "Desoldadura en la estructura" },
+      { "label": "El producto hace ruido" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "10",
+    "title": "Marco Suavidad",
+    "pieces": [
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Compré el producto por error" },
+      { "label": "Hundimiento" },
+      { "label": "Manchas en el producto" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "11",
+    "title": "Respaldo Horizonte",
+    "pieces": [
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Compré el producto por error" },
+      { "label": "Hundimiento" },
+      { "label": "Manchas en el producto" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "12",
+    "title": "Sofá Cama 24/7",
+    "pieces": [
+      { "label": "Estructura inestable" },
+      { "label": "Falta de perforaciones o remaches" },
+      { "label": "Desoldadura en la estructura" },
+      { "label": "El producto hace ruido" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "13",
+    "title": "Mesa de arrime Ocio",
+    "pieces": [
+      { "label": "Estructura inestable" },
+      { "label": "Falta de perforaciones o remaches" },
+      { "label": "Maderas en mal estado" },
+      { "label": "Manchas en el producto" },
+      { "label": "Desoldadura en la estructura" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "14",
+    "title": "Mesa ratona Ocio",
+    "pieces": [
+      { "label": "Estructura inestable" },
+      { "label": "Falta de perforaciones o remaches" },
+      { "label": "Maderas en mal estado" },
+      { "label": "Manchas en el producto" },
+      { "label": "Desoldadura en la estructura" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "15",
+    "title": "Mesa de luz Hábito",
+    "pieces": [
+      { "label": "Estructura inestable" },
+      { "label": "Falta de perforaciones o remaches" },
+      { "label": "Maderas en mal estado" },
+      { "label": "Manchas en el producto" },
+      { "label": "Desoldadura en la estructura" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "16",
+    "title": "Mesa de luz Hábito flotante",
+    "pieces": [
+      { "label": "Estructura inestable" },
+      { "label": "Falta de perforaciones o remaches" },
+      { "label": "Maderas en mal estado" },
+      { "label": "Manchas en el producto" },
+      { "label": "Desoldadura en la estructura" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "17",
+    "title": "Almohada Inteligente",
+    "pieces": [
+      { "label": "Falla en el cierre" },
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Hundimiento" },
+      { "label": "Manchas en el producto" },
+      { "label": "No me gusta el olor" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "18",
+    "title": "Almohada Doble Sensación",
+    "pieces": [
+      { "label": "Falla en el cierre" },
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Hundimiento" },
+      { "label": "Manchas en el producto" },
+      { "label": "No me gusta el olor" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "19",
+    "title": "Almohada Infinita",
+    "pieces": [
+      { "label": "Falla en el cierre" },
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Hundimiento" },
+      { "label": "Manchas en el producto" },
+      { "label": "No me gusta el olor" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "20",
+    "title": "Alta Almohada",
+    "pieces": [
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Hundimiento" },
+      { "label": "Manchas en el producto" },
+      { "label": "No me gusta el olor" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "21",
+    "title": "Sábanas Algodón & Frescura",
+    "pieces": [
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "22",
+    "title": "Edredón Abrazo",
+    "pieces": [
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "23",
+    "title": "Sábanas Suavidad",
+    "pieces": [
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "24",
+    "title": "Protector de Colchón",
+    "pieces": [
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "25",
+    "title": "Funda de Tusor",
+    "pieces": [
+      { "label": "Falla en el cierre" },
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  }
+]

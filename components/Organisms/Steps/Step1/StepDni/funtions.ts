@@ -9,14 +9,17 @@ import {
 
 export const validateDni = (dni: DniInput): ErrorInput => {
   const errors: ErrorInput = {};
+  const dniStr = dni.dni?.toString().trim();
 
-  const dniStr = dni.dni.toString();
-
-  if (!/^\d+$/.test(dniStr)) {
+  if (!dniStr) {
+    errors.dni = "El DNI es obligatorio";
+  } else if (/^0+$/.test(dniStr)) {
+    errors.dni = "El DNI no puede estar compuesto solo por ceros";
+  } else if (!/^\d+$/.test(dniStr)) {
     errors.dni =
       "El DNI solo puede contener números, sin espacios ni caracteres especiales";
-  } else if (dniStr.length !== 8) {
-    errors.dni = "El DNI debe tener exactamente 8 dígitos";
+  } else if (dniStr.length < 6 || dniStr.length > 14) {
+    errors.dni = "El DNI debe tener entre 6 y 14 dígitos";
   }
 
   return errors;

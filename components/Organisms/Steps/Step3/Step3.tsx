@@ -17,9 +17,9 @@ const Step3 = ({ valueSelect }: Step3Props) => {
     handleCheckboxChange,
     checkboxConfirmed,
     handleEditCheckbox,
-    handleClickAcordion,
+    handleCheckboxChangeConfirmed,
+    handlePaymentChange,
   } = useValueSelect();
-  console.log(selectedTitles);
 
   return (
     <>
@@ -59,10 +59,16 @@ const Step3 = ({ valueSelect }: Step3Props) => {
             handleEditCheckbox={handleEditCheckbox}
             selectedTitles={selectedTitles}
             checkboxConfirmed={checkboxConfirmed}
-            handleClickAcordion={handleClickAcordion}
+            handleCheckboxChangeConfirmed={handleCheckboxChangeConfirmed}
+            handlePaymentChange={handlePaymentChange}
           />
         ) : valueSelect === "2" ? (
-          <Step3Select2 />
+          <Step3Select2
+            checkboxConfirmed={checkboxConfirmed}
+            handleEditCheckbox={handleEditCheckbox}
+            selectedTitles={selectedTitles}
+            handleCheckboxChange={handleCheckboxChangeConfirmed}
+          />
         ) : (
           <Step3Select3 />
         )}

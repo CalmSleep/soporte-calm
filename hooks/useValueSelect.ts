@@ -6,6 +6,7 @@ const useValueSelect = () => {
   const [checkSeleccionado, setCheckSeleccionado] = useState(false);
   const [checkboxConfirmed, setCheckboxConfirmed] = useState(false);
   const [selectedTitles, setSelectedTitles] = useState<string[]>([]);
+  const [selectedOption, setSelectedOption] = useState("");
 
   const handleOnchangeButton = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(e.target.value);
@@ -16,6 +17,7 @@ const useValueSelect = () => {
   ) => {
     setSelectedValue(e.target.value);
     setConfirmedValue(selectedValue);
+    setCheckSeleccionado(false);
     setSelectedTitles([]);
   };
 
@@ -23,28 +25,12 @@ const useValueSelect = () => {
     setConfirmedValue(selectedValue);
   };
 
-  // const handleCheckboxChange = (isChecked: boolean, title: string) => {
-  //   setCheckSeleccionado(isChecked);
-
-  //   setSelectedTitles((prevTitles) => {
-  //     const alreadyExists = prevTitles.includes(title);
-
-  //     if (isChecked) {
-  //       // Si ya estaba, no lo vuelvas a agregar
-  //       if (alreadyExists) return prevTitles;
-  //       return [...prevTitles, title];
-  //     } else {
-  //       // Si se desactiva, lo quitás
-  //       return prevTitles.filter((t) => t !== title);
-  //     }
-  //   });
-  // };
   const handleCheckboxChange = (isChecked: boolean, title: string) => {
     setCheckSeleccionado(isChecked);
 
     setSelectedTitles((prevTitles) => {
       const cleanedTitles = prevTitles.filter(
-        (t) => !t.startsWith(title.split(" (")[0]) // borra todo lo que empiece con el mismo "Mesa ratona"
+        (t) => !t.startsWith(title.split(" (")[0])
       );
 
       if (isChecked) {
@@ -55,12 +41,44 @@ const useValueSelect = () => {
     });
   };
 
-  const handleClickAcordion = (title: string) => {
-    setSelectedTitles((prev) =>
-      prev.includes(title)
-        ? prev.filter((item) => item !== title)
-        : [...prev, title]
-    );
+  const handleCheckboxChangeConfirmed = (isChecked: boolean, title: string) => {
+    setCheckSeleccionado(isChecked);
+
+    setSelectedTitles((prev) => {
+      if (isChecked) {
+        // Agregamos el título si no está
+        return prev.includes(title) ? prev : [...prev, title];
+      } else {
+        // Si se desmarca, lo sacamos y también sacamos cualquier pago
+        return prev.filter(
+          (t) =>
+            t !== title &&
+            t !== "Transferencia con hasta 25% OFF" &&
+            t !== "Tarjeta de debito" &&
+            t !== "Tarjeta de crédito en hasta 12 csi"
+        );
+      }
+    });
+  };
+
+  const handlePaymentChange = (
+    paymentLabel: string,
+    payments: { value: string; label: string }[]
+  ) => {
+    setSelectedTitles((prevTitles) => {
+      const baseTitle = "Quiero comprarlo con un 5% de descuento";
+
+      const filtered = prevTitles.filter(
+        (title) => !payments.some((p) => p.label === title)
+      );
+
+      // Aseguramos que esté el título base
+      const updated = filtered.includes(baseTitle)
+        ? filtered
+        : [...filtered, baseTitle];
+
+      return [...updated, paymentLabel];
+    });
   };
 
   const handleConfirmCheckbox = () => {
@@ -91,7 +109,8 @@ const useValueSelect = () => {
     handleCheckboxChange,
     handleConfirmCheckbox,
     handleEditCheckbox,
-    handleClickAcordion,
+    handleCheckboxChangeConfirmed,
+    handlePaymentChange,
   };
 };
 
