@@ -24,6 +24,10 @@ const Input = ({
   borderColor,
   borderColorFocused,
   colorLabel,
+  checkColor,
+  checkBorderColor,
+  padding,
+  appearance,
 }: InputProps) => {
   return (
     <InputStyles
@@ -53,6 +57,10 @@ const Input = ({
       ref={refInput}
       autoComplete={autoComplete}
       $colorLabel={colorLabel}
+      $checkColor={checkColor}
+      $checkBorderColor={checkBorderColor}
+      $padding={padding}
+      $appearance={appearance}
     >
       {children}
     </InputStyles>

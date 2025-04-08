@@ -16,20 +16,50 @@ const useValueSelect = () => {
   ) => {
     setSelectedValue(e.target.value);
     setConfirmedValue(selectedValue);
+    setSelectedTitles([]);
   };
 
   const handleConfirm = () => {
     setConfirmedValue(selectedValue);
   };
 
+  // const handleCheckboxChange = (isChecked: boolean, title: string) => {
+  //   setCheckSeleccionado(isChecked);
+
+  //   setSelectedTitles((prevTitles) => {
+  //     const alreadyExists = prevTitles.includes(title);
+
+  //     if (isChecked) {
+  //       // Si ya estaba, no lo vuelvas a agregar
+  //       if (alreadyExists) return prevTitles;
+  //       return [...prevTitles, title];
+  //     } else {
+  //       // Si se desactiva, lo quitás
+  //       return prevTitles.filter((t) => t !== title);
+  //     }
+  //   });
+  // };
   const handleCheckboxChange = (isChecked: boolean, title: string) => {
     setCheckSeleccionado(isChecked);
 
-    setSelectedTitles(
-      (prevTitles) =>
-        isChecked
-          ? [...prevTitles, title] // Agregar título si se selecciona
-          : prevTitles.filter((t) => t !== title) // Remover título si se deselecciona
+    setSelectedTitles((prevTitles) => {
+      const cleanedTitles = prevTitles.filter(
+        (t) => !t.startsWith(title.split(" (")[0]) // borra todo lo que empiece con el mismo "Mesa ratona"
+      );
+
+      if (isChecked) {
+        return [...cleanedTitles, title];
+      } else {
+        return cleanedTitles;
+      }
+    });
+  };
+
+  const handleClickAcordion = (title: string) => {
+    setSelectedTitles((prev) =>
+      prev.includes(title)
+        ? prev.filter((item) => item !== title)
+        : [...prev, title]
     );
   };
 
@@ -38,6 +68,7 @@ const useValueSelect = () => {
   };
 
   const handleEditCheckbox = () => {
+    setSelectedValue(null);
     setCheckSeleccionado(false);
     setCheckboxConfirmed(false);
     setSelectedTitles([]);
@@ -60,6 +91,7 @@ const useValueSelect = () => {
     handleCheckboxChange,
     handleConfirmCheckbox,
     handleEditCheckbox,
+    handleClickAcordion,
   };
 };
 

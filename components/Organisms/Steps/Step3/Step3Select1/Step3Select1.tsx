@@ -18,13 +18,12 @@ const Step3Select1 = ({
   selectedTitles,
   handleEditCheckbox,
   checkboxConfirmed,
+  handleClickAcordion,
+  valueSelect,
 }: Step3Select1Props) => {
   const orders = useSelector(getThankuContent);
-  console.log(selectedValue);
-  console.log(
-    "optionStep3 values:",
-    optionStep3.map((item) => item.value)
-  );
+  //console.log(valueSelect);
+
   return (
     <>
       {!checkboxConfirmed ? (
@@ -39,11 +38,14 @@ const Step3Select1 = ({
             }
           />
           {selectedValue === "1" ? (
-            <Select1Option onCheckboxChange={handleCheckboxChange} />
+            <Select1Option
+              onCheckboxChange={handleCheckboxChange}
+              handleClickAcordion={handleClickAcordion}
+            />
           ) : selectedValue === "2" ? (
             <Select2Option onCheckboxChange={handleCheckboxChange} />
           ) : selectedValue === "3" ? (
-            <Select3Option />
+            <Select3Option onCheckboxChange={handleCheckboxChange} />
           ) : selectedValue === "4" ? (
             <Select4Option />
           ) : null}

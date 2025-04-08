@@ -1,4 +1,5 @@
-import React from "react";
+import { TypographyProps } from "@/components/Atoms/Typography/types";
+import React, { RefObject } from "react";
 
 export interface IUnitProps {
   onClick: () => void;
@@ -16,4 +17,11 @@ export interface IUnitProps {
   onClickModal?: () => void;
   imageSpecsCamaOla?: string;
   descriptionCamaOla?: boolean;
+  backgroundColor?: string;
+  isCheckActive?: boolean;
+  refContent?:
+    | React.RefObject<HTMLDivElement>
+    | ((el: HTMLDivElement | null) => void);
+  contentHeight?: number;
+  titleStyle?: TypographyProps;
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IUnitProps } from "./types";
 import {
   TitleDiv,
@@ -13,6 +13,7 @@ import {
   SubtitleAccordion,
   DescriptionAccordion,
   IconTitle,
+  ContentItemSelect,
 } from "./styled";
 import parse from "html-react-parser";
 import Titles from "@/components/Atoms/Typography/Titles";
@@ -37,6 +38,9 @@ const AccordionUnit = ({
   imageSpecsCamaOla,
   descriptionCamaOla,
   itemsSelect,
+  refContent,
+  contentHeight,
+  titleStyle,
 }: IUnitProps) => {
   const [render, setRender] = useState(false);
 
@@ -118,6 +122,7 @@ const AccordionUnit = ({
                   }
                   font="bold"
                   fontSize="1.2rem"
+                  {...titleStyle}
                 >
                   {parse(itemName)}
                 </Titles>
@@ -129,27 +134,44 @@ const AccordionUnit = ({
         </TitleDiv>
       </DivTitleAccordion>
       <DivTextAccordion>
-        <Content
-          id={itemName}
-          $itemName={itemName}
-          $isActive={isActive}
-          $render={render}
-        >
-          <DescriptionAccordion
-            $isProductSS={isProductSS}
-            $isFromCapas={isFromCapas}
-            onClick={handleContentClick}
-            $descriptionCamaOla={descriptionCamaOla}
+        {itemsSelect ? (
+          <ContentItemSelect
+            id={itemName}
+            ref={refContent}
+            $isActive={isActive}
+            $contentHeight={contentHeight || 0}
           >
-            {itemSubtitle && (
-              <SubtitleAccordion>{itemSubtitle}</SubtitleAccordion>
-            )}
-            <Inner id={itemName}>
-              {parse(itemContent || "")}
+            <DescriptionAccordion
+              $isProductSS={isProductSS}
+              $isFromCapas={isFromCapas}
+              onClick={handleContentClick}
+              $descriptionCamaOla={descriptionCamaOla}
+            >
               {itemsSelect}
-            </Inner>
-          </DescriptionAccordion>
-        </Content>
+            </DescriptionAccordion>
+          </ContentItemSelect>
+        ) : (
+          <Content
+            id={itemName}
+            $itemName={itemName}
+            $isActive={isActive}
+            $render={render}
+          >
+            <DescriptionAccordion
+              $isProductSS={isProductSS}
+              $isFromCapas={isFromCapas}
+              onClick={handleContentClick}
+              $descriptionCamaOla={descriptionCamaOla}
+            >
+              {itemSubtitle && (
+                <SubtitleAccordion>{itemSubtitle}</SubtitleAccordion>
+              )}
+              <Inner id={itemName}>{parse(itemContent || "")}</Inner>
+
+              {/*configurar estilos en styled component*/}
+            </DescriptionAccordion>
+          </Content>
+        )}
       </DivTextAccordion>
     </DivContainerAccordion>
   );

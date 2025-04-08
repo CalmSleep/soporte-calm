@@ -1,3 +1,5 @@
+import { SectionHeaderStyledProps } from "../../SectionHeader/types";
+
 export type StepHeaderProps = {
   span: string;
   title: string;
@@ -6,4 +8,5 @@ export type StepHeaderProps = {
   value?: boolean;
   onClick?: () => void;
   button?: boolean;
+  backgroundColor?: SectionHeaderStyledProps["$backgroundColor"];
 };
