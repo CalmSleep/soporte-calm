@@ -4,10 +4,9 @@ import useValueSelect from "@/hooks/useValueSelect";
 import Step3Select1 from "./Step3Select1/Step3Select1";
 import { Step3Props } from "./types";
 import Step3Select2 from "./Step3Select2/Step3Select2";
-import Step3Select3 from "./Step3Select3/Step3Select3";
 import Step4 from "../Step4/Step4";
-import { set } from "date-fns";
-import { el } from "date-fns/locale";
+import { useSelector } from "react-redux";
+import { getThankuContent } from "@/state/order/orderSelector";
 const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const {
     selectedValue,
@@ -22,6 +21,8 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     handleCheckboxChangeConfirmed,
     handlePaymentChange,
   } = useValueSelect();
+  console.log(selectedTitles);
+  const orders = useSelector(getThankuContent);
 
   return (
     <>
@@ -85,6 +86,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
       >
         {valueSelect === "1" ? (
           <Step3Select1
+            orders={orders.items.length > 0 ? orders.items : "Cargando..."}
             valueSelect={valueSelect}
             handleCheckboxChange={handleCheckboxChange}
             handleOnchangeWithoutConfirm={handleOnchangeWithoutConfirm}
@@ -97,6 +99,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
           />
         ) : (
           <Step3Select2
+            orders={orders.items.length > 0 ? orders.items : "Cargando..."}
             checkboxConfirmed={checkboxConfirmed}
             handleEditCheckbox={handleEditCheckbox}
             selectedTitles={selectedTitles}

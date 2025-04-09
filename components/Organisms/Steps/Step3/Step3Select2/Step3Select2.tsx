@@ -1,11 +1,14 @@
 import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects";
 import React, { useState } from "react";
 import items from "../refundItems.json";
+import itemsChanges from "../changesItems.json";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import { Step3Select2and3Props } from "../types";
+import AcordeonSelector from "./Acordion";
 
 const Step3Select2 = ({
+  orders,
   checkboxConfirmed,
   checkSeleccionado,
   selectedTitles,
@@ -14,14 +17,11 @@ const Step3Select2 = ({
   handleCheckboxChange,
   handleCheckboxChangeConfirmed,
 }: Step3Select2and3Props) => {
-  console.log(selectedTitles);
-  console.log(
-    "selectedTitles",
-    selectedTitles.some((title) => title.toLowerCase().includes("cambio"))
+  const matchedItems = items.filter((item) =>
+    orders.some((order: any) => order.product_id === Number(item.id))
   );
 
   const [selectedOption2, setSelectedOption2] = useState("");
-  const itemsTest = [items[0], items[1]];
   const radioOptions = [
     { value: "cambio", label: "¡Vamos con cambio!" },
     { value: "devolucion", label: "Continuemos con la devolución" },
@@ -53,8 +53,7 @@ const Step3Select2 = ({
                 ? "Selecciona el o los productos que queres devolver:"
                 : "Selecciona el o los productos que queres cambiar:"
             }
-            // items={items}
-            items={itemsTest}
+            items={matchedItems.length > 0 ? matchedItems : []}
             onCheckboxChange={handleCheckboxChange}
           />
           {checkSeleccionado && valueSelect === "2" && (
@@ -81,11 +80,12 @@ const Step3Select2 = ({
             </>
           )}
           {checkSeleccionado && valueSelect === "3" && (
-            <StepSelects
-              titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
-              items={items}
-              onCheckboxChange={handleCheckboxChange}
-            />
+            <AcordeonSelector />
+            // <StepSelects
+            //   titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
+            //   items={items}
+            //   onCheckboxChange={handleCheckboxChange}
+            // />
           )}
         </>
       ) : (

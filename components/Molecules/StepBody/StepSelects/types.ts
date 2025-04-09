@@ -2,7 +2,7 @@ import { StepRadioProps } from "../StepRadio/types";
 
 export interface IChecks {
   id: string;
-  name: string;
+  name?: string;
   value: string;
   title: string;
   span?: string;
@@ -19,7 +19,11 @@ export type StepSelectsProps = {
   checks?: IChecks[];
   items?: IItems[];
   radioOptions?: StepRadioProps["radioOptions"];
-  onCheckboxChange?: (isChecked: boolean, title: string) => void;
+  onCheckboxChange?: (
+    isChecked: boolean,
+    title: string,
+    radioGroup?: string[]
+  ) => void;
   selectedOption?: string;
   setSelectedOption?: React.Dispatch<React.SetStateAction<string>>;
 };

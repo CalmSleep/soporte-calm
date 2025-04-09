@@ -3,6 +3,7 @@ export type Step3Props = {
   setConfirmedValue: React.Dispatch<React.SetStateAction<string | null>>;
 };
 export interface Step3Select1Props {
+  orders: any;
   selectedValue: string | null;
   handleOnchangeWithoutConfirm: (
     e: React.ChangeEvent<HTMLSelectElement>
@@ -24,6 +25,7 @@ export interface Step3Select1Props {
 }
 
 export interface SelectOptionProps {
+  orders?: any;
   onCheckboxChange: (
     isChecked: boolean,
     title: string,
@@ -36,6 +38,7 @@ export interface SelectOptionProps {
 }
 
 export interface Step3Select2and3Props {
+  orders?: any;
   checkboxConfirmed: boolean;
   checkSeleccionado: boolean;
   selectedTitles: string[];

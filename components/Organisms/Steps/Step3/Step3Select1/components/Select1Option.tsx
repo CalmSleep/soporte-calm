@@ -1,25 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SelectOptionProps } from "../../types";
 import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects";
 import items from "../../missingItems.json";
 
-const Select1Option = ({ onCheckboxChange }: SelectOptionProps) => {
-  const checks = [
-    {
-      id: "1",
-      value: "1",
-      name: "almohada",
-      title: "Alta almohada",
-      span: "(65x35cm)",
-    },
-    {
-      id: "2",
-      value: "2",
-      name: "colchon",
-      title: "Colchón Original Plus",
-    },
-  ];
+const Select1Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
+  const matchedItems = items.filter((item) =>
+    orders.some((order: any) => order.product_id === Number(item.id))
+  );
 
+  const matchedIds = matchedItems.map((item) => item.id);
+
+  const checksOrders = orders
+    .filter((order: any) => {
+      return !matchedIds.some((title) => order.product_id === Number(title));
+    })
+    .map((order: any) => {
+      return {
+        id: String(order.product_id),
+        value: String(order.product_id),
+        title: order.product_name,
+      };
+    });
+
+  console.log(checksOrders);
   const radioOptions = [
     { value: "completo", label: "Falta este producto completo" },
     { value: "piezas", label: "Falta una o más piezas" },
@@ -28,10 +31,12 @@ const Select1Option = ({ onCheckboxChange }: SelectOptionProps) => {
   return (
     <StepSelects
       titleParagraph="Seleccioná el producto o las piezas faltantes:"
-      checks={checks}
-      items={items}
+      checks={orders.length > 0 ? checksOrders : []}
+      items={orders.length > 0 ? matchedItems : []}
       radioOptions={radioOptions}
-      onCheckboxChange={onCheckboxChange}
+      onCheckboxChange={(isChecked, title, radioGroup = []) =>
+        onCheckboxChange(isChecked, title, radioGroup)
+      }
     />
   );
 };

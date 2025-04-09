@@ -6,12 +6,11 @@ import Select2Option from "./components/Select2Option";
 import Select3Option from "./components/Select3Option";
 import Select4Option from "./components/Select4Option";
 import options from "./step3.json";
-import { useSelector } from "react-redux";
-import { getThankuContent } from "@/state/order/orderSelector";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import optionStep3 from "./step3.json";
 
 const Step3Select1 = ({
+  orders,
   selectedValue,
   handleOnchangeWithoutConfirm,
   handleCheckboxChange,
@@ -22,8 +21,6 @@ const Step3Select1 = ({
   handlePaymentChange,
   valueSelect,
 }: Step3Select1Props) => {
-  const orders = useSelector(getThankuContent);
-  //console.log("orders", orders.items);
   return (
     <>
       {!checkboxConfirmed ? (
@@ -38,16 +35,25 @@ const Step3Select1 = ({
             }
           />
           {selectedValue === "1" ? (
-            <Select1Option onCheckboxChange={handleCheckboxChange} />
+            <Select1Option
+              onCheckboxChange={handleCheckboxChange}
+              orders={orders}
+            />
           ) : selectedValue === "2" ? (
             <Select2Option
               onCheckboxChange={handleCheckboxChangeConfirmed}
               handlePaymentChange={handlePaymentChange}
             />
           ) : selectedValue === "3" ? (
-            <Select3Option onCheckboxChange={handleCheckboxChange} />
+            <Select3Option
+              onCheckboxChange={handleCheckboxChange}
+              orders={orders}
+            />
           ) : selectedValue === "4" ? (
-            <Select4Option onCheckboxChange={handleCheckboxChange} />
+            <Select4Option
+              onCheckboxChange={handleCheckboxChange}
+              orders={orders}
+            />
           ) : null}
         </>
       ) : (

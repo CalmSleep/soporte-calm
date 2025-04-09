@@ -4,33 +4,22 @@ import Paragraph from "@/components/Atoms/Typography/Text";
 import Input from "@/components/Atoms/Input/Input";
 import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects";
 
-const Select3Option = ({ onCheckboxChange }: SelectOptionProps) => {
-  const checks = [
-    {
-      id: "1",
-      name: "almohada",
-      value: "1",
-      title: "Alta almohada",
-    },
-    {
-      id: "2",
-      name: "colchon",
-      value: "2",
-      title: "Colchón Original Plus",
-    },
-    {
-      id: "3",
-      name: "base",
-      value: "3",
-      title: "Base de hierro",
-    },
-  ];
+const Select3Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
+  const checks = orders.map((order: any) => {
+    return {
+      id: String(order.product_id),
+      value: String(order.product_id),
+      title: order.product_name,
+    };
+  });
 
   return (
     <StepSelects
       titleParagraph="Elegí el o los productos que deberías haber recibido:"
-      checks={checks}
-      onCheckboxChange={onCheckboxChange}
+      checks={orders.length > 0 ? checks : []}
+      onCheckboxChange={(isChecked, title, radioGroup = []) =>
+        onCheckboxChange(isChecked, title, radioGroup)
+      }
     />
   );
 };
