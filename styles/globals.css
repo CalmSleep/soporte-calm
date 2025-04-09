@@ -50,6 +50,21 @@ main {
   justify-content: center;
   align-items: center;
 }
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 16px;
+}
+
+.flex-2 {
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  padding-left: 26px;
+  gap: 8px;
+}
 /* 
 @font-face {
   font-family: 'Gilroy-Regular';

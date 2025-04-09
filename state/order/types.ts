@@ -1,4 +1,4 @@
-import { IOrdenMail } from "@/components/Molecules/StepBody/StepDni/types";
+import { IOrdenMail } from "@/components/Organisms/Steps/Step1/StepDni/types";
 
 export interface IOrderState {
   orderData?: IOrder;

@@ -40,6 +40,7 @@ export type TypographyProps = {
   handleClick?: () => void;
   isNextLink?: boolean;
   arialLabel?: string;
+  onClick?: () => void;
 };
 
 export type TypographyStyledProps = {

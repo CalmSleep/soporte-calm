@@ -1,20 +1,14 @@
 import React, { useState } from "react";
-import {
-  DniInput,
-  IItemOrden,
-  IOrdenMail,
-  IOrderItem,
-  IOrderResponse,
-} from "./types";
-import { emailResponse, validateDni } from "./funtions";
 import Button from "@/components/Atoms/Buttons/Button";
-import ModalSteps from "../../Modal/ModalSteps";
-import SkeletonLoader from "../../SkeletonLoader/SkeletonLoader";
-import FloatingInput from "../../FloatingInput/FloatingInput";
 import { onGetOrdesDni } from "@/state/order/orderActions";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrdensDni } from "@/state/order/orderSelector";
 import { getLoadingGetOrderDni } from "@/state/loading/loadingSelector";
+import FloatingInput from "@/components/Molecules/FloatingInput/FloatingInput";
+import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
+import { validateDni } from "./funtions";
+import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
+import { DniInput } from "./types";
 import { sendEmailOrderDni } from "@/state/order/orderServices";
 
 const StepDni = () => {
@@ -51,30 +45,12 @@ const StepDni = () => {
     }
   };
 
-  const sendEmail = async () => {
-    try {
-      if (data && data.length > 0) {
-        console.log(data);
-
-        const response = await sendEmailOrderDni(data);
-        console.log(response);
-
-        // console.log(response);
-      }
-    } catch (error) {
-      console.error(error);
-      console.log(error);
-    }
-  };
-
   const handleDni = async () => {
     try {
       await dispatch(onGetOrdesDni(inputValue.dni.toString()));
-      sendEmail();
     } catch (error) {
       console.error(error);
     } finally {
-      //  setLoading(false);
       setIsOpen(true);
       setInputValue({ dni: 0 });
     }

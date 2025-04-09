@@ -1,4 +1,4 @@
-import { IOrdenMail } from "@/components/Molecules/StepBody/StepDni/types";
+import { IOrdenMail } from "@/components/Organisms/Steps/Step1/StepDni/types";
 import axios, { AxiosError } from "axios";
 
 export const getOrder = async (id: string, order_key: string) => {

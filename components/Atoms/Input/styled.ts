@@ -2,11 +2,12 @@ import styled from "styled-components";
 import { InputStyledProps } from "./types";
 
 export const InputStyles = styled.input<InputStyledProps>`
+appearance: ${({ $appearance }) => ($appearance ? $appearance : "")};
   position: relative;
   border-radius: ${({ $borderRadius }) =>
     $borderRadius ? $borderRadius : "8px"};
   width: ${({ $width }) => ($width ? $width : "100%")};
-  padding: 15px;
+  padding: ${({ $padding }) => ($padding ? $padding : "15px")};
   font-size: 16px;
   outline: none;
   border: 2px solid ${({ $borderColor, theme }) =>
@@ -35,6 +36,23 @@ export const InputStyles = styled.input<InputStyledProps>`
     font-size: 16px;
     transition: all 0.2s ease-in-out;
   }
+
+  ${({ type, theme, $checkColor, $checkBorderColor }) => {
+    if (type === "checkbox" || type === "radio") {
+      return `
+        
+        &:checked {
+          background-color: ${
+            $checkColor ? theme.colors[$checkColor] : "mangoTango"
+          };
+          border-color: ${
+            $checkBorderColor ? theme.colors[$checkBorderColor] : "mangoTango"
+          };
+        }
+      `;
+    }
+    return "";
+  }}
 
   &[type="color"],
   &[type="date"],

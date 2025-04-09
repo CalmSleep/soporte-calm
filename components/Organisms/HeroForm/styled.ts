@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { HeroFormStyledProps } from "./types";
 
 export const ContainerHero = styled.div<HeroFormStyledProps>`
+  width: 100%;
   display: flex;
   flex-direction: ${(props) => props.$flexDirection};
   justify-content: ${(props) => props.$justifyContent};

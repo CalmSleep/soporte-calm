@@ -1,16 +1,17 @@
-import StepDni from "@/components/Molecules/StepBody/StepDni/StepDni";
 import StepsHeaders from "@/components/Molecules/StepBody/StepsHeader/StepsHeaders";
 import React from "react";
 import { StepDniProps } from "./types";
+import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
+import StepDni from "./StepDni/StepDni";
 import { useSelector } from "react-redux";
 import { getThankuContent } from "@/state/order/orderSelector";
-import { IOrder } from "@/state/order/types";
-import Paragraph from "@/components/Atoms/Typography/Text";
 
 const Step1 = ({ order }: StepDniProps) => {
+  const dniUser = useSelector(getThankuContent);
+  console.log("dniUser", dniUser);
+
   return (
     <>
-      {/* Paso estatico  */}
       <StepsHeaders
         span="Paso 1/4 - "
         title="Datos de tu compra"
@@ -21,13 +22,14 @@ const Step1 = ({ order }: StepDniProps) => {
         }
       >
         {order ? (
-          <div>
-            <div className="step">
-              <Paragraph>{order}</Paragraph>
-              <Paragraph>Sitio web (calmessimple.com)</Paragraph>
-              <Paragraph>Pedido #Preguntar</Paragraph>
-            </div>
-          </div>
+          <StepInfo
+            info={[
+              dniUser?.dni ? dniUser.dni : "Cargando...",
+              "Sitio web (calmessimple.com)",
+              `Pedido #${order}`,
+            ]}
+            link="/"
+          />
         ) : (
           <StepDni />
         )}

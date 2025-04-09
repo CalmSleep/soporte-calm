@@ -1,0 +1,52 @@
+{
+    "Products": [
+    {
+        "title":"¿Son reales las 30 noches de prueba?",
+        "description":"<p>Ofrecemos 30 noches de prueba reales en tu casa. Creemos que para enamorarte de tu nueva cama, necesitas más de 5 minutos. En el caso de que no te guste, te devolvemos el 100% de tu dinero.</p>"
+    },
+    {
+        "title":"¿Qué garantía tienen los productos?",
+        "description":"<p>Ofrecemos 5 años de garantía para nuestro colchón y base y 18 meses para la almohada. La garantía sirve para cubrir a los clientes frente a defectos de fábrica, no de mal uso.</p> "
+    },
+    {
+        "title":"¿De qué está hecho el colchón?",
+        "description":"<p>La espuma es 100% producida en Argentina y tiene dos niveles.</br></br>Nivel Sensación</br><b>Con espuma de tecnología ERGO</b></br>Es el equilibrio entre suavidad y firmeza, generando así un descanso de calidad, cómodo y reparador. Está compuesto por una capa de 4 cm de altura de nuestra espuma con tecnología ERGO, un material de calidad premium que tiene una muy buena capacidad de adaptación, moldeandose a la perfección según el peso del cuerpo. </br></br>Su estructura innovadora, con celdas abiertas, garantiza frescura a través de un flujo de aire continuo, manteniendo así una temperatura constante a lo largo de la noche.</br></br>Nivel Soporte</br><b>Con espuma de tecnología EQUO</b></br></br>Es el principio de una experiencia innovadora en sueño. Compuesto de espuma con tecnología EQUO de alta densidad, una fundación sólida y segura, para un descanso sumamente reparador. </br></br>En el Original esta capa es de 18 cm de alto y en el Original Plus de 24 cm. Ambas alturas aportan la misma durabilidad, soporte y firmeza.</p>"
+    },
+    {
+        "title":"¿Qué altura tiene el colchón?",
+        "description":"<p>Tenemos dos modelos de colchón de dos alturas diferentes:</p> <p> El Colchón Original mide 22 cm de alto y tiene una capa de soporte de 18 cm y una capa confort de 4 cm.</p><p>El Colchón Original Plus mide 28 cm de alto y tiene una capa de soporte de 24 cm y una capa confort de 4 cm.</p>"
+    },
+    {
+        "title":"¿Cuánto tiempo puede estar el colchón en la caja?",
+        "description":"<p>Un colchón Calm puede estar máximo 2 meses dentro de su caja sin perder las propiedades.</p>"
+    }
+],
+"PaymentMethods": [
+    {
+        "title":"¿Se puede comprar en cuotas sin interés?",
+        "answer": "<p>¡Sí! Tenemos hasta 12 cuotas sin interés en Colchones, Bases y Sommiers, y hasta 6 cuotas sin interés en el resto de los productos con cualquier tarjeta de crédito Master Card, Visa o American Express bancarizadas.</p> <p>Antes de finalizar tu compra, cuando elijas tu tarjeta de crédito, vas a poder elegir en cuantas cuotas pagar.</p>"
+    },
+    {
+        "title":"¿Qué medios de pago aceptan?",
+        "description":"<p>Nuestros medios de pago son:</p><ul> <li>Tarjeta de crédito Visa, Amex o Master bancarias en hasta 12 cuotas sin interés.</li> <li>Tarjeta de crédito no bancaria en un pago.</li> <li>Tarjeta Naranja con 6 cuotas sin interés.</li> <li>Tarjeta de debito.</li> <li>Transferencia o depósito con un 10% de descuento</li></ul>"
+    },
+    {
+        "title":"¿Cómo uso un cupón de descuento?",
+        "description":"<p>En el carrito vas a encontrar una opción que dice “agregar cupón». Después de hacer click ingresá el código, dale a “aplicar”, y ¡Listo!</p>"
+    }
+],
+"Shipment": [
+    {
+        "title":"¿Cómo hago el seguimiento de mi pedido?",
+        "description":"<p>Una vez que realices la compra, te vamos a estar actualizando, paso a paso, el estado de tu pedido por correo electrónico. Además, podés hacer el seguimiento, con tu mail y número de pedido en <a href='https://calmessimple.com.ar/seguimiento'>este link</a>.</p>"        
+    },
+    {
+        "title":"¿Cuál es el costo del envío?",
+        "description":"<p>Las compras de un valor mayor al precio de una almohada tienen envío gratis a todo el país. Las de menor valor tienen un costo de $6400 para todo el país. Este costo lo vas a ver reflejado en el carrito luego de agregar los productos.</p>"
+    },
+    {
+        "title":"¿Se hacen entregas los fines de semana?",
+        "description":"<p>Las entregas se hacen de lunes a sábados en CABA y primer cordón del AMBA. De lunes a viernes en el resto del país.</p>"
+    }
+]
+}
