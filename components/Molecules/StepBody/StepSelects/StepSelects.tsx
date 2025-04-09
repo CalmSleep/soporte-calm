@@ -39,7 +39,7 @@ const StepSelects = ({
 
   return (
     <>
-      <Paragraph>{titleParagraph}</Paragraph>
+      <Paragraph fontSize="20px">{titleParagraph}</Paragraph>
       {checks &&
         checks.map((check) => {
           return (

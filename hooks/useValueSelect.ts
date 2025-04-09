@@ -6,7 +6,6 @@ const useValueSelect = () => {
   const [checkSeleccionado, setCheckSeleccionado] = useState(false);
   const [checkboxConfirmed, setCheckboxConfirmed] = useState(false);
   const [selectedTitles, setSelectedTitles] = useState<string[]>([]);
-  const [selectedOption, setSelectedOption] = useState("");
 
   const handleOnchangeButton = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(e.target.value);
@@ -25,38 +24,58 @@ const useValueSelect = () => {
     setConfirmedValue(selectedValue);
   };
 
-  const handleCheckboxChange = (isChecked: boolean, title: string) => {
-    setCheckSeleccionado(isChecked);
+  // const handleCheckboxChange = (isChecked: boolean, title: string) => {
+  //   setCheckSeleccionado(isChecked);
 
+  //   setSelectedTitles((prevTitles) => {
+  //     const cleanedTitles = prevTitles.filter(
+  //       (t) => !t.startsWith(title.split(" (")[0])
+  //     );
+
+  //     if (isChecked) {
+  //       return [...cleanedTitles, title];
+  //     } else {
+  //       return cleanedTitles;
+  //     }
+  //   });
+  // };
+  const handleCheckboxChange = (isChecked: boolean, title: string) => {
     setSelectedTitles((prevTitles) => {
       const cleanedTitles = prevTitles.filter(
         (t) => !t.startsWith(title.split(" (")[0])
       );
 
-      if (isChecked) {
-        return [...cleanedTitles, title];
-      } else {
-        return cleanedTitles;
-      }
+      const updatedTitles = isChecked
+        ? [...cleanedTitles, title]
+        : cleanedTitles;
+
+      // Si no queda ninguno, se setea false
+      setCheckSeleccionado(updatedTitles.length > 0);
+
+      return updatedTitles;
     });
   };
 
-  const handleCheckboxChangeConfirmed = (isChecked: boolean, title: string) => {
+  const handleCheckboxChangeConfirmed = (
+    isChecked: boolean,
+    title: string,
+    radioGroup: string[]
+  ) => {
     setCheckSeleccionado(isChecked);
 
     setSelectedTitles((prev) => {
+      const filtered = prev.filter(
+        (t) =>
+          !radioGroup.includes(t) &&
+          t !== "Transferencia con hasta 25% OFF" &&
+          t !== "Tarjeta de debito" &&
+          t !== "Tarjeta de crédito en hasta 12 csi"
+      );
+
       if (isChecked) {
-        // Agregamos el título si no está
-        return prev.includes(title) ? prev : [...prev, title];
+        return [...filtered, title];
       } else {
-        // Si se desmarca, lo sacamos y también sacamos cualquier pago
-        return prev.filter(
-          (t) =>
-            t !== title &&
-            t !== "Transferencia con hasta 25% OFF" &&
-            t !== "Tarjeta de debito" &&
-            t !== "Tarjeta de crédito en hasta 12 csi"
-        );
+        return filtered;
       }
     });
   };

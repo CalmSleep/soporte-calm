@@ -25,6 +25,7 @@ const Select3Option = ({ onCheckboxChange }: SelectOptionProps) => {
       title: "Base de hierro",
     },
   ];
+
   return (
     <StepSelects
       titleParagraph="Elegí el o los productos que deberías haber recibido:"

@@ -24,9 +24,6 @@ const Step3Select1 = ({
 }: Step3Select1Props) => {
   const orders = useSelector(getThankuContent);
   //console.log("orders", orders.items);
-
-  console.log(selectedTitles);
-
   return (
     <>
       {!checkboxConfirmed ? (
@@ -45,7 +42,6 @@ const Step3Select1 = ({
           ) : selectedValue === "2" ? (
             <Select2Option
               onCheckboxChange={handleCheckboxChangeConfirmed}
-              selectedValue={selectedValue}
               handlePaymentChange={handlePaymentChange}
             />
           ) : selectedValue === "3" ? (

@@ -7,7 +7,11 @@ export interface Step3Select1Props {
     e: React.ChangeEvent<HTMLSelectElement>
   ) => void;
   handleCheckboxChange: (isChecked: boolean, title: string) => void;
-  handleCheckboxChangeConfirmed: (isChecked: boolean, title: string) => void;
+  handleCheckboxChangeConfirmed: (
+    isChecked: boolean,
+    title: string,
+    radioGroup: string[]
+  ) => void;
   selectedTitles: string[];
   handleEditCheckbox: () => void;
   checkboxConfirmed: boolean;
@@ -19,8 +23,11 @@ export interface Step3Select1Props {
 }
 
 export interface SelectOptionProps {
-  selectedValue?: string | null;
-  onCheckboxChange: (isChecked: boolean, title: string) => void;
+  onCheckboxChange: (
+    isChecked: boolean,
+    title: string,
+    radioGroup: string[]
+  ) => void;
   handlePaymentChange?: (
     paymentLabel: string,
     payments: { value: string; label: string }[]
@@ -29,7 +36,13 @@ export interface SelectOptionProps {
 
 export interface Step3Select2Props {
   checkboxConfirmed: boolean;
+  checkSeleccionado: boolean;
   selectedTitles: string[];
   handleEditCheckbox: () => void;
   handleCheckboxChange: (isChecked: boolean, title: string) => void;
+  handleCheckboxChangeConfirmed: (
+    isChecked: boolean,
+    title: string,
+    radioGroup: string[]
+  ) => void;
 }

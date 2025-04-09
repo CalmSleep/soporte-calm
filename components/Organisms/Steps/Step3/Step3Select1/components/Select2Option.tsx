@@ -2,19 +2,22 @@ import React, { useState } from "react";
 import { SelectOptionProps } from "../../types";
 import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects";
 import Select from "@/components/Atoms/Select/Select";
-import { tr } from "date-fns/locale";
 
 const Select2Option = ({
-  selectedValue,
   onCheckboxChange,
   handlePaymentChange,
 }: SelectOptionProps) => {
+  const [selectedOption, setSelectedOption] = useState("");
   const radioOptions = [
     { value: "descuento", label: "Quiero comprarlo con un 5% de descuento" },
     { value: "devolucion", label: "Prefiero devolverlo" },
   ];
 
   const payments = [
+    {
+      value: "",
+      label: "Seleccione un metodo de pago",
+    },
     {
       value: "transferencia",
       label: "Transferencia con hasta 25% OFF",
@@ -28,15 +31,19 @@ const Select2Option = ({
       label: "Tarjeta de crédito en hasta 12 csi",
     },
   ];
-  console.log(selectedValue);
-  const [selectedOption, setSelectedOption] = useState("");
 
   return (
     <>
       <StepSelects
         titleParagraph="Elegí la mejor opción:"
         radioOptions={radioOptions}
-        onCheckboxChange={onCheckboxChange}
+        onCheckboxChange={(isChecked, title) =>
+          onCheckboxChange(
+            isChecked,
+            title,
+            radioOptions.map((r) => r.label)
+          )
+        }
         selectedOption={selectedOption}
         setSelectedOption={setSelectedOption}
       />
