@@ -1,52 +1,73 @@
 import Select from "@/components/Atoms/Select/Select";
-import StepsHeaders from "@/components/Molecules/StepBody/StepsHeader/StepsHeaders";
-import useValueSelect from "@/hooks/useValueSelect";
 import React from "react";
 import Select1Option from "./components/Select1Option";
-import Step4 from "../../Step4/Step4";
-import { Step3Select1Props } from "./types";
-import Paragraph from "@/components/Atoms/Typography/Text";
+import { Step3Select1Props } from "../types";
+import Select2Option from "./components/Select2Option";
+import Select3Option from "./components/Select3Option";
+import Select4Option from "./components/Select4Option";
+import options from "./step3.json";
+import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
+import optionStep3 from "./step3.json";
 
 const Step3Select1 = ({
+  orders,
   selectedValue,
   handleOnchangeWithoutConfirm,
   handleCheckboxChange,
+  selectedTitles,
+  handleEditCheckbox,
+  checkboxConfirmed,
+  handleCheckboxChangeConfirmed,
+  handlePaymentChange,
+  valueSelect,
 }: Step3Select1Props) => {
   return (
     <>
-      <Select
-        onChange={handleOnchangeWithoutConfirm}
-        value={selectedValue || ""}
-        options={[
-          ...(selectedValue === null
-            ? [{ value: "", label: "Selecciona tu caso" }]
-            : []),
-          {
-            value: "1",
-            label: "Mi pedido está incompleto o faltan piezas",
-          },
-          {
-            value: "2",
-            label: "Recibí un producto demás",
-          },
-          {
-            value: "3",
-            label: "Recibí un producto que no es el que pedí",
-          },
-          {
-            value: "4",
-            label: "Recibí un producto con una falla de fábrica",
-          },
-        ]}
-      />
-      {selectedValue === "1" && (
-        <Select1Option onCheckboxChange={handleCheckboxChange} />
+      {!checkboxConfirmed ? (
+        <>
+          <Select
+            onChange={handleOnchangeWithoutConfirm}
+            value={selectedValue || ""}
+            options={
+              selectedValue === null
+                ? options
+                : options.filter((opt) => opt.value !== "")
+            }
+          />
+          {selectedValue === "1" ? (
+            <Select1Option
+              onCheckboxChange={handleCheckboxChange}
+              orders={orders}
+            />
+          ) : selectedValue === "2" ? (
+            <Select2Option
+              onCheckboxChange={handleCheckboxChangeConfirmed}
+              handlePaymentChange={handlePaymentChange}
+            />
+          ) : selectedValue === "3" ? (
+            <Select3Option
+              onCheckboxChange={handleCheckboxChange}
+              orders={orders}
+            />
+          ) : selectedValue === "4" ? (
+            <Select4Option
+              onCheckboxChange={handleCheckboxChange}
+              orders={orders}
+            />
+          ) : null}
+        </>
+      ) : (
+        <StepInfo
+          info={[
+            `${
+              optionStep3.find((item) => item.value === selectedValue)?.label ||
+              "Opción no encontrada"
+            }`,
+            `${selectedTitles.join(", ")}`,
+          ]}
+          onClick={handleEditCheckbox}
+        />
       )}
-
-      {/* {checkboxConfirmed && <Step4 />}
-      {selectedValue === "2" && <p>Valor 2</p>}
-      {selectedValue === "3" && <p>Valor 3</p>}
-      {selectedValue === "4" && <p>Valor 4</p>} */}
     </>
   );
 };

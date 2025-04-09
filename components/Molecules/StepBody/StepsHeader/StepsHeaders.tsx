@@ -11,16 +11,18 @@ const StepsHeaders = ({
   value,
   onClick,
   button,
+  backgroundColor,
 }: StepHeaderProps) => {
   return (
     <SectionHeader
       sectionHeaderStyles={{
-        $padding: "40px 400px",
+        $padding: "40px 300px",
         $gap: "16px",
         $responsiveMobile: {
           padding: "24px 16px",
           gap: "24px",
         },
+        $backgroundColor: backgroundColor,
       }}
       spam={span}
       title={title}
@@ -62,7 +64,7 @@ const StepsHeaders = ({
           borderRadius="1000px"
           fontSize="24px"
           responsiveMobile={{ fontSize: "18px" }}
-          disabled={value === null || value === ""}
+          disabled={!!value}
           disableStyles={true}
           onClick={onClick}
         >

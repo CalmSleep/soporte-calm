@@ -26,9 +26,14 @@ export type InputProps = {
   borderColor?: ThemeColors;
   borderColorFocused?: ThemeColors;
   borderRadius?: string;
+  checkColor?: ThemeColors;
+  checkBorderColor?: ThemeColors;
+  padding?: string;
+  appearance?: string;
 };
 
 export type InputStyledProps = {
+  $appearance?: string;
   $width?: string;
   $borderColor?: ThemeColors;
   $borderColorFocused?: ThemeColors;
@@ -37,4 +42,7 @@ export type InputStyledProps = {
   $height?: string;
   $backgroundColor?: ThemeColors;
   $borderRadius?: string;
+  $checkColor?: ThemeColors;
+  $checkBorderColor?: ThemeColors;
+  $padding?: string;
 };
