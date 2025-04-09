@@ -9,7 +9,7 @@ import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 import { validateDni } from "./funtions";
 import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
 import { DniInput } from "./types";
-import { sendEmailOrderDni } from "@/state/order/orderServices";
+import { set } from "date-fns";
 
 const StepDni = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,6 @@ const StepDni = () => {
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [showRequiredMessage, setShowRequiredMessage] = useState<boolean>(true);
   const data = useSelector(getOrdensDni);
-
   const loading = useSelector(getLoadingGetOrderDni);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,6 +62,16 @@ const StepDni = () => {
     return `${localPart[0]}${"*".repeat(localPart.length - 2)}${localPart.slice(
       -1
     )}@${domain}`;
+  };
+  function openChat() {
+    var customEvent = new CustomEvent("openWebChatbot");
+    window.dispatchEvent(customEvent);
+  }
+  const handleChatBot = () => {
+    setTimeout(() => {
+      setIsOpen(false);
+      openChat();
+    }, 200);
   };
 
   const borderColor = !inputValue.dni
@@ -116,8 +125,6 @@ const StepDni = () => {
       )}
       {isOpen && (
         <ModalSteps
-          open={isOpen}
-          setModal={setIsOpen}
           title={data && data.length > 0 ? "¡Muchas gracias!" : "Dni inválido"}
           paragraph={
             data && data?.length > 0
@@ -133,6 +140,16 @@ const StepDni = () => {
           clicHere={data && data.length > 0 ? true : false}
           clicText="Si el correo registrado ya no es accesible,"
           clicText2="hace clic acá."
+          onClick={() => {
+            handleChatBot();
+          }}
+          handleClose={() => {
+            if (data && data.length > 0) {
+              setIsOpen(false);
+            } else {
+              handleChatBot();
+            }
+          }}
           buttonText="Aceptar"
         />
       )}

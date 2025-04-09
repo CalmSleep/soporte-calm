@@ -31,6 +31,7 @@ const Paragraph = ({
   isNextLink,
   arialLabel,
   onClick,
+  cursor,
 }: TypographyProps) => {
   if (link && isNextLink) {
     const router = useRouter();
@@ -97,6 +98,7 @@ const Paragraph = ({
         target={target}
         rel={rel}
         onClick={onClick}
+        $cursor={cursor}
       >
         {children}
       </TypographyStyled>

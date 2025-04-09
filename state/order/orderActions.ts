@@ -277,7 +277,11 @@ export const onGetOrdesDni = (dni: string) => {
     try {
       const response = await getOrderByDni(dni);
 
-      if (response && Array.isArray(response.data)) {
+      if (
+        response &&
+        Array.isArray(response.data) &&
+        response.data.length > 0
+      ) {
         const transformedData = emailResponse(response.data);
         dispatch(onGetOrderByDni(transformedData));
         await sendEmailOrderDni(transformedData);
