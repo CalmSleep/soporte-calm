@@ -1,28 +1,30 @@
-import { onSendDataToNotion } from "@/state/user/userActions";
-import StepsHeaders from "../Molecules/StepBody/StepsHeader/StepsHeaders";
+//import { onSendDataToNotion } from "@/state/user/userActions";
+//import StepsHeaders from "../Molecules/StepBody/StepsHeader/StepsHeaders";
 import HeroForm from "../Organisms/HeroForm/HeroForm";
 import Step1 from "../Organisms/Steps/Step1/Step1";
 import { ContainerForm } from "./styled";
-import { useDispatch } from "react-redux";
+//import { useDispatch } from "react-redux";
 
 const FormStatic = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const handleSubmitToNotion = async () => {
-    dispatch(onSendDataToNotion({
-      name: "Cliente de Prueba"
-    }));
-  };
+  // const handleSubmitToNotion = async () => {
+  //   dispatch(
+  //     onSendDataToNotion({
+  //       name: "Cliente de Prueba", // datos del cliente
+  //     })
+  //   );
+  // };
 
   return (
     <ContainerForm>
       <HeroForm />
       <Step1 />
-      <div>
+      {/* <div>
         <button onClick={handleSubmitToNotion}>
           Enviar nombre de prueba a Notion
         </button>
-      </div>
+      </div> */}
     </ContainerForm>
   );
 };
