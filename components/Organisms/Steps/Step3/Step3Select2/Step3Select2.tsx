@@ -3,16 +3,30 @@ import React, { useState } from "react";
 import items from "../refundItems.json";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import Paragraph from "@/components/Atoms/Typography/Text";
-import { Step3Select2Props } from "../types";
+import { Step3Select2and3Props } from "../types";
 
 const Step3Select2 = ({
   checkboxConfirmed,
   checkSeleccionado,
   selectedTitles,
+  valueSelect,
   handleEditCheckbox,
   handleCheckboxChange,
   handleCheckboxChangeConfirmed,
-}: Step3Select2Props) => {
+}: Step3Select2and3Props) => {
+  console.log("valueSelect", valueSelect);
+  console.log(
+    "selectedTitles",
+    selectedTitles.some((title) => title.toLowerCase().includes("cambio"))
+  );
+  // if (
+  // selectedTitles.some((title) =>
+  //   title.toLowerCase().includes("cambio")
+  // )
+  // ) {
+  //   console.log("cambio");
+  // }
+
   const [selectedOption2, setSelectedOption2] = useState("");
   const itemsTest = [items[0], items[1]];
   const radioOptions = [
@@ -41,12 +55,16 @@ const Step3Select2 = ({
       {!checkboxConfirmed ? (
         <>
           <StepSelects
-            titleParagraph="Selecciona el o los productos que queres devolver:"
+            titleParagraph={
+              valueSelect === "2"
+                ? "Selecciona el o los productos que queres devolver:"
+                : "Selecciona el o los productos que queres cambiar:"
+            }
             // items={items}
             items={itemsTest}
             onCheckboxChange={handleCheckboxChange}
           />
-          {checkSeleccionado && (
+          {checkSeleccionado && valueSelect === "2" && (
             <>
               {paragraphArray.map((item) => (
                 <Paragraph key={item.id}>
@@ -68,6 +86,13 @@ const Step3Select2 = ({
                 setSelectedOption={setSelectedOption2}
               />
             </>
+          )}
+          {checkSeleccionado && valueSelect === "3" && (
+            <StepSelects
+              titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
+              items={items}
+              onCheckboxChange={handleCheckboxChange}
+            />
           )}
         </>
       ) : (

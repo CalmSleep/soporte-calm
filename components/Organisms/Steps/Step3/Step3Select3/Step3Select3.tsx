@@ -46,13 +46,13 @@
 //             items={itemsTest}
 //             onCheckboxChange={handleCheckboxChange}
 //           />
-//           {checkSeleccionado && (
-//             <StepSelects
-//               titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
-//               items={items}
-//               onCheckboxChange={handleCheckboxChange}
-//             />
-//           )}
+// {checkSeleccionado && (
+//   <StepSelects
+//     titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
+//     items={items}
+//     onCheckboxChange={handleCheckboxChange}
+//   />
+// )}
 //         </>
 //       ) : (
 //         <StepInfo

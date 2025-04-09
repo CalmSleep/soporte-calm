@@ -20,7 +20,6 @@ const Step3 = ({ valueSelect }: Step3Props) => {
     handleCheckboxChangeConfirmed,
     handlePaymentChange,
   } = useValueSelect();
-  console.log(selectedTitles);
 
   return (
     <>
@@ -69,7 +68,7 @@ const Step3 = ({ valueSelect }: Step3Props) => {
         // value={!checkSeleccionado} descomentar para testear el valor 3
         //button={!checkboxConfirmed}
       >
-        {valueSelect === "1" ? (
+        {/* {valueSelect === "1" ? (
           <Step3Select1
             valueSelect={valueSelect}
             handleCheckboxChange={handleCheckboxChange}
@@ -92,6 +91,29 @@ const Step3 = ({ valueSelect }: Step3Props) => {
           />
         ) : (
           <Step3Select3 />
+        )} */}
+        {valueSelect === "1" ? (
+          <Step3Select1
+            valueSelect={valueSelect}
+            handleCheckboxChange={handleCheckboxChange}
+            handleOnchangeWithoutConfirm={handleOnchangeWithoutConfirm}
+            selectedValue={selectedValue}
+            handleEditCheckbox={handleEditCheckbox}
+            selectedTitles={selectedTitles}
+            checkboxConfirmed={checkboxConfirmed}
+            handleCheckboxChangeConfirmed={handleCheckboxChangeConfirmed}
+            handlePaymentChange={handlePaymentChange}
+          />
+        ) : (
+          <Step3Select2
+            checkboxConfirmed={checkboxConfirmed}
+            handleEditCheckbox={handleEditCheckbox}
+            selectedTitles={selectedTitles}
+            handleCheckboxChange={handleCheckboxChange}
+            handleCheckboxChangeConfirmed={handleCheckboxChangeConfirmed}
+            checkSeleccionado={checkSeleccionado}
+            valueSelect={valueSelect}
+          />
         )}
       </StepsHeaders>
       {checkboxConfirmed && <Step4 />}

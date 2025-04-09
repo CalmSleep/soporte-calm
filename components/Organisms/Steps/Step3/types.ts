@@ -34,10 +34,11 @@ export interface SelectOptionProps {
   ) => void;
 }
 
-export interface Step3Select2Props {
+export interface Step3Select2and3Props {
   checkboxConfirmed: boolean;
   checkSeleccionado: boolean;
   selectedTitles: string[];
+  valueSelect: string | null;
   handleEditCheckbox: () => void;
   handleCheckboxChange: (isChecked: boolean, title: string) => void;
   handleCheckboxChangeConfirmed: (
