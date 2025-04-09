@@ -1,5 +1,6 @@
 export type Step3Props = {
   valueSelect: string | null;
+  setConfirmedValue: React.Dispatch<React.SetStateAction<string | null>>;
 };
 export interface Step3Select1Props {
   selectedValue: string | null;

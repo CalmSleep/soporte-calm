@@ -14,18 +14,11 @@ const Step3Select2 = ({
   handleCheckboxChange,
   handleCheckboxChangeConfirmed,
 }: Step3Select2and3Props) => {
-  console.log("valueSelect", valueSelect);
+  console.log(selectedTitles);
   console.log(
     "selectedTitles",
     selectedTitles.some((title) => title.toLowerCase().includes("cambio"))
   );
-  // if (
-  // selectedTitles.some((title) =>
-  //   title.toLowerCase().includes("cambio")
-  // )
-  // ) {
-  //   console.log("cambio");
-  // }
 
   const [selectedOption2, setSelectedOption2] = useState("");
   const itemsTest = [items[0], items[1]];

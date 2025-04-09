@@ -55,7 +55,12 @@ const Step2 = () => {
           />
         )}
       </StepsHeaders>
-      {confirmedValue !== null && <Step3 valueSelect={confirmedValue} />}
+      {confirmedValue !== null && (
+        <Step3
+          valueSelect={confirmedValue}
+          setConfirmedValue={setConfirmedValue}
+        />
+      )}
     </>
   );
 };

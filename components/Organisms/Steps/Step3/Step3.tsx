@@ -7,10 +7,12 @@ import Step3Select2 from "./Step3Select2/Step3Select2";
 import Step3Select3 from "./Step3Select3/Step3Select3";
 import Step4 from "../Step4/Step4";
 import { set } from "date-fns";
-const Step3 = ({ valueSelect }: Step3Props) => {
+import { el } from "date-fns/locale";
+const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const {
     selectedValue,
     selectedTitles,
+    setSelectedTitles,
     handleOnchangeWithoutConfirm,
     handleConfirmCheckbox,
     checkSeleccionado,
@@ -45,7 +47,20 @@ const Step3 = ({ valueSelect }: Step3Props) => {
             : ""
         }
         onClick={() => {
-          handleConfirmCheckbox();
+          if (
+            selectedTitles.some((title) =>
+              title.toLowerCase().includes("cambio")
+            )
+          ) {
+            setConfirmedValue("3");
+            setSelectedTitles(
+              selectedTitles.filter(
+                (title) => !title.toLowerCase().includes("cambio")
+              )
+            );
+          } else {
+            handleConfirmCheckbox();
+          }
         }}
         value={
           valueSelect === "1"
@@ -68,30 +83,6 @@ const Step3 = ({ valueSelect }: Step3Props) => {
         // value={!checkSeleccionado} descomentar para testear el valor 3
         //button={!checkboxConfirmed}
       >
-        {/* {valueSelect === "1" ? (
-          <Step3Select1
-            valueSelect={valueSelect}
-            handleCheckboxChange={handleCheckboxChange}
-            handleOnchangeWithoutConfirm={handleOnchangeWithoutConfirm}
-            selectedValue={selectedValue}
-            handleEditCheckbox={handleEditCheckbox}
-            selectedTitles={selectedTitles}
-            checkboxConfirmed={checkboxConfirmed}
-            handleCheckboxChangeConfirmed={handleCheckboxChangeConfirmed}
-            handlePaymentChange={handlePaymentChange}
-          />
-        ) : valueSelect === "2" ? (
-          <Step3Select2
-            checkboxConfirmed={checkboxConfirmed}
-            handleEditCheckbox={handleEditCheckbox}
-            selectedTitles={selectedTitles}
-            handleCheckboxChange={handleCheckboxChange}
-            handleCheckboxChangeConfirmed={handleCheckboxChangeConfirmed}
-            checkSeleccionado={checkSeleccionado}
-          />
-        ) : (
-          <Step3Select3 />
-        )} */}
         {valueSelect === "1" ? (
           <Step3Select1
             valueSelect={valueSelect}
