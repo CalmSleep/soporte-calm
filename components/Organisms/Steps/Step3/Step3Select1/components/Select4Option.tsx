@@ -10,7 +10,7 @@ const Select4Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
 
   return (
     <StepSelects
-      titleParagraph="Seleccioná el producto o las piezas faltantes:"
+      titleParagraph="Elegí el o los productos con fallados y seleccioná que tipo de falla presenta:"
       items={orders.length > 0 ? matchedItems : []}
       onCheckboxChange={(isChecked, title, radioGroup = []) =>
         onCheckboxChange(isChecked, title, radioGroup)

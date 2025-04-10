@@ -9,4 +9,5 @@ export type StepHeaderProps = {
   onClick?: () => void;
   button?: boolean;
   backgroundColor?: SectionHeaderStyledProps["$backgroundColor"];
+  send?: boolean;
 };

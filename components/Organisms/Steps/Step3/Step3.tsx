@@ -21,14 +21,14 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     handleCheckboxChangeConfirmed,
     handlePaymentChange,
   } = useValueSelect();
-  console.log(selectedTitles);
+
   const orders = useSelector(getThankuContent);
 
   return (
     <>
       <StepsHeaders
         span="Paso 3/4 - "
-        backgroundColor="drWhite"
+        backgroundColor={!checkboxConfirmed ? "drWhite" : "white"}
         title={
           valueSelect === "1"
             ? "Contanos cuál fue el problema"
@@ -81,8 +81,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             ? !checkboxConfirmed
             : false
         }
-        // value={!checkSeleccionado} descomentar para testear el valor 3
-        //button={!checkboxConfirmed}
       >
         {valueSelect === "1" ? (
           <Step3Select1
@@ -110,7 +108,13 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
           />
         )}
       </StepsHeaders>
-      {checkboxConfirmed && <Step4 />}
+      {checkboxConfirmed && (
+        <Step4
+          valueSelect={valueSelect || ""}
+          selectedValue={selectedValue || ""}
+          selectedTitles={selectedTitles}
+        />
+      )}
     </>
   );
 };

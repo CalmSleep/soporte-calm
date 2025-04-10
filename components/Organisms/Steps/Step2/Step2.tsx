@@ -21,6 +21,7 @@ const Step2 = () => {
       <StepsHeaders
         span="Paso 2/4 - "
         title="Contanos cómo podemos ayudarte"
+        backgroundColor={confirmedValue === null ? "drWhite" : "white"}
         paragraph={
           confirmedValue !== null
             ? ""
