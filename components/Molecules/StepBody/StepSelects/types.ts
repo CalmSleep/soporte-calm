@@ -12,6 +12,7 @@ export interface IItems {
   id: string;
   title: string;
   pieces: { label: string; hasInput?: boolean; placeholder?: string }[];
+  span?: string;
 }
 
 export type StepSelectsProps = {

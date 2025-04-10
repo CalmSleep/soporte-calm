@@ -63,6 +63,11 @@ const StepSelects = ({
                 }
               />
               <Paragraph>{check.title}</Paragraph>
+              {check.span && (
+                <Paragraph fontSize="14px" color="millionGray">
+                  ({check.span})
+                </Paragraph>
+              )}
             </div>
           );
         })}
@@ -78,6 +83,7 @@ const StepSelects = ({
               }}
               key={item.id}
               itemName={item.title}
+              spamName={`(${item.span})`}
               onClick={() => handleAccordionClick(item.id)}
               isActive={activeItem === item.id}
               contentHeight={contentHeights[item.id] || 0}
@@ -154,6 +160,7 @@ const StepSelects = ({
               }}
               key={item.id}
               itemName={item.title}
+              spamName={`(${item.span})`}
               onClick={() => handleAccordionClick(item.id)}
               isActive={activeItem === item.id}
               contentHeight={contentHeights[item.id] || 0}

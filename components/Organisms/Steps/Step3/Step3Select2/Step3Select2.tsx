@@ -6,6 +6,7 @@ import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import { Step3Select2and3Props } from "../types";
 import AcordeonSelector from "./Acordion";
+import { itemsFilterJson, mapOrdersWithSpan } from "../util";
 
 const Step3Select2 = ({
   orders,
@@ -17,9 +18,9 @@ const Step3Select2 = ({
   handleCheckboxChange,
   handleCheckboxChangeConfirmed,
 }: Step3Select2and3Props) => {
-  const matchedItems = items.filter((item) =>
-    orders.some((order: any) => order.product_id === Number(item.id))
-  );
+  const newOrders = mapOrdersWithSpan(orders);
+
+  const matchedItems = itemsFilterJson(items, newOrders);
 
   const [selectedOption2, setSelectedOption2] = useState("");
   const radioOptions = [

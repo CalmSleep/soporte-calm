@@ -2,11 +2,12 @@ import React from "react";
 import { SelectOptionProps } from "../../types";
 import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects";
 import items from "../../defectsItems.json";
+import { itemsFilterJson, mapOrdersWithSpan } from "../../util";
 
 const Select4Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
-  const matchedItems = items.filter((item) =>
-    orders.some((order: any) => order.product_id === Number(item.id))
-  );
+  const newOrders = mapOrdersWithSpan(orders);
+
+  const matchedItems = itemsFilterJson(items, newOrders);
 
   return (
     <StepSelects

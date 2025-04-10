@@ -3,13 +3,16 @@ import { SelectOptionProps } from "../../types";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import Input from "@/components/Atoms/Input/Input";
 import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects";
+import { mapOrdersWithSpan } from "../../util";
 
 const Select3Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
-  const checks = orders.map((order: any) => {
+  const newOrders = mapOrdersWithSpan(orders);
+  const checks = newOrders.map((order: any) => {
     return {
       id: String(order.product_id),
       value: String(order.product_id),
       title: order.product_name,
+      span: order.span,
     };
   });
 

@@ -4,6 +4,7 @@ import React, { RefObject } from "react";
 export interface IUnitProps {
   onClick: () => void;
   itemName: string;
+  spamName?: string;
   itemContent?: string;
   itemsSelect?: React.ReactNode;
   itemSubtitle?: string;
