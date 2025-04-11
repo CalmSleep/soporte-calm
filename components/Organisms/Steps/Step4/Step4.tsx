@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Step4Props } from "./types";
 import StepsHeaders from "@/components/Molecules/StepBody/StepsHeader/StepsHeaders";
 import Button from "@/components/Atoms/Buttons/Button";
-import { Cointainer, ImagesContainer } from "./styled";
+import { Cointainer, CointainerInputs, ImagesContainer } from "./styled";
 import Image from "next/image";
 import Images from "@/components/Atoms/Images/Images";
 import Input from "@/components/Atoms/Input/Input";
@@ -57,9 +57,7 @@ const Step4 = ({
   const [openModal, setOpenModal] = React.useState(false);
   const dataUser = useSelector(getThankuContent);
   const dispatch = useDispatch();
-  console.log("valueSelect", valueSelect, "selectedValue", selectedValue);
   const [imagePreviews, setImagePreviews] = React.useState<string[]>([]);
-  console.log("notion step 4", notionInfo);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -87,6 +85,7 @@ const Step4 = ({
   };
   const [postalCode, setPostalCode] = React.useState<string>("");
   const [inputValue, setInputValue] = React.useState({
+    direcction: "",
     postalCode: "",
   });
   const [showRequiredMessage, setShowRequiredMessage] =
@@ -112,7 +111,10 @@ const Step4 = ({
       email: dataUser.billing.email,
       dni: dataUser.dni,
       orderNumber: dataUser.id,
-      address: `${dataUser.billing.address_1} ${dataUser.billing.address_2}`,
+      address:
+        postalCode === "no"
+          ? inputValue.direcction
+          : `${dataUser.billing.address_1} ${dataUser.billing.address_2}`,
       postCode:
         postalCode === "no" ? inputValue.postalCode : dataUser.billing.postcode,
     };
@@ -124,8 +126,7 @@ const Step4 = ({
   const handleSubmitToNotion = async () => {
     const fullInfo = notionInfoSend();
     console.log("fullInfo", fullInfo);
-
-    dispatch(onSendDataToNotion(fullInfo));
+    // dispatch(onSendDataToNotion(fullInfo));
     setOpenModal(true);
   };
 
@@ -200,28 +201,49 @@ const Step4 = ({
               }}
             />
             {postalCode === "no" ? (
-              <FloatingInput
-                label="Dirección y código postal"
-                labelRequired={showRequiredMessage ? "*" : ""}
-                labelRequiredColor="brilliantLiquorice"
-                input={{
-                  //  borderColorFocused: "madForMango",
-                  placeholder: " ",
-                  required: true,
-                  colorLabel: "madForMango",
-                  type: "text",
-                  name: "postalCode",
-                  value: inputValue.postalCode || "",
-                  onChange: handleChange,
-                }}
-                labelColor="brilliantLiquorice"
-                labelBackgroundColor="white"
-                required={
-                  showRequiredMessage
-                    ? "Ingresá la nueva dirección de retiro (domicilio + código postal)"
-                    : ""
-                }
-              />
+              <CointainerInputs>
+                <FloatingInput
+                  label="Dirección"
+                  labelRequired={showRequiredMessage ? "*" : ""}
+                  labelRequiredColor="brilliantLiquorice"
+                  input={{
+                    placeholder: " ",
+                    required: true,
+                    colorLabel: "madForMango",
+                    type: "text",
+                    name: "direcction",
+                    value: inputValue.direcction || "",
+                    onChange: handleChange,
+                  }}
+                  labelColor="brilliantLiquorice"
+                  labelBackgroundColor="white"
+                  required={
+                    showRequiredMessage
+                      ? "Ingresá la nueva dirección de retiro"
+                      : ""
+                  }
+                />
+                <FloatingInput
+                  width="45%"
+                  label="Código postal"
+                  labelRequired={showRequiredMessage ? "*" : ""}
+                  labelRequiredColor="brilliantLiquorice"
+                  input={{
+                    placeholder: " ",
+                    required: true,
+                    colorLabel: "madForMango",
+                    type: "text",
+                    name: "postalCode",
+                    value: inputValue.postalCode || "",
+                    onChange: handleChange,
+                  }}
+                  labelColor="brilliantLiquorice"
+                  labelBackgroundColor="white"
+                  required={
+                    showRequiredMessage ? "Ingresá el nuevo código postal" : ""
+                  }
+                />
+              </CointainerInputs>
             ) : null}
           </>
         ) : null}

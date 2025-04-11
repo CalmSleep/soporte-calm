@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { LabelStyledProps } from "./types";
+import { InputWrapperProps, LabelStyledProps } from "./types";
 
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.div<InputWrapperProps>`
+  width: ${({ $width }) => ($width ? $width : "100%")};
   position: relative;
   display: flex;
   flex-direction: column;
