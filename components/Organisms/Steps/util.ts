@@ -1,6 +1,5 @@
 import { searchAttribute } from "@/utils/productsFunctios";
 import variations_products from "@/utils/variations_products";
-import { Category } from "./Step3/types";
 
 export   function normalizeText(text: string) {
     return text
