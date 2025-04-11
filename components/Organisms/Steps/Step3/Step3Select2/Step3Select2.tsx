@@ -27,7 +27,6 @@ const Step3Select2 = ({
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
   console.log("selectedTitles", selectedTitles);
-
   type ValueObject = {
     [comentario: string]: string[];
   };
@@ -38,35 +37,38 @@ const Step3Select2 = ({
     values: ValueObject[];
   };
 
-  const resultadoFinal = selectedTitles
+  type Resultado = {
+    productName: string;
+    comentario: string;
+  };
+
+  const comentarios: string[] = ["Almohada Inteligente (Me parece alta)"];
+
+  const resultadoFinal: Resultado[] = selectedTitles
     .map((str) => {
       const producto = str.split(" (")[0];
       console.log("producto", producto);
 
       const match = str.match(/\(([^)]+)\)/);
-
       const comentario = match ? match[1] : "";
-      console.log("comentario", comentario);
 
       const item = infoChanges.find((d) => d.title === producto);
       if (!item) return null;
 
       const valueMatch = item.values.find((obj) => comentario in obj);
       if (!valueMatch) return null;
-      console.log("valueMatch", valueMatch);
 
-      const comentarioKey = comentario as keyof typeof valueMatch;
-      console.log("comentarioKey", comentarioKey);
+      const value = valueMatch[comentario as keyof typeof valueMatch];
+      console.log("value", value);
 
       return {
-        title: producto,
-        comentario,
-        resultado: valueMatch[comentarioKey],
+        productName: value[0],
+        comentario: value[1],
       };
     })
     .filter((item) => item !== null);
 
-  //console.log(resultadoFinal);
+  console.log("resultadoFinal", resultadoFinal);
 
   const [selectedOption2, setSelectedOption2] = useState("");
   const radioOptions = [
@@ -80,9 +82,10 @@ const Step3Select2 = ({
     },
     {
       id: 2,
-      text: "🔍 En base a lo que buscás, creemos que [nombre del producto recomendado] puede ser una mejor alternativa.",
-      text2:
-        "📌 [Explicación de porqué es más adecuado: características, diferencias, beneficios]",
+      text: `🔍 En base a lo que buscás, creemos que ${resultadoFinal
+        .map((r) => r.productName)
+        .join(", ")} puede ser una mejor alternativa.`,
+      text2: `📌 ${resultadoFinal.map((r) => r.comentario).join(", ")}` || "",
     },
     {
       id: 3,
