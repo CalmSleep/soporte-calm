@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "title": "Colchon Original 22cm",
+    "values": [
+      {
+        "Me parece bajo": [
+          "Colchón Original Plus (28cm de alto)",
+          "Así, vas a ganar unos centímetros extra en altura sin perder nada de lo que más te gusta: la comodidad y durabilidad que ya conocés y disfrutás. ¡Sí, es igual de cómodo que el que tenés hoy en casa!"
+        ]
+      },
+      {
+        "Es muy caluroso al usarlo": [
+          "Colchón Híbrido (22cm de alto)",
+          "Cuenta con una excelente circulación de aire, lo que te va a ayudar a mantener una temperatura fresca durante toda la noche. Además, combina resortes y capas de espuma de alta densidad para brindarte un descanso suave y equilibrado."
+        ]
+      },
+      {
+        "Demasiado firme para mi gusto": [
+          "Colchón Híbrido (22cm de alto)",
+          "Tiene una firmeza suave, ideal si te gusta sentirte más cómodo y relajado al acostarte. Además, su combinación de resortes y espuma hace que el descanso sea más liviano, fresco y equilibrado. Perfecto para quienes prefieren una sensación más acogedora sin perder soporte."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Almohada Inteligente",
+    "values": [
+      {
+        "Me parece alta": [
+          "Alta Almohada",
+          "A pesar de lo que indica su nombre, su suavidad y relleno de microfibra efecto pluma la hacen mucho más mullida y adaptativa, brindándote una sensación más baja y cómoda sin perder el soporte que necesitas. ¡Es como dormir sobre una nube!"
+        ]
+      }
+    ]
+  }
+]

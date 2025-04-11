@@ -35,7 +35,7 @@ const Step3 = ({
     handleCheckboxChangeConfirmed,
     handlePaymentChange,
   } = useValueSelect();
-  console.log("titles", selectedTitles);
+  // console.log("titles", selectedTitles);
   const orders = useSelector(getThankuContent);
   const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);
   const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
@@ -90,7 +90,7 @@ const Step3 = ({
           : [],
     });
   }, [checkboxConfirmed]);
-  console.log("notionInfo step 3", notionInfo);
+  // console.log("notionInfo step 3", notionInfo);
 
   return (
     <>

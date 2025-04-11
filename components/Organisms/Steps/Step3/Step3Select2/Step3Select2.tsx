@@ -2,11 +2,16 @@ import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects
 import React, { useState } from "react";
 import items from "../refundItems.json";
 import itemsChanges from "../changesItems.json";
+import infoChanges from "../changesOptionItems.json";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import { Step3Select2and3Props } from "../types";
 import { itemsFilterJson, mapOrdersWithSpan, normalizeText } from "../../util";
 import { menuData } from "@/components/Organisms/NavBar/utils";
+
+type ValueObject = {
+  [key: string]: string[];
+};
 
 const Step3Select2 = ({
   orders,
@@ -17,9 +22,51 @@ const Step3Select2 = ({
   handleCheckboxChange,
   handleCheckboxChangeConfirmed,
   infoStep,
+  selectedTitles,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
+  console.log("selectedTitles", selectedTitles);
+
+  type ValueObject = {
+    [comentario: string]: string[];
+  };
+
+  type ProductoData = {
+    id: string;
+    title: string;
+    values: ValueObject[];
+  };
+
+  const resultadoFinal = selectedTitles
+    .map((str) => {
+      const producto = str.split(" (")[0];
+      console.log("producto", producto);
+
+      const match = str.match(/\(([^)]+)\)/);
+
+      const comentario = match ? match[1] : "";
+      console.log("comentario", comentario);
+
+      const item = infoChanges.find((d) => d.title === producto);
+      if (!item) return null;
+
+      const valueMatch = item.values.find((obj) => comentario in obj);
+      if (!valueMatch) return null;
+      console.log("valueMatch", valueMatch);
+
+      const comentarioKey = comentario as keyof typeof valueMatch;
+      console.log("comentarioKey", comentarioKey);
+
+      return {
+        title: producto,
+        comentario,
+        resultado: valueMatch[comentarioKey],
+      };
+    })
+    .filter((item) => item !== null);
+
+  //console.log(resultadoFinal);
 
   const [selectedOption2, setSelectedOption2] = useState("");
   const radioOptions = [
