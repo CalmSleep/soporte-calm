@@ -31,7 +31,7 @@ export default ({ Component, pageProps }: AppProps) => {
             <Theme>
               <ChatLoader />
               <CursorRedirectStyles />
-              {/* <NavBar /> */}
+              <NavBar />
               <Component {...pageProps} />
             </Theme>
           </div>
