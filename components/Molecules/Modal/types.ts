@@ -1,8 +1,6 @@
 import React from "react";
 
 export type ModalStepsProps = {
-  open?: boolean | (() => void);
-  setModal?: (open: boolean) => void;
   title?: string;
   paragraph?: string;
   clicHere?: boolean;
@@ -10,4 +8,6 @@ export type ModalStepsProps = {
   clicText2?: string;
   buttonText?: string;
   onClick?: () => void;
+  handleClose?: () => void;
+  children?: React.ReactNode;
 };

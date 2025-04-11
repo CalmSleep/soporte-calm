@@ -5,6 +5,7 @@ import Paragraph from "@/components/Atoms/Typography/Text";
 import { useState } from "react";
 
 const FloatingInput = ({
+  width,
   label,
   labelRequired,
   labelRequiredColor,
@@ -17,7 +18,7 @@ const FloatingInput = ({
   const [isFocus, setIsFocus] = useState(false);
 
   return (
-    <InputWrapper>
+    <InputWrapper $width={width}>
       <Input
         {...input}
         onFocus={() => setIsFocus(true)}

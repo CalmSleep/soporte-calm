@@ -73,7 +73,7 @@ const useSelects = ({
 
     const formatted = checkedPieces.length
       ? `${itemTitle} (${checkedPieces
-          .map((p) => `${p}${updatedValues[p] ? `x ${updatedValues[p]}` : ""}`)
+          .map((p) => `${p}${updatedValues[p] ? ` x ${updatedValues[p]}` : ""}`)
           .join(" , ")})`
       : itemTitle;
 

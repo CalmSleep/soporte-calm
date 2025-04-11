@@ -2,27 +2,31 @@ import React, { useEffect } from "react";
 import { SelectOptionProps } from "../../types";
 import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects";
 import items from "../../missingItems.json";
+import { IChecks } from "@/components/Molecules/StepBody/StepSelects/types";
+import { itemsFilterJson, mapOrdersWithSpan } from "../../../util";
 
 const Select1Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
-  const matchedItems = items.filter((item) =>
-    orders.some((order: any) => order.product_id === Number(item.id))
-  );
+  //  console.log("orders", orders);
+  const newOrders = mapOrdersWithSpan(orders);
 
-  const matchedIds = matchedItems.map((item) => item.id);
+  const matchedItems = itemsFilterJson(items, newOrders);
 
-  const checksOrders = orders
+  const matchedIds = matchedItems.map((item) => item?.id);
+
+  const checksOrders = newOrders
     .filter((order: any) => {
-      return !matchedIds.some((title) => order.product_id === Number(title));
+      return !matchedIds.some((id) => order.product_id === Number(id));
     })
-    .map((order: any) => {
+    .map((order: any): IChecks => {
       return {
         id: String(order.product_id),
         value: String(order.product_id),
         title: order.product_name,
+        span: order.span,
       };
     });
+  //console.log("checksOrders", checksOrders);
 
-  console.log(checksOrders);
   const radioOptions = [
     { value: "completo", label: "Falta este producto completo" },
     { value: "piezas", label: "Falta una o más piezas" },
@@ -32,7 +36,9 @@ const Select1Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
     <StepSelects
       titleParagraph="Seleccioná el producto o las piezas faltantes:"
       checks={orders.length > 0 ? checksOrders : []}
-      items={orders.length > 0 ? matchedItems : []}
+      items={
+        orders.length > 0 ? matchedItems.filter((item) => item !== null) : []
+      }
       radioOptions={radioOptions}
       onCheckboxChange={(isChecked, title, radioGroup = []) =>
         onCheckboxChange(isChecked, title, radioGroup)

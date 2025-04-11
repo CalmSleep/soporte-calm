@@ -87,6 +87,7 @@ export interface IOrdenMail {
   orderNumber: string;
   orderKey: string;
   orderStatus: string;
+  saleSource: string;
   total: string;
   items: IItemOrden[];
   buttonRedirect: string;

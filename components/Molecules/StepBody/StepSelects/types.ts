@@ -12,12 +12,14 @@ export interface IItems {
   id: string;
   title: string;
   pieces: { label: string; hasInput?: boolean; placeholder?: string }[];
+  span?: string;
 }
 
 export type StepSelectsProps = {
   titleParagraph?: string;
   checks?: IChecks[];
   items?: IItems[];
+  menuData?: any;
   radioOptions?: StepRadioProps["radioOptions"];
   onCheckboxChange?: (
     isChecked: boolean,
@@ -26,4 +28,5 @@ export type StepSelectsProps = {
   ) => void;
   selectedOption?: string;
   setSelectedOption?: React.Dispatch<React.SetStateAction<string>>;
+  changedOption?: boolean
 };

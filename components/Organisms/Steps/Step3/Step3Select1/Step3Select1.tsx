@@ -5,9 +5,9 @@ import { Step3Select1Props } from "../types";
 import Select2Option from "./components/Select2Option";
 import Select3Option from "./components/Select3Option";
 import Select4Option from "./components/Select4Option";
-import options from "./step3.json";
+import options from "../step3.json";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
-import optionStep3 from "./step3.json";
+import { selectedTitleOthers, splitQuieroComprar } from "../../util";
 
 const Step3Select1 = ({
   orders,
@@ -20,6 +20,7 @@ const Step3Select1 = ({
   handleCheckboxChangeConfirmed,
   handlePaymentChange,
   valueSelect,
+  infoStep,
 }: Step3Select1Props) => {
   return (
     <>
@@ -57,16 +58,7 @@ const Step3Select1 = ({
           ) : null}
         </>
       ) : (
-        <StepInfo
-          info={[
-            `${
-              optionStep3.find((item) => item.value === selectedValue)?.label ||
-              "Opción no encontrada"
-            }`,
-            `${selectedTitles.join(", ")}`,
-          ]}
-          onClick={handleEditCheckbox}
-        />
+        <StepInfo info={infoStep} onClick={handleEditCheckbox} />
       )}
     </>
   );

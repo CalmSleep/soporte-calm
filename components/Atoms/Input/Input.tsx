@@ -28,6 +28,7 @@ const Input = ({
   checkBorderColor,
   padding,
   appearance,
+  display,
 }: InputProps) => {
   return (
     <InputStyles
@@ -61,6 +62,9 @@ const Input = ({
       $checkBorderColor={checkBorderColor}
       $padding={padding}
       $appearance={appearance}
+      multiple={type === "file" ? true : false}
+      accept={type === "file" ? "image/*" : ""}
+      $display={display}
     >
       {children}
     </InputStyles>
