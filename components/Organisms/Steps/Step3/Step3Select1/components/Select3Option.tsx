@@ -1,9 +1,7 @@
 import React from "react";
 import { SelectOptionProps } from "../../types";
-import Paragraph from "@/components/Atoms/Typography/Text";
-import Input from "@/components/Atoms/Input/Input";
 import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects";
-import { mapOrdersWithSpan } from "../../util";
+import { mapOrdersWithSpan } from "../../../util";
 
 const Select3Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
   const newOrders = mapOrdersWithSpan(orders);

@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { onGetOrder } from "@/state/order/orderActions";
 import ModalMeli from "../Organisms/Steps/Step2/Modals/ModalMeli";
 import ModalFrav from "../Organisms/Steps/Step2/Modals/ModalFrav";
+import ModalNotFound from "../Organisms/Steps/Step2/Modals/ModalNotFound";
 
 const FormDinamic = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -25,6 +26,9 @@ const FormDinamic = () => {
     if (saleSource === "frav") {
       setIsOpen(true);
     }
+    if (saleSource === "null") {
+      setIsOpen(true);
+    }
   }, [id, orderKey, dispatch]);
 
   return (
@@ -38,6 +42,8 @@ const FormDinamic = () => {
         </>
       ) : saleSource === "meli" ? (
         <ModalMeli isOpen={isOpen} setIsOpen={setIsOpen} />
+      ) : saleSource === "null" ? (
+        <ModalNotFound isOpen={isOpen} setIsOpen={setIsOpen} />
       ) : (
         <ModalFrav isOpen={isOpen} setIsOpen={setIsOpen} />
       )}

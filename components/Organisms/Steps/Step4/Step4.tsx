@@ -10,6 +10,11 @@ import StepRadio from "@/components/Molecules/StepBody/StepRadio/StepRadio";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import FloatingInput from "@/components/Molecules/FloatingInput/FloatingInput";
 import { set } from "date-fns";
+import { useDispatch, useSelector } from "react-redux";
+import { onSendDataToNotion } from "@/state/user/userActions";
+import { getThankuContent } from "@/state/order/orderSelector";
+import { images } from "@/next.config";
+import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
 
 const Svg = () => {
   return (
@@ -43,9 +48,19 @@ const Svg = () => {
   );
 };
 
-const Step4 = ({ valueSelect, selectedValue, selectedTitles }: Step4Props) => {
+const Step4 = ({
+  valueSelect,
+  selectedValue,
+  notionInfo,
+  setNotionInfo,
+}: Step4Props) => {
+  const [openModal, setOpenModal] = React.useState(false);
+  const dataUser = useSelector(getThankuContent);
+  const dispatch = useDispatch();
   console.log("valueSelect", valueSelect, "selectedValue", selectedValue);
   const [imagePreviews, setImagePreviews] = React.useState<string[]>([]);
+  console.log("notion step 4", notionInfo);
+
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleButtonClick = () => {
@@ -88,12 +103,31 @@ const Step4 = ({ valueSelect, selectedValue, selectedTitles }: Step4Props) => {
       setShowRequiredMessage(false);
     }
   };
-  console.log(
-    "inputValue",
-    inputValue,
-    "showRequiredMessage",
-    showRequiredMessage
-  );
+
+  const notionInfoSend = () => {
+    const fullInfo = {
+      ...notionInfo,
+      images: imagePreviews,
+      name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
+      email: dataUser.billing.email,
+      dni: dataUser.dni,
+      orderNumber: dataUser.id,
+      address: `${dataUser.billing.address_1} ${dataUser.billing.address_2}`,
+      postCode:
+        postalCode === "no" ? inputValue.postalCode : dataUser.billing.postcode,
+    };
+
+    setNotionInfo(fullInfo);
+    return fullInfo;
+  };
+
+  const handleSubmitToNotion = async () => {
+    const fullInfo = notionInfoSend();
+    console.log("fullInfo", fullInfo);
+
+    dispatch(onSendDataToNotion(fullInfo));
+    setOpenModal(true);
+  };
 
   return (
     <>
@@ -138,8 +172,10 @@ const Step4 = ({ valueSelect, selectedValue, selectedTitles }: Step4Props) => {
             2. Dorso\n
             ❗ Si el producto nunca salió de su caja, mandanos una foto donde se vea la cinta de seguridad.`
         }
-        button={true}
+        onClick={() => handleSubmitToNotion()}
+        button
         send
+        value={imagePreviews.length > 0 ? false : true}
       >
         {valueSelect === "2" || valueSelect === "3" ? (
           <>
@@ -223,6 +259,28 @@ const Step4 = ({ valueSelect, selectedValue, selectedTitles }: Step4Props) => {
           ))}
         </ImagesContainer>
       </StepsHeaders>
+      {openModal && (
+        <ModalSteps
+          title="¡Eso es todo por ahora!"
+          paragraph={`Tu solicitud se envió correctamente, te dejamos el código de seguimiento: #${dataUser.id}\n
+El equipo de soporte va a revisar tu caso y, en menos de 48 horas hábiles, te contactará por correo con más información y los pasos a seguir.
+
+Muchas gracias por tu tiempo. ¡Quedamos en contacto!`}
+          buttonText="Aceptar"
+          handleClose={() => setOpenModal(false)}
+        >
+          {valueSelect === "3" && (
+            <Paragraph
+              textTag="span"
+              fontSize="16px"
+              color="brilliantLiquorice"
+            >
+              Tené en cuenta que por el cambio de modelo puede existir una
+              diferencia a abonar, o a reembolsar. *Ver tyc 📎
+            </Paragraph>
+          )}
+        </ModalSteps>
+      )}
     </>
   );
 };

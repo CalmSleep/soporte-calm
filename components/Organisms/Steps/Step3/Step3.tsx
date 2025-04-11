@@ -7,7 +7,21 @@ import Step3Select2 from "./Step3Select2/Step3Select2";
 import Step4 from "../Step4/Step4";
 import { useSelector } from "react-redux";
 import { getThankuContent } from "@/state/order/orderSelector";
-const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
+import optionStep3 from "./step3.json";
+import {
+  extractItemsInParens,
+  filterTitlesByCategories,
+  selectedTitleOthers,
+  splitDevolucion,
+  splitQuieroComprar,
+} from "../util";
+import itemsChanges from "./changesItems.json";
+const Step3 = ({
+  valueSelect,
+  setConfirmedValue,
+  notionInfo,
+  setNotionInfo,
+}: Step3Props) => {
   const {
     selectedValue,
     selectedTitles,
@@ -21,8 +35,62 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     handleCheckboxChangeConfirmed,
     handlePaymentChange,
   } = useValueSelect();
-
+  console.log("titles", selectedTitles);
   const orders = useSelector(getThankuContent);
+  const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);
+  const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
+  const [continuemos, otros2] = splitDevolucion(selectedTitles);
+
+  const infoProduct =
+    (valueSelect === "1" && selectedValue === "1") || selectedValue === "4"
+      ? `${selectedTitleOthers(selectedTitles).join(", ")}`
+      : valueSelect === "1" && selectedValue === "2" && quieroComprar.length
+      ? `${quieroComprar}`
+      : "";
+
+  const infoMensaje =
+    valueSelect === "1" && selectedValue === "2" && otros.length > 0
+      ? `${otros.join(", ")}`
+      : valueSelect === "1" && selectedValue === "3"
+      ? `${selectedTitles.join(", ")}`
+      : "";
+
+  const infoSelect1 = [
+    `${
+      optionStep3.find((item) => item.value === selectedValue)?.label ||
+      "Opción no encontrada"
+    }`,
+    infoProduct,
+    infoMensaje,
+  ];
+
+  const products =
+    valueSelect === "2"
+      ? `${otros2.join(", ")}`
+      : `${selectedTitles
+          .filter((title) => !matchedTitles.includes(title))
+          .join(", ")}`;
+  console.log("products", products);
+
+  const infoSelect2And3 = [
+    products,
+    valueSelect === "2"
+      ? `${continuemos.join(", ")}`
+      : `${extractItemsInParens(matchedTitles).join(", ")}`,
+  ];
+
+  React.useEffect(() => {
+    setNotionInfo({
+      ...notionInfo,
+      problemDescription: valueSelect === "1" ? infoSelect1 : [products],
+      productReturn: valueSelect === "2" ? [`${otros2.join(", ")}`] : [],
+      productChange:
+        valueSelect === "3"
+          ? [`${extractItemsInParens(matchedTitles).join(", ")}`]
+          : [],
+    });
+  }, [checkboxConfirmed]);
+  console.log("notionInfo step 3", notionInfo);
 
   return (
     <>
@@ -94,6 +162,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             checkboxConfirmed={checkboxConfirmed}
             handleCheckboxChangeConfirmed={handleCheckboxChangeConfirmed}
             handlePaymentChange={handlePaymentChange}
+            infoStep={infoSelect1}
           />
         ) : (
           <Step3Select2
@@ -105,6 +174,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             handleCheckboxChangeConfirmed={handleCheckboxChangeConfirmed}
             checkSeleccionado={checkSeleccionado}
             valueSelect={valueSelect}
+            infoStep={infoSelect2And3}
           />
         )}
       </StepsHeaders>
@@ -112,7 +182,8 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
         <Step4
           valueSelect={valueSelect || ""}
           selectedValue={selectedValue || ""}
-          selectedTitles={selectedTitles}
+          notionInfo={notionInfo}
+          setNotionInfo={setNotionInfo}
         />
       )}
     </>

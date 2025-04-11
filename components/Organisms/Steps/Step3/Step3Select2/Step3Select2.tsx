@@ -5,8 +5,14 @@ import itemsChanges from "../changesItems.json";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import { Step3Select2and3Props } from "../types";
-import AcordeonSelector from "./Acordion";
-import { itemsFilterJson, mapOrdersWithSpan } from "../util";
+import {
+  extractItemsInParens,
+  filterTitlesByCategories,
+  itemsFilterJson,
+  mapOrdersWithSpan,
+  splitDevolucion,
+} from "../../util";
+import { fi } from "date-fns/locale";
 
 const Step3Select2 = ({
   orders,
@@ -17,10 +23,14 @@ const Step3Select2 = ({
   handleEditCheckbox,
   handleCheckboxChange,
   handleCheckboxChangeConfirmed,
+  infoStep,
 }: Step3Select2and3Props) => {
-  const newOrders = mapOrdersWithSpan(orders);
+  const [continuemos, otros] = splitDevolucion(selectedTitles);
 
+  const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
+
+  const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);
 
   const [selectedOption2, setSelectedOption2] = useState("");
   const radioOptions = [
@@ -81,17 +91,16 @@ const Step3Select2 = ({
             </>
           )}
           {checkSeleccionado && valueSelect === "3" && (
-            <AcordeonSelector />
-            // <StepSelects
-            //   titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
-            //   items={items}
-            //   onCheckboxChange={handleCheckboxChange}
-            // />
+            <StepSelects
+              titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
+              items={itemsChanges}
+              onCheckboxChange={handleCheckboxChange}
+            />
           )}
         </>
       ) : (
         <StepInfo
-          info={[`${selectedTitles.join(", ")}`]}
+          info={infoStep}
           onClick={() => {
             handleEditCheckbox();
             setSelectedOption2("");

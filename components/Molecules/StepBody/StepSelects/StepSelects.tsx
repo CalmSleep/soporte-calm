@@ -59,7 +59,10 @@ const StepSelects = ({
                 value={check.value}
                 onChange={(e) =>
                   onCheckboxChange &&
-                  onCheckboxChange(e.target.checked, check.title)
+                  onCheckboxChange(
+                    e.target.checked,
+                    `${check.title} ${check.span ? `(${check.span})` : ""}`
+                  )
                 }
               />
               <Paragraph>{check.title}</Paragraph>
@@ -160,7 +163,7 @@ const StepSelects = ({
               }}
               key={item.id}
               itemName={item.title}
-              spamName={`(${item.span})`}
+              spamName={item.span ? `(${item.span})` : ""}
               onClick={() => handleAccordionClick(item.id)}
               isActive={activeItem === item.id}
               contentHeight={contentHeights[item.id] || 0}

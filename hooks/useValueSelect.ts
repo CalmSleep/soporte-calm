@@ -1,3 +1,5 @@
+import { IDataSendNotion } from "@/components/Organisms/Steps/Step4/types";
+import { infoString } from "@/components/Organisms/Steps/util";
 import { useState } from "react";
 
 const useValueSelect = () => {
@@ -6,6 +8,19 @@ const useValueSelect = () => {
   const [checkSeleccionado, setCheckSeleccionado] = useState(false);
   const [checkboxConfirmed, setCheckboxConfirmed] = useState(false);
   const [selectedTitles, setSelectedTitles] = useState<string[]>([]);
+  const [notionInfo, setNotionInfo] = useState<IDataSendNotion>({
+    name: "",
+    email: "",
+    dni: "",
+    address: "",
+    postCode: "",
+    orderNumber: "",
+    userIntention: "",
+    problemDescription: [],
+    images: [],
+    productChange: [],
+    productReturn: [],
+  });
 
   const handleOnchangeButton = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(e.target.value);
@@ -21,24 +36,16 @@ const useValueSelect = () => {
   };
 
   const handleConfirm = () => {
-    setConfirmedValue(selectedValue);
+    if (selectedValue !== null) {
+      setConfirmedValue(selectedValue);
+      const info = infoString(selectedValue);
+      setNotionInfo((prev) => ({
+        ...prev,
+        userIntention: info,
+      }));
+    }
   };
 
-  // const handleCheckboxChange = (isChecked: boolean, title: string) => {
-  //   setCheckSeleccionado(isChecked);
-
-  //   setSelectedTitles((prevTitles) => {
-  //     const cleanedTitles = prevTitles.filter(
-  //       (t) => !t.startsWith(title.split(" (")[0])
-  //     );
-
-  //     if (isChecked) {
-  //       return [...cleanedTitles, title];
-  //     } else {
-  //       return cleanedTitles;
-  //     }
-  //   });
-  // };
   const handleCheckboxChange = (isChecked: boolean, title: string) => {
     setSelectedTitles((prevTitles) => {
       const cleanedTitles = prevTitles.filter(
@@ -117,6 +124,8 @@ const useValueSelect = () => {
     checkSeleccionado,
     checkboxConfirmed,
     selectedTitles,
+    notionInfo,
+    setNotionInfo,
     setCheckSeleccionado,
     setCheckboxConfirmed,
     setSelectedTitles,

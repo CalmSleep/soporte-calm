@@ -1,62 +1,62 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "title": "Colchones",
-    "radioOption": [
-      { "value": "original", "label": "Colchón Original" },
-      { "value": "hibrido", "label": "Colchón Híbrido" },
-      { "value": "cumbre", "label": "Colchón Cumbre Dual" },
-      { "value": "bebes", "label": "Colchón para bebes" },
-      { "value": "perros", "label": "Colchón para perros" }
+    "pieces": [
+      { "label": "Colchón Original" },
+      { "label": "Colchón Híbrido" },
+      { "label": "Colchón Cumbre Dual" },
+      { "label": "Colchón para bebes" },
+      { "label": "Colchón para perros" }
     ]
   },
   {
-    "id": 2,
+    "id": "2",
     "title": "Bases y Sommier",
-    "radioOption": [
-      { "value": "base", "label": "Base de cama" },
-      { "value": "sommier", "label": "Sommier Suavidad" },
-      { "value": "cama", "label": "Cama Suavidad" },
-      { "value": "ola", "label": "Cama Articulada Ola" }
+    "pieces": [
+      { "label": "Base de cama" },
+      { "label": "Sommier Suavidad" },
+      { "label": "Cama Suavidad" },
+      { "label": "Cama Articulada Ola" }
     ]
   },
   {
-    "id": 3,
+    "id": "3",
     "title": "Muebles",
-    "radioOption": [
-      { "value": "marco", "label": "Marco Suavidad" },
-      { "value": "respaldo", "label": "Respaldo Horizonte" },
-      { "value": "sofa", "label": "Sofá Cama 24/7" },
-      { "value": "arrime", "label": "Mesa de arrime Ocio" },
-      { "value": "ratona", "label": "Mesa ratona Ocio" },
-      { "value": "habito", "label": "Mesa de luz Hábito" },
-      { "value": "flotante", "label": "Mesa de luz Hábito flotante" }
+    "pieces": [
+      { "label": "Marco Suavidad" },
+      { "label": "Respaldo Horizonte" },
+      { "label": "Sofá Cama 24/7" },
+      { "label": "Mesa de arrime Ocio" },
+      { "label": "Mesa ratona Ocio" },
+      { "label": "Mesa de luz Hábito" },
+      { "label": "Mesa de luz Hábito flotante" }
     ]
   },
   {
-    "id": 4,
+    "id": "4",
     "title": "Almohadas",
-    "radioOption": [
-      { "value": "alta", "label": "Alta almohada" },
-      { "value": "infinita", "label": "Almohada Infinita" },
-      { "value": "inteligente", "label": "Almohada Inteligente" },
-      { "value": "doble", "label": "Almohada Doble Sensación" }
+    "pieces": [
+      { "label": "Alta almohada" },
+      { "label": "Almohada Infinita" },
+      { "label": "Almohada Inteligente" },
+      { "label": "Almohada Doble Sensación" }
     ]
   },
   {
-    "id": 5,
+    "id": "5",
     "title": "Ropa de cama",
-    "radioOption": [
-      { "value": "algodon", "label": "Sábanas Algodón & Frescura" },
-      { "value": "edredon", "label": "Edredón Abrazo" },
-      { "value": "suavidad", "label": "Sábanas Suavidad" },
-      { "value": "tusor", "label": "Funda de Tusor" },
-      { "value": "protector", "label": "Protector de Colchón" }
+    "pieces": [
+      { "label": "Sábanas Algodón & Frescura" },
+      { "label": "Edredón Abrazo" },
+      { "label": "Sábanas Suavidad" },
+      { "label": "Funda de Tusor" },
+      { "label": "Protector de Colchón" }
     ]
   },
   {
-    "id": 6,
+    "id": "6",
     "title": "Accesorios",
-    "radioOption": []
+    "pieces": []
   }
 ]

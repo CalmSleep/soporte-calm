@@ -3,25 +3,13 @@ import { SelectOptionProps } from "../../types";
 import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects";
 import items from "../../missingItems.json";
 import { IChecks } from "@/components/Molecules/StepBody/StepSelects/types";
-import { itemsFilterJson, mapOrdersWithSpan } from "../../util";
+import { itemsFilterJson, mapOrdersWithSpan } from "../../../util";
 
 const Select1Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
   //  console.log("orders", orders);
   const newOrders = mapOrdersWithSpan(orders);
 
   const matchedItems = itemsFilterJson(items, newOrders);
-  // items
-  //   .map((item) => {
-  //     const matchingOrder = newOrders.find(
-  //       (order: any) => order.product_id === Number(item.id)
-  //     );
-  //     if (!matchingOrder) return null;
-  //     return {
-  //       ...item,
-  //       span: matchingOrder.span,
-  //     };
-  //   })
-  //   .filter(Boolean);
 
   const matchedIds = matchedItems.map((item) => item?.id);
 
@@ -37,7 +25,7 @@ const Select1Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
         span: order.span,
       };
     });
-  console.log("checksOrders", checksOrders);
+  //console.log("checksOrders", checksOrders);
 
   const radioOptions = [
     { value: "completo", label: "Falta este producto completo" },

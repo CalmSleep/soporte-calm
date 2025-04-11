@@ -5,6 +5,7 @@ import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import useValueSelect from "@/hooks/useValueSelect";
 import Step3 from "../Step3/Step3";
 import options from "../Step2/step2.json";
+import { infoString } from "../util";
 
 const Step2 = () => {
   const {
@@ -13,8 +14,18 @@ const Step2 = () => {
     handleOnchangeButton,
     handleConfirm,
     setConfirmedValue,
+    notionInfo,
+    setNotionInfo,
   } = useValueSelect();
   console.log(selectedValue);
+
+  // React.useEffect(() => {
+  //   setNotionInfo({
+  //     ...notionInfo,
+  //     userIntention: infoString,
+  //   });
+  // }, [confirmedValue]);
+  console.log("notion step 2", notionInfo);
 
   return (
     <>
@@ -27,7 +38,9 @@ const Step2 = () => {
             ? ""
             : "Seleccioná la opción que mejor describa tu caso"
         }
-        onClick={handleConfirm}
+        onClick={() => {
+          handleConfirm();
+        }}
         value={selectedValue === null ? true : false}
         button={confirmedValue === null ? true : false}
       >
@@ -43,16 +56,17 @@ const Step2 = () => {
           />
         ) : (
           <StepInfo
-            info={[
-              `${
-                confirmedValue === "1"
-                  ? "Tuve un problema con el o los productos que recibí."
-                  : confirmedValue === "2"
-                  ? "Quiero devolver el producto"
-                  : "Quiero cambiar el producto"
-              }`,
-            ]}
-            onClick={() => setConfirmedValue(null)}
+            info={[infoString(confirmedValue)]}
+            onClick={() => {
+              setConfirmedValue(null);
+              setNotionInfo({
+                ...notionInfo,
+                userIntention: "",
+                problemDescription: [],
+                productReturn: [],
+                productChange: [],
+              });
+            }}
           />
         )}
       </StepsHeaders>
@@ -60,6 +74,8 @@ const Step2 = () => {
         <Step3
           valueSelect={confirmedValue}
           setConfirmedValue={setConfirmedValue}
+          notionInfo={notionInfo}
+          setNotionInfo={setNotionInfo}
         />
       )}
     </>
