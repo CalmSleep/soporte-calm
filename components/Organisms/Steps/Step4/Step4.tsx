@@ -2,19 +2,24 @@ import React, { useRef } from "react";
 import { Step4Props } from "./types";
 import StepsHeaders from "@/components/Molecules/StepBody/StepsHeader/StepsHeaders";
 import Button from "@/components/Atoms/Buttons/Button";
-import { Cointainer, CointainerInputs, ImagesContainer } from "./styled";
+import {
+  Cointainer,
+  CointainerInputs,
+  ImageHover,
+  ImagesContainer,
+} from "./styled";
 import Image from "next/image";
 import Images from "@/components/Atoms/Images/Images";
 import Input from "@/components/Atoms/Input/Input";
 import StepRadio from "@/components/Molecules/StepBody/StepRadio/StepRadio";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import FloatingInput from "@/components/Molecules/FloatingInput/FloatingInput";
-import { set } from "date-fns";
 import { useDispatch, useSelector } from "react-redux";
 import { onSendDataToNotion } from "@/state/user/userActions";
 import { getThankuContent } from "@/state/order/orderSelector";
 import { images } from "@/next.config";
 import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
+import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 
 const Svg = () => {
   return (
@@ -57,6 +62,7 @@ const Step4 = ({
   const [openModal, setOpenModal] = React.useState(false);
   const dataUser = useSelector(getThankuContent);
   const dispatch = useDispatch();
+  const [loadingImg, setLoadingImg] = React.useState(false);
   const [imagePreviews, setImagePreviews] = React.useState<string[]>([]);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -69,20 +75,43 @@ const Step4 = ({
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const files = event.target.files;
-    if (files) {
-      const previews = await Promise.all(
-        Array.from(files).map((file) => {
-          return new Promise<string>((resolve, reject) => {
+    if (!files) return;
+    setLoadingImg(true);
+    try {
+      const uploadedUrls = await Promise.all(
+        Array.from(files).map(async (file) => {
+          const base64 = await new Promise<string>((resolve, reject) => {
             const reader = new FileReader();
-            reader.onloadend = () => resolve(reader.result as string);
+            reader.onload = () => resolve(reader.result as string);
             reader.onerror = reject;
             reader.readAsDataURL(file);
           });
+
+          const response = await fetch("/api/uploadImage", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ file: base64 }),
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.error || "Error al subir la imagen.");
+          }
+
+          return data.url;
         })
       );
-      setImagePreviews(previews);
+      setImagePreviews((prev) => [...prev, ...uploadedUrls]);
+    } catch (error) {
+      console.error("Error al subir imágenes:", error);
+    } finally {
+      setLoadingImg(false);
     }
   };
+
+  console.log("imagePreviews", imagePreviews);
+
   const [postalCode, setPostalCode] = React.useState<string>("");
   const [inputValue, setInputValue] = React.useState({
     direcction: "",
@@ -127,6 +156,7 @@ const Step4 = ({
     const fullInfo = notionInfoSend();
     console.log("fullInfo", fullInfo);
     // dispatch(onSendDataToNotion(fullInfo));
+    setImagePreviews([]);
     setOpenModal(true);
   };
 
@@ -268,17 +298,29 @@ const Step4 = ({
           </Cointainer>
         </Button>
         <ImagesContainer>
-          {imagePreviews.map((src, index) => (
-            <Images
-              key={index}
-              src={src}
-              alt={`Uploaded preview ${index + 1}`}
-              width="51px"
-              height="52px"
-              borderRadius="4px"
-              objectFit="cover"
-            />
-          ))}
+          {loadingImg ? (
+            <SkeletonLoader height="20px" width="100%" borderRadius="1000px" />
+          ) : (
+            imagePreviews.map((preview, index) => (
+              <ImageHover
+                key={index}
+                onClick={() => {
+                  setImagePreviews((prev) =>
+                    prev.filter((_, i) => i !== index)
+                  );
+                }}
+              >
+                <Images
+                  src={preview}
+                  alt={`Uploaded preview ${index + 1}`}
+                  width="51px"
+                  height="52px"
+                  borderRadius="4px"
+                  objectFit="cover"
+                />
+              </ImageHover>
+            ))
+          )}
         </ImagesContainer>
       </StepsHeaders>
       {openModal && (
