@@ -12,6 +12,7 @@ const StepsHeaders = ({
   onClick,
   button,
   backgroundColor,
+  send,
 }: StepHeaderProps) => {
   return (
     <SectionHeader
@@ -68,7 +69,7 @@ const StepsHeaders = ({
           disableStyles={true}
           onClick={onClick}
         >
-          Siguiente
+          {send ? "Enviar" : "Siguiente"}
         </Button>
       )}
     </SectionHeader>

@@ -4,6 +4,7 @@ import { theme } from "@/utils/Theme";
 type ThemeColors = keyof typeof theme.colors;
 
 export type FloatingInputProps = {
+  width?: string;
   label?: string;
   labelRequired?: string;
   labelRequiredColor?: ThemeColors;
@@ -22,3 +23,7 @@ export type LabelStyledProps = {
   $hasError?: boolean;
   $hasRequired?: boolean;
 };
+
+export type InputWrapperProps = {
+  $width?: string;
+}

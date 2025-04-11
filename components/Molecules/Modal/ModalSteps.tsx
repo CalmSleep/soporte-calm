@@ -6,8 +6,6 @@ import Paragraph from "@/components/Atoms/Typography/Text";
 import { ContainerModal } from "./styled";
 
 const ModalSteps = ({
-  open,
-  setModal,
   title,
   paragraph,
   clicHere,
@@ -15,12 +13,9 @@ const ModalSteps = ({
   clicText2,
   buttonText,
   onClick,
+  handleClose,
+  children,
 }: ModalStepsProps) => {
-  const handleClose = () => {
-    if (setModal) {
-      setModal(!open);
-    }
-  };
   return (
     <ContainerModal>
       <SectionHeader
@@ -45,15 +40,20 @@ const ModalSteps = ({
           },
         }}
       >
+        {children}
         {clicHere && (
           <Paragraph textTag="p" color="brilliantLiquorice">
-            {clicText}{" "}
-            <span
-              style={{ textDecoration: "underline", cursor: "pointer" }}
+            {clicText}
+            <Paragraph
+              textTag="span"
+              color="wildViolet"
+              textDecoration="underline"
               onClick={onClick && onClick}
             >
-              <Paragraph textTag="span">{clicText2}</Paragraph>
-            </span>
+              <Paragraph textTag="span" cursor="pointer">
+                {clicText2}
+              </Paragraph>
+            </Paragraph>
           </Paragraph>
         )}
         <Button

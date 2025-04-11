@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { InputStyledProps } from "./types";
 
 export const InputStyles = styled.input<InputStyledProps>`
+display:${({ $display }) => ($display ? $display : "block")};
 appearance: ${({ $appearance }) => ($appearance ? $appearance : "")};
   position: relative;
   border-radius: ${({ $borderRadius }) =>

@@ -4,6 +4,7 @@ import React, { RefObject } from "react";
 export interface IUnitProps {
   onClick: () => void;
   itemName: string;
+  spamName?: string;
   itemContent?: string;
   itemsSelect?: React.ReactNode;
   itemSubtitle?: string;
@@ -24,4 +25,11 @@ export interface IUnitProps {
     | ((el: HTMLDivElement | null) => void);
   contentHeight?: number;
   titleStyle?: TypographyProps;
+  changedOption?: boolean;
+  changeText?: string;
+  quizzActive?: boolean;
+setQuizzActive?: React.Dispatch<React.SetStateAction<boolean>>
+selectedQuizz?: string
+setSelectedQuizz?: React.Dispatch<React.SetStateAction<string>>
+quizzHandle?: (quizzId?: string) => void
 }

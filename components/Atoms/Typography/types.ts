@@ -41,6 +41,7 @@ export type TypographyProps = {
   isNextLink?: boolean;
   arialLabel?: string;
   onClick?: () => void;
+  cursor?: string;
 };
 
 export type TypographyStyledProps = {
@@ -59,4 +60,5 @@ export type TypographyStyledProps = {
   $hasLink?: boolean;
   $HoverColor?: ThemeColors;
   $fontWeight?: number;
+  $cursor?: string;
 };

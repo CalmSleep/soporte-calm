@@ -29,14 +29,15 @@ export const emailResponse = (dataResponse: IOrderResponse[]) => {
   return dataResponse.map((item: IOrderResponse): IOrdenMail => {
     return {
       id: item.id,
-      email: item.billing.email,
-      //email: "chofiikauffer@gmail.com",
+      //email: item.billing.email,
+      email: "chofiikauffer@gmail.com",
       dni: item.dni || "",
       name: item.billing.first_name,
       orderNumber: item.number,
       orderKey: item.order_key,
       orderStatus: item.status,
       total: item.total,
+      saleSource: item.sale_source,
       items:
         item.items &&
         item.items.map(
@@ -46,7 +47,7 @@ export const emailResponse = (dataResponse: IOrderResponse[]) => {
             price: item.total || "0",
           })
         ),
-      buttonRedirect: `${process.env.NEXT_PUBLIC_ENDPOINT_URL_SOPORT}/${item.id}?orderKey=${item.order_key}`,
+      buttonRedirect: `${process.env.NEXT_PUBLIC_ENDPOINT_URL_SOPORT}/${item.id}?orderKey=${item.order_key}&saleSource=${item.sale_source}`,
     };
   });
 };
