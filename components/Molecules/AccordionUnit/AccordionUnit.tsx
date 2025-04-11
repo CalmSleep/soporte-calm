@@ -22,6 +22,10 @@ import Margin from "@/components/Atoms/Spacing/Margin/Margin";
 import Icons from "@/components/Atoms/Icons/Icons";
 import { Less, Plus, Arrow } from "./iconsAcorrdion";
 import Paragraph from "@/components/Atoms/Typography/Text";
+import dynamic from "next/dynamic";
+const Quizz = dynamic(() => import("@/components/Molecules/Quizz/Quizz"), {
+  ssr: false,
+});
 
 const AccordionUnit = ({
   onClick,
@@ -43,6 +47,13 @@ const AccordionUnit = ({
   contentHeight,
   titleStyle,
   spamName,
+  changedOption,
+  changeText,
+  quizzActive,
+  setQuizzActive,
+  selectedQuizz,
+  setSelectedQuizz,
+  quizzHandle,
 }: IUnitProps) => {
   const [render, setRender] = useState(false);
 
@@ -160,6 +171,25 @@ const AccordionUnit = ({
             >
               {itemsSelect}
             </DescriptionAccordion>
+            {changedOption && (
+              <Paragraph
+                color="wildViolet"
+                fontSize="16px"
+                onClick={() => {
+                  quizzHandle && quizzHandle();
+                  console.log("quizzActive", quizzActive);
+                }}
+              >
+                {changeText}
+              </Paragraph>
+            )}
+            {quizzActive && selectedQuizz && (
+              <Quizz
+                quizzActive={quizzActive}
+                closeHandle={() => quizzHandle && quizzHandle()}
+                quizzKey={selectedQuizz}
+              />
+            )}
           </ContentItemSelect>
         ) : (
           <Content

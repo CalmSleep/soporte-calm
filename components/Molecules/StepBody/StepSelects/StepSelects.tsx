@@ -7,6 +7,7 @@ import StepRadio from "@/components/Molecules/StepBody/StepRadio/StepRadio";
 import { PieceItem, PieceList } from "./styled";
 import { StepSelectsProps } from "./types";
 import useSelects from "./useSelects";
+import { getMatchingQuizzIds } from "@/components/Organisms/Steps/util";
 
 const StepSelects = ({
   titleParagraph,
@@ -16,6 +17,8 @@ const StepSelects = ({
   onCheckboxChange,
   selectedOption,
   setSelectedOption,
+  changedOption,
+  menuData,
 }: StepSelectsProps) => {
   const {
     handleAccordionClick,
@@ -36,6 +39,13 @@ const StepSelects = ({
     selectedOption,
     setSelectedOption,
   });
+  const [quizzActive, setQuizzActive] = useState(false);
+  const [selectedQuizz, setSelectedQuizz] = useState<undefined | string>();
+
+  const quizzHandle = (quizzId?: string) => {
+    setQuizzActive(!quizzActive);
+    quizzId && setSelectedQuizz(quizzId);
+  };
 
   return (
     <>
@@ -216,6 +226,24 @@ const StepSelects = ({
                   </PieceList>
                 </>
               }
+              // changeText="No sé, ¿cuál me recomiendan?"
+              changedOption={changedOption}
+              changeText={
+                getMatchingQuizzIds([item.title], menuData).length > 0
+                  ? "No sé, ¿cuál me recomiendan?"
+                  : ""
+              }
+              quizzActive={quizzActive}
+              setQuizzActive={setQuizzActive}
+              selectedQuizz={selectedQuizz}
+              quizzHandle={() => {
+                const ids = getMatchingQuizzIds([item.title], menuData);
+                if (ids.length > 0) {
+                  quizzHandle(ids[0]);
+                } else {
+                  console.warn("No quizz found for", item.title);
+                }
+              }}
             />
           );
         })}

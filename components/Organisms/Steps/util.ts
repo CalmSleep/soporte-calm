@@ -2,6 +2,29 @@ import { searchAttribute } from "@/utils/productsFunctios";
 import variations_products from "@/utils/variations_products";
 import { Category } from "./Step3/types";
 
+export   function normalizeText(text: string) {
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+  }
+
+export function getMatchingQuizzIds(titles: string[], menuData: any) {
+  if (!Array.isArray(menuData)) return [];
+    return titles.flatMap((title) => {
+      const normalizedTitle = normalizeText(title);
+      
+      const matchedItems = menuData && menuData.filter((item: any) =>
+        normalizeText(item.name).includes(normalizedTitle)
+      );
+  
+      return matchedItems.flatMap((item: any) =>
+        item.quizz?.map((q: any) => q.id) ?? []
+      );
+    });
+  }
+
 export const infoString = (confirmedValue: string) => {
   return confirmedValue === "1"
     ? "Tuve un problema con el o los productos que recibí."

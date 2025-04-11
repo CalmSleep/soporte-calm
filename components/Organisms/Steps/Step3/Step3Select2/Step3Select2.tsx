@@ -5,32 +5,21 @@ import itemsChanges from "../changesItems.json";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import { Step3Select2and3Props } from "../types";
-import {
-  extractItemsInParens,
-  filterTitlesByCategories,
-  itemsFilterJson,
-  mapOrdersWithSpan,
-  splitDevolucion,
-} from "../../util";
-import { fi } from "date-fns/locale";
+import { itemsFilterJson, mapOrdersWithSpan, normalizeText } from "../../util";
+import { menuData } from "@/components/Organisms/NavBar/utils";
 
 const Step3Select2 = ({
   orders,
   checkboxConfirmed,
   checkSeleccionado,
-  selectedTitles,
   valueSelect,
   handleEditCheckbox,
   handleCheckboxChange,
   handleCheckboxChangeConfirmed,
   infoStep,
 }: Step3Select2and3Props) => {
-  const [continuemos, otros] = splitDevolucion(selectedTitles);
-
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
-
-  const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);
 
   const [selectedOption2, setSelectedOption2] = useState("");
   const radioOptions = [
@@ -95,6 +84,8 @@ const Step3Select2 = ({
               titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
               items={itemsChanges}
               onCheckboxChange={handleCheckboxChange}
+              changedOption
+              menuData={menuData}
             />
           )}
         </>
