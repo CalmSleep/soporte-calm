@@ -2,11 +2,27 @@ import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects
 import React, { useState } from "react";
 import items from "../refundItems.json";
 import itemsChanges from "../changesItems.json";
+import rawInfoChanges from "../changesOptionItems.json";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import { Step3Select2and3Props } from "../types";
 import { itemsFilterJson, mapOrdersWithSpan, normalizeText } from "../../util";
 import { menuData } from "@/components/Organisms/NavBar/utils";
+
+type ValueObject = {
+  [key: string]: string[];
+};
+
+type ProductoData = {
+  id: string;
+  title: string;
+  values: ValueObject[];
+};
+
+type Resultado = {
+  productName: string;
+  comentario: string;
+};
 
 const Step3Select2 = ({
   orders,
@@ -17,9 +33,42 @@ const Step3Select2 = ({
   handleCheckboxChange,
   handleCheckboxChangeConfirmed,
   infoStep,
+  selectedTitles,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
+  const infoChanges: ProductoData[] = rawInfoChanges as ProductoData[];
+  console.log("selectedTitles", selectedTitles);
+
+  const resultadoFinal: Resultado[] = selectedTitles
+    .map((str) => {
+      const producto = str.split(" (")[0];
+      console.log("producto", producto);
+
+      const match = str.match(/\(([^)]+)\)/);
+      const comentario = match ? match[1] : "";
+
+      const item = infoChanges.find((d) => d.title === producto);
+      if (!item) return null;
+
+      //  const valueMatch = item.values.find((obj) => comentario in obj);
+      const valueMatch = item.values.find(
+        (obj): obj is ValueObject => comentario in obj
+      );
+
+      if (!valueMatch) return null;
+
+      const value = valueMatch[comentario];
+      console.log("value", value);
+
+      return {
+        productName: value[0],
+        comentario: value[1],
+      };
+    })
+    .filter(Boolean) as Resultado[];
+
+  console.log("resultadoFinal", resultadoFinal);
 
   const [selectedOption2, setSelectedOption2] = useState("");
   const radioOptions = [
@@ -33,9 +82,10 @@ const Step3Select2 = ({
     },
     {
       id: 2,
-      text: "🔍 En base a lo que buscás, creemos que [nombre del producto recomendado] puede ser una mejor alternativa.",
-      text2:
-        "📌 [Explicación de porqué es más adecuado: características, diferencias, beneficios]",
+      text: `🔍 En base a lo que buscás, creemos que ${resultadoFinal
+        .map((r) => r.productName)
+        .join(", ")} puede ser una mejor alternativa.`,
+      text2: `📌 ${resultadoFinal.map((r) => r.comentario).join(", ")}` || "",
     },
     {
       id: 3,
