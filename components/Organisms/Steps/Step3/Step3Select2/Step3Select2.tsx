@@ -2,7 +2,7 @@ import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects
 import React, { useState } from "react";
 import items from "../refundItems.json";
 import itemsChanges from "../changesItems.json";
-import infoChanges from "../changesOptionItems.json";
+import rawInfoChanges from "../changesOptionItems.json";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import { Step3Select2and3Props } from "../types";
@@ -11,6 +11,17 @@ import { menuData } from "@/components/Organisms/NavBar/utils";
 
 type ValueObject = {
   [key: string]: string[];
+};
+
+type ProductoData = {
+  id: string;
+  title: string;
+  values: ValueObject[];
+};
+
+type Resultado = {
+  productName: string;
+  comentario: string;
 };
 
 const Step3Select2 = ({
@@ -26,23 +37,8 @@ const Step3Select2 = ({
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
+  const infoChanges: ProductoData[] = rawInfoChanges as ProductoData[];
   console.log("selectedTitles", selectedTitles);
-  type ValueObject = {
-    [comentario: string]: string[];
-  };
-
-  type ProductoData = {
-    id: string;
-    title: string;
-    values: ValueObject[];
-  };
-
-  type Resultado = {
-    productName: string;
-    comentario: string;
-  };
-
-  const comentarios: string[] = ["Almohada Inteligente (Me parece alta)"];
 
   const resultadoFinal: Resultado[] = selectedTitles
     .map((str) => {
@@ -55,10 +51,14 @@ const Step3Select2 = ({
       const item = infoChanges.find((d) => d.title === producto);
       if (!item) return null;
 
-      const valueMatch = item.values.find((obj) => comentario in obj);
+      //  const valueMatch = item.values.find((obj) => comentario in obj);
+      const valueMatch = item.values.find(
+        (obj): obj is ValueObject => comentario in obj
+      );
+
       if (!valueMatch) return null;
 
-      const value = valueMatch[comentario as keyof typeof valueMatch];
+      const value = valueMatch[comentario];
       console.log("value", value);
 
       return {
@@ -66,7 +66,7 @@ const Step3Select2 = ({
         comentario: value[1],
       };
     })
-    .filter((item) => item !== null);
+    .filter(Boolean) as Resultado[];
 
   console.log("resultadoFinal", resultadoFinal);
 
