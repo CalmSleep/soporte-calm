@@ -18,13 +18,6 @@ const Step2 = () => {
     setNotionInfo,
   } = useValueSelect();
   console.log(selectedValue);
-
-  // React.useEffect(() => {
-  //   setNotionInfo({
-  //     ...notionInfo,
-  //     userIntention: infoString,
-  //   });
-  // }, [confirmedValue]);
   console.log("notion step 2", notionInfo);
 
   return (

@@ -1,5 +1,5 @@
 export type StepInfoProps = {
-  info: string[];
+  info: string[] | JSX.Element[];
   link?: string;
   onClick?: () => void;
 };

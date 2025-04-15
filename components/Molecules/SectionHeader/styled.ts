@@ -17,6 +17,10 @@ export const SectionHeaderStyles = styled.section<SectionHeaderStyledProps>`
   align-items: ${({ $alignItems }) => ($alignItems ? $alignItems : "left")};
 
   @media ${(props) => props.theme.devices.biggerMobile} {
+    width: ${({ $responsiveMobile }) =>
+      $responsiveMobile && `${$responsiveMobile.width}`};
+    height: ${({ $responsiveMobile }) =>
+      $responsiveMobile && `${$responsiveMobile.height}`};
     padding: ${({ $responsiveMobile }) =>
       $responsiveMobile && `${$responsiveMobile.padding}`};
     gap: ${({ $responsiveMobile }) =>

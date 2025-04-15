@@ -4,7 +4,7 @@ import AccordionUnit from "@/components/Molecules/AccordionUnit/AccordionUnit";
 import React, { useLayoutEffect, useRef, useState } from "react";
 
 import StepRadio from "@/components/Molecules/StepBody/StepRadio/StepRadio";
-import { PieceItem, PieceList } from "./styled";
+import { PieceItem, PieceItems, PieceList } from "./styled";
 import { StepSelectsProps } from "./types";
 import useSelects from "./useSelects";
 import { getMatchingQuizzIds } from "@/components/Organisms/Steps/util";
@@ -182,14 +182,14 @@ const StepSelects = ({
               }}
               itemsSelect={
                 <>
-                  <PieceList>
+                  <PieceItems>
                     {item.pieces.map((piece) => (
                       <PieceItem key={piece.label}>
                         <Input
                           appearance="none"
                           width="12px"
                           height="12px"
-                          padding="5px"
+                          padding="7px"
                           borderRadius="2px"
                           checkBorderColor="yellowCalm"
                           checkColor="yellowCalm"
@@ -223,7 +223,7 @@ const StepSelects = ({
                         )}
                       </PieceItem>
                     ))}
-                  </PieceList>
+                  </PieceItems>
                 </>
               }
               // changeText="No sé, ¿cuál me recomiendan?"

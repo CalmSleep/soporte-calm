@@ -5,11 +5,9 @@ import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import StepDni from "./StepDni/StepDni";
 import { useSelector } from "react-redux";
 import { getThankuContent } from "@/state/order/orderSelector";
+import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 
-const Step1 = ({ order }: StepDniProps) => {
-  const dniUser = useSelector(getThankuContent);
-  console.log("dniUser", dniUser);
-
+const Step1 = ({ order, dniUser }: StepDniProps) => {
   return (
     <>
       <StepsHeaders
@@ -24,9 +22,17 @@ const Step1 = ({ order }: StepDniProps) => {
         {order ? (
           <StepInfo
             info={[
-              dniUser?.dni ? dniUser.dni : "Cargando...",
-              "Sitio web (calmessimple.com)",
-              `Pedido #${order}`,
+              dniUser && dniUser ? (
+                <>{dniUser}</>
+              ) : (
+                <SkeletonLoader
+                  height="15px"
+                  width="120px"
+                  borderRadius="1000px"
+                />
+              ),
+              <>Sitio web (calmessimple.com)</>,
+              <>{`Pedido #${order}`}</>,
             ]}
             link="/"
           />

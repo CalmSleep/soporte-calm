@@ -6,7 +6,7 @@ type ThemeColors = keyof typeof theme.colors;
 export type SectionHeaderProps = {
   title: string;
   spam?: string;
-  paragraph?: string;
+  paragraph?: string | JSX.Element;
   children?: React.PropsWithChildren<React.ReactNode>;
   titleStyles?: TypographyProps;
   spamStyles?: TypographyProps;
@@ -15,6 +15,8 @@ export type SectionHeaderProps = {
 };
 
 type ResponsiveMobile = {
+  width?: string;
+  height?: string;
   padding?: string;
   gap?: string;
 };

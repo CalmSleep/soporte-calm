@@ -10,10 +10,20 @@ export const PieceList = styled.div`
   align-self: stretch;
 `;
 
+export const PieceItems = styled.div`
+  display: flex;
+  padding: 4px 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 6px;
+  align-self: stretch;
+`;
+
 export const PieceItem = styled.label`
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   align-self: stretch;
 
   input[type="text"] {

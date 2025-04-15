@@ -23,13 +23,14 @@ const SectionHeader = ({
         {title}
       </Titles>
       <Paragraph {...paragraphStyles}>
-        {paragraph &&
+        {typeof paragraph === "string" &&
           paragraph.split("\n").map((line, index) => (
             <React.Fragment key={index}>
               {line}
               <br />
             </React.Fragment>
           ))}
+        {typeof paragraph === "object" && paragraph}
       </Paragraph>
       {children}
     </SectionHeaderStyles>

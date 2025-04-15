@@ -37,7 +37,8 @@ const Step3Select2 = ({
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
-  const infoChanges: ProductoData[] = rawInfoChanges as ProductoData[];
+  const infoChanges = rawInfoChanges as unknown as ProductoData[];
+
   console.log("selectedTitles", selectedTitles);
 
   const resultadoFinal: Resultado[] = selectedTitles
@@ -68,7 +69,10 @@ const Step3Select2 = ({
     })
     .filter(Boolean) as Resultado[];
 
-  console.log("resultadoFinal", resultadoFinal);
+  console.log(
+    "resultadoFinal",
+    resultadoFinal.map((r) => r.productName.length > 0)
+  );
 
   const [selectedOption2, setSelectedOption2] = useState("");
   const radioOptions = [
@@ -108,11 +112,15 @@ const Step3Select2 = ({
           />
           {checkSeleccionado && valueSelect === "2" && (
             <>
-              {paragraphArray.map((item) => (
-                <Paragraph key={item.id}>
-                  {item.text} <br /> {item.text2}
-                </Paragraph>
-              ))}
+              {resultadoFinal.map(
+                (r) =>
+                  r.productName.length > 0 &&
+                  paragraphArray.map((item) => (
+                    <Paragraph key={item.id}>
+                      {item.text} <br /> {item.text2}
+                    </Paragraph>
+                  ))
+              )}
 
               <StepSelects
                 titleParagraph="Seleccioná una opción:"

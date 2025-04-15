@@ -95,6 +95,7 @@ const StepDni = () => {
           name: "dni",
           value: inputValue.dni || "",
           onChange: handleChange,
+          onBlur: () => setShowRequiredMessage(true),
         }}
         labelColor="brilliantLiquorice"
         labelBackgroundColor="white"
@@ -121,7 +122,12 @@ const StepDni = () => {
         </Button>
       )}
       {loading && (
-        <SkeletonLoader height="20px" width="100%" borderRadius="1000px" />
+        <SkeletonLoader
+          height="60px"
+          width="100%"
+          borderRadius="1000px"
+          responsiveMobile={{ height: "50px" }}
+        />
       )}
       {isOpen && (
         <ModalSteps
