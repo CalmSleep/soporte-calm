@@ -29,6 +29,7 @@ const Input = ({
   padding,
   appearance,
   display,
+  fontSize,
 }: InputProps) => {
   return (
     <InputStyles
@@ -65,6 +66,7 @@ const Input = ({
       multiple={type === "file" ? true : false}
       accept={type === "file" ? "image/*" : ""}
       $display={display}
+      $fontSize={fontSize}
     >
       {children}
     </InputStyles>
