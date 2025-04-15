@@ -129,13 +129,13 @@ const Step4 = ({
             3. Si ya sacaste el producto de la caja, mandanos foto del producto, frente y dorso.`
             : valueSelect === "1" && selectedValue === "2"
             ? `Gracias por la información. ¡Ya estás en el último paso!\n
-            Adjuntanos las siguientes imágenes del producto que recibiste demás para poder avanzar:\n
+            Adjuntanos las siguientes **imágenes del producto que recibiste** demás para poder avanzar:\n
             1. Etiquetas con QR que se encuentran en la caja.\n
             2. Si el producto sigue en caja, una foto donde se vea cerrada con la cinta de seguridad.\n
             3. Si ya sacaste el producto de la caja, mandanos foto del producto, frente y dorso.`
             : valueSelect === "1" && selectedValue === "3"
             ? `Gracias por la información. ¡Ya estás en el último paso!\n
-            Adjuntanos las siguientes imágenes del producto que recibiste para poder avanzar:\n
+            Adjuntanos las siguientes **imágenes del producto que recibiste** para poder avanzar:\n
             1. Etiquetas con QR que se encuentran en la caja.\n
             2. Si el producto sigue en caja, una foto donde se vea cerrada con la cinta de seguridad.\n
             3. Si ya sacaste el producto de la caja, mandanos foto del producto, frente y dorso.`
