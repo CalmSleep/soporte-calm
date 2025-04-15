@@ -29,7 +29,7 @@ export const emailResponse = (dataResponse: IOrderResponse[]) => {
   return dataResponse.map((item: IOrderResponse): IOrdenMail => {
     return {
       id: item.id,
-      //email: item.billing.email,
+      // email: item.billing.email,
       email: "chofiikauffer@gmail.com",
       dni: item.dni || "",
       name: item.billing.first_name,

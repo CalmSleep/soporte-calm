@@ -102,9 +102,14 @@ const Step4 = ({
   };
 
   const handleSubmitToNotion = async () => {
-    const fullInfo = notionInfoSend();
-    console.log("fullInfo", fullInfo);
+    //const fullInfo = notionInfoSend();
+    //console.log("fullInfo", fullInfo);
     // dispatch(onSendDataToNotion(fullInfo));
+    dispatch(
+      onSendDataToNotion({
+        name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
+      })
+    );
     setImagePreviews([]);
     setOpenModal(true);
   };
