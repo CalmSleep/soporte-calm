@@ -22,7 +22,8 @@ const FloatingInput = ({
       <Input
         {...input}
         onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
+        onBlur={() => (error ? setIsFocus(true) : setIsFocus(false))}
+        borderColor={error ? "rareRed" : undefined}
       />
       <Label
         $color={labelColor}
@@ -41,7 +42,7 @@ const FloatingInput = ({
       {required && !input?.error && !input?.value && isFocus && (
         <Menssage $hasRequired>{required}</Menssage>
       )}
-      {error && <Menssage $hasError>{error}</Menssage>}
+      {isFocus && <Menssage $hasError>{error}</Menssage>}
     </InputWrapper>
   );
 };

@@ -16,6 +16,7 @@ import {
   splitQuieroComprar,
 } from "../util";
 import itemsChanges from "./changesItems.json";
+import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 const Step3 = ({
   valueSelect,
   setConfirmedValue,
@@ -152,7 +153,17 @@ const Step3 = ({
       >
         {valueSelect === "1" ? (
           <Step3Select1
-            orders={orders.items.length > 0 ? orders.items : "Cargando..."}
+            orders={
+              orders.items.length > 0 ? (
+                orders.items
+              ) : (
+                <SkeletonLoader
+                  height="15px"
+                  width="120px"
+                  borderRadius="1000px"
+                />
+              )
+            }
             valueSelect={valueSelect}
             handleCheckboxChange={handleCheckboxChange}
             handleOnchangeWithoutConfirm={handleOnchangeWithoutConfirm}
@@ -166,7 +177,17 @@ const Step3 = ({
           />
         ) : (
           <Step3Select2
-            orders={orders.items.length > 0 ? orders.items : "Cargando..."}
+            orders={
+              orders.items.length > 0 ? (
+                orders.items
+              ) : (
+                <SkeletonLoader
+                  height="15px"
+                  width="120px"
+                  borderRadius="1000px"
+                />
+              )
+            }
             checkboxConfirmed={checkboxConfirmed}
             handleEditCheckbox={handleEditCheckbox}
             selectedTitles={selectedTitles}

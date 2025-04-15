@@ -5,6 +5,7 @@ import Button from "@/components/Atoms/Buttons/Button";
 import {
   Cointainer,
   CointainerInputs,
+  IconWrapper,
   ImageHover,
   ImagesContainer,
 } from "./styled";
@@ -17,9 +18,10 @@ import FloatingInput from "@/components/Molecules/FloatingInput/FloatingInput";
 import { useDispatch, useSelector } from "react-redux";
 import { onSendDataToNotion } from "@/state/user/userActions";
 import { getThankuContent } from "@/state/order/orderSelector";
-import { images } from "@/next.config";
 import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
+import { FaTimesCircle } from "react-icons/fa";
+import useStep4 from "./hooks";
 
 const Svg = () => {
   return (
@@ -60,76 +62,23 @@ const Step4 = ({
   setNotionInfo,
 }: Step4Props) => {
   const [openModal, setOpenModal] = React.useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const {
+    imagePreviews,
+    handleFileChange,
+    loadingImg,
+    setImagePreviews,
+    postalCode,
+    inputValue,
+    handleChange,
+    showRequiredMessage,
+    setPostalCode,
+  } = useStep4();
   const dataUser = useSelector(getThankuContent);
   const dispatch = useDispatch();
-  const [loadingImg, setLoadingImg] = React.useState(false);
-  const [imagePreviews, setImagePreviews] = React.useState<string[]>([]);
-
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleButtonClick = () => {
     fileInputRef.current?.click();
-  };
-
-  const handleFileChange = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const files = event.target.files;
-    if (!files) return;
-    setLoadingImg(true);
-    try {
-      const uploadedUrls = await Promise.all(
-        Array.from(files).map(async (file) => {
-          const base64 = await new Promise<string>((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(reader.result as string);
-            reader.onerror = reject;
-            reader.readAsDataURL(file);
-          });
-
-          const response = await fetch("/api/uploadImage", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ file: base64 }),
-          });
-
-          const data = await response.json();
-
-          if (!response.ok) {
-            throw new Error(data.error || "Error al subir la imagen.");
-          }
-
-          return data.url;
-        })
-      );
-      setImagePreviews((prev) => [...prev, ...uploadedUrls]);
-    } catch (error) {
-      console.error("Error al subir imágenes:", error);
-    } finally {
-      setLoadingImg(false);
-    }
-  };
-
-  console.log("imagePreviews", imagePreviews);
-
-  const [postalCode, setPostalCode] = React.useState<string>("");
-  const [inputValue, setInputValue] = React.useState({
-    direcction: "",
-    postalCode: "",
-  });
-  const [showRequiredMessage, setShowRequiredMessage] =
-    React.useState<boolean>(true);
-  console.log("postalCode", postalCode);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setInputValue({ ...inputValue, [name]: value });
-
-    if (!value) {
-      setShowRequiredMessage(true);
-    } else {
-      setShowRequiredMessage(false);
-    }
   };
 
   const notionInfoSend = () => {
@@ -284,6 +233,7 @@ const Step4 = ({
           onChange={handleFileChange}
         />
         <Button
+          size="none"
           borderColor="lead"
           textColor="lead"
           borderRadius="1000px"
@@ -294,12 +244,20 @@ const Step4 = ({
         >
           <Cointainer>
             <Svg />
-            Adjuntar imágenes
+            <Paragraph
+              textTag="span"
+              fontSize="24px"
+              responsiveMobile={{
+                fontSize: "18px",
+              }}
+            >
+              Adjuntar imágenes
+            </Paragraph>
           </Cointainer>
         </Button>
         <ImagesContainer>
           {loadingImg ? (
-            <SkeletonLoader height="20px" width="100%" borderRadius="1000px" />
+            <SkeletonLoader height="52px" width="100%" borderRadius="1000px" />
           ) : (
             imagePreviews.map((preview, index) => (
               <ImageHover
@@ -318,6 +276,9 @@ const Step4 = ({
                   borderRadius="4px"
                   objectFit="cover"
                 />
+                <IconWrapper className="icon">
+                  <FaTimesCircle color="orange" size={18} />
+                </IconWrapper>
               </ImageHover>
             ))
           )}
@@ -326,13 +287,24 @@ const Step4 = ({
       {openModal && (
         <ModalSteps
           title="¡Eso es todo por ahora!"
-          paragraph={`Tu solicitud se envió correctamente, te dejamos el código de seguimiento: #${dataUser.id}\n
-El equipo de soporte va a revisar tu caso y, en menos de 48 horas hábiles, te contactará por correo con más información y los pasos a seguir.
-
-Muchas gracias por tu tiempo. ¡Quedamos en contacto!`}
           buttonText="Aceptar"
           handleClose={() => setOpenModal(false)}
         >
+          <Paragraph textTag="p" fontSize="20px">
+            Tu solicitud se envió correctamente, te dejamos el código de
+            seguimiento:{" "}
+            <Paragraph textTag="span" color="madForMango">
+              #{dataUser.id}
+            </Paragraph>
+          </Paragraph>
+          <Paragraph textTag="p" fontSize="20px">
+            El equipo de soporte va a revisar tu caso y, en menos de 48 horas
+            hábiles, te contactará por correo con más información y los pasos a
+            seguir.
+          </Paragraph>
+          <Paragraph textTag="p" fontSize="20px">
+            Muchas gracias por tu tiempo. ¡Quedamos en contacto!
+          </Paragraph>
           {valueSelect === "3" && (
             <Paragraph
               textTag="span"

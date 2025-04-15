@@ -24,9 +24,23 @@ const ModalSteps = ({
           $padding: "26px",
           $gap: "20px",
           $borderRadius: "22px",
+          $responsiveMobile: {
+            width: "90%",
+          },
         }}
         title={title || ""}
         paragraph={paragraph}
+        paragraphStyles={{
+          color: "lead",
+          fontSize: "20px",
+          lineHeight: "26px",
+          letterSpacing: "-0.6px",
+          responsiveMobile: {
+            fontSize: "14px",
+            lineHeight: "18.2px",
+            letterSpacing: "-0.42px",
+          },
+        }}
         titleStyles={{
           color: "lead",
           fontWeight: 600,

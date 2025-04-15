@@ -26,4 +26,4 @@ export type LabelStyledProps = {
 
 export type InputWrapperProps = {
   $width?: string;
-}
+};
