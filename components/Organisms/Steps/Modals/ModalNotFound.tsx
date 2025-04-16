@@ -1,23 +1,8 @@
 import React from "react";
 import { ModalsProps } from "./types";
-import { useRouter } from "next/router";
 import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
-import Paragraph from "@/components/Atoms/Typography/Text";
 
-const ModalNotFound = ({ isOpen, setIsOpen }: ModalsProps) => {
-  const router = useRouter();
-  function openChat() {
-    var customEvent = new CustomEvent("openWebChatbot");
-    window.dispatchEvent(customEvent);
-  }
-  const handleClose = () => {
-    setTimeout(() => {
-      setIsOpen(false);
-      router.push("/");
-      openChat();
-    }, 200);
-  };
-
+const ModalNotFound = ({ isOpen, handleChatBot }: ModalsProps) => {
   return (
     <>
       {isOpen && (
@@ -28,7 +13,9 @@ const ModalNotFound = ({ isOpen, setIsOpen }: ModalsProps) => {
 En unos segundos, vas a ver el chat en pantalla. Si tenés tu número de pedido a mano, podés pasárselo directamente para agilizar el proceso.
 `}
           buttonText="Aceptar"
-          handleClose={handleClose}
+          handleClose={() => {
+            handleChatBot && handleChatBot();
+          }}
         />
       )}
     </>

@@ -1,14 +1,12 @@
 import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
 import React from "react";
 import Paragraph from "@/components/Atoms/Typography/Text";
-import { useRouter } from "next/navigation";
 import { ModalsProps } from "./types";
+import { set } from "date-fns";
 
 const ModalMeli = ({ isOpen, setIsOpen }: ModalsProps) => {
-  const router = useRouter();
   const handleClose = () => {
-    setIsOpen(false);
-    router.push("/");
+    setIsOpen && setIsOpen(false);
   };
 
   return (

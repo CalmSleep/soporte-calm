@@ -84,6 +84,7 @@ export interface IOrdenMail {
   email: string;
   dni: string;
   name: string;
+  phone: string;
   orderNumber: string;
   orderKey: string;
   orderStatus: string;
