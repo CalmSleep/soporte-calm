@@ -1,4 +1,4 @@
-import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
+import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import React from "react";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import { ModalsProps } from "./types";

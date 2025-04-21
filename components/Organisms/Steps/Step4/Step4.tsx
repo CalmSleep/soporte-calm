@@ -8,6 +8,8 @@ import {
   IconWrapper,
   ImageHover,
   ImagesContainer,
+  ImagesContainerModal,
+  ImageWrapper,
 } from "./styled";
 import Image from "next/image";
 import Images from "@/components/Atoms/Images/Images";
@@ -18,10 +20,13 @@ import FloatingInput from "@/components/Molecules/FloatingInput/FloatingInput";
 import { useDispatch, useSelector } from "react-redux";
 import { onSendDataToNotion } from "@/state/user/userActions";
 import { getThankuContent } from "@/state/order/orderSelector";
-import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
+import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 import { FaTimesCircle } from "react-icons/fa";
 import useStep4 from "./hooks";
+import ModalSendInfo from "../Modals/ModalSendInfo";
+import ModalCarousel from "../../Modals/ModalCarousel/ModalCarousel";
+import { set } from "date-fns";
 
 const Svg = () => {
   return (
@@ -62,12 +67,14 @@ const Step4 = ({
   setNotionInfo,
 }: Step4Props) => {
   const [openModal, setOpenModal] = React.useState(false);
+  const [modalImg, setModalImg] = React.useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const {
-    imagePreviews,
+    images,
+    setImages,
+    handleDragOver,
+    handleDrop,
     handleFileChange,
-    loadingImg,
-    setImagePreviews,
     postalCode,
     inputValue,
     handleChange,
@@ -84,7 +91,7 @@ const Step4 = ({
   const notionInfoSend = () => {
     const fullInfo = {
       ...notionInfo,
-      images: imagePreviews,
+      images: images,
       name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
       email: dataUser.billing.email,
       dni: dataUser.dni,
@@ -105,14 +112,15 @@ const Step4 = ({
     //const fullInfo = notionInfoSend();
     //console.log("fullInfo", fullInfo);
     // dispatch(onSendDataToNotion(fullInfo));
-    dispatch(
-      onSendDataToNotion({
-        name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
-      })
-    );
-    setImagePreviews([]);
+    // dispatch(
+    //   onSendDataToNotion({
+    //     name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
+    //   })
+    // );
+    setImages([]);
     setOpenModal(true);
   };
+  console.log("modal", modalImg);
 
   return (
     <>
@@ -160,7 +168,7 @@ const Step4 = ({
         onClick={() => handleSubmitToNotion()}
         button
         send
-        value={imagePreviews.length > 0 ? false : true}
+        value={images.length > 0 ? false : true}
       >
         {valueSelect === "2" || valueSelect === "3" ? (
           <>
@@ -231,12 +239,14 @@ const Step4 = ({
             ) : null}
           </>
         ) : null}
-        <Input
-          type="file"
-          refInput={fileInputRef}
-          display="none"
-          onChange={handleFileChange}
-        />
+        <div onDrop={handleDrop} onDragOver={handleDragOver}>
+          <Input
+            type="file"
+            refInput={fileInputRef}
+            display="none"
+            onChange={handleFileChange}
+          />
+        </div>
         <Button
           size="none"
           borderColor="lead"
@@ -261,67 +271,59 @@ const Step4 = ({
           </Cointainer>
         </Button>
         <ImagesContainer>
-          {loadingImg ? (
-            <SkeletonLoader height="52px" width="100%" borderRadius="1000px" />
-          ) : (
-            imagePreviews.map((preview, index) => (
-              <ImageHover
-                key={index}
-                onClick={() => {
-                  setImagePreviews((prev) =>
-                    prev.filter((_, i) => i !== index)
-                  );
-                }}
-              >
-                <Images
-                  src={preview}
-                  alt={`Uploaded preview ${index + 1}`}
-                  width="51px"
-                  height="52px"
-                  borderRadius="4px"
-                  objectFit="cover"
-                />
+          {images.length > 0 &&
+            images.map((preview, index) => (
+              <ImageHover key={index}>
+                <ImageWrapper
+                  className="image-wrapper"
+                  onClick={() => setModalImg(true)}
+                >
+                  {preview.loading ? (
+                    <SkeletonLoader width="51px" height="52px" />
+                  ) : (
+                    <Images
+                      src={preview.url!}
+                      alt={`Uploaded preview ${index + 1}`}
+                      width="51px"
+                      height="52px"
+                      borderRadius="4px"
+                      objectFit="cover"
+                    />
+                  )}
+                </ImageWrapper>
+
                 <IconWrapper className="icon">
-                  <FaTimesCircle color="orange" size={18} />
+                  <FaTimesCircle
+                    color="orange"
+                    size={18}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setImages((images) =>
+                        images.filter((_, i) => i !== index)
+                      );
+                    }}
+                  />
                 </IconWrapper>
+                {/* {preview.loading ? (
+                  <SkeletonLoader width="51px" height="52px" />
+                ) :  (
+              
+                )} */}
               </ImageHover>
-            ))
-          )}
+            ))}
         </ImagesContainer>
       </StepsHeaders>
-      {openModal && (
-        <ModalSteps
-          title="¡Eso es todo por ahora!"
-          buttonText="Aceptar"
-          handleClose={() => setOpenModal(false)}
-        >
-          <Paragraph textTag="p" fontSize="20px">
-            Tu solicitud se envió correctamente, te dejamos el código de
-            seguimiento:{" "}
-            <Paragraph textTag="span" color="madForMango">
-              #{dataUser.id}
-            </Paragraph>
-          </Paragraph>
-          <Paragraph textTag="p" fontSize="20px">
-            El equipo de soporte va a revisar tu caso y, en menos de 48 horas
-            hábiles, te contactará por correo con más información y los pasos a
-            seguir.
-          </Paragraph>
-          <Paragraph textTag="p" fontSize="20px">
-            Muchas gracias por tu tiempo. ¡Quedamos en contacto!
-          </Paragraph>
-          {valueSelect === "3" && (
-            <Paragraph
-              textTag="span"
-              fontSize="16px"
-              color="brilliantLiquorice"
-            >
-              Tené en cuenta que por el cambio de modelo puede existir una
-              diferencia a abonar, o a reembolsar. *Ver tyc 📎
-            </Paragraph>
-          )}
-        </ModalSteps>
-      )}
+      <ModalSendInfo
+        isOpen={openModal}
+        setIsOpen={setOpenModal}
+        dataUser={dataUser}
+        valueSelect={valueSelect}
+      />
+      <ModalCarousel
+        modal={modalImg}
+        modalHandle={() => setModalImg(false)}
+        arrImages={images.map((image) => image.url!)}
+      />
     </>
   );
 };

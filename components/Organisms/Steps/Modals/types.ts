@@ -5,6 +5,8 @@ export interface ModalsProps {
   setIsOpen?: (open: boolean) => void;
   handleChatBot?: () => void;
   data?: IOrdenMail[];
+  dataUser?: any;
+  valueSelect?: string | null;
 }
 
 export type CountryConfig = {

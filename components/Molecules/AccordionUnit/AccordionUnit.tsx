@@ -170,23 +170,26 @@ const AccordionUnit = ({
               $descriptionCamaOla={descriptionCamaOla}
             >
               {itemsSelect}
+              {changedOption && (
+                <Paragraph
+                  color="wildViolet"
+                  fontSize="16px"
+                  onClick={() => {
+                    quizzHandle && quizzHandle();
+                    console.log("quizzActive", quizzActive);
+                  }}
+                  cursor="pointer"
+                  textDecoration="underline"
+                >
+                  {changeText}
+                </Paragraph>
+              )}
             </DescriptionAccordion>
-            {changedOption && (
-              <Paragraph
-                color="wildViolet"
-                fontSize="16px"
-                onClick={() => {
-                  quizzHandle && quizzHandle();
-                  console.log("quizzActive", quizzActive);
-                }}
-              >
-                {changeText}
-              </Paragraph>
-            )}
+
             {quizzActive && selectedQuizz && (
               <Quizz
                 quizzActive={quizzActive}
-                closeHandle={() => quizzHandle && quizzHandle()}
+                closeHandle={() => setQuizzActive && setQuizzActive(false)}
                 quizzKey={selectedQuizz}
               />
             )}

@@ -1,6 +1,6 @@
 import React from "react";
 import { ModalsProps } from "./types";
-import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
+import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import Paragraph from "@/components/Atoms/Typography/Text";
 
 const ModalFrav = ({ isOpen, setIsOpen }: ModalsProps) => {
