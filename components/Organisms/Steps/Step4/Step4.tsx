@@ -296,7 +296,7 @@ const Step4 = ({
                   <FaTimesCircle
                     color="orange"
                     size={18}
-                    onClick={(e) => {
+                    onClick={(e: React.MouseEvent) => {
                       e.stopPropagation();
                       setImages((images) =>
                         images.filter((_, i) => i !== index)
