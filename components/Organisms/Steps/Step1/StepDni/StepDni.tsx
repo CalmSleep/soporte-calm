@@ -74,7 +74,7 @@ const StepDni = () => {
     ? "madForMango"
     : errorMessage
     ? "rareRed"
-    : "greenGrass";
+    : "millionGray";
 
   return (
     <>
@@ -83,10 +83,11 @@ const StepDni = () => {
         labelRequired={showRequiredMessage ? "*" : ""}
         labelRequiredColor="brilliantLiquorice"
         input={{
-          borderColorFocused: borderColor,
+          borderColor: borderColor,
+          borderColorFocused: "millionGray",
           placeholder: " ",
           required: true,
-          colorLabel: "madForMango",
+          colorLabel: borderColor,
           type: "text",
           name: "dni",
           value: inputValue.dni || "",
