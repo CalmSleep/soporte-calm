@@ -98,6 +98,7 @@ const Step3 = ({
       <StepsHeaders
         span="Paso 3/4 - "
         backgroundColor={!checkboxConfirmed ? "drWhite" : "white"}
+        padding={!selectedValue ? "40px 300px 155px" : ""}
         title={
           valueSelect === "1"
             ? "Contanos cuál fue el problema"
@@ -110,7 +111,7 @@ const Step3 = ({
         paragraph={
           !checkboxConfirmed
             ? valueSelect === "1"
-              ? "Contanos cuál fue el problema. Si no encontrás tu caso en estas opciones, escribinos y te ayudamos."
+              ? "Si no encontrás tu caso en estas opciones, escribinos y te ayudamos."
               : valueSelect === "2"
               ? "¿Necesitas devolver uno o más productos? ¡No hay problema! Avancemos con la gestión..."
               : "¿Necesitas cambiar uno o más productos? ¡No hay problema! Avancemos con la gestión..."

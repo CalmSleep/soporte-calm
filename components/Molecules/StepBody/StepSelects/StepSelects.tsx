@@ -138,6 +138,8 @@ const StepSelects = ({
                           {piece.hasInput && (
                             <Input
                               appearance="none"
+                              fontSize="12px"
+                              borderColor="millionGray"
                               width="236px"
                               height="16px"
                               type="text"

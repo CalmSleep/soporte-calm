@@ -1,14 +1,11 @@
 import React from "react";
 import { ModalsProps } from "./types";
-import { useRouter } from "next/router";
-import ModalSteps from "@/components/Molecules/Modal/ModalSteps";
+import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import Paragraph from "@/components/Atoms/Typography/Text";
 
 const ModalFrav = ({ isOpen, setIsOpen }: ModalsProps) => {
-  const router = useRouter();
   const handleClose = () => {
-    setIsOpen(false);
-    router.push("/");
+    setIsOpen && setIsOpen(false);
   };
 
   return (
@@ -30,8 +27,8 @@ const ModalFrav = ({ isOpen, setIsOpen }: ModalsProps) => {
             >
               tu compra Calm
             </Paragraph>
-            , hacé clic en "Necesito ayuda", y su equipo de atención te va a
-            asistir con tu solicitud. 💬
+            , hacé clic en <b>"Necesito ayuda"</b>, y su equipo de atención te
+            va a asistir con tu solicitud. 💬
           </Paragraph>
         </ModalSteps>
       )}

@@ -270,7 +270,7 @@ export const onGetForgottenEmail = (mail: string) => {
   };
 };
 
-export const onGetOrdesDni = (dni: string) => {
+export const onGetOrdesDni = (dni: string, data: IOrdenMail[]) => {
   return async (dispatch: any) => {
     dispatch(onLoadingGetDniStart());
 
@@ -283,9 +283,18 @@ export const onGetOrdesDni = (dni: string) => {
         response.data.length > 0
       ) {
         const transformedData = emailResponse(response.data);
+        console.log("transformedData", transformedData);
+
         dispatch(onGetOrderByDni(transformedData));
-        await sendEmailOrderDni(transformedData);
-        dispatch(onLoadingGetDniFinished());
+        if (
+          data[0].saleSource === "webcalm" ||
+          data[0].saleSource?.includes("localm")
+        ) {
+          await sendEmailOrderDni(transformedData);
+          dispatch(onLoadingGetDniFinished());
+        } else {
+          dispatch(onLoadingGetDniFinished());
+        }
       } else {
         console.error("Error: La respuesta no es un array", response);
         dispatch(onGetOrderByDniFailed());

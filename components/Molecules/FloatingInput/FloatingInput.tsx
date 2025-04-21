@@ -21,9 +21,11 @@ const FloatingInput = ({
     <InputWrapper $width={width}>
       <Input
         {...input}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => (error ? setIsFocus(true) : setIsFocus(false))}
-        borderColor={error ? "rareRed" : undefined}
+        onFocus={() => setIsFocus(false)}
+        //  onBlur={() => setIsFocus(true)}
+        onBlur={() =>
+          error || required ? setIsFocus(true) : setIsFocus(false)
+        }
       />
       <Label
         $color={labelColor}

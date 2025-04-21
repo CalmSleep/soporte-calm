@@ -5,6 +5,13 @@ export type Step4Props = {
   setNotionInfo: React.Dispatch<React.SetStateAction<IDataSendNotion>>;
 };
 
+export type UploadedImage = {
+  file: File;
+  url?: string;
+  loading: boolean;
+  error?: string;
+};
+
 export interface IDataSendNotion {
   name: string;
   email: string;
@@ -14,7 +21,7 @@ export interface IDataSendNotion {
   orderNumber: string;
   userIntention: string;
   problemDescription: string[];
-  images: string[];
+  images: UploadedImage[];
   productChange?: string[];
   productReturn?: string[];
 }

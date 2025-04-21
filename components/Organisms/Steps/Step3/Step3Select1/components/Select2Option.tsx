@@ -28,7 +28,7 @@ const Select2Option = ({
     },
     {
       value: "csi",
-      label: "Tarjeta de crédito en hasta 12 csi",
+      label: "Tarjeta de crédito en hasta 12 cuotas sin interés",
     },
   ];
 

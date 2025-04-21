@@ -9,7 +9,7 @@ appearance: ${({ $appearance }) => ($appearance ? $appearance : "")};
     $borderRadius ? $borderRadius : "8px"};
   width: ${({ $width }) => ($width ? $width : "100%")};
   padding: ${({ $padding }) => ($padding ? $padding : "15px")};
-  font-size: 16px;
+  font-size: ${({ $fontSize }) => ($fontSize ? $fontSize : "16px")};
   outline: none;
   border: 2px solid ${({ $borderColor, theme }) =>
     $borderColor ? theme.colors[$borderColor] : theme.colors.millionGray};
@@ -71,6 +71,6 @@ appearance: ${({ $appearance }) => ($appearance ? $appearance : "")};
   &[type="week"],
   &:focus,
   &::placeholder {
-    font-size: 16px;
+    font-size: ${({ $fontSize }) => ($fontSize ? $fontSize : "16px")};
   }
 `;

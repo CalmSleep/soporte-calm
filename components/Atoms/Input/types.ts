@@ -31,9 +31,11 @@ export type InputProps = {
   padding?: string;
   appearance?: string;
   display?: string;
+  fontSize?: string;
 };
 
 export type InputStyledProps = {
+  $fontSize?: string;
   $appearance?: string;
   $width?: string;
   $borderColor?: ThemeColors;

@@ -1,9 +1,9 @@
 import React from "react";
 import { ModalStepsProps } from "./types";
-import SectionHeader from "../SectionHeader/SectionHeader";
 import Button from "@/components/Atoms/Buttons/Button";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import { ContainerModal } from "./styled";
+import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
 
 const ModalSteps = ({
   title,

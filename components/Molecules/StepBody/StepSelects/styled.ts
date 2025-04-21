@@ -16,7 +16,7 @@ export const PieceItems = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 6px;
+  gap: 10px;
   align-self: stretch;
 `;
 

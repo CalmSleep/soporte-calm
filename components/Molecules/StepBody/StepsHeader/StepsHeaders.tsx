@@ -6,6 +6,7 @@ import Button from "@/components/Atoms/Buttons/Button";
 const StepsHeaders = ({
   span,
   title,
+  padding,
   paragraph,
   children,
   value,
@@ -17,7 +18,7 @@ const StepsHeaders = ({
   return (
     <SectionHeader
       sectionHeaderStyles={{
-        $padding: "40px 300px",
+        $padding: padding ? padding : "40px 300px",
         $gap: "16px",
         $responsiveMobile: {
           padding: "24px 16px",

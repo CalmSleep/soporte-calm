@@ -108,6 +108,7 @@ export const DescriptionAccordion = styled.div<{
 }>`
   height: 100%;
   transition: all 0.35s;
+  padding-top: 10px;
   line-height: 1.5;
   font-weight: 300;
   border-top: solid;
@@ -127,12 +128,10 @@ export const DescriptionAccordion = styled.div<{
       props.$isProductSS
         ? `${theme.colors.offBlack}`
         : ($props) =>
-            props.$descriptionCamaOla
-              ? props.theme.colors.lead
-              : props.theme.colors.millionGray};
+            $props.$descriptionCamaOla ? props.theme.colors.lead : ""};
     font-family: ${(props) => props.theme.fonts.medium}, Arial;
     padding: 5px 20px 20px 20px;
-    font-size: ${(props) => (props.$isProductSS ? `1rem` : "1.1rem")};
+    font-size: ${(props) => (props.$isProductSS ? `1rem` : "")};
     font-family: ${(props) =>
       props.$descriptionCamaOla ? props.theme.fonts.light : ""};
     line-height: ${(props) => (props.$descriptionCamaOla ? "130%" : "")};
@@ -145,18 +144,18 @@ export const DescriptionAccordion = styled.div<{
         ? `${theme.colors.offBlack}`
         : props.theme.colors.millionGray};
     font-family: ${(props) => props.theme.fonts.light}, Arial;
-    font-size: ${(props) => (props.$isProductSS ? `1rem` : "1rem")};
+    font-size: ${(props) => (props.$isProductSS ? `1rem` : "")};
     margin-left: 2rem;
   }
 
   @media ${(props) => props.theme.devices.mobile} {
     p {
       font-size: ${(props) =>
-        props.$isFromCapas ? `.9rem` : props.$isProductSS ? `.8rem` : "1.1rem"};
+        props.$isFromCapas ? `.9rem` : props.$isProductSS ? `.8rem` : ""};
     }
     ul {
       font-size: ${(props) =>
-        props.$isFromCapas ? `.9rem` : props.$isProductSS ? `.8rem` : "1.1rem"};
+        props.$isFromCapas ? `.9rem` : props.$isProductSS ? `.8rem` : ""};
     }
   }
 `;

@@ -1,8 +1,8 @@
 import React from "react";
+import { UploadedImage } from "./types";
 
 const useStep4 = () => {
-  const [loadingImg, setLoadingImg] = React.useState(false);
-  const [imagePreviews, setImagePreviews] = React.useState<string[]>([]);
+  const [images, setImages] = React.useState<UploadedImage[]>([]);
   const [postalCode, setPostalCode] = React.useState<string>("");
   const [inputValue, setInputValue] = React.useState({
     direcction: "",
@@ -11,44 +11,70 @@ const useStep4 = () => {
   const [showRequiredMessage, setShowRequiredMessage] =
     React.useState<boolean>(true);
 
-  const handleFileChange = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const files = event.target.files;
-    if (!files) return;
-    setLoadingImg(true);
-    try {
-      const uploadedUrls = await Promise.all(
-        Array.from(files).map(async (file) => {
-          const base64 = await new Promise<string>((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(reader.result as string);
-            reader.onerror = reject;
-            reader.readAsDataURL(file);
-          });
+  const processFiles = async (files: FileList | File[]) => {
+    const fileArray = Array.from(files);
 
-          const response = await fetch("/api/uploadImage", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ file: base64 }),
-          });
+    fileArray.forEach(async (file) => {
+      setImages((prev) => [...prev, { file, loading: true }]);
 
-          const data = await response.json();
+      try {
+        const base64 = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result as string);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
 
-          if (!response.ok) {
-            throw new Error(data.error || "Error al subir la imagen.");
-          }
+        const response = await fetch("/api/uploadImage", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ file: base64 }),
+        });
 
-          return data.url;
-        })
-      );
-      setImagePreviews((prev) => [...prev, ...uploadedUrls]);
-    } catch (error) {
-      console.error("Error al subir imágenes:", error);
-    } finally {
-      setLoadingImg(false);
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Error al subir la imagen.");
+        }
+
+        setImages((prev) =>
+          prev.map((img) =>
+            img.file === file ? { ...img, url: data.url, loading: false } : img
+          )
+        );
+      } catch (error) {
+        setImages((prev) =>
+          prev.map((img) =>
+            img.file === file
+              ? {
+                  ...img,
+                  error: (error as Error).message || "Error desconocido",
+                  loading: false,
+                }
+              : img
+          )
+        );
+      }
+    });
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      processFiles(event.target.files);
     }
   };
+
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    if (event.dataTransfer.files) {
+      processFiles(event.dataTransfer.files);
+    }
+  };
+
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setInputValue({ ...inputValue, [name]: value });
@@ -60,10 +86,8 @@ const useStep4 = () => {
     }
   };
   return {
-    loadingImg,
-    imagePreviews,
-    setImagePreviews,
-    setLoadingImg,
+    images,
+    setImages,
     handleFileChange,
     postalCode,
     setPostalCode,
@@ -71,6 +95,8 @@ const useStep4 = () => {
     setInputValue,
     showRequiredMessage,
     setShowRequiredMessage,
+    handleDrop,
+    handleDragOver,
     handleChange,
   };
 };
