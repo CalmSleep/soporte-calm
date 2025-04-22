@@ -1,4 +1,6 @@
-import { IOrdenMail } from "../Step1/StepDni/types";
+import React from "react";
+import { DniInput, EmailInput, IOrdenMail } from "../Step1/StepDni/types";
+import { set } from "date-fns";
 
 export interface ModalsProps {
   isOpen: boolean;
@@ -7,6 +9,7 @@ export interface ModalsProps {
   data?: IOrdenMail[];
   dataUser?: any;
   valueSelect?: string | null;
+  setInputValue?: React.Dispatch<React.SetStateAction<DniInput>>;
 }
 
 export type CountryConfig = {

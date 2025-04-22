@@ -4,8 +4,12 @@ import Paragraph from "@/components/Atoms/Typography/Text";
 import { ModalsProps } from "./types";
 import { set } from "date-fns";
 
-const ModalMeli = ({ isOpen, setIsOpen }: ModalsProps) => {
+const ModalMeli = ({ isOpen, setIsOpen, setInputValue }: ModalsProps) => {
   const handleClose = () => {
+    setInputValue &&
+      setInputValue({
+        dni: 0,
+      });
     setIsOpen && setIsOpen(false);
   };
 

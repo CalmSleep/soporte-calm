@@ -75,6 +75,7 @@ import {
   TOKEN_ERROR_MESSAGE,
 } from "./types";
 import { IOrdenMail } from "@/components/Organisms/Steps/Step1/StepDni/types";
+import { isFromSpecialSource } from "@/components/Organisms/Steps/util";
 
 export const onGetOrder = (id: string, order_key: string) => {
   return async (dispatch: any) => {
@@ -270,7 +271,11 @@ export const onGetForgottenEmail = (mail: string) => {
   };
 };
 
-export const onGetOrdesDni = (dni: string, data: IOrdenMail[]) => {
+export const onGetOrdesDni = (
+  dni: string,
+  data: IOrdenMail[],
+  email?: string
+) => {
   return async (dispatch: any) => {
     dispatch(onLoadingGetDniStart());
 
@@ -283,7 +288,7 @@ export const onGetOrdesDni = (dni: string, data: IOrdenMail[]) => {
         response.data.length > 0
       ) {
         const transformedData = emailResponse(response.data);
-        console.log("transformedData", transformedData);
+        //   console.log("transformedData", transformedData);
 
         dispatch(onGetOrderByDni(transformedData));
         if (
@@ -291,6 +296,12 @@ export const onGetOrdesDni = (dni: string, data: IOrdenMail[]) => {
           data[0].saleSource?.includes("localm")
         ) {
           await sendEmailOrderDni(transformedData);
+          dispatch(onLoadingGetDniFinished());
+        }
+        if (email && isFromSpecialSource(data)) {
+          const dataNew = emailResponse(response.data, email);
+          dispatch(onGetOrderByDni(dataNew));
+          await sendEmailOrderDni(dataNew);
           dispatch(onLoadingGetDniFinished());
         } else {
           dispatch(onLoadingGetDniFinished());

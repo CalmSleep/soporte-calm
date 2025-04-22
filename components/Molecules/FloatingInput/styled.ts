@@ -3,6 +3,7 @@ import { InputWrapperProps, LabelStyledProps } from "./types";
 
 export const InputWrapper = styled.div<InputWrapperProps>`
   width: ${({ $width }) => ($width ? $width : "100%")};
+  margin-top: ${({ $marginTop }) => ($marginTop ? $marginTop : "")};
   position: relative;
   display: flex;
   flex-direction: column;

@@ -2,7 +2,11 @@ import React from "react";
 import { ModalsProps } from "./types";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 
-const ModalNotFound = ({ isOpen, handleChatBot }: ModalsProps) => {
+const ModalNotFound = ({
+  isOpen,
+  handleChatBot,
+  setInputValue,
+}: ModalsProps) => {
   return (
     <>
       {isOpen && (
@@ -14,6 +18,10 @@ En unos segundos, vas a ver el chat en pantalla. Si tenés tu número de pedido 
 `}
           buttonText="Aceptar"
           handleClose={() => {
+            setInputValue &&
+              setInputValue({
+                dni: 0,
+              });
             handleChatBot && handleChatBot();
           }}
         />
