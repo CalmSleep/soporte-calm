@@ -1,4 +1,14 @@
+import { theme } from "@/utils/Theme";
 import React from "react";
+
+type ThemeColors = keyof typeof theme.colors;
+
+export interface IArrayButton {
+  id: number;
+  text: string;
+  backgroundColor: ThemeColors;
+  onClick: () => void;
+}
 
 export type ModalStepsProps = {
   title?: string;
@@ -10,4 +20,6 @@ export type ModalStepsProps = {
   onClick?: () => void;
   handleClose?: () => void;
   children?: React.ReactNode;
+  modalDevChange?: boolean;
+  arrayButton?: IArrayButton[];
 };

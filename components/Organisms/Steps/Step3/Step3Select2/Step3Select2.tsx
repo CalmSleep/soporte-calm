@@ -8,6 +8,9 @@ import Paragraph from "@/components/Atoms/Typography/Text";
 import { Step3Select2and3Props } from "../types";
 import { itemsFilterJson, mapOrdersWithSpan, normalizeText } from "../../util";
 import { menuData } from "@/components/Organisms/NavBar/utils";
+import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
+import { IArrayButton } from "@/components/Organisms/Modals/ModalStep/types";
+import { set } from "date-fns";
 
 type ValueObject = {
   [key: string]: string[];
@@ -34,17 +37,19 @@ const Step3Select2 = ({
   handleCheckboxChangeConfirmed,
   infoStep,
   selectedTitles,
+  modalOpen,
+  setModalOpen,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
   const infoChanges = rawInfoChanges as unknown as ProductoData[];
 
-  console.log("selectedTitles", selectedTitles);
+  // console.log("selectedTitles", selectedTitles);
 
   const resultadoFinal: Resultado[] = selectedTitles
     .map((str) => {
       const producto = str.split(" (")[0];
-      console.log("producto", producto);
+      //  console.log("producto", producto);
 
       const match = str.match(/\(([^)]+)\)/);
       const comentario = match ? match[1] : "";
@@ -60,7 +65,7 @@ const Step3Select2 = ({
       if (!valueMatch) return null;
 
       const value = valueMatch[comentario];
-      console.log("value", value);
+      //console.log("value", value);
 
       return {
         productName: value[0],
@@ -69,10 +74,10 @@ const Step3Select2 = ({
     })
     .filter(Boolean) as Resultado[];
 
-  console.log(
-    "resultadoFinal",
-    resultadoFinal.map((r) => r.productName.length > 0)
-  );
+  // console.log(
+  //   "resultadoFinal",
+  //   resultadoFinal.map((r) => r.productName.length > 0)
+  // );
 
   const [selectedOption2, setSelectedOption2] = useState("");
   const radioOptions = [
@@ -82,7 +87,7 @@ const Step3Select2 = ({
   const paragraphArray = [
     {
       id: 1,
-      text: " Sabemos que encontrar el producto perfecto puede llevar tiempo, yqueremos ayudarte a que des con la mejor opción para vos. Parafacilitarte el cambio, te ofrecemos un 5% OFF en este nuevo producto.",
+      text: "Sabemos que encontrar el producto perfecto puede llevar tiempo, yqueremos ayudarte a que des con la mejor opción para vos. Parafacilitarte el cambio, te ofrecemos un 5% OFF en este nuevo producto.",
     },
     {
       id: 2,
@@ -94,6 +99,29 @@ const Step3Select2 = ({
     {
       id: 3,
       text: "Para facilitarte el cambio, te ofrecemos un 5% OFF en este nuevo producto.",
+    },
+  ];
+
+  console.log("checkboxConfirmed", checkboxConfirmed);
+
+  const arrayButton: IArrayButton[] = [
+    {
+      id: 1,
+      text: "Continuemos con la devolución",
+      backgroundColor: "lead",
+      onClick: () => {
+        console.log("Continuemos con la devolución");
+        setModalOpen && setModalOpen(false);
+      },
+    },
+    {
+      id: 2,
+      text: "¡Vamos con cambio!",
+      backgroundColor: "yellowCalm",
+      onClick: () => {
+        console.log("!Vamos con cambio!");
+        setModalOpen && setModalOpen(false);
+      },
     },
   ];
 
@@ -110,7 +138,16 @@ const Step3Select2 = ({
             items={matchedItems.length > 0 ? matchedItems : []}
             onCheckboxChange={handleCheckboxChange}
           />
-          {checkSeleccionado && valueSelect === "2" && (
+          {modalOpen && (
+            <ModalSteps modalDevChange arrayButton={arrayButton}>
+              {paragraphArray.map((item) => (
+                <Paragraph key={item.id}>
+                  {item.text} <br /> {item.text2}
+                </Paragraph>
+              ))}
+            </ModalSteps>
+          )}
+          {/* {checkSeleccionado && valueSelect === "2" && (
             <>
               {resultadoFinal.map(
                 (r) =>
@@ -136,7 +173,7 @@ const Step3Select2 = ({
                 setSelectedOption={setSelectedOption2}
               />
             </>
-          )}
+          )} */}
           {checkSeleccionado && valueSelect === "3" && (
             <StepSelects
               titleParagraph="¿Por qué producto te gustaría hacer el cambio?"

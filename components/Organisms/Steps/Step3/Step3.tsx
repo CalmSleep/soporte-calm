@@ -41,6 +41,7 @@ const Step3 = ({
   const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);
   const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
   const [continuemos, otros2] = splitDevolucion(selectedTitles);
+  const [modalIsOpen, setModalIsOpen] = React.useState(false);
 
   const infoProduct =
     (valueSelect === "1" && selectedValue === "1") || selectedValue === "4"
@@ -71,7 +72,7 @@ const Step3 = ({
       : `${selectedTitles
           .filter((title) => !matchedTitles.includes(title))
           .join(", ")}`;
-  console.log("products", products);
+  // console.log("products", products);
 
   const infoSelect2And3 = [
     products,
@@ -130,7 +131,8 @@ const Step3 = ({
               )
             );
           } else {
-            handleConfirmCheckbox();
+            setModalIsOpen(true);
+            // handleConfirmCheckbox();
           }
         }}
         value={
@@ -197,6 +199,8 @@ const Step3 = ({
             checkSeleccionado={checkSeleccionado}
             valueSelect={valueSelect}
             infoStep={infoSelect2And3}
+            modalOpen={modalIsOpen}
+            setModalOpen={setModalIsOpen}
           />
         )}
       </StepsHeaders>

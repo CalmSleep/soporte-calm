@@ -56,6 +56,8 @@ export interface Step3Select2and3Props {
     radioGroup: string[]
   ) => void;
   infoStep: string[];
+  modalOpen?: boolean;
+  setModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export type Category = {

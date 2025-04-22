@@ -16,12 +16,14 @@ const SectionHeader = ({
 }: SectionHeaderProps) => {
   return (
     <SectionHeaderStyles {...sectionHeaderStyles}>
-      <Titles {...titleStyles}>
-        <Paragraph textTag="span" {...spamStyles}>
-          {spam}
-        </Paragraph>
-        {title}
-      </Titles>
+      {title && (
+        <Titles {...titleStyles}>
+          <Paragraph textTag="span" {...spamStyles}>
+            {spam}
+          </Paragraph>
+          {title}
+        </Titles>
+      )}
       <Paragraph {...paragraphStyles}>
         {typeof paragraph === "string" &&
           paragraph.split("\n").map((line, index) => (

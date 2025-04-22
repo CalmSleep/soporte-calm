@@ -17,3 +17,21 @@ export const ContainerModal = styled.div`
     rgba(0, 0, 0, 0.8) 100%
   );
 `;
+
+export const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 0px 20px;
+
+  @media ${(props) => props.theme.devices.biggerMobile} {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 0px 8px;
+`;
