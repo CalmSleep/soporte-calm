@@ -63,7 +63,6 @@ export function mapOrdersWithSpan(orders: any[]): any[] {
   return orders.map((order: any) => {
     const attrs = order.attributes || {};
 
-    // Extrae los posibles valores del objeto de atributos (maneja "pa_" también)
     const tamanoValue = attrs.tamano || attrs.pa_tamano || "";
     const altoValue = attrs.alto || attrs.pa_alto || "";
     const colorValue = attrs.color || attrs.pa_color || "";
@@ -73,7 +72,6 @@ export function mapOrdersWithSpan(orders: any[]): any[] {
     const spanAlto = alto.includes(altoValue) ? altoValue : "";
     const spanColor = color.includes(colorValue) ? colorValue : "";
 
-    // Formatea usando variations_products
     const span = [spanTamano, spanAlto, spanColor]
       .filter(Boolean)
       .map((val) => (variations_products as Record<string, string>)[val] || val)

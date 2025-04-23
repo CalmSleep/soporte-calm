@@ -18,10 +18,12 @@ import { Cointainer } from "./styled";
 import StepsHeaders from "@/components/Molecules/StepBody/StepsHeader/StepsHeaders";
 import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
 import { isFromSpecialSource } from "../../util";
+import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 
 const StepDni = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const [error, setError] = useState<string | null>("");
   const [inputValue, setInputValue] = useState<DniInput>({
     dni: Number(),
   });
@@ -74,15 +76,30 @@ const StepDni = () => {
     }
   };
 
+  // const handleDni = async () => {
+  //   try {
+  //     await dispatch(
+  //       onGetOrdesDni(inputValue.dni.toString(), data || [], inputEmail.email)
+  //     );
+  //   } catch (error) {
+  //     setIsOpen(false);
+  //     setError("Error para modal");
+  //     console.error("Error para modal:", error);
+  //   } finally {
+  //     setIsOpen(true);
+  //   }
+  // };
+
   const handleDni = async () => {
+    setIsOpen(false); // asegurate de cerrar antes de todo
     try {
       await dispatch(
         onGetOrdesDni(inputValue.dni.toString(), data || [], inputEmail.email)
       );
+      setIsOpen(true); // solo abrir si todo sale bien
     } catch (error) {
-      console.error(error);
-    } finally {
-      setIsOpen(true);
+      setError("Error para modal");
+      console.error("Error para modal:", error);
     }
   };
 
@@ -189,8 +206,19 @@ const StepDni = () => {
           responsiveMobile={{ height: "50px" }}
         />
       )}
-      {(data && data[0].saleSource === "webcalm") ||
-      (data && data[0].saleSource?.includes("localm")) ? (
+      {error ? (
+        <ModalSteps
+          title="No pudimos enviar tu comprobante"
+          paragraph={`Ocurrió un error al intentar enviarte el comprobante de tu compra.\n 
+            Por favor, revisá tu conexión o intentá nuevamente en unos minutos.  
+            Si el problema persiste, contactanos para que podamos ayudarte.`}
+          buttonText="Aceptar"
+          handleClose={() => {
+            window.location.reload();
+          }}
+        />
+      ) : !isOpen ? null : (data && data[0].saleSource === "webcalm") ||
+        (data && data[0].saleSource?.includes("localm")) ? (
         <ModalCalm
           isOpen={isOpen}
           setIsOpen={setIsOpen}
