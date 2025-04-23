@@ -23,9 +23,22 @@ export const ContainerModal = styled.div`
     border: none;
     cursor: pointer;
     position: absolute;
-    right: 1rem;
-    top: 1rem;
+    left: 5rem;
+    top: 5rem;
     z-index: 20;
+  }
+
+  @media ${(props) => props.theme.devices.biggerMobile} {
+    .header-closer-2 {
+      display: flex;
+      align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      left: 2rem;
+      top: 2rem;
+      z-index: 20;
   }
 `;
 

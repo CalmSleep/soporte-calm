@@ -109,7 +109,7 @@ const ModalSteps = ({
                   borderRadius="1000px"
                   fontSize="17px"
                   responsiveMobile={{
-                    fontSize: "10px",
+                    fontSize: "13px",
                   }}
                   onClick={item.onClick}
                 >

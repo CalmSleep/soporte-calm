@@ -11,6 +11,7 @@ const ModalSendInfo = ({
 }: ModalsProps) => {
   const handleClose = () => {
     setIsOpen && setIsOpen(false);
+    window.location.reload();
   };
   return (
     <>

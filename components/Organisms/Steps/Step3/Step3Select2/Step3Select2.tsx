@@ -48,64 +48,123 @@ const Step3Select2 = ({
   const matchedItems = itemsFilterJson(items, newOrders);
   const infoChanges = rawInfoChanges as unknown as ProductoData[];
 
-  // console.log("selectedTitles", selectedTitles);
+  console.log(
+    "selectedTitles:",
+    selectedTitles.map((str) => {
+      const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
+      const producto = match ? match[1].trim() : "";
+      const comentario = match ? match[2].trim() : "";
+      return {
+        producto,
+        comentario,
+      };
+    })
+  );
 
   const resultadoFinal: Resultado[] = selectedTitles
     .map((str) => {
-      const producto = str.split(" (")[0];
-      //  console.log("producto", producto);
+      const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
+      const producto = match ? match[1].trim() : "";
+      const comentario = match ? match[2].trim() : "";
 
-      const match = str.match(/\(([^)]+)\)/);
-      const comentario = match ? match[1] : "";
+      const normalize = (s: string) =>
+        s
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
 
-      const item = infoChanges.find((d) => d.title === producto);
-      if (!item) return null;
+      const item = infoChanges.find((d) =>
+        normalize(d.title).includes(normalize(producto))
+      );
+      console.log("🟡 Producto:", producto);
+      console.log("🟡 Comentario:", comentario);
+      console.log("🟡 Item:", item);
 
-      //  const valueMatch = item.values.find((obj) => comentario in obj);
-      const valueMatch = item.values.find(
-        (obj): obj is ValueObject => comentario in obj
+      if (!item) {
+        console.log("❌ No se encontró item para:", producto);
+        return null;
+      }
+
+      const valueMatch = item.values.find((obj) =>
+        Object.keys(obj).some((key) => normalize(key) === normalize(comentario))
       );
 
-      if (!valueMatch) return null;
+      if (!valueMatch) {
+        console.log("❌ No se encontró comentario para:", comentario);
+        return null;
+      }
 
-      const value = valueMatch[comentario];
-      //console.log("value", value);
+      const comentarioKey = Object.keys(valueMatch).find(
+        (key) => normalize(key) === normalize(comentario)
+      );
 
+      if (!comentarioKey) return null;
+
+      const value = valueMatch[comentarioKey];
       return {
         productName: value[0],
         comentario: value[1],
       };
     })
-    .filter(Boolean) as Resultado[];
+    .filter((item): item is Resultado => item !== null);
 
   console.log(
     "resultadoFinal",
-    resultadoFinal.map((r) => r.productName.length > 0)
+    resultadoFinal.map((r) => r.comentario),
+    resultadoFinal.length === 1
   );
   const paragraphArray = [
     {
       id: 1,
-      text: "Sabemos que encontrar el producto perfecto puede llevar tiempo, y queremos ayudarte a que des con la mejor opción para vos.",
+      text: (
+        <Paragraph>
+          Sabemos que encontrar el producto perfecto puede llevar tiempo, y
+          queremos ayudarte a que des con la mejor opción para vos.
+        </Paragraph>
+      ),
     },
     {
       id: 2,
       text:
-        selectedTitles.length > 1
-          ? "🔄 ¿Sabías que podés pedir un cambio por cualquier producto de la web, sin importar la categoría?"
-          : `🔍 En base a lo que buscás, creemos que ${resultadoFinal
-              .map((r) => r.productName)
-              .join(", ")} puede ser una mejor alternativa.`,
-      text2:
-        selectedTitles.length > 1
-          ? "Es más, para facilitarlo, te ofrecemos un 5% OFF en el nuevo producto, que además cuenta con 30 noches de prueba 🌙"
-          : `📌 ${resultadoFinal.map((r) => r.comentario).join(", ")}`,
+        resultadoFinal.length === 1 ? (
+          <Paragraph font="bold">
+            🔍 En base a lo que buscás, creemos que{" "}
+            {`${resultadoFinal.map((r) => r.productName).join(", ")}`} puede ser
+            una mejor alternativa.
+          </Paragraph>
+        ) : (
+          <Paragraph font="bold">
+            🔄 ¿Sabías que podés pedir un cambio por cualquier producto de la
+            web, sin importar la categoría?
+          </Paragraph>
+        ),
     },
     {
       id: 3,
       text:
-        selectedTitles.length > 1
-          ? "¿Te animás al cambio?"
-          : "Para facilitarte el cambio, te ofrecemos un 5% OFF en este nuevo producto.",
+        resultadoFinal.length === 1 ? (
+          <Paragraph>
+            📌 {`${resultadoFinal.map((r) => r.comentario).join(", ")}`}
+          </Paragraph>
+        ) : (
+          <Paragraph>
+            Es más, para facilitarlo, te ofrecemos un <b>5% OFF</b> en el nuevo
+            producto, que además cuenta con 30 noches de prueba 🌙
+          </Paragraph>
+        ),
+    },
+    {
+      id: 4,
+      text:
+        resultadoFinal.length === 1 ? (
+          <Paragraph>
+            Para facilitarte el cambio, te ofrecemos un <b>5% OFF</b> en este
+            nuevo producto.
+          </Paragraph>
+        ) : (
+          <Paragraph font="bold">¿Te animás al cambio?</Paragraph>
+        ),
     },
   ];
 
@@ -166,10 +225,11 @@ const Step3Select2 = ({
               icon
             >
               {paragraphArray.map((item) => (
-                <Paragraph key={item.id}>
-                  {item.text}
-                  <br /> <br /> {item.text2}
-                </Paragraph>
+                <div>{item.text}</div>
+                // <Paragraph key={item.id}>
+                //   {item.id === 1 && item.text}
+                //   <b>{item.id === 2 && item.text}</b>
+                // </Paragraph>
               ))}
             </ModalSteps>
           )}
