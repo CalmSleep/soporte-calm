@@ -2,6 +2,7 @@ import React from "react";
 import { ModalsProps } from "./types";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import Paragraph from "@/components/Atoms/Typography/Text";
+import { useRouter } from "next/navigation";
 
 const ModalSendInfo = ({
   isOpen,
@@ -9,9 +10,10 @@ const ModalSendInfo = ({
   dataUser,
   valueSelect,
 }: ModalsProps) => {
+  const router = useRouter();
   const handleClose = () => {
     setIsOpen && setIsOpen(false);
-    window.location.reload();
+    router.push("/");
   };
   return (
     <>
