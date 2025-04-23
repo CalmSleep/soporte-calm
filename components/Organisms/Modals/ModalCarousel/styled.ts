@@ -10,7 +10,7 @@ const slideInAnimation = keyframes`
 `;
 
 export const ModalSidecart = styled.article`
-   /*  display:flex;
+  /*  display:flex;
     position: fixed;
     z-index: 999;
     top: 0;
@@ -65,17 +65,17 @@ export const ModalSidecart = styled.article`
   @media ${({ theme }) => theme.devices.mobile} {
     padding: 0;
   }
-`
+`;
 
 export const ImageDiv = styled.div`
-    height: 90vh;
-    width: auto;
-    
-    @media ${({ theme }) => theme.devices.mobile} {
-      height: auto;
-      width: 100%;
-    }
-`
+  height: 90vh;
+  width: auto;
+
+  @media ${({ theme }) => theme.devices.mobile} {
+    height: auto;
+    width: 100%;
+  }
+`;
 export const ClickedGalley = styled.div`
   /* img {
     width: 100%;
@@ -83,22 +83,23 @@ export const ClickedGalley = styled.div`
     height: auto;
     border-radius: 10px;
   } */
-    width: 80%;
-    margin: auto;
-    max-width: 1350px;
+  width: 80%;
+  margin: auto;
+  max-width: 1350px;
 
-    @media ${({ theme }) => theme.devices.mobile} {
-      width: 100%;
-    }
-`
+  @media ${({ theme }) => theme.devices.mobile} {
+    width: 100%;
+  }
+`;
 
 export const DivButtonClose = styled.div`
-  position: fixed ;
+  position: fixed;
+  left: 2rem;
   width: 37px;
   height: 37px;
   padding: 5px;
   margin: 10px;
-  background-color: ${props => props.theme.colors.white} !important;
+  background-color: ${(props) => props.theme.colors.white} !important;
   border-radius: 9999px;
   cursor: pointer;
   div {
@@ -107,6 +108,4 @@ export const DivButtonClose = styled.div`
     align-items: center;
     margin-bottom: 2px;
   }
-`
-
-
+`;

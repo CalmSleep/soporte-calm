@@ -1,7 +1,11 @@
 import React from "react";
 import { ModalsProps } from "./types";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
-const ModalDniInvalid = ({ isOpen, handleChatBot }: ModalsProps) => {
+const ModalDniInvalid = ({
+  isOpen,
+  handleChatBot,
+  setInputValue,
+}: ModalsProps) => {
   return (
     <>
       {isOpen && (
@@ -12,6 +16,10 @@ const ModalDniInvalid = ({ isOpen, handleChatBot }: ModalsProps) => {
 En unos segundos, vas a ver el chat en pantalla. Si tenés tu número de pedido a mano, podés pasárselo directamente para agilizar el proceso.`}
           buttonText="Aceptar"
           handleClose={() => {
+            setInputValue &&
+              setInputValue({
+                dni: 0,
+              });
             handleChatBot && handleChatBot();
           }}
         />

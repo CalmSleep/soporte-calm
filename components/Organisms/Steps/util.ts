@@ -1,28 +1,51 @@
 import { searchAttribute } from "@/utils/productsFunctios";
 import variations_products from "@/utils/variations_products";
+import { IOrdenMail } from "./Step1/StepDni/types";
 
-export   function normalizeText(text: string) {
-    return text
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .trim();
+export const maskEmail = (email: string) => {
+  const [localPart, domain] = email.split("@");
+  if (!domain) return email;
+
+  return `${localPart[0]}${"*".repeat(localPart.length - 2)}${localPart.slice(
+    -1
+  )}@${domain}`;
+};
+
+export const isFromSpecialSource = (
+  data?: IOrdenMail[],
+  sources: string[] = ["bna", "provincia_compras", "aper", "ctc"]
+): true | undefined => {
+  const saleSource = data?.[0]?.saleSource;
+  if (sources.includes(saleSource ?? "")) {
+    return true;
   }
+  return undefined;
+};
+
+export function normalizeText(text: string) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+}
 
 export function getMatchingQuizzIds(titles: string[], menuData: any) {
   if (!Array.isArray(menuData)) return [];
-    return titles.flatMap((title) => {
-      const normalizedTitle = normalizeText(title);
-      
-      const matchedItems = menuData && menuData.filter((item: any) =>
+  return titles.flatMap((title) => {
+    const normalizedTitle = normalizeText(title);
+
+    const matchedItems =
+      menuData &&
+      menuData.filter((item: any) =>
         normalizeText(item.name).includes(normalizedTitle)
       );
-  
-      return matchedItems.flatMap((item: any) =>
-        item.quizz?.map((q: any) => q.id) ?? []
-      );
-    });
-  }
+
+    return matchedItems.flatMap(
+      (item: any) => item.quizz?.map((q: any) => q.id) ?? []
+    );
+  });
+}
 
 export const infoString = (confirmedValue: string) => {
   return confirmedValue === "1"

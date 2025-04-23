@@ -25,11 +25,14 @@ export const validateDni = (dni: DniInput): ErrorInput => {
   return errors;
 };
 
-export const emailResponse = (dataResponse: IOrderResponse[]) => {
+export const emailResponse = (
+  dataResponse: IOrderResponse[],
+  email?: string
+) => {
   return dataResponse.map((item: IOrderResponse): IOrdenMail => {
     return {
       id: item.id,
-      email: item.billing.email,
+      email: !email ? item.billing.email : email,
       //email: "chofiikauffer@gmail.com",
       dni: item.dni || "",
       name: item.billing.first_name,

@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const FloatingInput = ({
   width,
+  marginTop,
   label,
   labelRequired,
   labelRequiredColor,
@@ -18,7 +19,7 @@ const FloatingInput = ({
   const [isFocus, setIsFocus] = useState(false);
 
   return (
-    <InputWrapper $width={width}>
+    <InputWrapper $width={width} $marginTop={marginTop}>
       <Input
         {...input}
         onFocus={() => setIsFocus(false)}

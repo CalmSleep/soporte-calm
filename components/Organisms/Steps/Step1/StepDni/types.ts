@@ -2,6 +2,10 @@ export type DniInput = {
   dni: number;
 };
 
+export type EmailInput = {
+  email: string;
+};
+
 export type ErrorInput = {
   [key: string]: string;
 };

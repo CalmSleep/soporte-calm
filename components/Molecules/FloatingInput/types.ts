@@ -5,6 +5,7 @@ type ThemeColors = keyof typeof theme.colors;
 
 export type FloatingInputProps = {
   width?: string;
+  marginTop?: string;
   label?: string;
   labelRequired?: string;
   labelRequiredColor?: ThemeColors;
@@ -26,4 +27,5 @@ export type LabelStyledProps = {
 
 export type InputWrapperProps = {
   $width?: string;
+  $marginTop?: string;
 };

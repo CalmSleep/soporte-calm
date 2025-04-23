@@ -3,8 +3,12 @@ import { ModalsProps } from "./types";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import Paragraph from "@/components/Atoms/Typography/Text";
 
-const ModalFrav = ({ isOpen, setIsOpen }: ModalsProps) => {
+const ModalFrav = ({ isOpen, setIsOpen, setInputValue }: ModalsProps) => {
   const handleClose = () => {
+    setInputValue &&
+      setInputValue({
+        dni: 0,
+      });
     setIsOpen && setIsOpen(false);
   };
 

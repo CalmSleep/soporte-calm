@@ -1,16 +1,15 @@
 import React from "react";
 import { ModalsProps } from "./types";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
+import { maskEmail } from "../util";
 
-const ModalCalm = ({ isOpen, setIsOpen, handleChatBot, data }: ModalsProps) => {
-  const maskEmail = (email: string) => {
-    const [localPart, domain] = email.split("@");
-    if (!domain) return email;
-
-    return `${localPart[0]}${"*".repeat(localPart.length - 2)}${localPart.slice(
-      -1
-    )}@${domain}`;
-  };
+const ModalCalm = ({
+  isOpen,
+  setIsOpen,
+  handleChatBot,
+  data,
+  setInputValue,
+}: ModalsProps) => {
   return (
     <>
       {isOpen && (
@@ -30,6 +29,10 @@ const ModalCalm = ({ isOpen, setIsOpen, handleChatBot, data }: ModalsProps) => {
           }}
           handleClose={() => {
             if (data && data.length > 0) {
+              setInputValue &&
+                setInputValue({
+                  dni: 0,
+                });
               setIsOpen && setIsOpen(false);
             } else {
               handleChatBot && handleChatBot();

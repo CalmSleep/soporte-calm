@@ -2,8 +2,11 @@ import React from "react";
 import { ModalStepsProps } from "./types";
 import Button from "@/components/Atoms/Buttons/Button";
 import Paragraph from "@/components/Atoms/Typography/Text";
-import { ContainerModal } from "./styled";
+import { ButtonContainer, ContainerModal } from "./styled";
 import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
+import { DivButtonClose } from "../ModalCarousel/styled";
+import Icons from "@/components/Atoms/Icons/Icons";
+import { CloseIcon } from "../../MainBlock/mainBlockicons";
 
 const ModalSteps = ({
   title,
@@ -14,10 +17,20 @@ const ModalSteps = ({
   buttonText,
   onClick,
   handleClose,
+  modalDevChange,
   children,
+  arrayButton,
+  icon,
 }: ModalStepsProps) => {
   return (
     <ContainerModal>
+      {icon && (
+        <DivButtonClose className="header-closer-2">
+          <Icons width="60%" onClick={handleClose}>
+            {CloseIcon()}
+          </Icons>
+        </DivButtonClose>
+      )}
       <SectionHeader
         sectionHeaderStyles={{
           $width: "900px",
@@ -70,18 +83,41 @@ const ModalSteps = ({
             </Paragraph>
           </Paragraph>
         )}
-        <Button
-          backgroundColor="lead"
-          textColor="drWhite"
-          borderRadius="1000px"
-          fontSize="24px"
-          responsiveMobile={{
-            fontSize: "18px",
-          }}
-          onClick={handleClose}
-        >
-          {buttonText}
-        </Button>
+        {!modalDevChange && (
+          <Button
+            backgroundColor="lead"
+            textColor="drWhite"
+            borderRadius="1000px"
+            fontSize="24px"
+            responsiveMobile={{
+              fontSize: "18px",
+            }}
+            onClick={handleClose}
+          >
+            {buttonText}
+          </Button>
+        )}
+        {modalDevChange && (
+          <ButtonContainer>
+            {arrayButton &&
+              arrayButton.map((item) => (
+                <Button
+                  key={item.id}
+                  width="100%"
+                  backgroundColor={item.backgroundColor}
+                  textColor="drWhite"
+                  borderRadius="1000px"
+                  fontSize="17px"
+                  responsiveMobile={{
+                    fontSize: "13px",
+                  }}
+                  onClick={item.onClick}
+                >
+                  {item.text}
+                </Button>
+              ))}
+          </ButtonContainer>
+        )}
       </SectionHeader>
     </ContainerModal>
   );

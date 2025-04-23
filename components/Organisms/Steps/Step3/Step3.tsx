@@ -36,11 +36,12 @@ const Step3 = ({
     handleCheckboxChangeConfirmed,
     handlePaymentChange,
   } = useValueSelect();
-  // console.log("titles", selectedTitles);
+  console.log("titles", selectedTitles);
   const orders = useSelector(getThankuContent);
   const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);
   const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
   const [continuemos, otros2] = splitDevolucion(selectedTitles);
+  const [modalIsOpen, setModalIsOpen] = React.useState(false);
 
   const infoProduct =
     (valueSelect === "1" && selectedValue === "1") || selectedValue === "4"
@@ -71,7 +72,7 @@ const Step3 = ({
       : `${selectedTitles
           .filter((title) => !matchedTitles.includes(title))
           .join(", ")}`;
-  console.log("products", products);
+  // console.log("products", products);
 
   const infoSelect2And3 = [
     products,
@@ -98,7 +99,9 @@ const Step3 = ({
       <StepsHeaders
         span="Paso 3/4 - "
         backgroundColor={!checkboxConfirmed ? "drWhite" : "white"}
-        padding={!selectedValue ? "40px 300px 155px" : ""}
+        padding={
+          !selectedValue && valueSelect === "1" ? "40px 300px 155px" : ""
+        }
         title={
           valueSelect === "1"
             ? "Contanos cuál fue el problema"
@@ -118,17 +121,8 @@ const Step3 = ({
             : ""
         }
         onClick={() => {
-          if (
-            selectedTitles.some((title) =>
-              title.toLowerCase().includes("cambio")
-            )
-          ) {
-            setConfirmedValue("3");
-            setSelectedTitles(
-              selectedTitles.filter(
-                (title) => !title.toLowerCase().includes("cambio")
-              )
-            );
+          if (valueSelect === "2" && selectedTitles.length > 0) {
+            setModalIsOpen(true);
           } else {
             handleConfirmCheckbox();
           }
@@ -197,6 +191,11 @@ const Step3 = ({
             checkSeleccionado={checkSeleccionado}
             valueSelect={valueSelect}
             infoStep={infoSelect2And3}
+            modalOpen={modalIsOpen}
+            setModalOpen={setModalIsOpen}
+            setSelectedTitles={setSelectedTitles}
+            setConfirmedValue={setConfirmedValue}
+            handleConfirmCheckbox={handleConfirmCheckbox}
           />
         )}
       </StepsHeaders>

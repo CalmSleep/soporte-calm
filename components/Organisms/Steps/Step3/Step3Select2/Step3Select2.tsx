@@ -8,6 +8,10 @@ import Paragraph from "@/components/Atoms/Typography/Text";
 import { Step3Select2and3Props } from "../types";
 import { itemsFilterJson, mapOrdersWithSpan, normalizeText } from "../../util";
 import { menuData } from "@/components/Organisms/NavBar/utils";
+import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
+import { IArrayButton } from "@/components/Organisms/Modals/ModalStep/types";
+import { set } from "date-fns";
+import { tr } from "date-fns/locale";
 
 type ValueObject = {
   [key: string]: string[];
@@ -34,66 +38,167 @@ const Step3Select2 = ({
   handleCheckboxChangeConfirmed,
   infoStep,
   selectedTitles,
+  setSelectedTitles,
+  setConfirmedValue,
+  modalOpen,
+  setModalOpen,
+  handleConfirmCheckbox,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
   const infoChanges = rawInfoChanges as unknown as ProductoData[];
 
-  console.log("selectedTitles", selectedTitles);
+  console.log(
+    "selectedTitles:",
+    selectedTitles.map((str) => {
+      const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
+      const producto = match ? match[1].trim() : "";
+      const comentario = match ? match[2].trim() : "";
+      return {
+        producto,
+        comentario,
+      };
+    })
+  );
 
   const resultadoFinal: Resultado[] = selectedTitles
     .map((str) => {
-      const producto = str.split(" (")[0];
-      console.log("producto", producto);
+      const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
+      const producto = match ? match[1].trim() : "";
+      const comentario = match ? match[2].trim() : "";
 
-      const match = str.match(/\(([^)]+)\)/);
-      const comentario = match ? match[1] : "";
+      const normalize = (s: string) =>
+        s
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
 
-      const item = infoChanges.find((d) => d.title === producto);
-      if (!item) return null;
+      const item = infoChanges.find((d) =>
+        normalize(d.title).includes(normalize(producto))
+      );
+      console.log("🟡 Producto:", producto);
+      console.log("🟡 Comentario:", comentario);
+      console.log("🟡 Item:", item);
 
-      //  const valueMatch = item.values.find((obj) => comentario in obj);
-      const valueMatch = item.values.find(
-        (obj): obj is ValueObject => comentario in obj
+      if (!item) {
+        console.log("❌ No se encontró item para:", producto);
+        return null;
+      }
+
+      const valueMatch = item.values.find((obj) =>
+        Object.keys(obj).some((key) => normalize(key) === normalize(comentario))
       );
 
-      if (!valueMatch) return null;
+      if (!valueMatch) {
+        console.log("❌ No se encontró comentario para:", comentario);
+        return null;
+      }
 
-      const value = valueMatch[comentario];
-      console.log("value", value);
+      const comentarioKey = Object.keys(valueMatch).find(
+        (key) => normalize(key) === normalize(comentario)
+      );
 
+      if (!comentarioKey) return null;
+
+      const value = valueMatch[comentarioKey];
       return {
         productName: value[0],
         comentario: value[1],
       };
     })
-    .filter(Boolean) as Resultado[];
+    .filter((item): item is Resultado => item !== null);
 
   console.log(
     "resultadoFinal",
-    resultadoFinal.map((r) => r.productName.length > 0)
+    resultadoFinal.map((r) => r.comentario),
+    resultadoFinal.length === 1
   );
-
-  const [selectedOption2, setSelectedOption2] = useState("");
-  const radioOptions = [
-    { value: "cambio", label: "¡Vamos con cambio!" },
-    { value: "devolucion", label: "Continuemos con la devolución" },
-  ];
   const paragraphArray = [
     {
       id: 1,
-      text: " Sabemos que encontrar el producto perfecto puede llevar tiempo, yqueremos ayudarte a que des con la mejor opción para vos. Parafacilitarte el cambio, te ofrecemos un 5% OFF en este nuevo producto.",
+      text: (
+        <Paragraph>
+          Sabemos que encontrar el producto perfecto puede llevar tiempo, y
+          queremos ayudarte a que des con la mejor opción para vos.
+        </Paragraph>
+      ),
     },
     {
       id: 2,
-      text: `🔍 En base a lo que buscás, creemos que ${resultadoFinal
-        .map((r) => r.productName)
-        .join(", ")} puede ser una mejor alternativa.`,
-      text2: `📌 ${resultadoFinal.map((r) => r.comentario).join(", ")}` || "",
+      text:
+        resultadoFinal.length === 1 ? (
+          <Paragraph font="bold">
+            🔍 En base a lo que buscás, creemos que{" "}
+            {`${resultadoFinal.map((r) => r.productName).join(", ")}`} puede ser
+            una mejor alternativa.
+          </Paragraph>
+        ) : (
+          <Paragraph font="bold">
+            🔄 ¿Sabías que podés pedir un cambio por cualquier producto de la
+            web, sin importar la categoría?
+          </Paragraph>
+        ),
     },
     {
       id: 3,
-      text: "Para facilitarte el cambio, te ofrecemos un 5% OFF en este nuevo producto.",
+      text:
+        resultadoFinal.length === 1 ? (
+          <Paragraph>
+            📌 {`${resultadoFinal.map((r) => r.comentario).join(", ")}`}
+          </Paragraph>
+        ) : (
+          <Paragraph>
+            Es más, para facilitarlo, te ofrecemos un <b>5% OFF</b> en el nuevo
+            producto, que además cuenta con 30 noches de prueba 🌙
+          </Paragraph>
+        ),
+    },
+    {
+      id: 4,
+      text:
+        resultadoFinal.length === 1 ? (
+          <Paragraph>
+            Para facilitarte el cambio, te ofrecemos un <b>5% OFF</b> en este
+            nuevo producto.
+          </Paragraph>
+        ) : (
+          <Paragraph font="bold">¿Te animás al cambio?</Paragraph>
+        ),
+    },
+  ];
+
+  //  console.log("selectTitles", selectedTitles);
+
+  const arrayButton: IArrayButton[] = [
+    {
+      id: 1,
+      text: "Continuemos con la devolución",
+      backgroundColor: "lead",
+      onClick: () => {
+        handleCheckboxChangeConfirmed(true, "Continuemos con la devolución", [
+          "devolucion",
+        ]);
+        handleConfirmCheckbox && handleConfirmCheckbox();
+        setModalOpen && setModalOpen(false);
+      },
+    },
+    {
+      id: 2,
+      text: "¡Vamos con cambio!",
+      backgroundColor: "yellowCalm",
+      onClick: () => {
+        console.log("!Vamos con cambio!");
+        handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+        setConfirmedValue && setConfirmedValue("3");
+        setSelectedTitles &&
+          setSelectedTitles(
+            selectedTitles.filter(
+              (title) => !title.toLowerCase().includes("cambio")
+            )
+          );
+        setModalOpen && setModalOpen(false);
+      },
     },
   ];
 
@@ -110,32 +215,23 @@ const Step3Select2 = ({
             items={matchedItems.length > 0 ? matchedItems : []}
             onCheckboxChange={handleCheckboxChange}
           />
-          {checkSeleccionado && valueSelect === "2" && (
-            <>
-              {resultadoFinal.map(
-                (r) =>
-                  r.productName.length > 0 &&
-                  paragraphArray.map((item) => (
-                    <Paragraph key={item.id}>
-                      {item.text} <br /> {item.text2}
-                    </Paragraph>
-                  ))
-              )}
-
-              <StepSelects
-                titleParagraph="Seleccioná una opción:"
-                radioOptions={radioOptions}
-                onCheckboxChange={(isChecked, title) =>
-                  handleCheckboxChangeConfirmed(
-                    isChecked,
-                    title,
-                    radioOptions.map((r) => r.label)
-                  )
-                }
-                selectedOption={selectedOption2}
-                setSelectedOption={setSelectedOption2}
-              />
-            </>
+          {modalOpen && (
+            <ModalSteps
+              modalDevChange
+              arrayButton={arrayButton}
+              handleClose={() => {
+                setModalOpen && setModalOpen(false);
+              }}
+              icon
+            >
+              {paragraphArray.map((item) => (
+                <div>{item.text}</div>
+                // <Paragraph key={item.id}>
+                //   {item.id === 1 && item.text}
+                //   <b>{item.id === 2 && item.text}</b>
+                // </Paragraph>
+              ))}
+            </ModalSteps>
           )}
           {checkSeleccionado && valueSelect === "3" && (
             <StepSelects
@@ -152,7 +248,6 @@ const Step3Select2 = ({
           info={infoStep}
           onClick={() => {
             handleEditCheckbox();
-            setSelectedOption2("");
           }}
         />
       )}
