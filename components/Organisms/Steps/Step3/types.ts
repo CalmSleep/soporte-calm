@@ -47,7 +47,9 @@ export interface Step3Select2and3Props {
   checkboxConfirmed: boolean;
   checkSeleccionado: boolean;
   selectedTitles: string[];
+  setSelectedTitles?: React.Dispatch<React.SetStateAction<string[]>>;
   valueSelect: string | null;
+  setConfirmedValue?: React.Dispatch<React.SetStateAction<string | null>>;
   handleEditCheckbox: () => void;
   handleCheckboxChange: (isChecked: boolean, title: string) => void;
   handleCheckboxChangeConfirmed: (
@@ -58,6 +60,7 @@ export interface Step3Select2and3Props {
   infoStep: string[];
   modalOpen?: boolean;
   setModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  handleConfirmCheckbox?: () => void;
 }
 
 export type Category = {

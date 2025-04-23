@@ -11,6 +11,7 @@ import { menuData } from "@/components/Organisms/NavBar/utils";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import { IArrayButton } from "@/components/Organisms/Modals/ModalStep/types";
 import { set } from "date-fns";
+import { tr } from "date-fns/locale";
 
 type ValueObject = {
   [key: string]: string[];
@@ -37,8 +38,11 @@ const Step3Select2 = ({
   handleCheckboxChangeConfirmed,
   infoStep,
   selectedTitles,
+  setSelectedTitles,
+  setConfirmedValue,
   modalOpen,
   setModalOpen,
+  handleConfirmCheckbox,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
@@ -74,35 +78,38 @@ const Step3Select2 = ({
     })
     .filter(Boolean) as Resultado[];
 
-  // console.log(
-  //   "resultadoFinal",
-  //   resultadoFinal.map((r) => r.productName.length > 0)
-  // );
-
-  const [selectedOption2, setSelectedOption2] = useState("");
-  const radioOptions = [
-    { value: "cambio", label: "¡Vamos con cambio!" },
-    { value: "devolucion", label: "Continuemos con la devolución" },
-  ];
+  console.log(
+    "resultadoFinal",
+    resultadoFinal.map((r) => r.productName.length > 0)
+  );
   const paragraphArray = [
     {
       id: 1,
-      text: "Sabemos que encontrar el producto perfecto puede llevar tiempo, yqueremos ayudarte a que des con la mejor opción para vos. Parafacilitarte el cambio, te ofrecemos un 5% OFF en este nuevo producto.",
+      text: "Sabemos que encontrar el producto perfecto puede llevar tiempo, y queremos ayudarte a que des con la mejor opción para vos.",
     },
     {
       id: 2,
-      text: `🔍 En base a lo que buscás, creemos que ${resultadoFinal
-        .map((r) => r.productName)
-        .join(", ")} puede ser una mejor alternativa.`,
-      text2: `📌 ${resultadoFinal.map((r) => r.comentario).join(", ")}` || "",
+      text:
+        selectedTitles.length > 1
+          ? "🔄 ¿Sabías que podés pedir un cambio por cualquier producto de la web, sin importar la categoría?"
+          : `🔍 En base a lo que buscás, creemos que ${resultadoFinal
+              .map((r) => r.productName)
+              .join(", ")} puede ser una mejor alternativa.`,
+      text2:
+        selectedTitles.length > 1
+          ? "Es más, para facilitarlo, te ofrecemos un 5% OFF en el nuevo producto, que además cuenta con 30 noches de prueba 🌙"
+          : `📌 ${resultadoFinal.map((r) => r.comentario).join(", ")}`,
     },
     {
       id: 3,
-      text: "Para facilitarte el cambio, te ofrecemos un 5% OFF en este nuevo producto.",
+      text:
+        selectedTitles.length > 1
+          ? "¿Te animás al cambio?"
+          : "Para facilitarte el cambio, te ofrecemos un 5% OFF en este nuevo producto.",
     },
   ];
 
-  console.log("checkboxConfirmed", checkboxConfirmed);
+  //  console.log("selectTitles", selectedTitles);
 
   const arrayButton: IArrayButton[] = [
     {
@@ -110,7 +117,10 @@ const Step3Select2 = ({
       text: "Continuemos con la devolución",
       backgroundColor: "lead",
       onClick: () => {
-        console.log("Continuemos con la devolución");
+        handleCheckboxChangeConfirmed(true, "Continuemos con la devolución", [
+          "devolucion",
+        ]);
+        handleConfirmCheckbox && handleConfirmCheckbox();
         setModalOpen && setModalOpen(false);
       },
     },
@@ -120,6 +130,14 @@ const Step3Select2 = ({
       backgroundColor: "yellowCalm",
       onClick: () => {
         console.log("!Vamos con cambio!");
+        handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+        setConfirmedValue && setConfirmedValue("3");
+        setSelectedTitles &&
+          setSelectedTitles(
+            selectedTitles.filter(
+              (title) => !title.toLowerCase().includes("cambio")
+            )
+          );
         setModalOpen && setModalOpen(false);
       },
     },
@@ -139,41 +157,21 @@ const Step3Select2 = ({
             onCheckboxChange={handleCheckboxChange}
           />
           {modalOpen && (
-            <ModalSteps modalDevChange arrayButton={arrayButton}>
+            <ModalSteps
+              modalDevChange
+              arrayButton={arrayButton}
+              handleClose={() => {
+                setModalOpen && setModalOpen(false);
+              }}
+            >
               {paragraphArray.map((item) => (
                 <Paragraph key={item.id}>
-                  {item.text} <br /> {item.text2}
+                  {item.text}
+                  <br /> <br /> {item.text2}
                 </Paragraph>
               ))}
             </ModalSteps>
           )}
-          {/* {checkSeleccionado && valueSelect === "2" && (
-            <>
-              {resultadoFinal.map(
-                (r) =>
-                  r.productName.length > 0 &&
-                  paragraphArray.map((item) => (
-                    <Paragraph key={item.id}>
-                      {item.text} <br /> {item.text2}
-                    </Paragraph>
-                  ))
-              )}
-
-              <StepSelects
-                titleParagraph="Seleccioná una opción:"
-                radioOptions={radioOptions}
-                onCheckboxChange={(isChecked, title) =>
-                  handleCheckboxChangeConfirmed(
-                    isChecked,
-                    title,
-                    radioOptions.map((r) => r.label)
-                  )
-                }
-                selectedOption={selectedOption2}
-                setSelectedOption={setSelectedOption2}
-              />
-            </>
-          )} */}
           {checkSeleccionado && valueSelect === "3" && (
             <StepSelects
               titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
@@ -189,7 +187,6 @@ const Step3Select2 = ({
           info={infoStep}
           onClick={() => {
             handleEditCheckbox();
-            setSelectedOption2("");
           }}
         />
       )}

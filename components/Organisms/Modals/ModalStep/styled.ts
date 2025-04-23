@@ -16,6 +16,17 @@ export const ContainerModal = styled.div`
     rgba(0, 0, 0, 0.8) 0%,
     rgba(0, 0, 0, 0.8) 100%
   );
+  .header-closer-2 {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 20;
+  }
 `;
 
 export const ButtonContainer = styled.div`

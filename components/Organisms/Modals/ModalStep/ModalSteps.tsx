@@ -4,6 +4,9 @@ import Button from "@/components/Atoms/Buttons/Button";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import { ButtonContainer, ContainerModal } from "./styled";
 import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
+import { DivButtonClose } from "../ModalCarousel/styled";
+import Icons from "@/components/Atoms/Icons/Icons";
+import { CloseIcon } from "../../MainBlock/mainBlockicons";
 
 const ModalSteps = ({
   title,
@@ -20,6 +23,11 @@ const ModalSteps = ({
 }: ModalStepsProps) => {
   return (
     <ContainerModal>
+      <DivButtonClose className="header-closer-2">
+        <Icons width="60%" onClick={handleClose}>
+          {CloseIcon()}
+        </Icons>
+      </DivButtonClose>
       <SectionHeader
         sectionHeaderStyles={{
           $width: "900px",
