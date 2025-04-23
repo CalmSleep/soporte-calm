@@ -270,6 +270,7 @@ export const sendEmailOrderDni = async (data: IOrdenMail[]) => {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
       "Access-Control-Allow-Origin": "*",
+      mode: "no-cors",
     },
   };
 
