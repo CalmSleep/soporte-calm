@@ -268,7 +268,7 @@ export const getOrderByDni = async (dni: string) => {
 export const sendEmailOrderDni = async (data: IOrdenMail[]) => {
   const reqConfig = {
     headers: {
-      "Content-type": "application/json",
+      "Content-type": "application/json; charset=UTF-8",
       "Access-Control-Allow-Origin": "*",
     },
   };
