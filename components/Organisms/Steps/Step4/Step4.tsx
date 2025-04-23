@@ -122,14 +122,19 @@ const Step4 = ({
     setOpenModal(true);
   };
   const modalAlreadyShownRef = React.useRef(false);
+  const ignoreNextModalRef = useRef(false);
 
   React.useEffect(() => {
     const allFinished = images.every((img) => !img.loading);
     const hasError = images.some((img) => !!img.error);
 
     if (allFinished && hasError && !modalAlreadyShownRef.current) {
-      setShowImageErrorModal(true);
-      modalAlreadyShownRef.current = true;
+      if (ignoreNextModalRef.current) {
+        ignoreNextModalRef.current = false; // 👈 Reseteamos
+      } else {
+        setShowImageErrorModal(true);
+        modalAlreadyShownRef.current = true;
+      }
     }
   }, [images]);
 
@@ -286,7 +291,7 @@ const Step4 = ({
         <ImagesContainer>
           {images.length > 0 &&
             images
-              .filter((preview) => !preview.error) // Aseguramos que solo las imágenes sin error sean renderizadas
+              .filter((preview) => !preview.error)
               .map((preview, index) => (
                 <ImageHover key={index}>
                   <ImageWrapper
@@ -314,7 +319,7 @@ const Step4 = ({
                       onClick={(e: React.MouseEvent) => {
                         e.stopPropagation();
                         modalAlreadyShownRef.current = false;
-                        setShowImageErrorModal(false);
+                        ignoreNextModalRef.current = true;
                         setImages((images) =>
                           images.filter((_, i) => i !== index)
                         );

@@ -14,21 +14,23 @@ const ModalCarousel = (props: IPropsChildrens) => {
     props.modal &&
     props.arrImages && (
       <ModalSidecart ref={props.modalRef} onClick={() => props.modalHandle?.()}>
-        <DivButtonClose className="header-closer-2">
-          <Icons width="60%">{CloseIcon()}</Icons>
-        </DivButtonClose>
-        {props.arrImages &&
-          props.arrImages.map((image, index) => (
-            <ClickedGalley onClick={() => props.modalHandle?.()} key={index}>
-              <Images
-                src={image}
-                alt="Image Gallery"
-                height="100%"
-                width="100%"
-                isLazy
-              />
-            </ClickedGalley>
-          ))}
+        <div ref={props.modalRefChildren} className="header-cart">
+          <DivButtonClose className="header-closer-2">
+            <Icons width="60%">{CloseIcon()}</Icons>
+          </DivButtonClose>
+          {props.arrImages &&
+            props.arrImages.map((image, index) => (
+              <ClickedGalley onClick={() => props.modalHandle?.()} key={index}>
+                <Images
+                  src={image}
+                  alt="Image Gallery"
+                  height="100%"
+                  width="100%"
+                  isLazy
+                />
+              </ClickedGalley>
+            ))}
+        </div>
       </ModalSidecart>
     )
   );
