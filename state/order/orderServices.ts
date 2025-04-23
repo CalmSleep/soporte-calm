@@ -269,6 +269,7 @@ export const sendEmailOrderDni = async (data: IOrdenMail[]) => {
   const reqConfig = {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
+      "Access-Control-Allow-Origin": "*",
     },
   };
 
@@ -291,8 +292,8 @@ interface INotionData {
 export const sendToNotion = async (data: INotionData) => {
   const reqConfig = {
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
 
   const response = await axios.post(

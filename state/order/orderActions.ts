@@ -288,13 +288,11 @@ export const onGetOrdesDni = (
         response.data.length > 0
       ) {
         const transformedData = emailResponse(response.data);
-        //   console.log("transformedData", transformedData);
+        //console.log("transformedData", transformedData);
 
         dispatch(onGetOrderByDni(transformedData));
-        if (
-          data[0].saleSource === "webcalm" ||
-          data[0].saleSource?.includes("localm")
-        ) {
+        const saleSource = data?.[0]?.saleSource;
+        if (saleSource === "webcalm" || saleSource?.includes("localm")) {
           await sendEmailOrderDni(transformedData);
           dispatch(onLoadingGetDniFinished());
         }
@@ -307,14 +305,14 @@ export const onGetOrdesDni = (
           dispatch(onLoadingGetDniFinished());
         }
       } else {
-        console.error("Error: La respuesta no es un array", response);
         dispatch(onGetOrderByDniFailed());
         dispatch(onLoadingGetDniFinished());
       }
     } catch (error) {
-      console.error("Error obteniendo orden por DNI:", error);
+      //   dispatch(onGetOrderByDni([]));
       dispatch(onGetOrderByDniFailed());
       dispatch(onLoadingGetDniFinished());
+      throw error;
     }
   };
 };
