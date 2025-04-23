@@ -22,4 +22,5 @@ export type ModalStepsProps = {
   children?: React.ReactNode;
   modalDevChange?: boolean;
   arrayButton?: IArrayButton[];
+  icon?: boolean;
 };

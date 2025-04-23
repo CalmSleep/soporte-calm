@@ -20,14 +20,17 @@ const ModalSteps = ({
   modalDevChange,
   children,
   arrayButton,
+  icon,
 }: ModalStepsProps) => {
   return (
     <ContainerModal>
-      <DivButtonClose className="header-closer-2">
-        <Icons width="60%" onClick={handleClose}>
-          {CloseIcon()}
-        </Icons>
-      </DivButtonClose>
+      {icon && (
+        <DivButtonClose className="header-closer-2">
+          <Icons width="60%" onClick={handleClose}>
+            {CloseIcon()}
+          </Icons>
+        </DivButtonClose>
+      )}
       <SectionHeader
         sectionHeaderStyles={{
           $width: "900px",

@@ -163,6 +163,7 @@ const Step3Select2 = ({
               handleClose={() => {
                 setModalOpen && setModalOpen(false);
               }}
+              icon
             >
               {paragraphArray.map((item) => (
                 <Paragraph key={item.id}>
