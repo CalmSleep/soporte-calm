@@ -68,6 +68,7 @@ const Step4 = ({
 }: Step4Props) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [modalImg, setModalImg] = React.useState(false);
+  const [showImageErrorModal, setShowImageErrorModal] = React.useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const {
     images,
@@ -120,7 +121,17 @@ const Step4 = ({
     setImages([]);
     setOpenModal(true);
   };
-  console.log("modal", modalImg);
+  const modalAlreadyShownRef = React.useRef(false);
+
+  React.useEffect(() => {
+    const allFinished = images.every((img) => !img.loading);
+    const hasError = images.some((img) => !!img.error);
+
+    if (allFinished && hasError && !modalAlreadyShownRef.current) {
+      setShowImageErrorModal(true);
+      modalAlreadyShownRef.current = true;
+    }
+  }, [images]);
 
   return (
     <>
@@ -244,7 +255,9 @@ const Step4 = ({
             type="file"
             refInput={fileInputRef}
             display="none"
-            onChange={handleFileChange}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              handleFileChange(e, fileInputRef);
+            }}
           />
         </div>
         <Button
@@ -272,47 +285,69 @@ const Step4 = ({
         </Button>
         <ImagesContainer>
           {images.length > 0 &&
-            images.map((preview, index) => (
-              <ImageHover key={index}>
-                <ImageWrapper
-                  className="image-wrapper"
-                  onClick={() => setModalImg(true)}
-                >
-                  {preview.loading ? (
-                    <SkeletonLoader width="51px" height="52px" />
-                  ) : (
-                    <Images
-                      src={preview.url!}
-                      alt={`Uploaded preview ${index + 1}`}
-                      width="51px"
-                      height="52px"
-                      borderRadius="4px"
-                      objectFit="cover"
-                    />
-                  )}
-                </ImageWrapper>
+            images
+              .filter((preview) => !preview.error) // Aseguramos que solo las imágenes sin error sean renderizadas
+              .map((preview, index) => (
+                <ImageHover key={index}>
+                  <ImageWrapper
+                    className="image-wrapper"
+                    onClick={() => setModalImg(true)}
+                  >
+                    {preview.loading ? (
+                      <SkeletonLoader width="51px" height="52px" />
+                    ) : (
+                      <Images
+                        src={preview.url!}
+                        alt={`Uploaded preview ${index + 1}`}
+                        width="51px"
+                        height="52px"
+                        borderRadius="4px"
+                        objectFit="cover"
+                      />
+                    )}
+                  </ImageWrapper>
 
-                <IconWrapper className="icon">
-                  <FaTimesCircle
-                    color="orange"
-                    size={18}
-                    onClick={(e: React.MouseEvent) => {
-                      e.stopPropagation();
-                      setImages((images) =>
-                        images.filter((_, i) => i !== index)
-                      );
-                    }}
-                  />
-                </IconWrapper>
-                {/* {preview.loading ? (
-                  <SkeletonLoader width="51px" height="52px" />
-                ) :  (
-              
-                )} */}
-              </ImageHover>
-            ))}
+                  <IconWrapper className="icon">
+                    <FaTimesCircle
+                      color="orange"
+                      size={18}
+                      onClick={(e: React.MouseEvent) => {
+                        e.stopPropagation();
+                        modalAlreadyShownRef.current = false;
+                        setShowImageErrorModal(false);
+                        setImages((images) =>
+                          images.filter((_, i) => i !== index)
+                        );
+                        if (fileInputRef.current) {
+                          fileInputRef.current.value = "";
+                          fileInputRef.current.type = "text";
+                          fileInputRef.current.type = "file";
+                        }
+                      }}
+                    />
+                  </IconWrapper>
+                </ImageHover>
+              ))}
         </ImagesContainer>
       </StepsHeaders>
+      {showImageErrorModal && (
+        <ModalSteps
+          title="No se pudo subir la imagen"
+          paragraph={`Algunas imágenes no se pudieron subir.\n 
+            Asegurate de que cumplan con los siguientes requisitos: \n 
+            📸 Formatos permitidos: JPG, PNG, WEBP, GIF.
+📏 Tamaño máximo: 1 MB por imagen.
+🧼 La imagen no debe estar corrupta ni vacía.
+            `}
+          buttonText="Aceptar"
+          handleClose={() => {
+            setShowImageErrorModal(false);
+            // setImages((prev) =>
+            //   prev.map((img) => ({ ...img, error: undefined }))
+            // );
+          }}
+        />
+      )}
       <ModalSendInfo
         isOpen={openModal}
         setIsOpen={setOpenModal}

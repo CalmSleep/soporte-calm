@@ -1,5 +1,6 @@
 import React from "react";
 import { UploadedImage } from "./types";
+import axios from "axios";
 
 const useStep4 = () => {
   const [images, setImages] = React.useState<UploadedImage[]>([]);
@@ -11,44 +12,45 @@ const useStep4 = () => {
   const [showRequiredMessage, setShowRequiredMessage] =
     React.useState<boolean>(true);
 
+  const MAX_SIZE = 1 * 1024 * 1024;
+
   const processFiles = async (files: FileList | File[]) => {
     const fileArray = Array.from(files);
+    setImages((prev) => [
+      ...prev,
+      ...fileArray.map((file) => ({ file, loading: true })),
+    ]);
 
-    fileArray.forEach(async (file) => {
-      setImages((prev) => [...prev, { file, loading: true }]);
-
+    const uploadPromises = fileArray.map(async (file) => {
       try {
+        if (file.size > MAX_SIZE) {
+          throw new Error("La imagen es demasiado grande. Tamaño máximo: 1MB.");
+        }
         const base64 = await new Promise<string>((resolve, reject) => {
           const reader = new FileReader();
           reader.onload = () => resolve(reader.result as string);
-          reader.onerror = reject;
+          reader.onerror = () => reject(new Error("Error al leer el archivo"));
           reader.readAsDataURL(file);
         });
 
-        const response = await fetch("/api/uploadImage", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ file: base64 }),
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.error || "Error al subir la imagen.");
-        }
+        const response = await axios.post("/api/uploadImage", { file: base64 });
 
         setImages((prev) =>
           prev.map((img) =>
-            img.file === file ? { ...img, url: data.url, loading: false } : img
+            img.file === file
+              ? { ...img, url: response.data.url, loading: false }
+              : img
           )
         );
-      } catch (error) {
+      } catch (error: any) {
+        console.error("❌ Error al subir imagen:", error);
+
         setImages((prev) =>
           prev.map((img) =>
             img.file === file
               ? {
                   ...img,
-                  error: (error as Error).message || "Error desconocido",
+                  error: "Error al subir imagen:" + error.message,
                   loading: false,
                 }
               : img
@@ -56,11 +58,21 @@ const useStep4 = () => {
         );
       }
     });
-  };
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      processFiles(event.target.files);
+    await Promise.allSettled(uploadPromises);
+  };
+  const handleFileChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    fileInputRef: React.RefObject<HTMLInputElement>
+  ) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      processFiles(files);
+    }
+
+    // Limpia el input para poder volver a subir la misma imagen si hace falta
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
     }
   };
 
