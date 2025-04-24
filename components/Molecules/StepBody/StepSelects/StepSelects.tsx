@@ -4,7 +4,14 @@ import AccordionUnit from "@/components/Molecules/AccordionUnit/AccordionUnit";
 import React, { useLayoutEffect, useRef, useState } from "react";
 
 import StepRadio from "@/components/Molecules/StepBody/StepRadio/StepRadio";
-import { PieceItem, PieceItems, PieceList } from "./styled";
+import {
+  CointainCheckbox,
+  CointainText,
+  ContainerCheckLabel,
+  PieceItem,
+  PieceItems,
+  PieceList,
+} from "./styled";
 import { StepSelectsProps } from "./types";
 import useSelects from "./useSelects";
 import { getMatchingQuizzIds } from "@/components/Organisms/Steps/util";
@@ -53,7 +60,7 @@ const StepSelects = ({
       {checks &&
         checks.map((check) => {
           return (
-            <div key={check.id} className="flex">
+            <CointainCheckbox key={check.id}>
               <Input
                 appearance="none"
                 width="14px"
@@ -75,13 +82,22 @@ const StepSelects = ({
                   )
                 }
               />
-              <Paragraph>{check.title}</Paragraph>
-              {check.span && (
-                <Paragraph fontSize="14px" color="millionGray">
-                  ({check.span})
+              <CointainText>
+                <Paragraph
+                  fontSize="16px"
+                  responsiveMobile={{
+                    fontSize: "14px",
+                  }}
+                >
+                  {check.title}
                 </Paragraph>
-              )}
-            </div>
+                {check.span && (
+                  <Paragraph fontSize="14px" color="millionGray">
+                    ({check.span})
+                  </Paragraph>
+                )}
+              </CointainText>
+            </CointainCheckbox>
           );
         })}
       {items &&
@@ -115,31 +131,34 @@ const StepSelects = ({
                   {selectedRadios[item.id] === "piezas" && (
                     <PieceList>
                       {item.pieces.map((piece) => (
-                        <PieceItem key={piece.label}>
-                          <Input
-                            appearance="none"
-                            width="12px"
-                            height="12px"
-                            padding="5px"
-                            borderRadius="2px"
-                            checkBorderColor="yellowCalm"
-                            checkColor="yellowCalm"
-                            borderColorFocused="yellowCalm"
-                            color="yellowCalm"
-                            type="checkbox"
-                            checked={(selectedChecks[item.id] || []).includes(
-                              piece.label
-                            )}
-                            onChange={() =>
-                              handlePieceCheckboxChange(item.id, piece.label)
-                            }
-                          />
-                          {piece.label}
-                          {piece.hasInput && (
+                        <ContainerCheckLabel>
+                          <PieceItem key={piece.label}>
                             <Input
                               appearance="none"
+                              width="12px"
+                              height="12px"
+                              padding="5px"
+                              borderRadius="2px"
+                              checkBorderColor="yellowCalm"
+                              checkColor="yellowCalm"
+                              borderColorFocused="yellowCalm"
+                              color="yellowCalm"
+                              type="checkbox"
+                              checked={(selectedChecks[item.id] || []).includes(
+                                piece.label
+                              )}
+                              onChange={() =>
+                                handlePieceCheckboxChange(item.id, piece.label)
+                              }
+                            />
+                            {piece.label}
+                          </PieceItem>
+                          {piece.hasInput && (
+                            <Input
                               fontSize="12px"
-                              borderColor="millionGray"
+                              borderRadius="0px"
+                              borderBottom="2px solid #ccc"
+                              //  borderColor="millionGray"
                               width="236px"
                               height="16px"
                               type="text"
@@ -154,7 +173,7 @@ const StepSelects = ({
                               }
                             />
                           )}
-                        </PieceItem>
+                        </ContainerCheckLabel>
                       ))}
                     </PieceList>
                   )}
@@ -186,26 +205,28 @@ const StepSelects = ({
                 <>
                   <PieceItems>
                     {item.pieces.map((piece) => (
-                      <PieceItem key={piece.label}>
-                        <Input
-                          appearance="none"
-                          width="12px"
-                          height="12px"
-                          padding="7px"
-                          borderRadius="2px"
-                          checkBorderColor="yellowCalm"
-                          checkColor="yellowCalm"
-                          borderColorFocused="yellowCalm"
-                          color="yellowCalm"
-                          type="checkbox"
-                          checked={(selectedChecks[item.id] || []).includes(
-                            piece.label
-                          )}
-                          onChange={() =>
-                            handlePieceCheckboxChange(item.id, piece.label)
-                          }
-                        />
-                        {piece.label}
+                      <ContainerCheckLabel>
+                        <PieceItem key={piece.label}>
+                          <Input
+                            appearance="none"
+                            width="12px"
+                            height="12px"
+                            padding="7px"
+                            borderRadius="2px"
+                            checkBorderColor="yellowCalm"
+                            checkColor="yellowCalm"
+                            borderColorFocused="yellowCalm"
+                            color="yellowCalm"
+                            type="checkbox"
+                            checked={(selectedChecks[item.id] || []).includes(
+                              piece.label
+                            )}
+                            onChange={() =>
+                              handlePieceCheckboxChange(item.id, piece.label)
+                            }
+                          />
+                          {piece.label}
+                        </PieceItem>
                         {piece.hasInput && (
                           <Input
                             appearance="none"
@@ -223,7 +244,7 @@ const StepSelects = ({
                             }
                           />
                         )}
-                      </PieceItem>
+                      </ContainerCheckLabel>
                     ))}
                   </PieceItems>
                 </>

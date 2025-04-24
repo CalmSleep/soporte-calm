@@ -226,10 +226,6 @@ const Step3Select2 = ({
             >
               {paragraphArray.map((item) => (
                 <div>{item.text}</div>
-                // <Paragraph key={item.id}>
-                //   {item.id === 1 && item.text}
-                //   <b>{item.id === 2 && item.text}</b>
-                // </Paragraph>
               ))}
             </ModalSteps>
           )}

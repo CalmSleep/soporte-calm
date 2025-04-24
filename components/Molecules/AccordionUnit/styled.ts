@@ -171,6 +171,12 @@ export const SubtitleAccordion = styled.h5`
 export const IconTitle = styled.div`
   display: flex;
   align-items: center;
+  gap: 6px;
+
+  @media ${(props) => props.theme.devices.biggerMobile} {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 export const ContentItemSelect = styled.div<{

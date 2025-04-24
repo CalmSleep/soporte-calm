@@ -20,6 +20,7 @@ const Input = ({
   backgroundColor,
   refInput,
   autoComplete,
+  borderBottom,
   borderRadius,
   borderColor,
   borderColorFocused,
@@ -30,6 +31,7 @@ const Input = ({
   appearance,
   display,
   fontSize,
+  responsiveMobile,
 }: InputProps) => {
   return (
     <InputStyles
@@ -67,6 +69,8 @@ const Input = ({
       accept={type === "file" ? "image/*" : ""}
       $display={display}
       $fontSize={fontSize}
+      $borderBottom={borderBottom}
+      $responsiveMobile={responsiveMobile}
     >
       {children}
     </InputStyles>
