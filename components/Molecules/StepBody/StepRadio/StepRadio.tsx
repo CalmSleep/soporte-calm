@@ -17,6 +17,7 @@ const StepRadio = ({
             appearance="none"
             width="14px"
             height="14px"
+            responsiveMobile={{ width: "12px", height: "12px" }}
             padding="0px"
             checkBorderColor="yellowCalm"
             checkColor="yellowCalm"

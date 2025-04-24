@@ -14,4 +14,9 @@ export const RadioOption = styled.label`
   gap: 8px;
   font-size: 16px;
   font-style: normal;
+
+  @media ${(props) => props.theme.devices.biggerMobile} {
+    font-size: 14px;
+    padding: 0px;
+  }
 `;

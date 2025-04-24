@@ -13,6 +13,7 @@ appearance: ${({ $appearance }) => ($appearance ? $appearance : "")};
   outline: none;
   border: 2px solid ${({ $borderColor, theme }) =>
     $borderColor ? theme.colors[$borderColor] : theme.colors.millionGray};
+  border-bottom: ${({ $borderBottom }) => ($borderBottom ? $borderBottom : "")};
   &:focus {
     border: 2px solid ${({ $borderColorFocused, theme }) =>
       $borderColorFocused
@@ -54,6 +55,14 @@ appearance: ${({ $appearance }) => ($appearance ? $appearance : "")};
     }
     return "";
   }}
+
+  @media ${(props) => props.theme.devices.biggerMobile} {
+    width: ${({ $responsiveMobile }) =>
+      $responsiveMobile?.width ? $responsiveMobile.width : ""};
+    height: ${({ $responsiveMobile }) =>
+      $responsiveMobile?.height ? $responsiveMobile.height : ""};
+  }
+
 
   &[type="color"],
   &[type="date"],

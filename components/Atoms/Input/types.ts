@@ -3,6 +3,11 @@ import { theme } from "@/utils/Theme";
 
 type ThemeColors = keyof typeof theme.colors;
 
+type responsiveMobile = {
+  width?: string;
+  height?: string;
+};
+
 export type InputProps = {
   children?: React.ReactNode;
   type?: string;
@@ -23,6 +28,7 @@ export type InputProps = {
   checked?: boolean;
   refInput?: RefObject<HTMLInputElement>;
   autoComplete?: string;
+  borderBottom?: string;
   borderColor?: ThemeColors;
   borderColorFocused?: ThemeColors;
   borderRadius?: string;
@@ -32,12 +38,14 @@ export type InputProps = {
   appearance?: string;
   display?: string;
   fontSize?: string;
+  responsiveMobile?: responsiveMobile;
 };
 
 export type InputStyledProps = {
   $fontSize?: string;
   $appearance?: string;
   $width?: string;
+  $borderBottom?: string;
   $borderColor?: ThemeColors;
   $borderColorFocused?: ThemeColors;
   $color?: ThemeColors;
@@ -49,4 +57,5 @@ export type InputStyledProps = {
   $checkBorderColor?: ThemeColors;
   $padding?: string;
   $display?: string;
+  $responsiveMobile?: responsiveMobile;
 };

@@ -138,16 +138,12 @@ const AccordionUnit = ({
                   {...titleStyle}
                 >
                   {parse(itemName)}{" "}
-                  {spamName && (
-                    <Paragraph
-                      textTag="span"
-                      fontSize="14px"
-                      color="millionGray"
-                    >
-                      {spamName}
-                    </Paragraph>
-                  )}
                 </Titles>
+                {spamName && (
+                  <Paragraph textTag="span" fontSize="14px" color="millionGray">
+                    {spamName}
+                  </Paragraph>
+                )}
               </IconTitle>
 
               <ImgRotate $isActive={isActive}>{Arrow()}</ImgRotate>

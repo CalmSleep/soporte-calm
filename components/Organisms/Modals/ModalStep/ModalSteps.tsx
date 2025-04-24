@@ -61,8 +61,8 @@ const ModalSteps = ({
           lineHeight: "40px",
           letterSpacing: "-1.2px",
           responsiveMobile: {
-            fontSize: "24px",
-            lineHeight: "24px",
+            fontSize: "20px",
+            lineHeight: "20px",
             letterSpacing: "-0.72px",
           },
         }}
