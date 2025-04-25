@@ -1,6 +1,5 @@
 import { searchAttribute } from "@/utils/productsFunctios";
 import variations_products from "@/utils/variations_products";
-import nomenclaruras from "./Step4/nomenclaturas.json";
 import { IOrdenMail } from "./Step1/StepDni/types";
 
 export const maskEmail = (email: string) => {
@@ -193,34 +192,3 @@ export function formatDateToISO(dateStr: string) {
   const [day, month, year] = dateStr.split("/");
   return `${year}-${month}-${day}`;
 }
-
-const normalize = (text: string): string =>
-  text
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") // remueve acentos
-    .replace(/[^a-zA-Z0-9\s]/g, "") // remueve símbolos especiales
-    .toLowerCase()
-    .trim();
-
-export const mapIssuesToNotionValues = (input: string): string[] => {
-  const result = new Set<string>();
-
-  const matches = input.match(/\(([^)]+)\)/g);
-  if (!matches) {
-    result.add("Otro");
-    return Array.from(result);
-  }
-
-  for (const match of matches) {
-    const items = match.slice(1, -1).split(",");
-    for (const item of items) {
-      const normalizedItem = normalize(item);
-      const found = nomenclaruras.find(
-        (option) => normalize(option.name) === normalizedItem
-      );
-      result.add(found?.value || "Otro");
-    }
-  }
-
-  return Array.from(result);
-};

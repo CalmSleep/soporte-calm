@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { IDataSendNotion, Step4Props } from "./types";
 import StepsHeaders from "@/components/Molecules/StepBody/StepsHeader/StepsHeaders";
+import items from "../Step3/missingItems.json";
 import Button from "@/components/Atoms/Buttons/Button";
 import {
   Cointainer,
@@ -26,7 +27,14 @@ import { FaTimesCircle } from "react-icons/fa";
 import useStep4 from "./hooks";
 import ModalSendInfo from "../Modals/ModalSendInfo";
 import ModalCarousel from "../../Modals/ModalCarousel/ModalCarousel";
-import { formatDateToISO, mapIssuesToNotionValues } from "../util";
+import { formatDateToISO, itemsFilterJson } from "../util";
+import {
+  getActionType,
+  mapIssuesToNotionValues,
+  parsePieces,
+  skuFilterProduct,
+} from "./funtions";
+import { de } from "date-fns/locale";
 
 const Svg = () => {
   return (
@@ -121,6 +129,25 @@ const Step4 = ({
   //   return fullInfo;
   // };
 
+  const rawString = notionInfo.problemDescription[1];
+
+  console.log(rawString);
+
+  const matchedItems = itemsFilterJson(items, dataUser.items);
+  const pieces = matchedItems.flatMap((item) => item.pieces);
+  const actionMap = {
+    descuento: "Gestionar cobro extra",
+    devolverlo: "Retiro",
+  };
+  const typeRequestMap = {
+    descuento: "Orden con incidente",
+    devolverlo: "Devolucion",
+  };
+  const differencePriceMap = {
+    descuento: "Abona diferencia",
+    devolverlo: "No aplica/Garantía",
+  };
+
   const fullInfo: IDataSendNotion = {
     orderNumber: String(dataUser.id),
     name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
@@ -128,25 +155,27 @@ const Step4 = ({
     shippingDate: formatDateToISO(dataUser.shipping.shipping_date),
     requestDate: new Date(),
     typeRequest:
-      Number(selectedValue) === 1 ||
-      (Number(selectedValue) === 2 &&
-        notionInfo.problemDescription.some((desc: string) =>
-          desc.trim().toLowerCase().includes("descuento")
-        ))
+      Number(selectedValue) === 1
         ? "Orden con incidente"
-        : Number(selectedValue) === 2 &&
-          notionInfo.problemDescription.some((desc: string) =>
-            desc.trim().toLowerCase().includes("devolverlo")
-          )
-        ? "Devolucion"
+        : Number(selectedValue) === 2
+        ? getActionType(notionInfo.problemDescription, typeRequestMap)
         : "Cambio",
-    typeChange: [
-      {
-        name: "-",
-      },
-    ],
+    typeChange:
+      Number(selectedValue) === 3
+        ? [
+            {
+              name: "Error de P/P",
+            },
+          ]
+        : [
+            {
+              name: "-",
+            },
+          ],
     reason:
-      Number(selectedValue) === 1 || Number(selectedValue) === 4
+      Number(selectedValue) === 1 ||
+      Number(selectedValue) === 3 ||
+      Number(selectedValue) === 4
         ? mapIssuesToNotionValues(notionInfo.problemDescription[1]).map(
             (value) => ({
               name: value,
@@ -158,71 +187,55 @@ const Step4 = ({
     action:
       Number(selectedValue) === 1
         ? "Nuevo pedido"
-        : Number(selectedValue) === 2 &&
-          notionInfo.problemDescription.some((desc: string) =>
-            desc.trim().toLowerCase().includes("descuento")
-          )
-        ? "Gestionar cobro extra"
-        : Number(selectedValue) === 2 &&
-          notionInfo.problemDescription.some((desc: string) =>
-            desc.trim().toLowerCase().includes("devolverlo")
-          )
+        : Number(selectedValue) === 2
+        ? getActionType(notionInfo.problemDescription, actionMap)
+        : Number(selectedValue) === 3
         ? "Retiro"
         : "Ninguna",
     differencePrice:
-      Number(selectedValue) === 2 &&
-      notionInfo.problemDescription.some((desc: string) =>
-        desc.trim().toLowerCase().includes("descuento")
-      )
-        ? "Abona diferencia"
-        : Number(valueSelect) === 1 ||
-          (Number(selectedValue) !== 2 &&
-            notionInfo.problemDescription.some((desc: string) =>
-              desc.trim().toLowerCase().includes("descuento")
-            ))
-        ? "No aplica/Garantía"
-        : "-",
+      Number(selectedValue) === 2
+        ? getActionType(notionInfo.problemDescription, differencePriceMap)
+        : "No aplica/Garantía",
     images: images.map((img) => {
       return {
         name: "Imagen subida",
         type: "external",
         external: {
-          url: img.url,
+          url: img.url ? [img.url] : [],
         },
       };
     }),
     sku:
+      Number(selectedValue) === 1 ? skuFilterProduct(dataUser, rawString) : [],
+    peaces:
+      Number(selectedValue) === 1 ? parsePieces(rawString, pieces).names : [],
+    peacesChange:
+      Number(selectedValue) === 1 ? parsePieces(rawString, pieces).names : [],
+    peacesQuantity:
       Number(selectedValue) === 1
-        ? dataUser.items
-            .filter((item: any) =>
-              notionInfo.problemDescription[1].includes(item.product_name)
-            )
-            .map((item: any) => ({ name: item.sku }))
-        : [],
+        ? parsePieces(rawString, pieces).quantities
+        : "",
     comments:
-      Number(selectedValue) === 2
+      Number(selectedValue) === 1
+        ? parsePieces(rawString, pieces).otherMessage
+        : Number(selectedValue) === 2 || Number(selectedValue) === 3
         ? notionInfo.problemDescription.some(
             (desc: string) => desc.trim() === ""
           )
           ? notionInfo.problemDescription[0]
           : notionInfo.problemDescription.join(", ")
-        : "",
+        : "-",
   };
   console.log("formData", notionInfo);
   console.log("fullInfo", fullInfo);
-  console.log(
-    notionInfo.problemDescription.map((desc: string) =>
-      desc.trim().includes("devolverlo")
-    )
-  );
 
   const handleSubmitToNotion = async () => {
     // const fullInfo = notionInfoSend();
     // console.log("fullInfo", fullInfo);
 
     dispatch(onSendDataToNotion(fullInfo));
-    setImages([]);
-    setOpenModal(true);
+    // setImages([]);
+    // setOpenModal(true);
   };
   const modalAlreadyShownRef = React.useRef(false);
   const ignoreNextModalRef = useRef(false);
@@ -456,12 +469,12 @@ const Step4 = ({
           }}
         />
       )}
-      <ModalSendInfo
+      {/* <ModalSendInfo
         isOpen={openModal}
         setIsOpen={setOpenModal}
         dataUser={dataUser}
         valueSelect={valueSelect}
-      />
+      /> */}
       <ModalCarousel
         modal={modalImg}
         modalHandle={() => setModalImg(false)}

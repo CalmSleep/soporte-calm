@@ -30,8 +30,9 @@ import {
   onRedirectLoadingStart,
 } from "../loading/loadingActions";
 import { IStore } from "../types";
+import { IDataSendNotion } from "@/components/Organisms/Steps/Step4/types";
 
-export const onSendDataToNotion = (data: /* IPropsToSend */ any) => {
+export const onSendDataToNotion = (data: IDataSendNotion) => {
   return async (dispatch: any) => {
     const response = await getDataToNotion(data);
     if (response) {

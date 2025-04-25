@@ -80,6 +80,21 @@ export default async function handler(
         "SKU(s) a entregar": {
           multi_select: data.sku,
         },
+        "Pieza (si aplica)": {
+          multi_select: data.peaces,
+        },
+        "Pieza a entregar (si aplica)": {
+          multi_select: data.peacesChange,
+        },
+        "Cantidad de SKU's a entregar (o pieza)": {
+          rich_text: [
+            {
+              text: {
+                content: data.peacesQuantity,
+              },
+            },
+          ],
+        },
         Comentarios: {
           rich_text: [
             {

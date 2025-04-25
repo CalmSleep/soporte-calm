@@ -39,7 +39,7 @@ Step3Props) => {
     setNotionInfo,
   } = useValueSelect();
   console.log("titles", selectedTitles);
-  console.log(notionInfo);
+  // console.log(notionInfo);
   const orders = useSelector(getThankuContent);
   const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);
   const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
@@ -54,6 +54,8 @@ Step3Props) => {
       : valueSelect === "1" && selectedValue === "2" && quieroComprar.length
       ? `${quieroComprar}`
       : "";
+
+  console.log("infoProduct", infoProduct);
 
   const infoMensaje =
     valueSelect === "1" && selectedValue === "2" && otros.length > 0

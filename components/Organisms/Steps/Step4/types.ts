@@ -5,9 +5,16 @@ export type Step4Props = {
   setNotionInfo: React.Dispatch<React.SetStateAction<IInfoForm>>;
 };
 
-type ProblemOption = {
-  name: string;
-  value: string;
+export type Piece = { label: string };
+
+export type ActionMap = {
+  [keyword: string]: string;
+};
+
+export type ParsedResult = {
+  names: { name: string }[];
+  quantities: string;
+  otherMessage?: string;
 };
 
 export interface IInfoForm {
@@ -15,6 +22,13 @@ export interface IInfoForm {
   productChange?: string[];
   productReturn?: string[];
 }
+
+export type UploadedImage = {
+  file: File;
+  url?: string;
+  loading: boolean;
+  error?: string;
+};
 
 export interface IImagensNotion {
   name: string;
@@ -41,6 +55,9 @@ export interface IDataSendNotion {
   differencePrice: string;
   images: IImagensNotion[];
   sku?: IMultipleSelect[];
+  peaces?: IMultipleSelect[];
+  peacesChange?: IMultipleSelect[];
+  peacesQuantity?: string;
   comments?: string;
   address?: string;
   postCode?: string;
