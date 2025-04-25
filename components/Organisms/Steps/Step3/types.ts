@@ -3,8 +3,8 @@ import { IDataSendNotion } from "../Step4/types";
 export type Step3Props = {
   valueSelect: string | null;
   setConfirmedValue: React.Dispatch<React.SetStateAction<string | null>>;
-  notionInfo: IDataSendNotion;
-  setNotionInfo: React.Dispatch<React.SetStateAction<IDataSendNotion>>;
+  // notionInfo: IDataSendNotion;
+  // setNotionInfo: React.Dispatch<React.SetStateAction<IDataSendNotion>>;
 };
 export interface Step3Select1Props {
   orders: any;

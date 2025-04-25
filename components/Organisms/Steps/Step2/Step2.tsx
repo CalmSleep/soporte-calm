@@ -14,11 +14,9 @@ const Step2 = () => {
     handleOnchangeButton,
     handleConfirm,
     setConfirmedValue,
-    notionInfo,
-    setNotionInfo,
+    //  notionInfo,
+    // setNotionInfo,
   } = useValueSelect();
-  console.log(selectedValue);
-  console.log("notion step 2", notionInfo);
 
   return (
     <>
@@ -52,13 +50,13 @@ const Step2 = () => {
             info={[infoString(confirmedValue)]}
             onClick={() => {
               setConfirmedValue(null);
-              setNotionInfo({
-                ...notionInfo,
-                userIntention: "",
-                problemDescription: [],
-                productReturn: [],
-                productChange: [],
-              });
+              // setNotionInfo({
+              //   ...notionInfo,
+              //   userIntention: "",
+              //   problemDescription: [],
+              //   productReturn: [],
+              //   productChange: [],
+              // });
             }}
           />
         )}
@@ -67,8 +65,8 @@ const Step2 = () => {
         <Step3
           valueSelect={confirmedValue}
           setConfirmedValue={setConfirmedValue}
-          notionInfo={notionInfo}
-          setNotionInfo={setNotionInfo}
+          // notionInfo={notionInfo}
+          // setNotionInfo={setNotionInfo}
         />
       )}
     </>

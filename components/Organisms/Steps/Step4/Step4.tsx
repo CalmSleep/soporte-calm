@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Step4Props } from "./types";
+import { IDataSendNotion, Step4Props } from "./types";
 import StepsHeaders from "@/components/Molecules/StepBody/StepsHeader/StepsHeaders";
 import Button from "@/components/Atoms/Buttons/Button";
 import {
@@ -26,7 +26,7 @@ import { FaTimesCircle } from "react-icons/fa";
 import useStep4 from "./hooks";
 import ModalSendInfo from "../Modals/ModalSendInfo";
 import ModalCarousel from "../../Modals/ModalCarousel/ModalCarousel";
-import { set } from "date-fns";
+import { formatDateToISO, mapIssuesToNotionValues } from "../util";
 
 const Svg = () => {
   return (
@@ -83,41 +83,144 @@ const Step4 = ({
     setPostalCode,
   } = useStep4();
   const dataUser = useSelector(getThankuContent);
+  console.log(dataUser);
+
   const dispatch = useDispatch();
 
   const handleButtonClick = () => {
     fileInputRef.current?.click();
   };
 
-  const notionInfoSend = () => {
-    const fullInfo = {
-      ...notionInfo,
-      images: images,
-      name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
-      email: dataUser.billing.email,
-      dni: dataUser.dni,
-      orderNumber: dataUser.id,
-      address:
-        postalCode === "no"
-          ? inputValue.direcction
-          : `${dataUser.billing.address_1} ${dataUser.billing.address_2}`,
-      postCode:
-        postalCode === "no" ? inputValue.postalCode : dataUser.billing.postcode,
-    };
+  // const notionInfoSend = () => {
+  //   const fullInfo: IDataSendNotion = {
+  //     ...notionInfo,
+  //     orderNumber: String(dataUser.id),
+  //     name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
+  //     email: dataUser.billing.email,
+  //     shippingDate: formatDateToISO(dataUser.shipping.shipping_date),
+  //     requestDate: new Date(),
+  //     images: images.map((img) => {
+  //       return {
+  //         name: "Imagen subida",
+  //         type: "external",
+  //         external: {
+  //           url: img.url,
+  //         },
+  //       };
+  //     }),
+  //     dni: dataUser.dni,
+  //     address:
+  //       postalCode === "no"
+  //         ? inputValue.direcction
+  //         : `${dataUser.billing.address_1} ${dataUser.billing.address_2}`,
+  //     postCode:
+  //       postalCode === "no" ? inputValue.postalCode : dataUser.billing.postcode,
+  //   };
 
-    setNotionInfo(fullInfo);
-    return fullInfo;
+  //   setNotionInfo(fullInfo);
+  //   return fullInfo;
+  // };
+
+  const fullInfo: IDataSendNotion = {
+    orderNumber: String(dataUser.id),
+    name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
+    email: dataUser.billing.email,
+    shippingDate: formatDateToISO(dataUser.shipping.shipping_date),
+    requestDate: new Date(),
+    typeRequest:
+      Number(selectedValue) === 1 ||
+      (Number(selectedValue) === 2 &&
+        notionInfo.problemDescription.some((desc: string) =>
+          desc.trim().toLowerCase().includes("descuento")
+        ))
+        ? "Orden con incidente"
+        : Number(selectedValue) === 2 &&
+          notionInfo.problemDescription.some((desc: string) =>
+            desc.trim().toLowerCase().includes("devolverlo")
+          )
+        ? "Devolucion"
+        : "Cambio",
+    typeChange: [
+      {
+        name: "-",
+      },
+    ],
+    reason:
+      Number(selectedValue) === 1 || Number(selectedValue) === 4
+        ? mapIssuesToNotionValues(notionInfo.problemDescription[1]).map(
+            (value) => ({
+              name: value,
+            })
+          )
+        : Number(selectedValue) === 2
+        ? [{ name: "Error en la entrega" }]
+        : [],
+    action:
+      Number(selectedValue) === 1
+        ? "Nuevo pedido"
+        : Number(selectedValue) === 2 &&
+          notionInfo.problemDescription.some((desc: string) =>
+            desc.trim().toLowerCase().includes("descuento")
+          )
+        ? "Gestionar cobro extra"
+        : Number(selectedValue) === 2 &&
+          notionInfo.problemDescription.some((desc: string) =>
+            desc.trim().toLowerCase().includes("devolverlo")
+          )
+        ? "Retiro"
+        : "Ninguna",
+    differencePrice:
+      Number(selectedValue) === 2 &&
+      notionInfo.problemDescription.some((desc: string) =>
+        desc.trim().toLowerCase().includes("descuento")
+      )
+        ? "Abona diferencia"
+        : Number(valueSelect) === 1 ||
+          (Number(selectedValue) !== 2 &&
+            notionInfo.problemDescription.some((desc: string) =>
+              desc.trim().toLowerCase().includes("descuento")
+            ))
+        ? "No aplica/Garantía"
+        : "-",
+    images: images.map((img) => {
+      return {
+        name: "Imagen subida",
+        type: "external",
+        external: {
+          url: img.url,
+        },
+      };
+    }),
+    sku:
+      Number(selectedValue) === 1
+        ? dataUser.items
+            .filter((item: any) =>
+              notionInfo.problemDescription[1].includes(item.product_name)
+            )
+            .map((item: any) => ({ name: item.sku }))
+        : [],
+    comments:
+      Number(selectedValue) === 2
+        ? notionInfo.problemDescription.some(
+            (desc: string) => desc.trim() === ""
+          )
+          ? notionInfo.problemDescription[0]
+          : notionInfo.problemDescription.join(", ")
+        : "",
   };
+  console.log("formData", notionInfo);
+  console.log("fullInfo", fullInfo);
+  console.log(
+    notionInfo.problemDescription.map((desc: string) =>
+      desc.trim().includes("devolverlo")
+    )
+  );
 
   const handleSubmitToNotion = async () => {
-    //const fullInfo = notionInfoSend();
-    //console.log("fullInfo", fullInfo);
-    // dispatch(onSendDataToNotion(fullInfo));
-    // dispatch(
-    //   onSendDataToNotion({
-    //     name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
-    //   })
-    // );
+    // const fullInfo = notionInfoSend();
+    // console.log("fullInfo", fullInfo);
+
+    dispatch(onSendDataToNotion(fullInfo));
     setImages([]);
     setOpenModal(true);
   };
@@ -184,7 +287,7 @@ const Step4 = ({
         onClick={() => handleSubmitToNotion()}
         button
         send
-        value={images.length > 0 ? false : true}
+        //value={images.length > 0 ? false : true}
       >
         {valueSelect === "2" || valueSelect === "3" ? (
           <>

@@ -1,4 +1,7 @@
-import { IDataSendNotion } from "@/components/Organisms/Steps/Step4/types";
+import {
+  IDataSendNotion,
+  IInfoForm,
+} from "@/components/Organisms/Steps/Step4/types";
 import { infoString } from "@/components/Organisms/Steps/util";
 import { useState } from "react";
 
@@ -8,16 +11,8 @@ const useValueSelect = () => {
   const [checkSeleccionado, setCheckSeleccionado] = useState(false);
   const [checkboxConfirmed, setCheckboxConfirmed] = useState(false);
   const [selectedTitles, setSelectedTitles] = useState<string[]>([]);
-  const [notionInfo, setNotionInfo] = useState<IDataSendNotion>({
-    name: "",
-    email: "",
-    dni: "",
-    address: "",
-    postCode: "",
-    orderNumber: "",
-    userIntention: "",
+  const [notionInfo, setNotionInfo] = useState<IInfoForm>({
     problemDescription: [],
-    images: [],
     productChange: [],
     productReturn: [],
   });
