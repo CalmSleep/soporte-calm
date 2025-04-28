@@ -2,13 +2,20 @@ import React from "react";
 import { ModalsProps } from "./types";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import Paragraph from "@/components/Atoms/Typography/Text";
+import { onGetOrderByDni } from "@/state/order/orderActions";
 
-const ModalFrav = ({ isOpen, setIsOpen, setInputValue }: ModalsProps) => {
+const ModalFrav = ({
+  isOpen,
+  setIsOpen,
+  setInputValue,
+  dispatch,
+}: ModalsProps) => {
   const handleClose = () => {
     setInputValue &&
       setInputValue({
         dni: 0,
       });
+    dispatch && dispatch(onGetOrderByDni([]));
     setIsOpen && setIsOpen(false);
   };
 

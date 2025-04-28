@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch } from "react";
 import { DniInput, EmailInput, IOrdenMail } from "../Step1/StepDni/types";
 import { set } from "date-fns";
 
@@ -10,6 +10,7 @@ export interface ModalsProps {
   dataUser?: any;
   valueSelect?: string | null;
   setInputValue?: React.Dispatch<React.SetStateAction<DniInput>>;
+  dispatch?: Dispatch<any>;
 }
 
 export type CountryConfig = {
