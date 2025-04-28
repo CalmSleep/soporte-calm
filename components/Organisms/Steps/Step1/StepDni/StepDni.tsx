@@ -38,7 +38,6 @@ const StepDni = () => {
   const [showRequiredEmail, setShowRequiredEmail] = useState<boolean>(true);
 
   const data = useSelector(getOrdensDni);
-  console.log(data);
 
   const loading = useSelector(getLoadingGetOrderDni);
 
@@ -94,7 +93,7 @@ const StepDni = () => {
     setIsOpen(false); // asegurate de cerrar antes de todo
     try {
       await dispatch(
-        onGetOrdesDni(inputValue.dni.toString(), data || [], inputEmail.email)
+        onGetOrdesDni(inputValue.dni.toString(), inputEmail.email)
       );
       setIsOpen(true); // solo abrir si todo sale bien
     } catch (error) {

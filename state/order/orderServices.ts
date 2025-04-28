@@ -266,19 +266,7 @@ export const getOrderByDni = async (dni: string) => {
 };
 
 export const sendEmailOrderDni = async (data: IOrdenMail[]) => {
-  const reqConfig = {
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-      "Access-Control-Allow-Origin": "*",
-      mode: "no-cors",
-    },
-  };
-
-  const response = await axios.post(
-    `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/soporte/orders-mail.php`,
-    data,
-    reqConfig
-  );
+  const response = await axios.post("/api/send-email", data);
   return response.data;
 };
 
