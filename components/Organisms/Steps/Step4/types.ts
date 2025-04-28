@@ -34,7 +34,7 @@ export interface IImagensNotion {
   name: string;
   type: string;
   external: {
-    url: string[];
+    url: string;
   };
 }
 

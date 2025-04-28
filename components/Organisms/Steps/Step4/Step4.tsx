@@ -149,6 +149,10 @@ const Step4 = ({
     descuento: "Abona diferencia",
     devolverlo: "No aplica/Garantía",
   };
+  console.log(
+    "image",
+    images.find((image) => image.error)
+  );
 
   const fullInfo: IDataSendNotion = {
     orderNumber: String(dataUser.id),
@@ -198,15 +202,17 @@ const Step4 = ({
       Number(selectedValue) === 2
         ? getActionType(notionInfo.problemDescription, differencePriceMap)
         : "No aplica/Garantía",
-    images: images.map((img) => {
-      return {
-        name: "Imagen subida",
-        type: "external",
-        external: {
-          url: img.url ? [img.url] : [],
-        },
-      };
-    }),
+    images: images
+      .filter((img) => !img.error)
+      .map((img) => {
+        return {
+          name: "Imagen subida",
+          type: "external",
+          external: {
+            url: img.url || "",
+          },
+        };
+      }),
     sku:
       Number(selectedValue) === 1 ? skuFilterProduct(dataUser, rawString) : [],
     peaces:
