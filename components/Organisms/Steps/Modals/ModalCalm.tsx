@@ -2,6 +2,7 @@ import React from "react";
 import { ModalsProps } from "./types";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import { maskEmail } from "../util";
+import { onGetOrderByDni } from "@/state/order/orderActions";
 
 const ModalCalm = ({
   isOpen,
@@ -9,6 +10,7 @@ const ModalCalm = ({
   handleChatBot,
   data,
   setInputValue,
+  dispatch,
 }: ModalsProps) => {
   return (
     <>
@@ -33,8 +35,10 @@ const ModalCalm = ({
                 setInputValue({
                   dni: 0,
                 });
+              dispatch && dispatch(onGetOrderByDni([]));
               setIsOpen && setIsOpen(false);
             } else {
+              dispatch && dispatch(onGetOrderByDni([]));
               handleChatBot && handleChatBot();
             }
           }}

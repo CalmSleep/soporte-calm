@@ -3,13 +3,20 @@ import React from "react";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import { ModalsProps } from "./types";
 import { set } from "date-fns";
+import { onGetOrderByDni } from "@/state/order/orderActions";
 
-const ModalMeli = ({ isOpen, setIsOpen, setInputValue }: ModalsProps) => {
+const ModalMeli = ({
+  isOpen,
+  setIsOpen,
+  setInputValue,
+  dispatch,
+}: ModalsProps) => {
   const handleClose = () => {
     setInputValue &&
       setInputValue({
         dni: 0,
       });
+    dispatch && dispatch(onGetOrderByDni([]));
     setIsOpen && setIsOpen(false);
   };
 

@@ -38,6 +38,7 @@ const StepDni = () => {
   const [showRequiredEmail, setShowRequiredEmail] = useState<boolean>(true);
 
   const data = useSelector(getOrdensDni);
+  console.log(data);
 
   const loading = useSelector(getLoadingGetOrderDni);
 
@@ -75,28 +76,19 @@ const StepDni = () => {
     }
   };
 
-  // const handleDni = async () => {
-  //   try {
-  //     await dispatch(
-  //       onGetOrdesDni(inputValue.dni.toString(), data || [], inputEmail.email)
-  //     );
-  //   } catch (error) {
-  //     setIsOpen(false);
-  //     setError("Error para modal");
-  //     console.error("Error para modal:", error);
-  //   } finally {
-  //     setIsOpen(true);
-  //   }
-  // };
-
   const handleDni = async () => {
     setIsOpen(false); // asegurate de cerrar antes de todo
     try {
       await dispatch(
-        onGetOrdesDni(inputValue.dni.toString(), inputEmail.email)
+        onGetOrdesDni(
+          inputValue.dni.toString(),
+          data as IOrdenMail[],
+          inputEmail.email
+        )
       );
       setIsOpen(true); // solo abrir si todo sale bien
     } catch (error) {
+      dispatch(onGetOrdesDni("", [], ""));
       setError("Error para modal");
       console.error("Error para modal:", error);
     }
@@ -216,45 +208,53 @@ const StepDni = () => {
             window.location.reload();
           }}
         />
-      ) : !isOpen ? null : (data && data[0].saleSource === "webcalm") ||
-        (data && data[0].saleSource?.includes("localm")) ? (
+      ) : !isOpen ? null : (data &&
+          data?.length > 0 &&
+          data[0].saleSource === "webcalm") ||
+        (data && data?.length > 0 && data[0].saleSource?.includes("localm")) ? (
         <ModalCalm
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           handleChatBot={handleChatBot}
           data={data}
           setInputValue={setInputValue}
+          dispatch={dispatch}
         />
-      ) : data && data[0].saleSource === "meli" ? (
+      ) : data && data?.length > 0 && data[0].saleSource === "meli" ? (
         <ModalMeli
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           setInputValue={setInputValue}
+          dispatch={dispatch}
         />
-      ) : data && data[0].saleSource === "Fravega" ? (
+      ) : data && data?.length > 0 && data[0].saleSource === "Fravega" ? (
         <ModalFrav
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           setInputValue={setInputValue}
+          dispatch={dispatch}
         />
       ) : data && data.length === 0 ? (
         <ModalNotFound
           isOpen={isOpen}
           handleChatBot={handleChatBot}
           setInputValue={setInputValue}
+          dispatch={dispatch}
         />
-      ) : data && data[0].email === inputEmail.email ? (
+      ) : data && data?.length > 0 && data[0].email === inputEmail.email ? (
         <ModalWhatsapp
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           data={data}
           handleChatBot={handleChatBot}
+          dispatch={dispatch}
         />
       ) : data && isFromSpecialSource(data) ? null : (
         <ModalDniInvalid
           isOpen={isOpen}
           handleChatBot={handleChatBot}
           setInputValue={setInputValue}
+          dispatch={dispatch}
         />
       )}
     </>
