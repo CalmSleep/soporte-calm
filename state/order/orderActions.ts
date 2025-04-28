@@ -271,51 +271,83 @@ export const onGetForgottenEmail = (mail: string) => {
   };
 };
 
-export const onGetOrdesDni = (
-  dni: string,
-  data: IOrdenMail[],
-  email?: string
-) => {
+export const onGetOrdesDni = (dni: string, email?: string) => {
   return async (dispatch: any) => {
     dispatch(onLoadingGetDniStart());
-
     try {
       const response = await getOrderByDni(dni);
-
       if (
         response &&
         Array.isArray(response.data) &&
         response.data.length > 0
       ) {
         const transformedData = emailResponse(response.data);
-        //console.log("transformedData", transformedData);
-
-        dispatch(onGetOrderByDni(transformedData));
-        const saleSource = data?.[0]?.saleSource;
+        const saleSource = transformedData[0]?.saleSource;
         if (saleSource === "webcalm" || saleSource?.includes("localm")) {
+          dispatch(onGetOrderByDni(transformedData));
           await sendEmailOrderDni(transformedData);
           dispatch(onLoadingGetDniFinished());
         }
-        if (email && isFromSpecialSource(data)) {
+        if (email && isFromSpecialSource(transformedData)) {
           const dataNew = emailResponse(response.data, email);
           dispatch(onGetOrderByDni(dataNew));
           await sendEmailOrderDni(dataNew);
           dispatch(onLoadingGetDniFinished());
-        } else {
-          dispatch(onLoadingGetDniFinished());
         }
-      } else {
-        dispatch(onGetOrderByDniFailed());
-        dispatch(onLoadingGetDniFinished());
       }
     } catch (error) {
-      //   dispatch(onGetOrderByDni([]));
       dispatch(onGetOrderByDniFailed());
       dispatch(onLoadingGetDniFinished());
       throw error;
     }
   };
 };
+
+// export const onGetOrdesDni = (
+//   dni: string,
+//   data: IOrdenMail[],
+//   email?: string
+// ) => {
+//   return async (dispatch: any) => {
+//     dispatch(onLoadingGetDniStart());
+
+//     try {
+//       const response = await getOrderByDni(dni);
+
+//       if (
+//         response &&
+//         Array.isArray(response.data) &&
+//         response.data.length > 0
+//       ) {
+//         const transformedData = emailResponse(response.data);
+//         //console.log("transformedData", transformedData);
+
+//         dispatch(onGetOrderByDni(transformedData));
+//         const saleSource = data?.[0]?.saleSource;
+//         if (saleSource === "webcalm" || saleSource?.includes("localm")) {
+//           await sendEmailOrderDni(transformedData);
+//           dispatch(onLoadingGetDniFinished());
+//         }
+//         if (email && isFromSpecialSource(data)) {
+//           const dataNew = emailResponse(response.data, email);
+//           dispatch(onGetOrderByDni(dataNew));
+//           await sendEmailOrderDni(dataNew);
+//           dispatch(onLoadingGetDniFinished());
+//         } else {
+//           dispatch(onLoadingGetDniFinished());
+//         }
+//       } else {
+//         dispatch(onGetOrderByDniFailed());
+//         dispatch(onLoadingGetDniFinished());
+//       }
+//     } catch (error) {
+//       //   dispatch(onGetOrderByDni([]));
+//       dispatch(onGetOrderByDniFailed());
+//       dispatch(onLoadingGetDniFinished());
+//       throw error;
+//     }
+//   };
+// };
 
 const onGetForgottenEmailSucceeded = (forgottenEmail: any) => ({
   type: ON_GET_FORGOTTEN_EMAIL_SUCCEEDED,
