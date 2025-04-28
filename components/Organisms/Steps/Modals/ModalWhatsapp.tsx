@@ -2,12 +2,14 @@ import React from "react";
 import { ModalsProps } from "./types";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import { maskEmail } from "../util";
+import { onGetOrderByDni } from "@/state/order/orderActions";
 
 const ModalWhatsapp = ({
   isOpen,
   setIsOpen,
   data,
   handleChatBot,
+  dispatch,
 }: ModalsProps) => {
   return (
     <>
@@ -26,6 +28,7 @@ const ModalWhatsapp = ({
               setIsOpen && setIsOpen(false);
               window.location.reload();
             } else {
+              dispatch && dispatch(onGetOrderByDni([]));
               handleChatBot && handleChatBot();
             }
           }}

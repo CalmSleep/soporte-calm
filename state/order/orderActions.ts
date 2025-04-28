@@ -291,7 +291,7 @@ export const onGetOrdesDni = (
         //console.log("transformedData", transformedData);
 
         dispatch(onGetOrderByDni(transformedData));
-        const saleSource = data?.[0]?.saleSource;
+        const saleSource = transformedData[0]?.saleSource;
         if (saleSource === "webcalm" || saleSource?.includes("localm")) {
           await sendEmailOrderDni(transformedData);
           dispatch(onLoadingGetDniFinished());

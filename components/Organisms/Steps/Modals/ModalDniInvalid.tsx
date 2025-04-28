@@ -1,10 +1,12 @@
 import React from "react";
 import { ModalsProps } from "./types";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
+import { onGetOrderByDni } from "@/state/order/orderActions";
 const ModalDniInvalid = ({
   isOpen,
   handleChatBot,
   setInputValue,
+  dispatch,
 }: ModalsProps) => {
   return (
     <>
@@ -20,6 +22,7 @@ En unos segundos, vas a ver el chat en pantalla. Si tenés tu número de pedido 
               setInputValue({
                 dni: 0,
               });
+            dispatch && dispatch(onGetOrderByDni([]));
             handleChatBot && handleChatBot();
           }}
         />
