@@ -76,10 +76,12 @@ const Step4 = ({
 }: Step4Props) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [modalImg, setModalImg] = React.useState(false);
-  const [showImageErrorModal, setShowImageErrorModal] = React.useState(false);
+  //const [showImageErrorModal, setShowImageErrorModal] = React.useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const {
     images,
+    showImageErrorModal,
+    setShowImageErrorModal,
     setImages,
     handleDragOver,
     handleDrop,
@@ -237,22 +239,22 @@ const Step4 = ({
     // setImages([]);
     // setOpenModal(true);
   };
-  const modalAlreadyShownRef = React.useRef(false);
-  const ignoreNextModalRef = useRef(false);
+  // const modalAlreadyShownRef = React.useRef(false);
+  // const ignoreNextModalRef = useRef(false);
 
-  React.useEffect(() => {
-    const allFinished = images.every((img) => !img.loading);
-    const hasError = images.some((img) => !!img.error);
+  // React.useEffect(() => {
+  //   const allFinished = images.every((img) => !img.loading);
+  //   const hasError = images.some((img) => !!img.error);
 
-    if (allFinished && hasError && !modalAlreadyShownRef.current) {
-      if (ignoreNextModalRef.current) {
-        ignoreNextModalRef.current = false; // 👈 Reseteamos
-      } else {
-        setShowImageErrorModal(true);
-        modalAlreadyShownRef.current = true;
-      }
-    }
-  }, [images]);
+  //   if (allFinished && hasError && !modalAlreadyShownRef.current) {
+  //     if (ignoreNextModalRef.current) {
+  //       ignoreNextModalRef.current = false; // 👈 Reseteamos
+  //     } else {
+  //       setShowImageErrorModal(true);
+  //       modalAlreadyShownRef.current = true;
+  //     }
+  //   }
+  // }, [images]);
 
   return (
     <>
@@ -434,8 +436,8 @@ const Step4 = ({
                       size={18}
                       onClick={(e: React.MouseEvent) => {
                         e.stopPropagation();
-                        modalAlreadyShownRef.current = false;
-                        ignoreNextModalRef.current = true;
+                        // modalAlreadyShownRef.current = false;
+                        // ignoreNextModalRef.current = true;
                         setImages((images) =>
                           images.filter((_, i) => i !== index)
                         );
@@ -463,9 +465,6 @@ const Step4 = ({
           buttonText="Aceptar"
           handleClose={() => {
             setShowImageErrorModal(false);
-            // setImages((prev) =>
-            //   prev.map((img) => ({ ...img, error: undefined }))
-            // );
           }}
         />
       )}
