@@ -34,7 +34,7 @@ import {
   parsePieces,
   skuFilterProduct,
 } from "./funtions";
-import { de } from "date-fns/locale";
+import { getLoadingRedirect } from "@/state/loading/loadingSelector";
 
 const Svg = () => {
   return (
@@ -75,8 +75,8 @@ const Step4 = ({
   setNotionInfo,
 }: Step4Props) => {
   const [openModal, setOpenModal] = React.useState(false);
+  const [errorNotion, setErrorNotion] = React.useState(false);
   const [modalImg, setModalImg] = React.useState(false);
-  //const [showImageErrorModal, setShowImageErrorModal] = React.useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const {
     images,
@@ -96,40 +96,11 @@ const Step4 = ({
   console.log(dataUser);
 
   const dispatch = useDispatch();
+  const loadingNotion = useSelector(getLoadingRedirect);
 
   const handleButtonClick = () => {
     fileInputRef.current?.click();
   };
-
-  // const notionInfoSend = () => {
-  //   const fullInfo: IDataSendNotion = {
-  //     ...notionInfo,
-  //     orderNumber: String(dataUser.id),
-  //     name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
-  //     email: dataUser.billing.email,
-  //     shippingDate: formatDateToISO(dataUser.shipping.shipping_date),
-  //     requestDate: new Date(),
-  //     images: images.map((img) => {
-  //       return {
-  //         name: "Imagen subida",
-  //         type: "external",
-  //         external: {
-  //           url: img.url,
-  //         },
-  //       };
-  //     }),
-  //     dni: dataUser.dni,
-  //     address:
-  //       postalCode === "no"
-  //         ? inputValue.direcction
-  //         : `${dataUser.billing.address_1} ${dataUser.billing.address_2}`,
-  //     postCode:
-  //       postalCode === "no" ? inputValue.postalCode : dataUser.billing.postcode,
-  //   };
-
-  //   setNotionInfo(fullInfo);
-  //   return fullInfo;
-  // };
 
   const rawString = notionInfo.problemDescription[1];
 
@@ -149,10 +120,6 @@ const Step4 = ({
     descuento: "Abona diferencia",
     devolverlo: "No aplica/Garantía",
   };
-  console.log(
-    "image",
-    images.find((image) => image.error)
-  );
 
   const fullInfo: IDataSendNotion = {
     orderNumber: String(dataUser.id),
@@ -204,9 +171,9 @@ const Step4 = ({
         : "No aplica/Garantía",
     images: images
       .filter((img) => !img.error)
-      .map((img) => {
+      .map((img, index) => {
         return {
-          name: "Imagen subida",
+          name: `foto-reclamo-${(index + 1).toString().padStart(2, "0")}`,
           type: "external",
           external: {
             url: img.url || "",
@@ -238,29 +205,16 @@ const Step4 = ({
   console.log("fullInfo", fullInfo);
 
   const handleSubmitToNotion = async () => {
-    // const fullInfo = notionInfoSend();
-    // console.log("fullInfo", fullInfo);
-
-    dispatch(onSendDataToNotion(fullInfo));
-    // setImages([]);
-    // setOpenModal(true);
+    setOpenModal(false);
+    try {
+      await dispatch(onSendDataToNotion(fullInfo));
+      setImages([]);
+      setOpenModal(true);
+    } catch (error) {
+      setErrorNotion(true);
+    }
   };
-  // const modalAlreadyShownRef = React.useRef(false);
-  // const ignoreNextModalRef = useRef(false);
-
-  // React.useEffect(() => {
-  //   const allFinished = images.every((img) => !img.loading);
-  //   const hasError = images.some((img) => !!img.error);
-
-  //   if (allFinished && hasError && !modalAlreadyShownRef.current) {
-  //     if (ignoreNextModalRef.current) {
-  //       ignoreNextModalRef.current = false; // 👈 Reseteamos
-  //     } else {
-  //       setShowImageErrorModal(true);
-  //       modalAlreadyShownRef.current = true;
-  //     }
-  //   }
-  // }, [images]);
+  console.log("loadingNotion", loadingNotion);
 
   return (
     <>
@@ -306,9 +260,10 @@ const Step4 = ({
             ❗ Si el producto nunca salió de su caja, mandanos una foto donde se vea la cinta de seguridad.`
         }
         onClick={() => handleSubmitToNotion()}
+        loading={loadingNotion}
         button
         send
-        //value={images.length > 0 ? false : true}
+        value={images.length > 0 ? false : true}
       >
         {valueSelect === "2" || valueSelect === "3" ? (
           <>
@@ -474,12 +429,33 @@ const Step4 = ({
           }}
         />
       )}
-      {/* <ModalSendInfo
-        isOpen={openModal}
-        setIsOpen={setOpenModal}
-        dataUser={dataUser}
-        valueSelect={valueSelect}
-      /> */}
+      {loadingNotion && (
+        <SkeletonLoader
+          height="60px"
+          width="100%"
+          borderRadius="1000px"
+          responsiveMobile={{ height: "50px" }}
+        />
+      )}
+      {errorNotion ? (
+        <ModalSteps
+          title="No pudimos enviar la información"
+          paragraph={`Ocurrió un error al intentar enviar la información.\n 
+           Por favor, revisá tu conexión o intentá nuevamente en unos minutos.  
+           Si el problema persiste, contactanos para que podamos ayudarte.`}
+          buttonText="Aceptar"
+          handleClose={() => {
+            window.location.reload();
+          }}
+        />
+      ) : (
+        <ModalSendInfo
+          isOpen={openModal}
+          setIsOpen={setOpenModal}
+          dataUser={dataUser}
+          valueSelect={valueSelect}
+        />
+      )}
       <ModalCarousel
         modal={modalImg}
         modalHandle={() => setModalImg(false)}

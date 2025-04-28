@@ -14,6 +14,7 @@ const StepsHeaders = ({
   button,
   backgroundColor,
   send,
+  loading,
 }: StepHeaderProps) => {
   return (
     <SectionHeader
@@ -59,7 +60,7 @@ const StepsHeaders = ({
       }}
     >
       {children}
-      {button && (
+      {button && !loading && (
         <Button
           backgroundColor="lead"
           textColor="drWhite"

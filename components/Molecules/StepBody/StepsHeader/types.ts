@@ -1,6 +1,7 @@
 import { SectionHeaderStyledProps } from "../../SectionHeader/types";
 
 export type StepHeaderProps = {
+  loading?: boolean;
   span: string;
   padding?: string;
   title: string;

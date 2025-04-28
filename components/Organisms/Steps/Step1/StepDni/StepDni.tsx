@@ -77,7 +77,7 @@ const StepDni = () => {
   };
 
   const handleDni = async () => {
-    setIsOpen(false); // asegurate de cerrar antes de todo
+    setIsOpen(false);
     try {
       await dispatch(
         onGetOrdesDni(
@@ -86,7 +86,7 @@ const StepDni = () => {
           inputEmail.email
         )
       );
-      setIsOpen(true); // solo abrir si todo sale bien
+      setIsOpen(true);
     } catch (error) {
       dispatch(onGetOrdesDni("", [], ""));
       setError("Error para modal");
