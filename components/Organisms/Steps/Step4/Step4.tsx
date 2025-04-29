@@ -152,6 +152,8 @@ const Step4 = ({
         ? "Orden con incidente"
         : Number(selectedValue) === 2
         ? getActionType(notionInfo.problemDescription, typeRequestMap)
+        : Number(valueSelect) === 2
+        ? "Devolucion"
         : "Cambio",
     typeChange:
       Number(selectedValue) === 3
@@ -180,19 +182,33 @@ const Step4 = ({
           }))
         : Number(selectedValue) === 2
         ? [{ name: "Error en la entrega" }]
+        : Number(valueSelect) === 2 || Number(valueSelect) === 3
+        ? mapIssuesToNotionValues(
+            notionInfo.productReturn?.join(", ") || ""
+          ).map((value) => ({
+            name: value.name,
+          }))
         : [],
     action:
       Number(selectedValue) === 1
         ? "Nuevo pedido"
         : Number(selectedValue) === 2
         ? getActionType(notionInfo.problemDescription, actionMap)
-        : Number(selectedValue) === 3 || Number(selectedValue) === 4
+        : Number(selectedValue) === 3 ||
+          Number(selectedValue) === 4 ||
+          Number(valueSelect) === 2 ||
+          Number(valueSelect) === 3
         ? "Retiro"
         : "Ninguna",
     differencePrice:
       Number(selectedValue) === 2
         ? getActionType(notionInfo.problemDescription, differencePriceMap)
+        : Number(valueSelect) === 2
+        ? "Reembolso"
+        : Number(valueSelect) === 3
+        ? "-"
         : "No aplica/Garantía",
+    refund: Number(valueSelect) === 2 ? "Reembolso pendiente" : "",
     supplier: proveedor !== false ? getProveedor(proveedor) : "-",
     images: images
       .filter((img) => !img.error)
@@ -208,6 +224,8 @@ const Step4 = ({
     sku:
       Number(selectedValue) === 1 || Number(selectedValue) === 4
         ? skuFilterProduct(dataUser, rawString)
+        : Number(valueSelect) === 2
+        ? skuFilterProduct(dataUser, notionInfo.productReturn?.join(", ") || "")
         : [],
     peaces:
       Number(selectedValue) === 1 ? parsePieces(rawString, pieces).names : [],
@@ -228,6 +246,11 @@ const Step4 = ({
           : notionInfo.problemDescription.join(", ")
         : Number(selectedValue) === 4
         ? mapIssuesToNotionValues(rawString)
+            .filter((value) => value.comments)
+            .map((value) => value.comments)
+            .join(", ")
+        : Number(valueSelect) === 2 || Number(valueSelect) === 3
+        ? mapIssuesToNotionValues(notionInfo.productReturn?.join(", ") || "")
             .filter((value) => value.comments)
             .map((value) => value.comments)
             .join(", ")
@@ -304,7 +327,7 @@ const Step4 = ({
         loading={loadingNotion}
         button
         send
-        // value={images.length > 0 ? false : true}
+        value={images.length > 0 ? false : true}
       >
         {valueSelect === "2" ||
         valueSelect === "3" ||
@@ -463,15 +486,15 @@ const Step4 = ({
           }}
         />
       )}
-      {/* {loadingNotion && (
+      {loadingNotion && (
         <SkeletonLoader
           height="60px"
           width="100%"
           borderRadius="1000px"
           responsiveMobile={{ height: "50px" }}
         />
-      )} */}
-      {/* {errorNotion ? (
+      )}
+      {errorNotion ? (
         <ModalSteps
           title="No pudimos enviar la información"
           paragraph={`Ocurrió un error al intentar enviar la información.\n 
@@ -489,7 +512,7 @@ const Step4 = ({
           dataUser={dataUser}
           valueSelect={valueSelect}
         />
-      )} */}
+      )}
       <ModalCarousel
         modal={modalImg}
         modalHandle={() => setModalImg(false)}

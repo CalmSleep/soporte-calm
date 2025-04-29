@@ -89,8 +89,13 @@ Step3Props) => {
   React.useEffect(() => {
     setNotionInfo({
       ...notionInfo,
-      problemDescription: valueSelect === "1" ? infoSelect1 : [products],
-      productReturn: valueSelect === "2" ? [`${otros2.join(", ")}`] : [],
+      problemDescription: valueSelect === "1" ? infoSelect1 : [],
+      productReturn:
+        valueSelect === "2"
+          ? [`${otros2.join(", ")}`]
+          : valueSelect === "3"
+          ? [products]
+          : [],
       productChange:
         valueSelect === "3"
           ? [`${extractItemsInParens(matchedTitles).join(", ")}`]

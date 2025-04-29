@@ -61,6 +61,7 @@ export interface IDataSendNotion {
   peacesChange?: IMultipleSelect[];
   peacesQuantity?: string;
   comments?: string;
+  refund?: string;
   addressData?: "SI" | "NO" | null;
   addressNew?: string;
   postCode?: string;

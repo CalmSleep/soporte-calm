@@ -74,6 +74,14 @@ export default async function handler(
             name: data.differencePrice,
           },
         },
+        Reembolso: {
+          select:
+            data.refund === ""
+              ? null
+              : {
+                  name: data.refund,
+                },
+        },
         "Proveedor Logístico": {
           select: {
             name: data.supplier,
