@@ -14,7 +14,7 @@ import SkeletonLoader from "../Atoms/SkeletonLoader/SkeletonLoader";
 
 const FormDinamic = () => {
   const dniUser = useSelector(getThankuContent);
-  //    console.log("dniUser", dniUser);
+  console.log("dniUser", dniUser);
   const router = useRouter();
   const dispatch = useDispatch();
   const { id, orderKey } = router.query;

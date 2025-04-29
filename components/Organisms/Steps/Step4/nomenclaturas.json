@@ -1,0 +1,32 @@
+[
+  { "name": "Me parece alto", "value": "Altx" },
+  { "name": "Me parece bajo", "value": "Bajx" },
+  { "name": "Es muy caluroso al usarlo", "value": "Gusto" },
+  { "name": "Demasiado firme para mi gusto", "value": "Durx" },
+  { "name": "Demasiado blando para mi gusto", "value": "Blandx" },
+  { "name": "Falla en el cierre", "value": "Cierre" },
+  {
+    "name": "Costura suelta o deshilachada",
+    "value": "Descosidx/Deshilachadx"
+  },
+  { "name": "Compré el producto por error", "value": "Error del cliente" },
+  { "name": "Hundimiento", "value": "Espuma" },
+  { "name": "Estructura despegada", "value": "Estructura despegada" },
+  { "name": "Estructura inestable", "value": "Estructura inestable" },
+  {
+    "name": "Falta de perforaciones o remaches",
+    "value": "Falta de agujeros/remaches"
+  },
+  { "name": "Presencia de hongos en el colchón", "value": "Hongos" },
+  { "name": "Maderas en mal estado", "value": "Maderas" },
+  { "name": "Manchas en el producto", "value": "Manchas" },
+  { "name": "No me gusta el olor", "value": "Olor" },
+  { "name": "Desoldadura en la estructura", "value": "Desoldado" },
+  { "name": "Problema de impermeabilidad", "value": "Permeable" },
+  { "name": "Problema con los resortes", "value": "Resortes" },
+  { "name": "El producto hace ruido", "value": "Otro" },
+  { "name": "El producto es diferente a lo que pedí", "value": "Otro" },
+  { "name": "Me llegó el tamaño incorrecto", "value": "Otro" },
+  { "name": "Tuve un problema con los velcros", "value": "Velcros" },
+  { "name": "Otro", "value": "Otro" }
+]

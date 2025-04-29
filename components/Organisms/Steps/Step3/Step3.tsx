@@ -20,9 +20,9 @@ import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 const Step3 = ({
   valueSelect,
   setConfirmedValue,
-  notionInfo,
-  setNotionInfo,
-}: Step3Props) => {
+}: // notionInfo,
+// setNotionInfo,
+Step3Props) => {
   const {
     selectedValue,
     selectedTitles,
@@ -35,8 +35,11 @@ const Step3 = ({
     handleEditCheckbox,
     handleCheckboxChangeConfirmed,
     handlePaymentChange,
+    notionInfo,
+    setNotionInfo,
   } = useValueSelect();
   console.log("titles", selectedTitles);
+  // console.log(notionInfo);
   const orders = useSelector(getThankuContent);
   const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);
   const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
@@ -44,17 +47,19 @@ const Step3 = ({
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
 
   const infoProduct =
-    (valueSelect === "1" && selectedValue === "1") || selectedValue === "4"
+    (valueSelect === "1" && selectedValue === "1") ||
+    selectedValue === "4" ||
+    selectedValue === "3"
       ? `${selectedTitleOthers(selectedTitles).join(", ")}`
       : valueSelect === "1" && selectedValue === "2" && quieroComprar.length
       ? `${quieroComprar}`
       : "";
 
+  console.log("infoProduct", infoProduct);
+
   const infoMensaje =
     valueSelect === "1" && selectedValue === "2" && otros.length > 0
       ? `${otros.join(", ")}`
-      : valueSelect === "1" && selectedValue === "3"
-      ? `${selectedTitles.join(", ")}`
       : "";
 
   const infoSelect1 = [
@@ -84,8 +89,13 @@ const Step3 = ({
   React.useEffect(() => {
     setNotionInfo({
       ...notionInfo,
-      problemDescription: valueSelect === "1" ? infoSelect1 : [products],
-      productReturn: valueSelect === "2" ? [`${otros2.join(", ")}`] : [],
+      problemDescription: valueSelect === "1" ? infoSelect1 : [],
+      productReturn:
+        valueSelect === "2"
+          ? [`${otros2.join(", ")}`]
+          : valueSelect === "3"
+          ? [products]
+          : [],
       productChange:
         valueSelect === "3"
           ? [`${extractItemsInParens(matchedTitles).join(", ")}`]

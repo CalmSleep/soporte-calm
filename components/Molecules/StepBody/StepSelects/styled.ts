@@ -62,11 +62,9 @@ export const PieceItem = styled.label`
 export const ContainerCheckLabel = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
   align-self: stretch;
 
   input[type="text"] {
-    margin-left: 8px;
     padding: 4px 8px;
     border: none;
     border-bottom: 2px solid #ccc;
@@ -78,5 +76,9 @@ export const ContainerCheckLabel = styled.div`
   @media ${(props) => props.theme.devices.biggerMobile} {
     flex-direction: column;
     align-items: flex-start;
+    input[type="text"] {
+      padding: 15px 10px;
+      font-size: 14px;
+    }
   }
 `;

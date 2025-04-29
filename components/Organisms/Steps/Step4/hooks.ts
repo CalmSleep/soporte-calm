@@ -4,6 +4,7 @@ import axios from "axios";
 
 const useStep4 = () => {
   const [images, setImages] = React.useState<UploadedImage[]>([]);
+  const [showImageErrorModal, setShowImageErrorModal] = React.useState(false);
   const [postalCode, setPostalCode] = React.useState<string>("");
   const [inputValue, setInputValue] = React.useState({
     direcction: "",
@@ -44,7 +45,6 @@ const useStep4 = () => {
         );
       } catch (error: any) {
         console.error("❌ Error al subir imagen:", error);
-
         setImages((prev) =>
           prev.map((img) =>
             img.file === file
@@ -56,6 +56,7 @@ const useStep4 = () => {
               : img
           )
         );
+        setShowImageErrorModal(true);
       }
     });
 
@@ -69,8 +70,6 @@ const useStep4 = () => {
     if (files && files.length > 0) {
       processFiles(files);
     }
-
-    // Limpia el input para poder volver a subir la misma imagen si hace falta
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
@@ -100,6 +99,8 @@ const useStep4 = () => {
   return {
     images,
     setImages,
+    showImageErrorModal,
+    setShowImageErrorModal,
     handleFileChange,
     postalCode,
     setPostalCode,

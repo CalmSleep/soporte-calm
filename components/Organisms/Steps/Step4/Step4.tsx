@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
-import { Step4Props } from "./types";
+import { IDataSendNotion, Step4Props } from "./types";
 import StepsHeaders from "@/components/Molecules/StepBody/StepsHeader/StepsHeaders";
+import items from "../Step3/missingItems.json";
 import Button from "@/components/Atoms/Buttons/Button";
 import {
   Cointainer,
@@ -26,7 +27,15 @@ import { FaTimesCircle } from "react-icons/fa";
 import useStep4 from "./hooks";
 import ModalSendInfo from "../Modals/ModalSendInfo";
 import ModalCarousel from "../../Modals/ModalCarousel/ModalCarousel";
-import { set } from "date-fns";
+import { formatDateToISO, itemsFilterJson } from "../util";
+import {
+  getActionType,
+  getProveedor,
+  mapIssuesToNotionValues,
+  parsePieces,
+  skuFilterProduct,
+} from "./funtions";
+import { getLoadingRedirect } from "@/state/loading/loadingSelector";
 
 const Svg = () => {
   return (
@@ -67,11 +76,13 @@ const Step4 = ({
   setNotionInfo,
 }: Step4Props) => {
   const [openModal, setOpenModal] = React.useState(false);
+  const [errorNotion, setErrorNotion] = React.useState(false);
   const [modalImg, setModalImg] = React.useState(false);
-  const [showImageErrorModal, setShowImageErrorModal] = React.useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const {
     images,
+    showImageErrorModal,
+    setShowImageErrorModal,
     setImages,
     handleDragOver,
     handleDrop,
@@ -83,60 +94,191 @@ const Step4 = ({
     setPostalCode,
   } = useStep4();
   const dataUser = useSelector(getThankuContent);
+  console.log(dataUser);
+
   const dispatch = useDispatch();
+  const loadingNotion = useSelector(getLoadingRedirect);
 
   const handleButtonClick = () => {
     fileInputRef.current?.click();
   };
 
-  const notionInfoSend = () => {
-    const fullInfo = {
-      ...notionInfo,
-      images: images,
-      name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
-      email: dataUser.billing.email,
-      dni: dataUser.dni,
-      orderNumber: dataUser.id,
-      address:
-        postalCode === "no"
-          ? inputValue.direcction
-          : `${dataUser.billing.address_1} ${dataUser.billing.address_2}`,
-      postCode:
-        postalCode === "no" ? inputValue.postalCode : dataUser.billing.postcode,
-    };
+  const radioOptions = [
+    {
+      value: "si",
+      label: "Si",
+    },
+    {
+      value: "no",
+      label: "No",
+    },
+  ];
 
-    setNotionInfo(fullInfo);
-    return fullInfo;
+  const rawString = notionInfo.problemDescription[1];
+
+  console.log("rawString", rawString);
+
+  const matchedItems = itemsFilterJson(items, dataUser.items);
+  const pieces = matchedItems.flatMap((item) => item.pieces);
+  const actionMap = {
+    descuento: "Gestionar cobro extra",
+    devolverlo: "Retiro",
   };
+  const typeRequestMap = {
+    descuento: "Orden con incidente",
+    devolverlo: "Devolucion",
+  };
+  const differencePriceMap = {
+    descuento: "Abona diferencia",
+    devolverlo: "No aplica/Garantía",
+  };
+
+  const proveedor =
+    dataUser._wc_shipment_tracking_items.length === 0
+      ? "-"
+      : dataUser._wc_shipment_tracking_items[0].map(
+          (item: any) => item.tracking_provider
+        );
+  console.log(proveedor);
+
+  const fullInfo: IDataSendNotion = {
+    orderNumber: String(dataUser.id),
+    name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
+    email: dataUser.billing.email,
+    shippingDate: formatDateToISO(dataUser.shipping.shipping_date),
+    requestDate: new Date(),
+    typeRequest:
+      Number(selectedValue) === 1
+        ? "Orden con incidente"
+        : Number(selectedValue) === 2
+        ? getActionType(notionInfo.problemDescription, typeRequestMap)
+        : Number(valueSelect) === 2
+        ? "Devolucion"
+        : "Cambio",
+    typeChange:
+      Number(selectedValue) === 3
+        ? [
+            {
+              name: "Error de P/P",
+            },
+          ]
+        : Number(selectedValue) === 4
+        ? [
+            {
+              name: "Garantía",
+            },
+          ]
+        : [
+            {
+              name: "-",
+            },
+          ],
+    reason:
+      Number(selectedValue) === 1 || Number(selectedValue) === 3
+        ? [{ name: "Otro" }]
+        : Number(selectedValue) === 4
+        ? mapIssuesToNotionValues(rawString).map((value) => ({
+            name: value.name,
+          }))
+        : Number(selectedValue) === 2
+        ? [{ name: "Error en la entrega" }]
+        : Number(valueSelect) === 2 || Number(valueSelect) === 3
+        ? mapIssuesToNotionValues(
+            notionInfo.productReturn?.join(", ") || ""
+          ).map((value) => ({
+            name: value.name,
+          }))
+        : [],
+    action:
+      Number(selectedValue) === 1
+        ? "Nuevo pedido"
+        : Number(selectedValue) === 2
+        ? getActionType(notionInfo.problemDescription, actionMap)
+        : Number(selectedValue) === 3 ||
+          Number(selectedValue) === 4 ||
+          Number(valueSelect) === 2 ||
+          Number(valueSelect) === 3
+        ? "Retiro"
+        : "Ninguna",
+    differencePrice:
+      Number(selectedValue) === 2
+        ? getActionType(notionInfo.problemDescription, differencePriceMap)
+        : Number(valueSelect) === 2
+        ? "Reembolso"
+        : Number(valueSelect) === 3
+        ? "-"
+        : "No aplica/Garantía",
+    refund: Number(valueSelect) === 2 ? "Reembolso pendiente" : "",
+    supplier: proveedor !== false ? getProveedor(proveedor) : "-",
+    images: images
+      .filter((img) => !img.error)
+      .map((img, index) => {
+        return {
+          name: `foto-reclamo-${(index + 1).toString().padStart(2, "0")}`,
+          type: "external",
+          external: {
+            url: img.url || "",
+          },
+        };
+      }),
+    sku:
+      Number(selectedValue) === 1 || Number(selectedValue) === 4
+        ? skuFilterProduct(dataUser, rawString)
+        : Number(valueSelect) === 2
+        ? skuFilterProduct(dataUser, notionInfo.productReturn?.join(", ") || "")
+        : [],
+    peaces:
+      Number(selectedValue) === 1 ? parsePieces(rawString, pieces).names : [],
+    peacesChange:
+      Number(selectedValue) === 1 ? parsePieces(rawString, pieces).names : [],
+    peacesQuantity:
+      Number(selectedValue) === 1
+        ? parsePieces(rawString, pieces).quantities
+        : "",
+    comments:
+      Number(selectedValue) === 1
+        ? parsePieces(rawString, pieces).otherMessage
+        : Number(selectedValue) === 2 || Number(selectedValue) === 3
+        ? notionInfo.problemDescription.some(
+            (desc: string) => desc.trim() === ""
+          )
+          ? notionInfo.problemDescription[0]
+          : notionInfo.problemDescription.join(", ")
+        : Number(selectedValue) === 4
+        ? mapIssuesToNotionValues(rawString)
+            .filter((value) => value.comments)
+            .map((value) => value.comments)
+            .join(", ")
+        : Number(valueSelect) === 2 || Number(valueSelect) === 3
+        ? mapIssuesToNotionValues(notionInfo.productReturn?.join(", ") || "")
+            .filter((value) => value.comments)
+            .map((value) => value.comments)
+            .join(", ")
+        : "-",
+    addressData: !postalCode
+      ? null
+      : Number(valueSelect) === 4 || postalCode === "no"
+      ? "NO"
+      : "SI",
+    addressNew:
+      inputValue.direcction !== "" && inputValue.postalCode !== ""
+        ? `Direccion: ${inputValue.direcction}, CP: ${inputValue.postalCode}`
+        : "",
+  };
+
+  console.log("formData", notionInfo);
+  console.log("fullInfo", fullInfo);
 
   const handleSubmitToNotion = async () => {
-    //const fullInfo = notionInfoSend();
-    //console.log("fullInfo", fullInfo);
-    // dispatch(onSendDataToNotion(fullInfo));
-    // dispatch(
-    //   onSendDataToNotion({
-    //     name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
-    //   })
-    // );
-    setImages([]);
-    setOpenModal(true);
-  };
-  const modalAlreadyShownRef = React.useRef(false);
-  const ignoreNextModalRef = useRef(false);
-
-  React.useEffect(() => {
-    const allFinished = images.every((img) => !img.loading);
-    const hasError = images.some((img) => !!img.error);
-
-    if (allFinished && hasError && !modalAlreadyShownRef.current) {
-      if (ignoreNextModalRef.current) {
-        ignoreNextModalRef.current = false; // 👈 Reseteamos
-      } else {
-        setShowImageErrorModal(true);
-        modalAlreadyShownRef.current = true;
-      }
+    setOpenModal(false);
+    try {
+      await dispatch(onSendDataToNotion(fullInfo));
+      // setImages([]);
+      // setOpenModal(true);
+    } catch (error) {
+      setErrorNotion(true);
     }
-  }, [images]);
+  };
 
   return (
     <>
@@ -182,26 +324,21 @@ const Step4 = ({
             ❗ Si el producto nunca salió de su caja, mandanos una foto donde se vea la cinta de seguridad.`
         }
         onClick={() => handleSubmitToNotion()}
+        loading={loadingNotion}
         button
         send
         value={images.length > 0 ? false : true}
       >
-        {valueSelect === "2" || valueSelect === "3" ? (
+        {valueSelect === "2" ||
+        valueSelect === "3" ||
+        fullInfo.typeRequest.includes("Cambio") ||
+        fullInfo.typeRequest.includes("Devolucion") ? (
           <>
             <Paragraph fontSize="20px">
               Por último, ¿la dirección de retiro es la misma que la de entrega?
             </Paragraph>
             <StepRadio
-              radioOptions={[
-                {
-                  value: "si",
-                  label: "Si",
-                },
-                {
-                  value: "no",
-                  label: "No",
-                },
-              ]}
+              radioOptions={radioOptions}
               name="retiro"
               checked={postalCode}
               onChange={(_, value) => {
@@ -318,8 +455,7 @@ const Step4 = ({
                       size={18}
                       onClick={(e: React.MouseEvent) => {
                         e.stopPropagation();
-                        modalAlreadyShownRef.current = false;
-                        ignoreNextModalRef.current = true;
+
                         setImages((images) =>
                           images.filter((_, i) => i !== index)
                         );
@@ -347,18 +483,36 @@ const Step4 = ({
           buttonText="Aceptar"
           handleClose={() => {
             setShowImageErrorModal(false);
-            // setImages((prev) =>
-            //   prev.map((img) => ({ ...img, error: undefined }))
-            // );
           }}
         />
       )}
-      <ModalSendInfo
-        isOpen={openModal}
-        setIsOpen={setOpenModal}
-        dataUser={dataUser}
-        valueSelect={valueSelect}
-      />
+      {loadingNotion && (
+        <SkeletonLoader
+          height="60px"
+          width="100%"
+          borderRadius="1000px"
+          responsiveMobile={{ height: "50px" }}
+        />
+      )}
+      {errorNotion ? (
+        <ModalSteps
+          title="No pudimos enviar la información"
+          paragraph={`Ocurrió un error al intentar enviar la información.\n 
+           Por favor, revisá tu conexión o intentá nuevamente en unos minutos.  
+           Si el problema persiste, contactanos para que podamos ayudarte.`}
+          buttonText="Aceptar"
+          handleClose={() => {
+            window.location.reload();
+          }}
+        />
+      ) : (
+        <ModalSendInfo
+          isOpen={openModal}
+          setIsOpen={setOpenModal}
+          dataUser={dataUser}
+          valueSelect={valueSelect}
+        />
+      )}
       <ModalCarousel
         modal={modalImg}
         modalHandle={() => setModalImg(false)}

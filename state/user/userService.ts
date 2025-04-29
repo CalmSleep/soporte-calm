@@ -1,6 +1,7 @@
 /* import { IPropsToSend } from '@/components/Organisms/B2bForm/types'; */
-import axios from 'axios';
-import { IKlaviyoEventBodyParams } from './types';
+import axios from "axios";
+import { IKlaviyoEventBodyParams } from "./types";
+import { IDataSendNotion } from "@/components/Organisms/Steps/Step4/types";
 
 export const getUserIsLogged = async () => {
   const requestConfig = {
@@ -9,11 +10,14 @@ export const getUserIsLogged = async () => {
       "Content-Type": "json/application",
     },
   };
-  const response = await axios.get(`${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/user/logged_user.php`, requestConfig);
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/user/logged_user.php`,
+    requestConfig
+  );
   return await response.data;
-}
+};
 
-export const getDataToNotion = async (data: any) => {
+export const getDataToNotion = async (data: IDataSendNotion) => {
   const requestConfig = {
     headers: {
       "Content-Type": "application/json",
@@ -24,7 +28,7 @@ export const getDataToNotion = async (data: any) => {
     const response = await axios.post(
       `/api/notion`,
       {
-        message: JSON.stringify(data)
+        message: JSON.stringify(data),
       },
       requestConfig
     );
@@ -35,7 +39,7 @@ export const getDataToNotion = async (data: any) => {
   }
 };
 
-export const getB2bDataToSlack = async (data: /* IPropsToSend */any) => {
+export const getB2bDataToSlack = async (data: /* IPropsToSend */ any) => {
   const requestConfig = {
     headers: {
       "Content-Type": "application/json",
@@ -67,38 +71,34 @@ export const createClientEvent = async (data: IKlaviyoEventBodyParams) => {
   try {
     const response = await axios.post(
       `/api/createKlaviyoClientEvent`,
-      {data},
+      { data },
       requestConfig
     );
     return response.data;
-  } catch (error) {
-  }
-}
+  } catch (error) {}
+};
 
 export const sendSlackMessage = async (
   channel: string,
   username: string,
   icon_emoji: string,
   text: string,
-  buttons?:{
-    text: string,
-    url: string
+  buttons?: {
+    text: string;
+    url: string;
   }[]
 ) => {
-  const response = fetch(
-    `/api/sendSlackMessage`,
-    { 
-      cache: "no-store",
-      method: "POST",
-      body: JSON.stringify({
-        channel,
-        username,
-        icon_emoji,
-        text,
-        buttons
-      })
-    }
-  );
+  const response = fetch(`/api/sendSlackMessage`, {
+    cache: "no-store",
+    method: "POST",
+    body: JSON.stringify({
+      channel,
+      username,
+      icon_emoji,
+      text,
+      buttons,
+    }),
+  });
 
   return (await response).json();
-}
+};
