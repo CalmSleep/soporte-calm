@@ -34,7 +34,7 @@ import { IDataSendNotion } from "@/components/Organisms/Steps/Step4/types";
 
 export const onSendDataToNotion = (data: IDataSendNotion) => {
   return async (dispatch: any) => {
-    // dispatch(onRedirectLoadingStart());
+    dispatch(onRedirectLoadingStart());
 
     try {
       const response = await getDataToNotion(data);
@@ -42,15 +42,15 @@ export const onSendDataToNotion = (data: IDataSendNotion) => {
       if (response) {
         console.log("response", response);
         dispatch(onSendDataToNotionSucceeded(response.success));
-        //    dispatch(onRedirectLoadingFinished());
+        dispatch(onRedirectLoadingFinished());
       } else {
         dispatch(onSendDataToNotionFailed());
-        // dispatch(onRedirectLoadingFinished());
+        dispatch(onRedirectLoadingFinished());
       }
     } catch (error) {
       console.error("Error al enviar datos a Notion:", error);
-      // dispatch(onSendDataToNotionFailed());
-      // dispatch(onRedirectLoadingFinished());
+      dispatch(onSendDataToNotionFailed());
+      dispatch(onRedirectLoadingFinished());
       throw error;
     }
   };

@@ -273,8 +273,8 @@ const Step4 = ({
     setOpenModal(false);
     try {
       await dispatch(onSendDataToNotion(fullInfo));
-      // setImages([]);
-      // setOpenModal(true);
+      setImages([]);
+      setOpenModal(true);
     } catch (error) {
       setErrorNotion(true);
     }
