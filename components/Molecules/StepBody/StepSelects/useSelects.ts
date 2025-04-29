@@ -80,6 +80,49 @@ const useSelects = ({
     onCheckboxChange && onCheckboxChange(checkedPieces.length > 0, formatted);
   };
 
+  const handlePieceRadioChange = (itemId: string, pieceLabel: string) => {
+    // Setea la selección única
+    setSelectedRadios((prev) => ({
+      ...prev,
+      [itemId]: pieceLabel,
+    }));
+
+    const item = items && items.find((i) => i.id === itemId);
+    const itemTitle = item?.title || "";
+
+    const inputsForItem = inputValues[itemId] || {};
+    const labelWithInput = `${pieceLabel}${
+      inputsForItem[pieceLabel] ? `x${inputsForItem[pieceLabel]}` : ""
+    }`;
+
+    const formatted = `${itemTitle} (${labelWithInput})`;
+
+    // Disparar callback al padre
+    onCheckboxChange?.(true, formatted, [pieceLabel]);
+  };
+
+  const handleRadioInputChange = (
+    itemId: string,
+    pieceLabel: string,
+    value: string
+  ) => {
+    setInputValues((prev) => ({
+      ...prev,
+      [itemId]: {
+        ...(prev[itemId] || {}),
+        [pieceLabel]: value,
+      },
+    }));
+
+    // Solo un radio seleccionado por grupo
+    const itemTitle =
+      (items && items.find((i) => i.id === itemId)?.title) || "";
+    const labelWithInput = `${pieceLabel}${value ? ` x ${value}` : ""}`;
+    const formatted = `${itemTitle} (${labelWithInput})`;
+
+    onCheckboxChange?.(true, formatted, [pieceLabel]);
+  };
+
   const contentRefs = useRef<{ [id: string]: HTMLDivElement | null }>({});
 
   const [contentHeights, setContentHeights] = useState<{
@@ -126,6 +169,8 @@ const useSelects = ({
     handlePieceCheckboxChange,
     inputValues,
     handleInputChange,
+    handlePieceRadioChange,
+    handleRadioInputChange,
     contentRefs,
     contentHeights,
     handleInternalRadioChange,

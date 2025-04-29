@@ -15,6 +15,7 @@ import {
 import { StepSelectsProps } from "./types";
 import useSelects from "./useSelects";
 import { getMatchingQuizzIds } from "@/components/Organisms/Steps/util";
+import { RadioGroup } from "../StepRadio/styled";
 
 const StepSelects = ({
   titleParagraph,
@@ -39,6 +40,8 @@ const StepSelects = ({
     inputValues,
     selectedChecks,
     handleInternalRadioChange,
+    handlePieceRadioChange,
+    handleRadioInputChange,
   } = useSelects({
     onCheckboxChange,
     items,
@@ -203,31 +206,22 @@ const StepSelects = ({
               }}
               itemsSelect={
                 <>
-                  <PieceItems>
-                    {item.pieces.map((piece) => (
-                      <ContainerCheckLabel>
-                        <PieceItem key={piece.label}>
-                          <Input
-                            appearance="none"
-                            width="12px"
-                            height="12px"
-                            padding="7px"
-                            borderRadius="2px"
-                            checkBorderColor="yellowCalm"
-                            checkColor="yellowCalm"
-                            borderColorFocused="yellowCalm"
-                            color="yellowCalm"
-                            type="checkbox"
-                            checked={(selectedChecks[item.id] || []).includes(
-                              piece.label
-                            )}
-                            onChange={() =>
-                              handlePieceCheckboxChange(item.id, piece.label)
-                            }
-                          />
-                          {piece.label}
-                        </PieceItem>
-                        {piece.hasInput && (
+                  {item.pieces.map((piece) => (
+                    <ContainerCheckLabel>
+                      <PieceItem key={piece.label}>
+                        <StepRadio
+                          radioOptions={[
+                            { value: piece.label, label: piece.label },
+                          ]}
+                          name={`radio-group-${item.id}`}
+                          checked={selectedRadios[item.id]}
+                          onChange={(e, value) =>
+                            handlePieceRadioChange(item.id, value)
+                          }
+                        />
+                      </PieceItem>
+                      {piece.hasInput &&
+                        selectedRadios[item.id] === piece.label && (
                           <Input
                             appearance="none"
                             width="236px"
@@ -236,7 +230,7 @@ const StepSelects = ({
                             placeholder={piece.placeholder}
                             value={inputValues[item.id]?.[piece.label] || ""}
                             onChange={(e) =>
-                              handleInputChange(
+                              handleRadioInputChange(
                                 item.id,
                                 piece.label,
                                 e.target.value
@@ -244,12 +238,10 @@ const StepSelects = ({
                             }
                           />
                         )}
-                      </ContainerCheckLabel>
-                    ))}
-                  </PieceItems>
+                    </ContainerCheckLabel>
+                  ))}
                 </>
               }
-              // changeText="No sé, ¿cuál me recomiendan?"
               changedOption={changedOption}
               changeText={
                 getMatchingQuizzIds([item.title], menuData).length > 0
