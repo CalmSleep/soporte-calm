@@ -101,18 +101,23 @@ export default async function handler(
           ],
         },
         Comentarios: {
-          rich_text: [
-            {
-              text: {
-                content: data.comments,
-              },
-            },
-          ],
+          rich_text: data.comments
+            ? [
+                {
+                  text: {
+                    content: data.comments,
+                  },
+                },
+              ]
+            : [],
         },
         "¿Misma dire?": {
-          select: {
-            name: data.addressData,
-          },
+          select:
+            data.addressData === null
+              ? null
+              : {
+                  name: data.addressData,
+                },
         },
         "Nueva dire": {
           rich_text: [

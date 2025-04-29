@@ -51,6 +51,7 @@ export const mapIssuesToNotionValues = (input: string): Issue[] => {
   const result: Issue[] = [];
 
   const matches = input.match(/\(([^)]+)\)/g);
+
   if (!matches) {
     return [{ name: "Otro" }];
   }
@@ -60,19 +61,24 @@ export const mapIssuesToNotionValues = (input: string): Issue[] => {
     for (const item of items) {
       const trimmed = item.trim();
       const normalizedItem = normalize(trimmed);
+
       const found = nomenclaruras.find(
         (option) => normalize(option.name) === normalizedItem
       );
 
-      if (found?.value.includes("Otro")) {
+      if (found?.name === "Otro") {
+        result.push({ name: "Otro", comments: trimmed });
+      } else if (found?.value === "Otro") {
+        result.push({ name: "Otro", comments: trimmed });
+      } else if (!found) {
         result.push({ name: "Otro", comments: trimmed });
       } else {
-        if (found) {
-          result.push({ name: found.value });
-        }
+        result.push({ name: found.value });
       }
     }
   }
+
+  console.log("result");
 
   return result;
 };
@@ -110,18 +116,17 @@ export function parsePieces(rawString: string, pieces: Piece[]): ParsedResult {
 
   const names: { name: string }[] = [];
   const quantitiesArr: string[] = [];
-  let otherMessage: string | undefined;
+  const otherMessages: string[] = [];
 
   const matches = Array.from(rawString.matchAll(/([^,()]+)\s*\(([^)]+)\)/g));
 
   matches.forEach(([_, title, content]) => {
     const sectionName = title.trim().toLowerCase();
 
-    // Si es "Otro", directamente sacamos el mensaje
     if (sectionName === "otro") {
       const message = content.trim();
       if (message) {
-        otherMessage = message;
+        otherMessages.push(message);
       }
       return;
     }
@@ -151,7 +156,7 @@ export function parsePieces(rawString: string, pieces: Piece[]): ParsedResult {
   return {
     names,
     quantities: quantitiesArr.join(", "),
-    otherMessage: otherMessage || "",
+    otherMessage: otherMessages.join(", "), // ahora junta todos los mensajes
   };
 }
 

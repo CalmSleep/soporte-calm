@@ -172,9 +172,9 @@ const Step4 = ({
             },
           ],
     reason:
-      Number(selectedValue) === 1 ||
-      Number(selectedValue) === 3 ||
-      Number(selectedValue) === 4
+      Number(selectedValue) === 1 || Number(selectedValue) === 3
+        ? [{ name: "Otro" }]
+        : Number(selectedValue) === 4
         ? mapIssuesToNotionValues(rawString).map((value) => ({
             name: value.name,
           }))
@@ -233,7 +233,7 @@ const Step4 = ({
             .join(", ")
         : "-",
     addressData: !postalCode
-      ? "SI"
+      ? null
       : Number(valueSelect) === 4 || postalCode === "no"
       ? "NO"
       : "SI",
@@ -308,9 +308,8 @@ const Step4 = ({
       >
         {valueSelect === "2" ||
         valueSelect === "3" ||
-        selectedValue === "2" ||
-        selectedValue === "3" ||
-        selectedValue === "4" ? (
+        fullInfo.typeRequest.includes("Cambio") ||
+        fullInfo.typeRequest.includes("Devolucion") ? (
           <>
             <Paragraph fontSize="20px">
               Por último, ¿la dirección de retiro es la misma que la de entrega?

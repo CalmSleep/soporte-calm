@@ -61,12 +61,13 @@ export interface IDataSendNotion {
   peacesChange?: IMultipleSelect[];
   peacesQuantity?: string;
   comments?: string;
-  addressData?: "SI" | "NO" | "";
+  addressData?: "SI" | "NO" | null;
   addressNew?: string;
   postCode?: string;
 }
 
 export type Issue = {
+  // productId: string;
   name: string;
   comments?: string;
 };
