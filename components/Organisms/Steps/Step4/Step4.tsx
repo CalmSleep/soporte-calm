@@ -30,6 +30,7 @@ import ModalCarousel from "../../Modals/ModalCarousel/ModalCarousel";
 import { formatDateToISO, itemsFilterJson } from "../util";
 import {
   getActionType,
+  getProveedor,
   mapIssuesToNotionValues,
   parsePieces,
   skuFilterProduct,
@@ -102,9 +103,20 @@ const Step4 = ({
     fileInputRef.current?.click();
   };
 
+  const radioOptions = [
+    {
+      value: "si",
+      label: "Si",
+    },
+    {
+      value: "no",
+      label: "No",
+    },
+  ];
+
   const rawString = notionInfo.problemDescription[1];
 
-  console.log(rawString);
+  console.log("rawString", rawString);
 
   const matchedItems = itemsFilterJson(items, dataUser.items);
   const pieces = matchedItems.flatMap((item) => item.pieces);
@@ -120,6 +132,14 @@ const Step4 = ({
     descuento: "Abona diferencia",
     devolverlo: "No aplica/Garantía",
   };
+
+  const proveedor =
+    dataUser._wc_shipment_tracking_items.length === 0
+      ? "-"
+      : dataUser._wc_shipment_tracking_items[0].map(
+          (item: any) => item.tracking_provider
+        );
+  console.log(proveedor);
 
   const fullInfo: IDataSendNotion = {
     orderNumber: String(dataUser.id),
@@ -140,6 +160,12 @@ const Step4 = ({
               name: "Error de P/P",
             },
           ]
+        : Number(selectedValue) === 4
+        ? [
+            {
+              name: "Garantía",
+            },
+          ]
         : [
             {
               name: "-",
@@ -149,11 +175,9 @@ const Step4 = ({
       Number(selectedValue) === 1 ||
       Number(selectedValue) === 3 ||
       Number(selectedValue) === 4
-        ? mapIssuesToNotionValues(notionInfo.problemDescription[1]).map(
-            (value) => ({
-              name: value,
-            })
-          )
+        ? mapIssuesToNotionValues(rawString).map((value) => ({
+            name: value.name,
+          }))
         : Number(selectedValue) === 2
         ? [{ name: "Error en la entrega" }]
         : [],
@@ -162,13 +186,14 @@ const Step4 = ({
         ? "Nuevo pedido"
         : Number(selectedValue) === 2
         ? getActionType(notionInfo.problemDescription, actionMap)
-        : Number(selectedValue) === 3
+        : Number(selectedValue) === 3 || Number(selectedValue) === 4
         ? "Retiro"
         : "Ninguna",
     differencePrice:
       Number(selectedValue) === 2
         ? getActionType(notionInfo.problemDescription, differencePriceMap)
         : "No aplica/Garantía",
+    supplier: proveedor !== false ? getProveedor(proveedor) : "-",
     images: images
       .filter((img) => !img.error)
       .map((img, index) => {
@@ -181,7 +206,9 @@ const Step4 = ({
         };
       }),
     sku:
-      Number(selectedValue) === 1 ? skuFilterProduct(dataUser, rawString) : [],
+      Number(selectedValue) === 1 || Number(selectedValue) === 4
+        ? skuFilterProduct(dataUser, rawString)
+        : [],
     peaces:
       Number(selectedValue) === 1 ? parsePieces(rawString, pieces).names : [],
     peacesChange:
@@ -199,8 +226,23 @@ const Step4 = ({
           )
           ? notionInfo.problemDescription[0]
           : notionInfo.problemDescription.join(", ")
+        : Number(selectedValue) === 4
+        ? mapIssuesToNotionValues(rawString)
+            .filter((value) => value.comments)
+            .map((value) => value.comments)
+            .join(", ")
         : "-",
+    addressData: !postalCode
+      ? "SI"
+      : Number(valueSelect) === 4 || postalCode === "no"
+      ? "NO"
+      : "SI",
+    addressNew:
+      inputValue.direcction !== "" && inputValue.postalCode !== ""
+        ? `Direccion: ${inputValue.direcction}, CP: ${inputValue.postalCode}`
+        : "",
   };
+
   console.log("formData", notionInfo);
   console.log("fullInfo", fullInfo);
 
@@ -208,13 +250,12 @@ const Step4 = ({
     setOpenModal(false);
     try {
       await dispatch(onSendDataToNotion(fullInfo));
-      setImages([]);
-      setOpenModal(true);
+      // setImages([]);
+      // setOpenModal(true);
     } catch (error) {
       setErrorNotion(true);
     }
   };
-  console.log("loadingNotion", loadingNotion);
 
   return (
     <>
@@ -263,24 +304,19 @@ const Step4 = ({
         loading={loadingNotion}
         button
         send
-        value={images.length > 0 ? false : true}
+        // value={images.length > 0 ? false : true}
       >
-        {valueSelect === "2" || valueSelect === "3" ? (
+        {valueSelect === "2" ||
+        valueSelect === "3" ||
+        selectedValue === "2" ||
+        selectedValue === "3" ||
+        selectedValue === "4" ? (
           <>
             <Paragraph fontSize="20px">
               Por último, ¿la dirección de retiro es la misma que la de entrega?
             </Paragraph>
             <StepRadio
-              radioOptions={[
-                {
-                  value: "si",
-                  label: "Si",
-                },
-                {
-                  value: "no",
-                  label: "No",
-                },
-              ]}
+              radioOptions={radioOptions}
               name="retiro"
               checked={postalCode}
               onChange={(_, value) => {
@@ -397,8 +433,7 @@ const Step4 = ({
                       size={18}
                       onClick={(e: React.MouseEvent) => {
                         e.stopPropagation();
-                        // modalAlreadyShownRef.current = false;
-                        // ignoreNextModalRef.current = true;
+
                         setImages((images) =>
                           images.filter((_, i) => i !== index)
                         );
@@ -429,15 +464,15 @@ const Step4 = ({
           }}
         />
       )}
-      {loadingNotion && (
+      {/* {loadingNotion && (
         <SkeletonLoader
           height="60px"
           width="100%"
           borderRadius="1000px"
           responsiveMobile={{ height: "50px" }}
         />
-      )}
-      {errorNotion ? (
+      )} */}
+      {/* {errorNotion ? (
         <ModalSteps
           title="No pudimos enviar la información"
           paragraph={`Ocurrió un error al intentar enviar la información.\n 
@@ -455,7 +490,7 @@ const Step4 = ({
           dataUser={dataUser}
           valueSelect={valueSelect}
         />
-      )}
+      )} */}
       <ModalCarousel
         modal={modalImg}
         modalHandle={() => setModalImg(false)}

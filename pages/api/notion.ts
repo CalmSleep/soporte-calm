@@ -74,6 +74,11 @@ export default async function handler(
             name: data.differencePrice,
           },
         },
+        "Proveedor Logístico": {
+          select: {
+            name: data.supplier,
+          },
+        },
         Archivos: {
           files: data.images,
         },
@@ -100,6 +105,20 @@ export default async function handler(
             {
               text: {
                 content: data.comments,
+              },
+            },
+          ],
+        },
+        "¿Misma dire?": {
+          select: {
+            name: data.addressData,
+          },
+        },
+        "Nueva dire": {
+          rich_text: [
+            {
+              text: {
+                content: data.addressNew,
               },
             },
           ],

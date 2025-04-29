@@ -1,5 +1,5 @@
 import nomenclaruras from "./nomenclaturas.json";
-import { ActionMap, ParsedResult, Piece } from "./types";
+import { ActionMap, Issue, ParsedResult, Piece } from "./types";
 
 const normalize = (text: string): string =>
   text
@@ -47,30 +47,60 @@ export const skuFilterProduct = (dataUser: any, rawString: string) => {
     .map((item: any) => ({ name: item.sku }));
 };
 
-export const mapIssuesToNotionValues = (input: string): string[] => {
-  const result = new Set<string>();
+export const mapIssuesToNotionValues = (input: string): Issue[] => {
+  const result: Issue[] = [];
 
   const matches = input.match(/\(([^)]+)\)/g);
-  console.log(matches);
-
   if (!matches) {
-    result.add("Otro");
-    return Array.from(result);
+    return [{ name: "Otro" }];
   }
 
   for (const match of matches) {
     const items = match.slice(1, -1).split(",");
     for (const item of items) {
-      const normalizedItem = normalize(item);
+      const trimmed = item.trim();
+      const normalizedItem = normalize(trimmed);
       const found = nomenclaruras.find(
         (option) => normalize(option.name) === normalizedItem
       );
-      result.add(found?.value || "Otro");
+
+      if (found?.value.includes("Otro")) {
+        result.push({ name: "Otro", comments: trimmed });
+      } else {
+        if (found) {
+          result.push({ name: found.value });
+        }
+      }
     }
   }
 
-  return Array.from(result);
+  return result;
 };
+
+// export const mapIssuesToNotionValues = (input: string): string[] => {
+//   const result = new Set<string>();
+
+//   const matches = input.match(/\(([^)]+)\)/g);
+
+//   if (!matches) {
+//     result.add("Otro");
+//     return Array.from(result);
+//   }
+
+//   for (const match of matches) {
+//     const items = match.slice(1, -1).split(",");
+//     for (const item of items) {
+//       const normalizedItem = normalize(item);
+//       const found = nomenclaruras.find(
+//         (option) => normalize(option.name) === normalizedItem
+//       );
+//       result.add(found?.value || "Otro");
+//     }
+//   }
+//   console.log("result", Array.from(result));
+
+//   return Array.from(result);
+// };
 
 export function parsePieces(rawString: string, pieces: Piece[]): ParsedResult {
   const normalizedPieces = pieces.map((p) => ({
@@ -124,3 +154,22 @@ export function parsePieces(rawString: string, pieces: Piece[]): ParsedResult {
     otherMessage: otherMessage || "",
   };
 }
+
+export const getProveedor = (proveedor: string) => {
+  if (proveedor.includes("andreani")) {
+    return "Andreani";
+  }
+  if (proveedor.includes("beetrack") || proveedor.includes("simpliroute")) {
+    return "Flota Propia";
+  }
+  if (proveedor.includes("cruz")) {
+    return "Cruz del Sur";
+  }
+  if (proveedor.includes("andesmar")) {
+    return "Andesmar";
+  }
+  if (proveedor.includes("local")) {
+    return "Localm";
+  }
+  return "-";
+};

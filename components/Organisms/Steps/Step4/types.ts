@@ -40,6 +40,7 @@ export interface IImagensNotion {
 
 export interface IMultipleSelect {
   name: string;
+  comments?: string;
 }
 
 export interface IDataSendNotion {
@@ -53,12 +54,19 @@ export interface IDataSendNotion {
   reason: IMultipleSelect[];
   action: string;
   differencePrice: string;
+  supplier: string | null;
   images: IImagensNotion[];
   sku?: IMultipleSelect[];
   peaces?: IMultipleSelect[];
   peacesChange?: IMultipleSelect[];
   peacesQuantity?: string;
   comments?: string;
-  address?: string;
+  addressData?: "SI" | "NO" | "";
+  addressNew?: string;
   postCode?: string;
 }
+
+export type Issue = {
+  name: string;
+  comments?: string;
+};
