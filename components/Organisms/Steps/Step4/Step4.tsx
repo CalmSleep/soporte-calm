@@ -470,6 +470,14 @@ const Step4 = ({
                 </ImageHover>
               ))}
         </ImagesContainer>
+        {loadingNotion && (
+          <SkeletonLoader
+            height="60px"
+            width="100%"
+            borderRadius="1000px"
+            responsiveMobile={{ height: "50px" }}
+          />
+        )}
       </StepsHeaders>
       {showImageErrorModal && (
         <ModalSteps
@@ -486,14 +494,7 @@ const Step4 = ({
           }}
         />
       )}
-      {loadingNotion && (
-        <SkeletonLoader
-          height="60px"
-          width="100%"
-          borderRadius="1000px"
-          responsiveMobile={{ height: "50px" }}
-        />
-      )}
+
       {errorNotion ? (
         <ModalSteps
           title="No pudimos enviar la información"
