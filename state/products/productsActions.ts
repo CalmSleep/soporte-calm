@@ -30,8 +30,8 @@ import {
   ON_GET_SHOW_NAVBAR,
   ON_GET_HIDE_NAVBAR,
   ON_GET_RELAMPAGO_PRODUCT_SUCCEEDED,
-  ON_GET_RELAMPAGO_PRODUCT_FAILED
-} from './productsConstants';
+  ON_GET_RELAMPAGO_PRODUCT_FAILED,
+} from "./productsConstants";
 
 import {
   getRelampagoProduct,
@@ -46,8 +46,8 @@ import {
   getStock,
   getStockAndPrices,
   getUnavailableDays,
-  setBackorder
-} from './productsServices';
+  setBackorder,
+} from "./productsServices";
 
 export const onGetRelampagoProduct = (id: string) => {
   return async (dispatch: any) => {
@@ -62,11 +62,11 @@ export const onGetRelampagoProduct = (id: string) => {
 
 const onGetRelampagoProductSucceeded = (relampagoData: any) => ({
   type: ON_GET_RELAMPAGO_PRODUCT_SUCCEEDED,
-  relampagoData
+  relampagoData,
 });
 
 const onGetRelampagoProductFailed = () => ({
-  type: ON_GET_RELAMPAGO_PRODUCT_FAILED
+  type: ON_GET_RELAMPAGO_PRODUCT_FAILED,
 });
 
 export const onGetProduct = (id: string) => {
@@ -82,15 +82,15 @@ export const onGetProduct = (id: string) => {
 
 const onGetProductSucceeded = (productData: any) => ({
   type: ON_GET_PRODUCT_SUCCEEDED,
-  productData
+  productData,
 });
 
 const onGetProductFailed = () => ({
-  type: ON_GET_PRODUCT_FAILED
+  type: ON_GET_PRODUCT_FAILED,
 });
 
 export const onGetAllProducts = () => {
-  return async ( dispatch:any ) => {
+  return async (dispatch: any) => {
     const response = await getAllProducts();
     if (response) {
       dispatch(onGetAllProductsSucceeded(response));
@@ -102,11 +102,11 @@ export const onGetAllProducts = () => {
 
 export const onGetAllProductsSucceeded = (allProductsData: any) => ({
   type: ON_GET_ALL_PRODUCTS_SUCCEEDED,
-  allProductsData
+  allProductsData,
 });
 
 export const onGetAllProductsFailed = () => ({
-  type: ON_GET_ALL_PRODUCTS_FAILED
+  type: ON_GET_ALL_PRODUCTS_FAILED,
 });
 
 export const onGetStockAndPrice = (id: string) => {
@@ -122,11 +122,11 @@ export const onGetStockAndPrice = (id: string) => {
 
 const onGetStockAndPriceSucceeded = (data: any) => ({
   type: ON_GET_STOCK_AND_PRICES_SUCCEEDED,
-  data
+  data,
 });
 
 const onGetStockAndPriceFailed = () => ({
-  type: ON_GET_STOCK_AND_PRICES_FAILED
+  type: ON_GET_STOCK_AND_PRICES_FAILED,
 });
 
 export const onGetHomeRelatedProducts = () => {
@@ -142,11 +142,11 @@ export const onGetHomeRelatedProducts = () => {
 
 const onGetHomeRelatedProductsSucceeded = (productData: any) => ({
   type: ON_GET_HOME_RELATED_PRODUCTS_SUCCEEDED,
-  productData
+  productData,
 });
 
 const onGetHomeRelatedProductsFailed = () => ({
-  type: ON_GET_HOME_RELATED_PRODUCTS_FAILED
+  type: ON_GET_HOME_RELATED_PRODUCTS_FAILED,
 });
 
 export const onGetNewRelatedProducts = () => {
@@ -162,17 +162,17 @@ export const onGetNewRelatedProducts = () => {
 
 const onGetNewRelatedProductsSucceeded = (productData: any) => ({
   type: ON_GET_NEW_RELATED_PRODUCTS_SUCCEEDED,
-  productData
+  productData,
 });
 
 const onGetNewRelatedProductsFailed = () => ({
-  type: ON_GET_NEW_RELATED_PRODUCTS_FAILED
+  type: ON_GET_NEW_RELATED_PRODUCTS_FAILED,
 });
 
 export const onGetRelatedProducts = (id: string) => {
   return async (dispatch: any) => {
     const response = await getRelatedProducts(id);
-    
+
     if (response) {
       dispatch(onGetRelatedProductsSucceeded(response));
     } else {
@@ -183,11 +183,11 @@ export const onGetRelatedProducts = (id: string) => {
 
 const onGetDefaulProductsSucceeded = (defaultProducts: any) => ({
   type: ON_GET_DEFAULT_PRODUCTS_SUCCEEDED,
-  defaultProducts
+  defaultProducts,
 });
 
 const onGetDefaulProductsFailed = () => ({
-  type: ON_GET_DEFAULT_PRODUCTS_FAILED
+  type: ON_GET_DEFAULT_PRODUCTS_FAILED,
 });
 
 export const onGetSDefaultProducts = () => {
@@ -203,13 +203,12 @@ export const onGetSDefaultProducts = () => {
 
 const onGetRelatedProductsSucceeded = (productData: any) => ({
   type: ON_GET_RELATED_PRODUCTS_SUCCEEDED,
-  productData
+  productData,
 });
 
 const onGetRelatedProductsFailed = () => ({
-  type: ON_GET_RELATED_PRODUCTS_FAILED
+  type: ON_GET_RELATED_PRODUCTS_FAILED,
 });
-
 
 export const onGetShippingTime = (cp: string, sku: string[] | string) => {
   return async (dispatch: any) => {
@@ -225,11 +224,11 @@ export const onGetShippingTime = (cp: string, sku: string[] | string) => {
 
 const onGetShippingTimeSucceeded = (shippingTime: any) => ({
   type: ON_GET_SHIPPING_TIME_SUCCEEDED,
-  shippingTime
+  shippingTime,
 });
 
 const onGetShippingTimeFailed = () => ({
-  type: ON_GET_SHIPPING_TIME_FAILED
+  type: ON_GET_SHIPPING_TIME_FAILED,
 });
 
 export const onGetHolidays = () => {
@@ -246,11 +245,11 @@ export const onGetHolidays = () => {
 
 const onGetholidaysSucceeded = (holidays: any) => ({
   type: ON_GET_HOLIDAYS_SUCCEEDED,
-  holidays
+  holidays,
 });
 
 const onGetholidaysFailed = () => ({
-  type: ON_GET_HOLIDAYS_FAILED
+  type: ON_GET_HOLIDAYS_FAILED,
 });
 
 export const onGetStock = () => {
@@ -267,18 +266,20 @@ export const onGetStock = () => {
 
 const onGetStockSucceeded = (stock: any) => ({
   type: ON_GET_STOCK_SUCCEEDED,
-  stock
+  stock,
 });
 
 const onGetStockFailed = () => ({
-  type: ON_GET_STOCK_FAILED
+  type: ON_GET_STOCK_FAILED,
 });
 
-
-export const onGetUnavailableDays = (postcode: number, products: boolean = false) => {
+export const onGetUnavailableDays = (
+  postcode: number,
+  products: boolean = false
+) => {
   return async (dispatch: any) => {
     const response = await getUnavailableDays(postcode, products);
-    
+
     if (response) {
       dispatch(onGetUnavailableDaysSucceeded(response));
     } else {
@@ -289,60 +290,60 @@ export const onGetUnavailableDays = (postcode: number, products: boolean = false
 
 const onGetUnavailableDaysSucceeded = (days: any) => ({
   type: ON_GET_UNAVAILABLE_DAYS_SUCCEEDED,
-  days
+  days,
 });
 
 const onGetUnavailableDaysFailed = () => ({
-  type: ON_GET_UNAVAILABLE_DAYS_FAILED
+  type: ON_GET_UNAVAILABLE_DAYS_FAILED,
 });
 
-
-
 export const onGetNuevosDisenos = (flag: boolean) => {
-    return async (dispatch: any) => {
+  return async (dispatch: any) => {
     if (flag) {
       dispatch(onGetNuevoDisenosSucceeded(flag));
     } else {
       dispatch(onGetNuevoDisenosFailed(flag));
     }
-  }
+  };
 };
 const onGetNuevoDisenosSucceeded = (flag: boolean) => ({
   type: ON_GET_NUEVOS_DISENOS_SUCCEEDED,
-  flag
+  flag,
 });
 
 const onGetNuevoDisenosFailed = (flag: boolean) => ({
   type: ON_GET_NUEVOS_DISENOS_FAILED,
-  flag
+  flag,
 });
 
 export const onGetQuizzOpenSucceeded = () => ({
-  type: ON_OPEN_QUIZZ_SUCCEEDED
+  type: ON_OPEN_QUIZZ_SUCCEEDED,
 });
 
 export const onGetQuizzCloseFailed = () => ({
-  type: ON_CLOSE_QUIZZ_FAILED
+  type: ON_CLOSE_QUIZZ_FAILED,
 });
 
 export const onGetOpenOverlay = () => ({
-  type: ON_GET_OPEN_OVERLAY
+  type: ON_GET_OPEN_OVERLAY,
 });
 
 export const onGetCloseOverlay = () => ({
-  type: ON_GET_CLOSE_OVERLAY
+  type: ON_GET_CLOSE_OVERLAY,
 });
 
-
 export const onGetShowNavbar = () => ({
-  type: ON_GET_SHOW_NAVBAR
+  type: ON_GET_SHOW_NAVBAR,
 });
 
 export const onGetHideNavbar = () => ({
-  type: ON_GET_HIDE_NAVBAR
+  type: ON_GET_HIDE_NAVBAR,
 });
 
-export const onSetBackorder = (variationId: string, backorderValue: boolean) => {
+export const onSetBackorder = (
+  variationId: string,
+  backorderValue: boolean
+) => {
   return async () => {
     await setBackorder(variationId, backorderValue);
   };

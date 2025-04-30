@@ -21,6 +21,7 @@ const StepSelects = ({
   titleParagraph,
   checks,
   items,
+  products,
   radioOptions,
   onCheckboxChange,
   selectedOption,
@@ -205,42 +206,44 @@ const StepSelects = ({
                 contentRefs.current[item.id] = el;
               }}
               itemsSelect={
-                <>
-                  {item.pieces.map((piece) => (
-                    <ContainerCheckLabel>
-                      <PieceItem key={piece.label}>
-                        <StepRadio
-                          radioOptions={[
-                            { value: piece.label, label: piece.label },
-                          ]}
-                          name={`radio-group-${item.id}`}
-                          checked={selectedRadios[item.id]}
-                          onChange={(e, value) =>
-                            handlePieceRadioChange(item.id, value)
-                          }
-                        />
-                      </PieceItem>
-                      {piece.hasInput &&
-                        selectedRadios[item.id] === piece.label && (
-                          <Input
-                            appearance="none"
-                            width="236px"
-                            height="16px"
-                            type="text"
-                            placeholder={piece.placeholder}
-                            value={inputValues[item.id]?.[piece.label] || ""}
-                            onChange={(e) =>
-                              handleRadioInputChange(
-                                item.id,
-                                piece.label,
-                                e.target.value
-                              )
+                item.pieces ? (
+                  <>
+                    {item.pieces.map((piece) => (
+                      <ContainerCheckLabel>
+                        <PieceItem key={piece.label}>
+                          <StepRadio
+                            radioOptions={[
+                              { value: piece.label, label: piece.label },
+                            ]}
+                            name={`radio-group-${item.id}`}
+                            checked={selectedRadios[item.id]}
+                            onChange={(e, value) =>
+                              handlePieceRadioChange(item.id, value)
                             }
                           />
-                        )}
-                    </ContainerCheckLabel>
-                  ))}
-                </>
+                        </PieceItem>
+                        {piece.hasInput &&
+                          selectedRadios[item.id] === piece.label && (
+                            <Input
+                              appearance="none"
+                              width="236px"
+                              height="16px"
+                              type="text"
+                              placeholder={piece.placeholder}
+                              value={inputValues[item.id]?.[piece.label] || ""}
+                              onChange={(e) =>
+                                handleRadioInputChange(
+                                  item.id,
+                                  piece.label,
+                                  e.target.value
+                                )
+                              }
+                            />
+                          )}
+                      </ContainerCheckLabel>
+                    ))}
+                  </>
+                ) : null
               }
               changedOption={changedOption}
               changeText={
@@ -257,6 +260,53 @@ const StepSelects = ({
                   quizzHandle(ids[0]);
                 } else {
                   console.warn("No quizz found for", item.title);
+                }
+              }}
+            />
+          );
+        })}
+      {products &&
+        products.map((item) => {
+          return (
+            <AccordionUnit
+              titleStyle={{
+                font: "regular",
+                fontSize: "16px",
+                lineHeight: "-0.48px",
+              }}
+              key={item.name_category}
+              itemName={
+                item.name_category.charAt(0).toUpperCase() +
+                item.name_category.slice(1).toLowerCase()
+              }
+              onClick={() => handleAccordionClick(item.name_category)}
+              isActive={activeItem === item.name_category}
+              contentHeight={contentHeights[item.name_category] || 0}
+              refContent={(el: HTMLDivElement | null) => {
+                contentRefs.current[item.name_category] = el;
+              }}
+              itemsSelect={
+                <>
+                  {item.products.map((product) => (
+                    <p>{product.name}</p>
+                  ))}
+                </>
+              }
+              changedOption={changedOption}
+              changeText={
+                getMatchingQuizzIds([item.name_category], menuData).length > 0
+                  ? "No sé, ¿cuál me recomiendan?"
+                  : ""
+              }
+              quizzActive={quizzActive}
+              setQuizzActive={setQuizzActive}
+              selectedQuizz={selectedQuizz}
+              quizzHandle={() => {
+                const ids = getMatchingQuizzIds([item.name_category], menuData);
+                if (ids.length > 0) {
+                  quizzHandle(ids[0]);
+                } else {
+                  console.warn("No quizz found for", item.name_category);
                 }
               }}
             />

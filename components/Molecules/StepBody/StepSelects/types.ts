@@ -1,3 +1,4 @@
+import { IgetProducts, IProduct } from "@/state/products/types";
 import { StepRadioProps } from "../StepRadio/types";
 
 export interface IChecks {
@@ -19,6 +20,8 @@ export type StepSelectsProps = {
   titleParagraph?: string;
   checks?: IChecks[];
   items?: IItems[];
+  products?: IgetProducts[];
+  itemsProducts?: React.ReactNode;
   menuData?: any;
   radioOptions?: StepRadioProps["radioOptions"];
   onCheckboxChange?: (
@@ -28,5 +31,5 @@ export type StepSelectsProps = {
   ) => void;
   selectedOption?: string;
   setSelectedOption?: React.Dispatch<React.SetStateAction<string>>;
-  changedOption?: boolean
+  changedOption?: boolean;
 };

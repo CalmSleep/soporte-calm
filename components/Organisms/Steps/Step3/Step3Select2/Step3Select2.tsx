@@ -1,32 +1,14 @@
 import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects";
-import React, { useState } from "react";
+import React from "react";
 import items from "../refundItems.json";
-import itemsChanges from "../changesItems.json";
 import rawInfoChanges from "../changesOptionItems.json";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import Paragraph from "@/components/Atoms/Typography/Text";
-import { Step3Select2and3Props } from "../types";
+import { ProductoData, Resultado, Step3Select2and3Props } from "../types";
 import { itemsFilterJson, mapOrdersWithSpan, normalizeText } from "../../util";
-import { menuData } from "@/components/Organisms/NavBar/utils";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import { IArrayButton } from "@/components/Organisms/Modals/ModalStep/types";
-import { set } from "date-fns";
-import { tr } from "date-fns/locale";
-
-type ValueObject = {
-  [key: string]: string[];
-};
-
-type ProductoData = {
-  id: string;
-  title: string;
-  values: ValueObject[];
-};
-
-type Resultado = {
-  productName: string;
-  comentario: string;
-};
+import Step3Select3 from "./Step3Select3";
 
 const Step3Select2 = ({
   orders,
@@ -48,18 +30,18 @@ const Step3Select2 = ({
   const matchedItems = itemsFilterJson(items, newOrders);
   const infoChanges = rawInfoChanges as unknown as ProductoData[];
 
-  console.log(
-    "selectedTitles:",
-    selectedTitles.map((str) => {
-      const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
-      const producto = match ? match[1].trim() : "";
-      const comentario = match ? match[2].trim() : "";
-      return {
-        producto,
-        comentario,
-      };
-    })
-  );
+  // console.log(
+  //   "selectedTitles:",
+  //   selectedTitles.map((str) => {
+  //     const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
+  //     const producto = match ? match[1].trim() : "";
+  //     const comentario = match ? match[2].trim() : "";
+  //     return {
+  //       producto,
+  //       comentario,
+  //     };
+  //   })
+  // );
 
   const resultadoFinal: Resultado[] = selectedTitles
     .map((str) => {
@@ -77,12 +59,12 @@ const Step3Select2 = ({
       const item = infoChanges.find((d) =>
         normalize(d.title).includes(normalize(producto))
       );
-      console.log("🟡 Producto:", producto);
-      console.log("🟡 Comentario:", comentario);
-      console.log("🟡 Item:", item);
+      // console.log("🟡 Producto:", producto);
+      // console.log("🟡 Comentario:", comentario);
+      // console.log("🟡 Item:", item);
 
       if (!item) {
-        console.log("❌ No se encontró item para:", producto);
+        //  console.log("❌ No se encontró item para:", producto);
         return null;
       }
 
@@ -91,7 +73,7 @@ const Step3Select2 = ({
       );
 
       if (!valueMatch) {
-        console.log("❌ No se encontró comentario para:", comentario);
+        //   console.log("❌ No se encontró comentario para:", comentario);
         return null;
       }
 
@@ -109,11 +91,11 @@ const Step3Select2 = ({
     })
     .filter((item): item is Resultado => item !== null);
 
-  console.log(
-    "resultadoFinal",
-    resultadoFinal.map((r) => r.comentario),
-    resultadoFinal.length === 1
-  );
+  // console.log(
+  //   "resultadoFinal",
+  //   resultadoFinal.map((r) => r.comentario),
+  //   resultadoFinal.length === 1
+  // );
   const paragraphArray = [
     {
       id: 1,
@@ -230,13 +212,7 @@ const Step3Select2 = ({
             </ModalSteps>
           )}
           {checkSeleccionado && valueSelect === "3" && (
-            <StepSelects
-              titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
-              items={itemsChanges}
-              onCheckboxChange={handleCheckboxChange}
-              changedOption
-              menuData={menuData}
-            />
+            <Step3Select3 handleCheckboxChange={handleCheckboxChange} />
           )}
         </>
       ) : (

@@ -1,4 +1,17 @@
-import { IDataSendNotion } from "../Step4/types";
+type ValueObject = {
+  [key: string]: string[];
+};
+
+export type ProductoData = {
+  id: string;
+  title: string;
+  values: ValueObject[];
+};
+
+export type Resultado = {
+  productName: string;
+  comentario: string;
+};
 
 export type Step3Props = {
   valueSelect: string | null;
