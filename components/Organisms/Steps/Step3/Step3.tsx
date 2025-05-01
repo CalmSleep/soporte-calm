@@ -38,7 +38,7 @@ Step3Props) => {
     notionInfo,
     setNotionInfo,
   } = useValueSelect();
-  console.log("titles", selectedTitles);
+  //console.log("titles", selectedTitles);
   // console.log(notionInfo);
   const orders = useSelector(getThankuContent);
   const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);

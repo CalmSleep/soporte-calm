@@ -16,6 +16,10 @@ import { StepSelectsProps } from "./types";
 import useSelects from "./useSelects";
 import { getMatchingQuizzIds } from "@/components/Organisms/Steps/util";
 import { RadioGroup } from "../StepRadio/styled";
+import { atrrToRender } from "@/utils/productsFunctios";
+import CardProducts from "../../CardRelatedProductsATC/CardProducts";
+import ProductProps from "@/components/Organisms/ProductProps/ProductProps";
+import { IChildrenProd } from "@/state/products/types";
 
 const StepSelects = ({
   titleParagraph,
@@ -52,6 +56,15 @@ const StepSelects = ({
   });
   const [quizzActive, setQuizzActive] = useState(false);
   const [selectedQuizz, setSelectedQuizz] = useState<undefined | string>();
+  const [selectedProductNames, setSelectedProductNames] = useState<string[]>(
+    []
+  );
+  const [selectedChild, setSelectedChild] = React.useState<IChildrenProd>();
+  console.log("selectedChild", selectedChild);
+
+  const [isSizechange, setIsSizeChange] = React.useState(false);
+  const [isColorchange, setIsColorChange] = React.useState(false);
+  const defaultProds = React.useMemo(() => [], []);
 
   const quizzHandle = (quizzId?: string) => {
     setQuizzActive(!quizzActive);
@@ -287,9 +300,62 @@ const StepSelects = ({
               }}
               itemsSelect={
                 <>
-                  {item.products.map((product) => (
-                    <p>{product.name}</p>
-                  ))}
+                  {item.products.map((product) => {
+                    const cardProductDate = menuData.flatMap((item: any) =>
+                      item.columns.flatMap((col: any) => col.products)
+                    );
+                    const descripcion = cardProductDate.find((item: any) =>
+                      item.name
+                        .toLowerCase()
+                        .includes(product.name.toLowerCase())
+                    );
+                    let propsNames = atrrToRender(product.children);
+                    return (
+                      <>
+                        <Input
+                          appearance="none"
+                          width="14px"
+                          height="14px"
+                          padding="6px"
+                          borderRadius="2px"
+                          checkBorderColor="yellowCalm"
+                          checkColor="yellowCalm"
+                          borderColorFocused="yellowCalm"
+                          color="yellowCalm"
+                          type="checkbox"
+                          name={product.name}
+                          value={product.name}
+                          onChange={(e) => {
+                            const isChecked = e.target.checked;
+                            const name = product.name;
+                            setSelectedProductNames((prev) => {
+                              if (isChecked) {
+                                return [...prev, name];
+                              } else {
+                                return prev.filter((n) => n !== name);
+                              }
+                            });
+                          }}
+                        />
+                        <CardProducts
+                          image={product.image_cross_selling}
+                          name={product.name}
+                          description={descripcion?.description || ""}
+                        />
+                        {selectedProductNames.includes(product.name) && (
+                          <ProductProps
+                            children={product.children}
+                            selectedChild={selectedChild}
+                            setSelectedChild={setSelectedChild}
+                            setIsColorChange={setIsColorChange}
+                            setIsSizeChange={setIsSizeChange}
+                            defaultProds={defaultProds}
+                            propsNames={propsNames}
+                          />
+                        )}
+                      </>
+                    );
+                  })}
                 </>
               }
               changedOption={changedOption}
