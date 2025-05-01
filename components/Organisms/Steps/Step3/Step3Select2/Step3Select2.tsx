@@ -212,7 +212,10 @@ const Step3Select2 = ({
             </ModalSteps>
           )}
           {checkSeleccionado && valueSelect === "3" && (
-            <Step3Select3 handleCheckboxChange={handleCheckboxChange} />
+            <Step3Select3
+              selectedTitles={selectedTitles}
+              handleCheckboxChange={handleCheckboxChange}
+            />
           )}
         </>
       ) : (

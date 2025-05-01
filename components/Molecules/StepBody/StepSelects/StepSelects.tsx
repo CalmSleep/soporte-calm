@@ -32,6 +32,7 @@ const StepSelects = ({
   setSelectedOption,
   changedOption,
   menuData,
+  selectedTitle,
 }: StepSelectsProps) => {
   const {
     handleAccordionClick,
@@ -47,7 +48,14 @@ const StepSelects = ({
     handleInternalRadioChange,
     handlePieceRadioChange,
     handleRadioInputChange,
+    selectedProductNames,
+    handleProductCheckboxChange,
+    selectedChild,
+    setSelectedChild,
+    setIsColorChange,
+    setIsSizeChange,
   } = useSelects({
+    selectedTitle,
     onCheckboxChange,
     items,
     radioOptions,
@@ -56,14 +64,8 @@ const StepSelects = ({
   });
   const [quizzActive, setQuizzActive] = useState(false);
   const [selectedQuizz, setSelectedQuizz] = useState<undefined | string>();
-  const [selectedProductNames, setSelectedProductNames] = useState<string[]>(
-    []
-  );
-  const [selectedChild, setSelectedChild] = React.useState<IChildrenProd>();
-  console.log("selectedChild", selectedChild);
-
-  const [isSizechange, setIsSizeChange] = React.useState(false);
-  const [isColorchange, setIsColorChange] = React.useState(false);
+  //console.log("selectedProductNames", selectedProductNames);
+  // console.log("selectedChild", selectedChild);
   const defaultProds = React.useMemo(() => [], []);
 
   const quizzHandle = (quizzId?: string) => {
@@ -258,23 +260,6 @@ const StepSelects = ({
                   </>
                 ) : null
               }
-              changedOption={changedOption}
-              changeText={
-                getMatchingQuizzIds([item.title], menuData).length > 0
-                  ? "No sé, ¿cuál me recomiendan?"
-                  : ""
-              }
-              quizzActive={quizzActive}
-              setQuizzActive={setQuizzActive}
-              selectedQuizz={selectedQuizz}
-              quizzHandle={() => {
-                const ids = getMatchingQuizzIds([item.title], menuData);
-                if (ids.length > 0) {
-                  quizzHandle(ids[0]);
-                } else {
-                  console.warn("No quizz found for", item.title);
-                }
-              }}
             />
           );
         })}
@@ -325,17 +310,9 @@ const StepSelects = ({
                           type="checkbox"
                           name={product.name}
                           value={product.name}
-                          onChange={(e) => {
-                            const isChecked = e.target.checked;
-                            const name = product.name;
-                            setSelectedProductNames((prev) => {
-                              if (isChecked) {
-                                return [...prev, name];
-                              } else {
-                                return prev.filter((n) => n !== name);
-                              }
-                            });
-                          }}
+                          onChange={(e) =>
+                            handleProductCheckboxChange(e, product.name)
+                          }
                         />
                         <CardProducts
                           image={product.image_cross_selling}

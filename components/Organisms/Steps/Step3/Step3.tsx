@@ -38,10 +38,11 @@ Step3Props) => {
     notionInfo,
     setNotionInfo,
   } = useValueSelect();
-  //console.log("titles", selectedTitles);
+  console.log("titles", selectedTitles);
   // console.log(notionInfo);
   const orders = useSelector(getThankuContent);
   const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);
+
   const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
   const [continuemos, otros2] = splitDevolucion(selectedTitles);
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
@@ -74,16 +75,17 @@ Step3Props) => {
   const products =
     valueSelect === "2"
       ? `${otros2.join(", ")}`
-      : `${selectedTitles
-          .filter((title) => !matchedTitles.includes(title))
-          .join(", ")}`;
+      : `${selectedTitles.filter((title) => !title.includes("-")).join(", ")}`;
   // console.log("products", products);
+
+  const result = selectedTitles
+    .filter((title) => title.includes("-"))
+    .map((title) => title.split(" - ")[0])
+    .join(", ");
 
   const infoSelect2And3 = [
     products,
-    valueSelect === "2"
-      ? `${continuemos.join(", ")}`
-      : `${extractItemsInParens(matchedTitles).join(", ")}`,
+    valueSelect === "2" ? `${continuemos.join(", ")}` : result,
   ];
 
   React.useEffect(() => {
@@ -98,11 +100,11 @@ Step3Props) => {
           : [],
       productChange:
         valueSelect === "3"
-          ? [`${extractItemsInParens(matchedTitles).join(", ")}`]
+          ? selectedTitles.filter((title) => title.includes("-"))
           : [],
     });
   }, [checkboxConfirmed]);
-  // console.log("notionInfo step 3", notionInfo);
+  console.log("notionInfo step 3", notionInfo);
 
   return (
     <>

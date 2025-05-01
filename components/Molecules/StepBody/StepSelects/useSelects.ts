@@ -1,15 +1,62 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { IItems, StepSelectsProps } from "./types";
 import { set } from "date-fns";
+import { IChildrenProd } from "@/state/products/types";
 
 const useSelects = ({
   onCheckboxChange,
   items,
   radioOptions,
   selectedOption,
+  selectedTitle,
   setSelectedOption,
 }: StepSelectsProps) => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
+  const [selectedProductNames, setSelectedProductNames] = useState<string[]>(
+    []
+  );
+  const [selectedChild, setSelectedChild] = useState<IChildrenProd>();
+  useEffect(() => {
+    // console.log("selectedName", selectedProductNames);
+
+    if (!selectedChild) return;
+
+    const newTitle = selectedChild.name;
+    const baseName = newTitle.split(" - ")[0];
+
+    // Buscamos el título previo que coincida con la baseName
+    const previous =
+      selectedTitle &&
+      selectedTitle.find((title) => title.startsWith(baseName));
+
+    // Verificamos si hay un producto que coincida con baseName
+    const matchedProduct = selectedProductNames.find((productName) =>
+      productName.startsWith(baseName)
+    );
+
+    //console.log("matchedProduct", matchedProduct);
+
+    // Si encontramos un título previo y no coincide con el nuevo título, limpiamos el título previo
+    if (previous && previous !== newTitle && matchedProduct) {
+      onCheckboxChange && onCheckboxChange(false, previous);
+    }
+
+    // Si no hay un producto coincidente, limpiamos el título
+    if (!matchedProduct) {
+      // Limpiamos el estado previo o el título que ya no coincide
+      onCheckboxChange && onCheckboxChange(false, previous || newTitle);
+    }
+
+    // Finalmente, seleccionamos el nuevo título
+    if (matchedProduct) {
+      onCheckboxChange && onCheckboxChange(true, newTitle);
+    }
+  }, [selectedChild, selectedProductNames]); // Dependencias: selectedChild y selectedProductNames
+
+  // console.log("selectedChild", selectedChild);
+
+  const [isSizechange, setIsSizeChange] = useState(false);
+  const [isColorchange, setIsColorChange] = useState(false);
   const handleAccordionClick = (id: string) => {
     setActiveItem((prev) => (prev === id ? null : id));
   };
@@ -160,6 +207,25 @@ const useSelects = ({
     }
   };
 
+  const handleProductCheckboxChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    productName: string
+  ) => {
+    const isChecked = e.target.checked;
+
+    setSelectedProductNames((prev) => {
+      const cleanedProductNames = prev.filter(
+        (n) => !n.startsWith(productName.split(" (")[0])
+      );
+
+      const updatedProductNames = isChecked
+        ? [...cleanedProductNames, productName]
+        : cleanedProductNames;
+
+      return updatedProductNames;
+    });
+  };
+
   return {
     activeItem,
     handleAccordionClick,
@@ -174,6 +240,14 @@ const useSelects = ({
     contentRefs,
     contentHeights,
     handleInternalRadioChange,
+    handleProductCheckboxChange,
+    selectedProductNames,
+    selectedChild,
+    setSelectedChild,
+    isSizechange,
+    setIsSizeChange,
+    isColorchange,
+    setIsColorChange,
   };
 };
 

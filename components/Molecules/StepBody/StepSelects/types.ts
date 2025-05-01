@@ -32,4 +32,5 @@ export type StepSelectsProps = {
   selectedOption?: string;
   setSelectedOption?: React.Dispatch<React.SetStateAction<string>>;
   changedOption?: boolean;
+  selectedTitle?: string[];
 };

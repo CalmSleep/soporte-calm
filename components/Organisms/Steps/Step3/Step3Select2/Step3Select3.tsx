@@ -8,8 +8,10 @@ import { onGetAllProducts } from "@/state/products/productsActions";
 
 const Step3Select3 = ({
   handleCheckboxChange,
+  selectedTitles,
 }: {
   handleCheckboxChange: Step3Select2and3Props["handleCheckboxChange"];
+  selectedTitles: string[];
 }) => {
   const dispatch = useDispatch();
   const products = useSelector(getAllProductsData);
@@ -24,6 +26,7 @@ const Step3Select3 = ({
 
   return (
     <StepSelects
+      selectedTitle={selectedTitles}
       titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
       products={products}
       onCheckboxChange={handleCheckboxChange}
