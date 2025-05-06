@@ -161,33 +161,6 @@ export const splitDevolucion = (selectedTitles: string[]) => {
   return [continuemos, otros2];
 };
 
-export const filterTitlesByCategories = (
-  itemsChanges: { id: string; title: string; pieces: { label: string }[] }[],
-  selectedTitles: string[]
-): string[] => {
-  const categoryTitles = itemsChanges.map((item) => item.title.toLowerCase());
-
-  return selectedTitles.filter((title) =>
-    categoryTitles.some((cat) => title.toLowerCase().includes(cat))
-  );
-};
-export const extractItemsInParens = (matchedTitles: string[]): string[] => {
-  const results: string[] = [];
-
-  matchedTitles.forEach((title) => {
-    const match = title.match(/\(([^)]+)\)/); // captura lo que está entre paréntesis
-    if (match) {
-      const items = match[1]
-        .split(",")
-        .map((item) => item.trim())
-        .filter(Boolean); // eliminar strings vacíos si hubiera
-      results.push(...items);
-    }
-  });
-
-  return results;
-};
-
 export function formatDateToISO(dateStr: string) {
   const [day, month, year] = dateStr.split("/");
   return `${year}-${month}-${day}`;

@@ -5,25 +5,18 @@ import Step3Select1 from "./Step3Select1/Step3Select1";
 import { Step3Props } from "./types";
 import Step3Select2 from "./Step3Select2/Step3Select2";
 import Step4 from "../Step4/Step4";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getThankuContent } from "@/state/order/orderSelector";
 import optionStep3 from "./step3.json";
 import {
-  extractItemsInParens,
-  filterTitlesByCategories,
   selectedTitleOthers,
   splitDevolucion,
   splitQuieroComprar,
 } from "../util";
-import itemsChanges from "./changesItems.json";
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 import { getAllProductsData } from "@/state/products/productsSelector";
-const Step3 = ({
-  valueSelect,
-  setConfirmedValue,
-}: // notionInfo,
-// setNotionInfo,
-Step3Props) => {
+import { onGetAllProducts } from "@/state/products/productsActions";
+const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const {
     selectedValue,
     selectedTitles,
@@ -42,8 +35,16 @@ Step3Props) => {
   //  console.log("titles", selectedTitles);
   // console.log(notionInfo);
   const orders = useSelector(getThankuContent);
+  const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
-  const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);
+
+  React.useEffect(() => {
+    const productsData = async () => {
+      await dispatch(onGetAllProducts());
+    };
+
+    productsData();
+  }, []);
 
   const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
   const [continuemos, otros2] = splitDevolucion(selectedTitles);

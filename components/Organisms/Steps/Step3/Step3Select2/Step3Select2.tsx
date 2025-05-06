@@ -31,25 +31,24 @@ const Step3Select2 = ({
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
   const infoChanges = rawInfoChanges as unknown as ProductoData[];
-
-  // console.log(
-  //   "selectedTitles:",
-  //   selectedTitles.map((str) => {
-  //     const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
-  //     const producto = match ? match[1].trim() : "";
-  //     const comentario = match ? match[2].trim() : "";
-  //     return {
-  //       producto,
-  //       comentario,
-  //     };
-  //   })
-  // );
+  console.log("orders", orders);
+  console.log(
+    "products",
+    products?.flatMap((p) => p.products)
+  );
 
   const resultadoFinal: Resultado[] = selectedTitles
     .map((str) => {
       const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
       const producto = match ? match[1].trim() : "";
       const comentario = match ? match[2].trim() : "";
+      const attributesOrder = orders.find(
+        (order: any) => order.product_name === producto
+      )?.attributes;
+      const children = products
+        ?.flatMap((p) => p.products)
+        .find((p) => p.name === producto)
+        ?.children.map((c) => c.name);
 
       const normalize = (s: string) =>
         s
@@ -62,9 +61,12 @@ const Step3Select2 = ({
         normalize(d.title).includes(normalize(producto))
       );
 
-      // console.log("🟡 Producto:", producto);
-      // console.log("🟡 Comentario:", comentario);
-      // console.log("🟡 Item:", item);
+      console.log("🟡 Producto:", producto);
+      console.log("🟡 Comentario:", comentario);
+      console.log("🟡 Attributes:", attributesOrder);
+      console.log("🟡 Children:", children);
+
+      console.log("🟡 Item:", item);
 
       if (!item) {
         //  console.log("❌ No se encontró item para:", producto);
