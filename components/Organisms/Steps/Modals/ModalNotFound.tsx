@@ -25,7 +25,10 @@ En unos segundos, vas a ver el chat en pantalla. Si tenés tu número de pedido 
                 dni: 0,
               });
             dispatch && dispatch(onGetOrderByDni([]));
-            handleChatBot && handleChatBot("Hola! No encuentro mi pedido");
+            handleChatBot &&
+              handleChatBot(
+                "Hola, no pude encontrar mi pedido con mi DNI y necesito ayuda para avanzar con la gestión."
+              );
           }}
         />
       )}

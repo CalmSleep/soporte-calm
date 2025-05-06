@@ -29,7 +29,10 @@ const ModalWhatsapp = ({
               window.location.reload();
             } else {
               dispatch && dispatch(onGetOrderByDni([]));
-              handleChatBot && handleChatBot("Hola! No encuentro mi pedido");
+              handleChatBot &&
+                handleChatBot(
+                  "Hola, no pude encontrar mi pedido con mi DNI y necesito ayuda para avanzar con la gestión."
+                );
             }
           }}
           buttonText="Aceptar"

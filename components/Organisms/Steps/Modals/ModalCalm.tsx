@@ -28,7 +28,9 @@ const ModalCalm = ({
           clicText2="hace clic acá."
           onClick={() => {
             handleChatBot &&
-              handleChatBot("Hola! Mi correo ya no es accesible");
+              handleChatBot(
+                "Hola, necesito ayuda para avanzar con la gestión."
+              );
           }}
           handleClose={() => {
             if (data && data.length > 0) {
