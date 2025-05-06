@@ -16,7 +16,7 @@ const Step1 = ({ order, dniUser }: StepDniProps) => {
         paragraph={
           order
             ? ""
-            : "Dejanos el DNI que usaste en tu compra. Con estos datos vamos a buscar tus pedidos y ayudarte a gestionar tu solicitud."
+            : "Dejanos el DNI que usaste en tu compra. Con este dato vamos a buscar tus pedidos y ayudarte a gestionar tu solicitud."
         }
       >
         {order ? (
