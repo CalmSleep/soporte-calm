@@ -25,7 +25,14 @@ export type LabelStyledProps = {
   $hasRequired?: boolean;
 };
 
+type responsiveMobile = {
+  fontSize?: string;
+  width?: string;
+  height?: string;
+};
+
 export type InputWrapperProps = {
   $width?: string;
+  $responsiveMobile?: responsiveMobile;
   $marginTop?: string;
 };

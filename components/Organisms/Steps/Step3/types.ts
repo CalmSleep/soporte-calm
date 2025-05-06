@@ -1,4 +1,19 @@
-import { IDataSendNotion } from "../Step4/types";
+import { IgetProducts } from "@/state/products/types";
+
+type ValueObject = {
+  [key: string]: string[];
+};
+
+export type ProductoData = {
+  id: string;
+  title: string;
+  values: ValueObject[];
+};
+
+export type Resultado = {
+  productName: string;
+  comentario: string;
+};
 
 export type Step3Props = {
   valueSelect: string | null;
@@ -61,6 +76,7 @@ export interface Step3Select2and3Props {
   modalOpen?: boolean;
   setModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   handleConfirmCheckbox?: () => void;
+  products?: IgetProducts[];
 }
 
 export type Category = {

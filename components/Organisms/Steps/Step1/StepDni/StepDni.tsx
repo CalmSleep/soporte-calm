@@ -94,14 +94,18 @@ const StepDni = () => {
     }
   };
 
-  function openChat() {
-    var customEvent = new CustomEvent("openWebChatbot");
-    window.dispatchEvent(customEvent);
+  function openChat(message = "") {
+    if (typeof window.openWebChatbot === "function") {
+      window.openWebChatbot(message);
+    } else {
+      console.warn("openWebChatbot no está disponible en window");
+    }
   }
-  const handleChatBot = () => {
+
+  const handleChatBot = (mensaje: string) => {
     setTimeout(() => {
       setIsOpen(false);
-      openChat();
+      openChat(mensaje);
     }, 200);
   };
 

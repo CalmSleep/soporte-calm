@@ -1,3 +1,4 @@
+import { IgetProducts } from "@/state/products/types";
 import nomenclaruras from "./nomenclaturas.json";
 import { ActionMap, Issue, ParsedResult, Piece } from "./types";
 
@@ -31,20 +32,35 @@ export function getActionType(
 }
 
 export const skuFilterProduct = (dataUser: any, rawString: string) => {
+  const productNames = rawString.split(/,(?![^\(]*\))/).map((entry) =>
+    entry
+      .replace(/\(.*?\)/g, "")
+      .trim()
+      .toLowerCase()
+  );
+
   return dataUser.items
     .filter((item: any) => {
-      const productNames = rawString.split(/,(?![^\(]*\))/).map((entry) =>
-        entry
-          .replace(/\(.*?\)/g, "")
-          .trim()
-          .toLowerCase()
-      );
+      const productWords = item.product_name
+        .replace(/\(.*?\)/g, "")
+        .trim()
+        .toLowerCase()
+        .split(/\s|&|,/)
+        .filter(Boolean);
 
-      return productNames.some((name: string) =>
-        item.product_name.toLowerCase().includes(name)
-      );
+      return productNames.some((name: string) => {
+        const nameWords = name.split(/\s|&|,/).filter(Boolean);
+        return nameWords.some((word) => productWords.includes(word));
+      });
     })
     .map((item: any) => ({ name: item.sku }));
+};
+
+export const skuChangeFilter = (productChange: string[]) => {
+  return productChange.map((item) => {
+    const sku = item.split(",").pop()?.trim();
+    return { name: sku || "" };
+  });
 };
 
 export const mapIssuesToNotionValues = (input: string): Issue[] => {
@@ -167,13 +183,13 @@ export const getProveedor = (proveedor: string) => {
   if (proveedor.includes("beetrack") || proveedor.includes("simpliroute")) {
     return "Flota Propia";
   }
-  if (proveedor.includes("cruz")) {
+  if (proveedor.includes("cruzdelsur")) {
     return "Cruz del Sur";
   }
   if (proveedor.includes("andesmar")) {
     return "Andesmar";
   }
-  if (proveedor.includes("local")) {
+  if (proveedor.includes("localm")) {
     return "Localm";
   }
   return "-";

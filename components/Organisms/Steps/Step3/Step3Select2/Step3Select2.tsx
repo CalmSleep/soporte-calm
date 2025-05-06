@@ -1,32 +1,15 @@
 import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects";
-import React, { useState } from "react";
+import React from "react";
 import items from "../refundItems.json";
-import itemsChanges from "../changesItems.json";
 import rawInfoChanges from "../changesOptionItems.json";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import Paragraph from "@/components/Atoms/Typography/Text";
-import { Step3Select2and3Props } from "../types";
+import { ProductoData, Resultado, Step3Select2and3Props } from "../types";
 import { itemsFilterJson, mapOrdersWithSpan, normalizeText } from "../../util";
-import { menuData } from "@/components/Organisms/NavBar/utils";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import { IArrayButton } from "@/components/Organisms/Modals/ModalStep/types";
-import { set } from "date-fns";
-import { tr } from "date-fns/locale";
-
-type ValueObject = {
-  [key: string]: string[];
-};
-
-type ProductoData = {
-  id: string;
-  title: string;
-  values: ValueObject[];
-};
-
-type Resultado = {
-  productName: string;
-  comentario: string;
-};
+import Step3Select3 from "./Step3Select3";
+import { IgetProducts } from "@/state/products/types";
 
 const Step3Select2 = ({
   orders,
@@ -43,23 +26,24 @@ const Step3Select2 = ({
   modalOpen,
   setModalOpen,
   handleConfirmCheckbox,
+  products,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
   const infoChanges = rawInfoChanges as unknown as ProductoData[];
 
-  console.log(
-    "selectedTitles:",
-    selectedTitles.map((str) => {
-      const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
-      const producto = match ? match[1].trim() : "";
-      const comentario = match ? match[2].trim() : "";
-      return {
-        producto,
-        comentario,
-      };
-    })
-  );
+  // console.log(
+  //   "selectedTitles:",
+  //   selectedTitles.map((str) => {
+  //     const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
+  //     const producto = match ? match[1].trim() : "";
+  //     const comentario = match ? match[2].trim() : "";
+  //     return {
+  //       producto,
+  //       comentario,
+  //     };
+  //   })
+  // );
 
   const resultadoFinal: Resultado[] = selectedTitles
     .map((str) => {
@@ -77,12 +61,13 @@ const Step3Select2 = ({
       const item = infoChanges.find((d) =>
         normalize(d.title).includes(normalize(producto))
       );
-      console.log("🟡 Producto:", producto);
-      console.log("🟡 Comentario:", comentario);
-      console.log("🟡 Item:", item);
+
+      // console.log("🟡 Producto:", producto);
+      // console.log("🟡 Comentario:", comentario);
+      // console.log("🟡 Item:", item);
 
       if (!item) {
-        console.log("❌ No se encontró item para:", producto);
+        //  console.log("❌ No se encontró item para:", producto);
         return null;
       }
 
@@ -91,7 +76,7 @@ const Step3Select2 = ({
       );
 
       if (!valueMatch) {
-        console.log("❌ No se encontró comentario para:", comentario);
+        //   console.log("❌ No se encontró comentario para:", comentario);
         return null;
       }
 
@@ -111,8 +96,7 @@ const Step3Select2 = ({
 
   console.log(
     "resultadoFinal",
-    resultadoFinal.map((r) => r.comentario),
-    resultadoFinal.length === 1
+    resultadoFinal.map((r) => r.productName).join(", ")
   );
   const paragraphArray = [
     {
@@ -127,7 +111,7 @@ const Step3Select2 = ({
     {
       id: 2,
       text:
-        resultadoFinal.length === 1 ? (
+        selectedTitles.length === 1 && resultadoFinal.length === 1 ? (
           <Paragraph font="bold">
             🔍 En base a lo que buscás, creemos que{" "}
             {`${resultadoFinal.map((r) => r.productName).join(", ")}`} puede ser
@@ -143,7 +127,7 @@ const Step3Select2 = ({
     {
       id: 3,
       text:
-        resultadoFinal.length === 1 ? (
+        selectedTitles.length === 1 && resultadoFinal.length === 1 ? (
           <Paragraph>
             📌 {`${resultadoFinal.map((r) => r.comentario).join(", ")}`}
           </Paragraph>
@@ -157,7 +141,7 @@ const Step3Select2 = ({
     {
       id: 4,
       text:
-        resultadoFinal.length === 1 ? (
+        selectedTitles.length === 1 && resultadoFinal.length === 1 ? (
           <Paragraph>
             Para facilitarte el cambio, te ofrecemos un <b>5% OFF</b> en este
             nuevo producto.
@@ -188,7 +172,6 @@ const Step3Select2 = ({
       text: "¡Vamos con cambio!",
       backgroundColor: "yellowCalm",
       onClick: () => {
-        console.log("!Vamos con cambio!");
         handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
         setConfirmedValue && setConfirmedValue("3");
         setSelectedTitles &&
@@ -198,6 +181,30 @@ const Step3Select2 = ({
             )
           );
         setModalOpen && setModalOpen(false);
+        // console.log("selectedTitles", selectedTitles);
+
+        // if (selectedTitles.length === 1 && resultadoFinal.length === 1) {
+        //   handleCheckboxChangeConfirmed(
+        //     true,
+        //     `${resultadoFinal
+        //       .map((r) => r.productName.replace(/\s*\(([^)]+)\)/, " - $1"))
+        //       .join(", ")}`,
+        //     ["cambio"]
+        //   );
+        //   setConfirmedValue && setConfirmedValue("3");
+        //   handleConfirmCheckbox && handleConfirmCheckbox();
+        //   setModalOpen && setModalOpen(false);
+        // } else {
+        //   handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+        //   setConfirmedValue && setConfirmedValue("3");
+        //   setSelectedTitles &&
+        //     setSelectedTitles(
+        //       selectedTitles.filter(
+        //         (title) => !title.toLowerCase().includes("cambio")
+        //       )
+        //     );
+        //   setModalOpen && setModalOpen(false);
+        // }
       },
     },
   ];
@@ -230,12 +237,10 @@ const Step3Select2 = ({
             </ModalSteps>
           )}
           {checkSeleccionado && valueSelect === "3" && (
-            <StepSelects
-              titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
-              items={itemsChanges}
-              onCheckboxChange={handleCheckboxChange}
-              changedOption
-              menuData={menuData}
+            <Step3Select3
+              selectedTitles={selectedTitles}
+              handleCheckboxChange={handleCheckboxChange}
+              products={products as IgetProducts[]}
             />
           )}
         </>

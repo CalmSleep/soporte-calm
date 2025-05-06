@@ -48,6 +48,8 @@ import {
   ON_GET_KLAVIYO_SUSCRIBERS_FINISHED,
   ON_LOADING_GET_DNI_START,
   ON_LOADING_GET_DNI_FINISHED,
+  ON_LOADING_GET_PRODUCTS_START,
+  ON_LOADING_GET_PRODUCTS_FINISHED,
 } from "./loadingConstants";
 
 import { ILoadingState } from "./types";
@@ -201,7 +203,11 @@ export default (state = initialState, action: AnyAction) => {
         ...state,
         loadingGetOrderDni: true,
       };
-
+    case ON_LOADING_GET_PRODUCTS_START:
+      return {
+        ...state,
+        loadingGetProducts: true,
+      };
     case ON_GET_CART_LOADING_FINISHED:
       return {
         ...state,
@@ -345,6 +351,11 @@ export default (state = initialState, action: AnyAction) => {
       return {
         ...state,
         loadingGetOrderDni: false,
+      };
+    case ON_LOADING_GET_PRODUCTS_FINISHED:
+      return {
+        ...state,
+        loadingGetProducts: false,
       };
     default:
       return state;

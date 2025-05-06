@@ -9,6 +9,11 @@ export const InputWrapper = styled.div<InputWrapperProps>`
   flex-direction: column;
   justify-content: center;
   align-items: left;
+
+  @media ${(props) => props.theme.devices.biggerMobile} {
+    width: ${({ $responsiveMobile }) =>
+      $responsiveMobile?.width ? $responsiveMobile?.width : "100%"};
+  }
 `;
 
 export const Label = styled.span<LabelStyledProps>`

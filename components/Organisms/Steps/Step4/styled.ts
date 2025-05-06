@@ -80,6 +80,14 @@ export const CointainerInputs = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 10px;
+  margin-top: 20px;
+  gap: 20px;
   align-items: start;
+
+  @media ${(props) => props.theme.devices.biggerMobile} {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: start;
+  }
 `;

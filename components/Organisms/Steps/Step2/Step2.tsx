@@ -50,13 +50,6 @@ const Step2 = () => {
             info={[infoString(confirmedValue)]}
             onClick={() => {
               setConfirmedValue(null);
-              // setNotionInfo({
-              //   ...notionInfo,
-              //   userIntention: "",
-              //   problemDescription: [],
-              //   productReturn: [],
-              //   productChange: [],
-              // });
             }}
           />
         )}
@@ -65,8 +58,6 @@ const Step2 = () => {
         <Step3
           valueSelect={confirmedValue}
           setConfirmedValue={setConfirmedValue}
-          // notionInfo={notionInfo}
-          // setNotionInfo={setNotionInfo}
         />
       )}
     </>

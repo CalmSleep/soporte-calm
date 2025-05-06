@@ -47,6 +47,8 @@ import {
   ON_GET_KLAVIYO_SUSCRIBERS_FINISHED,
   ON_LOADING_GET_DNI_START,
   ON_LOADING_GET_DNI_FINISHED,
+  ON_LOADING_GET_PRODUCTS_START,
+  ON_LOADING_GET_PRODUCTS_FINISHED,
 } from "./loadingConstants";
 
 export const onGetForgottenEmailLoadingStart = () => ({
@@ -238,4 +240,12 @@ export const onLoadingGetDniStart = () => ({
 
 export const onLoadingGetDniFinished = () => ({
   type: ON_LOADING_GET_DNI_FINISHED,
+});
+
+export const onLoadingGetProductsStart = () => ({
+  type: ON_LOADING_GET_PRODUCTS_START,
+});
+
+export const onLoadingGetProductsFinished = () => ({
+  type: ON_LOADING_GET_PRODUCTS_FINISHED,
 });

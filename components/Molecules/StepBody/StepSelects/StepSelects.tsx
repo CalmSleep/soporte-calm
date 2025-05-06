@@ -5,28 +5,39 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 
 import StepRadio from "@/components/Molecules/StepBody/StepRadio/StepRadio";
 import {
+  AcordeonProducts,
+  CointainAcordeonProducts,
+  CointainAcordeonRadio,
   CointainCheckbox,
   CointainText,
   ContainerCheckLabel,
   PieceItem,
   PieceItems,
   PieceList,
+  SelectableDiv,
 } from "./styled";
 import { StepSelectsProps } from "./types";
 import useSelects from "./useSelects";
 import { getMatchingQuizzIds } from "@/components/Organisms/Steps/util";
 import { RadioGroup } from "../StepRadio/styled";
+import { atrrToRender } from "@/utils/productsFunctios";
+import CardProducts from "../../CardRelatedProductsATC/CardProducts";
+import ProductProps from "@/components/Organisms/ProductProps/ProductProps";
+import { IChildrenProd } from "@/state/products/types";
+import Quizz from "../../Quizz/Quizz";
 
 const StepSelects = ({
   titleParagraph,
   checks,
   items,
+  products,
   radioOptions,
   onCheckboxChange,
   selectedOption,
   setSelectedOption,
   changedOption,
   menuData,
+  selectedTitle,
 }: StepSelectsProps) => {
   const {
     handleAccordionClick,
@@ -42,15 +53,24 @@ const StepSelects = ({
     handleInternalRadioChange,
     handlePieceRadioChange,
     handleRadioInputChange,
+    selectedProductNames,
+    handleProductCheckboxChange,
+    selectedChild,
+    setSelectedChild,
+    setIsColorChange,
+    setIsSizeChange,
   } = useSelects({
+    selectedTitle,
     onCheckboxChange,
     items,
     radioOptions,
-    selectedOption,
     setSelectedOption,
   });
   const [quizzActive, setQuizzActive] = useState(false);
   const [selectedQuizz, setSelectedQuizz] = useState<undefined | string>();
+  //console.log("selectedProductNames", selectedProductNames);
+  // console.log("selectedChild", selectedChild);
+  const defaultProds = React.useMemo(() => [], []);
 
   const quizzHandle = (quizzId?: string) => {
     setQuizzActive(!quizzActive);
@@ -123,7 +143,7 @@ const StepSelects = ({
                 contentRefs.current[item.id] = el;
               }}
               itemsSelect={
-                <>
+                <CointainAcordeonRadio>
                   <StepRadio
                     radioOptions={radioOptions || []}
                     name={`radio-${item.id}`}
@@ -180,7 +200,7 @@ const StepSelects = ({
                       ))}
                     </PieceList>
                   )}
-                </>
+                </CointainAcordeonRadio>
               }
             />
           );
@@ -205,60 +225,160 @@ const StepSelects = ({
                 contentRefs.current[item.id] = el;
               }}
               itemsSelect={
-                <>
-                  {item.pieces.map((piece) => (
-                    <ContainerCheckLabel>
-                      <PieceItem key={piece.label}>
-                        <StepRadio
-                          radioOptions={[
-                            { value: piece.label, label: piece.label },
-                          ]}
-                          name={`radio-group-${item.id}`}
-                          checked={selectedRadios[item.id]}
-                          onChange={(e, value) =>
-                            handlePieceRadioChange(item.id, value)
-                          }
-                        />
-                      </PieceItem>
-                      {piece.hasInput &&
-                        selectedRadios[item.id] === piece.label && (
-                          <Input
-                            appearance="none"
-                            width="236px"
-                            height="16px"
-                            type="text"
-                            placeholder={piece.placeholder}
-                            value={inputValues[item.id]?.[piece.label] || ""}
-                            onChange={(e) =>
-                              handleRadioInputChange(
-                                item.id,
-                                piece.label,
-                                e.target.value
-                              )
+                item.pieces ? (
+                  <CointainAcordeonRadio>
+                    {item.pieces.map((piece) => (
+                      <ContainerCheckLabel>
+                        <PieceItem key={piece.label}>
+                          <StepRadio
+                            radioOptions={[
+                              { value: piece.label, label: piece.label },
+                            ]}
+                            name={`radio-group-${item.id}`}
+                            checked={selectedRadios[item.id]}
+                            onChange={(e, value) =>
+                              handlePieceRadioChange(item.id, value)
                             }
                           />
-                        )}
-                    </ContainerCheckLabel>
-                  ))}
-                </>
+                        </PieceItem>
+                        {piece.hasInput &&
+                          selectedRadios[item.id] === piece.label && (
+                            <Input
+                              appearance="none"
+                              width="236px"
+                              height="16px"
+                              type="text"
+                              placeholder={piece.placeholder}
+                              value={inputValues[item.id]?.[piece.label] || ""}
+                              onChange={(e) =>
+                                handleRadioInputChange(
+                                  item.id,
+                                  piece.label,
+                                  e.target.value
+                                )
+                              }
+                            />
+                          )}
+                      </ContainerCheckLabel>
+                    ))}
+                  </CointainAcordeonRadio>
+                ) : null
               }
-              changedOption={changedOption}
-              changeText={
-                getMatchingQuizzIds([item.title], menuData).length > 0
-                  ? "No sé, ¿cuál me recomiendan?"
-                  : ""
-              }
-              quizzActive={quizzActive}
-              setQuizzActive={setQuizzActive}
-              selectedQuizz={selectedQuizz}
-              quizzHandle={() => {
-                const ids = getMatchingQuizzIds([item.title], menuData);
-                if (ids.length > 0) {
-                  quizzHandle(ids[0]);
-                } else {
-                  console.warn("No quizz found for", item.title);
-                }
+            />
+          );
+        })}
+      {products &&
+        products.map((item) => {
+          return (
+            <AccordionUnit
+              titleStyle={{
+                font: "regular",
+                fontSize: "16px",
+                lineHeight: "-0.48px",
               }}
+              key={item.name_category}
+              itemName={
+                item.name_category.charAt(0).toUpperCase() +
+                item.name_category.slice(1).toLowerCase()
+              }
+              onClick={() => handleAccordionClick(item.name_category)}
+              isActive={activeItem === item.name_category}
+              contentHeight={contentHeights[item.name_category] || 0}
+              refContent={(el: HTMLDivElement | null) => {
+                contentRefs.current[item.name_category] = el;
+              }}
+              itemsSelect={
+                <CointainAcordeonProducts>
+                  {item.products.map((product) => {
+                    const cardProductDate = menuData.flatMap((item: any) =>
+                      item.columns.flatMap((col: any) => col.products)
+                    );
+                    const descripcion = cardProductDate.find((item: any) =>
+                      item.name
+                        .toLowerCase()
+                        .includes(product.name.toLowerCase())
+                    );
+                    let propsNames = atrrToRender(product.children);
+                    return (
+                      <AcordeonProducts>
+                        <Input
+                          appearance="none"
+                          width="14px"
+                          height="14px"
+                          padding="6px"
+                          borderRadius="2px"
+                          checkBorderColor="yellowCalm"
+                          checkColor="yellowCalm"
+                          borderColorFocused="yellowCalm"
+                          color="yellowCalm"
+                          type="checkbox"
+                          name={product.name}
+                          value={product.name}
+                          onChange={(e) =>
+                            handleProductCheckboxChange(e, product.name)
+                          }
+                        />
+                        <CardProducts
+                          image={product.image_cross_selling}
+                          name={product.name}
+                          description={descripcion?.description || ""}
+                        />
+                        {selectedProductNames.includes(product.name) && (
+                          <SelectableDiv>
+                            <ProductProps
+                              children={product.children}
+                              selectedChild={selectedChild}
+                              setSelectedChild={setSelectedChild}
+                              setIsColorChange={setIsColorChange}
+                              setIsSizeChange={setIsSizeChange}
+                              defaultProds={defaultProds}
+                              propsNames={propsNames}
+                            />
+                          </SelectableDiv>
+                        )}
+                      </AcordeonProducts>
+                    );
+                  })}
+                  {changedOption && (
+                    <Paragraph
+                      color="wildViolet"
+                      font="medium"
+                      fontSize="16px"
+                      onClick={() => {
+                        const ids = getMatchingQuizzIds(
+                          [item.name_category],
+                          menuData
+                        );
+                        if (ids.length > 0) {
+                          quizzHandle(ids[0]);
+                        } else {
+                          console.warn(
+                            "No quizz found for",
+                            item.name_category
+                          );
+                        }
+                      }}
+                      cursor="pointer"
+                      textDecoration="underline"
+                    >
+                      {getMatchingQuizzIds([item.name_category], menuData)
+                        .length > 0
+                        ? "No sé, ¿cuál me recomiendan?"
+                        : ""}
+                    </Paragraph>
+                  )}
+
+                  {quizzActive && selectedQuizz && (
+                    <Quizz
+                      quizzActive={quizzActive}
+                      closeHandle={() =>
+                        setQuizzActive && setQuizzActive(false)
+                      }
+                      quizzKey={selectedQuizz}
+                    />
+                  )}
+                </CointainAcordeonProducts>
+              }
             />
           );
         })}

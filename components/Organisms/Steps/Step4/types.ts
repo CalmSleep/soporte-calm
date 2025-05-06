@@ -47,7 +47,7 @@ export interface IDataSendNotion {
   orderNumber: string;
   name: string;
   email: string;
-  shippingDate: string;
+  shippingDate: string | null;
   requestDate: Date;
   typeRequest: string;
   typeChange: IMultipleSelect[];
@@ -56,7 +56,8 @@ export interface IDataSendNotion {
   differencePrice: string;
   supplier: string | null;
   images: IImagensNotion[];
-  sku?: IMultipleSelect[];
+  skuOriginal?: IMultipleSelect[];
+  skuChange?: IMultipleSelect[];
   peaces?: IMultipleSelect[];
   peacesChange?: IMultipleSelect[];
   peacesQuantity?: string;
