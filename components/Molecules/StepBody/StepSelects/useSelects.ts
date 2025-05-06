@@ -21,8 +21,9 @@ const useSelects = ({
 
     if (!selectedChild) return;
 
-    const newTitle = selectedChild.name;
+    const newTitle = selectedChild.name + ", " + selectedChild.sku;
     const baseName = newTitle.split(" - ")[0];
+    // console.log("baseName", baseName);
 
     // Buscamos el título previo que coincida con la baseName
     const previous =
@@ -33,12 +34,12 @@ const useSelects = ({
     const matchedProduct = selectedProductNames.find((productName) =>
       productName.startsWith(baseName)
     );
-
-    //console.log("matchedProduct", matchedProduct);
+    // console.log("matchedProduct:", matchedProduct);
+    // console.log("previous:", previous);
 
     // Si encontramos un título previo y no coincide con el nuevo título, limpiamos el título previo
     if (previous && previous !== newTitle && matchedProduct) {
-      onCheckboxChange && onCheckboxChange(false, previous);
+      onCheckboxChange && onCheckboxChange(false, `${previous}`);
     }
 
     // Si no hay un producto coincidente, limpiamos el título

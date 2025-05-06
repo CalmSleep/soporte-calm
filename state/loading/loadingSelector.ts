@@ -75,3 +75,8 @@ export const getLoadingGetOrderDni = createSelector(
   (state: IStore) => state.loading.loadingGetOrderDni,
   (loadingGetOrderDni) => loadingGetOrderDni
 );
+
+export const getLoadingGetProducts = createSelector(
+  (state: IStore) => state.loading.loadingGetProducts,
+  (loadingGetProducts) => loadingGetProducts
+);

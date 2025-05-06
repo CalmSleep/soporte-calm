@@ -27,7 +27,8 @@ const ModalCalm = ({
           clicText="Si el correo registrado ya no es accesible, "
           clicText2="hace clic acá."
           onClick={() => {
-            handleChatBot && handleChatBot();
+            handleChatBot &&
+              handleChatBot("Hola! Mi correo ya no es accesible");
           }}
           handleClose={() => {
             if (data && data.length > 0) {
@@ -39,7 +40,8 @@ const ModalCalm = ({
               setIsOpen && setIsOpen(false);
             } else {
               dispatch && dispatch(onGetOrderByDni([]));
-              handleChatBot && handleChatBot();
+              handleChatBot &&
+                handleChatBot("Hola, tengo un problema con mi pedido");
             }
           }}
           buttonText="Aceptar"

@@ -5,12 +5,16 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 
 import StepRadio from "@/components/Molecules/StepBody/StepRadio/StepRadio";
 import {
+  AcordeonProducts,
+  CointainAcordeonProducts,
+  CointainAcordeonRadio,
   CointainCheckbox,
   CointainText,
   ContainerCheckLabel,
   PieceItem,
   PieceItems,
   PieceList,
+  SelectableDiv,
 } from "./styled";
 import { StepSelectsProps } from "./types";
 import useSelects from "./useSelects";
@@ -20,6 +24,7 @@ import { atrrToRender } from "@/utils/productsFunctios";
 import CardProducts from "../../CardRelatedProductsATC/CardProducts";
 import ProductProps from "@/components/Organisms/ProductProps/ProductProps";
 import { IChildrenProd } from "@/state/products/types";
+import Quizz from "../../Quizz/Quizz";
 
 const StepSelects = ({
   titleParagraph,
@@ -59,7 +64,6 @@ const StepSelects = ({
     onCheckboxChange,
     items,
     radioOptions,
-    selectedOption,
     setSelectedOption,
   });
   const [quizzActive, setQuizzActive] = useState(false);
@@ -139,7 +143,7 @@ const StepSelects = ({
                 contentRefs.current[item.id] = el;
               }}
               itemsSelect={
-                <>
+                <CointainAcordeonRadio>
                   <StepRadio
                     radioOptions={radioOptions || []}
                     name={`radio-${item.id}`}
@@ -196,7 +200,7 @@ const StepSelects = ({
                       ))}
                     </PieceList>
                   )}
-                </>
+                </CointainAcordeonRadio>
               }
             />
           );
@@ -222,7 +226,7 @@ const StepSelects = ({
               }}
               itemsSelect={
                 item.pieces ? (
-                  <>
+                  <CointainAcordeonRadio>
                     {item.pieces.map((piece) => (
                       <ContainerCheckLabel>
                         <PieceItem key={piece.label}>
@@ -257,7 +261,7 @@ const StepSelects = ({
                           )}
                       </ContainerCheckLabel>
                     ))}
-                  </>
+                  </CointainAcordeonRadio>
                 ) : null
               }
             />
@@ -284,7 +288,7 @@ const StepSelects = ({
                 contentRefs.current[item.name_category] = el;
               }}
               itemsSelect={
-                <>
+                <CointainAcordeonProducts>
                   {item.products.map((product) => {
                     const cardProductDate = menuData.flatMap((item: any) =>
                       item.columns.flatMap((col: any) => col.products)
@@ -296,7 +300,7 @@ const StepSelects = ({
                     );
                     let propsNames = atrrToRender(product.children);
                     return (
-                      <>
+                      <AcordeonProducts>
                         <Input
                           appearance="none"
                           width="14px"
@@ -320,38 +324,61 @@ const StepSelects = ({
                           description={descripcion?.description || ""}
                         />
                         {selectedProductNames.includes(product.name) && (
-                          <ProductProps
-                            children={product.children}
-                            selectedChild={selectedChild}
-                            setSelectedChild={setSelectedChild}
-                            setIsColorChange={setIsColorChange}
-                            setIsSizeChange={setIsSizeChange}
-                            defaultProds={defaultProds}
-                            propsNames={propsNames}
-                          />
+                          <SelectableDiv>
+                            <ProductProps
+                              children={product.children}
+                              selectedChild={selectedChild}
+                              setSelectedChild={setSelectedChild}
+                              setIsColorChange={setIsColorChange}
+                              setIsSizeChange={setIsSizeChange}
+                              defaultProds={defaultProds}
+                              propsNames={propsNames}
+                            />
+                          </SelectableDiv>
                         )}
-                      </>
+                      </AcordeonProducts>
                     );
                   })}
-                </>
+                  {changedOption && (
+                    <Paragraph
+                      color="wildViolet"
+                      font="medium"
+                      fontSize="16px"
+                      onClick={() => {
+                        const ids = getMatchingQuizzIds(
+                          [item.name_category],
+                          menuData
+                        );
+                        if (ids.length > 0) {
+                          quizzHandle(ids[0]);
+                        } else {
+                          console.warn(
+                            "No quizz found for",
+                            item.name_category
+                          );
+                        }
+                      }}
+                      cursor="pointer"
+                      textDecoration="underline"
+                    >
+                      {getMatchingQuizzIds([item.name_category], menuData)
+                        .length > 0
+                        ? "No sé, ¿cuál me recomiendan?"
+                        : ""}
+                    </Paragraph>
+                  )}
+
+                  {quizzActive && selectedQuizz && (
+                    <Quizz
+                      quizzActive={quizzActive}
+                      closeHandle={() =>
+                        setQuizzActive && setQuizzActive(false)
+                      }
+                      quizzKey={selectedQuizz}
+                    />
+                  )}
+                </CointainAcordeonProducts>
               }
-              changedOption={changedOption}
-              changeText={
-                getMatchingQuizzIds([item.name_category], menuData).length > 0
-                  ? "No sé, ¿cuál me recomiendan?"
-                  : ""
-              }
-              quizzActive={quizzActive}
-              setQuizzActive={setQuizzActive}
-              selectedQuizz={selectedQuizz}
-              quizzHandle={() => {
-                const ids = getMatchingQuizzIds([item.name_category], menuData);
-                if (ids.length > 0) {
-                  quizzHandle(ids[0]);
-                } else {
-                  console.warn("No quizz found for", item.name_category);
-                }
-              }}
             />
           );
         })}

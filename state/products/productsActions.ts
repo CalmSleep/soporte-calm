@@ -1,4 +1,8 @@
 import {
+  onLoadingGetProductsFinished,
+  onLoadingGetProductsStart,
+} from "../loading/loadingActions";
+import {
   ON_GET_HOME_RELATED_PRODUCTS_FAILED,
   ON_GET_HOME_RELATED_PRODUCTS_SUCCEEDED,
   ON_GET_NEW_RELATED_PRODUCTS_FAILED,
@@ -91,11 +95,14 @@ const onGetProductFailed = () => ({
 
 export const onGetAllProducts = () => {
   return async (dispatch: any) => {
+    dispatch(onLoadingGetProductsStart());
     const response = await getAllProducts();
     if (response) {
       dispatch(onGetAllProductsSucceeded(response));
+      dispatch(onLoadingGetProductsFinished());
     } else {
       dispatch(onGetAllProductsFailed());
+      dispatch(onLoadingGetProductsFinished());
     }
   };
 };

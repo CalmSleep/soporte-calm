@@ -33,6 +33,7 @@ import {
   getProveedor,
   mapIssuesToNotionValues,
   parsePieces,
+  skuChangeFilter,
   skuFilterProduct,
 } from "./funtions";
 import { getLoadingRedirect } from "@/state/loading/loadingSelector";
@@ -94,7 +95,9 @@ const Step4 = ({
     setPostalCode,
   } = useStep4();
   const dataUser = useSelector(getThankuContent);
-  console.log(dataUser);
+  console.log("valueSelect", valueSelect);
+
+  // console.log(dataUser);
 
   const dispatch = useDispatch();
   const loadingNotion = useSelector(getLoadingRedirect);
@@ -136,16 +139,20 @@ const Step4 = ({
   const proveedor =
     dataUser._wc_shipment_tracking_items.length === 0
       ? "-"
-      : dataUser._wc_shipment_tracking_items[0].map(
-          (item: any) => item.tracking_provider
-        );
+      : dataUser._wc_shipment_tracking_items[
+          dataUser._wc_shipment_tracking_items.length - 1
+        ].map((item: any) => item.tracking_provider);
+
   console.log(proveedor);
 
   const fullInfo: IDataSendNotion = {
     orderNumber: String(dataUser.id),
     name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
     email: dataUser.billing.email,
-    shippingDate: formatDateToISO(dataUser.shipping.shipping_date),
+    shippingDate:
+      dataUser.shipping_date === undefined
+        ? null
+        : formatDateToISO(dataUser.shipping.shipping_date),
     requestDate: new Date(),
     typeRequest:
       Number(selectedValue) === 1
@@ -168,11 +175,7 @@ const Step4 = ({
               name: "Garantía",
             },
           ]
-        : [
-            {
-              name: "-",
-            },
-          ],
+        : [],
     reason:
       Number(selectedValue) === 1 || Number(selectedValue) === 3
         ? [{ name: "Otro" }]
@@ -221,11 +224,19 @@ const Step4 = ({
           },
         };
       }),
-    sku:
+    skuOriginal:
       Number(selectedValue) === 1 || Number(selectedValue) === 4
         ? skuFilterProduct(dataUser, rawString)
-        : Number(valueSelect) === 2
+        : Number(valueSelect) === 2 || Number(valueSelect) === 3
         ? skuFilterProduct(dataUser, notionInfo.productReturn?.join(", ") || "")
+        : [
+            {
+              name: "-",
+            },
+          ],
+    skuChange:
+      Number(valueSelect) === 3
+        ? skuChangeFilter(notionInfo.productChange || [])
         : [],
     peaces:
       Number(selectedValue) === 1 ? parsePieces(rawString, pieces).names : [],
@@ -266,7 +277,7 @@ const Step4 = ({
         : "",
   };
 
-  console.log("formData", notionInfo);
+  console.log("formData", notionInfo.productChange);
   console.log("fullInfo", fullInfo);
 
   const handleSubmitToNotion = async () => {
@@ -369,7 +380,7 @@ const Step4 = ({
                   }
                 />
                 <FloatingInput
-                  width="45%"
+                  width="60%"
                   label="Código postal"
                   labelRequired={showRequiredMessage ? "*" : ""}
                   labelRequiredColor="brilliantLiquorice"

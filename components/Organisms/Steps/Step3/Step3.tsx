@@ -17,6 +17,7 @@ import {
 } from "../util";
 import itemsChanges from "./changesItems.json";
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
+import { getAllProductsData } from "@/state/products/productsSelector";
 const Step3 = ({
   valueSelect,
   setConfirmedValue,
@@ -38,9 +39,10 @@ Step3Props) => {
     notionInfo,
     setNotionInfo,
   } = useValueSelect();
-  console.log("titles", selectedTitles);
+  //  console.log("titles", selectedTitles);
   // console.log(notionInfo);
   const orders = useSelector(getThankuContent);
+  const allProducts = useSelector(getAllProductsData);
   const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);
 
   const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
@@ -56,7 +58,7 @@ Step3Props) => {
       ? `${quieroComprar}`
       : "";
 
-  console.log("infoProduct", infoProduct);
+  // console.log("infoProduct", infoProduct);
 
   const infoMensaje =
     valueSelect === "1" && selectedValue === "2" && otros.length > 0
@@ -76,6 +78,9 @@ Step3Props) => {
     valueSelect === "2"
       ? `${otros2.join(", ")}`
       : `${selectedTitles.filter((title) => !title.includes("-")).join(", ")}`;
+
+  // console.log("valueSelect", valueSelect);
+
   // console.log("products", products);
 
   const result = selectedTitles
@@ -104,7 +109,6 @@ Step3Props) => {
           : [],
     });
   }, [checkboxConfirmed]);
-  console.log("notionInfo step 3", notionInfo);
 
   return (
     <>
@@ -208,6 +212,7 @@ Step3Props) => {
             setSelectedTitles={setSelectedTitles}
             setConfirmedValue={setConfirmedValue}
             handleConfirmCheckbox={handleConfirmCheckbox}
+            products={allProducts}
           />
         )}
       </StepsHeaders>

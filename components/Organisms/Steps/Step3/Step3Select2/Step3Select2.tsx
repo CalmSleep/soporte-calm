@@ -9,6 +9,7 @@ import { itemsFilterJson, mapOrdersWithSpan, normalizeText } from "../../util";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import { IArrayButton } from "@/components/Organisms/Modals/ModalStep/types";
 import Step3Select3 from "./Step3Select3";
+import { IgetProducts } from "@/state/products/types";
 
 const Step3Select2 = ({
   orders,
@@ -25,6 +26,7 @@ const Step3Select2 = ({
   modalOpen,
   setModalOpen,
   handleConfirmCheckbox,
+  products,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
@@ -59,6 +61,7 @@ const Step3Select2 = ({
       const item = infoChanges.find((d) =>
         normalize(d.title).includes(normalize(producto))
       );
+
       // console.log("🟡 Producto:", producto);
       // console.log("🟡 Comentario:", comentario);
       // console.log("🟡 Item:", item);
@@ -91,11 +94,10 @@ const Step3Select2 = ({
     })
     .filter((item): item is Resultado => item !== null);
 
-  // console.log(
-  //   "resultadoFinal",
-  //   resultadoFinal.map((r) => r.comentario),
-  //   resultadoFinal.length === 1
-  // );
+  console.log(
+    "resultadoFinal",
+    resultadoFinal.map((r) => r.productName).join(", ")
+  );
   const paragraphArray = [
     {
       id: 1,
@@ -109,7 +111,7 @@ const Step3Select2 = ({
     {
       id: 2,
       text:
-        resultadoFinal.length === 1 ? (
+        selectedTitles.length === 1 && resultadoFinal.length === 1 ? (
           <Paragraph font="bold">
             🔍 En base a lo que buscás, creemos que{" "}
             {`${resultadoFinal.map((r) => r.productName).join(", ")}`} puede ser
@@ -125,7 +127,7 @@ const Step3Select2 = ({
     {
       id: 3,
       text:
-        resultadoFinal.length === 1 ? (
+        selectedTitles.length === 1 && resultadoFinal.length === 1 ? (
           <Paragraph>
             📌 {`${resultadoFinal.map((r) => r.comentario).join(", ")}`}
           </Paragraph>
@@ -139,7 +141,7 @@ const Step3Select2 = ({
     {
       id: 4,
       text:
-        resultadoFinal.length === 1 ? (
+        selectedTitles.length === 1 && resultadoFinal.length === 1 ? (
           <Paragraph>
             Para facilitarte el cambio, te ofrecemos un <b>5% OFF</b> en este
             nuevo producto.
@@ -170,7 +172,6 @@ const Step3Select2 = ({
       text: "¡Vamos con cambio!",
       backgroundColor: "yellowCalm",
       onClick: () => {
-        console.log("!Vamos con cambio!");
         handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
         setConfirmedValue && setConfirmedValue("3");
         setSelectedTitles &&
@@ -180,6 +181,30 @@ const Step3Select2 = ({
             )
           );
         setModalOpen && setModalOpen(false);
+        // console.log("selectedTitles", selectedTitles);
+
+        // if (selectedTitles.length === 1 && resultadoFinal.length === 1) {
+        //   handleCheckboxChangeConfirmed(
+        //     true,
+        //     `${resultadoFinal
+        //       .map((r) => r.productName.replace(/\s*\(([^)]+)\)/, " - $1"))
+        //       .join(", ")}`,
+        //     ["cambio"]
+        //   );
+        //   setConfirmedValue && setConfirmedValue("3");
+        //   handleConfirmCheckbox && handleConfirmCheckbox();
+        //   setModalOpen && setModalOpen(false);
+        // } else {
+        //   handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+        //   setConfirmedValue && setConfirmedValue("3");
+        //   setSelectedTitles &&
+        //     setSelectedTitles(
+        //       selectedTitles.filter(
+        //         (title) => !title.toLowerCase().includes("cambio")
+        //       )
+        //     );
+        //   setModalOpen && setModalOpen(false);
+        // }
       },
     },
   ];
@@ -215,6 +240,7 @@ const Step3Select2 = ({
             <Step3Select3
               selectedTitles={selectedTitles}
               handleCheckboxChange={handleCheckboxChange}
+              products={products as IgetProducts[]}
             />
           )}
         </>

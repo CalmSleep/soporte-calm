@@ -47,7 +47,7 @@ const CardProducts = ({ image, name, description }: IProps) => {
             </Text>
             <Margin margin=".3rem" />
             <Text
-              color="brilliantLiquorice"
+              //color="brilliantLiquorice"
               font="regular"
               fontSize="14px"
               lineHeight="130%"

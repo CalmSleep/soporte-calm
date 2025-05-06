@@ -5,7 +5,7 @@ import { set } from "date-fns";
 export interface ModalsProps {
   isOpen: boolean;
   setIsOpen?: (open: boolean) => void;
-  handleChatBot?: () => void;
+  handleChatBot?: (mensaje: string) => void;
   data?: IOrdenMail[];
   dataUser?: any;
   valueSelect?: string | null;

@@ -24,4 +24,5 @@ export interface ILoadingState {
   loadingAddOrRemoveEdeFromCart?: boolean;
   loadingKlaviyoSuscribers?: boolean;
   loadingGetOrderDni?: boolean;
+  loadingGetProducts?: boolean;
 }

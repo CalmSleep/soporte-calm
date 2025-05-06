@@ -46,9 +46,12 @@ export default async function handler(
           },
         },
         "Fecha de creación del pedido": {
-          date: {
-            start: data.shippingDate,
-          },
+          date:
+            data.shippingDate === null
+              ? null
+              : {
+                  start: data.shippingDate,
+                },
         },
         Email: {
           email: data.email,
@@ -90,8 +93,11 @@ export default async function handler(
         Archivos: {
           files: data.images,
         },
+        "SKU(s) original(es)": {
+          multi_select: data.skuOriginal,
+        },
         "SKU(s) a entregar": {
-          multi_select: data.sku,
+          multi_select: data.skuChange,
         },
         "Pieza (si aplica)": {
           multi_select: data.peaces,

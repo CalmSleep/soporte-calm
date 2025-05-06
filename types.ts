@@ -3,6 +3,11 @@ import { IPillsData, IBannerAndCucarda } from "@/state/hygraph/types";
 import { IPlainImageSlide } from "@/state/hygraph/types";
 import { IHeaderBanner } from "@/state/hygraph/types";
 /* import { IPromosProps } from "./components/Pages/PromosCalm/types"; */
+declare global {
+  interface Window {
+    openWebChatbot?: (message?: string) => void;
+  }
+}
 
 export interface ILanding {
   landingSEO: ILandingSEO;

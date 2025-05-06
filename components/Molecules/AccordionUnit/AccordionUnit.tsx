@@ -47,13 +47,6 @@ const AccordionUnit = ({
   contentHeight,
   titleStyle,
   spamName,
-  changedOption,
-  changeText,
-  quizzActive,
-  setQuizzActive,
-  selectedQuizz,
-  setSelectedQuizz,
-  quizzHandle,
 }: IUnitProps) => {
   const [render, setRender] = useState(false);
 
@@ -159,36 +152,7 @@ const AccordionUnit = ({
             $isActive={isActive}
             $contentHeight={contentHeight || 0}
           >
-            <DescriptionAccordion
-              $isProductSS={isProductSS}
-              $isFromCapas={isFromCapas}
-              onClick={handleContentClick}
-              $descriptionCamaOla={descriptionCamaOla}
-            >
-              {itemsSelect}
-              {changedOption && (
-                <Paragraph
-                  color="wildViolet"
-                  fontSize="16px"
-                  onClick={() => {
-                    quizzHandle && quizzHandle();
-                    console.log("quizzActive", quizzActive);
-                  }}
-                  cursor="pointer"
-                  textDecoration="underline"
-                >
-                  {changeText}
-                </Paragraph>
-              )}
-            </DescriptionAccordion>
-
-            {quizzActive && selectedQuizz && (
-              <Quizz
-                quizzActive={quizzActive}
-                closeHandle={() => setQuizzActive && setQuizzActive(false)}
-                quizzKey={selectedQuizz}
-              />
-            )}
+            {itemsSelect}
           </ContentItemSelect>
         ) : (
           <Content

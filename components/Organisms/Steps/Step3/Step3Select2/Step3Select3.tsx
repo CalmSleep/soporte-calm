@@ -3,18 +3,22 @@ import React from "react";
 import { Step3Select2and3Props } from "../types";
 import { menuData } from "@/components/Organisms/NavBar/utils";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProductsData } from "@/state/products/productsSelector";
 import { onGetAllProducts } from "@/state/products/productsActions";
+import { IgetProducts } from "@/state/products/types";
+import { getLoadingGetProducts } from "@/state/loading/loadingSelector";
+import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 
 const Step3Select3 = ({
   handleCheckboxChange,
   selectedTitles,
+  products,
 }: {
   handleCheckboxChange: Step3Select2and3Props["handleCheckboxChange"];
   selectedTitles: string[];
+  products: IgetProducts[];
 }) => {
   const dispatch = useDispatch();
-  const products = useSelector(getAllProductsData);
+  const productsLoading = useSelector(getLoadingGetProducts);
 
   React.useEffect(() => {
     const productsData = async () => {
@@ -25,14 +29,25 @@ const Step3Select3 = ({
   }, []);
 
   return (
-    <StepSelects
-      selectedTitle={selectedTitles}
-      titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
-      products={products}
-      onCheckboxChange={handleCheckboxChange}
-      changedOption
-      menuData={menuData}
-    />
+    <>
+      {productsLoading ? (
+        <SkeletonLoader
+          height="20px"
+          width="100%"
+          borderRadius="1000px"
+          responsiveMobile={{ height: "20px" }}
+        />
+      ) : (
+        <StepSelects
+          selectedTitle={selectedTitles}
+          titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
+          products={products}
+          onCheckboxChange={handleCheckboxChange}
+          changedOption
+          menuData={menuData}
+        />
+      )}
+    </>
   );
 };
 

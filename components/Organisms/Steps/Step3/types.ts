@@ -1,3 +1,5 @@
+import { IgetProducts } from "@/state/products/types";
+
 type ValueObject = {
   [key: string]: string[];
 };
@@ -74,6 +76,7 @@ export interface Step3Select2and3Props {
   modalOpen?: boolean;
   setModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   handleConfirmCheckbox?: () => void;
+  products?: IgetProducts[];
 }
 
 export type Category = {

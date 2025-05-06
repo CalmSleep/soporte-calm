@@ -1,5 +1,19 @@
 import styled from "styled-components";
 
+export const CointainAcordeonRadio = styled.div`
+  display: flex;
+  padding: 14px 0px;
+  flex-direction: column;
+  gap: 5px;
+  height: 100%;
+  transition: all 0.35s;
+  line-height: 1.5;
+  font-weight: 300;
+  border-top: solid;
+  border-width: 1px 0px 0px 0px;
+  border-color: ${(props) => `${props.theme.colors.lead}40`};
+`;
+
 export const CointainCheckbox = styled.div`
   display: flex;
   flex-direction: row;
@@ -81,4 +95,30 @@ export const ContainerCheckLabel = styled.div`
       font-size: 14px;
     }
   }
+`;
+
+export const CointainAcordeonProducts = styled.div`
+  display: flex;
+  padding: 16px 0px;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  transition: all 0.35s;
+  padding-top: 10px;
+  line-height: 1.5;
+  font-weight: 300;
+  border-top: solid;
+  border-width: 1px 0px 0px 0px;
+  border-color: ${(props) => `${props.theme.colors.lead}40`};
+`;
+
+export const AcordeonProducts = styled.div`
+  background-color: ${(props) => props.theme.colors.white};
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const SelectableDiv = styled.div`
+  padding: 4px 25px;
 `;
