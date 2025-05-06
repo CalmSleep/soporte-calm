@@ -41,7 +41,11 @@ const Step3Select3 = ({
         <StepSelects
           selectedTitle={selectedTitles}
           titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
-          products={products}
+          products={
+            products &&
+            products.filter((product) => product.name_category !== "muebles")
+          }
+          //  products={products}
           onCheckboxChange={handleCheckboxChange}
           changedOption
           menuData={menuData}
