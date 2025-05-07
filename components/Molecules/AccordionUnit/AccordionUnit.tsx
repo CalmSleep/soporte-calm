@@ -47,6 +47,7 @@ const AccordionUnit = ({
   contentHeight,
   titleStyle,
   spamName,
+  height,
 }: IUnitProps) => {
   const [render, setRender] = useState(false);
 
@@ -151,6 +152,7 @@ const AccordionUnit = ({
             ref={refContent}
             $isActive={isActive}
             $contentHeight={contentHeight || 0}
+            $height={height || 0}
           >
             {itemsSelect}
           </ContentItemSelect>

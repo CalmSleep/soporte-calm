@@ -139,6 +139,7 @@ const StepSelects = ({
               onClick={() => handleAccordionClick(item.id)}
               isActive={activeItem === item.id}
               contentHeight={contentHeights[item.id] || 0}
+              height={contentHeights[item.id] || 0}
               refContent={(el: HTMLDivElement | null) => {
                 contentRefs.current[item.id] = el;
               }}
@@ -221,6 +222,7 @@ const StepSelects = ({
               onClick={() => handleAccordionClick(item.id)}
               isActive={activeItem === item.id}
               contentHeight={contentHeights[item.id] || 0}
+              height={contentHeights[item.id] || 0}
               refContent={(el: HTMLDivElement | null) => {
                 contentRefs.current[item.id] = el;
               }}
@@ -284,6 +286,7 @@ const StepSelects = ({
               onClick={() => handleAccordionClick(item.name_category)}
               isActive={activeItem === item.name_category}
               contentHeight={contentHeights[item.name_category] || 0}
+              height={contentHeights[item.name_category] || 0}
               refContent={(el: HTMLDivElement | null) => {
                 contentRefs.current[item.name_category] = el;
               }}

@@ -3,6 +3,7 @@ import React, { RefObject } from "react";
 
 export interface IUnitProps {
   onClick: () => void;
+  height?: number;
   itemName: string;
   spamName?: string;
   itemContent?: string;
