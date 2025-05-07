@@ -32,24 +32,14 @@ const Step3Select2 = ({
   const matchedItems = itemsFilterJson(items, newOrders);
   const infoChanges = rawInfoChanges as unknown as ProductoData[];
   console.log("orders", orders);
-  console.log(
-    "products",
-    products?.flatMap((p) => p.products)
-  );
 
   const resultadoFinal: Resultado[] = selectedTitles
     .map((str) => {
       const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
       const producto = match ? match[1].trim() : "";
-      const comentario = match ? match[2].trim() : "";
-      const attributesOrder = orders.find(
-        (order: any) => order.product_name === producto
-      )?.attributes;
-      const children = products
-        ?.flatMap((p) => p.products)
-        .find((p) => p.name === producto)
-        ?.children.map((c) => c.name);
+      console.log("producto", producto);
 
+      const comentario = match ? match[2].trim() : "";
       const normalize = (s: string) =>
         s
           .trim()
@@ -57,30 +47,26 @@ const Step3Select2 = ({
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "");
 
+      const attributesOrder = orders.find((order: any) =>
+        normalize(order.product_name).includes(producto)
+      )?.attributes;
+      console.log("attributesOrder", attributesOrder);
+
+      const childrenFull =
+        products?.flatMap((p) => p.products).find((p) => p.name === producto)
+          ?.children || [];
+
       const item = infoChanges.find((d) =>
         normalize(d.title).includes(normalize(producto))
       );
 
-      console.log("🟡 Producto:", producto);
-      console.log("🟡 Comentario:", comentario);
-      console.log("🟡 Attributes:", attributesOrder);
-      console.log("🟡 Children:", children);
-
-      console.log("🟡 Item:", item);
-
-      if (!item) {
-        //  console.log("❌ No se encontró item para:", producto);
-        return null;
-      }
+      if (!item) return null;
 
       const valueMatch = item.values.find((obj) =>
         Object.keys(obj).some((key) => normalize(key) === normalize(comentario))
       );
 
-      if (!valueMatch) {
-        //   console.log("❌ No se encontró comentario para:", comentario);
-        return null;
-      }
+      if (!valueMatch) return null;
 
       const comentarioKey = Object.keys(valueMatch).find(
         (key) => normalize(key) === normalize(comentario)
@@ -89,17 +75,98 @@ const Step3Select2 = ({
       if (!comentarioKey) return null;
 
       const value = valueMatch[comentarioKey];
+
+      let sku: string | null = null;
+
+      if (value && value[0]) {
+        const cleanValueName = value[0].replace(/[()]/g, "").trim();
+        const valueName = normalize(cleanValueName);
+
+        const matchChild = childrenFull.find((child) => {
+          const normalizedChildName = normalize(child.name);
+
+          const tokens = valueName.split(" ");
+          const allTokensMatch = tokens.every((token) =>
+            normalizedChildName.includes(token)
+          );
+
+          // Extraer todos los atributos relevantes que queremos verificar
+          const tamanoValue =
+            attributesOrder?.pa_tamano || attributesOrder?.tamano || "";
+          const altoValue =
+            attributesOrder?.pa_alto || attributesOrder?.alto || "";
+          const colorValue =
+            attributesOrder?.pa_color || attributesOrder?.color || "";
+
+          // Función auxiliar para comparación flexible de atributos
+          const isFlexibleMatch = (
+            attributeValue: string,
+            targetString: string
+          ): boolean => {
+            if (!attributeValue) return true; // Si no hay valor para el atributo, asumimos que coincide
+
+            const normalizedAttr = normalize(attributeValue).replace(
+              /\s+/g,
+              ""
+            ); // Eliminar espacios
+
+            const cleanTarget = normalize(targetString).replace(/\s+/g, "");
+
+            // Varios intentos de coincidencia
+            return !!(
+              cleanTarget.includes(normalizedAttr) ||
+              targetString.includes(attributeValue) ||
+              // Manejar casos como "2 plazas" vs "2plazas"
+              (normalizedAttr.match(/\d+/) &&
+                targetString.includes(
+                  normalizedAttr.replace(/(\d+)([a-z]+)/, "$1 $2")
+                ))
+            );
+          };
+
+          // Verificar si los atributos están incluidos en el nombre normalizado del hijo
+          let tamanoMatch = isFlexibleMatch(tamanoValue, normalizedChildName);
+          let altoMatch = isFlexibleMatch(altoValue, normalizedChildName);
+          let colorMatch = isFlexibleMatch(colorValue, normalizedChildName);
+
+          // Consideramos también si los atributos del child coinciden con los attributesOrder
+          const attributesMatch =
+            attributesOrder &&
+            Object.entries(attributesOrder).every(([key, val]) => {
+              const childAttr = child.attributes?.[key];
+              if (!childAttr || !val) return true; // Si alguno es vacío o undefined, asumimos que coincide
+
+              return normalize(childAttr) === normalize(val as string);
+            });
+
+          console.log("normalizedChildName", normalizedChildName);
+          console.log("tamanoMatch", tamanoMatch, "tamanoValue:", tamanoValue);
+          console.log("altoMatch", altoMatch, "altoValue:", altoValue);
+          console.log("colorMatch", colorMatch, "colorValue:", colorValue);
+          console.log("attributesMatch (exacto)", attributesMatch);
+          console.log("allTokensMatch", allTokensMatch);
+
+          // Retornar true solo si todas las condiciones son true
+          const finalMatch =
+            allTokensMatch && tamanoMatch && altoMatch && colorMatch;
+
+          console.log("finalMatch", finalMatch);
+
+          return finalMatch;
+        });
+        console.log("matchChild", matchChild);
+        sku = matchChild?.sku || null;
+      }
+
       return {
-        productName: value[0],
-        comentario: value[1],
+        productName: value?.[0],
+        comentario: value?.[1],
+        sku,
       };
     })
     .filter((item): item is Resultado => item !== null);
 
-  console.log(
-    "resultadoFinal",
-    resultadoFinal.map((r) => r.productName).join(", ")
-  );
+  console.log("resultadoFinal", resultadoFinal);
   const paragraphArray = [
     {
       id: 1,

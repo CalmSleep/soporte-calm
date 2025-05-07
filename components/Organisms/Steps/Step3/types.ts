@@ -13,6 +13,7 @@ export type ProductoData = {
 export type Resultado = {
   productName: string;
   comentario: string;
+  sku: string;
 };
 
 export type Step3Props = {
