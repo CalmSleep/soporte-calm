@@ -68,8 +68,12 @@ const StepSelects = ({
   });
   const [quizzActive, setQuizzActive] = useState(false);
   const [selectedQuizz, setSelectedQuizz] = useState<undefined | string>();
+  const [selectedGroup, setSelectedGroup] = useState<
+    IChildrenProd[] | undefined
+  >();
+  // console.log("selectedGroup", selectedGroup);
   //console.log("selectedProductNames", selectedProductNames);
-  // console.log("selectedChild", selectedChild);
+  //console.log("selectedChild", selectedChild);
   const defaultProds = React.useMemo(() => [], []);
 
   const quizzHandle = (quizzId?: string) => {
@@ -327,8 +331,17 @@ const StepSelects = ({
                           description={descripcion?.description || ""}
                         />
                         {selectedProductNames.includes(product.name) && (
-                          <SelectableDiv>
+                          <SelectableDiv
+                            $selected={
+                              selectedProductNames.includes(product.name)
+                                ? "true"
+                                : undefined
+                            }
+                            $items={selectedGroup?.length || 0}
+                          >
                             <ProductProps
+                              selectedGroup={selectedGroup || []}
+                              setSelectedGroup={setSelectedGroup}
                               children={product.children}
                               selectedChild={selectedChild}
                               setSelectedChild={setSelectedChild}
