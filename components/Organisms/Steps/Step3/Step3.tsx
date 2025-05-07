@@ -45,7 +45,7 @@ Step3Props) => {
   const orders = useSelector(getThankuContent);
   const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
-  console.log("allProducts", allProducts);
+  //console.log("allProducts", allProducts);
 
   const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);
 
@@ -122,6 +122,8 @@ Step3Props) => {
     });
   }, [checkboxConfirmed]);
 
+  console.log("selectedTitles", selectedTitles);
+
   return (
     <>
       <StepsHeaders
@@ -160,9 +162,10 @@ Step3Props) => {
             ? !selectedValue || !checkSeleccionado
             : valueSelect === "2"
             ? !checkSeleccionado
-            : valueSelect === "3"
-            ? !checkSeleccionado
-            : false
+            : !(
+                valueSelect === "3" &&
+                selectedTitles.some((title) => title.includes("-"))
+              )
         }
         button={
           valueSelect === "1"

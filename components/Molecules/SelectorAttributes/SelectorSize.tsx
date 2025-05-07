@@ -153,6 +153,7 @@ const SelectorSize = ({
                         (option.stock > 0 || option.backorder)
                       }
                       onClick={(e) => {
+                        if (option.stock <= 0 && !option.backorder) return;
                         e.stopPropagation();
                         setSelected(option.id);
                         setIsSizeOpen(false);
