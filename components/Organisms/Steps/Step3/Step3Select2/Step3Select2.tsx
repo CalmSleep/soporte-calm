@@ -32,19 +32,6 @@ const Step3Select2 = ({
   const matchedItems = itemsFilterJson(items, newOrders);
   const infoChanges = rawInfoChanges as unknown as ProductoData[];
 
-  // console.log(
-  //   "selectedTitles:",
-  //   selectedTitles.map((str) => {
-  //     const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
-  //     const producto = match ? match[1].trim() : "";
-  //     const comentario = match ? match[2].trim() : "";
-  //     return {
-  //       producto,
-  //       comentario,
-  //     };
-  //   })
-  // );
-
   const resultadoFinal: Resultado[] = selectedTitles
     .map((str) => {
       const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
@@ -181,30 +168,6 @@ const Step3Select2 = ({
             )
           );
         setModalOpen && setModalOpen(false);
-        // console.log("selectedTitles", selectedTitles);
-
-        // if (selectedTitles.length === 1 && resultadoFinal.length === 1) {
-        //   handleCheckboxChangeConfirmed(
-        //     true,
-        //     `${resultadoFinal
-        //       .map((r) => r.productName.replace(/\s*\(([^)]+)\)/, " - $1"))
-        //       .join(", ")}`,
-        //     ["cambio"]
-        //   );
-        //   setConfirmedValue && setConfirmedValue("3");
-        //   handleConfirmCheckbox && handleConfirmCheckbox();
-        //   setModalOpen && setModalOpen(false);
-        // } else {
-        //   handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
-        //   setConfirmedValue && setConfirmedValue("3");
-        //   setSelectedTitles &&
-        //     setSelectedTitles(
-        //       selectedTitles.filter(
-        //         (title) => !title.toLowerCase().includes("cambio")
-        //       )
-        //     );
-        //   setModalOpen && setModalOpen(false);
-        // }
       },
     },
   ];

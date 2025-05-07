@@ -5,7 +5,7 @@ import Step3Select1 from "./Step3Select1/Step3Select1";
 import { Step3Props } from "./types";
 import Step3Select2 from "./Step3Select2/Step3Select2";
 import Step4 from "../Step4/Step4";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getThankuContent } from "@/state/order/orderSelector";
 import optionStep3 from "./step3.json";
 import {
@@ -18,6 +18,7 @@ import {
 import itemsChanges from "./changesItems.json";
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 import { getAllProductsData } from "@/state/products/productsSelector";
+import { onGetAllProducts } from "@/state/products/productsActions";
 const Step3 = ({
   valueSelect,
   setConfirmedValue,
@@ -42,8 +43,19 @@ Step3Props) => {
   //  console.log("titles", selectedTitles);
   // console.log(notionInfo);
   const orders = useSelector(getThankuContent);
+  const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
+  //console.log("allProducts", allProducts);
+
   const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);
+
+  React.useEffect(() => {
+    const productsData = async () => {
+      await dispatch(onGetAllProducts());
+    };
+
+    productsData();
+  }, []);
 
   const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
   const [continuemos, otros2] = splitDevolucion(selectedTitles);
@@ -110,6 +122,8 @@ Step3Props) => {
     });
   }, [checkboxConfirmed]);
 
+  console.log("selectedTitles", selectedTitles);
+
   return (
     <>
       <StepsHeaders
@@ -148,9 +162,10 @@ Step3Props) => {
             ? !selectedValue || !checkSeleccionado
             : valueSelect === "2"
             ? !checkSeleccionado
-            : valueSelect === "3"
-            ? !checkSeleccionado
-            : false
+            : !(
+                valueSelect === "3" &&
+                selectedTitles.some((title) => title.includes("-"))
+              )
         }
         button={
           valueSelect === "1"

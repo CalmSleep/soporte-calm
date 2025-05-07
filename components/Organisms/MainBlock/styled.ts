@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const LandingContent = styled.div`
   padding: 10px 5px;
@@ -14,20 +14,20 @@ export const LandingContent = styled.div`
     max-width: 1350px;
     margin: auto;
   }
-`
+`;
 
 export const ShelfConfiguratorContainer = styled.div`
   max-height: 570px;
-  overflow-y: scroll ;
+  overflow-y: scroll;
 
   @media ${({ theme }) => theme.devices.mobile} {
     max-height: 100%;
     overflow-y: initial;
   }
-`
+`;
 export const Wrapper = styled.div`
   max-width: 1350px;
-  display:  "flex";
+  display: "flex";
   flex-direction: column;
   margin: 0 auto;
   gap: 1rem;
@@ -37,12 +37,12 @@ export const Wrapper = styled.div`
     width: 100%;
     gap: 10px;
   }
-`
+`;
 export const DivShowText = styled.div`
-padding: 0 auto;
-cursor: pointer;
-margin: 10px 0 0 0;
-`
+  padding: 0 auto;
+  cursor: pointer;
+  margin: 10px 0 0 0;
+`;
 
 export const Adopt = styled.div`
   display: flex;
@@ -50,7 +50,7 @@ export const Adopt = styled.div`
   flex-direction: column;
   margin-top: 1rem;
   gap: 20px;
-`
+`;
 
 export const Loaders = styled.div`
   margin: 30px 0;
@@ -61,7 +61,7 @@ export const Loaders = styled.div`
     margin: 0;
     flex-direction: column;
   }
-`
+`;
 
 export const SpanColumns = styled.span`
   display: flex;
@@ -71,11 +71,11 @@ export const SpanColumns = styled.span`
     flex-direction: column;
     margin: auto;
   }
-`
+`;
 
 export const MainContentWrapper = styled.section`
   margin: auto;
-`
+`;
 
 export const Breadcrumbs = styled.div`
   display: flex;
@@ -85,7 +85,7 @@ export const Breadcrumbs = styled.div`
   @media ${({ theme }) => theme.devices.mobile} {
     display: none;
   }
-`
+`;
 
 export const LeftColumn = styled.div`
   display: flex;
@@ -95,17 +95,17 @@ export const LeftColumn = styled.div`
   @media ${({ theme }) => theme.devices.mobile} {
     width: 100%;
   }
-`
+`;
 
 export const GalleryWrapper = styled.div`
   position: relative;
-`
+`;
 
 export const RightColumn = styled.div`
   width: 35%;
   display: flex;
   flex-direction: column;
-  
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -116,13 +116,13 @@ export const RightColumn = styled.div`
     overflow-y: initial;
     height: initial;
   }
-`
+`;
 
 export const ImagePromo = styled.div`
   @media ${(props) => props.theme.devices.mobile} {
-   display: none;
+    display: none;
   }
-`
+`;
 
 export const PillCategoryDiscount = styled.div`
   color: white;
@@ -136,7 +136,7 @@ export const PillCategoryDiscount = styled.div`
   border-radius: 50px;
   width: fit-content;
   padding: 0.2rem 0.5rem;
-`
+`;
 
 export const ButtonInfo = styled.div`
   display: flex;
@@ -148,24 +148,24 @@ export const ButtonInfo = styled.div`
   @media ${(props) => props.theme.devices.mobile} {
     gap: 5px;
   }
-`
+`;
 
 export const AdoptButton = styled.a`
-  background-color: ${props => props.theme.colors.white};
+  background-color: ${(props) => props.theme.colors.white};
   width: 100%;
   border-radius: 641.649px;
-  font-family: ${props => props.theme.fonts.bold};
+  font-family: ${(props) => props.theme.fonts.bold};
   height: 60px;
   font-size: 1rem;
-  color: ${props => props.theme.colors.wildViolet};
+  color: ${(props) => props.theme.colors.wildViolet};
   display: flex;
   justify-content: center;
   text-decoration: none;
 
   &:hover {
-    background-color: ${props => props.theme.colors.workoutRoutine};
+    background-color: ${(props) => props.theme.colors.workoutRoutine};
   }
-`
+`;
 
 export const ContainerPaymentMethod = styled.div`
   display: flex;
@@ -173,35 +173,35 @@ export const ContainerPaymentMethod = styled.div`
   justify-content: center;
   align-items: center;
   margin: 10px 0;
-`
+`;
 
 export const DivTitlePills = styled.div`
   display: flex;
   align-items: center;
   margin: 0.3rem 0;
-`
+`;
 
 export const MiniBannerMobile = styled.div`
   display: none;
-  
+
   @media ${(props) => props.theme.devices.mobile} {
     display: block;
   }
-`
+`;
 export const AtcQuantity = styled.div`
   display: flex;
   width: 100%;
   gap: 15px;
   margin: 7px auto;
-`
+`;
 
-export const ATCButton = styled.div<{ $hasQuantity?: boolean}>`
- width: ${props => props.$hasQuantity ? "70%" : "100%"};
-`
+export const ATCButton = styled.div<{ $hasQuantity?: boolean }>`
+  width: ${(props) => (props.$hasQuantity ? "70%" : "100%")};
+`;
 
 export const Arrow = styled.div<{ $isOpen?: boolean }>`
   transition: transform 0.1s ease;
-  transform: rotate(${props => (props.$isOpen ? '180deg' : '0deg')});
+  transform: rotate(${(props) => (props.$isOpen ? "180deg" : "0deg")});
   pointer-events: none;
   margin-bottom: 4px;
 
@@ -210,27 +210,26 @@ export const Arrow = styled.div<{ $isOpen?: boolean }>`
   }
 `;
 
-
 export const DropdownContainer = styled.div<{ $isSize?: boolean }>`
   position: relative;
   min-width: 50px;
-  width: ${props => props.$isSize ? "100%" : "30%"};
-  height: ${props => props.$isSize ? "50px" : "100%"};
+  width: ${(props) => (props.$isSize ? "100%" : "30%")};
+  height: ${(props) => (props.$isSize ? "50px" : "100%")};
   font-family: ${(props) => props.theme.fonts.regular};
   font-size: 16px;
   color: ${(props) => props.theme.colors.lead};
   line-height: 130%;
   letter-spacing: -0.48px;
-  border-radius: ${props => props.$isSize ? "16px" : "82px"};
+  border-radius: ${(props) => (props.$isSize ? "16px" : "82px")};
   border: 1px solid ${(props) => props.theme.colors.paternoster};
   cursor: pointer;
   background-color: ${(props) => props.theme.colors.white};
   display: flex;
-  justify-content: ${props => props.$isSize ? "space-between" : "space-evenly"};
+  justify-content: ${(props) =>
+    props.$isSize ? "space-between" : "space-evenly"};
   align-items: center;
 
-  ${props => props.$isSize &&
-  `padding: 0 12px;`}
+  ${(props) => props.$isSize && `padding: 0 12px;`}
 
   @media ${(props) => props.theme.devices.mobile} {
     align-items: center;
@@ -238,9 +237,7 @@ export const DropdownContainer = styled.div<{ $isSize?: boolean }>`
   }
 `;
 
-export const DropdownHeader = styled.div`
-
-`;
+export const DropdownHeader = styled.div``;
 
 export const DropdownListContainer = styled.div`
   position: absolute;
@@ -260,28 +257,34 @@ export const DropdownList = styled.ul`
   overflow-y: auto;
 `;
 
-export const ListItem = styled.li<{ $isLast: boolean, $isFirst: boolean, $isSelected?: boolean, $isDisable?: boolean }>`
+export const ListItem = styled.li<{
+  $isLast: boolean;
+  $isFirst: boolean;
+  $isSelected?: boolean;
+  $isDisable?: boolean;
+}>`
   padding: 10px;
-  cursor: ${props => props.$isDisable ? "not-allowed" : "cursor"};
+  cursor: ${(props) => (props.$isDisable ? "not-allowed" : "cursor")};
   width: 100%;
   border-radius: 5.592px;
   display: flex;
   justify-content: center;
   align-items: center;
-  ${props => props.$isDisable ?
-  `background-color: ${props.theme.colors.rareRed};`
-  : props.$isSelected &&
-  `background-color: ${props.theme.colors.whiteEdgar};`}
+  ${(props) =>
+    props.$isDisable
+      ? `background-color: ${props.theme.colors.transparent};
+         opacity: .5;`
+      : props.$isSelected &&
+        `background-color: ${props.theme.colors.whiteEdgar};`}
 
-  ${props => props.$isFirst &&
-  `margin: 5px 0 0 0;`}
+  ${(props) => props.$isFirst && `margin: 5px 0 0 0;`}
 
-  ${props => props.$isLast &&
-  `margin: 0 0 5px 0;`}
+  ${(props) => props.$isLast && `margin: 0 0 5px 0;`}
 
   &:hover {
-    ${props => !props.$isDisable &&
-    `background-color: ${props.theme.colors.whiteEdgar};`}
+    ${(props) =>
+      !props.$isDisable &&
+      `background-color: ${props.theme.colors.whiteEdgar};`}
   }
 `;
 
@@ -291,7 +294,7 @@ export const Chat = styled.div`
     font-style: italic;
     line-height: 130%;
     letter-spacing: "-0.36px";
-    color: ${props => props.theme.colors.brilliantLiquorice};
+    color: ${(props) => props.theme.colors.brilliantLiquorice};
   }
   #embedchatDesktop {
     border: none;
@@ -299,7 +302,7 @@ export const Chat = styled.div`
       height: 200px;
       max-height: 200px;
       border: none;
-    } 
+    }
     .flex.items-start.gap-1 {
       gap: 13px !important;
     }
@@ -347,4 +350,4 @@ export const Chat = styled.div`
       font-size: 10px;
     }
   }
-`
+`;
