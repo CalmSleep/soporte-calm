@@ -142,11 +142,16 @@ const SelectorSize = ({
                       ] as keyof typeof variations_sizes
                     ]
                   );
+                  console.log("stock", option.stock);
+                  console.log("backorder", option.backorder);
 
                   return (
                     <ListItem
                       key={index}
-                      $isSelected={selected ? selected.id === option.id : false}
+                      $isSelected={
+                        selected?.id === option.id &&
+                        (option.stock > 0 || option.backorder)
+                      }
                       onClick={(e) => {
                         e.stopPropagation();
                         setSelected(option.id);
@@ -155,6 +160,7 @@ const SelectorSize = ({
                       }}
                       $isLast={index === arrChildren.length - 1}
                       $isFirst={index === 0}
+                      $isDisable={option.stock <= 0 && !option.backorder}
                     >
                       {size && (
                         <TextSelected>

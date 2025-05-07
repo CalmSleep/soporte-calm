@@ -2,7 +2,7 @@ import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects
 import React from "react";
 import { Step3Select2and3Props } from "../types";
 import { menuData } from "@/components/Organisms/NavBar/utils";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { onGetAllProducts } from "@/state/products/productsActions";
 import { IgetProducts } from "@/state/products/types";
 import { getLoadingGetProducts } from "@/state/loading/loadingSelector";
@@ -17,16 +17,7 @@ const Step3Select3 = ({
   selectedTitles: string[];
   products: IgetProducts[];
 }) => {
-  const dispatch = useDispatch();
   const productsLoading = useSelector(getLoadingGetProducts);
-
-  React.useEffect(() => {
-    const productsData = async () => {
-      await dispatch(onGetAllProducts());
-    };
-
-    productsData();
-  }, []);
 
   return (
     <>
