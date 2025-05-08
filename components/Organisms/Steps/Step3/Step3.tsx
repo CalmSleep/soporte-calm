@@ -39,7 +39,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const orders = useSelector(getThankuContent);
   const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
-  // console.log("allProducts", allProducts);
+  //console.log("allProducts", allProducts);
 
   React.useEffect(() => {
     const productsData = async () => {
@@ -104,7 +104,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
 
   const infoSelect2And3 = [
     products,
-    valueSelect === "2" ? `${continuemos.join(", ")}` : result,
+    // valueSelect === "2" ? `${continuemos.join(", ")}` : result,
   ];
 
   React.useEffect(() => {
@@ -118,13 +118,17 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
           ? [products]
           : [],
       productChange:
-        valueSelect === "2" &&
-        selectedTitles.length === 1 &&
-        resultadoFinal &&
-        resultadoFinal.length === 1 &&
-        !selectedTitles.some((title) => title.includes("Continuemos"))
-          ? [resultadoFinal[0].sku]
-          : valueSelect === "3"
+        // valueSelect === "2" &&
+        // selectedTitles.length === 1 &&
+        // resultadoFinal &&
+        // resultadoFinal.length === 1 &&
+        // !selectedTitles.some((title) => title.includes("Continuemos"))
+        //   ? [resultadoFinal[0].sku]
+        valueSelect === "3" ||
+        (valueSelect === "2" &&
+          selectedTitles.length === 1 &&
+          resultadoFinal &&
+          resultadoFinal.length === 1)
           ? selectedTitles.filter((title) => title.includes("-"))
           : [],
     });

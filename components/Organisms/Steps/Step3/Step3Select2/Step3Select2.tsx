@@ -125,7 +125,7 @@ const Step3Select2 = ({
               ...selectedTitles.filter(
                 (title) => !title.toLowerCase().includes("cambio")
               ),
-              resultadoFinal[0].productName,
+              resultadoFinal[0].sku,
               //    resultadoFinal[0].name + ", " + resultadoFinal[0].sku,
             ]);
           handleConfirmCheckbox && handleConfirmCheckbox();

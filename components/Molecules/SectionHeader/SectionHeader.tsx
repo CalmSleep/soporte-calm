@@ -24,23 +24,24 @@ const SectionHeader = ({
           {title}
         </Titles>
       )}
-      <Paragraph {...paragraphStyles}>
-        {typeof paragraph === "string" &&
-          paragraph.split("\n").map((line, index) => (
-            <React.Fragment key={index}>
-              {line.split(/(&&.*?&&)/g).map((part, i) => {
-                if (part.startsWith("&&") && part.endsWith("&&")) {
-                  return <strong key={i}>{part.slice(2, -2)}</strong>;
-                } else {
-                  return <span key={i}>{part}</span>;
-                }
-              })}
-              <br />
-            </React.Fragment>
-          ))}
-
-        {typeof paragraph === "object" && paragraph}
-      </Paragraph>
+      {paragraph && (
+        <Paragraph {...paragraphStyles}>
+          {typeof paragraph === "string" &&
+            paragraph.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line.split(/(&&.*?&&)/g).map((part, i) => {
+                  if (part.startsWith("&&") && part.endsWith("&&")) {
+                    return <strong key={i}>{part.slice(2, -2)}</strong>;
+                  } else {
+                    return <span key={i}>{part}</span>;
+                  }
+                })}
+                <br />
+              </React.Fragment>
+            ))}
+          {typeof paragraph === "object" && paragraph}
+        </Paragraph>
+      )}
       {children}
     </SectionHeaderStyles>
   );
