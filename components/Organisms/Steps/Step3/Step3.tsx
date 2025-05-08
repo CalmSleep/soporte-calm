@@ -1,14 +1,16 @@
 import StepsHeaders from "@/components/Molecules/StepBody/StepsHeader/StepsHeaders";
 import React from "react";
 import useValueSelect from "@/hooks/useValueSelect";
+import rawInfoChanges from "./changesOptionItems.json";
 import Step3Select1 from "./Step3Select1/Step3Select1";
-import { Step3Props } from "./types";
+import { ProductoData, Step3Props } from "./types";
 import Step3Select2 from "./Step3Select2/Step3Select2";
 import Step4 from "../Step4/Step4";
 import { useDispatch, useSelector } from "react-redux";
 import { getThankuContent } from "@/state/order/orderSelector";
 import optionStep3 from "./step3.json";
 import {
+  getResultados,
   selectedTitleOthers,
   splitDevolucion,
   splitQuieroComprar,
@@ -37,6 +39,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const orders = useSelector(getThankuContent);
   const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
+  // console.log("allProducts", allProducts);
 
   React.useEffect(() => {
     const productsData = async () => {
@@ -45,6 +48,16 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
 
     productsData();
   }, []);
+  const infoChanges = rawInfoChanges as unknown as ProductoData[];
+
+  const resultadoFinal = getResultados(
+    selectedTitles,
+    infoChanges,
+    orders.items,
+    allProducts
+  );
+
+  console.log("resultadoFinal", resultadoFinal);
 
   const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
   const [continuemos, otros2] = splitDevolucion(selectedTitles);
@@ -105,7 +118,13 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
           ? [products]
           : [],
       productChange:
-        valueSelect === "3"
+        valueSelect === "2" &&
+        selectedTitles.length === 1 &&
+        resultadoFinal &&
+        resultadoFinal.length === 1 &&
+        !selectedTitles.some((title) => title.includes("Continuemos"))
+          ? [resultadoFinal[0].sku]
+          : valueSelect === "3"
           ? selectedTitles.filter((title) => title.includes("-"))
           : [],
     });
@@ -192,6 +211,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
           />
         ) : (
           <Step3Select2
+            resultadoFinal={resultadoFinal}
             orders={
               orders.items.length > 0 ? (
                 orders.items

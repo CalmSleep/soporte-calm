@@ -1,6 +1,7 @@
 import { searchAttribute } from "@/utils/productsFunctios";
 import variations_products from "@/utils/variations_products";
 import { IOrdenMail } from "./Step1/StepDni/types";
+import { Resultado } from "./Step3/types";
 
 export const maskEmail = (email: string) => {
   const [localPart, domain] = email.split("@");
@@ -164,4 +165,108 @@ export const splitDevolucion = (selectedTitles: string[]) => {
 export function formatDateToISO(dateStr: string) {
   const [day, month, year] = dateStr.split("/");
   return `${year}-${month}-${day}`;
+}
+export function normalize(str: string): string {
+  return str
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/["'(),\-:]/g, "")
+    .replace(/\s+/g, " ");
+}
+
+export function isFlexibleMatch(
+  attributeValue: string,
+  targetString: string
+): boolean {
+  if (!attributeValue) return true;
+
+  const normalizeText = (s: string) =>
+    normalize(s)
+      .replace(/\s+/g, "")
+      .replace(/(\d+)([a-zA-Z]+)/g, "$1 $2")
+      .trim();
+
+  const attr = normalizeText(attributeValue);
+  const target = normalizeText(targetString);
+
+  return target.includes(attr) || attr.includes(target);
+}
+
+export function getResultados(
+  selectedTitles: string[],
+  infoChanges: any[],
+  orders: any[],
+  products: any
+): Resultado[] {
+  return selectedTitles
+    .map((str) => {
+      const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
+      const producto = match ? match[1].trim() : "";
+      const comentario = match ? match[2].trim() : "";
+
+      const item = infoChanges.find((d) =>
+        normalize(d.title).includes(normalize(producto))
+      );
+      if (!item) return null;
+
+      const valueMatch = item.values.find((obj: any) =>
+        Object.keys(obj).some((key) => normalize(key) === normalize(comentario))
+      );
+      if (!valueMatch) return null;
+
+      const comentarioKey = Object.keys(valueMatch).find(
+        (key) => normalize(key) === normalize(comentario)
+      );
+      if (!comentarioKey) return null;
+
+      const value = valueMatch[comentarioKey];
+      const valueName = normalize(value[0]);
+
+      const attributesOrder =
+        orders &&
+        orders.find((order: any) => {
+          const productWords = normalize(producto).split(" ").filter(Boolean);
+          const orderName = normalize(order.product_name);
+          return productWords.some((word) => orderName.includes(word));
+        })?.attributes;
+
+      const childrenFull =
+        products
+          ?.flatMap((p: any) => p.products)
+          .find((p: any) => normalize(value[0]).includes(normalize(p.name)))
+          ?.children || [];
+
+      let sku: string | null = null;
+
+      if (value && value[0]) {
+        const matchChild = childrenFull.find((child: any) => {
+          const normalizedChildName = normalize(child.name);
+          const tokens = valueName.split(" ");
+          const allTokensMatch = tokens.every((token) =>
+            normalizedChildName.includes(token)
+          );
+
+          const tamanoValue =
+            attributesOrder?.pa_tamano || attributesOrder?.tamano || "";
+          const colorValue =
+            attributesOrder?.pa_color || attributesOrder?.color || "";
+
+          const tamanoMatch = isFlexibleMatch(tamanoValue, normalizedChildName);
+          const colorMatch = isFlexibleMatch(colorValue, normalizedChildName);
+
+          return allTokensMatch && tamanoMatch && colorMatch;
+        });
+
+        sku = matchChild?.name + ", " + matchChild?.sku || null;
+      }
+
+      return {
+        productName: value?.[0],
+        comentario: value?.[1],
+        sku,
+      };
+    })
+    .filter((item): item is Resultado => item !== null);
 }

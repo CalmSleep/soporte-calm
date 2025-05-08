@@ -233,7 +233,7 @@ const Step4 = ({
             },
           ],
     skuChange:
-      Number(valueSelect) === 3
+      Number(valueSelect) === 3 || Number(valueSelect) === 2
         ? skuChangeFilter(notionInfo.productChange || [])
         : [],
     peaces:

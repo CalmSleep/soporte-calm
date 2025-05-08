@@ -78,6 +78,7 @@ export interface Step3Select2and3Props {
   setModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   handleConfirmCheckbox?: () => void;
   products?: IgetProducts[];
+  resultadoFinal?: Resultado[];
 }
 
 export type Category = {
