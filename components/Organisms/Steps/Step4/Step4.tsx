@@ -224,7 +224,9 @@ const Step4 = ({
         };
       }),
     skuOriginal:
-      Number(selectedValue) === 1 || Number(selectedValue) === 4
+      Number(selectedValue) === 1 ||
+      Number(selectedValue) === 3 ||
+      Number(selectedValue) === 4
         ? skuFilterProduct(dataUser, rawString)
         : Number(valueSelect) === 2 || Number(valueSelect) === 3
         ? skuFilterProduct(dataUser, notionInfo.productReturn?.join(", ") || "")
