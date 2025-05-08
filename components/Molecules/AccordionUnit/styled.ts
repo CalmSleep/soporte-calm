@@ -58,9 +58,9 @@ export const Content = styled.div<{
 }>`
   position: relative;
   overflow: hidden;
-  transition: height 0.5s;
+  transition: max-height 0.5s;
   height: 0;
-  height: ${(props) => {
+  max-height: ${(props) => {
     if (props.$render) {
       const inner = document.getElementById(props.$itemName);
       return `${props.$isActive && inner ? inner.scrollHeight : 0}px`;
@@ -178,14 +178,24 @@ export const IconTitle = styled.div`
     align-items: flex-start;
   }
 `;
-
 export const ContentItemSelect = styled.div<{
   $isActive?: boolean;
   $contentHeight: number;
+  $height: number;
 }>`
-  overflow-x: hidden;
-  overflow-y: visible;
-  transition: max-height 0.5s ease;
-  transition: height 0.3s ease;
-  max-height: ${({ $isActive }) => ($isActive ? `100%` : "0")};
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  max-height: ${({ $isActive, $height }) =>
+    $isActive ? `${$height}px` : "0px"};
 `;
+
+// export const ContentItemSelect = styled.div<{
+//   $isActive?: boolean;
+//   $contentHeight: number;
+// }>`
+//   overflow-x: hidden;
+//   overflow-y: visible;
+//   transition: max-height 0.5s ease;
+//   transition: height 0.3s ease;
+//   max-height: ${({ $isActive }) => ($isActive ? `100%` : "0")};
+// `;

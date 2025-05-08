@@ -30,13 +30,13 @@ const ProductProps = ({
   idProd,
   onQuantityChange,
   propsNames,
+  selectedGroup,
+  setSelectedGroup,
 }: IProps) => {
   const [tamanoState, setTamanoState] = useState("");
   const [altoState, setAltoState] = useState("");
   const [colorState, setColorState] = useState("");
-  const [selectedGroup, setSelectedGroup] = useState<
-    IChildrenProd[] | undefined
-  >();
+
   const [isSizeInfoOpen, setIsSizeInfoOpen] = useState(false);
   const [sizeByURL, setSizeByURL] = useState<string | null>();
   const [heightByURL, setHeightByURL] = useState<string | null>();

@@ -150,9 +150,7 @@ const Step4 = ({
     name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
     email: dataUser.billing.email,
     shippingDate:
-      dataUser.shipping_date === undefined
-        ? null
-        : formatDateToISO(dataUser.shipping.shipping_date),
+      dataUser.date_created === undefined ? null : dataUser.date_created,
     requestDate: new Date(),
     typeRequest:
       Number(selectedValue) === 1

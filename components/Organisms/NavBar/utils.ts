@@ -62,7 +62,7 @@ export const menuData = [
               "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/3d695c3c-0dfc-4251-2816-e9a6fd574500/thumbnail",
           },
           {
-            name: "Colchón perros",
+            name: "Colchón para perros",
             description: "Con funda desmontable",
             pillMessage: "",
             redirect: "/colchones/colchon-perro",
@@ -137,7 +137,7 @@ export const menuData = [
               "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/d612881a-2a68-4d73-0e77-f8c311854000/thumbnail",
           },
           {
-            name: "Base de hierro",
+            name: "Base de hierro Calm",
             description: "Con espacio de guardado",
             pillMessage: "Más vendido",
             redirect: "/bases/base",
@@ -146,7 +146,7 @@ export const menuData = [
               "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/4adc0cbc-6200-4697-0192-fa776d19dd00/thumbnail",
           },
           {
-            name: "Cama Articulada",
+            name: "Cama Articulada Ola",
             description: "Posiciones personalizables",
             pillMessage: "Lanzamiento",
             isYellowPill: true,
@@ -477,8 +477,8 @@ export const menuData = [
               "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/1e07bc31-c83f-46f6-90b0-4bb79af5bd00/thumbnail",
           },
           {
-            name: "Sábanas algodón & frescura",
-            description: "200 hilos del mejor algodón",
+            name: "Sábanas de algodón & frescura",
+            description: "100% algodón de 200 hilos",
             pillMessage: "",
             redirect: "/ropa-de-cama/sabanas-algodon",
             id: "1851178",
@@ -553,7 +553,7 @@ export const menuData = [
               "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/4fdf0a45-bcc3-4334-9945-9931cc2bff00/thumbnail",
           },
           {
-            name: "Respaldo  horizonte",
+            name: "Respaldo horizonte",
             description: "Textil suave, funda desmontable",
             redirect: "/accesorios/respaldo-horizonte",
             id: "2196404",
@@ -600,7 +600,7 @@ export const menuData = [
       {
         image_url:
           "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/4d0d3c08-80e1-4288-ccff-9d4cc0900000/thumbnail",
-        name: "Respaldo  horizonte",
+        name: "Respaldo horizonte",
         description: "Espuma con Tecnología EQUO",
         redirect: "/accesorios/respaldo-horizonte",
         id: "2196404",

@@ -179,10 +179,24 @@ const useSelects = ({
 
   useLayoutEffect(() => {
     if (activeItem && contentRefs.current[activeItem]) {
-      const scrollHeight = contentRefs.current[activeItem]!.scrollHeight;
-      setContentHeights((prev) => ({ ...prev, [activeItem]: scrollHeight }));
+      requestAnimationFrame(() => {
+        const el = contentRefs.current[activeItem];
+        const scrollHeight = el?.scrollHeight || 0;
+        setContentHeights((prev) => ({
+          ...prev,
+          [activeItem]: scrollHeight,
+        }));
+      });
     }
-  }, [activeItem, selectedRadios, selectedChecks, inputValues]);
+  }, [
+    activeItem,
+    selectedRadios,
+    selectedChecks,
+    inputValues,
+    selectedChild,
+    isColorchange,
+    isSizechange,
+  ]);
 
   const handleChangeRadio = (item: IItems, value: string) => {
     setSelectedRadios((prev) => ({

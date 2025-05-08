@@ -15,6 +15,8 @@ export interface IProps {
   idProd?: string;
   onQuantityChange?: (quantity: number) => void;
   propsNames: IPropsNames;
+  selectedGroup: IChildrenProd[];
+  setSelectedGroup: Dispatch<SetStateAction<IChildrenProd[] | undefined>>;
 }
 
 export interface IPropsNames {

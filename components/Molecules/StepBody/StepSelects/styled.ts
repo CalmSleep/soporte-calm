@@ -119,6 +119,12 @@ export const AcordeonProducts = styled.div`
   flex-direction: column;
 `;
 
-export const SelectableDiv = styled.div`
-  padding: 4px 25px;
+export const SelectableDiv = styled.div<{
+  $selected?: string;
+  $items?: number;
+}>`
+  padding: 10px 30px;
+  margin-bottom: ${({ $selected, $items }) =>
+    $selected ? `${Math.min($items! * 60, 300)}px` : "0px"};
+  transition: margin-bottom 0.3s ease;
 `;

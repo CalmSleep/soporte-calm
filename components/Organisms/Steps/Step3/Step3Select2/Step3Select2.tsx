@@ -250,30 +250,6 @@ const Step3Select2 = ({
             )
           );
         setModalOpen && setModalOpen(false);
-        // console.log("selectedTitles", selectedTitles);
-
-        // if (selectedTitles.length === 1 && resultadoFinal.length === 1) {
-        //   handleCheckboxChangeConfirmed(
-        //     true,
-        //     `${resultadoFinal
-        //       .map((r) => r.productName.replace(/\s*\(([^)]+)\)/, " - $1"))
-        //       .join(", ")}`,
-        //     ["cambio"]
-        //   );
-        //   setConfirmedValue && setConfirmedValue("3");
-        //   handleConfirmCheckbox && handleConfirmCheckbox();
-        //   setModalOpen && setModalOpen(false);
-        // } else {
-        //   handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
-        //   setConfirmedValue && setConfirmedValue("3");
-        //   setSelectedTitles &&
-        //     setSelectedTitles(
-        //       selectedTitles.filter(
-        //         (title) => !title.toLowerCase().includes("cambio")
-        //       )
-        //     );
-        //   setModalOpen && setModalOpen(false);
-        // }
       },
     },
   ];

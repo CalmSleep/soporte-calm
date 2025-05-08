@@ -111,6 +111,8 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     });
   }, [checkboxConfirmed]);
 
+  console.log("selectedTitles", selectedTitles);
+
   return (
     <>
       <StepsHeaders
@@ -149,9 +151,10 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             ? !selectedValue || !checkSeleccionado
             : valueSelect === "2"
             ? !checkSeleccionado
-            : valueSelect === "3"
-            ? !checkSeleccionado
-            : false
+            : !(
+                valueSelect === "3" &&
+                selectedTitles.some((title) => title.includes("-"))
+              )
         }
         button={
           valueSelect === "1"
