@@ -32,29 +32,60 @@ export function getActionType(
 }
 
 export const skuFilterProduct = (dataUser: any, rawString: string) => {
-  const productNames = rawString.split(/,(?![^\(]*\))/).map((entry) =>
-    entry
-      .replace(/\(.*?\)/g, "")
-      .trim()
+  const normalize = (str: string) =>
+    str
+      .replace(/\(.*?\)/g, "") // remueve paréntesis
       .toLowerCase()
-  );
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "") // quita tildes
+      .replace(/["'(),\-:]/g, "") // limpia caracteres especiales
+      .replace(/\s+/g, " ")
+      .trim();
+
+  const productNames = rawString
+    .split(/,(?![^\(]*\))/) // divide por comas fuera de paréntesis
+    .map(normalize)
+    .filter(Boolean);
 
   return dataUser.items
     .filter((item: any) => {
-      const productWords = item.product_name
-        .replace(/\(.*?\)/g, "")
-        .trim()
-        .toLowerCase()
-        .split(/\s|&|,/)
-        .filter(Boolean);
-
-      return productNames.some((name: string) => {
-        const nameWords = name.split(/\s|&|,/).filter(Boolean);
-        return nameWords.some((word) => productWords.includes(word));
+      const itemName = normalize(item.product_name);
+      return productNames.some((name) => {
+        // match exacto o empieza con el nombre buscado (para casos como "Base de hierro Calm")
+        return itemName === name || itemName.startsWith(name + " ");
       });
     })
     .map((item: any) => ({ name: item.sku }));
 };
+
+// export const skuFilterProduct = (dataUser: any, rawString: string) => {
+//   console.log("rawString funcion", rawString);
+//   console.log("dataUser", dataUser);
+
+//   const productNames = rawString.split(/,(?![^\(]*\))/).map((entry) =>
+//     entry
+//       .replace(/\(.*?\)/g, "")
+//       .trim()
+//       .toLowerCase()
+//   );
+
+//   return dataUser.items
+//     .filter((item: any) => {
+//       const productWords = item.product_name
+//         .replace(/\(.*?\)/g, "")
+//         .trim()
+//         .toLowerCase()
+//         .split(/\s|&|,/)
+//         .filter(Boolean);
+//       console.log("productWords", productWords);
+
+//       return productNames.some((name: string) => {
+//         const nameWords = name.split(/\s|&|,/).filter(Boolean);
+//         return nameWords.some((word) => productWords.includes(word));
+//       });
+//     })
+//     .map((item: any) => ({ name: item.sku }));
+// };
 
 export const skuChangeFilter = (productChange: string[]) => {
   return productChange.map((item) => {
