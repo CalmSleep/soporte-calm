@@ -34,7 +34,20 @@ const Step3Select3 = ({
           titleParagraph="¿Por qué producto te gustaría hacer el cambio?"
           products={
             products &&
-            products.filter((product) => product.name_category !== "muebles")
+            products
+              .filter((product) => product.name_category !== "muebles")
+              .map((product) => {
+                if (product.name_category === "accesorios") {
+                  return {
+                    ...product,
+                    products: product.products.filter(
+                      (p) =>
+                        Number(p.id) !== 2677933 && Number(p.id) !== 2677939
+                    ),
+                  };
+                }
+                return product;
+              })
           }
           //  products={products}
           onCheckboxChange={handleCheckboxChange}
