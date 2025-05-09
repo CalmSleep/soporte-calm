@@ -4,11 +4,15 @@ import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects
 import items from "../../defectsItems.json";
 import { itemsFilterJson, mapOrdersWithSpan } from "../../../util";
 
-const Select4Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
+const Select4Option = ({
+  onCheckboxChange,
+  orders,
+  idVariation,
+  setIdVariation,
+}: SelectOptionProps) => {
   const newOrders = mapOrdersWithSpan(orders);
 
   const matchedItems = itemsFilterJson(items, newOrders);
-  console.log("matchedItems", matchedItems);
 
   return (
     <StepSelects
@@ -17,6 +21,8 @@ const Select4Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
       onCheckboxChange={(isChecked, title, radioGroup = []) =>
         onCheckboxChange(isChecked, title, radioGroup)
       }
+      idVariation={idVariation}
+      setIdVariation={setIdVariation}
     />
   );
 };

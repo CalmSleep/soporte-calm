@@ -1,11 +1,10 @@
 import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects";
 import React from "react";
 import items from "../refundItems.json";
-import rawInfoChanges from "../changesOptionItems.json";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import Paragraph from "@/components/Atoms/Typography/Text";
-import { ProductoData, Resultado, Step3Select2and3Props } from "../types";
-import { itemsFilterJson, mapOrdersWithSpan, normalizeText } from "../../util";
+import { Step3Select2and3Props } from "../types";
+import { itemsFilterJson, mapOrdersWithSpan } from "../../util";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import { IArrayButton } from "@/components/Organisms/Modals/ModalStep/types";
 import Step3Select3 from "./Step3Select3";
@@ -27,64 +26,15 @@ const Step3Select2 = ({
   setModalOpen,
   handleConfirmCheckbox,
   products,
+  resultadoFinal,
+  idVariation,
+  setIdVariation,
+  idVariationChange,
+  setIdVariationChange,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
-  const infoChanges = rawInfoChanges as unknown as ProductoData[];
 
-  const resultadoFinal: Resultado[] = selectedTitles
-    .map((str) => {
-      const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
-      const producto = match ? match[1].trim() : "";
-      const comentario = match ? match[2].trim() : "";
-
-      const normalize = (s: string) =>
-        s
-          .trim()
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "");
-
-      const item = infoChanges.find((d) =>
-        normalize(d.title).includes(normalize(producto))
-      );
-
-      // console.log("🟡 Producto:", producto);
-      // console.log("🟡 Comentario:", comentario);
-      // console.log("🟡 Item:", item);
-
-      if (!item) {
-        //  console.log("❌ No se encontró item para:", producto);
-        return null;
-      }
-
-      const valueMatch = item.values.find((obj) =>
-        Object.keys(obj).some((key) => normalize(key) === normalize(comentario))
-      );
-
-      if (!valueMatch) {
-        //   console.log("❌ No se encontró comentario para:", comentario);
-        return null;
-      }
-
-      const comentarioKey = Object.keys(valueMatch).find(
-        (key) => normalize(key) === normalize(comentario)
-      );
-
-      if (!comentarioKey) return null;
-
-      const value = valueMatch[comentarioKey];
-      return {
-        productName: value[0],
-        comentario: value[1],
-      };
-    })
-    .filter((item): item is Resultado => item !== null);
-
-  console.log(
-    "resultadoFinal",
-    resultadoFinal.map((r) => r.productName).join(", ")
-  );
   const paragraphArray = [
     {
       id: 1,
@@ -98,7 +48,9 @@ const Step3Select2 = ({
     {
       id: 2,
       text:
-        selectedTitles.length === 1 && resultadoFinal.length === 1 ? (
+        selectedTitles.length === 1 &&
+        resultadoFinal &&
+        resultadoFinal.length === 1 ? (
           <Paragraph font="bold">
             🔍 En base a lo que buscás, creemos que{" "}
             {`${resultadoFinal.map((r) => r.productName).join(", ")}`} puede ser
@@ -114,7 +66,9 @@ const Step3Select2 = ({
     {
       id: 3,
       text:
-        selectedTitles.length === 1 && resultadoFinal.length === 1 ? (
+        selectedTitles.length === 1 &&
+        resultadoFinal &&
+        resultadoFinal.length === 1 ? (
           <Paragraph>
             📌 {`${resultadoFinal.map((r) => r.comentario).join(", ")}`}
           </Paragraph>
@@ -128,7 +82,9 @@ const Step3Select2 = ({
     {
       id: 4,
       text:
-        selectedTitles.length === 1 && resultadoFinal.length === 1 ? (
+        selectedTitles.length === 1 &&
+        resultadoFinal &&
+        resultadoFinal.length === 1 ? (
           <Paragraph>
             Para facilitarte el cambio, te ofrecemos un <b>5% OFF</b> en este
             nuevo producto.
@@ -169,6 +125,38 @@ const Step3Select2 = ({
           );
         setModalOpen && setModalOpen(false);
       },
+      // onClick: () => {
+      //   //   handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+      //   if (
+      //     selectedTitles.length === 1 &&
+      //     resultadoFinal &&
+      //     resultadoFinal.length === 1
+      //   ) {
+      //     handleCheckboxChangeConfirmed(true, "Continuemos con la devolución", [
+      //       "devolucion",
+      //     ]);
+      //     setSelectedTitles &&
+      //       setSelectedTitles([
+      //         ...selectedTitles.filter(
+      //           (title) => !title.toLowerCase().includes("cambio")
+      //         ),
+      //         resultadoFinal[0].sku,
+      //         //    resultadoFinal[0].name + ", " + resultadoFinal[0].sku,
+      //       ]);
+      //     handleConfirmCheckbox && handleConfirmCheckbox();
+      //     setModalOpen && setModalOpen(false);
+      //   } else {
+      //     handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+      //     setConfirmedValue && setConfirmedValue("3");
+      //     setSelectedTitles &&
+      //       setSelectedTitles(
+      //         selectedTitles.filter(
+      //           (title) => !title.toLowerCase().includes("cambio")
+      //         )
+      //       );
+      //     setModalOpen && setModalOpen(false);
+      //   }
+      // },
     },
   ];
 
@@ -184,6 +172,8 @@ const Step3Select2 = ({
             }
             items={matchedItems.length > 0 ? matchedItems : []}
             onCheckboxChange={handleCheckboxChange}
+            idVariation={idVariation}
+            setIdVariation={setIdVariation}
           />
           {modalOpen && (
             <ModalSteps
@@ -204,6 +194,8 @@ const Step3Select2 = ({
               selectedTitles={selectedTitles}
               handleCheckboxChange={handleCheckboxChange}
               products={products as IgetProducts[]}
+              idVariationChange={idVariationChange}
+              setIdVariationChange={setIdVariationChange}
             />
           )}
         </>

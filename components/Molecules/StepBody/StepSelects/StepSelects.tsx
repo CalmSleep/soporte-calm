@@ -25,6 +25,7 @@ import CardProducts from "../../CardRelatedProductsATC/CardProducts";
 import ProductProps from "@/components/Organisms/ProductProps/ProductProps";
 import { IChildrenProd } from "@/state/products/types";
 import Quizz from "../../Quizz/Quizz";
+import { set } from "date-fns";
 
 const StepSelects = ({
   titleParagraph,
@@ -38,6 +39,8 @@ const StepSelects = ({
   changedOption,
   menuData,
   selectedTitle,
+  idVariation,
+  setIdVariation,
 }: StepSelectsProps) => {
   const {
     handleAccordionClick,
@@ -59,12 +62,15 @@ const StepSelects = ({
     setSelectedChild,
     setIsColorChange,
     setIsSizeChange,
+    handleCheckboxArrayChange,
   } = useSelects({
     selectedTitle,
     onCheckboxChange,
     items,
     radioOptions,
     setSelectedOption,
+    idVariation,
+    setIdVariation,
   });
   const [quizzActive, setQuizzActive] = useState(false);
   const [selectedQuizz, setSelectedQuizz] = useState<undefined | string>();
@@ -101,13 +107,23 @@ const StepSelects = ({
                 type="checkbox"
                 name={check.name}
                 value={check.value}
-                onChange={(e) =>
+                onChange={(e) => {
                   onCheckboxChange &&
-                  onCheckboxChange(
-                    e.target.checked,
-                    `${check.title} ${check.span ? `(${check.span})` : ""}`
-                  )
-                }
+                    onCheckboxChange(
+                      e.target.checked,
+                      `${check.title} ${check.span ? `(${check.span})` : ""}`
+                    );
+
+                  if (setIdVariation) {
+                    setIdVariation((prev) =>
+                      handleCheckboxArrayChange({
+                        prev,
+                        isChecked: e.target.checked,
+                        id: Number(check.id),
+                      })
+                    );
+                  }
+                }}
               />
               <CointainText>
                 <Paragraph
@@ -321,9 +337,9 @@ const StepSelects = ({
                           type="checkbox"
                           name={product.name}
                           value={product.name}
-                          onChange={(e) =>
-                            handleProductCheckboxChange(e, product.name)
-                          }
+                          onChange={(e) => {
+                            handleProductCheckboxChange(e, product.name);
+                          }}
                         />
                         <CardProducts
                           image={product.image_cross_selling}

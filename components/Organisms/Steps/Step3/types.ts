@@ -13,6 +13,7 @@ export type ProductoData = {
 export type Resultado = {
   productName: string;
   comentario: string;
+  sku: string;
 };
 
 export type Step3Props = {
@@ -42,6 +43,8 @@ export interface Step3Select1Props {
     payments: { value: string; label: string }[]
   ) => void;
   infoStep: string[];
+  idVariation?: number[];
+  setIdVariation?: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 export interface SelectOptionProps {
@@ -55,6 +58,8 @@ export interface SelectOptionProps {
     paymentLabel: string,
     payments: { value: string; label: string }[]
   ) => void;
+  idVariation?: number[];
+  setIdVariation?: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 export interface Step3Select2and3Props {
@@ -77,6 +82,11 @@ export interface Step3Select2and3Props {
   setModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   handleConfirmCheckbox?: () => void;
   products?: IgetProducts[];
+  resultadoFinal?: Resultado[];
+  idVariation?: number[];
+  setIdVariation?: React.Dispatch<React.SetStateAction<number[]>>;
+  idVariationChange?: number[];
+  setIdVariationChange?: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 export type Category = {

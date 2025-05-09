@@ -1,30 +1,24 @@
 import StepsHeaders from "@/components/Molecules/StepBody/StepsHeader/StepsHeaders";
 import React from "react";
 import useValueSelect from "@/hooks/useValueSelect";
+import rawInfoChanges from "./changesOptionItems.json";
 import Step3Select1 from "./Step3Select1/Step3Select1";
-import { Step3Props } from "./types";
+import { ProductoData, Step3Props } from "./types";
 import Step3Select2 from "./Step3Select2/Step3Select2";
 import Step4 from "../Step4/Step4";
 import { useDispatch, useSelector } from "react-redux";
 import { getThankuContent } from "@/state/order/orderSelector";
 import optionStep3 from "./step3.json";
 import {
-  extractItemsInParens,
-  filterTitlesByCategories,
+  getResultados,
   selectedTitleOthers,
   splitDevolucion,
   splitQuieroComprar,
 } from "../util";
-import itemsChanges from "./changesItems.json";
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 import { getAllProductsData } from "@/state/products/productsSelector";
 import { onGetAllProducts } from "@/state/products/productsActions";
-const Step3 = ({
-  valueSelect,
-  setConfirmedValue,
-}: // notionInfo,
-// setNotionInfo,
-Step3Props) => {
+const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const {
     selectedValue,
     selectedTitles,
@@ -39,6 +33,10 @@ Step3Props) => {
     handlePaymentChange,
     notionInfo,
     setNotionInfo,
+    idVariation,
+    setIdVariation,
+    idVariationChange,
+    setIdVariationChange,
   } = useValueSelect();
   //  console.log("titles", selectedTitles);
   // console.log(notionInfo);
@@ -47,8 +45,6 @@ Step3Props) => {
   const allProducts = useSelector(getAllProductsData);
   //console.log("allProducts", allProducts);
 
-  const matchedTitles = filterTitlesByCategories(itemsChanges, selectedTitles);
-
   React.useEffect(() => {
     const productsData = async () => {
       await dispatch(onGetAllProducts());
@@ -56,6 +52,17 @@ Step3Props) => {
 
     productsData();
   }, []);
+
+  const infoChanges = rawInfoChanges as unknown as ProductoData[];
+
+  const resultadoFinal = getResultados(
+    selectedTitles,
+    infoChanges,
+    orders.items,
+    allProducts
+  );
+
+  console.log("resultadoFinal", resultadoFinal);
 
   const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
   const [continuemos, otros2] = splitDevolucion(selectedTitles);
@@ -116,7 +123,17 @@ Step3Props) => {
           ? [products]
           : [],
       productChange:
-        valueSelect === "3"
+        // valueSelect === "2" &&
+        // selectedTitles.length === 1 &&
+        // resultadoFinal &&
+        // resultadoFinal.length === 1 &&
+        // !selectedTitles.some((title) => title.includes("Continuemos"))
+        //   ? [resultadoFinal[0].sku]
+        valueSelect === "3" ||
+        (valueSelect === "2" &&
+          selectedTitles.length === 1 &&
+          resultadoFinal &&
+          resultadoFinal.length === 1)
           ? selectedTitles.filter((title) => title.includes("-"))
           : [],
     });
@@ -200,9 +217,12 @@ Step3Props) => {
             handleCheckboxChangeConfirmed={handleCheckboxChangeConfirmed}
             handlePaymentChange={handlePaymentChange}
             infoStep={infoSelect1}
+            idVariation={idVariation}
+            setIdVariation={setIdVariation}
           />
         ) : (
           <Step3Select2
+            resultadoFinal={resultadoFinal}
             orders={
               orders.items.length > 0 ? (
                 orders.items
@@ -228,6 +248,10 @@ Step3Props) => {
             setConfirmedValue={setConfirmedValue}
             handleConfirmCheckbox={handleConfirmCheckbox}
             products={allProducts}
+            idVariation={idVariation}
+            setIdVariation={setIdVariation}
+            idVariationChange={idVariationChange}
+            setIdVariationChange={setIdVariationChange}
           />
         )}
       </StepsHeaders>
@@ -236,7 +260,9 @@ Step3Props) => {
           valueSelect={valueSelect || ""}
           selectedValue={selectedValue || ""}
           notionInfo={notionInfo}
-          setNotionInfo={setNotionInfo}
+          idVariation={idVariation}
+          idVariationChange={idVariationChange}
+          products={allProducts || []}
         />
       )}
     </>

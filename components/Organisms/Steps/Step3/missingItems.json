@@ -1,6 +1,6 @@
 [
   {
-    "id": "339",
+    "id": "172659",
     "title": "Base de hierro",
     "pieces": [
       { "label": "Maderas" },
@@ -14,7 +14,77 @@
     ]
   },
   {
-    "id": "1993786",
+    "id": "172660",
+    "title": "Base de hierro",
+    "pieces": [
+      { "label": "Maderas" },
+      { "label": "Recuadros", "hasInput": true, "placeholder": "¿Cuántos?" },
+      { "label": "Laterales" },
+      { "label": "Pata media" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "342",
+    "title": "Base de hierro",
+    "pieces": [
+      { "label": "Maderas" },
+      { "label": "Recuadros", "hasInput": true, "placeholder": "¿Cuántos?" },
+      { "label": "Laterales" },
+      { "label": "Pata media" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "343",
+    "title": "Base de hierro",
+    "pieces": [
+      { "label": "Maderas" },
+      { "label": "Recuadros", "hasInput": true, "placeholder": "¿Cuántos?" },
+      { "label": "Laterales" },
+      { "label": "Pata media" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "172661",
+    "title": "Base de hierro",
+    "pieces": [
+      { "label": "Maderas" },
+      { "label": "Recuadros", "hasInput": true, "placeholder": "¿Cuántos?" },
+      { "label": "Laterales" },
+      { "label": "Pata media" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "172662",
+    "title": "Base de hierro",
+    "pieces": [
+      { "label": "Maderas" },
+      { "label": "Recuadros", "hasInput": true, "placeholder": "¿Cuántos?" },
+      { "label": "Laterales" },
+      { "label": "Pata media" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "1993790",
     "title": "Sommier",
     "pieces": [
       { "label": "Funda" },
@@ -31,7 +101,194 @@
     ]
   },
   {
-    "id": "2196407",
+    "id": "1993791",
+    "title": "Sommier",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "1993793",
+    "title": "Sommier",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "1993792",
+    "title": "Sommier",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "1993794",
+    "title": "Sommier",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "1993795",
+    "title": "Sommier",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2318315",
+    "title": "Sommier",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2318314",
+    "title": "Sommier",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2318313",
+    "title": "Sommier",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2318312",
+    "title": "Sommier",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2318311",
+    "title": "Sommier",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2318310",
+    "title": "Sommier",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2196431",
     "title": "Cama Suavidad",
     "pieces": [
       { "label": "Funda" },
@@ -48,7 +305,58 @@
     ]
   },
   {
-    "id": "2358880",
+    "id": "2196432",
+    "title": "Cama Suavidad",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2196433",
+    "title": "Cama Suavidad",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2196434",
+    "title": "Cama Suavidad",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Frontales" },
+      { "label": "Laterales" },
+      { "label": "Larguero medio" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Regatones" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2358881",
     "title": "Cama Articulada Ola",
     "pieces": [
       { "label": "Pieza de hierro" },
@@ -61,7 +369,46 @@
     ]
   },
   {
-    "id": "2288072",
+    "id": "2358882",
+    "title": "Cama Articulada Ola",
+    "pieces": [
+      { "label": "Pieza de hierro" },
+      { "label": "Patas" },
+      { "label": "Cable" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Control" },
+      { "label": "Barra de retención" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2358883",
+    "title": "Cama Articulada Ola",
+    "pieces": [
+      { "label": "Pieza de hierro" },
+      { "label": "Patas" },
+      { "label": "Cable" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Control" },
+      { "label": "Barra de retención" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2358884",
+    "title": "Cama Articulada Ola",
+    "pieces": [
+      { "label": "Pieza de hierro" },
+      { "label": "Patas" },
+      { "label": "Cable" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Control" },
+      { "label": "Barra de retención" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2288073",
     "title": "Sofá Cama 24/7",
     "pieces": [
       { "label": "Placas" },
@@ -71,7 +418,17 @@
     ]
   },
   {
-    "id": "2356436",
+    "id": "2288074",
+    "title": "Sofá Cama 24/7",
+    "pieces": [
+      { "label": "Placas" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2356437",
     "title": "Mesa de arrime Ocio",
     "pieces": [
       { "label": "Columna" },
@@ -83,7 +440,7 @@
     ]
   },
   {
-    "id": "2356445",
+    "id": "2356446",
     "title": "Mesa ratona Ocio",
     "pieces": [
       { "label": "Pies" },
@@ -95,7 +452,7 @@
     ]
   },
   {
-    "id": "2249006",
+    "id": "2249011",
     "title": "Mesa de luz Hábito",
     "pieces": [
       { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
@@ -104,7 +461,7 @@
     ]
   },
   {
-    "id": "2249180",
+    "id": "2249192",
     "title": "Mesa de luz Hábito flotante",
     "pieces": [
       { "label": "Percha metálica" },

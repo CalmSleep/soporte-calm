@@ -5,8 +5,12 @@ import items from "../../missingItems.json";
 import { IChecks } from "@/components/Molecules/StepBody/StepSelects/types";
 import { itemsFilterJson, mapOrdersWithSpan } from "../../../util";
 
-const Select1Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
-  //  console.log("orders", orders);
+const Select1Option = ({
+  onCheckboxChange,
+  orders,
+  idVariation,
+  setIdVariation,
+}: SelectOptionProps) => {
   const newOrders = mapOrdersWithSpan(orders);
 
   const matchedItems = itemsFilterJson(items, newOrders);
@@ -15,17 +19,29 @@ const Select1Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
 
   const checksOrders = newOrders
     .filter((order: any) => {
-      return !matchedIds.some((id) => order.product_id === Number(id));
+      const variationId = Number(order.variation_id);
+      const productId = Number(order.product_id);
+
+      return !matchedIds.some((id) => {
+        const itemId = Number(id);
+        return variationId === 0
+          ? productId === itemId
+          : variationId === itemId;
+      });
     })
     .map((order: any): IChecks => {
+      const id =
+        order.variation_id === 0
+          ? String(order.product_id)
+          : String(order.variation_id);
+
       return {
-        id: String(order.product_id),
-        value: String(order.product_id),
+        id,
+        value: id,
         title: order.product_name,
         span: order.span,
       };
     });
-  //console.log("checksOrders", checksOrders);
 
   const radioOptions = [
     { value: "completo", label: "Falta este producto completo" },
@@ -43,6 +59,8 @@ const Select1Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
       onCheckboxChange={(isChecked, title, radioGroup = []) =>
         onCheckboxChange(isChecked, title, radioGroup)
       }
+      idVariation={idVariation}
+      setIdVariation={setIdVariation}
     />
   );
 };

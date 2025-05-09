@@ -12,12 +12,26 @@ const Step3Select3 = ({
   handleCheckboxChange,
   selectedTitles,
   products,
+  idVariationChange,
+  setIdVariationChange,
 }: {
   handleCheckboxChange: Step3Select2and3Props["handleCheckboxChange"];
   selectedTitles: string[];
   products: IgetProducts[];
+  idVariationChange?: number[];
+  setIdVariationChange?: React.Dispatch<React.SetStateAction<number[]>>;
 }) => {
   const productsLoading = useSelector(getLoadingGetProducts);
+  console.log(
+    "products: ",
+    products
+      .filter((product) => product.name_category === "accesorios")
+      .flatMap((product) =>
+        product.products.filter(
+          (p) => Number(p.id) !== 2677933 && Number(p.id) !== 2677939
+        )
+      )
+  );
 
   return (
     <>
@@ -53,6 +67,8 @@ const Step3Select3 = ({
           onCheckboxChange={handleCheckboxChange}
           changedOption
           menuData={menuData}
+          idVariation={idVariationChange}
+          setIdVariation={setIdVariationChange}
         />
       )}
     </>

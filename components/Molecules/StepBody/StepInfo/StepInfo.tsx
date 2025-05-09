@@ -4,6 +4,8 @@ import { StepInfoProps } from "./types";
 import { StepInfoStyles } from "./styled";
 
 const StepInfo = ({ info, link, onClick }: StepInfoProps) => {
+  console.log("info", info);
+
   return (
     <>
       <StepInfoStyles>
