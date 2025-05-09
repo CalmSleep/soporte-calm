@@ -11,8 +11,6 @@ import { getThankuContent } from "@/state/order/orderSelector";
 import optionStep3 from "./step3.json";
 import {
   getResultados,
-  itemsFilterJson,
-  mapOrdersWithSpan,
   selectedTitleOthers,
   splitDevolucion,
   splitQuieroComprar,
@@ -20,7 +18,6 @@ import {
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 import { getAllProductsData } from "@/state/products/productsSelector";
 import { onGetAllProducts } from "@/state/products/productsActions";
-import { IChecks } from "@/components/Molecules/StepBody/StepSelects/types";
 const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const {
     selectedValue,
@@ -36,6 +33,8 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     handlePaymentChange,
     notionInfo,
     setNotionInfo,
+    idVariation,
+    setIdVariation,
   } = useValueSelect();
   //  console.log("titles", selectedTitles);
   // console.log(notionInfo);
@@ -216,6 +215,8 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             handleCheckboxChangeConfirmed={handleCheckboxChangeConfirmed}
             handlePaymentChange={handlePaymentChange}
             infoStep={infoSelect1}
+            idVariation={idVariation}
+            setIdVariation={setIdVariation}
           />
         ) : (
           <Step3Select2
@@ -245,6 +246,8 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             setConfirmedValue={setConfirmedValue}
             handleConfirmCheckbox={handleConfirmCheckbox}
             products={allProducts}
+            idVariation={idVariation}
+            setIdVariation={setIdVariation}
           />
         )}
       </StepsHeaders>
@@ -253,7 +256,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
           valueSelect={valueSelect || ""}
           selectedValue={selectedValue || ""}
           notionInfo={notionInfo}
-          setNotionInfo={setNotionInfo}
+          idVariation={idVariation}
         />
       )}
     </>

@@ -21,6 +21,8 @@ const Step3Select1 = ({
   handlePaymentChange,
   valueSelect,
   infoStep,
+  idVariation,
+  setIdVariation,
 }: Step3Select1Props) => {
   return (
     <>
@@ -39,6 +41,8 @@ const Step3Select1 = ({
             <Select1Option
               onCheckboxChange={handleCheckboxChange}
               orders={orders}
+              idVariation={idVariation}
+              setIdVariation={setIdVariation}
             />
           ) : selectedValue === "2" ? (
             <Select2Option
@@ -49,11 +53,15 @@ const Step3Select1 = ({
             <Select3Option
               onCheckboxChange={handleCheckboxChange}
               orders={orders}
+              idVariation={idVariation}
+              setIdVariation={setIdVariation}
             />
           ) : selectedValue === "4" ? (
             <Select4Option
               onCheckboxChange={handleCheckboxChange}
               orders={orders}
+              idVariation={idVariation}
+              setIdVariation={setIdVariation}
             />
           ) : null}
         </>

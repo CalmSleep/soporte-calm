@@ -2,7 +2,7 @@ export type Step4Props = {
   valueSelect: string;
   selectedValue: string;
   notionInfo: IInfoForm;
-  setNotionInfo: React.Dispatch<React.SetStateAction<IInfoForm>>;
+  idVariation: number[];
 };
 
 export type Piece = { label: string };

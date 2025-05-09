@@ -10,6 +10,8 @@ const useSelects = ({
   selectedOption,
   selectedTitle,
   setSelectedOption,
+  idVariation,
+  setIdVariation,
 }: StepSelectsProps) => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [selectedProductNames, setSelectedProductNames] = useState<string[]>(
@@ -73,6 +75,8 @@ const useSelects = ({
   }>({});
 
   const handlePieceCheckboxChange = (itemId: string, pieceLabel: string) => {
+    console.log("itemId", itemId);
+
     const current = selectedChecks[itemId] || [];
     const alreadyChecked = current.includes(pieceLabel);
     const updated = alreadyChecked
@@ -134,6 +138,12 @@ const useSelects = ({
       ...prev,
       [itemId]: pieceLabel,
     }));
+
+    setIdVariation &&
+      setIdVariation((prev) => {
+        const next = prev || [];
+        return next.includes(Number(itemId)) ? next : [...next, Number(itemId)];
+      });
 
     const item = items && items.find((i) => i.id === itemId);
     const itemTitle = item?.title || "";
@@ -203,6 +213,13 @@ const useSelects = ({
       ...prev,
       [item.id]: value,
     }));
+    setIdVariation &&
+      setIdVariation((prev) => {
+        const next = prev || [];
+        return next.includes(Number(item.id))
+          ? next
+          : [...next, Number(item.id)];
+      });
 
     if (value === "completo") {
       onCheckboxChange && onCheckboxChange(true, item.title);
@@ -241,6 +258,22 @@ const useSelects = ({
     });
   };
 
+  const handleCheckboxArrayChange = ({
+    prev,
+    isChecked,
+    id,
+  }: {
+    prev: number[];
+    isChecked: boolean;
+    id: number;
+  }) => {
+    if (isChecked) {
+      return prev.includes(id) ? prev : [...prev, id];
+    } else {
+      return prev.filter((item) => item !== id);
+    }
+  };
+
   return {
     activeItem,
     handleAccordionClick,
@@ -263,6 +296,7 @@ const useSelects = ({
     setIsSizeChange,
     isColorchange,
     setIsColorChange,
+    handleCheckboxArrayChange,
   };
 };
 

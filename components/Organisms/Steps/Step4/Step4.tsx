@@ -74,7 +74,7 @@ const Step4 = ({
   valueSelect,
   selectedValue,
   notionInfo,
-  setNotionInfo,
+  idVariation,
 }: Step4Props) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [errorNotion, setErrorNotion] = React.useState(false);
@@ -119,7 +119,18 @@ const Step4 = ({
 
   const rawString = notionInfo.problemDescription[1];
 
-  console.log("rawString", rawString);
+  const idMatched = dataUser.items.filter((item: any) => {
+    const variationId = Number(item.variation_id);
+    const productId = Number(item.product_id);
+    const ids = idVariation.map((id) => Number(id));
+
+    return variationId === 0
+      ? ids.includes(productId)
+      : ids.includes(variationId);
+  });
+
+  console.log("dataUser.items", dataUser.items);
+  console.log("idMatched", idMatched);
 
   const matchedItems = itemsFilterJson(items, dataUser.items);
   const pieces = matchedItems.flatMap((item) => item.pieces);
@@ -223,15 +234,10 @@ const Step4 = ({
         };
       }),
     skuOriginal:
-      Number(selectedValue) === 1 || Number(selectedValue) === 4
-        ? skuFilterProduct(dataUser, rawString)
-        : Number(valueSelect) === 2 || Number(valueSelect) === 3
-        ? skuFilterProduct(dataUser, notionInfo.productReturn?.join(", ") || "")
-        : [
-            {
-              name: "-",
-            },
-          ],
+      idMatched &&
+      idMatched.map((item: any) => ({
+        name: item.sku,
+      })),
     skuChange:
       Number(valueSelect) === 3 || Number(valueSelect) === 2
         ? skuChangeFilter(notionInfo.productChange || [])

@@ -88,9 +88,16 @@ export function mapOrdersWithSpan(orders: any[]): any[] {
 export const itemsFilterJson = (items: any[], newOrders: any) => {
   return items
     .map((item) => {
-      const matchingOrder = newOrders.find(
-        (order: any) => order.variation_id === Number(item.id)
-      );
+      const itemId = Number(item.id);
+      const matchingOrder = newOrders.find((order: any) => {
+        const variationId = Number(order.variation_id);
+        const productId = Number(order.product_id);
+
+        if (variationId === 0) {
+          return productId === itemId;
+        }
+        return variationId === itemId;
+      });
       if (!matchingOrder) return null;
       return {
         ...item,

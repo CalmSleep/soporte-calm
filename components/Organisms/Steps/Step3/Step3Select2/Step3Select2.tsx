@@ -27,6 +27,8 @@ const Step3Select2 = ({
   handleConfirmCheckbox,
   products,
   resultadoFinal,
+  idVariation,
+  setIdVariation,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
@@ -157,6 +159,8 @@ const Step3Select2 = ({
             }
             items={matchedItems.length > 0 ? matchedItems : []}
             onCheckboxChange={handleCheckboxChange}
+            idVariation={idVariation}
+            setIdVariation={setIdVariation}
           />
           {modalOpen && (
             <ModalSteps
