@@ -109,7 +109,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
 
   const infoSelect2And3 = [
     products,
-    // valueSelect === "2" ? `${continuemos.join(", ")}` : result,
+    valueSelect === "2" ? `${continuemos.join(", ")}` : result,
   ];
 
   React.useEffect(() => {

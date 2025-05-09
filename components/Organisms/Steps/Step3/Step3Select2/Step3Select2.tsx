@@ -115,37 +115,48 @@ const Step3Select2 = ({
       text: "¡Vamos con cambio!",
       backgroundColor: "yellowCalm",
       onClick: () => {
-        //   handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
-        if (
-          selectedTitles.length === 1 &&
-          resultadoFinal &&
-          resultadoFinal.length === 1
-        ) {
-          handleCheckboxChangeConfirmed(true, "Continuemos con la devolución", [
-            "devolucion",
-          ]);
-          setSelectedTitles &&
-            setSelectedTitles([
-              ...selectedTitles.filter(
-                (title) => !title.toLowerCase().includes("cambio")
-              ),
-              resultadoFinal[0].sku,
-              //    resultadoFinal[0].name + ", " + resultadoFinal[0].sku,
-            ]);
-          handleConfirmCheckbox && handleConfirmCheckbox();
-          setModalOpen && setModalOpen(false);
-        } else {
-          handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
-          setConfirmedValue && setConfirmedValue("3");
-          setSelectedTitles &&
-            setSelectedTitles(
-              selectedTitles.filter(
-                (title) => !title.toLowerCase().includes("cambio")
-              )
-            );
-          setModalOpen && setModalOpen(false);
-        }
+        handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+        setConfirmedValue && setConfirmedValue("3");
+        setSelectedTitles &&
+          setSelectedTitles(
+            selectedTitles.filter(
+              (title) => !title.toLowerCase().includes("cambio")
+            )
+          );
+        setModalOpen && setModalOpen(false);
       },
+      // onClick: () => {
+      //   //   handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+      //   if (
+      //     selectedTitles.length === 1 &&
+      //     resultadoFinal &&
+      //     resultadoFinal.length === 1
+      //   ) {
+      //     handleCheckboxChangeConfirmed(true, "Continuemos con la devolución", [
+      //       "devolucion",
+      //     ]);
+      //     setSelectedTitles &&
+      //       setSelectedTitles([
+      //         ...selectedTitles.filter(
+      //           (title) => !title.toLowerCase().includes("cambio")
+      //         ),
+      //         resultadoFinal[0].sku,
+      //         //    resultadoFinal[0].name + ", " + resultadoFinal[0].sku,
+      //       ]);
+      //     handleConfirmCheckbox && handleConfirmCheckbox();
+      //     setModalOpen && setModalOpen(false);
+      //   } else {
+      //     handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+      //     setConfirmedValue && setConfirmedValue("3");
+      //     setSelectedTitles &&
+      //       setSelectedTitles(
+      //         selectedTitles.filter(
+      //           (title) => !title.toLowerCase().includes("cambio")
+      //         )
+      //       );
+      //     setModalOpen && setModalOpen(false);
+      //   }
+      // },
     },
   ];
 
