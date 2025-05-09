@@ -115,7 +115,12 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   React.useEffect(() => {
     setNotionInfo({
       ...notionInfo,
-      problemDescription: valueSelect === "1" ? infoSelect1 : [],
+      problemDescription:
+        valueSelect === "1"
+          ? infoSelect1
+          : selectedTitles.some((title) => title.includes("cambio"))
+          ? ["cambio"]
+          : [],
       productReturn:
         valueSelect === "2"
           ? [`${otros2.join(", ")}`]
