@@ -8,7 +8,6 @@ const Select4Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
   const newOrders = mapOrdersWithSpan(orders);
 
   const matchedItems = itemsFilterJson(items, newOrders);
-  console.log("matchedItems", matchedItems);
 
   return (
     <StepSelects

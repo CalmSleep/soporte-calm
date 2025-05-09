@@ -7,8 +7,8 @@ const Select3Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
   const newOrders = mapOrdersWithSpan(orders);
   const checks = newOrders.map((order: any) => {
     return {
-      id: String(order.product_id),
-      value: String(order.product_id),
+      id: String(order.variation_id),
+      value: String(order.variation_id),
       title: order.product_name,
       span: order.span,
     };

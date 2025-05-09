@@ -11,6 +11,8 @@ import { getThankuContent } from "@/state/order/orderSelector";
 import optionStep3 from "./step3.json";
 import {
   getResultados,
+  itemsFilterJson,
+  mapOrdersWithSpan,
   selectedTitleOthers,
   splitDevolucion,
   splitQuieroComprar,
@@ -18,6 +20,7 @@ import {
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 import { getAllProductsData } from "@/state/products/productsSelector";
 import { onGetAllProducts } from "@/state/products/productsActions";
+import { IChecks } from "@/components/Molecules/StepBody/StepSelects/types";
 const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const {
     selectedValue,
@@ -39,7 +42,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const orders = useSelector(getThankuContent);
   const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
-  //console.log("allProducts", allProducts);
+  console.log("allProducts", allProducts);
 
   React.useEffect(() => {
     const productsData = async () => {
@@ -48,6 +51,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
 
     productsData();
   }, []);
+
   const infoChanges = rawInfoChanges as unknown as ProductoData[];
 
   const resultadoFinal = getResultados(

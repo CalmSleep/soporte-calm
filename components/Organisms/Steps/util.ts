@@ -89,7 +89,7 @@ export const itemsFilterJson = (items: any[], newOrders: any) => {
   return items
     .map((item) => {
       const matchingOrder = newOrders.find(
-        (order: any) => order.product_id === Number(item.id)
+        (order: any) => order.variation_id === Number(item.id)
       );
       if (!matchingOrder) return null;
       return {
