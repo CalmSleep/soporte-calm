@@ -117,12 +117,12 @@ const Step3Select2 = ({
       onClick: () => {
         handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
         setConfirmedValue && setConfirmedValue("3");
-        setSelectedTitles &&
-          setSelectedTitles(
-            selectedTitles.filter(
-              (title) => !title.toLowerCase().includes("cambio")
-            )
-          );
+        // setSelectedTitles &&
+        //   setSelectedTitles(
+        //     selectedTitles.filter(
+        //       (title) => !title.toLowerCase().includes("cambio")
+        //     )
+        //   );
         setModalOpen && setModalOpen(false);
       },
       // onClick: () => {

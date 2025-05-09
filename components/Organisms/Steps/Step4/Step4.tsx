@@ -174,6 +174,7 @@ const Step4 = ({
         ].map((item: any) => item.tracking_provider);
 
   console.log(proveedor);
+  console.log("rawString", notionInfo.problemDescription.includes("cambio"));
 
   const fullInfo: IDataSendNotion = {
     orderNumber: String(dataUser.id),
@@ -202,6 +203,13 @@ const Step4 = ({
         ? [
             {
               name: "Garantía",
+            },
+          ]
+        : Number(valueSelect) === 3 &&
+          notionInfo.problemDescription.includes("cambio")
+        ? [
+            {
+              name: "De devo a cambio",
             },
           ]
         : [],
@@ -254,15 +262,28 @@ const Step4 = ({
         };
       }),
     skuOriginal:
-      idMatched &&
-      idMatched.map((item: any) => ({
-        name: item.sku,
-      })),
+      (idMatched && Number(selectedValue) === 1) ||
+      Number(selectedValue) === 3 ||
+      Number(selectedValue) === 4 ||
+      Number(valueSelect) === 2 ||
+      Number(valueSelect) === 3
+        ? idMatched.map((item: any) => ({
+            name: item.sku,
+          }))
+        : [
+            {
+              name: "-",
+            },
+          ],
     skuChange:
-      idChangeMatched &&
-      idChangeMatched.map((item: any) => ({
-        name: item.sku,
-      })),
+      idMatched && Number(selectedValue) === 1
+        ? idMatched.map((item: any) => ({
+            name: item.sku,
+          }))
+        : idChangeMatched &&
+          idChangeMatched.map((item: any) => ({
+            name: item.sku,
+          })),
     peaces:
       Number(selectedValue) === 1 ? parsePieces(rawString, pieces).names : [],
     peacesChange:

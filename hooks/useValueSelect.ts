@@ -32,6 +32,8 @@ const useValueSelect = () => {
     setConfirmedValue(selectedValue);
     setCheckSeleccionado(false);
     setSelectedTitles([]);
+    setIdVariation([]);
+    setIdVariationChange([]);
   };
 
   const handleConfirm = () => {
