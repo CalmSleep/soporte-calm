@@ -53,8 +53,14 @@ export default async function handler(
                   start: data.shippingDate,
                 },
         },
+
         Email: {
           email: data.email,
+        },
+        Estado: {
+          status: {
+            name: data.status,
+          },
         },
         "Tipo de solicitud": {
           select: {

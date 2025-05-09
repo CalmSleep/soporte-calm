@@ -50,7 +50,7 @@ export const onSendDataToNotion = (data: IDataSendNotion) => {
     } catch (error) {
       console.error("Error al enviar datos a Notion:", error);
       dispatch(onSendDataToNotionFailed());
-      // dispatch(onRedirectLoadingFinished());
+      dispatch(onRedirectLoadingFinished());
       throw error;
     }
   };

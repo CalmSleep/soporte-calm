@@ -179,6 +179,7 @@ const Step4 = ({
     orderNumber: String(dataUser.id),
     name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
     email: dataUser.billing.email,
+    status: "A revisar 🕵️‍♀️",
     shippingDate:
       dataUser.date_created === undefined ? null : dataUser.date_created,
     requestDate: new Date(),

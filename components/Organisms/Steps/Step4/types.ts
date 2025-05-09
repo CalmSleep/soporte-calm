@@ -51,6 +51,7 @@ export interface IDataSendNotion {
   orderNumber: string;
   name: string;
   email: string;
+  status: string;
   shippingDate: string | null;
   requestDate: Date;
   typeRequest: string;
