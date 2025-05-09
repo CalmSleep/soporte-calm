@@ -12,10 +12,14 @@ const Step3Select3 = ({
   handleCheckboxChange,
   selectedTitles,
   products,
+  idVariationChange,
+  setIdVariationChange,
 }: {
   handleCheckboxChange: Step3Select2and3Props["handleCheckboxChange"];
   selectedTitles: string[];
   products: IgetProducts[];
+  idVariationChange?: number[];
+  setIdVariationChange?: React.Dispatch<React.SetStateAction<number[]>>;
 }) => {
   const productsLoading = useSelector(getLoadingGetProducts);
   console.log(
@@ -63,6 +67,8 @@ const Step3Select3 = ({
           onCheckboxChange={handleCheckboxChange}
           changedOption
           menuData={menuData}
+          idVariation={idVariationChange}
+          setIdVariation={setIdVariationChange}
         />
       )}
     </>

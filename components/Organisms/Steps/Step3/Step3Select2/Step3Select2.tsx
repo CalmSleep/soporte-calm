@@ -29,6 +29,8 @@ const Step3Select2 = ({
   resultadoFinal,
   idVariation,
   setIdVariation,
+  idVariationChange,
+  setIdVariationChange,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
@@ -181,6 +183,8 @@ const Step3Select2 = ({
               selectedTitles={selectedTitles}
               handleCheckboxChange={handleCheckboxChange}
               products={products as IgetProducts[]}
+              idVariationChange={idVariationChange}
+              setIdVariationChange={setIdVariationChange}
             />
           )}
         </>

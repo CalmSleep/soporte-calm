@@ -18,6 +18,8 @@ const useValueSelect = () => {
   });
   const [idVariation, setIdVariation] = useState<number[]>([]);
   console.log("idVariation", idVariation);
+  const [idVariationChange, setIdVariationChange] = useState<number[]>([]);
+  console.log("idVariationChange", idVariationChange);
 
   const handleOnchangeButton = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(e.target.value);
@@ -114,6 +116,7 @@ const useValueSelect = () => {
     setCheckboxConfirmed(false);
     setSelectedTitles([]);
     setIdVariation([]);
+    setIdVariationChange([]);
   };
 
   return {
@@ -139,6 +142,8 @@ const useValueSelect = () => {
     handlePaymentChange,
     idVariation,
     setIdVariation,
+    idVariationChange,
+    setIdVariationChange,
   };
 };
 

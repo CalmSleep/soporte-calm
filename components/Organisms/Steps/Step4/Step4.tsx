@@ -75,6 +75,8 @@ const Step4 = ({
   selectedValue,
   notionInfo,
   idVariation,
+  idVariationChange,
+  products,
 }: Step4Props) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [errorNotion, setErrorNotion] = React.useState(false);
@@ -129,8 +131,25 @@ const Step4 = ({
       : ids.includes(variationId);
   });
 
-  console.log("dataUser.items", dataUser.items);
+  const idChangeMatched = products.flatMap((product) =>
+    product.products.flatMap((chil) => {
+      const productId = Number(chil.id);
+      const ids = idVariationChange.map((id) => Number(id));
+
+      return chil.children.filter((child) => {
+        const variationId = Number(child.id);
+        return variationId === 0
+          ? ids.includes(productId)
+          : ids.includes(variationId);
+      });
+    })
+  );
+
+  // console.log("dataUser.items", dataUser.items);
   console.log("idMatched", idMatched);
+  console.log("idChangeMatched", idChangeMatched);
+
+  // console.log("idVariationChange", idVariationChange);
 
   const matchedItems = itemsFilterJson(items, dataUser.items);
   const pieces = matchedItems.flatMap((item) => item.pieces);
@@ -239,9 +258,10 @@ const Step4 = ({
         name: item.sku,
       })),
     skuChange:
-      Number(valueSelect) === 3 || Number(valueSelect) === 2
-        ? skuChangeFilter(notionInfo.productChange || [])
-        : [],
+      idChangeMatched &&
+      idChangeMatched.map((item: any) => ({
+        name: item.sku,
+      })),
     peaces:
       Number(selectedValue) === 1 ? parsePieces(rawString, pieces).names : [],
     peacesChange:

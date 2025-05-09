@@ -85,6 +85,8 @@ export interface Step3Select2and3Props {
   resultadoFinal?: Resultado[];
   idVariation?: number[];
   setIdVariation?: React.Dispatch<React.SetStateAction<number[]>>;
+  idVariationChange?: number[];
+  setIdVariationChange?: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 export type Category = {

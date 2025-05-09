@@ -18,43 +18,70 @@ const useSelects = ({
     []
   );
   const [selectedChild, setSelectedChild] = useState<IChildrenProd>();
+  const [selectedChildChecked, setSelectedChildChecked] = useState(false);
+  console.log("selectedChild", selectedChild);
+
   useEffect(() => {
-    // console.log("selectedName", selectedProductNames);
+    if (!selectedChild || selectedChildChecked === null) return;
 
-    if (!selectedChild) return;
-
-    const newTitle = selectedChild.name + ", " + selectedChild.sku;
+    const newTitle = selectedChild.name;
     const baseName = newTitle.split(" - ")[0];
-    // console.log("baseName", baseName);
+    const newId = Number(selectedChild.id);
 
-    // Buscamos el título previo que coincida con la baseName
-    const previous =
-      selectedTitle &&
-      selectedTitle.find((title) => title.startsWith(baseName));
+    const previousTitle =
+      selectedTitle?.find((title) => title.startsWith(baseName)) || null;
 
-    // Verificamos si hay un producto que coincida con baseName
     const matchedProduct = selectedProductNames.find((productName) =>
       productName.startsWith(baseName)
     );
-    // console.log("matchedProduct:", matchedProduct);
-    // console.log("previous:", previous);
 
-    // Si encontramos un título previo y no coincide con el nuevo título, limpiamos el título previo
-    if (previous && previous !== newTitle && matchedProduct) {
-      onCheckboxChange && onCheckboxChange(false, `${previous}`);
+    // ⬇️ 1. Lógica de nombres
+    if (previousTitle && previousTitle !== newTitle && matchedProduct) {
+      onCheckboxChange?.(false, previousTitle);
     }
 
-    // Si no hay un producto coincidente, limpiamos el título
     if (!matchedProduct) {
-      // Limpiamos el estado previo o el título que ya no coincide
-      onCheckboxChange && onCheckboxChange(false, previous || newTitle);
+      onCheckboxChange?.(false, previousTitle || newTitle);
     }
 
-    // Finalmente, seleccionamos el nuevo título
     if (matchedProduct) {
-      onCheckboxChange && onCheckboxChange(true, newTitle);
+      onCheckboxChange?.(true, newTitle);
     }
-  }, [selectedChild, selectedProductNames]); // Dependencias: selectedChild y selectedProductNames
+
+    // ⬇️ 2. Lógica de IDs
+    if (setIdVariation) {
+      setIdVariation((prev = []) => {
+        // Si es deschequeado, quitamos el ID
+        if (!selectedChildChecked) {
+          return prev.filter((id) => id !== newId);
+        }
+
+        // Si ya existe ese ID exacto, no hacer nada
+        if (prev.includes(newId)) {
+          return prev;
+        }
+
+        // Buscar si hay otro ID en prev con el mismo baseName
+        const conflictingId = selectedProductNames.reduce((acc, name, i) => {
+          if (name.startsWith(baseName)) {
+            const possibleId = prev[i];
+            if (possibleId !== undefined && possibleId !== newId) {
+              return possibleId;
+            }
+          }
+          return acc;
+        }, undefined as number | undefined);
+
+        // Si hay conflicto, reemplazar
+        if (conflictingId !== undefined) {
+          return prev.map((id) => (id === conflictingId ? newId : id));
+        }
+
+        // Si no hay conflicto ni duplicado, agregar
+        return [...prev, newId];
+      });
+    }
+  }, [selectedChild, selectedProductNames, selectedChildChecked]);
 
   // console.log("selectedChild", selectedChild);
 
@@ -244,6 +271,7 @@ const useSelects = ({
     productName: string
   ) => {
     const isChecked = e.target.checked;
+    setSelectedChildChecked(isChecked);
 
     setSelectedProductNames((prev) => {
       const cleanedProductNames = prev.filter(

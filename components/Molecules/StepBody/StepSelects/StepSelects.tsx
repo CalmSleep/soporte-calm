@@ -337,9 +337,9 @@ const StepSelects = ({
                           type="checkbox"
                           name={product.name}
                           value={product.name}
-                          onChange={(e) =>
-                            handleProductCheckboxChange(e, product.name)
-                          }
+                          onChange={(e) => {
+                            handleProductCheckboxChange(e, product.name);
+                          }}
                         />
                         <CardProducts
                           image={product.image_cross_selling}

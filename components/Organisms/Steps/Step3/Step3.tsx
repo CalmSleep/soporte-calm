@@ -35,13 +35,15 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     setNotionInfo,
     idVariation,
     setIdVariation,
+    idVariationChange,
+    setIdVariationChange,
   } = useValueSelect();
   //  console.log("titles", selectedTitles);
   // console.log(notionInfo);
   const orders = useSelector(getThankuContent);
   const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
-  console.log("allProducts", allProducts);
+  //console.log("allProducts", allProducts);
 
   React.useEffect(() => {
     const productsData = async () => {
@@ -248,6 +250,8 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             products={allProducts}
             idVariation={idVariation}
             setIdVariation={setIdVariation}
+            idVariationChange={idVariationChange}
+            setIdVariationChange={setIdVariationChange}
           />
         )}
       </StepsHeaders>
@@ -257,6 +261,8 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
           selectedValue={selectedValue || ""}
           notionInfo={notionInfo}
           idVariation={idVariation}
+          idVariationChange={idVariationChange}
+          products={allProducts || []}
         />
       )}
     </>
