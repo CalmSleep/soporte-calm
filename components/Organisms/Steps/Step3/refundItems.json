@@ -1480,6 +1480,63 @@
     ]
   },
   {
+    "id": "1831967",
+    "title": "Almohada Doble Sensación",
+    "pieces": [
+      { "label": "Me parece alto" },
+      { "label": "Me parece bajo" },
+      { "label": "Demasiado firme para mi gusto" },
+      { "label": "Demasiado blando para mi gusto" },
+      { "label": "Falla en el cierre" },
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Compré el producto por error" },
+      { "label": "Hundimiento" },
+      { "label": "Manchas en el producto" },
+      { "label": "No me gusta el olor" },
+      { "label": "El producto es diferente a lo que pedí" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "1831968",
+    "title": "Almohada Doble Sensación",
+    "pieces": [
+      { "label": "Me parece alto" },
+      { "label": "Me parece bajo" },
+      { "label": "Demasiado firme para mi gusto" },
+      { "label": "Demasiado blando para mi gusto" },
+      { "label": "Falla en el cierre" },
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Compré el producto por error" },
+      { "label": "Hundimiento" },
+      { "label": "Manchas en el producto" },
+      { "label": "No me gusta el olor" },
+      { "label": "El producto es diferente a lo que pedí" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "2041986",
+    "title": "Almohada Doble Sensación - Feria",
+    "pieces": [
+      { "label": "Me parece alto" },
+      { "label": "Me parece bajo" },
+      { "label": "Demasiado firme para mi gusto" },
+      { "label": "Demasiado blando para mi gusto" },
+      { "label": "Falla en el cierre" },
+      { "label": "Costura suelta o deshilachada" },
+      { "label": "Compré el producto por error" },
+      { "label": "Hundimiento" },
+      { "label": "Manchas en el producto" },
+      { "label": "No me gusta el olor" },
+      { "label": "El producto es diferente a lo que pedí" },
+      { "label": "Me llegó el tamaño incorrecto" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
     "id": "1851246",
     "title": "Sábanas Algodón & Frescura",
     "pieces": [
