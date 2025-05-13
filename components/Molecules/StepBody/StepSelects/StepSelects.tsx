@@ -20,12 +20,13 @@ import { StepSelectsProps } from "./types";
 import useSelects from "./useSelects";
 import { getMatchingQuizzIds } from "@/components/Organisms/Steps/util";
 import { RadioGroup } from "../StepRadio/styled";
-import { atrrToRender } from "@/utils/productsFunctios";
+
 import CardProducts from "../../CardRelatedProductsATC/CardProducts";
 import ProductProps from "@/components/Organisms/ProductProps/ProductProps";
 import { IChildrenProd } from "@/state/products/types";
 import Quizz from "../../Quizz/Quizz";
 import { set } from "date-fns";
+import { atrrToRender } from "@/utils/productsFunctios";
 
 const StepSelects = ({
   titleParagraph,
@@ -365,6 +366,8 @@ const StepSelects = ({
                               setIsSizeChange={setIsSizeChange}
                               defaultProds={defaultProds}
                               propsNames={propsNames}
+                              category={item.name_category}
+                              idProd={product.id_prod}
                             />
                           </SelectableDiv>
                         )}
