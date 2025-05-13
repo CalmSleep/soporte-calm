@@ -114,6 +114,23 @@ const useSelects = ({
       ...prev,
       [itemId]: updated,
     }));
+    if (alreadyChecked) {
+      const piece = items
+        ?.find((i) => i.id === itemId)
+        ?.pieces.find((p) => p.label === pieceLabel);
+
+      if (piece?.hasInput) {
+        setInputValues((prev) => {
+          const updatedInputs = { ...prev[itemId] };
+          delete updatedInputs[pieceLabel];
+
+          return {
+            ...prev,
+            [itemId]: updatedInputs,
+          };
+        });
+      }
+    }
 
     const itemTitle =
       (items && items.find((i) => i.id === itemId)?.title) || "";
@@ -160,6 +177,24 @@ const useSelects = ({
   };
 
   const handlePieceRadioChange = (itemId: string, pieceLabel: string) => {
+    const previous = selectedRadios[itemId];
+    const item = items && items.find((i) => i.id === itemId);
+    const itemTitle = item?.title || "";
+    const inputsForItem = inputValues[itemId] || {};
+
+    if (previous && previous !== pieceLabel) {
+      const previousPiece = item?.pieces.find((p) => p.label === previous);
+      if (previousPiece?.hasInput) {
+        setInputValues((prev) => {
+          const updatedInputs = { ...prev[itemId] };
+          delete updatedInputs[previous];
+          return {
+            ...prev,
+            [itemId]: updatedInputs,
+          };
+        });
+      }
+    }
     // Setea la selección única
     setSelectedRadios((prev) => ({
       ...prev,
@@ -172,10 +207,6 @@ const useSelects = ({
         return next.includes(Number(itemId)) ? next : [...next, Number(itemId)];
       });
 
-    const item = items && items.find((i) => i.id === itemId);
-    const itemTitle = item?.title || "";
-
-    const inputsForItem = inputValues[itemId] || {};
     const labelWithInput = `${pieceLabel}${
       inputsForItem[pieceLabel] ? `x${inputsForItem[pieceLabel]}` : ""
     }`;

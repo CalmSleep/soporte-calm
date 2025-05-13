@@ -45,14 +45,13 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     idVariationChange,
     setIdVariationChange,
   } = useValueSelect();
-  //  console.log("titles", selectedTitles);
+  console.log("selectedTitles", selectedTitles);
+
+  console.log("titles", !!selectedTitles.find((title) => title.includes("x")));
   // console.log(notionInfo);
   const orders = useSelector(getThankuContent);
   const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
-  // const productData = useSelector(getProductsData);
-  // console.log("productData", productData);
-
   // console.log("allProducts", allProducts);
 
   React.useEffect(() => {
@@ -61,13 +60,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     };
     productsData();
   }, []);
-
-  // React.useEffect(() => {
-  //   const getProducts = async () => {
-  //     await dispatch(onGetProduct("2042008"));
-  //   };
-  //   getProducts();
-  // }, []);
 
   const infoChanges = rawInfoChanges as unknown as ProductoData[];
 
@@ -79,6 +71,20 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   );
 
   console.log("resultadoFinal", resultadoFinal);
+  const keywords = ["Otro", "Recuadros", "Tornillos", "Tarugos"];
+
+  const hasIncompleteRequiredInputs = selectedTitles.some((title) => {
+    return keywords.some((keyword) => {
+      // Coincide con: "Otro x algo" (donde algo es un número, palabra, etc.)
+      const regex = new RegExp(`${keyword}\\s*x\\s*[^,\\)]+`, "i");
+
+      const keywordPresent = title.includes(keyword);
+      const keywordWithXPresent = regex.test(title);
+
+      // Si la palabra está, pero no tiene "x valor" → inválido
+      return keywordPresent && !keywordWithXPresent;
+    });
+  });
 
   const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
   const [continuemos, otros2] = splitDevolucion(selectedTitles);
@@ -160,8 +166,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     });
   }, [checkboxConfirmed]);
 
-  console.log("selectedTitles", selectedTitles);
-
   return (
     <>
       <StepsHeaders
@@ -196,7 +200,9 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
           }
         }}
         value={
-          valueSelect === "1"
+          hasIncompleteRequiredInputs
+            ? true // desactivar el botón
+            : valueSelect === "1"
             ? !selectedValue || !checkSeleccionado
             : valueSelect === "2"
             ? !checkSeleccionado
