@@ -384,7 +384,7 @@ const Step4 = ({
         loading={loadingNotion}
         button
         send
-        value={images.length > 0 ? false : true}
+        value={images.length === 0 || images.every((img) => img.error)}
       >
         {valueSelect === "2" ||
         valueSelect === "3" ||
@@ -482,10 +482,21 @@ const Step4 = ({
             </Paragraph>
           </Cointainer>
         </Button>
+        <Paragraph
+          textTag="span"
+          color="brilliantLiquorice"
+          fontSize="13px"
+          responsiveMobile={{
+            fontSize: "12px",
+          }}
+        >
+          * La imagen debe ser JPG, PNG, WEBP o GIF, pesar menos de 1 MB y no
+          estar vacía ni dañada.
+        </Paragraph>
         <ImagesContainer>
           {images.length > 0 &&
             images
-              .filter((preview) => !preview.error)
+              //  .filter((preview) => !preview.error)
               .map((preview, index) => (
                 <ImageHover key={index}>
                   <ImageWrapper
@@ -574,7 +585,9 @@ const Step4 = ({
       <ModalCarousel
         modal={modalImg}
         modalHandle={() => setModalImg(false)}
-        arrImages={images.map((image) => image.url!)}
+        arrImages={images
+          .filter((preview) => !preview.error)
+          .map((image) => image.url!)}
       />
     </>
   );
