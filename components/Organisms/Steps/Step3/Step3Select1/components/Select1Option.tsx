@@ -12,22 +12,23 @@ const Select1Option = ({
   setIdVariation,
 }: SelectOptionProps) => {
   const newOrders = mapOrdersWithSpan(orders);
+  //console.log("orders", orders);
 
   const matchedItems = itemsFilterJson(items, newOrders);
 
-  const matchedIds = matchedItems.map((item) => item?.id);
+  const matchedIds = matchedItems.map((item) =>
+    Array.isArray(item?.id) ? item.id.map(Number) : [Number(item?.id)]
+  );
 
   const checksOrders = newOrders
     .filter((order: any) => {
       const variationId = Number(order.variation_id);
       const productId = Number(order.product_id);
 
-      return !matchedIds.some((id) => {
-        const itemId = Number(id);
-        return variationId === 0
-          ? productId === itemId
-          : variationId === itemId;
+      const isMatched = matchedIds.some((idsArray) => {
+        return idsArray.includes(variationId === 0 ? productId : variationId);
       });
+      return !isMatched;
     })
     .map((order: any): IChecks => {
       const id =

@@ -16,8 +16,15 @@ import {
   splitQuieroComprar,
 } from "../util";
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
-import { getAllProductsData } from "@/state/products/productsSelector";
-import { onGetAllProducts } from "@/state/products/productsActions";
+import {
+  getAllProductsData,
+  getProductsData,
+} from "@/state/products/productsSelector";
+import {
+  onGetAllProducts,
+  onGetProduct,
+} from "@/state/products/productsActions";
+import { getProduct } from "@/state/products/productsServices";
 const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const {
     selectedValue,
@@ -43,15 +50,24 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const orders = useSelector(getThankuContent);
   const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
-  //console.log("allProducts", allProducts);
+  // const productData = useSelector(getProductsData);
+  // console.log("productData", productData);
+
+  // console.log("allProducts", allProducts);
 
   React.useEffect(() => {
     const productsData = async () => {
       await dispatch(onGetAllProducts());
     };
-
     productsData();
   }, []);
+
+  // React.useEffect(() => {
+  //   const getProducts = async () => {
+  //     await dispatch(onGetProduct("2042008"));
+  //   };
+  //   getProducts();
+  // }, []);
 
   const infoChanges = rawInfoChanges as unknown as ProductoData[];
 
