@@ -1,16 +1,19 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const getProduct = async (id: string) => {
   const requestConfig = {
     headers: {
       "Content-Type": "text/plain",
       "Access-Control-Allow-Origin": "*",
-      "mode": 'no-cors'
+      mode: "no-cors",
     },
   };
-  const response = await axios.get(`${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/products/get_product_by_id.php?id=${id}`, requestConfig);
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/products/get_product_by_id.php?id=${id}`,
+    requestConfig
+  );
   return await response.data;
-}
+};
 
 export const getAllProducts = async () => {
   const requestConfig = {
@@ -21,28 +24,52 @@ export const getAllProducts = async () => {
     },
   };
 
-  const response = await axios.get(`${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/products/get_all_products_by_category.php`, requestConfig);
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/products/get_all_products_by_category.php`,
+    requestConfig
+  );
   return await response.data;
-}
+};
+
+export const getProductsFeria = async () => {
+  const requestConfig = {
+    headers: {
+      "Content-Type": "text/plain",
+      "Access-Control-Allow-Origin": "*",
+      mode: "no-cors",
+    },
+  };
+  const ids =
+    "1953560;1952731;2111657;2024064;2024048;2024024;2023992;2023969;2041984;2279959;2042026;2042008";
+
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/products/get_thumbnail_products_by_ids.php?ids=${ids}`,
+    requestConfig
+  );
+  return await response.data;
+};
 
 export const getDefaultProduct = async () => {
   const requestConfig = {
     headers: {
       "Content-Type": "text/plain",
       "Access-Control-Allow-Origin": "*",
-      "mode": 'no-cors'
+      mode: "no-cors",
     },
   };
-  const response = await axios.get(`${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/products/get_default_products.php/`, requestConfig);
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/products/get_default_products.php/`,
+    requestConfig
+  );
   return await response.data;
-}
+};
 
 export const getHomeRelatedProducts = async () => {
   const requestConfig = {
     headers: {
       "Content-Type": "text/plain",
       "Access-Control-Allow-Origin": "*",
-      "mode": 'no-cors'
+      mode: "no-cors",
     },
   };
   const response = await axios.get(
@@ -50,14 +77,14 @@ export const getHomeRelatedProducts = async () => {
     requestConfig
   );
   return await response.data;
-}
+};
 
 export const getNewRelatedProducts = async () => {
   const requestConfig = {
     headers: {
       "Content-Type": "text/plain",
       "Access-Control-Allow-Origin": "*",
-      "mode": 'no-cors'
+      mode: "no-cors",
     },
   };
   const response = await axios.get(
@@ -65,14 +92,14 @@ export const getNewRelatedProducts = async () => {
     requestConfig
   );
   return await response.data;
-}
+};
 
 export const getRelatedProducts = async (id: string) => {
   const requestConfig = {
     headers: {
       "Content-Type": "text/plain",
       "Access-Control-Allow-Origin": "*",
-      "mode": 'no-cors'
+      mode: "no-cors",
     },
   };
   const response = await axios.get(
@@ -80,14 +107,14 @@ export const getRelatedProducts = async (id: string) => {
     requestConfig
   );
   return await response.data;
-}
+};
 
 export const getShippingTime = async (cp: string, sku: string[] | string) => {
   const requestConfig = {
     headers: {
       "Content-Type": "text/plain",
       "Access-Control-Allow-Origin": "*",
-      "mode": 'no-cors'
+      mode: "no-cors",
     },
   };
   const response = await axios.get(
@@ -95,73 +122,77 @@ export const getShippingTime = async (cp: string, sku: string[] | string) => {
     requestConfig
   );
   return await response.data;
-}
+};
 
 export const getHolidays = async () => {
   const requestConfig = {
     headers: {
       "Content-Type": "text/plain",
       "Access-Control-Allow-Origin": "*",
-      "mode": 'no-cors'
+      mode: "no-cors",
     },
   };
-  const response = await axios.get(`${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/shipping/get_holidays.php`,
-  requestConfig
-);
-return await response.data;
-}
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/shipping/get_holidays.php`,
+    requestConfig
+  );
+  return await response.data;
+};
 
 export const getStock = async () => {
   const requestConfig = {
     headers: {
       "Content-Type": "text/plain",
       "Access-Control-Allow-Origin": "*",
-      "mode": 'no-cors'
+      mode: "no-cors",
     },
   };
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/stocks/get_stock_detailed.php`,
     requestConfig
-    );
-    return await response.data;
-  }
+  );
+  return await response.data;
+};
 
-  export const getStockAndPrices = async (id: string) => {
-    const requestConfig = {
-      headers: {
-        "Content-Type": "text/plain",
-        "Access-Control-Allow-Origin": "*",
-        "mode": 'no-cors'
-      },
-    };
-    const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/products/get_stock_and_price_by_id.php?id=${id}&v=${process.env.NEXT_PUBLIC_API_VERSION}`,
-      requestConfig
-      );
-      return await response.data;
-}
-
-export const getUnavailableDays = async (postcode: number, products: boolean = false) => {
+export const getStockAndPrices = async (id: string) => {
   const requestConfig = {
     headers: {
       "Content-Type": "text/plain",
       "Access-Control-Allow-Origin": "*",
-      "mode": 'no-cors'
+      mode: "no-cors",
+    },
+  };
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_ENDPOINT_URL_BASE}/products/get_stock_and_price_by_id.php?id=${id}&v=${process.env.NEXT_PUBLIC_API_VERSION}`,
+    requestConfig
+  );
+  return await response.data;
+};
+
+export const getUnavailableDays = async (
+  postcode: number,
+  products: boolean = false
+) => {
+  const requestConfig = {
+    headers: {
+      "Content-Type": "text/plain",
+      "Access-Control-Allow-Origin": "*",
+      mode: "no-cors",
     },
   };
 
-  let url = `https://calmessimple.com.ar/lab/ms/unavailable-days/index.php?postcode=${postcode}`
-  if (products) url = url + `&products=EXPENTENS000000`
+  let url = `https://calmessimple.com.ar/lab/ms/unavailable-days/index.php?postcode=${postcode}`;
+  if (products) url = url + `&products=EXPENTENS000000`;
   const response = await axios.get(url, requestConfig);
-return await response.data;
-}
+  return await response.data;
+};
 
 export const getRelampagoProduct = async (id: string) => {
   const requestConfig = {
     headers: {
       "Content-Type": "text/plain",
       "Access-Control-Allow-Origin": "*",
-      "mode": 'no-cors'
+      mode: "no-cors",
     },
   };
   const response = await axios.get(
@@ -169,9 +200,12 @@ export const getRelampagoProduct = async (id: string) => {
     requestConfig
   );
   return await response.data;
-}
+};
 
-export const setBackorder = async (variationId: string, backorderValue: boolean) => {
+export const setBackorder = async (
+  variationId: string,
+  backorderValue: boolean
+) => {
   const requestConfig = {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
