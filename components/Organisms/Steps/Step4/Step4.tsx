@@ -98,6 +98,7 @@ const Step4 = ({
   } = useStep4();
   const dataUser = useSelector(getThankuContent);
   console.log("valueSelect", valueSelect);
+  console.log("images", images);
 
   // console.log(dataUser);
 
@@ -384,7 +385,18 @@ const Step4 = ({
         loading={loadingNotion}
         button
         send
-        value={images.length === 0 || images.every((img) => img.error)}
+        value={
+          images.length === 0 ||
+          images.every((img) => img.error) ||
+          valueSelect === "2" ||
+          valueSelect === "3" ||
+          fullInfo.typeRequest.includes("Cambio") ||
+          fullInfo.typeRequest.includes("Devolucion")
+            ? !postalCode ||
+              images.length === 0 ||
+              images.every((img) => img.error)
+            : false
+        }
       >
         {valueSelect === "2" ||
         valueSelect === "3" ||
@@ -496,7 +508,7 @@ const Step4 = ({
         <ImagesContainer>
           {images.length > 0 &&
             images
-              //  .filter((preview) => !preview.error)
+              .filter((preview) => !preview.error)
               .map((preview, index) => (
                 <ImageHover key={index}>
                   <ImageWrapper
