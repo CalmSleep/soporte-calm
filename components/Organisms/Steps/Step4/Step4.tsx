@@ -98,6 +98,7 @@ const Step4 = ({
   } = useStep4();
   const dataUser = useSelector(getThankuContent);
   console.log("valueSelect", valueSelect);
+  console.log("images", images);
 
   // console.log(dataUser);
 
@@ -384,7 +385,18 @@ const Step4 = ({
         loading={loadingNotion}
         button
         send
-        value={images.length > 0 ? false : true}
+        value={
+          images.length === 0 ||
+          images.every((img) => img.error) ||
+          valueSelect === "2" ||
+          valueSelect === "3" ||
+          fullInfo.typeRequest.includes("Cambio") ||
+          fullInfo.typeRequest.includes("Devolucion")
+            ? !postalCode ||
+              images.length === 0 ||
+              images.every((img) => img.error)
+            : false
+        }
       >
         {valueSelect === "2" ||
         valueSelect === "3" ||
@@ -482,6 +494,17 @@ const Step4 = ({
             </Paragraph>
           </Cointainer>
         </Button>
+        <Paragraph
+          textTag="span"
+          color="brilliantLiquorice"
+          fontSize="13px"
+          responsiveMobile={{
+            fontSize: "12px",
+          }}
+        >
+          * La imagen debe ser JPG, PNG, WEBP o GIF, pesar menos de 1 MB y no
+          estar vacía ni dañada.
+        </Paragraph>
         <ImagesContainer>
           {images.length > 0 &&
             images
@@ -574,7 +597,9 @@ const Step4 = ({
       <ModalCarousel
         modal={modalImg}
         modalHandle={() => setModalImg(false)}
-        arrImages={images.map((image) => image.url!)}
+        arrImages={images
+          .filter((preview) => !preview.error)
+          .map((image) => image.url!)}
       />
     </>
   );
