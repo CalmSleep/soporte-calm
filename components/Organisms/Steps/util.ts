@@ -88,22 +88,28 @@ export function mapOrdersWithSpan(orders: any[]): any[] {
 export const itemsFilterJson = (items: any[], newOrders: any) => {
   return items
     .map((item) => {
-      const itemIds = item.id.map((id: any) => Number(id)); // Aseguramos que todos sean números
+      const itemIds = item.id.map((id: any) => Number(id));
+
+      let matchedId: number | undefined;
 
       const matchingOrder = newOrders.find((order: any) => {
         const variationId = Number(order.variation_id);
         const productId = Number(order.product_id);
 
         if (variationId === 0) {
-          return itemIds.includes(productId);
+          matchedId = itemIds.find((id: number) => id === productId);
+          return matchedId !== undefined;
+        } else {
+          matchedId = itemIds.find((id: number) => id === variationId);
+          return matchedId !== undefined;
         }
-        return itemIds.includes(variationId);
       });
 
-      if (!matchingOrder) return null;
+      if (!matchingOrder || matchedId === undefined) return null;
 
       return {
         ...item,
+        id: matchedId,
         span: matchingOrder.span,
       };
     })
