@@ -60,6 +60,14 @@ const Step3Select3 = ({
                     ),
                   };
                 }
+                if (product.name_category === "muebles") {
+                  return {
+                    ...product,
+                    products: product.products.filter(
+                      (p) => Number(p.id) !== 2411459
+                    ),
+                  };
+                }
                 return product;
               })
           }
