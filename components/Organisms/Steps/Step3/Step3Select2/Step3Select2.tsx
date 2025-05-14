@@ -31,6 +31,7 @@ const Step3Select2 = ({
   setIdVariation,
   idVariationChange,
   setIdVariationChange,
+  productsLoading,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
@@ -115,48 +116,34 @@ const Step3Select2 = ({
       text: "¡Vamos con cambio!",
       backgroundColor: "yellowCalm",
       onClick: () => {
-        handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
-        setConfirmedValue && setConfirmedValue("3");
-        // setSelectedTitles &&
-        //   setSelectedTitles(
-        //     selectedTitles.filter(
-        //       (title) => !title.toLowerCase().includes("cambio")
-        //     )
-        //   );
-        setModalOpen && setModalOpen(false);
+        if (
+          selectedTitles.length === 1 &&
+          resultadoFinal &&
+          resultadoFinal.length === 1
+        ) {
+          setSelectedTitles &&
+            setSelectedTitles([
+              ...selectedTitles,
+              resultadoFinal && resultadoFinal[0].child?.name,
+            ]);
+          handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+          setIdVariationChange &&
+            setIdVariationChange((prev) => {
+              const next = prev || [];
+              return next.includes(Number(resultadoFinal[0].child?.id))
+                ? next
+                : [...next, Number(resultadoFinal[0].child?.id)];
+            });
+
+          handleConfirmCheckbox && handleConfirmCheckbox();
+          setConfirmedValue && setConfirmedValue("3");
+          setModalOpen && setModalOpen(false);
+        } else {
+          handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+          setConfirmedValue && setConfirmedValue("3");
+          setModalOpen && setModalOpen(false);
+        }
       },
-      // onClick: () => {
-      //   //   handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
-      //   if (
-      //     selectedTitles.length === 1 &&
-      //     resultadoFinal &&
-      //     resultadoFinal.length === 1
-      //   ) {
-      //     handleCheckboxChangeConfirmed(true, "Continuemos con la devolución", [
-      //       "devolucion",
-      //     ]);
-      //     setSelectedTitles &&
-      //       setSelectedTitles([
-      //         ...selectedTitles.filter(
-      //           (title) => !title.toLowerCase().includes("cambio")
-      //         ),
-      //         resultadoFinal[0].sku,
-      //         //    resultadoFinal[0].name + ", " + resultadoFinal[0].sku,
-      //       ]);
-      //     handleConfirmCheckbox && handleConfirmCheckbox();
-      //     setModalOpen && setModalOpen(false);
-      //   } else {
-      //     handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
-      //     setConfirmedValue && setConfirmedValue("3");
-      //     setSelectedTitles &&
-      //       setSelectedTitles(
-      //         selectedTitles.filter(
-      //           (title) => !title.toLowerCase().includes("cambio")
-      //         )
-      //       );
-      //     setModalOpen && setModalOpen(false);
-      //   }
-      // },
     },
   ];
 
@@ -183,6 +170,7 @@ const Step3Select2 = ({
                 setModalOpen && setModalOpen(false);
               }}
               icon
+              productsLoading={productsLoading}
             >
               {paragraphArray.map((item) => (
                 <div>{item.text}</div>
@@ -196,6 +184,7 @@ const Step3Select2 = ({
               products={products as IgetProducts[]}
               idVariationChange={idVariationChange}
               setIdVariationChange={setIdVariationChange}
+              productsLoading={productsLoading}
             />
           )}
         </>

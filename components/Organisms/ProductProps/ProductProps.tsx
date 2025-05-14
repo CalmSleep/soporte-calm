@@ -8,13 +8,12 @@ import { DivSizeText, DivSizeInfo, Container } from "./styled";
 import SizeInfoWindow from "../SizeInfoWindow/SizeInfoWindow";
 import Text from "@/components/Atoms/Typography/Text";
 import url_variations from "@/utils/url_variations";
+import SelectorCombo from "@/components/Molecules/SelectorAttributes/SelectorCombo";
 import {
+  allChildrenWithoutStock,
   childrenVariationWithoutStock,
   searchAttribute,
-  atrrToRender,
-  allChildrenWithoutStock,
 } from "@/utils/productsFunctios";
-import SelectorCombo from "@/components/Molecules/SelectorAttributes/SelectorCombo";
 
 const ProductProps = ({
   children,
@@ -291,6 +290,9 @@ const ProductProps = ({
     setAltoState(child ? child.attributes[alto] : "");
     setTamanoState(child ? child.attributes[tamano] : "");
   };
+
+  console.log("categoriaproducto", category);
+
   return (
     <>
       {category !== "muebles" && (

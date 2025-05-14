@@ -27,6 +27,13 @@ export default async function handler(
             {
               text: {
                 content: data.orderNumber,
+                link: {
+                  url: `${
+                    process.env.NEXT_PUBLIC_REDIRECT_URL_BASE
+                  }/wp-admin/post.php?post=${String(
+                    data.orderNumber
+                  )}&action=edit`,
+                },
               },
             },
           ],

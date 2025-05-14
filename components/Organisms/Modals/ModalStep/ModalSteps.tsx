@@ -7,6 +7,7 @@ import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
 import { DivButtonClose } from "../ModalCarousel/styled";
 import Icons from "@/components/Atoms/Icons/Icons";
 import { CloseIcon } from "../../MainBlock/mainBlockicons";
+import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 
 const ModalSteps = ({
   title,
@@ -21,6 +22,7 @@ const ModalSteps = ({
   children,
   arrayButton,
   icon,
+  productsLoading,
 }: ModalStepsProps) => {
   return (
     <ContainerModal>
@@ -99,7 +101,15 @@ const ModalSteps = ({
         )}
         {modalDevChange && (
           <ButtonContainer>
-            {arrayButton &&
+            {productsLoading ? (
+              <SkeletonLoader
+                height="20px"
+                width="100%"
+                borderRadius="1000px"
+                responsiveMobile={{ height: "20px" }}
+              />
+            ) : (
+              arrayButton &&
               arrayButton.map((item) => (
                 <Button
                   key={item.id}
@@ -115,7 +125,8 @@ const ModalSteps = ({
                 >
                   {item.text}
                 </Button>
-              ))}
+              ))
+            )}
           </ButtonContainer>
         )}
       </SectionHeader>
