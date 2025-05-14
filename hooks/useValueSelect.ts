@@ -17,9 +17,7 @@ const useValueSelect = () => {
     productReturn: [],
   });
   const [idVariation, setIdVariation] = useState<number[]>([]);
-  console.log("idVariation", idVariation);
   const [idVariationChange, setIdVariationChange] = useState<number[]>([]);
-  console.log("idVariationChange", idVariationChange);
 
   const handleOnchangeButton = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(e.target.value);

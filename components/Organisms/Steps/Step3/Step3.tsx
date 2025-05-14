@@ -3,7 +3,7 @@ import React from "react";
 import useValueSelect from "@/hooks/useValueSelect";
 import rawInfoChanges from "./changesOptionItems.json";
 import Step3Select1 from "./Step3Select1/Step3Select1";
-import { ProductoData, Step3Props } from "./types";
+import { ProductoData, ProductoDataTest, Step3Props } from "./types";
 import Step3Select2 from "./Step3Select2/Step3Select2";
 import Step4 from "../Step4/Step4";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,8 @@ import { getThankuContent } from "@/state/order/orderSelector";
 import optionStep3 from "./step3.json";
 import {
   getResultados,
+  itemsFilterJson,
+  mapOrdersWithSpan,
   selectedTitleOthers,
   splitDevolucion,
   splitQuieroComprar,
@@ -52,7 +54,8 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const orders = useSelector(getThankuContent);
   const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
-  // console.log("allProducts", allProducts);
+  console.log("allProducts", allProducts);
+  // console.log("orders", orders.items);
 
   React.useEffect(() => {
     const productsData = async () => {
@@ -62,13 +65,18 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   }, []);
 
   const infoChanges = rawInfoChanges as unknown as ProductoData[];
+  const newOrders = mapOrdersWithSpan(orders.items);
+  const matchedItemChange = itemsFilterJson(infoChanges, newOrders);
 
   const resultadoFinal = getResultados(
     selectedTitles,
-    infoChanges,
-    orders.items,
+    matchedItemChange,
+    idVariation,
     allProducts
   );
+
+  console.log("idVariation", idVariation);
+  console.log("idVariationChange", idVariationChange);
 
   console.log("resultadoFinal", resultadoFinal);
   const keywords = ["Otro", "Recuadros", "Tornillos", "Tarugos"];

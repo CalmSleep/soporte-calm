@@ -5,7 +5,12 @@ type ValueObject = {
 };
 
 export type ProductoData = {
-  id: string;
+  id: string[];
+  title: string;
+  values: ValueObject[];
+};
+export type ProductoDataTest = {
+  id: string[];
   title: string;
   values: ValueObject[];
 };
@@ -13,7 +18,13 @@ export type ProductoData = {
 export type Resultado = {
   productName: string;
   comentario: string;
-  sku: string;
+  child: any;
+};
+
+export type ResultadoNew = {
+  productName: string;
+  comentario: string;
+  child: any;
 };
 
 export type Step3Props = {

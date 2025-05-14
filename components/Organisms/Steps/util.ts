@@ -106,11 +106,14 @@ export const itemsFilterJson = (items: any[], newOrders: any) => {
       });
 
       if (!matchingOrder || matchedId === undefined) return null;
+      //  console.log("matchingOrder", matchingOrder);
 
       return {
         ...item,
         id: matchedId,
+        idParent: matchingOrder.product_id,
         span: matchingOrder.span,
+        attributes: matchingOrder.attributes,
       };
     })
     .filter(Boolean);
@@ -213,18 +216,19 @@ export function isFlexibleMatch(
 export function getResultados(
   selectedTitles: string[],
   infoChanges: any[],
-  orders: any[],
+  idVariation: number[],
   products: any
 ): Resultado[] {
   return selectedTitles
     .map((str) => {
       const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
-      const producto = match ? match[1].trim() : "";
       const comentario = match ? match[2].trim() : "";
 
-      const item = infoChanges.find((d) =>
-        normalize(d.title).includes(normalize(producto))
+      const item = infoChanges.find(
+        (item) => idVariation && idVariation.includes(item.id)
       );
+      // console.log("itemUtil", item.attributes);
+
       if (!item) return null;
 
       const valueMatch = item.values.find((obj: any) =>
@@ -239,22 +243,22 @@ export function getResultados(
 
       const value = valueMatch[comentarioKey];
       const valueName = normalize(value[0]);
-
-      const attributesOrder =
-        orders &&
-        orders.find((order: any) => {
-          const productWords = normalize(producto).split(" ").filter(Boolean);
-          const orderName = normalize(order.product_name);
-          return productWords.some((word) => orderName.includes(word));
-        })?.attributes;
+      console.log("valueName", value[2].join(", "));
 
       const childrenFull =
-        products
-          ?.flatMap((p: any) => p.products)
-          .find((p: any) => normalize(value[0]).includes(normalize(p.name)))
-          ?.children || [];
+        (products &&
+          products.flatMap((p: any) =>
+            p.products.flatMap((p: any) =>
+              p.children.filter((c: any) =>
+                value[2].some((id: string) => String(c.id) === id)
+              )
+            )
+          )) ||
+        [];
 
-      let sku: string | null = null;
+      //   console.log("childrenFull", childrenFull);
+
+      let child: any = null;
 
       if (value && value[0]) {
         const matchChild = childrenFull.find((child: any) => {
@@ -265,9 +269,9 @@ export function getResultados(
           );
 
           const tamanoValue =
-            attributesOrder?.pa_tamano || attributesOrder?.tamano || "";
+            item.attributes?.pa_tamano || item.attributes?.tamano || "";
           const colorValue =
-            attributesOrder?.pa_color || attributesOrder?.color || "";
+            item.attributes?.pa_color || item.attributes?.color || "";
 
           const tamanoMatch = isFlexibleMatch(tamanoValue, normalizedChildName);
           const colorMatch = isFlexibleMatch(colorValue, normalizedChildName);
@@ -275,14 +279,100 @@ export function getResultados(
           return allTokensMatch && tamanoMatch && colorMatch;
         });
 
-        sku = matchChild?.name + ", " + matchChild?.sku || null;
+        // console.log("matchChild", matchChild);
+        child = matchChild || null;
+
+        // setIdVariationChange && setIdVariationChange(matchChild?.id);
       }
 
       return {
         productName: value?.[0],
         comentario: value?.[1],
-        sku,
+        child,
       };
     })
     .filter((item): item is Resultado => item !== null);
 }
+
+// export function getResultados(
+//   selectedTitles: string[],
+//   infoChanges: any[],
+//   orders: any[],
+//   products: any
+// ): Resultado[] {
+//   return selectedTitles
+//     .map((str) => {
+//       const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
+//       const producto = match ? match[1].trim() : "";
+//       const comentario = match ? match[2].trim() : "";
+
+//       const item = infoChanges.find((d) =>
+//         normalize(d.title).includes(normalize(producto))
+//       );
+//       //  console.log("itemUtil", item);
+
+//       if (!item) return null;
+
+//       const valueMatch = item.values.find((obj: any) =>
+//         Object.keys(obj).some((key) => normalize(key) === normalize(comentario))
+//       );
+//       if (!valueMatch) return null;
+
+//       const comentarioKey = Object.keys(valueMatch).find(
+//         (key) => normalize(key) === normalize(comentario)
+//       );
+//       if (!comentarioKey) return null;
+
+//       const value = valueMatch[comentarioKey];
+//       const valueName = normalize(value[0]);
+
+//       const attributesOrder =
+//         orders &&
+//         orders.find((order: any) => {
+//           const productWords = normalize(producto).split(" ").filter(Boolean);
+//           const orderName = normalize(order.product_name);
+//           return productWords.some((word) => orderName.includes(word));
+//         })?.attributes;
+//       //   console.log("attributesOrder", attributesOrder);
+
+//       const childrenFull =
+//         products
+//           ?.flatMap((p: any) => p.products)
+//           .find((p: any) => normalize(value[0]).includes(normalize(p.name)))
+//           ?.children || [];
+//       //    console.log("childrenFull", childrenFull);
+
+//       let sku: string | null = null;
+
+//       if (value && value[0]) {
+//         const matchChild = childrenFull.find((child: any) => {
+//           const normalizedChildName = normalize(child.name);
+//           const tokens = valueName.split(" ");
+//           const allTokensMatch = tokens.every((token) =>
+//             normalizedChildName.includes(token)
+//           );
+
+//           const tamanoValue =
+//             attributesOrder?.pa_tamano || attributesOrder?.tamano || "";
+//           const colorValue =
+//             attributesOrder?.pa_color || attributesOrder?.color || "";
+
+//           const tamanoMatch = isFlexibleMatch(tamanoValue, normalizedChildName);
+//           const colorMatch = isFlexibleMatch(colorValue, normalizedChildName);
+
+//           return allTokensMatch && tamanoMatch && colorMatch;
+//         });
+
+//         //    console.log("matchChild", matchChild);
+
+//         sku = matchChild?.name + ", " + matchChild?.sku || null;
+//       }
+
+//       return {
+//         productName: value?.[0],
+//         comentario: value?.[1],
+//         sku,
+//       };
+//     })
+//     .filter((item): item is Resultado => item !== null);
+// }
