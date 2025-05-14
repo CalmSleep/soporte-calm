@@ -9,19 +9,7 @@ export type ProductoData = {
   title: string;
   values: ValueObject[];
 };
-export type ProductoDataTest = {
-  id: string[];
-  title: string;
-  values: ValueObject[];
-};
-
 export type Resultado = {
-  productName: string;
-  comentario: string;
-  child: any;
-};
-
-export type ResultadoNew = {
   productName: string;
   comentario: string;
   child: any;
@@ -98,6 +86,7 @@ export interface Step3Select2and3Props {
   setIdVariation?: React.Dispatch<React.SetStateAction<number[]>>;
   idVariationChange?: number[];
   setIdVariationChange?: React.Dispatch<React.SetStateAction<number[]>>;
+  productsLoading?: boolean;
 }
 
 export type Category = {

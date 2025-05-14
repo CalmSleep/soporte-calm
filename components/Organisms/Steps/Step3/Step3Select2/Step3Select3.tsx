@@ -2,10 +2,7 @@ import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects
 import React from "react";
 import { Step3Select2and3Props } from "../types";
 import { menuData } from "@/components/Organisms/NavBar/utils";
-import { useSelector } from "react-redux";
-import { onGetAllProducts } from "@/state/products/productsActions";
 import { IgetProducts } from "@/state/products/types";
-import { getLoadingGetProducts } from "@/state/loading/loadingSelector";
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 
 const Step3Select3 = ({
@@ -14,15 +11,16 @@ const Step3Select3 = ({
   products,
   idVariationChange,
   setIdVariationChange,
+  productsLoading,
 }: {
   handleCheckboxChange: Step3Select2and3Props["handleCheckboxChange"];
   selectedTitles: string[];
   products: IgetProducts[];
   idVariationChange?: number[];
   setIdVariationChange?: React.Dispatch<React.SetStateAction<number[]>>;
+  productsLoading?: boolean;
 }) => {
-  const productsLoading = useSelector(getLoadingGetProducts);
-  console.log("products", products);
+  // console.log("products", products);
 
   // console.log(
   //   "products: ",

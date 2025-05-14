@@ -203,6 +203,7 @@ export function isFlexibleMatch(
 
   const normalizeText = (s: string) =>
     normalize(s)
+      .toLowerCase()
       .replace(/\s+/g, "")
       .replace(/(\d+)([a-zA-Z]+)/g, "$1 $2")
       .trim();
@@ -210,6 +211,21 @@ export function isFlexibleMatch(
   const attr = normalizeText(attributeValue);
   const target = normalizeText(targetString);
 
+  // Intentamos extraer dimensiones del tipo 80x40
+  const extractDimensions = (s: string) => {
+    const match = s.match(/(\d+)[x×](\d+)/); // acepta "80x40" o "80×40"
+    return match ? { ancho: match[1], largo: match[2] } : null;
+  };
+
+  const attrDims = extractDimensions(attr);
+  const targetDims = extractDimensions(target);
+
+  if (attrDims && targetDims) {
+    // Compara si coincide al menos el ancho
+    return attrDims.ancho === targetDims.ancho;
+  }
+
+  // Fallback a comparación por texto incluido
   return target.includes(attr) || attr.includes(target);
 }
 
@@ -247,42 +263,44 @@ export function getResultados(
 
       const childrenFull =
         (products &&
-          products.flatMap((p: any) =>
-            p.products.flatMap((p: any) =>
-              p.children.filter((c: any) =>
-                value[2].some((id: string) => String(c.id) === id)
+          products?.flatMap((p: any) =>
+            p.products.flatMap((prod: any) =>
+              prod.children.filter((child: any) =>
+                value[2].some((id: string) => Number(id) === child.id)
               )
             )
           )) ||
         [];
 
-      //   console.log("childrenFull", childrenFull);
+      console.log("childrenFull", childrenFull);
 
       let child: any = null;
 
-      if (value && value[0]) {
+      if (childrenFull && childrenFull.length > 0 && value && value[0]) {
         const matchChild = childrenFull.find((child: any) => {
-          const normalizedChildName = normalize(child.name);
-          const tokens = valueName.split(" ");
-          const allTokensMatch = tokens.every((token) =>
-            normalizedChildName.includes(token)
-          );
+          const childAttributes = child.attributes || {};
+          const itemAttributes = item.attributes || {};
 
           const tamanoValue =
-            item.attributes?.pa_tamano || item.attributes?.tamano || "";
+            itemAttributes.pa_tamano || itemAttributes.tamano || "";
           const colorValue =
-            item.attributes?.pa_color || item.attributes?.color || "";
+            itemAttributes.pa_color || itemAttributes.color || "";
 
-          const tamanoMatch = isFlexibleMatch(tamanoValue, normalizedChildName);
-          const colorMatch = isFlexibleMatch(colorValue, normalizedChildName);
+          const childTamano =
+            childAttributes.pa_tamano || childAttributes.tamano || "";
+          const childColor =
+            childAttributes.pa_color || childAttributes.color || "";
 
-          return allTokensMatch && tamanoMatch && colorMatch;
+          const tamanoMatch = isFlexibleMatch(tamanoValue, childTamano);
+          const colorMatch = isFlexibleMatch(colorValue, childColor);
+
+          return tamanoMatch && colorMatch;
         });
 
-        // console.log("matchChild", matchChild);
-        child = matchChild || null;
+        // ✅ fallback al primero si no hay coincidencias exactas
+        child = matchChild || childrenFull[childrenFull.length - 1];
 
-        // setIdVariationChange && setIdVariationChange(matchChild?.id);
+        // setIdVariationChange?.(child?.id); // si necesitás notificar el cambio
       }
 
       return {

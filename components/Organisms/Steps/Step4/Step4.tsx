@@ -277,7 +277,7 @@ const Step4 = ({
             },
           ],
     skuChange:
-      idMatched && Number(selectedValue) === 1
+      (idMatched && Number(selectedValue) === 1) || Number(selectedValue) === 4
         ? idMatched.map((item: any) => ({
             name: item.sku,
           }))

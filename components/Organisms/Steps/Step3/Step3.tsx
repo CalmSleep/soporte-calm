@@ -3,7 +3,7 @@ import React from "react";
 import useValueSelect from "@/hooks/useValueSelect";
 import rawInfoChanges from "./changesOptionItems.json";
 import Step3Select1 from "./Step3Select1/Step3Select1";
-import { ProductoData, ProductoDataTest, Step3Props } from "./types";
+import { ProductoData, Step3Props } from "./types";
 import Step3Select2 from "./Step3Select2/Step3Select2";
 import Step4 from "../Step4/Step4";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,6 +27,7 @@ import {
   onGetProduct,
 } from "@/state/products/productsActions";
 import { getProduct } from "@/state/products/productsServices";
+import { getLoadingGetProducts } from "@/state/loading/loadingSelector";
 const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const {
     selectedValue,
@@ -55,6 +56,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
   console.log("allProducts", allProducts);
+  const productsLoading = useSelector(getLoadingGetProducts);
   // console.log("orders", orders.items);
 
   React.useEffect(() => {
@@ -131,15 +133,22 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   // console.log("valueSelect", valueSelect);
 
   // console.log("products", products);
-
-  const result = selectedTitles
+  const formattedTitles = selectedTitles
     .filter((title) => title.includes("-"))
-    .map((title) => title.split(" - ")[0])
-    .join(", ");
+    .map((title) => {
+      if (title.includes("-")) {
+        const [before, after] = title.split(" - ");
+        return `${before.trim()} (${after.trim()})`;
+      }
+      return title;
+    });
+  // console.log("prueba parentesis span: ", formattedTitles.join(", "));
 
   const infoSelect2And3 = [
     products,
-    valueSelect === "2" ? `${continuemos.join(", ")}` : result,
+    valueSelect === "2"
+      ? `${continuemos.join(", ")}`
+      : formattedTitles.join(", "),
   ];
 
   React.useEffect(() => {
@@ -158,12 +167,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
           ? [products]
           : [],
       productChange:
-        // valueSelect === "2" &&
-        // selectedTitles.length === 1 &&
-        // resultadoFinal &&
-        // resultadoFinal.length === 1 &&
-        // !selectedTitles.some((title) => title.includes("Continuemos"))
-        //   ? [resultadoFinal[0].sku]
         valueSelect === "3" ||
         (valueSelect === "2" &&
           selectedTitles.length === 1 &&
@@ -283,6 +286,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             setConfirmedValue={setConfirmedValue}
             handleConfirmCheckbox={handleConfirmCheckbox}
             products={allProducts}
+            productsLoading={productsLoading}
             idVariation={idVariation}
             setIdVariation={setIdVariation}
             idVariationChange={idVariationChange}

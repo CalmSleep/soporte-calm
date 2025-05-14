@@ -31,6 +31,7 @@ const Step3Select2 = ({
   setIdVariation,
   idVariationChange,
   setIdVariationChange,
+  productsLoading,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
@@ -123,7 +124,7 @@ const Step3Select2 = ({
           setSelectedTitles &&
             setSelectedTitles([
               ...selectedTitles,
-              resultadoFinal[0].child.name,
+              resultadoFinal && resultadoFinal[0].child?.name,
             ]);
           handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
           setIdVariationChange &&
@@ -169,6 +170,7 @@ const Step3Select2 = ({
                 setModalOpen && setModalOpen(false);
               }}
               icon
+              productsLoading={productsLoading}
             >
               {paragraphArray.map((item) => (
                 <div>{item.text}</div>
@@ -182,6 +184,7 @@ const Step3Select2 = ({
               products={products as IgetProducts[]}
               idVariationChange={idVariationChange}
               setIdVariationChange={setIdVariationChange}
+              productsLoading={productsLoading}
             />
           )}
         </>
