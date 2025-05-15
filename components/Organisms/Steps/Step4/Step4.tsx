@@ -77,6 +77,7 @@ const Step4 = ({
   idVariation,
   idVariationChange,
   products,
+  selectedTitleObjects,
 }: Step4Props) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [errorNotion, setErrorNotion] = React.useState(false);
@@ -97,10 +98,11 @@ const Step4 = ({
     setPostalCode,
   } = useStep4();
   const dataUser = useSelector(getThankuContent);
-  console.log("valueSelect", valueSelect);
-  console.log("images", images);
+  //console.log("valueSelect", valueSelect);
+  // console.log("images", images);
 
   // console.log(dataUser);
+  //console.log("notionInfo", notionInfo);
 
   const dispatch = useDispatch();
   const loadingNotion = useSelector(getLoadingRedirect);
@@ -121,15 +123,40 @@ const Step4 = ({
   ];
 
   const rawString = notionInfo.problemDescription[1];
+  console.log(
+    "selectedTitleObjects",
+    selectedTitleObjects.map((item) => item.quantity)
+  );
 
-  const idMatched = dataUser.items.filter((item: any) => {
-    const variationId = Number(item.variation_id);
-    const productId = Number(item.product_id);
-    const ids = idVariation.map((id) => Number(id));
+  const countByVariationId = selectedTitleObjects.reduce((acc, obj) => {
+    const baseId = obj.checkId.split("-")[0];
+    acc[baseId] = (acc[baseId] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
 
-    return variationId === 0
-      ? ids.includes(productId)
-      : ids.includes(variationId);
+  // Convertir a array de objetos
+  const variationCountArray = dataUser.items.filter((item: any) => {
+    const variationId = item.variation_id?.toString?.();
+    const productId = item.product_id?.toString?.();
+    const ids = selectedTitleObjects.map((item) => item.checkId);
+
+    return ids.some((id) =>
+      variationId === "0"
+        ? id === productId || id.startsWith(`${productId}-`)
+        : id === variationId || id.startsWith(`${variationId}-`)
+    );
+  });
+
+  const idMatched = variationCountArray.flatMap((item: any) => {
+    const baseId =
+      item.variation_id !== 0 && item.variation_id !== undefined
+        ? item.variation_id.toString()
+        : item.product_id.toString();
+
+    const count = countByVariationId[baseId] || 1;
+
+    // Duplicar el ítem según la cantidad
+    return Array.from({ length: count }, () => ({ ...item }));
   });
 
   const idChangeMatched = products.flatMap((product) =>
@@ -268,8 +295,10 @@ const Step4 = ({
       Number(selectedValue) === 4 ||
       Number(valueSelect) === 2 ||
       Number(valueSelect) === 3
-        ? idMatched.map((item: any) => ({
-            name: item.sku,
+        ? Array.from<string>(
+            new Set(idMatched.map((item: any) => item.sku as string))
+          ).map((sku) => ({
+            name: sku,
           }))
         : [
             {
@@ -278,13 +307,53 @@ const Step4 = ({
           ],
     skuChange:
       (idMatched && Number(selectedValue) === 1) || Number(selectedValue) === 4
-        ? idMatched.map((item: any) => ({
-            name: item.sku,
+        ? Array.from<string>(
+            new Set(idMatched.map((item: any) => item.sku as string))
+          ).map((sku) => ({
+            name: sku,
           }))
         : idChangeMatched &&
           idChangeMatched.map((item: any) => ({
             name: item.sku,
           })),
+    skuQuantityOriginal:
+      (idMatched && Number(selectedValue) === 1) ||
+      Number(selectedValue) === 3 ||
+      Number(selectedValue) === 4 ||
+      Number(valueSelect) === 2 ||
+      Number(valueSelect) === 3
+        ? (() => {
+            const skuQuantities: Record<string, number> = {};
+
+            idMatched.forEach((item: any, index: number) => {
+              const quantity =
+                selectedTitleObjects[index]?.quantity ?? item.quantity;
+              skuQuantities[item.sku] =
+                (skuQuantities[item.sku] || 0) + quantity;
+            });
+
+            return Object.entries(skuQuantities)
+              .map(([sku, quantity]) => `${sku}: x${quantity}`)
+              .join(", ");
+          })()
+        : "",
+    skuQuantityChange:
+      (idMatched && Number(selectedValue) === 1) || Number(selectedValue) === 4
+        ? (() => {
+            const skuQuantities: Record<string, number> = {};
+
+            idMatched.forEach((item: any, index: number) => {
+              const quantity =
+                selectedTitleObjects[index]?.quantity ?? item.quantity;
+              skuQuantities[item.sku] =
+                (skuQuantities[item.sku] || 0) + quantity;
+            });
+
+            return Object.entries(skuQuantities)
+              .map(([sku, quantity]) => `${sku}: x${quantity}`)
+              .join(", ");
+          })()
+        : "",
     peaces:
       Number(selectedValue) === 1 ? parsePieces(rawString, pieces).names : [],
     peacesChange:
@@ -324,7 +393,7 @@ const Step4 = ({
         : "",
   };
 
-  console.log("formData", notionInfo.productChange);
+  //  console.log("formData", notionInfo.productChange);
   console.log("fullInfo", fullInfo);
 
   const handleSubmitToNotion = async () => {

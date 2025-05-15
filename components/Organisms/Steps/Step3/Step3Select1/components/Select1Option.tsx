@@ -15,7 +15,6 @@ const Select1Option = ({
   //console.log("orders", orders);
 
   const matchedItems = itemsFilterJson(items, newOrders);
-  console.log("matchedItems", matchedItems);
 
   const matchedIds = matchedItems.map((item) =>
     Array.isArray(item?.id) ? item.id.map(Number) : [Number(item?.id)]
@@ -40,7 +39,7 @@ const Select1Option = ({
           : String(order.variation_id);
 
       const baseCheck: IChecks = {
-        id,
+        id: order.variation_id === 0 ? order.product_id : order.variation_id,
         value: id,
         title: order.product_name,
         span: order.span,
@@ -55,6 +54,7 @@ const Select1Option = ({
     { value: "completo", label: "Falta este producto completo" },
     { value: "piezas", label: "Falta una o más piezas" },
   ];
+  // console.log("matchedItems", matchedItems);
 
   return (
     <StepSelects
@@ -64,8 +64,8 @@ const Select1Option = ({
         orders.length > 0 ? matchedItems.filter((item) => item !== null) : []
       }
       radioOptions={radioOptions}
-      onCheckboxChange={(isChecked, title, radioGroup = []) =>
-        onCheckboxChange(isChecked, title, radioGroup)
+      onCheckboxChange={(isChecked, title, checkId, radioGroup = []) =>
+        onCheckboxChange(isChecked, title, checkId, radioGroup)
       }
       idVariation={idVariation}
       setIdVariation={setIdVariation}

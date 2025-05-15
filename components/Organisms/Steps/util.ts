@@ -233,7 +233,7 @@ export function isFlexibleMatch(
 export function getResultados(
   selectedTitles: string[],
   infoChanges: any[],
-  idVariation: number[],
+  idVariation: string[],
   products: any
 ): Resultado[] {
   return selectedTitles
@@ -241,8 +241,10 @@ export function getResultados(
       const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
       const comentario = match ? match[2].trim() : "";
 
-      const item = infoChanges.find(
-        (item) => idVariation && idVariation.includes(item.id)
+      const item = infoChanges.find((item) =>
+        idVariation?.some(
+          (id) => id === item.id || id.startsWith(`${item.id}-`)
+        )
       );
       // console.log("itemUtil", item.attributes);
 

@@ -47,15 +47,26 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     setIdVariation,
     idVariationChange,
     setIdVariationChange,
+    checkClickCount,
+    selectedTitleObjects,
   } = useValueSelect();
-  console.log("selectedTitles", selectedTitles);
+  //console.log("selectedTitles", selectedTitles);
+  //console.log("selectedTitleObjects", selectedTitleObjects);
+  // console.log("checkClickCount", checkClickCount);
+  const quatityItems = selectedTitleObjects.map((item) => ({
+    ...item,
+    quantity: checkClickCount[item.checkId] || 1,
+  }));
+  const titlesProducts = quatityItems.map(({ title, quantity }) =>
+    quantity > 1 ? `${title} x ${quantity}` : title
+  );
 
-  console.log("titles", !!selectedTitles.find((title) => title.includes("x")));
+  //  console.log("titles", !!selectedTitles.find((title) => title.includes("x")));
   // console.log(notionInfo);
   const orders = useSelector(getThankuContent);
   const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
-  console.log("allProducts", allProducts);
+  // console.log("allProducts", allProducts);
   const productsLoading = useSelector(getLoadingGetProducts);
   // console.log("orders", orders.items);
 
@@ -71,19 +82,19 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const matchedItemChange = itemsFilterJson(infoChanges, newOrders);
 
   const resultadoFinal = getResultados(
-    selectedTitles,
+    titlesProducts,
     matchedItemChange,
-    idVariation,
+    selectedTitleObjects.map((item) => item.checkId),
     allProducts
   );
 
-  console.log("idVariation", idVariation);
-  console.log("idVariationChange", idVariationChange);
+  //console.log("idVariation", idVariation);
+  // console.log("idVariationChange", idVariationChange);
 
-  console.log("resultadoFinal", resultadoFinal);
+  // console.log("resultadoFinal", resultadoFinal);
   const keywords = ["Otro", "Recuadros", "Tornillos", "Tarugos"];
 
-  const hasIncompleteRequiredInputs = selectedTitles.some((title) => {
+  const hasIncompleteRequiredInputs = titlesProducts.some((title) => {
     return keywords.some((keyword) => {
       // Coincide con: "Otro x algo" (donde algo es un número, palabra, etc.)
       const regex = new RegExp(`${keyword}\\s*x\\s*[^,\\)]+`, "i");
@@ -104,7 +115,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     (valueSelect === "1" && selectedValue === "1") ||
     selectedValue === "4" ||
     selectedValue === "3"
-      ? `${selectedTitleOthers(selectedTitles).join(", ")}`
+      ? `${selectedTitleOthers(titlesProducts).join(", ")}`
       : valueSelect === "1" && selectedValue === "2" && quieroComprar.length
       ? `${quieroComprar}`
       : "";
@@ -127,13 +138,13 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
 
   const products =
     valueSelect === "2"
-      ? `${otros2.join(", ")}`
-      : `${selectedTitles.filter((title) => !title.includes("-")).join(", ")}`;
+      ? titlesProducts.join(", ")
+      : `${titlesProducts.filter((title) => !title.includes("-")).join(", ")}`;
 
   // console.log("valueSelect", valueSelect);
 
   // console.log("products", products);
-  const formattedTitles = selectedTitles
+  const formattedTitles = titlesProducts
     .filter((title) => title.includes("-"))
     .map((title) => {
       if (title.includes("-")) {
@@ -169,10 +180,10 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
       productChange:
         valueSelect === "3" ||
         (valueSelect === "2" &&
-          selectedTitles.length === 1 &&
+          titlesProducts.length === 1 &&
           resultadoFinal &&
           resultadoFinal.length === 1)
-          ? selectedTitles.filter((title) => title.includes("-"))
+          ? titlesProducts.filter((title) => title.includes("-"))
           : [],
     });
   }, [checkboxConfirmed]);
@@ -204,7 +215,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             : ""
         }
         onClick={() => {
-          if (valueSelect === "2" && selectedTitles.length > 0) {
+          if (valueSelect === "2" && titlesProducts.length > 0) {
             setModalIsOpen(true);
           } else {
             handleConfirmCheckbox();
@@ -219,7 +230,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             ? !checkSeleccionado
             : !(
                 valueSelect === "3" &&
-                selectedTitles.some((title) => title.includes("-"))
+                titlesProducts.some((title) => title.includes("-"))
               )
         }
         button={
@@ -274,7 +285,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             }
             checkboxConfirmed={checkboxConfirmed}
             handleEditCheckbox={handleEditCheckbox}
-            selectedTitles={selectedTitles}
+            selectedTitles={titlesProducts}
             handleCheckboxChange={handleCheckboxChange}
             handleCheckboxChangeConfirmed={handleCheckboxChangeConfirmed}
             checkSeleccionado={checkSeleccionado}
@@ -302,6 +313,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
           idVariation={idVariation}
           idVariationChange={idVariationChange}
           products={allProducts || []}
+          selectedTitleObjects={quatityItems}
         />
       )}
     </>

@@ -27,10 +27,15 @@ export interface Step3Select1Props {
   handleOnchangeWithoutConfirm: (
     e: React.ChangeEvent<HTMLSelectElement>
   ) => void;
-  handleCheckboxChange: (isChecked: boolean, title: string) => void;
+  handleCheckboxChange: (
+    isChecked: boolean,
+    title: string,
+    checkId: string
+  ) => void;
   handleCheckboxChangeConfirmed: (
     isChecked: boolean,
     title: string,
+    checkId: string,
     radioGroup: string[]
   ) => void;
   selectedTitles: string[];
@@ -51,6 +56,7 @@ export interface SelectOptionProps {
   onCheckboxChange: (
     isChecked: boolean,
     title: string,
+    checkId: string,
     radioGroup: string[]
   ) => void;
   handlePaymentChange?: (
@@ -70,10 +76,15 @@ export interface Step3Select2and3Props {
   valueSelect: string | null;
   setConfirmedValue?: React.Dispatch<React.SetStateAction<string | null>>;
   handleEditCheckbox: () => void;
-  handleCheckboxChange: (isChecked: boolean, title: string) => void;
+  handleCheckboxChange: (
+    isChecked: boolean,
+    title: string,
+    checkId: string
+  ) => void;
   handleCheckboxChangeConfirmed: (
     isChecked: boolean,
     title: string,
+    checkId: string,
     radioGroup: string[]
   ) => void;
   infoStep: string[];

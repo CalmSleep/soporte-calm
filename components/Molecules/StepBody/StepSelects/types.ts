@@ -15,6 +15,7 @@ export interface IItems {
   title: string;
   pieces: { label: string; hasInput?: boolean; placeholder?: string }[];
   span?: string;
+  quantity?: number;
 }
 
 export type StepSelectsProps = {
@@ -28,6 +29,7 @@ export type StepSelectsProps = {
   onCheckboxChange?: (
     isChecked: boolean,
     title: string,
+    checkId: string,
     radioGroup?: string[]
   ) => void;
   selectedOption?: string;

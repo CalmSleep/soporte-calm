@@ -35,6 +35,7 @@ const Step3Select2 = ({
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
+  console.log("selectedTitles", selectedTitles);
 
   const paragraphArray = [
     {
@@ -104,9 +105,12 @@ const Step3Select2 = ({
       text: "Continuemos con la devolución",
       backgroundColor: "lead",
       onClick: () => {
-        handleCheckboxChangeConfirmed(true, "Continuemos con la devolución", [
-          "devolucion",
-        ]);
+        handleCheckboxChangeConfirmed(
+          true,
+          "Continuemos con la devolución",
+          "",
+          ["devolucion"]
+        );
         handleConfirmCheckbox && handleConfirmCheckbox();
         setModalOpen && setModalOpen(false);
       },
@@ -126,7 +130,9 @@ const Step3Select2 = ({
               ...selectedTitles,
               resultadoFinal && resultadoFinal[0].child?.name,
             ]);
-          handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+          handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", "", [
+            "cambio",
+          ]);
           setIdVariationChange &&
             setIdVariationChange((prev) => {
               const next = prev || [];
@@ -139,7 +145,9 @@ const Step3Select2 = ({
           setConfirmedValue && setConfirmedValue("3");
           setModalOpen && setModalOpen(false);
         } else {
-          handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+          handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", "", [
+            "cambio",
+          ]);
           setConfirmedValue && setConfirmedValue("3");
           setModalOpen && setModalOpen(false);
         }

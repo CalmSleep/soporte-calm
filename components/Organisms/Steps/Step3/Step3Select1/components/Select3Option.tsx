@@ -28,14 +28,13 @@ const Select3Option = ({
 
     return Array.from({ length: quantity }, () => ({ ...baseCheck }));
   });
-  console.log("checks", checks);
 
   return (
     <StepSelects
       titleParagraph="Elegí el o los productos que deberías haber recibido:"
       checks={orders.length > 0 ? checks : []}
-      onCheckboxChange={(isChecked, title, radioGroup = []) =>
-        onCheckboxChange(isChecked, title, radioGroup)
+      onCheckboxChange={(isChecked, title, checkId, radioGroup = []) =>
+        onCheckboxChange(isChecked, title, checkId, radioGroup)
       }
       idVariation={idVariation}
       setIdVariation={setIdVariation}

@@ -7,6 +7,7 @@ export type Step4Props = {
   notionInfo: IInfoForm;
   idVariation: number[];
   idVariationChange: number[];
+  selectedTitleObjects: { title: string; checkId: string; quantity: number }[];
 };
 
 export type Piece = { label: string };
@@ -63,6 +64,8 @@ export interface IDataSendNotion {
   images: IImagensNotion[];
   skuOriginal?: IMultipleSelect[];
   skuChange?: IMultipleSelect[];
+  skuQuantityOriginal?: string;
+  skuQuantityChange?: string;
   peaces?: IMultipleSelect[];
   peacesChange?: IMultipleSelect[];
   peacesQuantity?: string;

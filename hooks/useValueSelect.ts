@@ -3,14 +3,21 @@ import {
   IInfoForm,
 } from "@/components/Organisms/Steps/Step4/types";
 import { infoString } from "@/components/Organisms/Steps/util";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useValueSelect = () => {
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
   const [confirmedValue, setConfirmedValue] = useState<string | null>(null);
   const [checkSeleccionado, setCheckSeleccionado] = useState(false);
   const [checkboxConfirmed, setCheckboxConfirmed] = useState(false);
+  const [checkClickCount, setCheckClickCount] = useState<{
+    [id: string]: number;
+  }>({});
+
   const [selectedTitles, setSelectedTitles] = useState<string[]>([]);
+  const [selectedTitleObjects, setSelectedTitleObjects] = useState<
+    { title: string; checkId: string }[]
+  >([]);
   const [notionInfo, setNotionInfo] = useState<IInfoForm>({
     problemDescription: [],
     productChange: [],
@@ -32,6 +39,8 @@ const useValueSelect = () => {
     setSelectedTitles([]);
     setIdVariation([]);
     setIdVariationChange([]);
+    setCheckClickCount({});
+    setSelectedTitleObjects([]);
   };
 
   const handleConfirm = () => {
@@ -45,29 +54,112 @@ const useValueSelect = () => {
     }
   };
 
-  const handleCheckboxChange = (isChecked: boolean, title: string) => {
-    setSelectedTitles((prevTitles) => {
-      const cleanedTitles = prevTitles.filter(
-        (t) => !t.startsWith(title.split(" (")[0])
-      );
+  const handleCheckboxChange = (
+    isChecked: boolean,
+    title: string,
+    checkId: string
+  ) => {
+    setCheckClickCount((prev) => {
+      const prevCount = prev[checkId] || 0;
+      const hasDash = checkId.includes("-");
 
+      if (isChecked) {
+        // Si tiene guion y ya existe ese ID exacto, no hacer nada
+        if (hasDash && prev[checkId] !== undefined) {
+          return prev;
+        }
+
+        // Sino, agregar normalmente (ya sea sin guion o con guion nuevo)
+        return {
+          ...prev,
+          [checkId]: hasDash ? 1 : prevCount + 1,
+        };
+      } else {
+        // Deselección: restar 1 y eliminar si llega a 0
+        const newCount = Math.max(prevCount - 1, 0);
+        const { [checkId]: _, ...rest } = prev;
+
+        if (newCount === 0) {
+          return Object.keys(rest).length === 0 ? {} : rest;
+        }
+
+        return {
+          ...rest,
+          [checkId]: newCount,
+        };
+      }
+    });
+
+    setSelectedTitleObjects((prevTitles) => {
+      // Remover solo el título con el mismo checkId (solo ese reemplazamos)
+      const cleanedTitles = prevTitles.filter((t) => t.checkId !== checkId);
+
+      // Si está seleccionado, agregar nuevo objeto, sino solo devolver limpio
       const updatedTitles = isChecked
-        ? [...cleanedTitles, title]
+        ? [...cleanedTitles, { checkId, title }]
         : cleanedTitles;
 
-      // Si no queda ninguno, se setea false
       setCheckSeleccionado(updatedTitles.length > 0);
 
       return updatedTitles;
     });
+
+    // setSelectedTitles((prevTitles) => {
+    //   const cleanedTitles = prevTitles.filter(
+    //     (t) => !t.startsWith(title.split(" (")[0])
+    //   );
+
+    //   const updatedTitles = isChecked
+    //     ? [...cleanedTitles, title]
+    //     : cleanedTitles;
+
+    //   // Si no queda ninguno, se setea false
+    //   setCheckSeleccionado(updatedTitles.length > 0);
+
+    //   return updatedTitles;
+    // });
   };
 
   const handleCheckboxChangeConfirmed = (
     isChecked: boolean,
     title: string,
+    checkId: string,
     radioGroup: string[]
   ) => {
+    console.log("checkId", checkId);
+
     setCheckSeleccionado(isChecked);
+
+    setCheckClickCount((prev) => {
+      const prevCount = prev[checkId] || 0;
+      const hasDash = checkId.includes("-");
+
+      if (isChecked) {
+        // Si tiene guion y ya existe ese ID exacto, no hacer nada
+        if (hasDash && prev[checkId] !== undefined) {
+          return prev;
+        }
+
+        // Sino, agregar normalmente (ya sea sin guion o con guion nuevo)
+        return {
+          ...prev,
+          [checkId]: hasDash ? 1 : prevCount + 1,
+        };
+      } else {
+        // Deselección: restar 1 y eliminar si llega a 0
+        const newCount = Math.max(prevCount - 1, 0);
+        const { [checkId]: _, ...rest } = prev;
+
+        if (newCount === 0) {
+          return Object.keys(rest).length === 0 ? {} : rest;
+        }
+
+        return {
+          ...rest,
+          [checkId]: newCount,
+        };
+      }
+    });
 
     setSelectedTitles((prev) => {
       const filtered = prev.filter(
@@ -78,11 +170,7 @@ const useValueSelect = () => {
           t !== "Tarjeta de crédito en hasta 12 csi"
       );
 
-      if (isChecked) {
-        return [...filtered, title];
-      } else {
-        return filtered;
-      }
+      return isChecked ? [...filtered, title] : filtered;
     });
   };
 
@@ -117,6 +205,8 @@ const useValueSelect = () => {
     setSelectedTitles([]);
     setIdVariation([]);
     setIdVariationChange([]);
+    setCheckClickCount({});
+    setSelectedTitleObjects([]);
   };
 
   return {
@@ -131,6 +221,8 @@ const useValueSelect = () => {
     setCheckboxConfirmed,
     setSelectedTitles,
     setSelectedValue,
+    selectedTitleObjects,
+    checkClickCount,
     handleOnchangeButton,
     handleOnchangeWithoutConfirm,
     handleConfirm,
