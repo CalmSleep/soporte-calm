@@ -15,6 +15,7 @@ const Select1Option = ({
   //console.log("orders", orders);
 
   const matchedItems = itemsFilterJson(items, newOrders);
+  console.log("matchedItems", matchedItems);
 
   const matchedIds = matchedItems.map((item) =>
     Array.isArray(item?.id) ? item.id.map(Number) : [Number(item?.id)]
@@ -30,19 +31,25 @@ const Select1Option = ({
       });
       return !isMatched;
     })
-    .map((order: any): IChecks => {
+    .flatMap((order: any): IChecks[] => {
+      const quantity = order.quantity || 1;
+
       const id =
         order.variation_id === 0
           ? String(order.product_id)
           : String(order.variation_id);
 
-      return {
+      const baseCheck: IChecks = {
         id,
         value: id,
         title: order.product_name,
         span: order.span,
+        quantity: order.quantity,
       };
+
+      return Array.from({ length: quantity }, () => ({ ...baseCheck }));
     });
+  // console.log("checksOrders", checksOrders);
 
   const radioOptions = [
     { value: "completo", label: "Falta este producto completo" },

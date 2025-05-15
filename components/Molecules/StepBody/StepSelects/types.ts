@@ -7,6 +7,7 @@ export interface IChecks {
   value: string;
   title: string;
   span?: string;
+  quantity?: number;
 }
 
 export interface IItems {

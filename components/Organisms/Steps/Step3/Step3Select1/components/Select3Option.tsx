@@ -10,18 +10,23 @@ const Select3Option = ({
   setIdVariation,
 }: SelectOptionProps) => {
   const newOrders = mapOrdersWithSpan(orders);
-  const checks = newOrders.map((order: any) => {
+  const checks = newOrders.flatMap((order: any) => {
+    const quantity = order.quantity || 1;
+
     const id =
       order.variation_id === 0
         ? String(order.product_id)
         : String(order.variation_id);
 
-    return {
+    const baseCheck = {
       id,
       value: id,
       title: order.product_name,
       span: order.span,
+      quantity: order.quantity,
     };
+
+    return Array.from({ length: quantity }, () => ({ ...baseCheck }));
   });
   console.log("checks", checks);
 

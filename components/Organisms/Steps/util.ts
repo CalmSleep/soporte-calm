@@ -87,34 +87,35 @@ export function mapOrdersWithSpan(orders: any[]): any[] {
 
 export const itemsFilterJson = (items: any[], newOrders: any) => {
   return items
-    .map((item) => {
+    .flatMap((item) => {
       const itemIds = item.id.map((id: any) => Number(id));
 
-      let matchedId: number | undefined;
-
-      const matchingOrder = newOrders.find((order: any) => {
+      const matchingOrders = newOrders.filter((order: any) => {
         const variationId = Number(order.variation_id);
         const productId = Number(order.product_id);
 
-        if (variationId === 0) {
-          matchedId = itemIds.find((id: number) => id === productId);
-          return matchedId !== undefined;
-        } else {
-          matchedId = itemIds.find((id: number) => id === variationId);
-          return matchedId !== undefined;
-        }
+        return itemIds.includes(variationId === 0 ? productId : variationId);
       });
 
-      if (!matchingOrder || matchedId === undefined) return null;
-      //  console.log("matchingOrder", matchingOrder);
+      if (matchingOrders.length === 0) return null;
 
-      return {
-        ...item,
-        id: matchedId,
-        idParent: matchingOrder.product_id,
-        span: matchingOrder.span,
-        attributes: matchingOrder.attributes,
-      };
+      return matchingOrders.flatMap((order: any) => {
+        const variationId = Number(order.variation_id);
+        const productId = Number(order.product_id);
+        const matchedId = variationId === 0 ? productId : variationId;
+        const quantity = order.quantity || 1;
+
+        const baseCheck = {
+          ...item,
+          id: matchedId,
+          idParent: productId,
+          span: order.span,
+          attributes: order.attributes,
+          quantity: order.quantity,
+        };
+
+        return Array.from({ length: quantity }, () => ({ ...baseCheck }));
+      });
     })
     .filter(Boolean);
 };
