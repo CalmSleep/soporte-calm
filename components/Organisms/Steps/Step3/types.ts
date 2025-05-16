@@ -98,6 +98,7 @@ export interface Step3Select2and3Props {
   idVariationChange?: number[];
   setIdVariationChange?: React.Dispatch<React.SetStateAction<number[]>>;
   productsLoading?: boolean;
+  setSelectedTitleObjects?: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
 export type Category = {

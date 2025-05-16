@@ -9,6 +9,7 @@ import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import { IArrayButton } from "@/components/Organisms/Modals/ModalStep/types";
 import Step3Select3 from "./Step3Select3";
 import { IgetProducts } from "@/state/products/types";
+import { title } from "process";
 
 const Step3Select2 = ({
   orders,
@@ -32,6 +33,7 @@ const Step3Select2 = ({
   idVariationChange,
   setIdVariationChange,
   productsLoading,
+  setSelectedTitleObjects,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
@@ -97,8 +99,6 @@ const Step3Select2 = ({
     },
   ];
 
-  //  console.log("selectTitles", selectedTitles);
-
   const arrayButton: IArrayButton[] = [
     {
       id: 1,
@@ -125,11 +125,18 @@ const Step3Select2 = ({
           resultadoFinal &&
           resultadoFinal.length === 1
         ) {
-          setSelectedTitles &&
-            setSelectedTitles([
-              ...selectedTitles,
-              resultadoFinal && resultadoFinal[0].child?.name,
+          setSelectedTitleObjects &&
+            setSelectedTitleObjects((prev) => [
+              ...prev,
+              {
+                title: resultadoFinal[0].child?.name,
+                checkId: resultadoFinal[0].child?.id.toString(),
+              },
             ]);
+          // setSelectedTitles &&
+          //   setSelectedTitles([
+          //     resultadoFinal && resultadoFinal[0].child?.name,
+          //   ]);
           handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", "", [
             "cambio",
           ]);

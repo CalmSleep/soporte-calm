@@ -222,6 +222,7 @@ const useValueSelect = () => {
     setSelectedTitles,
     setSelectedValue,
     selectedTitleObjects,
+    setSelectedTitleObjects,
     checkClickCount,
     handleOnchangeButton,
     handleOnchangeWithoutConfirm,

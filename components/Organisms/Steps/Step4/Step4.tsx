@@ -353,7 +353,14 @@ const Step4 = ({
               .map(([sku, quantity]) => `${sku}: x${quantity}`)
               .join(", ");
           })()
-        : "",
+        : idChangeMatched &&
+          idChangeMatched
+            .map((item: any) => {
+              return `${item.sku}: ${
+                item.quantity === undefined ? "x1" : item.quantity
+              }`;
+            })
+            .join(", "),
     peaces:
       Number(selectedValue) === 1 ? parsePieces(rawString, pieces).names : [],
     peacesChange:

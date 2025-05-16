@@ -49,9 +49,10 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     setIdVariationChange,
     checkClickCount,
     selectedTitleObjects,
+    setSelectedTitleObjects,
   } = useValueSelect();
-  //console.log("selectedTitles", selectedTitles);
-  //console.log("selectedTitleObjects", selectedTitleObjects);
+  // console.log("selectedTitles", selectedTitles);
+  console.log("selectedTitleObjects", selectedTitleObjects);
   // console.log("checkClickCount", checkClickCount);
   const quatityItems = selectedTitleObjects.map((item) => ({
     ...item,
@@ -153,13 +154,17 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
       }
       return title;
     });
-  // console.log("prueba parentesis span: ", formattedTitles.join(", "));
+  console.log("titlesProducts", titlesProducts);
+
+  console.log("prueba parentesis span: ", formattedTitles.join(", "));
 
   const infoSelect2And3 = [
     products,
     valueSelect === "2"
       ? `${continuemos.join(", ")}`
-      : formattedTitles.join(", "),
+      : // : selectedTitles.some((title) => title.includes("cambio"))
+        // ? selectedTitles.join(", ")
+        formattedTitles.join(", "),
   ];
 
   React.useEffect(() => {
@@ -302,6 +307,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             setIdVariation={setIdVariation}
             idVariationChange={idVariationChange}
             setIdVariationChange={setIdVariationChange}
+            setSelectedTitleObjects={setSelectedTitleObjects}
           />
         )}
       </StepsHeaders>
