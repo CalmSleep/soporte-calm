@@ -19,13 +19,14 @@ const SelectorSize = ({
   arrChildren,
   selected,
   setSelected,
+  isSizeChange,
   setIsSizeChange,
   valToSearch,
   landing,
   hasRenders,
   isCategory,
 }: IPropsSize) => {
-  const [isSizeOpen, setIsSizeOpen] = useState(false);
+  // const [isSizeOpen, setIsSizeOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const regex = /\((.*?)\)/g;
@@ -36,7 +37,7 @@ const SelectorSize = ({
         dropdownRef.current &&
         !dropdownRef.current.contains(e.target as Node)
       ) {
-        setIsSizeOpen(false);
+        setIsSizeChange(false);
       }
     };
 
@@ -93,7 +94,7 @@ const SelectorSize = ({
     <HeightContainer>
       <DropdownContainer
         $isSize
-        onClick={() => setIsSizeOpen((prevState) => !prevState)}
+        onClick={() => setIsSizeChange((prevState) => !prevState)}
         ref={dropdownRef}
       >
         <DropdownHeader>
@@ -127,9 +128,9 @@ const SelectorSize = ({
           )}
         </DropdownHeader>
 
-        <Arrow $isOpen={isSizeOpen}>{ArrowQuantity()}</Arrow>
+        <Arrow $isOpen={isSizeChange}>{ArrowQuantity()}</Arrow>
 
-        {isSizeOpen && (
+        {isSizeChange && (
           <DropdownListContainer>
             <DropdownList>
               {arrChildren &&
@@ -142,8 +143,6 @@ const SelectorSize = ({
                       ] as keyof typeof variations_sizes
                     ]
                   );
-                  console.log("stock", option.stock);
-                  console.log("backorder", option.backorder);
 
                   return (
                     <ListItem
@@ -156,7 +155,7 @@ const SelectorSize = ({
                         if (option.stock <= 0 && !option.backorder) return;
                         e.stopPropagation();
                         setSelected(option.id);
-                        setIsSizeOpen(false);
+                        setIsSizeChange(false);
                         hasRenders && setIsSizeChange(true);
                       }}
                       $isLast={index === arrChildren.length - 1}

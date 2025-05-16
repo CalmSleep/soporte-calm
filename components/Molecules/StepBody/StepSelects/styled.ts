@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { SelectableDivProps } from "./types";
 
 export const CointainAcordeonRadio = styled.div`
   display: flex;
@@ -119,12 +120,10 @@ export const AcordeonProducts = styled.div`
   flex-direction: column;
 `;
 
-export const SelectableDiv = styled.div<{
-  $selected?: string;
-  $items?: number;
-}>`
-  padding: 10px 30px;
-  margin-bottom: ${({ $selected, $items }) =>
-    $selected ? `${Math.min($items! * 60, 300)}px` : "0px"};
-  transition: margin-bottom 0.3s ease;
+export const SelectableDiv = styled.div<SelectableDivProps>`
+  display: ${(props) => (props.$selected ? "block" : "none")};
+  margin-bottom: ${({ $isSizeChange }) => ($isSizeChange ? `120px` : "0px")};
+  padding: 0px 30px !important;
+  width: 100%;
+  transition: all 0.3s ease;
 `;

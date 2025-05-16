@@ -1,6 +1,12 @@
 import { IgetProducts, IProduct } from "@/state/products/types";
 import { StepRadioProps } from "../StepRadio/types";
 
+export interface SelectableDivProps {
+  $selected?: string;
+  $isSizeChange?: boolean;
+  $height?: number;
+}
+
 export interface IChecks {
   id: string;
   name?: string;

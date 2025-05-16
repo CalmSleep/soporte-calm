@@ -25,6 +25,9 @@ const useSelects = ({
   const [shelfConfigurations, setShelfConfigurations] = useState<ShelfData[]>(
     []
   );
+  const [selectedGroup, setSelectedGroup] = useState<
+    IChildrenProd[] | undefined
+  >();
   // console.log("shelfConfigurations", shelfConfigurations);
 
   // console.log("selectedChild", selectedChild);
@@ -302,6 +305,8 @@ const useSelects = ({
     selectedChild,
     isColorchange,
     isSizechange,
+    selectedProductNames,
+    selectedGroup,
   ]);
 
   const handleChangeRadio = (item: IItems, value: string) => {
@@ -401,6 +406,8 @@ const useSelects = ({
     setIsShelfConfigChanged,
     setIsColorChange,
     handleCheckboxArrayChange,
+    selectedGroup,
+    setSelectedGroup,
   };
 };
 

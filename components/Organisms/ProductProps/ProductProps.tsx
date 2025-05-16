@@ -2,7 +2,7 @@ import { IProps } from "./types";
 import SelectorSize from "@/components/Molecules/SelectorAttributes/SelectorSize";
 import SelectorHeight from "@/components/Molecules/SelectorAttributes/SelectorHeight";
 import SelectorColor from "@/components/Molecules/SelectorAttributes/SelectorColor";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IChildrenProd } from "@/state/products/types";
 import { DivSizeText, DivSizeInfo, Container } from "./styled";
 import SizeInfoWindow from "../SizeInfoWindow/SizeInfoWindow";
@@ -14,6 +14,18 @@ import {
   childrenVariationWithoutStock,
   searchAttribute,
 } from "@/utils/productsFunctios";
+import Margin from "@/components/Atoms/Spacing/Margin/Margin";
+import {
+  Arrow,
+  DropdownContainer,
+  DropdownHeader,
+  DropdownList,
+  DropdownListContainer,
+  ListItem,
+} from "../MainBlock/styled";
+import { ArrowQuantity } from "../MainBlock/mainBlockicons";
+import { HeightContainer } from "@/components/Molecules/SelectorAttributes/styled";
+import SelectorQuantity from "@/components/Molecules/SelectorAttributes/SelectorQuantity";
 
 const ProductProps = ({
   children,
@@ -21,6 +33,7 @@ const ProductProps = ({
   stockAndPrices,
   selectedChild,
   hasRenders,
+  isSizeChange,
   setIsSizeChange,
   category,
   defaultProds,
@@ -35,6 +48,7 @@ const ProductProps = ({
   const [tamanoState, setTamanoState] = useState("");
   const [altoState, setAltoState] = useState("");
   const [colorState, setColorState] = useState("");
+  //logica de cantidad
 
   const [isSizeInfoOpen, setIsSizeInfoOpen] = useState(false);
   const [sizeByURL, setSizeByURL] = useState<string | null>();
@@ -291,15 +305,13 @@ const ProductProps = ({
     setTamanoState(child ? child.attributes[tamano] : "");
   };
 
-  console.log("categoriaproducto", category);
-
   return (
     <>
       {category !== "muebles" && (
         <DivSizeText>
           <Text
             font={isCategory ? "bold" : "medium"}
-            fontSize={isCategory ? "1rem" : ".9em"}
+            fontSize={isCategory ? "1rem" : ".9rem"}
             color="lead"
             responsiveMobile={{
               width: "auto",
@@ -321,6 +333,7 @@ const ProductProps = ({
           setSelected={findAndSetSelectedChild}
           valToSearch={propsNames.tamano}
           hasRenders={hasRenders}
+          isSizeChange={isSizeChange ?? false}
           setIsSizeChange={setIsSizeChange}
           landing={category}
           isCategory={isCategory}
@@ -342,19 +355,6 @@ const ProductProps = ({
         />
       )}
 
-      {(idProd == "2249180" || idProd == "2249006") && (
-        <SelectorCombo
-          hasRenders={hasRenders}
-          setSelectedProp={setAltoState}
-          setIsSizeChange={setIsSizeChange}
-          valToSearch={propsNames.alto}
-          sizeName={propsNames.tamano}
-          price={selectedChild ? selectedChild.price : 0}
-          onQuantityChange={onQuantityChange}
-          idProd={idProd}
-        />
-      )}
-
       {/* apagamos selector de color en sommier */}
       {arrValuesAttr.color.length !== 0 && idProd != "1993786" && (
         <SelectorColor
@@ -368,34 +368,50 @@ const ProductProps = ({
           setIsColorChange={setIsColorChange}
         />
       )}
-      {/*  {(selectedChild && SKULAMPONNE.includes(selectedChild.sku)) && 
-      
-        <Container>
-            {<Pills
-                isCategoriesSection
-                backgroundColor="wildCaribbeanGreen"
-                color="starshipTrooper"
-                borderRadius="5px"
-              >
-                LLEGA {deliveryText} EN AMBA
-              </Pills>}
-        </Container>
-      } */}
-      {/* {(idProd == "2381349") && 
-        (
-          <Container>
-            <Text
-              font="regular"
-              fontSize=".9em"
-              color="rareRed"
-              textDecoration="uppercase"
-              responsiveMobile={{
-                width:"auto"
-              }}>
-                SOLO 10 UNIDADES DISPONIBLES
-            </Text>
-          </Container>
-        )} */}
+
+      <SelectorQuantity />
+      {/* <Margin margin="10px 0 10px 0">
+        <Text
+          color="lead"
+          font="medium"
+          fontSize="14px"
+          lineHeight="130%"
+          letterSpacing="0.42px"
+        >
+          Cantidad
+        </Text>
+      </Margin> */}
+      {/* <HeightContainer>
+        <DropdownContainer
+          $isSize={true}
+          onClick={() => setIsQuantityOpen((prevState) => !prevState)}
+          ref={dropdownRef}
+        >
+          <DropdownHeader>{quantity}</DropdownHeader>
+
+          <Arrow $isOpen={isQuantityOpen}>{ArrowQuantity()}</Arrow>
+
+          {isQuantityOpen && (
+            <DropdownListContainer>
+              <DropdownList>
+                {options.map((option, index) => (
+                  <ListItem
+                    key={option}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleQuantityChange(option);
+                    }}
+                    $isLast={index === 5}
+                    $isFirst={index === 0}
+                  >
+                    {option}
+                  </ListItem>
+                ))}
+              </DropdownList>
+            </DropdownListContainer>
+          )}
+        </DropdownContainer>
+      </HeightContainer> */}
     </>
   );
 };

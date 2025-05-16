@@ -7,6 +7,7 @@ export interface IProps {
   stockAndPrices?: IStockAndPrice | IStockAndPrice[];
   selectedChild?: IChildrenProd;
   hasRenders?: boolean;
+  isSizeChange?: boolean;
   setIsSizeChange: Dispatch<SetStateAction<boolean>>;
   category?: string;
   setIsColorChange?: Dispatch<SetStateAction<boolean>>;

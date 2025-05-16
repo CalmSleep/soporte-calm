@@ -26,9 +26,9 @@ const CardProducts = ({ image, name, description }: IProps) => {
               src={image || ""}
               alt={image + "producto relacionado"}
               borderRadius="12.583px"
-              width="95%"
-              height="92%"
-              objectFit="cover"
+              width="100%"
+              height="100%"
+              objectFit="contain"
             />
           </StyledImageContainer>
 

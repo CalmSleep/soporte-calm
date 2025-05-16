@@ -210,7 +210,11 @@ export const Arrow = styled.div<{ $isOpen?: boolean }>`
   }
 `;
 
-export const DropdownContainer = styled.div<{ $isSize?: boolean }>`
+export const DropdownContainer = styled.div<{
+  $isSize?: boolean;
+  $isOpen?: boolean;
+  $height?: number;
+}>`
   position: relative;
   min-width: 50px;
   width: ${(props) => (props.$isSize ? "100%" : "30%")};

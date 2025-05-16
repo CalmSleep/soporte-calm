@@ -1,7 +1,7 @@
 import Input from "@/components/Atoms/Input/Input";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import AccordionUnit from "@/components/Molecules/AccordionUnit/AccordionUnit";
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useMemo, useRef, useState } from "react";
 
 import StepRadio from "@/components/Molecules/StepBody/StepRadio/StepRadio";
 import {
@@ -66,9 +66,12 @@ const StepSelects = ({
     shelfConfigurations,
     setShelfConfigurations,
     setIsColorChange,
+    isSizechange,
     setIsSizeChange,
     handleCheckboxArrayChange,
     setIsShelfConfigChanged,
+    selectedGroup,
+    setSelectedGroup,
   } = useSelects({
     selectedTitle,
     onCheckboxChange,
@@ -80,12 +83,10 @@ const StepSelects = ({
   });
   const [quizzActive, setQuizzActive] = useState(false);
   const [selectedQuizz, setSelectedQuizz] = useState<undefined | string>();
-  const [selectedGroup, setSelectedGroup] = useState<
-    IChildrenProd[] | undefined
-  >();
+
   // console.log("selectedGroup", selectedGroup);
   //console.log("selectedProductNames", selectedProductNames);
-  //console.log("selectedChild", selectedChild);
+  console.log("selectedChild", selectedChild);
   const defaultProds = React.useMemo(() => [], []);
 
   const quizzHandle = (quizzId?: string) => {
@@ -330,7 +331,11 @@ const StepSelects = ({
               }}
               itemsSelect={
                 <CointainAcordeonProducts>
-                  {item.products.map((product) => {
+                  {item.products.map((product, index) => {
+                    const isLastProduct = index === item.products.length - 1;
+                    const isSelected = selectedProductNames.includes(
+                      product.name
+                    );
                     const cardProductDate = menuData.flatMap((item: any) =>
                       item.columns.flatMap((col: any) => col.products)
                     );
@@ -340,6 +345,22 @@ const StepSelects = ({
                         .includes(product.name.toLowerCase())
                     );
                     let propsNames = atrrToRender(product.children);
+                    // console.log(
+                    //   "children",
+                    //   product.children.map((item: any) => {
+                    //     return {
+                    //       ...item,
+                    //       quantity: 1,
+                    //     };
+                    //   })
+                    // );
+                    const childrenWithQuantity = useMemo(() => {
+                      return product.children.map((item: any) => ({
+                        ...item,
+                        quantity: 1,
+                      }));
+                    }, [product.children]);
+
                     return (
                       <AcordeonProducts>
                         <Input
@@ -366,20 +387,20 @@ const StepSelects = ({
                         />
                         {selectedProductNames.includes(product.name) && (
                           <SelectableDiv
-                            $selected={
-                              selectedProductNames.includes(product.name)
-                                ? "true"
-                                : undefined
+                            $selected={isSelected ? "true" : undefined}
+                            $isSizeChange={
+                              isSelected && isLastProduct ? isSizechange : false
                             }
-                            $items={selectedGroup?.length || 0}
                           >
                             <ProductProps
                               selectedGroup={selectedGroup || []}
                               setSelectedGroup={setSelectedGroup}
-                              children={product.children}
+                              children={childrenWithQuantity}
+                              //  children={product.children}
                               selectedChild={selectedChild}
                               setSelectedChild={setSelectedChild}
                               setIsColorChange={setIsColorChange}
+                              isSizeChange={isSizechange}
                               setIsSizeChange={setIsSizeChange}
                               defaultProds={defaultProds}
                               propsNames={propsNames}
