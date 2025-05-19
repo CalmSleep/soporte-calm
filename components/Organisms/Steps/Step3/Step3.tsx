@@ -52,12 +52,12 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     setSelectedTitleObjects,
   } = useValueSelect();
   // console.log("selectedTitles", selectedTitles);
-  console.log("selectedTitleObjects", selectedTitleObjects);
   // console.log("checkClickCount", checkClickCount);
   const quatityItems = selectedTitleObjects.map((item) => ({
     ...item,
     quantity: checkClickCount[item.checkId] || 1,
   }));
+  console.log("selectedTitleObjects", quatityItems);
   const titlesProducts = quatityItems.map(({ title, quantity }) =>
     quantity > 1 ? `${title} x ${quantity}` : title
   );

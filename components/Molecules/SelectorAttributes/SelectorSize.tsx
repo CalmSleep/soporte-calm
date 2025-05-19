@@ -14,19 +14,20 @@ import {
 import { ArrowQuantity } from "@/components/Organisms/MainBlock/mainBlockicons";
 import { useEffect, useRef, useState } from "react";
 import Text from "@/components/Atoms/Typography/Text";
+import { set } from "date-fns";
 
 const SelectorSize = ({
   arrChildren,
   selected,
   setSelected,
-  isSizeChange,
+  //  isSizeChange,
   setIsSizeChange,
   valToSearch,
   landing,
   hasRenders,
   isCategory,
 }: IPropsSize) => {
-  // const [isSizeOpen, setIsSizeOpen] = useState(false);
+  const [isSizeOpen, setIsSizeOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const regex = /\((.*?)\)/g;
@@ -37,6 +38,7 @@ const SelectorSize = ({
         dropdownRef.current &&
         !dropdownRef.current.contains(e.target as Node)
       ) {
+        setIsSizeOpen(false);
         setIsSizeChange(false);
       }
     };
@@ -94,7 +96,10 @@ const SelectorSize = ({
     <HeightContainer>
       <DropdownContainer
         $isSize
-        onClick={() => setIsSizeChange((prevState) => !prevState)}
+        onClick={() => {
+          setIsSizeOpen((prevState) => !prevState);
+          setIsSizeChange((prevState) => !prevState);
+        }}
         ref={dropdownRef}
       >
         <DropdownHeader>
@@ -128,9 +133,9 @@ const SelectorSize = ({
           )}
         </DropdownHeader>
 
-        <Arrow $isOpen={isSizeChange}>{ArrowQuantity()}</Arrow>
+        <Arrow $isOpen={isSizeOpen}>{ArrowQuantity()}</Arrow>
 
-        {isSizeChange && (
+        {isSizeOpen && (
           <DropdownListContainer>
             <DropdownList>
               {arrChildren &&
@@ -155,8 +160,9 @@ const SelectorSize = ({
                         if (option.stock <= 0 && !option.backorder) return;
                         e.stopPropagation();
                         setSelected(option.id);
+                        setIsSizeOpen(false);
                         setIsSizeChange(false);
-                        hasRenders && setIsSizeChange(true);
+                        hasRenders && setIsSizeOpen(true);
                       }}
                       $isLast={index === arrChildren.length - 1}
                       $isFirst={index === 0}

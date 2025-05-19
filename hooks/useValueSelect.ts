@@ -59,6 +59,9 @@ const useValueSelect = () => {
     title: string,
     checkId: string
   ) => {
+    console.log("checkId", checkId);
+    console.log("checkClickCount", checkClickCount);
+
     setCheckClickCount((prev) => {
       const prevCount = prev[checkId] || 0;
       const hasDash = checkId.includes("-");

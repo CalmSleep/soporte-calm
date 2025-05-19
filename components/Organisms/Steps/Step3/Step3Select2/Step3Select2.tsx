@@ -37,7 +37,6 @@ const Step3Select2 = ({
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
-  console.log("selectedTitles", selectedTitles);
 
   const paragraphArray = [
     {

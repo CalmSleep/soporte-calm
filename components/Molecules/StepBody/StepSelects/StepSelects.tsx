@@ -88,6 +88,7 @@ const StepSelects = ({
   //console.log("selectedProductNames", selectedProductNames);
   console.log("selectedChild", selectedChild);
   const defaultProds = React.useMemo(() => [], []);
+  console.log("isSizechange", isSizechange);
 
   const quizzHandle = (quizzId?: string) => {
     setQuizzActive(!quizzActive);
@@ -377,7 +378,11 @@ const StepSelects = ({
                           name={product.name}
                           value={product.name}
                           onChange={(e) => {
-                            handleProductCheckboxChange(e, product.name);
+                            handleProductCheckboxChange(
+                              e,
+                              product.name,
+                              product.id + "-" + index
+                            );
                           }}
                         />
                         <CardProducts
@@ -397,72 +402,24 @@ const StepSelects = ({
                               setSelectedGroup={setSelectedGroup}
                               children={childrenWithQuantity}
                               //  children={product.children}
-                              selectedChild={selectedChild}
-                              setSelectedChild={setSelectedChild}
+                              selectedChild={
+                                selectedChild[product.id + "-" + index] ||
+                                undefined
+                              }
+                              setSelectedChild={(child) =>
+                                setSelectedChild((prev: any) => ({
+                                  ...prev,
+                                  [product.id + "-" + index]: child,
+                                }))
+                              }
                               setIsColorChange={setIsColorChange}
-                              isSizeChange={isSizechange}
+                              // isSizeChange={isSizechange}
                               setIsSizeChange={setIsSizeChange}
                               defaultProds={defaultProds}
                               propsNames={propsNames}
                               category={item.name_category}
                               idProd={product.id_prod}
                             />
-                            {/*   {Number(product.id) === 2411459 ? (
-                              <ShelfConfiguratorContainer>
-                                <ShelfPreconfigurations
-                                  setShelfConfigurations={
-                                    setShelfConfigurations
-                                  }
-                                  shelfConfigurations={shelfConfigurations}
-                                  handlePreconfigView={() => {}}
-                                  children={product.children}
-                                  propsNames={propsNames}
-                                  setShelfConfigChanged={
-                                    setIsShelfConfigChanged
-                                  }
-                                />
-                               { isShelfPreconfigView ?
-                <ShelfPreconfigurations 
-                setShelfConfigurations={setShelfConfigurations}
-                shelfConfigurations={shelfConfigurations}
-                handlePreconfigView={handlePreconfigView}
-                children={children}
-                propsNames={propsNames}
-                setShelfConfigChanged={setIsShelfConfigChanged}
-                />
-                : (
-                  <ShelfConfigurator
-                  setShelfConfigurations={setShelfConfigurations}
-                  shelfConfigurations={shelfConfigurations}
-                  handlePreconfigView={handlePreconfigView}
-                  children={children}
-                  openModuleId={openModuleId}
-                  setOpenModuleId={setOpenModuleId}
-                  propsNames={propsNames}
-                  addToCartEnabled={addToCartEnabled}
-                  setShelfConfigChanged={setIsShelfConfigChanged}
-                  isPreConfigModalOpen={isPreConfigModalOpen}
-                  setIsPreConfigModalOpen={setIsPreConfigModalOpen}
-                  setIsShelfConfigChanged={setIsShelfConfigChanged}
-                  />
-                )} 
-                              </ShelfConfiguratorContainer>
-                            ) : (
-                              <ProductProps
-                                selectedGroup={selectedGroup || []}
-                                setSelectedGroup={setSelectedGroup}
-                                children={product.children}
-                                selectedChild={selectedChild}
-                                setSelectedChild={setSelectedChild}
-                                setIsColorChange={setIsColorChange}
-                                setIsSizeChange={setIsSizeChange}
-                                defaultProds={defaultProds}
-                                propsNames={propsNames}
-                                category={item.name_category}
-                                idProd={product.id_prod}
-                              />
-                            )}
-                              */}
                           </SelectableDiv>
                         )}
                       </AcordeonProducts>

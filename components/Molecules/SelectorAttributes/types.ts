@@ -26,7 +26,7 @@ export interface IPropsSize {
   selected?: IChildrenProd;
   setSelected: (id: string) => void;
   valToSearch: string;
-  isSizeChange: boolean;
+  // isSizeChange: boolean;
   setIsSizeChange: Dispatch<SetStateAction<boolean>>;
   landing?: string;
   hasRenders?: boolean;

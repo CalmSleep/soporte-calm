@@ -3,6 +3,7 @@ import { IItems, StepSelectsProps } from "./types";
 import { set } from "date-fns";
 import { IChildrenProd } from "@/state/products/types";
 import { ShelfData } from "@/components/Organisms/ShelfConfigurator/types";
+import { tr } from "date-fns/locale";
 
 const useSelects = ({
   onCheckboxChange,
@@ -20,8 +21,12 @@ const useSelects = ({
   );
   //console.log("selectedProductNames", selectedProductNames);
 
-  const [selectedChild, setSelectedChild] = useState<IChildrenProd>();
+  //const [selectedChild, setSelectedChild] = useState<IChildrenProd>();
+  const [selectedChild, setSelectedChild] = useState<{
+    [id: string]: IChildrenProd | null;
+  }>({});
   const [selectedChildChecked, setSelectedChildChecked] = useState(false);
+  const [idChild, setIdChild] = useState<string | null>(null);
   const [shelfConfigurations, setShelfConfigurations] = useState<ShelfData[]>(
     []
   );
@@ -32,72 +37,92 @@ const useSelects = ({
 
   // console.log("selectedChild", selectedChild);
 
+  // console.log("selectedTitle", selectedTitle);
+
   useEffect(() => {
-    if (!selectedChild || selectedChildChecked === null) return;
+    const child = selectedChild[idChild || ""];
+    console.log("child", child);
 
-    const newTitle = selectedChild.name;
-    const baseName = newTitle.split(" - ")[0];
-    const newId = Number(selectedChild.id);
+    if (!child || selectedChildChecked === null) return;
 
-    const previousTitle =
-      selectedTitle?.find((title) => title.startsWith(baseName)) || null;
+    const newTitle = child.name;
 
-    const matchedProduct = selectedProductNames.find((productName) =>
-      productName.startsWith(baseName)
-    );
-
-    // ⬇️ 1. Lógica de nombres
-    if (previousTitle && previousTitle !== newTitle && matchedProduct) {
-      onCheckboxChange?.(false, previousTitle, newId.toString());
-    }
-
-    if (!matchedProduct) {
-      onCheckboxChange?.(false, previousTitle || newTitle, newId.toString());
-    }
-
-    if (matchedProduct) {
-      onCheckboxChange?.(true, newTitle, newId.toString());
-    }
-
-    // ⬇️ 2. Lógica de IDs
-    if (setIdVariation) {
-      setIdVariation((prev = []) => {
-        // Si es deschequeado, quitamos el ID
-        if (!selectedChildChecked) {
-          return prev.filter((id) => id !== newId);
-        }
-
-        // Si ya existe ese ID exacto, no hacer nada
-        if (prev.includes(newId)) {
-          return prev;
-        }
-
-        // Buscar si hay otro ID en prev con el mismo baseName
-        const conflictingId = selectedProductNames.reduce((acc, name, i) => {
-          if (name.startsWith(baseName)) {
-            const possibleId = prev[i];
-            if (possibleId !== undefined && possibleId !== newId) {
-              return possibleId;
-            }
-          }
-          return acc;
-        }, undefined as number | undefined);
-
-        // Si hay conflicto, reemplazar
-        if (conflictingId !== undefined) {
-          return prev.map((id) => (id === conflictingId ? newId : id));
-        }
-
-        // Si no hay conflicto ni duplicado, agregar
-        return [...prev, newId];
-      });
+    if (idChild !== null) {
+      onCheckboxChange?.(true, newTitle, idChild.toString());
     }
   }, [
-    selectedChild,
+    selectedChild[idChild || ""],
     shelfConfigurations,
-    selectedProductNames,
     selectedChildChecked,
+    idChild,
   ]);
+
+  // useEffect(() => {
+  //   if (!selectedChild || selectedChildChecked === null) return;
+
+  //   const newTitle = selectedChild.name;
+  //   const baseName = newTitle.split(" - ")[0];
+  //   const newId = Number(selectedChild.id);
+
+  // const previousTitle =
+  //   selectedTitle?.find((title) => title.startsWith(baseName)) || null;
+
+  // const matchedProduct = selectedProductNames.find((productName) =>
+  //   productName.startsWith(baseName)
+  // );
+
+  // // ⬇️ 1. Lógica de nombres
+  // if (previousTitle && previousTitle !== newTitle && matchedProduct) {
+  //   onCheckboxChange?.(false, previousTitle, newId.toString());
+  // }
+
+  // if (!matchedProduct) {
+  //   onCheckboxChange?.(false, previousTitle || newTitle, newId.toString());
+  // }
+
+  // if (matchedProduct) {
+  //   onCheckboxChange?.(true, newTitle, newId.toString());
+  // }
+
+  //   // ⬇️ 2. Lógica de IDs
+  //   if (setIdVariation) {
+  //     setIdVariation((prev = []) => {
+  //       // Si es deschequeado, quitamos el ID
+  //       if (!selectedChildChecked) {
+  //         return prev.filter((id) => id !== newId);
+  //       }
+
+  //       // Si ya existe ese ID exacto, no hacer nada
+  //       if (prev.includes(newId)) {
+  //         return prev;
+  //       }
+
+  //       // Buscar si hay otro ID en prev con el mismo baseName
+  //       const conflictingId = selectedProductNames.reduce((acc, name, i) => {
+  //         if (name.startsWith(baseName)) {
+  //           const possibleId = prev[i];
+  //           if (possibleId !== undefined && possibleId !== newId) {
+  //             return possibleId;
+  //           }
+  //         }
+  //         return acc;
+  //       }, undefined as number | undefined);
+
+  //       // Si hay conflicto, reemplazar
+  //       if (conflictingId !== undefined) {
+  //         return prev.map((id) => (id === conflictingId ? newId : id));
+  //       }
+
+  //       // Si no hay conflicto ni duplicado, agregar
+  //       return [...prev, newId];
+  //     });
+  //   }
+  // }, [
+  //   selectedChild,
+  //   shelfConfigurations,
+  //   selectedProductNames,
+  //   selectedChildChecked,
+  // ]);
 
   // console.log("selectedChild", selectedChild);
 
@@ -345,10 +370,21 @@ const useSelects = ({
 
   const handleProductCheckboxChange = (
     e: React.ChangeEvent<HTMLInputElement>,
-    productName: string
+    productName: string,
+    productId: string
   ) => {
     const isChecked = e.target.checked;
     setSelectedChildChecked(isChecked);
+    setIdChild(productId);
+    setSelectedChild((prev) => {
+      const newChild = { ...prev };
+      if (isChecked) {
+        newChild[productId] = null;
+      } else {
+        delete newChild[productId];
+      }
+      return newChild;
+    });
 
     setSelectedProductNames((prev) => {
       const cleanedProductNames = prev.filter(
@@ -361,6 +397,12 @@ const useSelects = ({
 
       return updatedProductNames;
     });
+
+    // onCheckboxChange?.(
+    //   selectedChildChecked,
+    //   selectedChild[productId]?.name || "",
+    //   selectedChild[productId]?.id || ""
+    // );
   };
 
   const handleCheckboxArrayChange = ({
