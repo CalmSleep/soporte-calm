@@ -122,7 +122,8 @@ export const AcordeonProducts = styled.div`
 
 export const SelectableDiv = styled.div<SelectableDivProps>`
   display: ${(props) => (props.$selected ? "block" : "none")};
-  margin-bottom: ${({ $isSizeChange }) => ($isSizeChange ? `120px` : "0px")};
+  margin-bottom: ${({ $isSizeChange, $isQuantityChange }) =>
+    $isSizeChange || $isQuantityChange ? `300px` : "0px"};
   padding: 0px 30px !important;
   width: 100%;
   transition: all 0.3s ease;

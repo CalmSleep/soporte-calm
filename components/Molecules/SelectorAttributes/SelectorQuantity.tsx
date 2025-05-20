@@ -15,14 +15,27 @@ import { ArrowQuantity } from "@/components/Organisms/MainBlock/mainBlockicons";
 import { useEffect, useRef, useState } from "react";
 import Text from "@/components/Atoms/Typography/Text";
 import Margin from "@/components/Atoms/Spacing/Margin/Margin";
+import { set } from "date-fns";
 
-const SelectorQuantity = () => {
+const SelectorQuantity = ({
+  quantity,
+  setQuantity,
+  setQuantityOpen,
+  setIsQuantity,
+}: {
+  quantity: number;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
+  setQuantityOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsQuantity: React.Dispatch<React.SetStateAction<number>>;
+}) => {
   const [isQuantityOpen, setIsQuantityOpen] = useState(false);
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
   const options = ["1", "2", "3", "4", "5", "6"];
   const handleQuantityChange = (option: string) => {
     setQuantity(Number(option));
+    setIsQuantity(Number(option));
     setIsQuantityOpen(false);
+    setQuantityOpen(false);
   };
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -34,6 +47,7 @@ const SelectorQuantity = () => {
         !dropdownRef.current.contains(e.target as Node)
       ) {
         setIsQuantityOpen(false);
+        setQuantityOpen(false);
       }
     };
 
@@ -59,7 +73,10 @@ const SelectorQuantity = () => {
       </Margin>
       <DropdownContainer
         $isSize={true}
-        onClick={() => setIsQuantityOpen((prevState) => !prevState)}
+        onClick={() => {
+          setIsQuantityOpen((prevState) => !prevState);
+          setQuantityOpen((prevState) => !prevState);
+        }}
         ref={dropdownRef}
       >
         <DropdownHeader>{quantity}</DropdownHeader>

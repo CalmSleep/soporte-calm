@@ -4,6 +4,7 @@ import { StepRadioProps } from "../StepRadio/types";
 export interface SelectableDivProps {
   $selected?: string;
   $isSizeChange?: boolean;
+  $isQuantityChange?: boolean;
   $height?: number;
 }
 

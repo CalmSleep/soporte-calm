@@ -33,6 +33,15 @@ const useSelects = ({
   const [selectedGroup, setSelectedGroup] = useState<
     IChildrenProd[] | undefined
   >();
+  const [quantityOpen, setQuantityOpen] = useState<{ [id: string]: boolean }>(
+    {}
+  );
+  const [isQuatity, setIsQuatity] = useState<{ [id: string]: number }>({});
+  const [isSizechange, setIsSizeChange] = useState<{ [id: string]: boolean }>(
+    {}
+  );
+  const [isColorchange, setIsColorChange] = useState(false);
+  const [isShelfConfigChanged, setIsShelfConfigChanged] = useState(false);
   // console.log("shelfConfigurations", shelfConfigurations);
 
   // console.log("selectedChild", selectedChild);
@@ -55,80 +64,9 @@ const useSelects = ({
     shelfConfigurations,
     selectedChildChecked,
     idChild,
+    isQuatity,
   ]);
 
-  // useEffect(() => {
-  //   if (!selectedChild || selectedChildChecked === null) return;
-
-  //   const newTitle = selectedChild.name;
-  //   const baseName = newTitle.split(" - ")[0];
-  //   const newId = Number(selectedChild.id);
-
-  // const previousTitle =
-  //   selectedTitle?.find((title) => title.startsWith(baseName)) || null;
-
-  // const matchedProduct = selectedProductNames.find((productName) =>
-  //   productName.startsWith(baseName)
-  // );
-
-  // // ⬇️ 1. Lógica de nombres
-  // if (previousTitle && previousTitle !== newTitle && matchedProduct) {
-  //   onCheckboxChange?.(false, previousTitle, newId.toString());
-  // }
-
-  // if (!matchedProduct) {
-  //   onCheckboxChange?.(false, previousTitle || newTitle, newId.toString());
-  // }
-
-  // if (matchedProduct) {
-  //   onCheckboxChange?.(true, newTitle, newId.toString());
-  // }
-
-  //   // ⬇️ 2. Lógica de IDs
-  //   if (setIdVariation) {
-  //     setIdVariation((prev = []) => {
-  //       // Si es deschequeado, quitamos el ID
-  //       if (!selectedChildChecked) {
-  //         return prev.filter((id) => id !== newId);
-  //       }
-
-  //       // Si ya existe ese ID exacto, no hacer nada
-  //       if (prev.includes(newId)) {
-  //         return prev;
-  //       }
-
-  //       // Buscar si hay otro ID en prev con el mismo baseName
-  //       const conflictingId = selectedProductNames.reduce((acc, name, i) => {
-  //         if (name.startsWith(baseName)) {
-  //           const possibleId = prev[i];
-  //           if (possibleId !== undefined && possibleId !== newId) {
-  //             return possibleId;
-  //           }
-  //         }
-  //         return acc;
-  //       }, undefined as number | undefined);
-
-  //       // Si hay conflicto, reemplazar
-  //       if (conflictingId !== undefined) {
-  //         return prev.map((id) => (id === conflictingId ? newId : id));
-  //       }
-
-  //       // Si no hay conflicto ni duplicado, agregar
-  //       return [...prev, newId];
-  //     });
-  //   }
-  // }, [
-  //   selectedChild,
-  //   shelfConfigurations,
-  //   selectedProductNames,
-  //   selectedChildChecked,
-  // ]);
-
-  // console.log("selectedChild", selectedChild);
-
-  const [isSizechange, setIsSizeChange] = useState(false);
-  const [isColorchange, setIsColorChange] = useState(false);
-  const [isShelfConfigChanged, setIsShelfConfigChanged] = useState(false);
   const handleAccordionClick = (id: string) => {
     setActiveItem((prev) => (prev === id ? null : id));
   };
@@ -327,9 +265,10 @@ const useSelects = ({
     selectedRadios,
     selectedChecks,
     inputValues,
-    selectedChild,
+    //selectedChild,
     isColorchange,
     isSizechange,
+    quantityOpen,
     selectedProductNames,
     selectedGroup,
   ]);
@@ -450,6 +389,10 @@ const useSelects = ({
     handleCheckboxArrayChange,
     selectedGroup,
     setSelectedGroup,
+    quantityOpen,
+    setQuantityOpen,
+    isQuatity,
+    setIsQuatity,
   };
 };
 

@@ -72,6 +72,10 @@ const StepSelects = ({
     setIsShelfConfigChanged,
     selectedGroup,
     setSelectedGroup,
+    isQuatity,
+    setIsQuatity,
+    quantityOpen,
+    setQuantityOpen,
   } = useSelects({
     selectedTitle,
     onCheckboxChange,
@@ -86,9 +90,10 @@ const StepSelects = ({
 
   // console.log("selectedGroup", selectedGroup);
   //console.log("selectedProductNames", selectedProductNames);
-  console.log("selectedChild", selectedChild);
+  // console.log("selectedChild", selectedChild);
   const defaultProds = React.useMemo(() => [], []);
-  console.log("isSizechange", isSizechange);
+  // console.log("isSizechange", isSizechange);
+  //console.log("quantityOpen", quantityOpen);
 
   const quizzHandle = (quizzId?: string) => {
     setQuizzActive(!quizzActive);
@@ -334,6 +339,8 @@ const StepSelects = ({
                 <CointainAcordeonProducts>
                   {item.products.map((product, index) => {
                     const isLastProduct = index === item.products.length - 1;
+                    const isSecondLastProduct =
+                      index === item.products.length - 2 || isLastProduct;
                     const isSelected = selectedProductNames.includes(
                       product.name
                     );
@@ -346,21 +353,15 @@ const StepSelects = ({
                         .includes(product.name.toLowerCase())
                     );
                     let propsNames = atrrToRender(product.children);
-                    // console.log(
-                    //   "children",
-                    //   product.children.map((item: any) => {
-                    //     return {
-                    //       ...item,
-                    //       quantity: 1,
-                    //     };
-                    //   })
-                    // );
-                    const childrenWithQuantity = useMemo(() => {
-                      return product.children.map((item: any) => ({
-                        ...item,
-                        quantity: 1,
-                      }));
-                    }, [product.children]);
+                    // const childrenWithQuantity = useMemo(() => {
+                    //   const key = `${product.id}-${index}`;
+                    //   const quantity = isQuatity[key] ?? 1;
+
+                    //   return product.children.map((item: any) => ({
+                    //     ...item,
+                    //     quantity,
+                    //   }));
+                    // }, [isQuatity, product.children, product.id, index]);
 
                     return (
                       <AcordeonProducts>
@@ -394,14 +395,23 @@ const StepSelects = ({
                           <SelectableDiv
                             $selected={isSelected ? "true" : undefined}
                             $isSizeChange={
-                              isSelected && isLastProduct ? isSizechange : false
+                              isSelected && isLastProduct
+                                ? isSizechange[product.id + "-" + index] ||
+                                  false
+                                : false
+                            }
+                            $isQuantityChange={
+                              isSelected && isSecondLastProduct
+                                ? quantityOpen[product.id + "-" + index] ||
+                                  false
+                                : false
                             }
                           >
                             <ProductProps
                               selectedGroup={selectedGroup || []}
                               setSelectedGroup={setSelectedGroup}
-                              children={childrenWithQuantity}
-                              //  children={product.children}
+                              // children={childrenWithQuantity}
+                              children={product.children}
                               selectedChild={
                                 selectedChild[product.id + "-" + index] ||
                                 undefined
@@ -414,11 +424,30 @@ const StepSelects = ({
                               }
                               setIsColorChange={setIsColorChange}
                               // isSizeChange={isSizechange}
-                              setIsSizeChange={setIsSizeChange}
+                              setIsSizeChange={(value) =>
+                                setIsSizeChange((prev) => ({
+                                  ...prev,
+                                  [product.id + "-" + index]:
+                                    Boolean(value) || false,
+                                }))
+                              }
                               defaultProds={defaultProds}
                               propsNames={propsNames}
                               category={item.name_category}
                               idProd={product.id_prod}
+                              setIsQuantity={(value) =>
+                                setIsQuatity((prev) => ({
+                                  ...prev,
+                                  [product.id + "-" + index]: Number(value),
+                                }))
+                              }
+                              setQuantityOpen={(value) =>
+                                setQuantityOpen((prev) => ({
+                                  ...prev,
+                                  [product.id + "-" + index]:
+                                    Boolean(value) || false,
+                                }))
+                              }
                             />
                           </SelectableDiv>
                         )}

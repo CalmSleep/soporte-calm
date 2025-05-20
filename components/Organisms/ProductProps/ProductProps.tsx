@@ -44,10 +44,13 @@ const ProductProps = ({
   propsNames,
   selectedGroup,
   setSelectedGroup,
+  setQuantityOpen,
+  setIsQuantity,
 }: IProps) => {
   const [tamanoState, setTamanoState] = useState("");
   const [altoState, setAltoState] = useState("");
   const [colorState, setColorState] = useState("");
+  const [quantity, setQuantity] = useState(1);
   //logica de cantidad
 
   const [isSizeInfoOpen, setIsSizeInfoOpen] = useState(false);
@@ -102,6 +105,7 @@ const ProductProps = ({
   const findAndSetSelectedChild = (id: string) => {
     if (children) {
       const p = children.find((child) => child.id == id);
+      console.log("p", p);
 
       if (p) {
         setSelectedChild(p);
@@ -122,6 +126,7 @@ const ProductProps = ({
   useEffect(() => {
     groupChildrenByAttr();
     const { tamano, color, alto } = propsNames;
+    if (selectedChild) return;
     const p2 = children?.find((child) => {
       return (
         child.attributes[color] == colorState &&
@@ -133,96 +138,6 @@ const ProductProps = ({
       setSelectedChild(p2);
     }
   }, [tamanoState, altoState, colorState, stockAndPrices, children]);
-
-  //search by url
-  useEffect(() => {
-    const queryParameters = new URLSearchParams(window.location.search);
-    Array.from(queryParameters.entries()).forEach(([attribute, value]) => {
-      if (attribute.includes("tamano")) {
-        setSizeByURL(value);
-      } else if (attribute.includes("alto")) {
-        setHeightByURL(value);
-      } else if (attribute.includes("color")) {
-        setColorByURL(value);
-      }
-    });
-  }, []);
-
-  const childHasParam = (
-    attributeByURL: string,
-    prop: string,
-    child: IChildrenProd
-  ) => {
-    const key = attributeByURL as keyof typeof url_variations;
-    const validateNewURL = url_variations[key]?.includes(
-      child.attributes[prop]
-    );
-    const validateOldURL = Object.values(url_variations).find(
-      (params) =>
-        params.includes(attributeByURL) &&
-        params.includes(child.attributes[prop])
-    );
-    return validateNewURL || validateOldURL;
-  };
-
-  const findChildByURL = (
-    tamano: string,
-    alto: string,
-    color: string,
-    children?: IChildrenProd[]
-  ) => {
-    const child = children?.find((child) => {
-      let matchesSize =
-        tamano && sizeByURL && childHasParam(sizeByURL, tamano, child);
-      let matchesHeight =
-        alto && heightByURL && childHasParam(heightByURL, alto, child);
-      let matchesColor =
-        color && colorByURL && childHasParam(colorByURL, color, child);
-      if (sizeByURL && heightByURL && !colorByURL) {
-        return matchesSize && matchesHeight;
-      }
-      if (sizeByURL && !heightByURL && colorByURL) {
-        return matchesSize && matchesColor;
-      }
-      if (sizeByURL && !heightByURL && !colorByURL) {
-        return matchesSize;
-      }
-      if (!sizeByURL && !heightByURL && colorByURL) {
-        return matchesColor;
-      }
-    });
-
-    if (child) {
-      //Comentamos para que por url muestre el producto seleccionado aunque no tenga stock
-      /* if (childrenVariationWithoutStock(child) && children) {
-            const childrenWithStock = children.filter(
-              (c) => !childrenVariationWithoutStock(c)
-            )
-            const nextWithStock = childrenWithStock.reduce(
-              (max, c) => (c.price > max.price ? c : max),
-              childrenWithStock[0]
-            )
-            setChild(nextWithStock ?? children[0], color, alto, tamano)
-          } else { */
-      setSelectedChild(child);
-      /* apagamos selector de color en sommier */
-      if (idProd == "1993786") {
-        setColorState("gris-claro");
-      } else {
-        setColorState(
-          child ? child.attributes[color as keyof typeof child.attributes] : ""
-        );
-      }
-      setAltoState(
-        child ? child.attributes[alto as keyof typeof child.attributes] : ""
-      );
-      setTamanoState(
-        child ? child.attributes[tamano as keyof typeof child.attributes] : ""
-      );
-      setVariationsByURLSelected(true);
-      /*   } */
-    }
-  };
 
   useEffect(() => {
     const { tamano, alto, color } = propsNames;
@@ -261,12 +176,6 @@ const ProductProps = ({
           setChild(prodDef, color, alto, tamano);
         }
       }
-    } else if (
-      !variationsByURLSelected &&
-      (sizeByURL || heightByURL || colorByURL) &&
-      (tamano || alto || color)
-    ) {
-      findChildByURL(tamano, alto, color, children);
     }
   }, [children, defaultProds, sizeByURL, heightByURL, colorByURL]);
 
@@ -369,49 +278,12 @@ const ProductProps = ({
         />
       )}
 
-      <SelectorQuantity />
-      {/* <Margin margin="10px 0 10px 0">
-        <Text
-          color="lead"
-          font="medium"
-          fontSize="14px"
-          lineHeight="130%"
-          letterSpacing="0.42px"
-        >
-          Cantidad
-        </Text>
-      </Margin> */}
-      {/* <HeightContainer>
-        <DropdownContainer
-          $isSize={true}
-          onClick={() => setIsQuantityOpen((prevState) => !prevState)}
-          ref={dropdownRef}
-        >
-          <DropdownHeader>{quantity}</DropdownHeader>
-
-          <Arrow $isOpen={isQuantityOpen}>{ArrowQuantity()}</Arrow>
-
-          {isQuantityOpen && (
-            <DropdownListContainer>
-              <DropdownList>
-                {options.map((option, index) => (
-                  <ListItem
-                    key={option}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleQuantityChange(option);
-                    }}
-                    $isLast={index === 5}
-                    $isFirst={index === 0}
-                  >
-                    {option}
-                  </ListItem>
-                ))}
-              </DropdownList>
-            </DropdownListContainer>
-          )}
-        </DropdownContainer>
-      </HeightContainer> */}
+      <SelectorQuantity
+        quantity={quantity}
+        setQuantity={setQuantity}
+        setQuantityOpen={setQuantityOpen}
+        setIsQuantity={setIsQuantity}
+      />
     </>
   );
 };

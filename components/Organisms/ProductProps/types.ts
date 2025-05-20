@@ -18,6 +18,8 @@ export interface IProps {
   propsNames: IPropsNames;
   selectedGroup: IChildrenProd[];
   setSelectedGroup: Dispatch<SetStateAction<IChildrenProd[] | undefined>>;
+  setQuantityOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsQuantity: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface IPropsNames {
