@@ -123,10 +123,10 @@ const Step4 = ({
   ];
 
   const rawString = notionInfo.problemDescription[1];
-  console.log(
-    "selectedTitleObjects",
-    selectedTitleObjects.map((item) => item.quantity)
-  );
+  // console.log(
+  //   "selectedTitleObjects",
+  //   selectedTitleObjects.map((item) => item.quantity)
+  // );
 
   const countByVariationId = selectedTitleObjects.reduce((acc, obj) => {
     const baseId = obj.checkId.split("-")[0];
@@ -201,8 +201,8 @@ const Step4 = ({
           dataUser._wc_shipment_tracking_items.length - 1
         ].map((item: any) => item.tracking_provider);
 
-  console.log(proveedor);
-  console.log("rawString", notionInfo.problemDescription.includes("cambio"));
+  // console.log(proveedor);
+  // console.log("rawString", notionInfo.problemDescription.includes("cambio"));
 
   const fullInfo: IDataSendNotion = {
     orderNumber: String(dataUser.id),

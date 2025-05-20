@@ -60,7 +60,7 @@ const useValueSelect = () => {
     checkId: string
   ) => {
     console.log("checkId", checkId);
-    console.log("checkClickCount", checkClickCount);
+    //   console.log("checkClickCount", checkClickCount);
 
     setCheckClickCount((prev) => {
       const prevCount = prev[checkId] || 0;
@@ -129,7 +129,7 @@ const useValueSelect = () => {
     checkId: string,
     radioGroup: string[]
   ) => {
-    console.log("checkId", checkId);
+    // console.log("checkId", checkId);
 
     setCheckSeleccionado(isChecked);
 

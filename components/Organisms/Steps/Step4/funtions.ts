@@ -125,7 +125,7 @@ export const mapIssuesToNotionValues = (input: string): Issue[] => {
     }
   }
 
-  console.log("result");
+  // console.log("result");
 
   return result;
 };

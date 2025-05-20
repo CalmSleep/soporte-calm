@@ -50,7 +50,7 @@ const useSelects = ({
 
   useEffect(() => {
     const child = selectedChild[idChild || ""];
-    console.log("child", child);
+    //console.log("child", child);
 
     if (!child || selectedChildChecked === null) return;
 
@@ -117,7 +117,7 @@ const useSelects = ({
     }
 
     const itemTitle = itemFromItems?.title || "";
-    console.log("itemTitle", itemTitle);
+    //console.log("itemTitle", itemTitle);
 
     const inputsForUniqueKey = inputValues[uniqueKey] || {};
 
@@ -132,7 +132,7 @@ const useSelects = ({
           )
           .join(", ")})`
       : itemTitle;
-    console.log("formattedTitle", formattedTitle);
+    //console.log("formattedTitle", formattedTitle);
 
     onCheckboxChange &&
       onCheckboxChange(
@@ -170,7 +170,7 @@ const useSelects = ({
           .map((p) => `${p}${updatedValues[p] ? ` x ${updatedValues[p]}` : ""}`)
           .join(" , ")})`
       : itemTitle;
-    console.log("formatted", formatted);
+    //console.log("formatted", formatted);
 
     onCheckboxChange &&
       onCheckboxChange(checkedPieces.length > 0, formatted, itemId);
@@ -185,7 +185,7 @@ const useSelects = ({
 
     if (previous && previous !== pieceLabel) {
       const previousPiece = item?.pieces.find((p) => p.label === previous);
-      console.log("previousPiece", previousPiece);
+      // console.log("previousPiece", previousPiece);
 
       if (previousPiece?.hasInput) {
         setInputValues((prev) => {
@@ -274,7 +274,7 @@ const useSelects = ({
   ]);
 
   const handleChangeRadio = (item: IItems, value: string) => {
-    console.log("item", item.id);
+    // console.log("item", item.id);
 
     setSelectedRadios((prev) => ({
       ...prev,

@@ -262,7 +262,7 @@ export function getResultados(
 
       const value = valueMatch[comentarioKey];
       const valueName = normalize(value[0]);
-      console.log("valueName", value[2].join(", "));
+      //   console.log("valueName", value[2].join(", "));
 
       const childrenFull =
         (products &&
@@ -275,7 +275,7 @@ export function getResultados(
           )) ||
         [];
 
-      console.log("childrenFull", childrenFull);
+      //   console.log("childrenFull", childrenFull);
 
       let child: any = null;
 

@@ -57,7 +57,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     ...item,
     quantity: checkClickCount[item.checkId] || 1,
   }));
-  console.log("selectedTitleObjects", quatityItems);
+  // console.log("selectedTitleObjects", quatityItems);
   const titlesProducts = quatityItems.map(({ title, quantity }) =>
     quantity > 1 ? `${title} x ${quantity}` : title
   );
@@ -156,7 +156,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     });
   console.log("titlesProducts", titlesProducts);
 
-  console.log("prueba parentesis span: ", formattedTitles.join(", "));
+  // console.log("prueba parentesis span: ", formattedTitles.join(", "));
 
   const infoSelect2And3 = [
     products,
