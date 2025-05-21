@@ -53,20 +53,21 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     skuChild,
     setSkuChild,
   } = useValueSelect();
-  // console.log("selectedTitles", selectedTitles);
-  // console.log("checkClickCount", checkClickCount);
-  console.log("skuChild", skuChild);
-
   const quatityItems = selectedTitleObjects.map((item) => ({
     ...item,
     quantity: checkClickCount[item.checkId] || 1,
     skuChange: skuChild[item.checkId] || "",
   }));
-  console.log("selectedTitleObjects", quatityItems);
-  const titlesProducts = quatityItems.map(({ title, quantity }) =>
-    quantity > 1 ? `${title} x ${quantity}` : title
-  );
+  console.log("quatityItems", quatityItems);
 
+  const titlesProducts = quatityItems.map(({ title, quantity }) =>
+    quantity > 1 && title.includes("-")
+      ? `${title.split("-")[0]}x ${quantity} -${title.split("-")[1]}`
+      : quantity > 1
+      ? `${title} x ${quantity}`
+      : title
+  );
+  console.log("titlesProducts", titlesProducts);
   //  console.log("titles", !!selectedTitles.find((title) => title.includes("x")));
   // console.log(notionInfo);
   const orders = useSelector(getThankuContent);
@@ -159,7 +160,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
       }
       return title;
     });
-  console.log("titlesProducts", titlesProducts);
 
   // console.log("prueba parentesis span: ", formattedTitles.join(", "));
 

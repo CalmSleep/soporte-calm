@@ -27,6 +27,52 @@ const useValueSelect = () => {
   const [idVariation, setIdVariation] = useState<number[]>([]);
   const [idVariationChange, setIdVariationChange] = useState<number[]>([]);
 
+  const [pendingTitleUpdate, setPendingTitleUpdate] = useState<{
+    checkId: string;
+    title: string;
+    isChecked: boolean;
+  } | null>(null);
+
+  useEffect(() => {
+    if (!pendingTitleUpdate) return;
+
+    const { checkId, title, isChecked } = pendingTitleUpdate;
+    const count = checkClickCount[checkId] || 0;
+
+    const isValidTitle = title && title.trim() !== "";
+    const isCheckedIdSequence =
+      checkId.includes("-") && /\d+-\d+/.test(checkId);
+
+    setSelectedTitleObjects((prevTitles) => {
+      let cleanedTitles = prevTitles.filter(
+        (t) => t.checkId !== checkId && t.title && t.title.trim() !== ""
+      );
+
+      // ⚠️ Solo eliminar si:
+      //  - tiene guión y es uncheck
+      //  - o NO tiene guión y count === 0
+      if (!isChecked && !isCheckedIdSequence && count > 0) {
+        const existing = prevTitles.find((t) => t.checkId === checkId);
+        if (existing) cleanedTitles.push(existing); // lo volvemos a meter
+      }
+
+      const shouldAdd =
+        isChecked &&
+        isValidTitle &&
+        (isCheckedIdSequence || !checkId.includes("-"));
+
+      const updatedTitles = shouldAdd
+        ? [...cleanedTitles, { checkId, title }]
+        : cleanedTitles;
+
+      setCheckSeleccionado(updatedTitles.length > 0);
+
+      return updatedTitles;
+    });
+
+    setPendingTitleUpdate(null); // limpiar
+  }, [checkClickCount, pendingTitleUpdate]);
+
   const handleOnchangeButton = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(e.target.value);
   };
@@ -63,7 +109,7 @@ const useValueSelect = () => {
     quantity?: number,
     skuChild?: string
   ) => {
-    console.log("checkId", checkId);
+    console.log("quantity", quantity);
 
     if (!quantity) {
       setCheckClickCount((prev) => {
@@ -84,6 +130,7 @@ const useValueSelect = () => {
         } else {
           // Deselección: restar 1 y eliminar si llega a 0
           const newCount = Math.max(prevCount - 1, 0);
+
           const { [checkId]: _, ...rest } = prev;
 
           if (newCount === 0) {
@@ -117,30 +164,39 @@ const useValueSelect = () => {
         [checkId]: skuChild,
       }));
     }
+    setPendingTitleUpdate({ checkId, title, isChecked });
 
-    setSelectedTitleObjects((prevTitles) => {
-      const isValidTitle = title && title.trim() !== "";
-      const isCheckedIdSequence =
-        checkId.includes("-") && /\d+-\d+/.test(checkId);
+    // setSelectedTitleObjects((prevTitles) => {
+    //   console.log("prevTitles", prevTitles);
 
-      // Limpiamos: sacamos duplicados por ID y títulos vacíos
-      let cleanedTitles = prevTitles.filter(
-        (t) => t.checkId !== checkId && t.title && t.title.trim() !== ""
-      );
+    //   const isValidTitle = title && title.trim() !== "";
+    //   console.log("isValidTitle", isValidTitle);
 
-      const shouldAdd =
-        isChecked &&
-        isValidTitle &&
-        (isCheckedIdSequence || !checkId.includes("-"));
+    //   const isCheckedIdSequence =
+    //     checkId.includes("-") && /\d+-\d+/.test(checkId);
 
-      const updatedTitles = shouldAdd
-        ? [...cleanedTitles, { checkId, title }]
-        : cleanedTitles;
+    //   console.log("isCheckedIdSequence", isCheckedIdSequence);
 
-      setCheckSeleccionado(updatedTitles.length > 0);
+    //   // Limpiamos: sacamos duplicados por ID y títulos vacíos
+    //   let cleanedTitles = prevTitles.filter(
+    //     (t) => t.checkId !== checkId && t.title && t.title.trim() !== ""
+    //   );
+    //   console.log("cleanedTitles", cleanedTitles);
 
-      return updatedTitles;
-    });
+    //   const shouldAdd =
+    //     isChecked &&
+    //     isValidTitle &&
+    //     (isCheckedIdSequence || !checkId.includes("-"));
+    //   console.log("shouldAdd", shouldAdd);
+
+    //   const updatedTitles = shouldAdd
+    //     ? [...cleanedTitles, { checkId, title }]
+    //     : cleanedTitles;
+
+    //   setCheckSeleccionado(updatedTitles.length > 0);
+
+    //   return updatedTitles;
+    // });
 
     // setSelectedTitleObjects((prevTitles) => {
     //   let cleanedTitles = prevTitles.filter((t) => t.checkId !== checkId);

@@ -88,13 +88,7 @@ const StepSelects = ({
   const [quizzActive, setQuizzActive] = useState(false);
   const [selectedQuizz, setSelectedQuizz] = useState<undefined | string>();
 
-  // console.log("selectedGroup", selectedGroup);
-  //console.log("selectedProductNames", selectedProductNames);
-  console.log("selectedChild", selectedChild);
   const defaultProds = React.useMemo(() => [], []);
-  // console.log("isSizechange", isSizechange);
-  //console.log("quantityOpen", quantityOpen);
-  console.log("quantity", isQuatity);
 
   const quizzHandle = (quizzId?: string) => {
     setQuizzActive(!quizzActive);
