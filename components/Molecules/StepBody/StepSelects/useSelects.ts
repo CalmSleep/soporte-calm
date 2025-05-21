@@ -42,22 +42,25 @@ const useSelects = ({
   );
   const [isColorchange, setIsColorChange] = useState(false);
   const [isShelfConfigChanged, setIsShelfConfigChanged] = useState(false);
-  // console.log("shelfConfigurations", shelfConfigurations);
-
-  // console.log("selectedChild", selectedChild);
-
-  // console.log("selectedTitle", selectedTitle);
 
   useEffect(() => {
     const child = selectedChild[idChild || ""];
     //console.log("child", child);
 
-    if (!child || selectedChildChecked === null) return;
+    // if (!child || selectedChildChecked === null) return;
 
-    const newTitle = child.name;
+    const newTitle = child?.name;
+    console.log("chidid", child?.id);
 
     if (idChild !== null) {
-      onCheckboxChange?.(true, newTitle, idChild.toString());
+      onCheckboxChange?.(
+        true,
+        newTitle || "",
+        idChild.toString(),
+        [],
+        isQuatity[idChild],
+        child?.sku || ""
+      );
     }
   }, [
     selectedChild[idChild || ""],
@@ -67,6 +70,11 @@ const useSelects = ({
     isQuatity,
   ]);
 
+  // console.log("shelfConfigurations", shelfConfigurations);
+
+  // console.log("selectedChild", selectedChild);
+
+  // console.log("selectedTitle", selectedTitle);
   const handleAccordionClick = (id: string) => {
     setActiveItem((prev) => (prev === id ? null : id));
   };
@@ -337,11 +345,14 @@ const useSelects = ({
       return updatedProductNames;
     });
 
-    // onCheckboxChange?.(
-    //   selectedChildChecked,
-    //   selectedChild[productId]?.name || "",
-    //   selectedChild[productId]?.id || ""
-    // );
+    onCheckboxChange &&
+      onCheckboxChange(
+        isChecked,
+        productName,
+        productId,
+        []
+        //     isQuatity[productId] // revisar cantidad
+      );
   };
 
   const handleCheckboxArrayChange = ({

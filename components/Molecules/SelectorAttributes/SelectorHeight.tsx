@@ -15,6 +15,7 @@ import {
   ListItem,
 } from "@/components/Organisms/MainBlock/styled";
 import { ArrowQuantity } from "@/components/Organisms/MainBlock/mainBlockicons";
+import { set } from "date-fns";
 
 const heightCm = {
   "original-plus": "28 cm",
@@ -69,6 +70,7 @@ const SelectorHeight = ({
         !dropdownRef.current.contains(e.target as Node)
       ) {
         setIsHeightOpen(false);
+        setIsSizeChange && setIsSizeChange(false);
       }
     };
 
@@ -180,7 +182,10 @@ const SelectorHeight = ({
 
           <DropdownContainer
             $isSize
-            onClick={() => setIsHeightOpen((prevState) => !prevState)}
+            onClick={() => {
+              setIsHeightOpen((prevState) => !prevState);
+              setIsSizeChange && setIsSizeChange((prevState) => !prevState);
+            }}
             ref={dropdownRef}
           >
             <DropdownHeader>
@@ -251,11 +256,10 @@ const SelectorHeight = ({
                           }
                           onClick={(e) => {
                             e.stopPropagation();
-                            setIsHeightOpen(false);
                             setSelectedProp && setSelectedProp(height);
-                            setIsSizeChange &&
-                              hasRenders &&
-                              setIsSizeChange(true);
+                            setIsHeightOpen(false);
+                            setIsSizeChange && setIsSizeChange(false);
+                            hasRenders && setIsHeightOpen(true);
                           }}
                           $isLast={index === arrOptions.length - 1}
                           $isFirst={index === 0}

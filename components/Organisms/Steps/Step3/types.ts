@@ -30,13 +30,17 @@ export interface Step3Select1Props {
   handleCheckboxChange: (
     isChecked: boolean,
     title: string,
-    checkId: string
+    checkId: string,
+    quantity?: number,
+    skuChild?: string
   ) => void;
   handleCheckboxChangeConfirmed: (
     isChecked: boolean,
     title: string,
     checkId: string,
-    radioGroup: string[]
+    radioGroup: string[],
+    quantity?: number,
+    skuChild?: string
   ) => void;
   selectedTitles: string[];
   handleEditCheckbox: () => void;
@@ -57,7 +61,9 @@ export interface SelectOptionProps {
     isChecked: boolean,
     title: string,
     checkId: string,
-    radioGroup: string[]
+    radioGroup: string[],
+    quantity?: number,
+    skuChild?: string
   ) => void;
   handlePaymentChange?: (
     paymentLabel: string,
@@ -79,13 +85,17 @@ export interface Step3Select2and3Props {
   handleCheckboxChange: (
     isChecked: boolean,
     title: string,
-    checkId: string
+    checkId: string,
+    quantity?: number,
+    skuChild?: string
   ) => void;
   handleCheckboxChangeConfirmed: (
     isChecked: boolean,
     title: string,
     checkId: string,
-    radioGroup: string[]
+    radioGroup: string[],
+    quantity?: number,
+    skuChild?: string
   ) => void;
   infoStep: string[];
   modalOpen?: boolean;

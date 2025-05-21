@@ -172,7 +172,9 @@ const Step3Select2 = ({
                 : "Selecciona el o los productos que queres cambiar:"
             }
             items={matchedItems.length > 0 ? matchedItems : []}
-            onCheckboxChange={handleCheckboxChange}
+            onCheckboxChange={(isChecked, title, checkId) => {
+              handleCheckboxChange(isChecked, title, checkId);
+            }}
             idVariation={idVariation}
             setIdVariation={setIdVariation}
           />

@@ -13,6 +13,7 @@ const useValueSelect = () => {
   const [checkClickCount, setCheckClickCount] = useState<{
     [id: string]: number;
   }>({});
+  const [skuChild, setSkuChild] = useState<{ [id: string]: string }>({});
 
   const [selectedTitles, setSelectedTitles] = useState<string[]>([]);
   const [selectedTitleObjects, setSelectedTitleObjects] = useState<
@@ -41,6 +42,7 @@ const useValueSelect = () => {
     setIdVariationChange([]);
     setCheckClickCount({});
     setSelectedTitleObjects([]);
+    setSkuChild({});
   };
 
   const handleConfirm = () => {
@@ -57,50 +59,73 @@ const useValueSelect = () => {
   const handleCheckboxChange = (
     isChecked: boolean,
     title: string,
-    checkId: string
+    checkId: string,
+    quantity?: number,
+    skuChild?: string
   ) => {
-    console.log("checkId", checkId);
-    //   console.log("checkClickCount", checkClickCount);
+    console.log("skuChild", skuChild);
 
-    setCheckClickCount((prev) => {
-      const prevCount = prev[checkId] || 0;
-      const hasDash = checkId.includes("-");
+    if (!quantity) {
+      setCheckClickCount((prev) => {
+        const prevCount = prev[checkId] || 0;
+        const hasDash = checkId.includes("-");
 
-      if (isChecked) {
-        // Si tiene guion y ya existe ese ID exacto, no hacer nada
-        if (hasDash && prev[checkId] !== undefined) {
-          return prev;
+        if (isChecked) {
+          // Si tiene guion y ya existe ese ID exacto, no hacer nada
+          if (hasDash && prev[checkId] !== undefined) {
+            return prev;
+          }
+
+          // Sino, agregar normalmente (ya sea sin guion o con guion nuevo)
+          return {
+            ...prev,
+            [checkId]: hasDash ? 1 : prevCount + 1,
+          };
+        } else {
+          // Deselección: restar 1 y eliminar si llega a 0
+          const newCount = Math.max(prevCount - 1, 0);
+          const { [checkId]: _, ...rest } = prev;
+
+          if (newCount === 0) {
+            return Object.keys(rest).length === 0 ? {} : rest;
+          }
+
+          return {
+            ...rest,
+            [checkId]: newCount,
+          };
         }
-
-        // Sino, agregar normalmente (ya sea sin guion o con guion nuevo)
+      });
+    } else {
+      setCheckClickCount((prev) => {
         return {
           ...prev,
-          [checkId]: hasDash ? 1 : prevCount + 1,
+          [checkId]: quantity,
         };
-      } else {
-        // Deselección: restar 1 y eliminar si llega a 0
-        const newCount = Math.max(prevCount - 1, 0);
-        const { [checkId]: _, ...rest } = prev;
+      });
+    }
 
-        if (newCount === 0) {
-          return Object.keys(rest).length === 0 ? {} : rest;
-        }
-
-        return {
-          ...rest,
-          [checkId]: newCount,
-        };
-      }
-    });
+    if (!skuChild || title.trim() === "") {
+      setSkuChild((prev) => {
+        const newState = { ...prev };
+        delete newState[checkId];
+        return newState;
+      });
+    } else {
+      setSkuChild((prev) => ({
+        ...prev,
+        [checkId]: skuChild,
+      }));
+    }
 
     setSelectedTitleObjects((prevTitles) => {
-      // Remover solo el título con el mismo checkId (solo ese reemplazamos)
-      const cleanedTitles = prevTitles.filter((t) => t.checkId !== checkId);
+      let cleanedTitles = prevTitles.filter((t) => t.checkId !== checkId);
 
-      // Si está seleccionado, agregar nuevo objeto, sino solo devolver limpio
-      const updatedTitles = isChecked
-        ? [...cleanedTitles, { checkId, title }]
-        : cleanedTitles;
+      cleanedTitles = cleanedTitles.filter((t) => t.title !== title);
+      const updatedTitles =
+        isChecked && title && title.trim() !== ""
+          ? [...cleanedTitles, { checkId, title }]
+          : cleanedTitles;
 
       setCheckSeleccionado(updatedTitles.length > 0);
 
@@ -210,6 +235,7 @@ const useValueSelect = () => {
     setIdVariationChange([]);
     setCheckClickCount({});
     setSelectedTitleObjects([]);
+    setSkuChild({});
   };
 
   return {
@@ -240,6 +266,7 @@ const useValueSelect = () => {
     setIdVariation,
     idVariationChange,
     setIdVariationChange,
+    skuChild,
   };
 };
 

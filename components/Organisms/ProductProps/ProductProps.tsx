@@ -126,7 +126,6 @@ const ProductProps = ({
   useEffect(() => {
     groupChildrenByAttr();
     const { tamano, color, alto } = propsNames;
-    if (selectedChild) return;
     const p2 = children?.find((child) => {
       return (
         child.attributes[color] == colorState &&

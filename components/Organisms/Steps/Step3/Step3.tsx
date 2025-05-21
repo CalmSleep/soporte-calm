@@ -50,14 +50,18 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     checkClickCount,
     selectedTitleObjects,
     setSelectedTitleObjects,
+    skuChild,
   } = useValueSelect();
   // console.log("selectedTitles", selectedTitles);
   // console.log("checkClickCount", checkClickCount);
+  console.log("skuChild", skuChild);
+
   const quatityItems = selectedTitleObjects.map((item) => ({
     ...item,
     quantity: checkClickCount[item.checkId] || 1,
+    skuChange: skuChild[item.checkId] || "",
   }));
-  // console.log("selectedTitleObjects", quatityItems);
+  console.log("selectedTitleObjects", quatityItems);
   const titlesProducts = quatityItems.map(({ title, quantity }) =>
     quantity > 1 ? `${title} x ${quantity}` : title
   );
@@ -233,10 +237,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             ? !selectedValue || !checkSeleccionado
             : valueSelect === "2"
             ? !checkSeleccionado
-            : !(
-                valueSelect === "3" &&
-                titlesProducts.some((title) => title.includes("-"))
-              )
+            : !(valueSelect === "3" && titlesProducts.length > 1)
         }
         button={
           valueSelect === "1"

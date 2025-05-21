@@ -159,18 +159,12 @@ const Step4 = ({
     return Array.from({ length: count }, () => ({ ...item }));
   });
 
-  const idChangeMatched = products.flatMap((product) =>
-    product.products.flatMap((chil) => {
-      const productId = Number(chil.id);
-      const ids = idVariationChange.map((id) => Number(id));
+  const idsFromUser = dataUser.items.map((item: any) =>
+    String(item.variation_id || item.product_id)
+  );
 
-      return chil.children.filter((child) => {
-        const variationId = Number(child.id);
-        return variationId === 0
-          ? ids.includes(productId)
-          : ids.includes(variationId);
-      });
-    })
+  const idChangeMatched = selectedTitleObjects.filter(
+    (obj) => !idsFromUser.some((id: string) => obj.checkId.startsWith(id))
   );
 
   // console.log("dataUser.items", dataUser.items);
@@ -314,7 +308,7 @@ const Step4 = ({
           }))
         : idChangeMatched &&
           idChangeMatched.map((item: any) => ({
-            name: item.sku,
+            name: item.skuChange,
           })),
     skuQuantityOriginal:
       (idMatched && Number(selectedValue) === 1) ||
@@ -356,7 +350,7 @@ const Step4 = ({
         : idChangeMatched &&
           idChangeMatched
             .map((item: any) => {
-              return `${item.sku}: ${
+              return `${item.skuChange}: ${
                 item.quantity === undefined ? "x1" : item.quantity
               }`;
             })

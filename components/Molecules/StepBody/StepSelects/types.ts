@@ -37,7 +37,9 @@ export type StepSelectsProps = {
     isChecked: boolean,
     title: string,
     checkId: string,
-    radioGroup?: string[]
+    radioGroup?: string[],
+    quantity?: number,
+    skuChild?: string
   ) => void;
   selectedOption?: string;
   setSelectedOption?: React.Dispatch<React.SetStateAction<string>>;
