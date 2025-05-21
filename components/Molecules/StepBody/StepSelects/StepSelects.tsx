@@ -423,7 +423,13 @@ const StepSelects = ({
                                   [product.id + "-" + index]: child,
                                 }))
                               }
-                              setIsColorChange={setIsColorChange}
+                              setIsColorChange={(value) =>
+                                setIsColorChange((prev) => ({
+                                  ...prev,
+                                  [product.id + "-" + index]:
+                                    Boolean(value) || false,
+                                }))
+                              }
                               // isSizeChange={isSizechange}
                               setIsSizeChange={(value) =>
                                 setIsSizeChange((prev) => ({

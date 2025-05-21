@@ -109,6 +109,7 @@ export interface Step3Select2and3Props {
   setIdVariationChange?: React.Dispatch<React.SetStateAction<number[]>>;
   productsLoading?: boolean;
   setSelectedTitleObjects?: React.Dispatch<React.SetStateAction<any[]>>;
+  setSkuChild?: React.Dispatch<React.SetStateAction<any>>;
 }
 
 export type Category = {

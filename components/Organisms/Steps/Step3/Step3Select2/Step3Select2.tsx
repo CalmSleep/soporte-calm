@@ -34,6 +34,7 @@ const Step3Select2 = ({
   setIdVariationChange,
   productsLoading,
   setSelectedTitleObjects,
+  setSkuChild,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
@@ -132,6 +133,11 @@ const Step3Select2 = ({
                 checkId: resultadoFinal[0].child?.id.toString(),
               },
             ]);
+          setSkuChild &&
+            setSkuChild((prev: { [id: string]: string }) => ({
+              ...prev,
+              [resultadoFinal[0].child?.id]: resultadoFinal[0].child?.sku,
+            }));
           // setSelectedTitles &&
           //   setSelectedTitles([
           //     resultadoFinal && resultadoFinal[0].child?.name,

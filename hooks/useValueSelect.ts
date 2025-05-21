@@ -63,7 +63,7 @@ const useValueSelect = () => {
     quantity?: number,
     skuChild?: string
   ) => {
-    console.log("skuChild", skuChild);
+    console.log("checkId", checkId);
 
     if (!quantity) {
       setCheckClickCount((prev) => {
@@ -119,18 +119,43 @@ const useValueSelect = () => {
     }
 
     setSelectedTitleObjects((prevTitles) => {
-      let cleanedTitles = prevTitles.filter((t) => t.checkId !== checkId);
+      const isValidTitle = title && title.trim() !== "";
+      const isCheckedIdSequence =
+        checkId.includes("-") && /\d+-\d+/.test(checkId);
 
-      cleanedTitles = cleanedTitles.filter((t) => t.title !== title);
-      const updatedTitles =
-        isChecked && title && title.trim() !== ""
-          ? [...cleanedTitles, { checkId, title }]
-          : cleanedTitles;
+      // Limpiamos: sacamos duplicados por ID y títulos vacíos
+      let cleanedTitles = prevTitles.filter(
+        (t) => t.checkId !== checkId && t.title && t.title.trim() !== ""
+      );
+
+      const shouldAdd =
+        isChecked &&
+        isValidTitle &&
+        (isCheckedIdSequence || !checkId.includes("-"));
+
+      const updatedTitles = shouldAdd
+        ? [...cleanedTitles, { checkId, title }]
+        : cleanedTitles;
 
       setCheckSeleccionado(updatedTitles.length > 0);
 
       return updatedTitles;
     });
+
+    // setSelectedTitleObjects((prevTitles) => {
+    //   let cleanedTitles = prevTitles.filter((t) => t.checkId !== checkId);
+    //   console.log("cleanedTitles", cleanedTitles);
+
+    //   cleanedTitles = cleanedTitles.filter((t) => t.title !== title);
+    //   const updatedTitles =
+    //     isChecked && title && title.trim() !== ""
+    //       ? [...cleanedTitles, { checkId, title }]
+    //       : cleanedTitles;
+
+    //   setCheckSeleccionado(updatedTitles.length > 0);
+
+    //   return updatedTitles;
+    // });
 
     // setSelectedTitles((prevTitles) => {
     //   const cleanedTitles = prevTitles.filter(
@@ -267,6 +292,7 @@ const useValueSelect = () => {
     idVariationChange,
     setIdVariationChange,
     skuChild,
+    setSkuChild,
   };
 };
 

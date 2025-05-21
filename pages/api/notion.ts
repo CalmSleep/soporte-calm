@@ -134,7 +134,7 @@ export default async function handler(
                 content:
                   data.skuQuantityChange === ""
                     ? data.peacesQuantity
-                    : data.peacesQuantity + ", " + data.skuQuantityChange,
+                    : data.peacesQuantity + " - " + data.skuQuantityChange,
               },
             },
           ],

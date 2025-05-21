@@ -40,7 +40,9 @@ const useSelects = ({
   const [isSizechange, setIsSizeChange] = useState<{ [id: string]: boolean }>(
     {}
   );
-  const [isColorchange, setIsColorChange] = useState(false);
+  const [isColorchange, setIsColorChange] = useState<{ [id: string]: boolean }>(
+    {}
+  );
   const [isShelfConfigChanged, setIsShelfConfigChanged] = useState(false);
 
   useEffect(() => {

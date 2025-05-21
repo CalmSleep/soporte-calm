@@ -51,6 +51,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     selectedTitleObjects,
     setSelectedTitleObjects,
     skuChild,
+    setSkuChild,
   } = useValueSelect();
   // console.log("selectedTitles", selectedTitles);
   // console.log("checkClickCount", checkClickCount);
@@ -309,6 +310,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             idVariationChange={idVariationChange}
             setIdVariationChange={setIdVariationChange}
             setSelectedTitleObjects={setSelectedTitleObjects}
+            setSkuChild={setSkuChild}
           />
         )}
       </StepsHeaders>
