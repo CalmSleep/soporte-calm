@@ -21,6 +21,7 @@ const StepInfo = ({ info, link, onClick }: StepInfoProps) => {
       </StepInfoStyles>
       <Paragraph
         textTag="a"
+        cursor="pointer"
         textDecoration="underline"
         link={link}
         fontSize="20px"

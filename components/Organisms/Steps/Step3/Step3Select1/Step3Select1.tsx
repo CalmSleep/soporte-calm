@@ -39,7 +39,9 @@ const Step3Select1 = ({
           />
           {selectedValue === "1" ? (
             <Select1Option
-              onCheckboxChange={handleCheckboxChange}
+              onCheckboxChange={(isChecked, title, checkId) => {
+                handleCheckboxChange(isChecked, title, checkId);
+              }}
               orders={orders}
               idVariation={idVariation}
               setIdVariation={setIdVariation}
@@ -51,14 +53,18 @@ const Step3Select1 = ({
             />
           ) : selectedValue === "3" ? (
             <Select3Option
-              onCheckboxChange={handleCheckboxChange}
+              onCheckboxChange={(isChecked, title, checkId) => {
+                handleCheckboxChange(isChecked, title, checkId);
+              }}
               orders={orders}
               idVariation={idVariation}
               setIdVariation={setIdVariation}
             />
           ) : selectedValue === "4" ? (
             <Select4Option
-              onCheckboxChange={handleCheckboxChange}
+              onCheckboxChange={(isChecked, title, checkId) => {
+                handleCheckboxChange(isChecked, title, checkId);
+              }}
               orders={orders}
               idVariation={idVariation}
               setIdVariation={setIdVariation}

@@ -1,12 +1,20 @@
 import { IgetProducts, IProduct } from "@/state/products/types";
 import { StepRadioProps } from "../StepRadio/types";
 
+export interface SelectableDivProps {
+  $selected?: string;
+  $isSizeChange?: boolean;
+  $isQuantityChange?: boolean;
+  $height?: number;
+}
+
 export interface IChecks {
   id: string;
   name?: string;
   value: string;
   title: string;
   span?: string;
+  quantity?: number;
 }
 
 export interface IItems {
@@ -14,6 +22,7 @@ export interface IItems {
   title: string;
   pieces: { label: string; hasInput?: boolean; placeholder?: string }[];
   span?: string;
+  quantity?: number;
 }
 
 export type StepSelectsProps = {
@@ -27,7 +36,10 @@ export type StepSelectsProps = {
   onCheckboxChange?: (
     isChecked: boolean,
     title: string,
-    radioGroup?: string[]
+    checkId: string,
+    radioGroup?: string[],
+    quantity?: number,
+    skuChild?: string
   ) => void;
   selectedOption?: string;
   setSelectedOption?: React.Dispatch<React.SetStateAction<string>>;

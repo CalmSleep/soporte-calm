@@ -9,6 +9,7 @@ import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import { IArrayButton } from "@/components/Organisms/Modals/ModalStep/types";
 import Step3Select3 from "./Step3Select3";
 import { IgetProducts } from "@/state/products/types";
+import { title } from "process";
 
 const Step3Select2 = ({
   orders,
@@ -32,6 +33,8 @@ const Step3Select2 = ({
   idVariationChange,
   setIdVariationChange,
   productsLoading,
+  setSelectedTitleObjects,
+  setSkuChild,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
@@ -96,17 +99,18 @@ const Step3Select2 = ({
     },
   ];
 
-  //  console.log("selectTitles", selectedTitles);
-
   const arrayButton: IArrayButton[] = [
     {
       id: 1,
       text: "Continuemos con la devolución",
       backgroundColor: "lead",
       onClick: () => {
-        handleCheckboxChangeConfirmed(true, "Continuemos con la devolución", [
-          "devolucion",
-        ]);
+        handleCheckboxChangeConfirmed(
+          true,
+          "Continuemos con la devolución",
+          "",
+          ["devolucion"]
+        );
         handleConfirmCheckbox && handleConfirmCheckbox();
         setModalOpen && setModalOpen(false);
       },
@@ -121,12 +125,26 @@ const Step3Select2 = ({
           resultadoFinal &&
           resultadoFinal.length === 1
         ) {
-          setSelectedTitles &&
-            setSelectedTitles([
-              ...selectedTitles,
-              resultadoFinal && resultadoFinal[0].child?.name,
+          setSelectedTitleObjects &&
+            setSelectedTitleObjects((prev) => [
+              ...prev,
+              {
+                title: resultadoFinal[0].child?.name,
+                checkId: resultadoFinal[0].child?.id.toString(),
+              },
             ]);
-          handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+          setSkuChild &&
+            setSkuChild((prev: { [id: string]: string }) => ({
+              ...prev,
+              [resultadoFinal[0].child?.id]: resultadoFinal[0].child?.sku,
+            }));
+          // setSelectedTitles &&
+          //   setSelectedTitles([
+          //     resultadoFinal && resultadoFinal[0].child?.name,
+          //   ]);
+          handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", "", [
+            "cambio",
+          ]);
           setIdVariationChange &&
             setIdVariationChange((prev) => {
               const next = prev || [];
@@ -139,7 +157,9 @@ const Step3Select2 = ({
           setConfirmedValue && setConfirmedValue("3");
           setModalOpen && setModalOpen(false);
         } else {
-          handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
+          handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", "", [
+            "cambio",
+          ]);
           setConfirmedValue && setConfirmedValue("3");
           setModalOpen && setModalOpen(false);
         }
@@ -158,7 +178,9 @@ const Step3Select2 = ({
                 : "Selecciona el o los productos que queres cambiar:"
             }
             items={matchedItems.length > 0 ? matchedItems : []}
-            onCheckboxChange={handleCheckboxChange}
+            onCheckboxChange={(isChecked, title, checkId) => {
+              handleCheckboxChange(isChecked, title, checkId);
+            }}
             idVariation={idVariation}
             setIdVariation={setIdVariation}
           />

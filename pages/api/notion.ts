@@ -112,6 +112,15 @@ export default async function handler(
         "SKU(s) a entregar": {
           multi_select: data.skuChange,
         },
+        "Cantidad de SKU's originales": {
+          rich_text: [
+            {
+              text: {
+                content: data.skuQuantityOriginal,
+              },
+            },
+          ],
+        },
         "Pieza (si aplica)": {
           multi_select: data.peaces,
         },
@@ -122,7 +131,10 @@ export default async function handler(
           rich_text: [
             {
               text: {
-                content: data.peacesQuantity,
+                content:
+                  data.skuQuantityChange === ""
+                    ? data.peacesQuantity
+                    : data.peacesQuantity + " - " + data.skuQuantityChange,
               },
             },
           ],

@@ -1,7 +1,7 @@
 import Input from "@/components/Atoms/Input/Input";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import AccordionUnit from "@/components/Molecules/AccordionUnit/AccordionUnit";
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useMemo, useRef, useState } from "react";
 
 import StepRadio from "@/components/Molecules/StepBody/StepRadio/StepRadio";
 import {
@@ -27,6 +27,8 @@ import { IChildrenProd } from "@/state/products/types";
 import Quizz from "../../Quizz/Quizz";
 import { set } from "date-fns";
 import { atrrToRender } from "@/utils/productsFunctios";
+import { ShelfConfiguratorContainer } from "@/components/Organisms/MainBlock/styled";
+import ShelfPreconfigurations from "@/components/Organisms/ShelfConfigurator/ShelfPreconfigurations";
 
 const StepSelects = ({
   titleParagraph,
@@ -61,9 +63,19 @@ const StepSelects = ({
     handleProductCheckboxChange,
     selectedChild,
     setSelectedChild,
+    shelfConfigurations,
+    setShelfConfigurations,
     setIsColorChange,
+    isSizechange,
     setIsSizeChange,
     handleCheckboxArrayChange,
+    setIsShelfConfigChanged,
+    selectedGroup,
+    setSelectedGroup,
+    isQuatity,
+    setIsQuatity,
+    quantityOpen,
+    setQuantityOpen,
   } = useSelects({
     selectedTitle,
     onCheckboxChange,
@@ -75,12 +87,7 @@ const StepSelects = ({
   });
   const [quizzActive, setQuizzActive] = useState(false);
   const [selectedQuizz, setSelectedQuizz] = useState<undefined | string>();
-  const [selectedGroup, setSelectedGroup] = useState<
-    IChildrenProd[] | undefined
-  >();
-  // console.log("selectedGroup", selectedGroup);
-  //console.log("selectedProductNames", selectedProductNames);
-  //console.log("selectedChild", selectedChild);
+
   const defaultProds = React.useMemo(() => [], []);
 
   const quizzHandle = (quizzId?: string) => {
@@ -112,7 +119,8 @@ const StepSelects = ({
                   onCheckboxChange &&
                     onCheckboxChange(
                       e.target.checked,
-                      `${check.title} ${check.span ? `(${check.span})` : ""}`
+                      `${check.title} ${check.span ? `(${check.span})` : ""}`,
+                      String(check.id)
                     );
 
                   if (setIdVariation) {
@@ -146,7 +154,8 @@ const StepSelects = ({
         })}
       {items &&
         radioOptions &&
-        items.map((item) => {
+        items.map((item, index) => {
+          const uniqueKey = `${item.id}-${index}`;
           return (
             <AccordionUnit
               titleStyle={{
@@ -154,26 +163,28 @@ const StepSelects = ({
                 fontSize: "16px",
                 lineHeight: "-0.48px",
               }}
-              key={item.id}
+              key={uniqueKey}
               itemName={item.title}
               spamName={`(${item.span})`}
-              onClick={() => handleAccordionClick(item.id)}
-              isActive={activeItem === item.id}
-              contentHeight={contentHeights[item.id] || 0}
-              height={contentHeights[item.id] || 0}
+              onClick={() => handleAccordionClick(uniqueKey)}
+              isActive={activeItem === uniqueKey}
+              contentHeight={contentHeights[uniqueKey] || 0}
+              height={contentHeights[uniqueKey] || 0}
               refContent={(el: HTMLDivElement | null) => {
-                contentRefs.current[item.id] = el;
+                contentRefs.current[uniqueKey] = el;
               }}
               itemsSelect={
                 <CointainAcordeonRadio>
                   <StepRadio
                     radioOptions={radioOptions || []}
-                    name={`radio-${item.id}`}
-                    checked={selectedRadios[item.id]}
-                    onChange={(_, value) => handleChangeRadio(item, value)}
+                    name={`radio-${uniqueKey}`}
+                    checked={selectedRadios[uniqueKey]}
+                    onChange={(_, value) =>
+                      handleChangeRadio({ ...item, id: uniqueKey }, value)
+                    }
                   />
 
-                  {selectedRadios[item.id] === "piezas" && (
+                  {selectedRadios[uniqueKey] === "piezas" && (
                     <PieceList>
                       {item.pieces.map((piece) => (
                         <ContainerCheckLabel>
@@ -189,12 +200,15 @@ const StepSelects = ({
                               borderColorFocused="yellowCalm"
                               color="yellowCalm"
                               type="checkbox"
-                              checked={(selectedChecks[item.id] || []).includes(
-                                piece.label
-                              )}
                               onChange={() =>
-                                handlePieceCheckboxChange(item.id, piece.label)
+                                handlePieceCheckboxChange(
+                                  uniqueKey,
+                                  piece.label
+                                )
                               }
+                              checked={(
+                                selectedChecks[uniqueKey] || []
+                              ).includes(piece.label)}
                             />
                             {piece.label}
                           </PieceItem>
@@ -208,10 +222,12 @@ const StepSelects = ({
                               height="16px"
                               type="text"
                               placeholder={piece.placeholder}
-                              value={inputValues[item.id]?.[piece.label] || ""}
+                              value={
+                                inputValues[uniqueKey]?.[piece.label] || ""
+                              }
                               onChange={(e) =>
                                 handleInputChange(
-                                  item.id,
+                                  uniqueKey,
                                   piece.label,
                                   e.target.value
                                 )
@@ -229,7 +245,8 @@ const StepSelects = ({
         })}
       {items &&
         !radioOptions &&
-        items.map((item) => {
+        items.map((item, index) => {
+          const uniqueKey = `${item.id}-${index}`;
           return (
             <AccordionUnit
               titleStyle={{
@@ -237,15 +254,15 @@ const StepSelects = ({
                 fontSize: "16px",
                 lineHeight: "-0.48px",
               }}
-              key={item.id}
+              key={uniqueKey}
               itemName={item.title}
               spamName={item.span ? `(${item.span})` : ""}
-              onClick={() => handleAccordionClick(item.id)}
-              isActive={activeItem === item.id}
-              contentHeight={contentHeights[item.id] || 0}
-              height={contentHeights[item.id] || 0}
+              onClick={() => handleAccordionClick(uniqueKey)}
+              isActive={activeItem === uniqueKey}
+              contentHeight={contentHeights[uniqueKey] || 0}
+              height={contentHeights[uniqueKey] || 0}
               refContent={(el: HTMLDivElement | null) => {
-                contentRefs.current[item.id] = el;
+                contentRefs.current[uniqueKey] = el;
               }}
               itemsSelect={
                 item.pieces ? (
@@ -257,25 +274,27 @@ const StepSelects = ({
                             radioOptions={[
                               { value: piece.label, label: piece.label },
                             ]}
-                            name={`radio-group-${item.id}`}
-                            checked={selectedRadios[item.id]}
+                            name={`radio-group-${uniqueKey}`}
+                            checked={selectedRadios[uniqueKey]}
                             onChange={(e, value) =>
-                              handlePieceRadioChange(item.id, value)
+                              handlePieceRadioChange(uniqueKey, value)
                             }
                           />
                         </PieceItem>
                         {piece.hasInput &&
-                          selectedRadios[item.id] === piece.label && (
+                          selectedRadios[uniqueKey] === piece.label && (
                             <Input
                               appearance="none"
                               width="236px"
                               height="16px"
                               type="text"
                               placeholder={piece.placeholder}
-                              value={inputValues[item.id]?.[piece.label] || ""}
+                              value={
+                                inputValues[uniqueKey]?.[piece.label] || ""
+                              }
                               onChange={(e) =>
                                 handleRadioInputChange(
-                                  item.id,
+                                  uniqueKey,
                                   piece.label,
                                   e.target.value
                                 )
@@ -313,7 +332,13 @@ const StepSelects = ({
               }}
               itemsSelect={
                 <CointainAcordeonProducts>
-                  {item.products.map((product) => {
+                  {item.products.map((product, index) => {
+                    const isLastProduct = index === item.products.length - 1;
+                    const isSecondLastProduct =
+                      index === item.products.length - 2 || isLastProduct;
+                    const isSelected = selectedProductNames.includes(
+                      product.name
+                    );
                     const cardProductDate = menuData.flatMap((item: any) =>
                       item.columns.flatMap((col: any) => col.products)
                     );
@@ -323,6 +348,16 @@ const StepSelects = ({
                         .includes(product.name.toLowerCase())
                     );
                     let propsNames = atrrToRender(product.children);
+                    // const childrenWithQuantity = useMemo(() => {
+                    //   const key = `${product.id}-${index}`;
+                    //   const quantity = isQuatity[key] ?? 1;
+
+                    //   return product.children.map((item: any) => ({
+                    //     ...item,
+                    //     quantity,
+                    //   }));
+                    // }, [isQuatity, product.children, product.id, index]);
+
                     return (
                       <AcordeonProducts>
                         <Input
@@ -339,7 +374,11 @@ const StepSelects = ({
                           name={product.name}
                           value={product.name}
                           onChange={(e) => {
-                            handleProductCheckboxChange(e, product.name);
+                            handleProductCheckboxChange(
+                              e,
+                              product.name,
+                              product.id + "-" + index
+                            );
                           }}
                         />
                         <CardProducts
@@ -349,25 +388,67 @@ const StepSelects = ({
                         />
                         {selectedProductNames.includes(product.name) && (
                           <SelectableDiv
-                            $selected={
-                              selectedProductNames.includes(product.name)
-                                ? "true"
-                                : undefined
+                            $selected={isSelected ? "true" : undefined}
+                            $isSizeChange={
+                              isSelected && isLastProduct
+                                ? isSizechange[product.id + "-" + index] ||
+                                  false
+                                : false
                             }
-                            $items={selectedGroup?.length || 0}
+                            $isQuantityChange={
+                              isSelected && isSecondLastProduct
+                                ? quantityOpen[product.id + "-" + index] ||
+                                  false
+                                : false
+                            }
                           >
                             <ProductProps
                               selectedGroup={selectedGroup || []}
                               setSelectedGroup={setSelectedGroup}
+                              // children={childrenWithQuantity}
                               children={product.children}
-                              selectedChild={selectedChild}
-                              setSelectedChild={setSelectedChild}
-                              setIsColorChange={setIsColorChange}
-                              setIsSizeChange={setIsSizeChange}
+                              selectedChild={
+                                selectedChild[product.id + "-" + index] ||
+                                undefined
+                              }
+                              setSelectedChild={(child) =>
+                                setSelectedChild((prev: any) => ({
+                                  ...prev,
+                                  [product.id + "-" + index]: child,
+                                }))
+                              }
+                              setIsColorChange={(value) =>
+                                setIsColorChange((prev) => ({
+                                  ...prev,
+                                  [product.id + "-" + index]:
+                                    Boolean(value) || false,
+                                }))
+                              }
+                              // isSizeChange={isSizechange}
+                              setIsSizeChange={(value) =>
+                                setIsSizeChange((prev) => ({
+                                  ...prev,
+                                  [product.id + "-" + index]:
+                                    Boolean(value) || false,
+                                }))
+                              }
                               defaultProds={defaultProds}
                               propsNames={propsNames}
                               category={item.name_category}
                               idProd={product.id_prod}
+                              setIsQuantity={(value) =>
+                                setIsQuatity((prev) => ({
+                                  ...prev,
+                                  [product.id + "-" + index]: Number(value),
+                                }))
+                              }
+                              setQuantityOpen={(value) =>
+                                setQuantityOpen((prev) => ({
+                                  ...prev,
+                                  [product.id + "-" + index]:
+                                    Boolean(value) || false,
+                                }))
+                              }
                             />
                           </SelectableDiv>
                         )}

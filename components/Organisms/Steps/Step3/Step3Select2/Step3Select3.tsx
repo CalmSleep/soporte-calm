@@ -72,7 +72,16 @@ const Step3Select3 = ({
               })
           }
           //  products={products}
-          onCheckboxChange={handleCheckboxChange}
+          onCheckboxChange={(
+            isChecked,
+            title,
+            checkId,
+            radioGroup,
+            quantity,
+            skuChild
+          ) => {
+            handleCheckboxChange(isChecked, title, checkId, quantity, skuChild);
+          }}
           changedOption
           menuData={menuData}
           idVariation={idVariationChange}

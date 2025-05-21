@@ -30,24 +30,31 @@ const Select1Option = ({
       });
       return !isMatched;
     })
-    .map((order: any): IChecks => {
+    .flatMap((order: any): IChecks[] => {
+      const quantity = order.quantity || 1;
+
       const id =
         order.variation_id === 0
           ? String(order.product_id)
           : String(order.variation_id);
 
-      return {
-        id,
+      const baseCheck: IChecks = {
+        id: order.variation_id === 0 ? order.product_id : order.variation_id,
         value: id,
         title: order.product_name,
         span: order.span,
+        quantity: order.quantity,
       };
+
+      return Array.from({ length: quantity }, () => ({ ...baseCheck }));
     });
+  // console.log("checksOrders", checksOrders);
 
   const radioOptions = [
     { value: "completo", label: "Falta este producto completo" },
     { value: "piezas", label: "Falta una o más piezas" },
   ];
+  // console.log("matchedItems", matchedItems);
 
   return (
     <StepSelects
@@ -57,8 +64,8 @@ const Select1Option = ({
         orders.length > 0 ? matchedItems.filter((item) => item !== null) : []
       }
       radioOptions={radioOptions}
-      onCheckboxChange={(isChecked, title, radioGroup = []) =>
-        onCheckboxChange(isChecked, title, radioGroup)
+      onCheckboxChange={(isChecked, title, checkId, radioGroup = []) =>
+        onCheckboxChange(isChecked, title, checkId, radioGroup)
       }
       idVariation={idVariation}
       setIdVariation={setIdVariation}

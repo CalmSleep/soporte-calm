@@ -27,11 +27,20 @@ export interface Step3Select1Props {
   handleOnchangeWithoutConfirm: (
     e: React.ChangeEvent<HTMLSelectElement>
   ) => void;
-  handleCheckboxChange: (isChecked: boolean, title: string) => void;
+  handleCheckboxChange: (
+    isChecked: boolean,
+    title: string,
+    checkId: string,
+    quantity?: number,
+    skuChild?: string
+  ) => void;
   handleCheckboxChangeConfirmed: (
     isChecked: boolean,
     title: string,
-    radioGroup: string[]
+    checkId: string,
+    radioGroup: string[],
+    quantity?: number,
+    skuChild?: string
   ) => void;
   selectedTitles: string[];
   handleEditCheckbox: () => void;
@@ -51,7 +60,10 @@ export interface SelectOptionProps {
   onCheckboxChange: (
     isChecked: boolean,
     title: string,
-    radioGroup: string[]
+    checkId: string,
+    radioGroup: string[],
+    quantity?: number,
+    skuChild?: string
   ) => void;
   handlePaymentChange?: (
     paymentLabel: string,
@@ -70,11 +82,20 @@ export interface Step3Select2and3Props {
   valueSelect: string | null;
   setConfirmedValue?: React.Dispatch<React.SetStateAction<string | null>>;
   handleEditCheckbox: () => void;
-  handleCheckboxChange: (isChecked: boolean, title: string) => void;
+  handleCheckboxChange: (
+    isChecked: boolean,
+    title: string,
+    checkId: string,
+    quantity?: number,
+    skuChild?: string
+  ) => void;
   handleCheckboxChangeConfirmed: (
     isChecked: boolean,
     title: string,
-    radioGroup: string[]
+    checkId: string,
+    radioGroup: string[],
+    quantity?: number,
+    skuChild?: string
   ) => void;
   infoStep: string[];
   modalOpen?: boolean;
@@ -87,6 +108,8 @@ export interface Step3Select2and3Props {
   idVariationChange?: number[];
   setIdVariationChange?: React.Dispatch<React.SetStateAction<number[]>>;
   productsLoading?: boolean;
+  setSelectedTitleObjects?: React.Dispatch<React.SetStateAction<any[]>>;
+  setSkuChild?: React.Dispatch<React.SetStateAction<any>>;
 }
 
 export type Category = {
