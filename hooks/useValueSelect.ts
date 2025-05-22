@@ -1,8 +1,8 @@
+import { infoStringStep2 } from "@/components/Organisms/Steps/infoStep";
 import {
   IDataSendNotion,
   IInfoForm,
 } from "@/components/Organisms/Steps/Step4/types";
-import { infoString } from "@/components/Organisms/Steps/util";
 import { useEffect, useState } from "react";
 
 const useValueSelect = () => {
@@ -88,7 +88,7 @@ const useValueSelect = () => {
   const handleConfirm = () => {
     if (selectedValue !== null) {
       setConfirmedValue(selectedValue);
-      const info = infoString(selectedValue);
+      const info = infoStringStep2(selectedValue);
       setNotionInfo((prev) => ({
         ...prev,
         userIntention: info,
@@ -157,68 +157,6 @@ const useValueSelect = () => {
       }));
     }
     setPendingTitleUpdate({ checkId, title, isChecked });
-
-    // setSelectedTitleObjects((prevTitles) => {
-    //   console.log("prevTitles", prevTitles);
-
-    //   const isValidTitle = title && title.trim() !== "";
-    //   console.log("isValidTitle", isValidTitle);
-
-    //   const isCheckedIdSequence =
-    //     checkId.includes("-") && /\d+-\d+/.test(checkId);
-
-    //   console.log("isCheckedIdSequence", isCheckedIdSequence);
-
-    //   // Limpiamos: sacamos duplicados por ID y títulos vacíos
-    //   let cleanedTitles = prevTitles.filter(
-    //     (t) => t.checkId !== checkId && t.title && t.title.trim() !== ""
-    //   );
-    //   console.log("cleanedTitles", cleanedTitles);
-
-    //   const shouldAdd =
-    //     isChecked &&
-    //     isValidTitle &&
-    //     (isCheckedIdSequence || !checkId.includes("-"));
-    //   console.log("shouldAdd", shouldAdd);
-
-    //   const updatedTitles = shouldAdd
-    //     ? [...cleanedTitles, { checkId, title }]
-    //     : cleanedTitles;
-
-    //   setCheckSeleccionado(updatedTitles.length > 0);
-
-    //   return updatedTitles;
-    // });
-
-    // setSelectedTitleObjects((prevTitles) => {
-    //   let cleanedTitles = prevTitles.filter((t) => t.checkId !== checkId);
-    //   console.log("cleanedTitles", cleanedTitles);
-
-    //   cleanedTitles = cleanedTitles.filter((t) => t.title !== title);
-    //   const updatedTitles =
-    //     isChecked && title && title.trim() !== ""
-    //       ? [...cleanedTitles, { checkId, title }]
-    //       : cleanedTitles;
-
-    //   setCheckSeleccionado(updatedTitles.length > 0);
-
-    //   return updatedTitles;
-    // });
-
-    // setSelectedTitles((prevTitles) => {
-    //   const cleanedTitles = prevTitles.filter(
-    //     (t) => !t.startsWith(title.split(" (")[0])
-    //   );
-
-    //   const updatedTitles = isChecked
-    //     ? [...cleanedTitles, title]
-    //     : cleanedTitles;
-
-    //   // Si no queda ninguno, se setea false
-    //   setCheckSeleccionado(updatedTitles.length > 0);
-
-    //   return updatedTitles;
-    // });
   };
 
   const handleCheckboxChangeConfirmed = (
@@ -227,8 +165,6 @@ const useValueSelect = () => {
     checkId: string,
     radioGroup: string[]
   ) => {
-    // console.log("checkId", checkId);
-
     setCheckSeleccionado(isChecked);
 
     setCheckClickCount((prev) => {

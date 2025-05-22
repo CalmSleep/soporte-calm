@@ -21,6 +21,15 @@ export type Step3Props = {
   // notionInfo: IDataSendNotion;
   // setNotionInfo: React.Dispatch<React.SetStateAction<IDataSendNotion>>;
 };
+
+export interface quatityItemsProps {
+  quantity: number;
+  skuChange?: string;
+  title: string;
+  checkId: string;
+}
+[];
+
 export interface Step3Select1Props {
   orders: any;
   selectedValue: string | null;

@@ -1,6 +1,6 @@
-import { IgetProducts } from "@/state/products/types";
 import nomenclaruras from "./nomenclaturas.json";
-import { ActionMap, Issue, ParsedResult, Piece } from "./types";
+import { ActionMap, Issue, ParsedResult, Piece } from "../types";
+import { quatityItemsProps } from "../../Step3/types";
 
 const normalize = (text: string): string =>
   text
@@ -30,69 +30,6 @@ export function getActionType(
 
   return "";
 }
-
-export const skuFilterProduct = (dataUser: any, rawString: string) => {
-  const normalize = (str: string) =>
-    str
-      .replace(/\(.*?\)/g, "") // remueve paréntesis
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "") // quita tildes
-      .replace(/["'(),\-:]/g, "") // limpia caracteres especiales
-      .replace(/\s+/g, " ")
-      .trim();
-
-  const productNames = rawString
-    .split(/,(?![^\(]*\))/) // divide por comas fuera de paréntesis
-    .map(normalize)
-    .filter(Boolean);
-
-  return dataUser.items
-    .filter((item: any) => {
-      const itemName = normalize(item.product_name);
-      return productNames.some((name) => {
-        // match exacto o empieza con el nombre buscado (para casos como "Base de hierro Calm")
-        return itemName === name || itemName.startsWith(name + " ");
-      });
-    })
-    .map((item: any) => ({ name: item.sku }));
-};
-
-// export const skuFilterProduct = (dataUser: any, rawString: string) => {
-//   console.log("rawString funcion", rawString);
-//   console.log("dataUser", dataUser);
-
-//   const productNames = rawString.split(/,(?![^\(]*\))/).map((entry) =>
-//     entry
-//       .replace(/\(.*?\)/g, "")
-//       .trim()
-//       .toLowerCase()
-//   );
-
-//   return dataUser.items
-//     .filter((item: any) => {
-//       const productWords = item.product_name
-//         .replace(/\(.*?\)/g, "")
-//         .trim()
-//         .toLowerCase()
-//         .split(/\s|&|,/)
-//         .filter(Boolean);
-//       console.log("productWords", productWords);
-
-//       return productNames.some((name: string) => {
-//         const nameWords = name.split(/\s|&|,/).filter(Boolean);
-//         return nameWords.some((word) => productWords.includes(word));
-//       });
-//     })
-//     .map((item: any) => ({ name: item.sku }));
-// };
-
-export const skuChangeFilter = (productChange: string[]) => {
-  return productChange.map((item) => {
-    const sku = item.split(",").pop()?.trim();
-    return { name: sku || "" };
-  });
-};
 
 export const mapIssuesToNotionValues = (input: string): Issue[] => {
   const result: Issue[] = [];
@@ -124,36 +61,8 @@ export const mapIssuesToNotionValues = (input: string): Issue[] => {
       }
     }
   }
-
-  // console.log("result");
-
   return result;
 };
-
-// export const mapIssuesToNotionValues = (input: string): string[] => {
-//   const result = new Set<string>();
-
-//   const matches = input.match(/\(([^)]+)\)/g);
-
-//   if (!matches) {
-//     result.add("Otro");
-//     return Array.from(result);
-//   }
-
-//   for (const match of matches) {
-//     const items = match.slice(1, -1).split(",");
-//     for (const item of items) {
-//       const normalizedItem = normalize(item);
-//       const found = nomenclaruras.find(
-//         (option) => normalize(option.name) === normalizedItem
-//       );
-//       result.add(found?.value || "Otro");
-//     }
-//   }
-//   console.log("result", Array.from(result));
-
-//   return Array.from(result);
-// };
 
 export function parsePieces(rawString: string, pieces: Piece[]): ParsedResult {
   const normalizedPieces = pieces.map((p) => ({
@@ -225,3 +134,49 @@ export const getProveedor = (proveedor: string) => {
   }
   return "-";
 };
+
+export const idsFromUserFc = (
+  selectedTitleObjects: quatityItemsProps[],
+  dataUser: any
+) => {
+  const countByVariationId = selectedTitleObjects.reduce((acc, obj) => {
+    const baseId = obj.checkId.split("-")[0];
+    acc[baseId] = (acc[baseId] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+
+  const variationCountArray = dataUser.items.filter((item: any) => {
+    const variationId = item.variation_id?.toString?.();
+    const productId = item.product_id?.toString?.();
+    const ids = selectedTitleObjects.map((item) => item.checkId);
+
+    return ids.some((id) =>
+      variationId === "0"
+        ? id === productId || id.startsWith(`${productId}-`)
+        : id === variationId || id.startsWith(`${variationId}-`)
+    );
+  });
+
+  const idMatched = variationCountArray.flatMap((item: any) => {
+    const baseId =
+      item.variation_id !== 0 && item.variation_id !== undefined
+        ? item.variation_id.toString()
+        : item.product_id.toString();
+
+    const count = countByVariationId[baseId] || 1;
+
+    // Duplicar el ítem según la cantidad
+    return Array.from({ length: count }, () => ({ ...item }));
+  });
+
+  const idsFromUser = dataUser.items.map((item: any) =>
+    String(item.variation_id || item.product_id)
+  );
+
+  return {
+    idMatched,
+    idsFromUser,
+  };
+};
+
+//   // Convertir a array de objetos

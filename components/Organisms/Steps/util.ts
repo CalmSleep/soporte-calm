@@ -48,16 +48,6 @@ export function getMatchingQuizzIds(titles: string[], menuData: any) {
   });
 }
 
-export const infoString = (confirmedValue: string) => {
-  return confirmedValue === "1"
-    ? "Tuve un problema con el o los productos que recibí."
-    : confirmedValue === "2"
-    ? "Quiero devolver el producto"
-    : confirmedValue === "3"
-    ? "Quiero cambiar el producto"
-    : "";
-};
-
 export function mapOrdersWithSpan(orders: any[]): any[] {
   const { tamano, alto, color } = searchAttribute(orders);
 
@@ -168,23 +158,16 @@ export const splitQuieroComprar = (selectedTitles: string[]) => {
 };
 export const splitDevolucion = (selectedTitles: string[]) => {
   const continuemos: string[] = [];
-  const otros2: string[] = [];
 
   selectedTitles.forEach((title) => {
     if (title.toLowerCase().includes("continuemos")) {
       continuemos.push(title);
-    } else {
-      otros2.push(title);
     }
   });
 
-  return [continuemos, otros2];
+  return [continuemos];
 };
 
-export function formatDateToISO(dateStr: string) {
-  const [day, month, year] = dateStr.split("/");
-  return `${year}-${month}-${day}`;
-}
 export function normalize(str: string): string {
   return str
     .trim()
@@ -243,7 +226,6 @@ export function getResultados(
       const item = infoChanges.find((item) =>
         checkId?.some((id) => id === item.id || id.startsWith(`${item.id}-`))
       );
-      // console.log("itemUtil", item.attributes);
 
       if (!item) return null;
 
@@ -258,8 +240,6 @@ export function getResultados(
       if (!comentarioKey) return null;
 
       const value = valueMatch[comentarioKey];
-      const valueName = normalize(value[0]);
-      //   console.log("valueName", value[2].join(", "));
 
       const childrenFull =
         (products &&
@@ -271,8 +251,6 @@ export function getResultados(
             )
           )) ||
         [];
-
-      //   console.log("childrenFull", childrenFull);
 
       let child: any = null;
 
@@ -309,86 +287,3 @@ export function getResultados(
     })
     .filter((item): item is Resultado => item !== null);
 }
-
-// export function getResultados(
-//   selectedTitles: string[],
-//   infoChanges: any[],
-//   orders: any[],
-//   products: any
-// ): Resultado[] {
-//   return selectedTitles
-//     .map((str) => {
-//       const match = str.match(/^(.*?)\s*\(([^)]+)\)$/);
-//       const producto = match ? match[1].trim() : "";
-//       const comentario = match ? match[2].trim() : "";
-
-//       const item = infoChanges.find((d) =>
-//         normalize(d.title).includes(normalize(producto))
-//       );
-//       //  console.log("itemUtil", item);
-
-//       if (!item) return null;
-
-//       const valueMatch = item.values.find((obj: any) =>
-//         Object.keys(obj).some((key) => normalize(key) === normalize(comentario))
-//       );
-//       if (!valueMatch) return null;
-
-//       const comentarioKey = Object.keys(valueMatch).find(
-//         (key) => normalize(key) === normalize(comentario)
-//       );
-//       if (!comentarioKey) return null;
-
-//       const value = valueMatch[comentarioKey];
-//       const valueName = normalize(value[0]);
-
-//       const attributesOrder =
-//         orders &&
-//         orders.find((order: any) => {
-//           const productWords = normalize(producto).split(" ").filter(Boolean);
-//           const orderName = normalize(order.product_name);
-//           return productWords.some((word) => orderName.includes(word));
-//         })?.attributes;
-//       //   console.log("attributesOrder", attributesOrder);
-
-//       const childrenFull =
-//         products
-//           ?.flatMap((p: any) => p.products)
-//           .find((p: any) => normalize(value[0]).includes(normalize(p.name)))
-//           ?.children || [];
-//       //    console.log("childrenFull", childrenFull);
-
-//       let sku: string | null = null;
-
-//       if (value && value[0]) {
-//         const matchChild = childrenFull.find((child: any) => {
-//           const normalizedChildName = normalize(child.name);
-//           const tokens = valueName.split(" ");
-//           const allTokensMatch = tokens.every((token) =>
-//             normalizedChildName.includes(token)
-//           );
-
-//           const tamanoValue =
-//             attributesOrder?.pa_tamano || attributesOrder?.tamano || "";
-//           const colorValue =
-//             attributesOrder?.pa_color || attributesOrder?.color || "";
-
-//           const tamanoMatch = isFlexibleMatch(tamanoValue, normalizedChildName);
-//           const colorMatch = isFlexibleMatch(colorValue, normalizedChildName);
-
-//           return allTokensMatch && tamanoMatch && colorMatch;
-//         });
-
-//         //    console.log("matchChild", matchChild);
-
-//         sku = matchChild?.name + ", " + matchChild?.sku || null;
-//       }
-
-//       return {
-//         productName: value?.[0],
-//         comentario: value?.[1],
-//         sku,
-//       };
-//     })
-//     .filter((item): item is Resultado => item !== null);
-// }

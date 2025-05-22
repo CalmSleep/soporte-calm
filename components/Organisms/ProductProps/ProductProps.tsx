@@ -105,7 +105,6 @@ const ProductProps = ({
   const findAndSetSelectedChild = (id: string) => {
     if (children) {
       const p = children.find((child) => child.id == id);
-      //   console.log("p", p);
 
       if (p) {
         setSelectedChild(p);
