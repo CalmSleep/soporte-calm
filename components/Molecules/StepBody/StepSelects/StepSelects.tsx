@@ -12,20 +12,15 @@ import {
   CointainText,
   ContainerCheckLabel,
   PieceItem,
-  PieceItems,
   PieceList,
   SelectableDiv,
 } from "./styled";
 import { StepSelectsProps } from "./types";
 import useSelects from "./useSelects";
 import { getMatchingQuizzIds } from "@/components/Organisms/Steps/util";
-import { RadioGroup } from "../StepRadio/styled";
-
 import CardProducts from "../../CardRelatedProductsATC/CardProducts";
 import ProductProps from "@/components/Organisms/ProductProps/ProductProps";
-import { IChildrenProd } from "@/state/products/types";
 import Quizz from "../../Quizz/Quizz";
-import { set } from "date-fns";
 import { atrrToRender } from "@/utils/productsFunctios";
 import { ShelfConfiguratorContainer } from "@/components/Organisms/MainBlock/styled";
 import ShelfPreconfigurations from "@/components/Organisms/ShelfConfigurator/ShelfPreconfigurations";
@@ -66,11 +61,9 @@ const StepSelects = ({
     setIsColorChange,
     isSizechange,
     setIsSizeChange,
-    handleCheckboxArrayChange,
     setIsShelfConfigChanged,
     selectedGroup,
     setSelectedGroup,
-    isQuatity,
     setIsQuatity,
     quantityOpen,
     setQuantityOpen,

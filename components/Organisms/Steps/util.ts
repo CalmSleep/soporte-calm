@@ -68,7 +68,6 @@ export function mapOrdersWithSpan(orders: any[]): any[] {
     const altoValue = attrs.alto || attrs.pa_alto || "";
     const colorValue = attrs.color || attrs.pa_color || "";
 
-    // Verifica si ese valor está entre los globales
     const spanTamano = tamano.includes(tamanoValue) ? tamanoValue : "";
     const spanAlto = alto.includes(altoValue) ? altoValue : "";
     const spanColor = color.includes(colorValue) ? colorValue : "";

@@ -147,8 +147,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
       : formattedTitles.join(", "),
   ];
 
-  console.log("quatityItems", quatityItems);
-
   React.useEffect(() => {
     setNotionInfo({
       ...notionInfo,
@@ -158,20 +156,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
           : selectedTitles.some((title) => title.includes("cambio"))
           ? ["cambio"]
           : [],
-      // productReturn:
-      //   valueSelect === "2"
-      //     ? [`${otros2.join(", ")}`]
-      //     : valueSelect === "3"
-      //     ? [products]
-      //     : [],
-      // productChange:
-      //   valueSelect === "3" ||
-      //   (valueSelect === "2" &&
-      //     titlesProducts.length === 1 &&
-      //     resultadoFinal &&
-      //     resultadoFinal.length === 1)
-      //     ? titlesProducts.filter((title) => title.includes("-"))
-      //     : [],
     });
   }, [checkboxConfirmed]);
 

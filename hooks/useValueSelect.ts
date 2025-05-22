@@ -21,8 +21,6 @@ const useValueSelect = () => {
   >([]);
   const [notionInfo, setNotionInfo] = useState<IInfoForm>({
     problemDescription: [],
-    // productChange: [],
-    // productReturn: [],
   });
 
   const [pendingTitleUpdate, setPendingTitleUpdate] = useState<{
