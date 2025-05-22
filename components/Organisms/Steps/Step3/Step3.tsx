@@ -110,8 +110,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
               selectedTitles,
               optionStep3
             )
-          : selectedTitles.some((title) => title.includes("cambio"))
-          ? ["cambio"]
           : [],
     });
   }, [checkboxConfirmed]);

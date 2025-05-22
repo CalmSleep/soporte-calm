@@ -68,10 +68,10 @@ export const infoSelect1 = (
       : "";
 
   const infoSelect1 = [
-    `${
-      optionStep3.find((item) => item.value === selectedValue)?.label ||
-      "Opción no encontrada"
-    }`,
+    selectedTitles.some((title) => title.includes("cambio"))
+      ? "cambio"
+      : `${optionStep3.find((item) => item.value === selectedValue)?.label}` ||
+        "cambio",
     infoProduct,
     infoMensaje,
   ];
