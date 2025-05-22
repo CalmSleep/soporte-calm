@@ -5,7 +5,7 @@ import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import useValueSelect from "@/hooks/useValueSelect";
 import Step3 from "../Step3/Step3";
 import options from "../Step2/step2.json";
-import { infoString } from "../util";
+import { infoStringStep2 } from "../infoStep";
 
 const Step2 = () => {
   const {
@@ -45,7 +45,7 @@ const Step2 = () => {
           />
         ) : (
           <StepInfo
-            info={[infoString(confirmedValue)]}
+            info={[infoStringStep2(confirmedValue)]}
             onClick={() => {
               setConfirmedValue(null);
             }}

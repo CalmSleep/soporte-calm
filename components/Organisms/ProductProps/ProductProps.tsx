@@ -33,7 +33,6 @@ const ProductProps = ({
   stockAndPrices,
   selectedChild,
   hasRenders,
-  // isSizeChange,
   setIsSizeChange,
   category,
   defaultProds,
@@ -105,7 +104,6 @@ const ProductProps = ({
   const findAndSetSelectedChild = (id: string) => {
     if (children) {
       const p = children.find((child) => child.id == id);
-      //   console.log("p", p);
 
       if (p) {
         setSelectedChild(p);
@@ -241,7 +239,6 @@ const ProductProps = ({
           setSelected={findAndSetSelectedChild}
           valToSearch={propsNames.tamano}
           hasRenders={hasRenders}
-          //   isSizeChange={isSizeChange ?? false}
           setIsSizeChange={setIsSizeChange}
           landing={category}
           isCategory={isCategory}

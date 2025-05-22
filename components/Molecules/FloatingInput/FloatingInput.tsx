@@ -23,7 +23,6 @@ const FloatingInput = ({
       <Input
         {...input}
         onFocus={() => setIsFocus(false)}
-        //  onBlur={() => setIsFocus(true)}
         onBlur={() =>
           error || required ? setIsFocus(true) : setIsFocus(false)
         }

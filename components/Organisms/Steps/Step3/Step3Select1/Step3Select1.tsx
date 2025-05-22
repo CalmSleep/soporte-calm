@@ -7,19 +7,16 @@ import Select3Option from "./components/Select3Option";
 import Select4Option from "./components/Select4Option";
 import options from "../step3.json";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
-import { selectedTitleOthers, splitQuieroComprar } from "../../util";
 
 const Step3Select1 = ({
   orders,
   selectedValue,
   handleOnchangeWithoutConfirm,
   handleCheckboxChange,
-  selectedTitles,
   handleEditCheckbox,
   checkboxConfirmed,
   handleCheckboxChangeConfirmed,
   handlePaymentChange,
-  valueSelect,
   infoStep,
 }: Step3Select1Props) => {
   return (

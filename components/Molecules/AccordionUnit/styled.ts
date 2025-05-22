@@ -188,14 +188,3 @@ export const ContentItemSelect = styled.div<{
   max-height: ${({ $isActive, $height }) =>
     $isActive ? `${$height}px` : "0px"};
 `;
-
-// export const ContentItemSelect = styled.div<{
-//   $isActive?: boolean;
-//   $contentHeight: number;
-// }>`
-//   overflow-x: hidden;
-//   overflow-y: visible;
-//   transition: max-height 0.5s ease;
-//   transition: height 0.3s ease;
-//   max-height: ${({ $isActive }) => ($isActive ? `100%` : "0")};
-// `;

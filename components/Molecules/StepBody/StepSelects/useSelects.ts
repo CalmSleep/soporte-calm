@@ -7,8 +7,6 @@ const useSelects = ({
   onCheckboxChange,
   items,
   radioOptions,
-  selectedOption,
-  selectedTitle,
   setSelectedOption,
 }: StepSelectsProps) => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
@@ -308,22 +306,6 @@ const useSelects = ({
     onCheckboxChange && onCheckboxChange(isChecked, productName, productId, []);
   };
 
-  const handleCheckboxArrayChange = ({
-    prev,
-    isChecked,
-    id,
-  }: {
-    prev: number[];
-    isChecked: boolean;
-    id: number;
-  }) => {
-    if (isChecked) {
-      return prev.includes(id) ? prev : [...prev, id];
-    } else {
-      return prev.filter((item) => item !== id);
-    }
-  };
-
   return {
     activeItem,
     handleAccordionClick,
@@ -350,7 +332,6 @@ const useSelects = ({
     isShelfConfigChanged,
     setIsShelfConfigChanged,
     setIsColorChange,
-    handleCheckboxArrayChange,
     selectedGroup,
     setSelectedGroup,
     quantityOpen,

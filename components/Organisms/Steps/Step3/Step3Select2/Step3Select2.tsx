@@ -9,7 +9,6 @@ import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
 import { IArrayButton } from "@/components/Organisms/Modals/ModalStep/types";
 import Step3Select3 from "./Step3Select3";
 import { IgetProducts } from "@/state/products/types";
-import { title } from "process";
 
 const Step3Select2 = ({
   orders,

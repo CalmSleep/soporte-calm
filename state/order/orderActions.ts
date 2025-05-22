@@ -288,7 +288,6 @@ export const onGetOrdesDni = (
         response.data.length > 0
       ) {
         const transformedData = emailResponse(response.data);
-        //console.log("transformedData", transformedData);
 
         dispatch(onGetOrderByDni(transformedData));
         const saleSource = transformedData[0]?.saleSource;

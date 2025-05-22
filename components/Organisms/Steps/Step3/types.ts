@@ -18,9 +18,16 @@ export type Resultado = {
 export type Step3Props = {
   valueSelect: string | null;
   setConfirmedValue: React.Dispatch<React.SetStateAction<string | null>>;
-  // notionInfo: IDataSendNotion;
-  // setNotionInfo: React.Dispatch<React.SetStateAction<IDataSendNotion>>;
 };
+
+export interface quatityItemsProps {
+  quantity: number;
+  skuChange?: string;
+  title: string;
+  checkId: string;
+}
+[];
+
 export interface Step3Select1Props {
   orders: any;
   selectedValue: string | null;

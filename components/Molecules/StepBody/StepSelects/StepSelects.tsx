@@ -12,20 +12,15 @@ import {
   CointainText,
   ContainerCheckLabel,
   PieceItem,
-  PieceItems,
   PieceList,
   SelectableDiv,
 } from "./styled";
 import { StepSelectsProps } from "./types";
 import useSelects from "./useSelects";
 import { getMatchingQuizzIds } from "@/components/Organisms/Steps/util";
-import { RadioGroup } from "../StepRadio/styled";
-
 import CardProducts from "../../CardRelatedProductsATC/CardProducts";
 import ProductProps from "@/components/Organisms/ProductProps/ProductProps";
-import { IChildrenProd } from "@/state/products/types";
 import Quizz from "../../Quizz/Quizz";
-import { set } from "date-fns";
 import { atrrToRender } from "@/utils/productsFunctios";
 import { ShelfConfiguratorContainer } from "@/components/Organisms/MainBlock/styled";
 import ShelfPreconfigurations from "@/components/Organisms/ShelfConfigurator/ShelfPreconfigurations";
@@ -66,11 +61,9 @@ const StepSelects = ({
     setIsColorChange,
     isSizechange,
     setIsSizeChange,
-    handleCheckboxArrayChange,
     setIsShelfConfigChanged,
     selectedGroup,
     setSelectedGroup,
-    isQuatity,
     setIsQuatity,
     quantityOpen,
     setQuantityOpen,
@@ -203,7 +196,6 @@ const StepSelects = ({
                               fontSize="12px"
                               borderRadius="0px"
                               borderBottom="2px solid #ccc"
-                              //  borderColor="millionGray"
                               width="236px"
                               height="16px"
                               type="text"
@@ -334,15 +326,6 @@ const StepSelects = ({
                         .includes(product.name.toLowerCase())
                     );
                     let propsNames = atrrToRender(product.children);
-                    // const childrenWithQuantity = useMemo(() => {
-                    //   const key = `${product.id}-${index}`;
-                    //   const quantity = isQuatity[key] ?? 1;
-
-                    //   return product.children.map((item: any) => ({
-                    //     ...item,
-                    //     quantity,
-                    //   }));
-                    // }, [isQuatity, product.children, product.id, index]);
 
                     return (
                       <AcordeonProducts>
@@ -410,7 +393,6 @@ const StepSelects = ({
                                     Boolean(value) || false,
                                 }))
                               }
-                              // isSizeChange={isSizechange}
                               setIsSizeChange={(value) =>
                                 setIsSizeChange((prev) => ({
                                   ...prev,

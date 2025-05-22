@@ -42,8 +42,6 @@ const StepDni = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
-    // Solo permitir números usando una regex
     if (/^\d*$/.test(value)) {
       setInputValue({ ...inputValue, [name]: value });
 
