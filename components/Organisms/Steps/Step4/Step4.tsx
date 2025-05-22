@@ -117,11 +117,10 @@ const Step4 = ({
     },
   ];
 
+  console.log("notionInfo", notionInfo);
+
   const rawString = notionInfo.problemDescription[1];
-  // console.log(
-  //   "selectedTitleObjects",
-  //   selectedTitleObjects.map((item) => item.quantity)
-  // );
+  console.log("rawString", rawString);
 
   const countByVariationId = selectedTitleObjects.reduce((acc, obj) => {
     const baseId = obj.checkId.split("-")[0];
@@ -229,18 +228,14 @@ const Step4 = ({
     reason:
       Number(selectedValue) === 1 || Number(selectedValue) === 3
         ? [{ name: "Otro" }]
-        : Number(selectedValue) === 4
+        : Number(selectedValue) === 4 ||
+          Number(valueSelect) === 2 ||
+          Number(valueSelect) === 3
         ? mapIssuesToNotionValues(rawString).map((value) => ({
             name: value.name,
           }))
         : Number(selectedValue) === 2
         ? [{ name: "Error en la entrega" }]
-        : Number(valueSelect) === 2 || Number(valueSelect) === 3
-        ? mapIssuesToNotionValues(
-            notionInfo.productReturn?.join(", ") || ""
-          ).map((value) => ({
-            name: value.name,
-          }))
         : [],
     action:
       Number(selectedValue) === 1
@@ -363,13 +358,10 @@ const Step4 = ({
           )
           ? notionInfo.problemDescription[0]
           : notionInfo.problemDescription.join(", ")
-        : Number(selectedValue) === 4
+        : Number(selectedValue) === 4 ||
+          Number(valueSelect) === 2 ||
+          Number(valueSelect) === 3
         ? mapIssuesToNotionValues(rawString)
-            .filter((value) => value.comments)
-            .map((value) => value.comments)
-            .join(", ")
-        : Number(valueSelect) === 2 || Number(valueSelect) === 3
-        ? mapIssuesToNotionValues(notionInfo.productReturn?.join(", ") || "")
             .filter((value) => value.comments)
             .map((value) => value.comments)
             .join(", ")

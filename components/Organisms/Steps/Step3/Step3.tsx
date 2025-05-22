@@ -102,11 +102,14 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const infoProduct =
     (valueSelect === "1" && selectedValue === "1") ||
     selectedValue === "4" ||
-    selectedValue === "3"
+    selectedValue === "3" ||
+    valueSelect === "2" ||
+    valueSelect === "3"
       ? `${selectedTitleOthers(titlesProducts).join(", ")}`
       : valueSelect === "1" && selectedValue === "2" && quieroComprar.length
       ? `${quieroComprar}`
       : "";
+  console.log("infoProduct", infoProduct);
 
   const infoMensaje =
     valueSelect === "1" && selectedValue === "2" && otros.length > 0
@@ -144,29 +147,31 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
       : formattedTitles.join(", "),
   ];
 
+  console.log("quatityItems", quatityItems);
+
   React.useEffect(() => {
     setNotionInfo({
       ...notionInfo,
       problemDescription:
-        valueSelect === "1"
+        valueSelect === "1" || valueSelect === "2" || valueSelect === "3"
           ? infoSelect1
           : selectedTitles.some((title) => title.includes("cambio"))
           ? ["cambio"]
           : [],
-      productReturn:
-        valueSelect === "2"
-          ? [`${otros2.join(", ")}`]
-          : valueSelect === "3"
-          ? [products]
-          : [],
-      productChange:
-        valueSelect === "3" ||
-        (valueSelect === "2" &&
-          titlesProducts.length === 1 &&
-          resultadoFinal &&
-          resultadoFinal.length === 1)
-          ? titlesProducts.filter((title) => title.includes("-"))
-          : [],
+      // productReturn:
+      //   valueSelect === "2"
+      //     ? [`${otros2.join(", ")}`]
+      //     : valueSelect === "3"
+      //     ? [products]
+      //     : [],
+      // productChange:
+      //   valueSelect === "3" ||
+      //   (valueSelect === "2" &&
+      //     titlesProducts.length === 1 &&
+      //     resultadoFinal &&
+      //     resultadoFinal.length === 1)
+      //     ? titlesProducts.filter((title) => title.includes("-"))
+      //     : [],
     });
   }, [checkboxConfirmed]);
 

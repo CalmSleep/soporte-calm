@@ -19,8 +19,8 @@ export type ParsedResult = {
 
 export interface IInfoForm {
   problemDescription: string[];
-  productChange?: string[];
-  productReturn?: string[];
+  // productChange?: string[];
+  // productReturn?: string[];
 }
 
 export type UploadedImage = {
