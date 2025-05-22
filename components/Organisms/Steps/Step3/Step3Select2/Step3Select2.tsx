@@ -28,10 +28,6 @@ const Step3Select2 = ({
   handleConfirmCheckbox,
   products,
   resultadoFinal,
-  idVariation,
-  setIdVariation,
-  idVariationChange,
-  setIdVariationChange,
   productsLoading,
   setSelectedTitleObjects,
   setSkuChild,
@@ -138,20 +134,10 @@ const Step3Select2 = ({
               ...prev,
               [resultadoFinal[0].child?.id]: resultadoFinal[0].child?.sku,
             }));
-          // setSelectedTitles &&
-          //   setSelectedTitles([
-          //     resultadoFinal && resultadoFinal[0].child?.name,
-          //   ]);
+
           handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", "", [
             "cambio",
           ]);
-          setIdVariationChange &&
-            setIdVariationChange((prev) => {
-              const next = prev || [];
-              return next.includes(Number(resultadoFinal[0].child?.id))
-                ? next
-                : [...next, Number(resultadoFinal[0].child?.id)];
-            });
 
           handleConfirmCheckbox && handleConfirmCheckbox();
           setConfirmedValue && setConfirmedValue("3");
@@ -181,8 +167,6 @@ const Step3Select2 = ({
             onCheckboxChange={(isChecked, title, checkId) => {
               handleCheckboxChange(isChecked, title, checkId);
             }}
-            idVariation={idVariation}
-            setIdVariation={setIdVariation}
           />
           {modalOpen && (
             <ModalSteps
@@ -204,8 +188,6 @@ const Step3Select2 = ({
               selectedTitles={selectedTitles}
               handleCheckboxChange={handleCheckboxChange}
               products={products as IgetProducts[]}
-              idVariationChange={idVariationChange}
-              setIdVariationChange={setIdVariationChange}
               productsLoading={productsLoading}
             />
           )}

@@ -233,7 +233,7 @@ export function isFlexibleMatch(
 export function getResultados(
   selectedTitles: string[],
   infoChanges: any[],
-  idVariation: string[],
+  checkId: string[],
   products: any
 ): Resultado[] {
   return selectedTitles
@@ -242,9 +242,7 @@ export function getResultados(
       const comentario = match ? match[2].trim() : "";
 
       const item = infoChanges.find((item) =>
-        idVariation?.some(
-          (id) => id === item.id || id.startsWith(`${item.id}-`)
-        )
+        checkId?.some((id) => id === item.id || id.startsWith(`${item.id}-`))
       );
       // console.log("itemUtil", item.attributes);
 
@@ -302,8 +300,6 @@ export function getResultados(
 
         // ✅ fallback al primero si no hay coincidencias exactas
         child = matchChild || childrenFull[childrenFull.length - 1];
-
-        // setIdVariationChange?.(child?.id); // si necesitás notificar el cambio
       }
 
       return {

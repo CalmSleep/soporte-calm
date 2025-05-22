@@ -18,15 +18,8 @@ import {
   splitQuieroComprar,
 } from "../util";
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
-import {
-  getAllProductsData,
-  getProductsData,
-} from "@/state/products/productsSelector";
-import {
-  onGetAllProducts,
-  onGetProduct,
-} from "@/state/products/productsActions";
-import { getProduct } from "@/state/products/productsServices";
+import { getAllProductsData } from "@/state/products/productsSelector";
+import { onGetAllProducts } from "@/state/products/productsActions";
 import { getLoadingGetProducts } from "@/state/loading/loadingSelector";
 const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const {
@@ -43,10 +36,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     handlePaymentChange,
     notionInfo,
     setNotionInfo,
-    idVariation,
-    setIdVariation,
-    idVariationChange,
-    setIdVariationChange,
     checkClickCount,
     selectedTitleObjects,
     setSelectedTitleObjects,
@@ -58,24 +47,20 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     quantity: checkClickCount[item.checkId] || 1,
     skuChange: skuChild[item.checkId] || "",
   }));
-  console.log("quatityItems", quatityItems);
 
   const titlesProducts = quatityItems.map(({ title, quantity }) =>
     quantity > 1 && title.includes("-")
       ? `${title.split("-")[0]}x ${quantity} -${title.split("-")[1]}`
       : quantity > 1
-      ? `${title} x ${quantity}`
+      ? `${title} x${quantity}`
       : title
   );
-  console.log("titlesProducts", titlesProducts);
-  //  console.log("titles", !!selectedTitles.find((title) => title.includes("x")));
-  // console.log(notionInfo);
+
   const orders = useSelector(getThankuContent);
   const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
-  // console.log("allProducts", allProducts);
+
   const productsLoading = useSelector(getLoadingGetProducts);
-  // console.log("orders", orders.items);
 
   React.useEffect(() => {
     const productsData = async () => {
@@ -95,10 +80,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     allProducts
   );
 
-  //console.log("idVariation", idVariation);
-  // console.log("idVariationChange", idVariationChange);
-
-  // console.log("resultadoFinal", resultadoFinal);
   const keywords = ["Otro", "Recuadros", "Tornillos", "Tarugos"];
 
   const hasIncompleteRequiredInputs = titlesProducts.some((title) => {
@@ -121,13 +102,14 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const infoProduct =
     (valueSelect === "1" && selectedValue === "1") ||
     selectedValue === "4" ||
-    selectedValue === "3"
+    selectedValue === "3" ||
+    valueSelect === "2" ||
+    valueSelect === "3"
       ? `${selectedTitleOthers(titlesProducts).join(", ")}`
       : valueSelect === "1" && selectedValue === "2" && quieroComprar.length
       ? `${quieroComprar}`
       : "";
-
-  // console.log("infoProduct", infoProduct);
+  console.log("infoProduct", infoProduct);
 
   const infoMensaje =
     valueSelect === "1" && selectedValue === "2" && otros.length > 0
@@ -148,9 +130,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
       ? titlesProducts.join(", ")
       : `${titlesProducts.filter((title) => !title.includes("-")).join(", ")}`;
 
-  // console.log("valueSelect", valueSelect);
-
-  // console.log("products", products);
   const formattedTitles = titlesProducts
     .filter((title) => title.includes("-"))
     .map((title) => {
@@ -161,40 +140,38 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
       return title;
     });
 
-  // console.log("prueba parentesis span: ", formattedTitles.join(", "));
-
   const infoSelect2And3 = [
     products,
     valueSelect === "2"
       ? `${continuemos.join(", ")}`
-      : // : selectedTitles.some((title) => title.includes("cambio"))
-        // ? selectedTitles.join(", ")
-        formattedTitles.join(", "),
+      : formattedTitles.join(", "),
   ];
+
+  console.log("quatityItems", quatityItems);
 
   React.useEffect(() => {
     setNotionInfo({
       ...notionInfo,
       problemDescription:
-        valueSelect === "1"
+        valueSelect === "1" || valueSelect === "2" || valueSelect === "3"
           ? infoSelect1
           : selectedTitles.some((title) => title.includes("cambio"))
           ? ["cambio"]
           : [],
-      productReturn:
-        valueSelect === "2"
-          ? [`${otros2.join(", ")}`]
-          : valueSelect === "3"
-          ? [products]
-          : [],
-      productChange:
-        valueSelect === "3" ||
-        (valueSelect === "2" &&
-          titlesProducts.length === 1 &&
-          resultadoFinal &&
-          resultadoFinal.length === 1)
-          ? titlesProducts.filter((title) => title.includes("-"))
-          : [],
+      // productReturn:
+      //   valueSelect === "2"
+      //     ? [`${otros2.join(", ")}`]
+      //     : valueSelect === "3"
+      //     ? [products]
+      //     : [],
+      // productChange:
+      //   valueSelect === "3" ||
+      //   (valueSelect === "2" &&
+      //     titlesProducts.length === 1 &&
+      //     resultadoFinal &&
+      //     resultadoFinal.length === 1)
+      //     ? titlesProducts.filter((title) => title.includes("-"))
+      //     : [],
     });
   }, [checkboxConfirmed]);
 
@@ -233,7 +210,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
         }}
         value={
           hasIncompleteRequiredInputs
-            ? true // desactivar el botón
+            ? true
             : valueSelect === "1"
             ? !selectedValue || !checkSeleccionado
             : valueSelect === "2"
@@ -273,8 +250,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             handleCheckboxChangeConfirmed={handleCheckboxChangeConfirmed}
             handlePaymentChange={handlePaymentChange}
             infoStep={infoSelect1}
-            idVariation={idVariation}
-            setIdVariation={setIdVariation}
           />
         ) : (
           <Step3Select2
@@ -305,10 +280,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             handleConfirmCheckbox={handleConfirmCheckbox}
             products={allProducts}
             productsLoading={productsLoading}
-            idVariation={idVariation}
-            setIdVariation={setIdVariation}
-            idVariationChange={idVariationChange}
-            setIdVariationChange={setIdVariationChange}
             setSelectedTitleObjects={setSelectedTitleObjects}
             setSkuChild={setSkuChild}
           />
@@ -319,9 +290,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
           valueSelect={valueSelect || ""}
           selectedValue={selectedValue || ""}
           notionInfo={notionInfo}
-          idVariation={idVariation}
-          idVariationChange={idVariationChange}
-          products={allProducts || []}
           selectedTitleObjects={quatityItems}
         />
       )}

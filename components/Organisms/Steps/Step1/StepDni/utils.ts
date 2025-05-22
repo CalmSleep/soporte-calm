@@ -33,7 +33,6 @@ export const emailResponse = (
     return {
       id: item.id,
       email: !email ? item.billing.email : email,
-      //email: "chofiikauffer@gmail.com",
       dni: item.dni || "",
       name: item.billing.first_name,
       phone: item.billing.phone,

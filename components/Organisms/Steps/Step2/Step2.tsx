@@ -14,8 +14,6 @@ const Step2 = () => {
     handleOnchangeButton,
     handleConfirm,
     setConfirmedValue,
-    //  notionInfo,
-    // setNotionInfo,
   } = useValueSelect();
 
   return (

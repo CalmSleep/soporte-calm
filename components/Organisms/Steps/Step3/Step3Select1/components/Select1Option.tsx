@@ -5,14 +5,8 @@ import items from "../../missingItems.json";
 import { IChecks } from "@/components/Molecules/StepBody/StepSelects/types";
 import { itemsFilterJson, mapOrdersWithSpan } from "../../../util";
 
-const Select1Option = ({
-  onCheckboxChange,
-  orders,
-  idVariation,
-  setIdVariation,
-}: SelectOptionProps) => {
+const Select1Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
   const newOrders = mapOrdersWithSpan(orders);
-  //console.log("orders", orders);
 
   const matchedItems = itemsFilterJson(items, newOrders);
 
@@ -48,13 +42,11 @@ const Select1Option = ({
 
       return Array.from({ length: quantity }, () => ({ ...baseCheck }));
     });
-  // console.log("checksOrders", checksOrders);
 
   const radioOptions = [
     { value: "completo", label: "Falta este producto completo" },
     { value: "piezas", label: "Falta una o más piezas" },
   ];
-  // console.log("matchedItems", matchedItems);
 
   return (
     <StepSelects
@@ -67,8 +59,6 @@ const Select1Option = ({
       onCheckboxChange={(isChecked, title, checkId, radioGroup = []) =>
         onCheckboxChange(isChecked, title, checkId, radioGroup)
       }
-      idVariation={idVariation}
-      setIdVariation={setIdVariation}
     />
   );
 };

@@ -9,10 +9,8 @@ import {
   IconWrapper,
   ImageHover,
   ImagesContainer,
-  ImagesContainerModal,
   ImageWrapper,
 } from "./styled";
-import Image from "next/image";
 import Images from "@/components/Atoms/Images/Images";
 import Input from "@/components/Atoms/Input/Input";
 import StepRadio from "@/components/Molecules/StepBody/StepRadio/StepRadio";
@@ -74,9 +72,6 @@ const Step4 = ({
   valueSelect,
   selectedValue,
   notionInfo,
-  idVariation,
-  idVariationChange,
-  products,
   selectedTitleObjects,
 }: Step4Props) => {
   const [openModal, setOpenModal] = React.useState(false);
@@ -122,11 +117,10 @@ const Step4 = ({
     },
   ];
 
+  console.log("notionInfo", notionInfo);
+
   const rawString = notionInfo.problemDescription[1];
-  // console.log(
-  //   "selectedTitleObjects",
-  //   selectedTitleObjects.map((item) => item.quantity)
-  // );
+  console.log("rawString", rawString);
 
   const countByVariationId = selectedTitleObjects.reduce((acc, obj) => {
     const baseId = obj.checkId.split("-")[0];
@@ -166,12 +160,8 @@ const Step4 = ({
   const idChangeMatched = selectedTitleObjects.filter(
     (obj) => !idsFromUser.some((id: string) => obj.checkId.startsWith(id))
   );
-
-  // console.log("dataUser.items", dataUser.items);
   console.log("idMatched", idMatched);
   console.log("idChangeMatched", idChangeMatched);
-
-  // console.log("idVariationChange", idVariationChange);
 
   const matchedItems = itemsFilterJson(items, dataUser.items);
   const pieces = matchedItems.flatMap((item) => item.pieces);
@@ -238,18 +228,14 @@ const Step4 = ({
     reason:
       Number(selectedValue) === 1 || Number(selectedValue) === 3
         ? [{ name: "Otro" }]
-        : Number(selectedValue) === 4
+        : Number(selectedValue) === 4 ||
+          Number(valueSelect) === 2 ||
+          Number(valueSelect) === 3
         ? mapIssuesToNotionValues(rawString).map((value) => ({
             name: value.name,
           }))
         : Number(selectedValue) === 2
         ? [{ name: "Error en la entrega" }]
-        : Number(valueSelect) === 2 || Number(valueSelect) === 3
-        ? mapIssuesToNotionValues(
-            notionInfo.productReturn?.join(", ") || ""
-          ).map((value) => ({
-            name: value.name,
-          }))
         : [],
     action:
       Number(selectedValue) === 1
@@ -351,7 +337,7 @@ const Step4 = ({
           idChangeMatched
             .map((item: any) => {
               return `${item.skuChange}: ${
-                item.quantity === undefined ? "x1" : item.quantity
+                item.quantity === undefined ? "x1" : `x${item.quantity}`
               }`;
             })
             .join(", "),
@@ -372,13 +358,10 @@ const Step4 = ({
           )
           ? notionInfo.problemDescription[0]
           : notionInfo.problemDescription.join(", ")
-        : Number(selectedValue) === 4
+        : Number(selectedValue) === 4 ||
+          Number(valueSelect) === 2 ||
+          Number(valueSelect) === 3
         ? mapIssuesToNotionValues(rawString)
-            .filter((value) => value.comments)
-            .map((value) => value.comments)
-            .join(", ")
-        : Number(valueSelect) === 2 || Number(valueSelect) === 3
-        ? mapIssuesToNotionValues(notionInfo.productReturn?.join(", ") || "")
             .filter((value) => value.comments)
             .map((value) => value.comments)
             .join(", ")
