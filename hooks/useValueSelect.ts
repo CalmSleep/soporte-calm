@@ -44,12 +44,9 @@ const useValueSelect = () => {
         (t) => t.checkId !== checkId && t.title && t.title.trim() !== ""
       );
 
-      // ⚠️ Solo eliminar si:
-      //  - tiene guión y es uncheck
-      //  - o NO tiene guión y count === 0
       if (!isChecked && !isCheckedIdSequence && count > 0) {
         const existing = prevTitles.find((t) => t.checkId === checkId);
-        if (existing) cleanedTitles.push(existing); // lo volvemos a meter
+        if (existing) cleanedTitles.push(existing);
       }
 
       const shouldAdd =
@@ -66,7 +63,7 @@ const useValueSelect = () => {
       return updatedTitles;
     });
 
-    setPendingTitleUpdate(null); // limpiar
+    setPendingTitleUpdate(null);
   }, [checkClickCount, pendingTitleUpdate]);
 
   const handleOnchangeButton = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -109,18 +106,15 @@ const useValueSelect = () => {
         const hasDash = checkId.includes("-");
 
         if (isChecked) {
-          // Si tiene guion y ya existe ese ID exacto, no hacer nada
           if (hasDash && prev[checkId] !== undefined) {
             return prev;
           }
 
-          // Sino, agregar normalmente (ya sea sin guion o con guion nuevo)
           return {
             ...prev,
             [checkId]: hasDash ? 1 : prevCount + 1,
           };
         } else {
-          // Deselección: restar 1 y eliminar si llega a 0
           const newCount = Math.max(prevCount - 1, 0);
 
           const { [checkId]: _, ...rest } = prev;
@@ -172,18 +166,15 @@ const useValueSelect = () => {
       const hasDash = checkId.includes("-");
 
       if (isChecked) {
-        // Si tiene guion y ya existe ese ID exacto, no hacer nada
         if (hasDash && prev[checkId] !== undefined) {
           return prev;
         }
 
-        // Sino, agregar normalmente (ya sea sin guion o con guion nuevo)
         return {
           ...prev,
           [checkId]: hasDash ? 1 : prevCount + 1,
         };
       } else {
-        // Deselección: restar 1 y eliminar si llega a 0
         const newCount = Math.max(prevCount - 1, 0);
         const { [checkId]: _, ...rest } = prev;
 
@@ -222,7 +213,6 @@ const useValueSelect = () => {
         (title) => !payments.some((p) => p.label === title)
       );
 
-      // Aseguramos que esté el título base
       const updated = filtered.includes(baseTitle)
         ? filtered
         : [...filtered, baseTitle];

@@ -194,9 +194,8 @@ export function isFlexibleMatch(
   const attr = normalizeText(attributeValue);
   const target = normalizeText(targetString);
 
-  // Intentamos extraer dimensiones del tipo 80x40
   const extractDimensions = (s: string) => {
-    const match = s.match(/(\d+)[x×](\d+)/); // acepta "80x40" o "80×40"
+    const match = s.match(/(\d+)[x×](\d+)/);
     return match ? { ancho: match[1], largo: match[2] } : null;
   };
 
@@ -204,11 +203,9 @@ export function isFlexibleMatch(
   const targetDims = extractDimensions(target);
 
   if (attrDims && targetDims) {
-    // Compara si coincide al menos el ancho
     return attrDims.ancho === targetDims.ancho;
   }
 
-  // Fallback a comparación por texto incluido
   return target.includes(attr) || attr.includes(target);
 }
 
@@ -275,7 +272,6 @@ export function getResultados(
           return tamanoMatch && colorMatch;
         });
 
-        // ✅ fallback al primero si no hay coincidencias exactas
         child = matchChild || childrenFull[childrenFull.length - 1];
       }
 

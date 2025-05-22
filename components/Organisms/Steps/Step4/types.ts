@@ -70,7 +70,6 @@ export interface IDataSendNotion {
 }
 
 export type Issue = {
-  // productId: string;
   name: string;
   comments?: string;
 };

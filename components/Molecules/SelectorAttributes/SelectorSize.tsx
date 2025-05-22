@@ -20,7 +20,6 @@ const SelectorSize = ({
   arrChildren,
   selected,
   setSelected,
-  //  isSizeChange,
   setIsSizeChange,
   valToSearch,
   landing,

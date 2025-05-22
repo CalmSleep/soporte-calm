@@ -1,0 +1,65 @@
+Formulario de Soporte - Documentación Técnica  
+Calm es simple  
+Desarrolladora: Sofía Kauffer
+
+Este documento detalla los pasos técnicos realizados para implementar el Formulario de Soporte de Calm es simple.  
+El objetivo fue construir una herramienta accesible y dinámica que permita a las clientas autogestionar cambios y devoluciones post-entrega, integrándose al flujo interno de Notion.
+
+---
+
+Templates:
+- FormStatic.tsx: estructura general del formulario e inicio del mismo.
+- FormDinamic.tsx: estructura que envuelve la lógica de los 4 pasos del formulario.
+
+---
+
+Organisms:
+- HeroForm: sección estática con banner y redes sociales.
+- Modals: estilos de los modales de alerta del formulario y vista previa de imágenes tipo "modal".
+- ProductProps: estilos de los productos a cambiar.
+- Steps:
+  1. Modals: componentes para los distintos tipos de alertas del formulario.
+  2. Step 1: lógica del primer paso, incluye validación de DNI.
+  3. Step 2: lógica del segundo paso.
+  4. Step 3: lógica del tercer paso, incluye:
+     - Step3Select1 ("Tuve un problema..."): carpeta con componentes para cada ítem de la opción 1.
+     - Step3Select2 ("Devolución / Cambio"): componentes del flujo de devoluciones y cambios.
+     - changesOptionItems.json: productos recomendados según el producto a cambiar.
+     - defectsItems.json: productos con fallas de fábrica.
+     - missingItems.json: productos con piezas faltantes.
+     - refundItems.json: productos a devolver según lo indicado por el cliente.
+  5. Step 4: lógica del cuarto paso, incluye:
+     - Subida de imágenes.
+     - Inputs para modificar dirección.
+     - Envío a Notion:
+       * sendNotion.ts: armado del array de información a enviar a Notion.
+       * functions.ts: helpers para transformar y estructurar los datos del formulario.
+       * nomenclaturas.json: nomenclaturas requeridas por el sistema de Notion.
+  6. infoStep.ts: información dinámica para cada componente.
+  7. utils: funciones auxiliares utilizadas en los pasos.
+
+---
+
+Molecules:
+- SectionHeader: estilos del encabezado de cada paso del formulario.
+- SocialNetworks: estilos de redes sociales dentro del HeroForm.
+- StepBody:
+  1. StepInfo: muestra la información ingresada por el usuario tras aceptar un paso, con botón para editar.
+  2. StepRadio: componente de selección tipo "input radio".
+  3. StepSelects: estilo y lógica interna de cada paso, dividido por tipo:
+     - checks: lógica de productos con checkbox.
+     - items && radioOptions: lógica para ítems que combinan radio y checkbox (ej. piezas faltantes).
+     - items && !radioOptions: lógica de ítems con solo radio inputs (ej. falla de producto, devolución/cambio).
+     - products: lógica que muestra todos los productos disponibles (futura integración con "estanterías").
+     - radioOptions && !items: lógica con solo radio inputs (ej. producto que no pedí).
+- StepHeader: estilos y lógica del título, párrafo y botón de acción en cada paso del formulario.
+
+---
+
+Atoms:
+- Select: estilo de los campos de selección utilizados en el formulario.
+- Input: estilo de los inputs utilizados en el formulario.
+
+
+
+

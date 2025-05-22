@@ -196,7 +196,6 @@ const StepSelects = ({
                               fontSize="12px"
                               borderRadius="0px"
                               borderBottom="2px solid #ccc"
-                              //  borderColor="millionGray"
                               width="236px"
                               height="16px"
                               type="text"
@@ -327,15 +326,6 @@ const StepSelects = ({
                         .includes(product.name.toLowerCase())
                     );
                     let propsNames = atrrToRender(product.children);
-                    // const childrenWithQuantity = useMemo(() => {
-                    //   const key = `${product.id}-${index}`;
-                    //   const quantity = isQuatity[key] ?? 1;
-
-                    //   return product.children.map((item: any) => ({
-                    //     ...item,
-                    //     quantity,
-                    //   }));
-                    // }, [isQuatity, product.children, product.id, index]);
 
                     return (
                       <AcordeonProducts>
@@ -403,7 +393,6 @@ const StepSelects = ({
                                     Boolean(value) || false,
                                 }))
                               }
-                              // isSizeChange={isSizechange}
                               setIsSizeChange={(value) =>
                                 setIsSizeChange((prev) => ({
                                   ...prev,

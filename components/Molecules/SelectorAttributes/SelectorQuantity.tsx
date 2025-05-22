@@ -29,7 +29,6 @@ const SelectorQuantity = ({
   setIsQuantity: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   const [isQuantityOpen, setIsQuantityOpen] = useState(false);
-  // const [quantity, setQuantity] = useState(1);
   const options = ["1", "2", "3", "4", "5", "6"];
   const handleQuantityChange = (option: string) => {
     setQuantity(Number(option));

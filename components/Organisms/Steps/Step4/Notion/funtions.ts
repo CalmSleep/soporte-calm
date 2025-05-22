@@ -5,8 +5,8 @@ import { quatityItemsProps } from "../../Step3/types";
 const normalize = (text: string): string =>
   text
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") // remueve acentos
-    .replace(/[^a-zA-Z0-9\s]/g, "") // remueve símbolos especiales
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9\s]/g, "")
     .toLowerCase()
     .trim();
 
@@ -112,7 +112,7 @@ export function parsePieces(rawString: string, pieces: Piece[]): ParsedResult {
   return {
     names,
     quantities: quantitiesArr.join(", "),
-    otherMessage: otherMessages.join(", "), // ahora junta todos los mensajes
+    otherMessage: otherMessages.join(", "),
   };
 }
 
@@ -165,7 +165,6 @@ export const idsFromUserFc = (
 
     const count = countByVariationId[baseId] || 1;
 
-    // Duplicar el ítem según la cantidad
     return Array.from({ length: count }, () => ({ ...item }));
   });
 
@@ -178,5 +177,3 @@ export const idsFromUserFc = (
     idsFromUser,
   };
 };
-
-//   // Convertir a array de objetos
