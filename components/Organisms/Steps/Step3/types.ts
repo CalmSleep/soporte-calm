@@ -51,8 +51,6 @@ export interface Step3Select1Props {
     payments: { value: string; label: string }[]
   ) => void;
   infoStep: string[];
-  idVariation?: number[];
-  setIdVariation?: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 export interface SelectOptionProps {
@@ -69,8 +67,6 @@ export interface SelectOptionProps {
     paymentLabel: string,
     payments: { value: string; label: string }[]
   ) => void;
-  idVariation?: number[];
-  setIdVariation?: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 export interface Step3Select2and3Props {
@@ -103,10 +99,6 @@ export interface Step3Select2and3Props {
   handleConfirmCheckbox?: () => void;
   products?: IgetProducts[];
   resultadoFinal?: Resultado[];
-  idVariation?: number[];
-  setIdVariation?: React.Dispatch<React.SetStateAction<number[]>>;
-  idVariationChange?: number[];
-  setIdVariationChange?: React.Dispatch<React.SetStateAction<number[]>>;
   productsLoading?: boolean;
   setSelectedTitleObjects?: React.Dispatch<React.SetStateAction<any[]>>;
   setSkuChild?: React.Dispatch<React.SetStateAction<any>>;

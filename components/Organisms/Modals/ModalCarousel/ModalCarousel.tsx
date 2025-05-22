@@ -1,9 +1,4 @@
-import {
-  ModalSidecart,
-  ImageDiv,
-  DivButtonClose,
-  ClickedGalley,
-} from "./styled";
+import { ModalSidecart, DivButtonClose, ClickedGalley } from "./styled";
 import Images from "@/components/Atoms/Images/Images";
 import { IPropsChildrens } from "./types";
 import { CloseIcon } from "@/components/Organisms/MainBlock/mainBlockicons";

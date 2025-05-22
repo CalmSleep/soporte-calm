@@ -9,10 +9,8 @@ import {
   IconWrapper,
   ImageHover,
   ImagesContainer,
-  ImagesContainerModal,
   ImageWrapper,
 } from "./styled";
-import Image from "next/image";
 import Images from "@/components/Atoms/Images/Images";
 import Input from "@/components/Atoms/Input/Input";
 import StepRadio from "@/components/Molecules/StepBody/StepRadio/StepRadio";
@@ -74,9 +72,6 @@ const Step4 = ({
   valueSelect,
   selectedValue,
   notionInfo,
-  idVariation,
-  idVariationChange,
-  products,
   selectedTitleObjects,
 }: Step4Props) => {
   const [openModal, setOpenModal] = React.useState(false);
@@ -166,12 +161,8 @@ const Step4 = ({
   const idChangeMatched = selectedTitleObjects.filter(
     (obj) => !idsFromUser.some((id: string) => obj.checkId.startsWith(id))
   );
-
-  // console.log("dataUser.items", dataUser.items);
   console.log("idMatched", idMatched);
   console.log("idChangeMatched", idChangeMatched);
-
-  // console.log("idVariationChange", idVariationChange);
 
   const matchedItems = itemsFilterJson(items, dataUser.items);
   const pieces = matchedItems.flatMap((item) => item.pieces);
@@ -351,7 +342,7 @@ const Step4 = ({
           idChangeMatched
             .map((item: any) => {
               return `${item.skuChange}: ${
-                item.quantity === undefined ? "x1" : item.quantity
+                item.quantity === undefined ? "x1" : `x${item.quantity}`
               }`;
             })
             .join(", "),

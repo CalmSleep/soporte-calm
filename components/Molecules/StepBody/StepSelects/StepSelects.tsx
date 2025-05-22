@@ -42,8 +42,6 @@ const StepSelects = ({
   changedOption,
   menuData,
   selectedTitle,
-  idVariation,
-  setIdVariation,
 }: StepSelectsProps) => {
   const {
     handleAccordionClick,
@@ -82,8 +80,6 @@ const StepSelects = ({
     items,
     radioOptions,
     setSelectedOption,
-    idVariation,
-    setIdVariation,
   });
   const [quizzActive, setQuizzActive] = useState(false);
   const [selectedQuizz, setSelectedQuizz] = useState<undefined | string>();
@@ -122,16 +118,6 @@ const StepSelects = ({
                       `${check.title} ${check.span ? `(${check.span})` : ""}`,
                       String(check.id)
                     );
-
-                  if (setIdVariation) {
-                    setIdVariation((prev) =>
-                      handleCheckboxArrayChange({
-                        prev,
-                        isChecked: e.target.checked,
-                        id: Number(check.id),
-                      })
-                    );
-                  }
                 }}
               />
               <CointainText>

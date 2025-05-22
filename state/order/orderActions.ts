@@ -1,4 +1,4 @@
-import { emailResponse } from "@/components/Organisms/Steps/Step1/StepDni/funtions";
+import { emailResponse } from "@/components/Organisms/Steps/Step1/StepDni/utils";
 import {
   onGetCardInfoLoadingFinished,
   onGetCardInfoLoadingStart,

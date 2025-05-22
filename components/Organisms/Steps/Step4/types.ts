@@ -1,12 +1,7 @@
-import { IgetProducts } from "@/state/products/types";
-
 export type Step4Props = {
-  products: IgetProducts[];
   valueSelect: string;
   selectedValue: string;
   notionInfo: IInfoForm;
-  idVariation: number[];
-  idVariationChange: number[];
   selectedTitleObjects: { title: string; checkId: string; quantity: number }[];
 };
 

@@ -24,8 +24,6 @@ const useValueSelect = () => {
     productChange: [],
     productReturn: [],
   });
-  const [idVariation, setIdVariation] = useState<number[]>([]);
-  const [idVariationChange, setIdVariationChange] = useState<number[]>([]);
 
   const [pendingTitleUpdate, setPendingTitleUpdate] = useState<{
     checkId: string;
@@ -84,8 +82,6 @@ const useValueSelect = () => {
     setConfirmedValue(selectedValue);
     setCheckSeleccionado(false);
     setSelectedTitles([]);
-    setIdVariation([]);
-    setIdVariationChange([]);
     setCheckClickCount({});
     setSelectedTitleObjects([]);
     setSkuChild({});
@@ -109,8 +105,6 @@ const useValueSelect = () => {
     quantity?: number,
     skuChild?: string
   ) => {
-    console.log("quantity", quantity);
-
     if (!quantity) {
       setCheckClickCount((prev) => {
         const prevCount = prev[checkId] || 0;
@@ -312,8 +306,6 @@ const useValueSelect = () => {
     setCheckSeleccionado(false);
     setCheckboxConfirmed(false);
     setSelectedTitles([]);
-    setIdVariation([]);
-    setIdVariationChange([]);
     setCheckClickCount({});
     setSelectedTitleObjects([]);
     setSkuChild({});
@@ -343,10 +335,6 @@ const useValueSelect = () => {
     handleEditCheckbox,
     handleCheckboxChangeConfirmed,
     handlePaymentChange,
-    idVariation,
-    setIdVariation,
-    idVariationChange,
-    setIdVariationChange,
     skuChild,
     setSkuChild,
   };

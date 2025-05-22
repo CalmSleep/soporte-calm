@@ -3,12 +3,7 @@ import { SelectOptionProps } from "../../types";
 import StepSelects from "@/components/Molecules/StepBody/StepSelects/StepSelects";
 import { mapOrdersWithSpan } from "../../../util";
 
-const Select3Option = ({
-  onCheckboxChange,
-  orders,
-  idVariation,
-  setIdVariation,
-}: SelectOptionProps) => {
+const Select3Option = ({ onCheckboxChange, orders }: SelectOptionProps) => {
   const newOrders = mapOrdersWithSpan(orders);
   const checks = newOrders.flatMap((order: any) => {
     const quantity = order.quantity || 1;
@@ -36,8 +31,6 @@ const Select3Option = ({
       onCheckboxChange={(isChecked, title, checkId, radioGroup = []) =>
         onCheckboxChange(isChecked, title, checkId, radioGroup)
       }
-      idVariation={idVariation}
-      setIdVariation={setIdVariation}
     />
   );
 };

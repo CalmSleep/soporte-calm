@@ -6,7 +6,7 @@ import { getOrdensDni } from "@/state/order/orderSelector";
 import { getLoadingGetOrderDni } from "@/state/loading/loadingSelector";
 import FloatingInput from "@/components/Molecules/FloatingInput/FloatingInput";
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
-import { validateDni } from "./funtions";
+import { validateDni } from "./utils";
 import { DniInput, EmailInput, IOrdenMail } from "./types";
 import ModalCalm from "../../Modals/ModalCalm";
 import ModalMeli from "../../Modals/ModalMeli";
@@ -15,7 +15,6 @@ import ModalNotFound from "../../Modals/ModalNotFound";
 import ModalDniInvalid from "../../Modals/ModalDniInvalid";
 import ModalWhatsapp from "../../Modals/ModalWhatsapp";
 import { Cointainer } from "./styled";
-import StepsHeaders from "@/components/Molecules/StepBody/StepsHeader/StepsHeaders";
 import SectionHeader from "@/components/Molecules/SectionHeader/SectionHeader";
 import { isFromSpecialSource } from "../../util";
 import ModalSteps from "@/components/Organisms/Modals/ModalStep/ModalSteps";
@@ -38,7 +37,6 @@ const StepDni = () => {
   const [showRequiredEmail, setShowRequiredEmail] = useState<boolean>(true);
 
   const data = useSelector(getOrdensDni);
-  console.log(data);
 
   const loading = useSelector(getLoadingGetOrderDni);
 
