@@ -163,9 +163,11 @@ export const fullInfo = (
             name: sku,
           }))
         : idChangeMatched &&
-          idChangeMatched.map((item: any) => ({
-            name: item.skuChange,
-          })),
+          idChangeMatched.flatMap((item: any) =>
+            item.skuChange
+              .split(",")
+              .map((sku: string) => ({ name: sku.trim() }))
+          ),
     skuQuantityOriginal:
       (idMatched && Number(selectedValue) === 1) ||
       Number(selectedValue) === 3 ||

@@ -57,6 +57,10 @@ const useSelects = ({
       (shelConfigChild && shelConfigChild.map((shelf) => shelf.name)[0]) || "";
     const idChildShelfConfig =
       shelConfigChild && shelConfigChild.map((shelf) => shelf.id).join(", ");
+    const idShelfConfigSku =
+      shelConfigChild && shelConfigChild.map((shelf) => shelf.sku);
+
+    console.log("sku", idShelfConfigSku);
 
     if (idChild !== null) {
       onCheckboxChange?.(

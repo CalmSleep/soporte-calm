@@ -356,6 +356,12 @@ const StepSelects = ({
                           image={product.image_cross_selling}
                           name={product.name}
                           description={descripcion?.description || ""}
+                          shelfConfigurations={
+                            shelfConfigurations[product.id + "-" + index] || []
+                          }
+                          propsNames={propsNames}
+                          idProduct={Number(product.id)}
+                          //     openModuleId={openModuleId}
                         />
                         {selectedProductNames.includes(product.name) && (
                           <SelectableDiv
