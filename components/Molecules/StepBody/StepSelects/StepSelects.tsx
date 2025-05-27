@@ -327,6 +327,8 @@ const StepSelects = ({
                     );
                     let propsNames = atrrToRender(product.children);
 
+                    // console.log("product", product.id);
+
                     return (
                       <AcordeonProducts>
                         <Input
@@ -371,7 +373,79 @@ const StepSelects = ({
                                 : false
                             }
                           >
-                            <ProductProps
+                            {Number(product.id) === 2411459 ? (
+                              <ShelfConfiguratorContainer>
+                                <ShelfPreconfigurations
+                                  setShelfConfigurations={(child) =>
+                                    setShelfConfigurations((prev: any) => ({
+                                      ...prev,
+                                      [product.id + "-" + index]: child,
+                                    }))
+                                  }
+                                  shelfConfigurations={
+                                    shelfConfigurations[
+                                      product.id + "-" + index
+                                    ] || []
+                                  }
+                                  handlePreconfigView={() => {}}
+                                  children={product.children}
+                                  propsNames={propsNames}
+                                  setShelfConfigChanged={
+                                    setIsShelfConfigChanged
+                                  }
+                                />
+                              </ShelfConfiguratorContainer>
+                            ) : (
+                              <ProductProps
+                                selectedGroup={selectedGroup || []}
+                                setSelectedGroup={setSelectedGroup}
+                                // children={childrenWithQuantity}
+                                children={product.children}
+                                selectedChild={
+                                  selectedChild[product.id + "-" + index] ||
+                                  undefined
+                                }
+                                setSelectedChild={(child) =>
+                                  setSelectedChild((prev: any) => ({
+                                    ...prev,
+                                    [product.id + "-" + index]: child,
+                                  }))
+                                }
+                                setIsColorChange={(value) =>
+                                  setIsColorChange((prev) => ({
+                                    ...prev,
+                                    [product.id + "-" + index]:
+                                      Boolean(value) || false,
+                                  }))
+                                }
+                                setIsSizeChange={(value) =>
+                                  setIsSizeChange((prev) => ({
+                                    ...prev,
+                                    [product.id + "-" + index]:
+                                      Boolean(value) || false,
+                                  }))
+                                }
+                                defaultProds={defaultProds}
+                                propsNames={propsNames}
+                                category={item.name_category}
+                                idProd={product.id_prod}
+                                setIsQuantity={(value) =>
+                                  setIsQuatity((prev) => ({
+                                    ...prev,
+                                    [product.id + "-" + index]: Number(value),
+                                  }))
+                                }
+                                setQuantityOpen={(value) =>
+                                  setQuantityOpen((prev) => ({
+                                    ...prev,
+                                    [product.id + "-" + index]:
+                                      Boolean(value) || false,
+                                  }))
+                                }
+                              />
+                            )}
+
+                            {/* <ProductProps
                               selectedGroup={selectedGroup || []}
                               setSelectedGroup={setSelectedGroup}
                               // children={childrenWithQuantity}
@@ -417,7 +491,7 @@ const StepSelects = ({
                                     Boolean(value) || false,
                                 }))
                               }
-                            />
+                            /> */}
                           </SelectableDiv>
                         )}
                       </AcordeonProducts>

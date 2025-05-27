@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { IItems, StepSelectsProps } from "./types";
 import { IChildrenProd } from "@/state/products/types";
 import { ShelfData } from "@/components/Organisms/ShelfConfigurator/types";
+import { id } from "date-fns/locale";
 
 const useSelects = ({
   onCheckboxChange,
@@ -18,9 +19,17 @@ const useSelects = ({
   }>({});
   const [selectedChildChecked, setSelectedChildChecked] = useState(false);
   const [idChild, setIdChild] = useState<string | null>(null);
-  const [shelfConfigurations, setShelfConfigurations] = useState<ShelfData[]>(
-    []
+  const [shelfConfigurations, setShelfConfigurations] = useState<{
+    [key: string]: ShelfData[];
+  }>({});
+  console.log("shelfConfigurations", shelfConfigurations);
+
+  const [openModuleId, setOpenModuleId] = useState<number | undefined>(
+    shelfConfigurations[idChild || ""]?.[0]?.moduleId
   );
+
+  const [isPreConfigModalOpen, setIsPreConfigModalOpen] =
+    useState<boolean>(false);
   const [selectedGroup, setSelectedGroup] = useState<
     IChildrenProd[] | undefined
   >();
@@ -38,25 +47,38 @@ const useSelects = ({
 
   useEffect(() => {
     const child = selectedChild[idChild || ""];
+    const shelConfigChild =
+      shelfConfigurations[idChild || ""] &&
+      shelfConfigurations[idChild || ""].map((m) => m.children);
+    // console.log("shelConfigChild", shelConfigChild);
 
     const newTitle = child?.name;
+    const titleShelfConfig =
+      (shelConfigChild && shelConfigChild.map((shelf) => shelf.name)[0]) || "";
+    const idChildShelfConfig =
+      shelConfigChild && shelConfigChild.map((shelf) => shelf.id).join(", ");
 
     if (idChild !== null) {
       onCheckboxChange?.(
         true,
-        newTitle || "",
-        idChild.toString(),
+        newTitle || titleShelfConfig || "",
+        idChild.toString() || idChildShelfConfig || "",
         [],
         isQuatity[idChild],
-        child?.sku || ""
+        child?.sku ||
+          (shelConfigChild &&
+            shelConfigChild.map((shelf) => shelf.sku).join(", ")) ||
+          ""
       );
     }
   }, [
     selectedChild[idChild || ""],
     shelfConfigurations,
+    openModuleId,
     selectedChildChecked,
     idChild,
     isQuatity,
+    isPreConfigModalOpen,
   ]);
 
   const handleAccordionClick = (id: string) => {
@@ -291,6 +313,16 @@ const useSelects = ({
       return newChild;
     });
 
+    setShelfConfigurations((prev) => {
+      const newShelfConfig = { ...prev };
+      if (isChecked) {
+        newShelfConfig[productId] = [];
+      } else {
+        delete newShelfConfig[productId];
+      }
+      return newShelfConfig;
+    });
+
     setSelectedProductNames((prev) => {
       const cleanedProductNames = prev.filter(
         (n) => !n.startsWith(productName.split(" (")[0])
@@ -338,6 +370,10 @@ const useSelects = ({
     setQuantityOpen,
     isQuatity,
     setIsQuatity,
+    isPreConfigModalOpen,
+    setIsPreConfigModalOpen,
+    openModuleId,
+    setOpenModuleId,
   };
 };
 
