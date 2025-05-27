@@ -253,6 +253,16 @@ export const menuData = [
               "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/920a5608-462d-4172-34db-f843e4f4f400/thumbnail",
           },
           {
+            name: "Estantería Modular Nodo Personalizable",
+            description: "Módulos personalizables",
+            pillMessage: "Lanzamiento",
+            isYellowPill: true,
+            redirect: "/muebles/estanteria-modular-nodo",
+            id: "2411459",
+            image:
+              "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/920a5608-462d-4172-34db-f843e4f4f400/thumbnail",
+          },
+          {
             name: "Armá tu estantería",
             description: "100% personalizable",
             pillMessage: "Lanzamiento",

@@ -18,6 +18,7 @@ import HandleView from "@/components/Molecules/HandleView/HandleView";
 import { generateConfigurations, updateModuleConfig } from "./utils";
 import Titles from "@/components/Atoms/Typography/Titles";
 import { searchAttribute } from "@/utils/productsFunctios";
+import SelectorQuantity from "@/components/Molecules/SelectorAttributes/SelectorQuantity";
 
 const preConfigImages = [
   "https://imagedelivery.net/7yveHullsFjmXtPLdJPFsg/bb26eef2-f169-40f1-5a21-a60d7fac6400/fit=cover",
@@ -35,10 +36,13 @@ const ShelfPreconfigurations: React.FC<ShelfPreconfigurationsProps> = ({
   handlePreconfigView,
   propsNames,
   setShelfConfigChanged,
+  setQuantityOpen,
+  setIsQuantity,
 }) => {
   type PredefinedConfig = string[];
 
   const [availableConfigs, setAvailableConfigs] = useState<ShelfData[][]>([]);
+  const [quantity, setQuantity] = useState(1);
 
   const predefinedConfigs: PredefinedConfig[] = [
     ["MOBESTNOD100002", "MOBESTNOD060004", "MOBESTNOD060004"],
@@ -275,13 +279,19 @@ const ShelfPreconfigurations: React.FC<ShelfPreconfigurationsProps> = ({
           </>
         )}
       </ModuleContainer>
+      <SelectorQuantity
+        quantity={quantity}
+        setQuantity={setQuantity}
+        setQuantityOpen={setQuantityOpen}
+        setIsQuantity={setIsQuantity}
+      />
 
-      <HandleView
+      {/* <HandleView
         handlePreconfigView={handlePreconfigView}
         title="¿Nada se ajusta a tu espacio?"
         description="Personalizá tu estantería, 100% a tu medida"
         icon={PersoConfigIcon()}
-      />
+      /> */}
     </PreConfigContainer>
   );
 };

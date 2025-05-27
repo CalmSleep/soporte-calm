@@ -13,13 +13,13 @@ import {
 } from "./iconsEstanterias";
 import ShelfModule from "@/components/Organisms/ShelfConfigurator/ShelfModule";
 import HandleView from "@/components/Molecules/HandleView/HandleView";
+import { atrrToRender, searchAttribute } from "@/utils/productsFunctios";
 import { generateConfigurations, updateModuleConfig } from "./utils";
 import { onSendSlackMessage } from "@/state/user/userActions";
 import { useDispatch } from "react-redux";
 import { theme } from "@/utils/Theme";
 import { toast } from "react-toastify";
 import PreCombinations from "@/components/Molecules/PreCombinations/PreCombinations";
-import { searchAttribute } from "@/utils/productsFunctios";
 
 const nombresModulos = ["Primer", "Segundo", "Tercer", "Cuarto", "Quinto"];
 
@@ -525,12 +525,12 @@ const ShelfConfigurator: React.FC<ShelfConfiguratorProps> = ({
         />
       )}
 
-      <HandleView
+      {/* <HandleView
         handlePreconfigView={handlePreconfigView}
         title="No hace falta empezar de cero."
         description="Usá una base prearmada y ajustala a tu medida."
         icon={PreConfigIcon()}
-      />
+      /> */}
 
       <PreCombinations
         handleConfigurationChange={setShelfConfigurations}

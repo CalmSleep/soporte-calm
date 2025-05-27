@@ -24,6 +24,8 @@ import Quizz from "../../Quizz/Quizz";
 import { atrrToRender } from "@/utils/productsFunctios";
 import { ShelfConfiguratorContainer } from "@/components/Organisms/MainBlock/styled";
 import ShelfPreconfigurations from "@/components/Organisms/ShelfConfigurator/ShelfPreconfigurations";
+import ShelfConfigurator from "@/components/Organisms/ShelfConfigurator/ShelfConfigurator";
+import { tr } from "date-fns/locale";
 
 const StepSelects = ({
   titleParagraph,
@@ -67,6 +69,10 @@ const StepSelects = ({
     setIsQuatity,
     quantityOpen,
     setQuantityOpen,
+    isPreConfigModalOpen,
+    setIsPreConfigModalOpen,
+    openModuleId,
+    setOpenModuleId,
   } = useSelects({
     selectedTitle,
     onCheckboxChange,
@@ -76,6 +82,8 @@ const StepSelects = ({
   });
   const [quizzActive, setQuizzActive] = useState(false);
   const [selectedQuizz, setSelectedQuizz] = useState<undefined | string>();
+
+  // console.log("shelfConfigurations", shelfConfigurations);
 
   const defaultProds = React.useMemo(() => [], []);
 
@@ -310,119 +318,196 @@ const StepSelects = ({
               }}
               itemsSelect={
                 <CointainAcordeonProducts>
-                  {item.products.map((product, index) => {
-                    const isLastProduct = index === item.products.length - 1;
-                    const isSecondLastProduct =
-                      index === item.products.length - 2 || isLastProduct;
-                    const isSelected = selectedProductNames.includes(
-                      product.name
+                  {(() => {
+                    const productosDuplicados = item.products.flatMap(
+                      (product) => {
+                        if (Number(product.id) === 2411459) {
+                          return [
+                            product,
+                            {
+                              ...product,
+                              name: "Estantería Modular Nodo Personalizable",
+                            },
+                          ];
+                        }
+                        return [product];
+                      }
                     );
-                    const cardProductDate = menuData.flatMap((item: any) =>
-                      item.columns.flatMap((col: any) => col.products)
-                    );
-                    const descripcion = cardProductDate.find((item: any) =>
-                      item.name
-                        .toLowerCase()
-                        .includes(product.name.toLowerCase())
-                    );
-                    let propsNames = atrrToRender(product.children);
+                    console.log("productosDuplicados", productosDuplicados);
 
-                    return (
-                      <AcordeonProducts>
-                        <Input
-                          appearance="none"
-                          width="14px"
-                          height="14px"
-                          padding="6px"
-                          borderRadius="2px"
-                          checkBorderColor="yellowCalm"
-                          checkColor="yellowCalm"
-                          borderColorFocused="yellowCalm"
-                          color="yellowCalm"
-                          type="checkbox"
-                          name={product.name}
-                          value={product.name}
-                          onChange={(e) => {
-                            handleProductCheckboxChange(
-                              e,
-                              product.name,
-                              product.id + "-" + index
-                            );
-                          }}
-                        />
-                        <CardProducts
-                          image={product.image_cross_selling}
-                          name={product.name}
-                          description={descripcion?.description || ""}
-                        />
-                        {selectedProductNames.includes(product.name) && (
-                          <SelectableDiv
-                            $selected={isSelected ? "true" : undefined}
-                            $isSizeChange={
-                              isSelected && isLastProduct
-                                ? isSizechange[product.id + "-" + index] ||
-                                  false
-                                : false
-                            }
-                            $isQuantityChange={
-                              isSelected && isSecondLastProduct
-                                ? quantityOpen[product.id + "-" + index] ||
-                                  false
-                                : false
-                            }
-                          >
-                            <ProductProps
-                              selectedGroup={selectedGroup || []}
-                              setSelectedGroup={setSelectedGroup}
-                              // children={childrenWithQuantity}
-                              children={product.children}
-                              selectedChild={
-                                selectedChild[product.id + "-" + index] ||
-                                undefined
+                    return productosDuplicados.map((product, index) => {
+                      const isLastProduct = index === item.products.length - 1;
+                      const isSecondLastProduct =
+                        index === item.products.length - 2 || isLastProduct;
+                      const isSelected = selectedProductNames.includes(
+                        product.name
+                      );
+                      const cardProductDate = menuData.flatMap((item: any) =>
+                        item.columns.flatMap((col: any) => col.products)
+                      );
+                      const descripcion = cardProductDate.find((item: any) =>
+                        item.name
+                          .toLowerCase()
+                          .includes(product.name.toLowerCase())
+                      );
+                      let propsNames = atrrToRender(product.children);
+
+                      return (
+                        <AcordeonProducts>
+                          <Input
+                            appearance="none"
+                            width="14px"
+                            height="14px"
+                            padding="6px"
+                            borderRadius="2px"
+                            checkBorderColor="yellowCalm"
+                            checkColor="yellowCalm"
+                            borderColorFocused="yellowCalm"
+                            color="yellowCalm"
+                            type="checkbox"
+                            name={product.name}
+                            value={product.name}
+                            onChange={(e) => {
+                              handleProductCheckboxChange(
+                                e,
+                                product.name,
+                                product.id + "-" + index
+                              );
+                            }}
+                          />
+                          <CardProducts
+                            image={product.image_cross_selling}
+                            name={product.name}
+                            description={descripcion?.description || ""}
+                          />
+                          {selectedProductNames.includes(product.name) && (
+                            <SelectableDiv
+                              $selected={isSelected ? "true" : undefined}
+                              $isSizeChange={
+                                isSelected && isLastProduct
+                                  ? isSizechange[product.id + "-" + index] ||
+                                    false
+                                  : false
                               }
-                              setSelectedChild={(child) =>
-                                setSelectedChild((prev: any) => ({
-                                  ...prev,
-                                  [product.id + "-" + index]: child,
-                                }))
+                              $isQuantityChange={
+                                isSelected && isSecondLastProduct
+                                  ? quantityOpen[product.id + "-" + index] ||
+                                    false
+                                  : false
                               }
-                              setIsColorChange={(value) =>
-                                setIsColorChange((prev) => ({
-                                  ...prev,
-                                  [product.id + "-" + index]:
-                                    Boolean(value) || false,
-                                }))
-                              }
-                              setIsSizeChange={(value) =>
-                                setIsSizeChange((prev) => ({
-                                  ...prev,
-                                  [product.id + "-" + index]:
-                                    Boolean(value) || false,
-                                }))
-                              }
-                              defaultProds={defaultProds}
-                              propsNames={propsNames}
-                              category={item.name_category}
-                              idProd={product.id_prod}
-                              setIsQuantity={(value) =>
-                                setIsQuatity((prev) => ({
-                                  ...prev,
-                                  [product.id + "-" + index]: Number(value),
-                                }))
-                              }
-                              setQuantityOpen={(value) =>
-                                setQuantityOpen((prev) => ({
-                                  ...prev,
-                                  [product.id + "-" + index]:
-                                    Boolean(value) || false,
-                                }))
-                              }
-                            />
-                          </SelectableDiv>
-                        )}
-                      </AcordeonProducts>
-                    );
-                  })}
+                            >
+                              {Number(product.id) === 2411459 ? (
+                                <ShelfConfiguratorContainer>
+                                  {product.name ===
+                                  "Estantería Modular Nodo Personalizable" ? (
+                                    <ShelfConfigurator
+                                      setShelfConfigurations={
+                                        setShelfConfigurations
+                                      }
+                                      shelfConfigurations={shelfConfigurations}
+                                      handlePreconfigView={() => {}}
+                                      children={product.children}
+                                      openModuleId={openModuleId}
+                                      setOpenModuleId={setOpenModuleId}
+                                      propsNames={propsNames}
+                                      addToCartEnabled={true}
+                                      setShelfConfigChanged={
+                                        setIsShelfConfigChanged
+                                      }
+                                      isPreConfigModalOpen={
+                                        isPreConfigModalOpen
+                                      }
+                                      setIsPreConfigModalOpen={
+                                        setIsPreConfigModalOpen
+                                      }
+                                      setIsShelfConfigChanged={
+                                        setIsShelfConfigChanged
+                                      }
+                                    />
+                                  ) : (
+                                    <ShelfPreconfigurations
+                                      setShelfConfigurations={
+                                        setShelfConfigurations
+                                      }
+                                      shelfConfigurations={shelfConfigurations}
+                                      handlePreconfigView={() => {}}
+                                      children={product.children}
+                                      propsNames={propsNames}
+                                      setShelfConfigChanged={
+                                        setIsShelfConfigChanged
+                                      }
+                                      setIsQuantity={(value) =>
+                                        setIsQuatity((prev) => ({
+                                          ...prev,
+                                          [product.id + "-" + index]:
+                                            Number(value),
+                                        }))
+                                      }
+                                      setQuantityOpen={(value) =>
+                                        setQuantityOpen((prev) => ({
+                                          ...prev,
+                                          [product.id + "-" + index]:
+                                            Boolean(value) || false,
+                                        }))
+                                      }
+                                    />
+                                  )}
+                                </ShelfConfiguratorContainer>
+                              ) : (
+                                <ProductProps
+                                  selectedGroup={selectedGroup || []}
+                                  setSelectedGroup={setSelectedGroup}
+                                  // children={childrenWithQuantity}
+                                  children={product.children}
+                                  selectedChild={
+                                    selectedChild[product.id + "-" + index] ||
+                                    undefined
+                                  }
+                                  setSelectedChild={(child) =>
+                                    setSelectedChild((prev: any) => ({
+                                      ...prev,
+                                      [product.id + "-" + index]: child,
+                                    }))
+                                  }
+                                  setIsColorChange={(value) =>
+                                    setIsColorChange((prev) => ({
+                                      ...prev,
+                                      [product.id + "-" + index]:
+                                        Boolean(value) || false,
+                                    }))
+                                  }
+                                  setIsSizeChange={(value) =>
+                                    setIsSizeChange((prev) => ({
+                                      ...prev,
+                                      [product.id + "-" + index]:
+                                        Boolean(value) || false,
+                                    }))
+                                  }
+                                  defaultProds={defaultProds}
+                                  propsNames={propsNames}
+                                  category={item.name_category}
+                                  idProd={product.id_prod}
+                                  setIsQuantity={(value) =>
+                                    setIsQuatity((prev) => ({
+                                      ...prev,
+                                      [product.id + "-" + index]: Number(value),
+                                    }))
+                                  }
+                                  setQuantityOpen={(value) =>
+                                    setQuantityOpen((prev) => ({
+                                      ...prev,
+                                      [product.id + "-" + index]:
+                                        Boolean(value) || false,
+                                    }))
+                                  }
+                                />
+                              )}
+                            </SelectableDiv>
+                          )}
+                        </AcordeonProducts>
+                      );
+                    });
+                  })()}
                   {changedOption && (
                     <Paragraph
                       color="wildViolet"
