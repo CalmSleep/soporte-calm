@@ -26,6 +26,7 @@ import { ShelfConfiguratorContainer } from "@/components/Organisms/MainBlock/sty
 import ShelfPreconfigurations from "@/components/Organisms/ShelfConfigurator/ShelfPreconfigurations";
 import ShelfConfigurator from "@/components/Organisms/ShelfConfigurator/ShelfConfigurator";
 import { tr } from "date-fns/locale";
+import ShelfBuilder from "../../ShelfBuilder/ShelfBuilder";
 
 const StepSelects = ({
   titleParagraph,
@@ -333,7 +334,6 @@ const StepSelects = ({
                         return [product];
                       }
                     );
-                    console.log("productosDuplicados", productosDuplicados);
 
                     return productosDuplicados.map((product, index) => {
                       const isLastProduct = index === item.products.length - 1;
@@ -379,7 +379,11 @@ const StepSelects = ({
                             image={product.image_cross_selling}
                             name={product.name}
                             description={descripcion?.description || ""}
+                            shelfConfigurations={shelfConfigurations}
+                            propsNames={propsNames}
+                            idProduct={Number(product.id)}
                           />
+
                           {selectedProductNames.includes(product.name) && (
                             <SelectableDiv
                               $selected={isSelected ? "true" : undefined}
@@ -435,20 +439,6 @@ const StepSelects = ({
                                       propsNames={propsNames}
                                       setShelfConfigChanged={
                                         setIsShelfConfigChanged
-                                      }
-                                      setIsQuantity={(value) =>
-                                        setIsQuatity((prev) => ({
-                                          ...prev,
-                                          [product.id + "-" + index]:
-                                            Number(value),
-                                        }))
-                                      }
-                                      setQuantityOpen={(value) =>
-                                        setQuantityOpen((prev) => ({
-                                          ...prev,
-                                          [product.id + "-" + index]:
-                                            Boolean(value) || false,
-                                        }))
                                       }
                                     />
                                   )}

@@ -1,7 +1,6 @@
 import {
   Container,
   InfoContainer,
-  PriceContainer,
   StyledImageContainer,
   Wrapper,
 } from "./styled";
@@ -15,21 +14,38 @@ import { formatNumber } from "@/utils/formatPrices";
 import SelectorColor from "../SelectorAttributes/SelectorColor";
 import variations_sizes from "@/utils/variations_sizes";
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
+import ShelfBuilder from "../ShelfBuilder/ShelfBuilder";
 
-const CardProducts = ({ image, name, description }: IProps) => {
+const CardProducts = ({
+  image,
+  name,
+  description,
+  shelfConfigurations,
+  propsNames,
+  idProduct,
+}: IProps) => {
   return (
     <>
       <Container>
         <Wrapper>
           <StyledImageContainer>
-            <Images
-              src={image || ""}
-              alt={image + "producto relacionado"}
-              borderRadius="12.583px"
-              width="100%"
-              height="100%"
-              objectFit="contain"
-            />
+            {idProduct === 2411459 ? (
+              <ShelfBuilder
+                shelfConfigurations={shelfConfigurations}
+                maxRows={1}
+                maxColumns={1}
+                propsNames={propsNames}
+              />
+            ) : (
+              <Images
+                src={image || ""}
+                alt={image + "producto relacionado"}
+                borderRadius="12.583px"
+                width="100%"
+                height="100%"
+                objectFit="contain"
+              />
+            )}
           </StyledImageContainer>
 
           <InfoContainer>

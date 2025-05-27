@@ -36,13 +36,10 @@ const ShelfPreconfigurations: React.FC<ShelfPreconfigurationsProps> = ({
   handlePreconfigView,
   propsNames,
   setShelfConfigChanged,
-  setQuantityOpen,
-  setIsQuantity,
 }) => {
   type PredefinedConfig = string[];
 
   const [availableConfigs, setAvailableConfigs] = useState<ShelfData[][]>([]);
-  const [quantity, setQuantity] = useState(1);
 
   const predefinedConfigs: PredefinedConfig[] = [
     ["MOBESTNOD100002", "MOBESTNOD060004", "MOBESTNOD060004"],
@@ -279,12 +276,6 @@ const ShelfPreconfigurations: React.FC<ShelfPreconfigurationsProps> = ({
           </>
         )}
       </ModuleContainer>
-      <SelectorQuantity
-        quantity={quantity}
-        setQuantity={setQuantity}
-        setQuantityOpen={setQuantityOpen}
-        setIsQuantity={setIsQuantity}
-      />
 
       {/* <HandleView
         handlePreconfigView={handlePreconfigView}

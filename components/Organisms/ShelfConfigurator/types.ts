@@ -23,8 +23,6 @@ export interface ShelfPreconfigurationsProps {
   children?: IChildrenProd[];
   propsNames: IShelfProps;
   setShelfConfigChanged: (changed: boolean) => void;
-  setQuantityOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsQuantity: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface ShelfConfig {

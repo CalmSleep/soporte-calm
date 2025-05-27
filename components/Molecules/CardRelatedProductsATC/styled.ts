@@ -18,6 +18,13 @@ export const StyledImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
 
 export const TitleCursor = styled.div`

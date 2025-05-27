@@ -308,6 +308,15 @@ const useSelects = ({
       return newChild;
     });
 
+    setShelfConfigurations((prev) => {
+      // If checked, return the previous array (or modify as needed)
+      if (isChecked) {
+        return [...prev];
+      }
+      // If not checked, return the previous array unchanged (or modify as needed)
+      return prev;
+    });
+
     setSelectedProductNames((prev) => {
       const cleanedProductNames = prev.filter(
         (n) => !n.startsWith(productName.split(" (")[0])
