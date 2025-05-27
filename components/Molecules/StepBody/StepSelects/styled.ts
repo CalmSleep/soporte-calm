@@ -127,4 +127,8 @@ export const SelectableDiv = styled.div<SelectableDivProps>`
   padding: 0px 30px !important;
   width: 100%;
   transition: all 0.3s ease;
+
+  @media ${(props) => props.theme.devices.biggerMobile} {
+    padding: 0px !important;
+  }
 `;

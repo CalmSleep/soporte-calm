@@ -23,18 +23,23 @@ const CardProducts = ({
   shelfConfigurations,
   propsNames,
   idProduct,
+  openModuleId,
 }: IProps) => {
   return (
     <>
       <Container>
         <Wrapper>
           <StyledImageContainer>
-            {idProduct === 2411459 ? (
+            {shelfConfigurations.length > 0 ? (
               <ShelfBuilder
                 shelfConfigurations={shelfConfigurations}
-                maxRows={1}
-                maxColumns={1}
+                maxRows={5}
+                maxColumns={5}
+                isCart={false}
+                editingModuleId={openModuleId}
+                isCard
                 propsNames={propsNames}
+                isPreConfigView={true}
               />
             ) : (
               <Images

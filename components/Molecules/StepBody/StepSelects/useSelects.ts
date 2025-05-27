@@ -19,13 +19,14 @@ const useSelects = ({
   }>({});
   const [selectedChildChecked, setSelectedChildChecked] = useState(false);
   const [idChild, setIdChild] = useState<string | null>(null);
-  const [shelfConfigurations, setShelfConfigurations] = useState<ShelfData[]>(
-    []
-  );
+  const [shelfConfigurations, setShelfConfigurations] = useState<{
+    [key: string]: ShelfData[];
+  }>({});
+  console.log("shelfConfigurations", shelfConfigurations);
+
   const [openModuleId, setOpenModuleId] = useState<number | undefined>(
-    shelfConfigurations[0]?.moduleId
+    shelfConfigurations[idChild || ""]?.[0]?.moduleId
   );
-  console.log("openModuleId", openModuleId);
 
   const [isPreConfigModalOpen, setIsPreConfigModalOpen] =
     useState<boolean>(false);
@@ -46,15 +47,16 @@ const useSelects = ({
 
   useEffect(() => {
     const child = selectedChild[idChild || ""];
-    const shelConfigChild = shelfConfigurations.map((shelf) => shelf.children);
-    console.log("shelConfigChild", shelConfigChild);
+    const shelConfigChild =
+      shelfConfigurations[idChild || ""] &&
+      shelfConfigurations[idChild || ""].map((m) => m.children);
+    // console.log("shelConfigChild", shelConfigChild);
 
     const newTitle = child?.name;
     const titleShelfConfig =
-      shelConfigChild.map((shelf) => shelf.name)[0] || "";
-    const idChildShelfConfig = shelConfigChild
-      .map((shelf) => shelf.id)
-      .join(", ");
+      (shelConfigChild && shelConfigChild.map((shelf) => shelf.name)[0]) || "";
+    const idChildShelfConfig =
+      shelConfigChild && shelConfigChild.map((shelf) => shelf.id).join(", ");
 
     if (idChild !== null) {
       onCheckboxChange?.(
@@ -63,7 +65,10 @@ const useSelects = ({
         idChild.toString() || idChildShelfConfig || "",
         [],
         isQuatity[idChild],
-        child?.sku || shelConfigChild.map((shelf) => shelf.sku).join(", ") || ""
+        child?.sku ||
+          (shelConfigChild &&
+            shelConfigChild.map((shelf) => shelf.sku).join(", ")) ||
+          ""
       );
     }
   }, [
@@ -309,12 +314,13 @@ const useSelects = ({
     });
 
     setShelfConfigurations((prev) => {
-      // If checked, return the previous array (or modify as needed)
+      const newShelfConfig = { ...prev };
       if (isChecked) {
-        return [...prev];
+        newShelfConfig[productId] = [];
+      } else {
+        delete newShelfConfig[productId];
       }
-      // If not checked, return the previous array unchanged (or modify as needed)
-      return prev;
+      return newShelfConfig;
     });
 
     setSelectedProductNames((prev) => {

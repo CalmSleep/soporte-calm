@@ -345,6 +345,7 @@ const StepSelects = ({
                       const cardProductDate = menuData.flatMap((item: any) =>
                         item.columns.flatMap((col: any) => col.products)
                       );
+
                       const descripcion = cardProductDate.find((item: any) =>
                         item.name
                           .toLowerCase()
@@ -379,9 +380,13 @@ const StepSelects = ({
                             image={product.image_cross_selling}
                             name={product.name}
                             description={descripcion?.description || ""}
-                            shelfConfigurations={shelfConfigurations}
+                            shelfConfigurations={
+                              shelfConfigurations[product.id + "-" + index] ||
+                              []
+                            }
                             propsNames={propsNames}
                             idProduct={Number(product.id)}
+                            openModuleId={openModuleId}
                           />
 
                           {selectedProductNames.includes(product.name) && (
@@ -405,10 +410,17 @@ const StepSelects = ({
                                   {product.name ===
                                   "Estantería Modular Nodo Personalizable" ? (
                                     <ShelfConfigurator
-                                      setShelfConfigurations={
-                                        setShelfConfigurations
+                                      setShelfConfigurations={(child) =>
+                                        setShelfConfigurations((prev: any) => ({
+                                          ...prev,
+                                          [product.id + "-" + index]: child,
+                                        }))
                                       }
-                                      shelfConfigurations={shelfConfigurations}
+                                      shelfConfigurations={
+                                        shelfConfigurations[
+                                          product.id + "-" + index
+                                        ] || []
+                                      }
                                       handlePreconfigView={() => {}}
                                       children={product.children}
                                       openModuleId={openModuleId}
@@ -430,10 +442,17 @@ const StepSelects = ({
                                     />
                                   ) : (
                                     <ShelfPreconfigurations
-                                      setShelfConfigurations={
-                                        setShelfConfigurations
+                                      setShelfConfigurations={(child) =>
+                                        setShelfConfigurations((prev: any) => ({
+                                          ...prev,
+                                          [product.id + "-" + index]: child,
+                                        }))
                                       }
-                                      shelfConfigurations={shelfConfigurations}
+                                      shelfConfigurations={
+                                        shelfConfigurations[
+                                          product.id + "-" + index
+                                        ] || []
+                                      }
                                       handlePreconfigView={() => {}}
                                       children={product.children}
                                       propsNames={propsNames}

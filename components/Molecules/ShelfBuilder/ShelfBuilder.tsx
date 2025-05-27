@@ -36,6 +36,7 @@ const ShelfBuilder: React.FC<ShelfBuilderProps> = ({
   const [canvasSize, setCanvasSize] = useState({ width: 800, height: 800 });
   const imageCache = useRef<Record<string, HTMLImageElement>>({});
   const [imagesLoaded, setImagesLoaded] = useState(false);
+
   const isFirstRender = useRef(true);
 
   useEffect(() => {
@@ -279,8 +280,7 @@ const ShelfBuilder: React.FC<ShelfBuilderProps> = ({
       );
 
       // Dibujar piso primero
-      // Asegurarte de que hay columnas dibujadas
-      if (!isCard && !isNaN(floorY) && isFinite(floorY)) {
+      if (!isCard) {
         const floorGradient = tempCtx.createLinearGradient(
           0,
           floorY,
@@ -482,7 +482,6 @@ const ShelfBuilder: React.FC<ShelfBuilderProps> = ({
               bubbleX + bubbleWidth / 2,
               bubbleY + bubbleHeight + 10
             );
-
             tempCtx.lineTo(
               bubbleX + bubbleWidth / 2 - 10,
               bubbleY + bubbleHeight

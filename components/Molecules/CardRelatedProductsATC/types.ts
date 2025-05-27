@@ -11,4 +11,5 @@ export interface IProps {
   shelfConfigurations: ShelfData[];
   propsNames: IShelfProps;
   idProduct: number;
+  openModuleId: number | undefined;
 }
