@@ -44,16 +44,20 @@ const useSelects = ({
 
   useEffect(() => {
     const child = selectedChild[idChild || ""];
+    const newTitle = child?.name;
+    const skuChild = child?.sku;
+
     const shelConfigChild =
       shelfConfigurations[idChild || ""] &&
       shelfConfigurations[idChild || ""].map((m) => m.children);
     // console.log("shelConfigChild", shelConfigChild);
 
-    const newTitle = child?.name;
     const titleShelfConfig =
-      (shelConfigChild && shelConfigChild.map((shelf) => shelf.name)[0]) || "";
+      (shelConfigChild && shelConfigChild.map((shelf) => shelf?.name)[0]) || "";
     const idChildShelfConfig =
-      shelConfigChild && shelConfigChild.map((shelf) => shelf.id).join(", ");
+      shelConfigChild && shelConfigChild.map((shelf) => shelf?.id).join(", ");
+    const skuChildShelfConfig =
+      shelConfigChild && shelConfigChild.map((shelf) => shelf?.sku).join(", ");
 
     // console.log("sku", idShelfConfigSku);
 
@@ -64,10 +68,7 @@ const useSelects = ({
         idChild.toString() || idChildShelfConfig || "",
         [],
         isQuatity[idChild],
-        child?.sku ||
-          (shelConfigChild &&
-            shelConfigChild.map((shelf) => shelf.sku).join(", ")) ||
-          ""
+        skuChild || skuChildShelfConfig || ""
       );
     }
   }, [
@@ -311,26 +312,27 @@ const useSelects = ({
       }
       return newChild;
     });
-    console.log("productId", productId);
 
-    const newShelf: ShelfData = {
-      moduleId: Date.now(),
-      children: productChildren?.[4] as IChildrenProd,
-      position: {
-        row: 1,
-        column: 1,
-      },
-    };
+    if (productId.includes("2411459")) {
+      const newShelf: ShelfData = {
+        moduleId: Date.now(),
+        children: productChildren?.[4] as IChildrenProd,
+        position: {
+          row: 1,
+          column: 1,
+        },
+      };
 
-    setShelfConfigurations((prev) => {
-      const newShelfConfig = { ...prev };
-      if (isChecked) {
-        newShelfConfig[productId] = [newShelf];
-      } else {
-        delete newShelfConfig[productId];
-      }
-      return newShelfConfig;
-    });
+      setShelfConfigurations((prev) => {
+        const newShelfConfig = { ...prev };
+        if (isChecked) {
+          newShelfConfig[productId] = [newShelf];
+        } else {
+          delete newShelfConfig[productId];
+        }
+        return newShelfConfig;
+      });
+    }
 
     setSelectedProductNames((prev) => {
       const cleanedProductNames = prev.filter(

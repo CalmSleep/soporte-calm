@@ -201,7 +201,7 @@ const ShelfBuilder: React.FC<ShelfBuilderProps> = ({
       const overlapOffset = fixedShelfWidth * 0.04;
 
       const getImageUrl = (shelf: any) => {
-        switch (shelf.children.attributes[propsNames.configuracion]) {
+        switch (shelf.children?.attributes[propsNames.configuracion]) {
           case "estante":
             return images.estante[
               shelf.children.attributes[propsNames.alto] as
