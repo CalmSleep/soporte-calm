@@ -69,8 +69,6 @@ export function mapOrdersWithSpan(orders: any[]): any[] {
       ? configuracionValue
       : "";
     const spanPosicion = posicion.includes(posicionValue) ? posicionValue : "";
-    console.log("spanConfiguracion", spanConfiguracion);
-    console.log("spanPosicion", spanPosicion);
 
     const span = [
       spanTamano,

@@ -411,8 +411,7 @@ const StepSelects = ({
                             >
                               {Number(product.id) === 2411459 ? (
                                 <ShelfConfiguratorContainer>
-                                  {product.name ===
-                                  "Estantería Modular Nodo Personalizable" ? (
+                                  {product.name === "Armá tu estantería" ? (
                                     <ShelfConfigurator
                                       setShelfConfigurations={(child) =>
                                         setShelfConfigurations((prev: any) => ({
