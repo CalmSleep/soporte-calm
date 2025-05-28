@@ -125,5 +125,46 @@
       { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
       { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
     ]
+  },
+  {
+    "id": [
+      "2411496",
+      "2411499",
+      "2411493",
+      "2411498",
+      "2411501",
+      "2411495",
+      "2411497",
+      "2411500",
+      "2411503",
+      "2411505",
+      "2411502",
+      "2411494",
+      "2411507",
+      "2411504",
+      "2411506",
+      "2411508",
+      "2411509",
+      "2411510",
+      "2411511",
+      "2411512",
+      "2411513",
+      "2411514",
+      "2411515",
+      "2411516"
+    ],
+    "title": "Estantería Modular Nodo",
+    "pieces": [
+      { "label": "Travesaños" },
+      { "label": "Estantes" },
+      { "label": "Llave allen" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Columna" },
+      { "label": "Brackets" },
+      { "label": "Tirador" },
+      { "label": "Cabinet abierto" },
+      { "label": "Cabinet cerrado" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
   }
 ]

@@ -123,6 +123,8 @@ const Step4 = ({
     inputValue
   );
 
+  console.log("fullInfoSend", fullInfoSend);
+
   const handleSubmitToNotion = async () => {
     setOpenModal(false);
     try {

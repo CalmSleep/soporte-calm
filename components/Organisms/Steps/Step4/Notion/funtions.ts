@@ -66,7 +66,7 @@ export const mapIssuesToNotionValues = (input: string): Issue[] => {
 
 export function parsePieces(rawString: string, pieces: Piece[]): ParsedResult {
   const normalizedPieces = pieces.map((p) => ({
-    original: p.label,
+    original: p.label === "Llave allen" ? "Llave" : p.label,
     normalized: p.label.toLowerCase().replace(/\s/g, ""),
   }));
 
