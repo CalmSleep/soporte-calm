@@ -55,6 +55,8 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const orders = useSelector(getThankuContent);
   const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
+  console.log("allProducts", allProducts);
+
   const productsLoading = useSelector(getLoadingGetProducts);
 
   React.useEffect(() => {
