@@ -460,7 +460,7 @@ const ShelfModule = ({
                     shelfConfigurations={configs}
                     maxRows={5}
                     maxColumns={5}
-                    isCart={true}
+                    isCart={false}
                     editingModuleId={openModuleId}
                     isCard
                     propsNames={propsNames}

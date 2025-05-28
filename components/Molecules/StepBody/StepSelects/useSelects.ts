@@ -22,14 +22,11 @@ const useSelects = ({
   const [shelfConfigurations, setShelfConfigurations] = useState<{
     [key: string]: ShelfData[];
   }>({});
-  console.log("shelfConfigurations", shelfConfigurations);
 
   const [openModuleId, setOpenModuleId] = useState<number | undefined>(
     shelfConfigurations[idChild || ""]?.[0]?.moduleId
   );
 
-  const [isPreConfigModalOpen, setIsPreConfigModalOpen] =
-    useState<boolean>(false);
   const [selectedGroup, setSelectedGroup] = useState<
     IChildrenProd[] | undefined
   >();
@@ -57,10 +54,8 @@ const useSelects = ({
       (shelConfigChild && shelConfigChild.map((shelf) => shelf.name)[0]) || "";
     const idChildShelfConfig =
       shelConfigChild && shelConfigChild.map((shelf) => shelf.id).join(", ");
-    const idShelfConfigSku =
-      shelConfigChild && shelConfigChild.map((shelf) => shelf.sku);
 
-    console.log("sku", idShelfConfigSku);
+    // console.log("sku", idShelfConfigSku);
 
     if (idChild !== null) {
       onCheckboxChange?.(
@@ -77,12 +72,11 @@ const useSelects = ({
     }
   }, [
     selectedChild[idChild || ""],
-    shelfConfigurations,
+    shelfConfigurations[idChild || ""],
     openModuleId,
     selectedChildChecked,
     idChild,
     isQuatity,
-    isPreConfigModalOpen,
   ]);
 
   const handleAccordionClick = (id: string) => {
@@ -271,7 +265,7 @@ const useSelects = ({
     selectedRadios,
     selectedChecks,
     inputValues,
-    //selectedChild,
+    selectedChild,
     isColorchange,
     isSizechange,
     quantityOpen,
@@ -302,7 +296,8 @@ const useSelects = ({
   const handleProductCheckboxChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     productName: string,
-    productId: string
+    productId: string,
+    productChildren?: IChildrenProd[]
   ) => {
     const isChecked = e.target.checked;
     setSelectedChildChecked(isChecked);
@@ -316,11 +311,21 @@ const useSelects = ({
       }
       return newChild;
     });
+    console.log("productId", productId);
+
+    const newShelf: ShelfData = {
+      moduleId: Date.now(),
+      children: productChildren?.[4] as IChildrenProd,
+      position: {
+        row: 1,
+        column: 1,
+      },
+    };
 
     setShelfConfigurations((prev) => {
       const newShelfConfig = { ...prev };
       if (isChecked) {
-        newShelfConfig[productId] = [];
+        newShelfConfig[productId] = [newShelf];
       } else {
         delete newShelfConfig[productId];
       }
@@ -374,8 +379,6 @@ const useSelects = ({
     setQuantityOpen,
     isQuatity,
     setIsQuatity,
-    isPreConfigModalOpen,
-    setIsPreConfigModalOpen,
     openModuleId,
     setOpenModuleId,
   };
