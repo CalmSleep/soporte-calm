@@ -276,12 +276,12 @@ const ShelfPreconfigurations: React.FC<ShelfPreconfigurationsProps> = ({
         )}
       </ModuleContainer>
 
-      <HandleView
+      {/* <HandleView
         handlePreconfigView={handlePreconfigView}
         title="¿Nada se ajusta a tu espacio?"
         description="Personalizá tu estantería, 100% a tu medida"
         icon={PersoConfigIcon()}
-      />
+      /> */}
     </PreConfigContainer>
   );
 };

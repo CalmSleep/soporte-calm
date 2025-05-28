@@ -49,7 +49,8 @@ export function getMatchingQuizzIds(titles: string[], menuData: any) {
 }
 
 export function mapOrdersWithSpan(orders: any[]): any[] {
-  const { tamano, alto, color } = searchAttribute(orders);
+  const { tamano, alto, color, configuracion, posicion } =
+    searchAttribute(orders);
 
   return orders.map((order: any) => {
     const attrs = order.attributes || {};
@@ -57,12 +58,25 @@ export function mapOrdersWithSpan(orders: any[]): any[] {
     const tamanoValue = attrs.tamano || attrs.pa_tamano || "";
     const altoValue = attrs.alto || attrs.pa_alto || "";
     const colorValue = attrs.color || attrs.pa_color || "";
+    const configuracionValue =
+      attrs.configuracion || attrs.pa_configuracion || "";
+    const posicionValue = attrs.posicion || attrs.pa_posicion || "";
 
     const spanTamano = tamano.includes(tamanoValue) ? tamanoValue : "";
     const spanAlto = alto.includes(altoValue) ? altoValue : "";
     const spanColor = color.includes(colorValue) ? colorValue : "";
+    const spanConfiguracion = configuracion.includes(configuracionValue)
+      ? configuracionValue
+      : "";
+    const spanPosicion = posicion.includes(posicionValue) ? posicionValue : "";
 
-    const span = [spanTamano, spanAlto, spanColor]
+    const span = [
+      spanTamano,
+      spanAlto,
+      spanColor,
+      spanConfiguracion,
+      spanPosicion,
+    ]
       .filter(Boolean)
       .map((val) => (variations_products as Record<string, string>)[val] || val)
       .join(", ");

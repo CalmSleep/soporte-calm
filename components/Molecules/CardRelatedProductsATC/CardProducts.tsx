@@ -1,7 +1,6 @@
 import {
   Container,
   InfoContainer,
-  PriceContainer,
   StyledImageContainer,
   Wrapper,
 } from "./styled";
@@ -15,21 +14,43 @@ import { formatNumber } from "@/utils/formatPrices";
 import SelectorColor from "../SelectorAttributes/SelectorColor";
 import variations_sizes from "@/utils/variations_sizes";
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
+import ShelfBuilder from "../ShelfBuilder/ShelfBuilder";
 
-const CardProducts = ({ image, name, description }: IProps) => {
+const CardProducts = ({
+  image,
+  name,
+  description,
+  shelfConfigurations,
+  propsNames,
+  idProduct,
+  openModuleId,
+}: IProps) => {
   return (
     <>
       <Container>
         <Wrapper>
           <StyledImageContainer>
-            <Images
-              src={image || ""}
-              alt={image + "producto relacionado"}
-              borderRadius="12.583px"
-              width="100%"
-              height="100%"
-              objectFit="contain"
-            />
+            {shelfConfigurations.length > 0 ? (
+              <ShelfBuilder
+                shelfConfigurations={shelfConfigurations}
+                maxRows={5}
+                maxColumns={5}
+                isCart={false}
+                // editingModuleId={openModuleId}
+                isCard
+                propsNames={propsNames}
+                isPreConfigView={true}
+              />
+            ) : (
+              <Images
+                src={image || ""}
+                alt={image + "producto relacionado"}
+                borderRadius="12.583px"
+                width="100%"
+                height="100%"
+                objectFit="contain"
+              />
+            )}
           </StyledImageContainer>
 
           <InfoContainer>

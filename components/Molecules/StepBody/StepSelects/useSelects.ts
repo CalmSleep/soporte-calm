@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { IItems, StepSelectsProps } from "./types";
 import { IChildrenProd } from "@/state/products/types";
 import { ShelfData } from "@/components/Organisms/ShelfConfigurator/types";
+import { id } from "date-fns/locale";
 
 const useSelects = ({
   onCheckboxChange,
@@ -18,9 +19,14 @@ const useSelects = ({
   }>({});
   const [selectedChildChecked, setSelectedChildChecked] = useState(false);
   const [idChild, setIdChild] = useState<string | null>(null);
-  const [shelfConfigurations, setShelfConfigurations] = useState<ShelfData[]>(
-    []
+  const [shelfConfigurations, setShelfConfigurations] = useState<{
+    [key: string]: ShelfData[];
+  }>({});
+
+  const [openModuleId, setOpenModuleId] = useState<number | undefined>(
+    shelfConfigurations[idChild || ""]?.[0]?.moduleId
   );
+
   const [selectedGroup, setSelectedGroup] = useState<
     IChildrenProd[] | undefined
   >();
@@ -38,22 +44,34 @@ const useSelects = ({
 
   useEffect(() => {
     const child = selectedChild[idChild || ""];
-
     const newTitle = child?.name;
+    const skuChild = child?.sku;
+
+    const shelConfigChild =
+      shelfConfigurations[idChild || ""] &&
+      shelfConfigurations[idChild || ""].map((m) => m.children);
+
+    const titleShelfConfig =
+      (shelConfigChild && shelConfigChild.map((shelf) => shelf?.name)[0]) || "";
+    const idChildShelfConfig =
+      shelConfigChild && shelConfigChild.map((shelf) => shelf?.id).join(", ");
+    const skuChildShelfConfig =
+      shelConfigChild && shelConfigChild.map((shelf) => shelf?.sku).join(", ");
 
     if (idChild !== null) {
       onCheckboxChange?.(
         true,
-        newTitle || "",
-        idChild.toString(),
+        newTitle || titleShelfConfig || "",
+        idChild.toString() || idChildShelfConfig || "",
         [],
         isQuatity[idChild],
-        child?.sku || ""
+        skuChild || skuChildShelfConfig || ""
       );
     }
   }, [
     selectedChild[idChild || ""],
-    shelfConfigurations,
+    shelfConfigurations[idChild || ""],
+    openModuleId,
     selectedChildChecked,
     idChild,
     isQuatity,
@@ -245,7 +263,7 @@ const useSelects = ({
     selectedRadios,
     selectedChecks,
     inputValues,
-    //selectedChild,
+    selectedChild,
     isColorchange,
     isSizechange,
     quantityOpen,
@@ -276,7 +294,8 @@ const useSelects = ({
   const handleProductCheckboxChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     productName: string,
-    productId: string
+    productId: string,
+    productChildren?: IChildrenProd[]
   ) => {
     const isChecked = e.target.checked;
     setSelectedChildChecked(isChecked);
@@ -290,6 +309,27 @@ const useSelects = ({
       }
       return newChild;
     });
+
+    if (productId.includes("2411459")) {
+      const newShelf: ShelfData = {
+        moduleId: Date.now(),
+        children: productChildren?.[4] as IChildrenProd,
+        position: {
+          row: 1,
+          column: 1,
+        },
+      };
+
+      setShelfConfigurations((prev) => {
+        const newShelfConfig = { ...prev };
+        if (isChecked) {
+          newShelfConfig[productId] = [newShelf];
+        } else {
+          delete newShelfConfig[productId];
+        }
+        return newShelfConfig;
+      });
+    }
 
     setSelectedProductNames((prev) => {
       const cleanedProductNames = prev.filter(
@@ -338,6 +378,8 @@ const useSelects = ({
     setQuantityOpen,
     isQuatity,
     setIsQuatity,
+    openModuleId,
+    setOpenModuleId,
   };
 };
 
