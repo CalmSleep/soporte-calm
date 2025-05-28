@@ -69,7 +69,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     quantity: checkClickCount[item.checkId] || 1,
     skuChange: skuChild[item.checkId] || "",
   }));
-  console.log("quatityItems", quatityItems);
 
   const infoChanges = rawInfoChanges as unknown as ProductoData[];
   const newOrders = mapOrdersWithSpan(orders.items);

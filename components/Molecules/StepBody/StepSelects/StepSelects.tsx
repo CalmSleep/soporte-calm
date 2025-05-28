@@ -324,7 +324,7 @@ const StepSelects = ({
                             product,
                             {
                               ...product,
-                              name: "Estantería Modular Nodo Personalizable",
+                              name: "Armá tu estantería",
                             },
                           ];
                         }
@@ -343,11 +343,12 @@ const StepSelects = ({
                         item.columns.flatMap((col: any) => col.products)
                       );
 
-                      const descripcion = cardProductDate.find((item: any) =>
+                      const menuDataInfo = cardProductDate.find((item: any) =>
                         item.name
                           .toLowerCase()
                           .includes(product.name.toLowerCase())
                       );
+
                       let propsNames = atrrToRender(product.children);
 
                       return (
@@ -375,9 +376,14 @@ const StepSelects = ({
                             }}
                           />
                           <CardProducts
-                            image={product.image_cross_selling}
+                            image={
+                              menuDataInfo?.id === "2411459" ||
+                              menuDataInfo?.id === "2411458"
+                                ? menuDataInfo?.image
+                                : product.image_cross_selling
+                            }
                             name={product.name}
-                            description={descripcion?.description || ""}
+                            description={menuDataInfo?.description || ""}
                             shelfConfigurations={
                               shelfConfigurations[product.id + "-" + index] ||
                               []

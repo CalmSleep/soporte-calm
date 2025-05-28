@@ -50,7 +50,6 @@ const useSelects = ({
     const shelConfigChild =
       shelfConfigurations[idChild || ""] &&
       shelfConfigurations[idChild || ""].map((m) => m.children);
-    // console.log("shelConfigChild", shelConfigChild);
 
     const titleShelfConfig =
       (shelConfigChild && shelConfigChild.map((shelf) => shelf?.name)[0]) || "";
@@ -58,8 +57,6 @@ const useSelects = ({
       shelConfigChild && shelConfigChild.map((shelf) => shelf?.id).join(", ");
     const skuChildShelfConfig =
       shelConfigChild && shelConfigChild.map((shelf) => shelf?.sku).join(", ");
-
-    // console.log("sku", idShelfConfigSku);
 
     if (idChild !== null) {
       onCheckboxChange?.(
