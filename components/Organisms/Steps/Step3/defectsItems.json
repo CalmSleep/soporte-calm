@@ -96,6 +96,7 @@
     "title": "Base de cama",
     "pieces": [
       { "label": "Estructura inestable" },
+      { "label": "Pieza doblada" },
       { "label": "Falta de perforaciones o remaches" },
       { "label": "Maderas en mal estado" },
       { "label": "Desoldadura en la estructura" },

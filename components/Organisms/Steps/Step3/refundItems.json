@@ -128,6 +128,7 @@
       { "label": "Me parece alto" },
       { "label": "Me parece bajo" },
       { "label": "Compré el producto por error" },
+      { "label": "Pieza doblada" },
       { "label": "Estructura inestable" },
       { "label": "Falta de perforaciones o remaches" },
       { "label": "Maderas en mal estado" },

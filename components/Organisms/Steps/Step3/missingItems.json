@@ -155,13 +155,13 @@
     ],
     "title": "Estantería Modular Nodo",
     "pieces": [
-      { "label": "Travesaños" },
-      { "label": "Estantes" },
+      { "label": "Travesaños", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Estantes", "hasInput": true, "placeholder": "¿Cantidad?" },
       { "label": "Llave allen" },
       { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Columna" },
-      { "label": "Brackets" },
-      { "label": "Tirador" },
+      { "label": "Columna", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Brackets", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Tirador", "hasInput": true, "placeholder": "¿Cantidad?" },
       { "label": "Cabinet abierto" },
       { "label": "Cabinet cerrado" },
       { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
