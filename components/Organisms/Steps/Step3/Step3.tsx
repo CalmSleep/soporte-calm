@@ -11,6 +11,8 @@ import { getThankuContent } from "@/state/order/orderSelector";
 import optionStep3 from "./step3.json";
 import {
   getResultados,
+  itemsFilterJson,
+  mapOrdersWithSpan,
   selectedTitleOthers,
   splitDevolucion,
   splitQuieroComprar,
@@ -18,6 +20,14 @@ import {
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 import { getAllProductsData } from "@/state/products/productsSelector";
 import { onGetAllProducts } from "@/state/products/productsActions";
+import { getLoadingGetProducts } from "@/state/loading/loadingSelector";
+import {
+  infoParagraphStep3,
+  infoSelect1,
+  infoSelect2And,
+  infoTitleStep3,
+  titlesProducts,
+} from "../infoStep";
 const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
   const {
     selectedValue,
@@ -33,103 +43,74 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     handlePaymentChange,
     notionInfo,
     setNotionInfo,
-    idVariation,
-    setIdVariation,
-    idVariationChange,
-    setIdVariationChange,
+    checkClickCount,
+    selectedTitleObjects,
+    setSelectedTitleObjects,
+    skuChild,
+    setSkuChild,
   } = useValueSelect();
+
+  const [modalIsOpen, setModalIsOpen] = React.useState(false);
+
   const orders = useSelector(getThankuContent);
   const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
+
+  const productsLoading = useSelector(getLoadingGetProducts);
 
   React.useEffect(() => {
     const productsData = async () => {
       await dispatch(onGetAllProducts());
     };
-
     productsData();
   }, []);
 
+  const quatityItems = selectedTitleObjects.map((item) => ({
+    ...item,
+    quantity: checkClickCount[item.checkId] || 1,
+    skuChange: skuChild[item.checkId] || "",
+  }));
+
   const infoChanges = rawInfoChanges as unknown as ProductoData[];
+  const newOrders = mapOrdersWithSpan(orders.items);
+  const matchedItemChange = itemsFilterJson(infoChanges, newOrders);
 
   const resultadoFinal = getResultados(
-    selectedTitles,
-    infoChanges,
-    orders.items,
+    titlesProducts(quatityItems),
+    matchedItemChange,
+    selectedTitleObjects.map((item) => item.checkId),
     allProducts
   );
 
-  const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
-  const [continuemos, otros2] = splitDevolucion(selectedTitles);
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
+  const keywords = ["Otro", "Recuadros", "Tornillos", "Tarugos"];
 
-  const infoProduct =
-    (valueSelect === "1" && selectedValue === "1") ||
-    selectedValue === "4" ||
-    selectedValue === "3"
-      ? `${selectedTitleOthers(selectedTitles).join(", ")}`
-      : valueSelect === "1" && selectedValue === "2" && quieroComprar.length
-      ? `${quieroComprar}`
-      : "";
+  const hasIncompleteRequiredInputs = titlesProducts(quatityItems).some(
+    (title) => {
+      return keywords.some((keyword) => {
+        // Coincide con: "Otro x algo" (donde algo es un número, palabra, etc.)
+        const regex = new RegExp(`${keyword}\\s*x\\s*[^,\\)]+`, "i");
 
+        const keywordPresent = title.includes(keyword);
+        const keywordWithXPresent = regex.test(title);
 
-  const infoMensaje =
-    valueSelect === "1" && selectedValue === "2" && otros.length > 0
-      ? `${otros.join(", ")}`
-      : "";
-
-  const infoSelect1 = [
-    `${
-      optionStep3.find((item) => item.value === selectedValue)?.label ||
-      "Opción no encontrada"
-    }`,
-    infoProduct,
-    infoMensaje,
-  ];
-
-  const products =
-    valueSelect === "2"
-      ? `${otros2.join(", ")}`
-      : `${selectedTitles.filter((title) => !title.includes("-")).join(", ")}`;
-
-  const result = selectedTitles
-    .filter((title) => title.includes("-"))
-    .map((title) => title.split(" - ")[0])
-    .join(", ");
-
-  const infoSelect2And3 = [
-    products,
-    valueSelect === "2" ? `${continuemos.join(", ")}` : result,
-  ];
+        // Si la palabra está, pero no tiene "x valor" → inválido
+        return keywordPresent && !keywordWithXPresent;
+      });
+    }
+  );
 
   React.useEffect(() => {
     setNotionInfo({
       ...notionInfo,
       problemDescription:
-        valueSelect === "1"
-          ? infoSelect1
-          : selectedTitles.some((title) => title.includes("cambio"))
-          ? ["cambio"]
-          : [],
-      productReturn:
-        valueSelect === "2"
-          ? [`${otros2.join(", ")}`]
-          : valueSelect === "3"
-          ? [products]
-          : [],
-      productChange:
-        // valueSelect === "2" &&
-        // selectedTitles.length === 1 &&
-        // resultadoFinal &&
-        // resultadoFinal.length === 1 &&
-        // !selectedTitles.some((title) => title.includes("Continuemos"))
-        //   ? [resultadoFinal[0].sku]
-        valueSelect === "3" ||
-        (valueSelect === "2" &&
-          selectedTitles.length === 1 &&
-          resultadoFinal &&
-          resultadoFinal.length === 1)
-          ? selectedTitles.filter((title) => title.includes("-"))
+        valueSelect === "1" || valueSelect === "2" || valueSelect === "3"
+          ? infoSelect1(
+              valueSelect,
+              selectedValue as string,
+              quatityItems,
+              selectedTitles,
+              optionStep3
+            )
           : [],
     });
   }, [checkboxConfirmed]);
@@ -142,40 +123,25 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
         padding={
           !selectedValue && valueSelect === "1" ? "40px 300px 155px" : ""
         }
-        title={
-          valueSelect === "1"
-            ? "Contanos cuál fue el problema"
-            : valueSelect === "2"
-            ? "Contanos qué productos querés devolver"
-            : valueSelect === "3"
-            ? "Contanos qué productos querés cambiar"
-            : ""
-        }
+        title={infoTitleStep3(valueSelect as string)}
         paragraph={
-          !checkboxConfirmed
-            ? valueSelect === "1"
-              ? "Si no encontrás tu caso en estas opciones, escribinos y te ayudamos."
-              : valueSelect === "2"
-              ? "¿Necesitas devolver uno o más productos? ¡No hay problema! Avancemos con la gestión..."
-              : "¿Necesitas cambiar uno o más productos? ¡No hay problema! Avancemos con la gestión..."
-            : ""
+          !checkboxConfirmed ? infoParagraphStep3(valueSelect as string) : ""
         }
         onClick={() => {
-          if (valueSelect === "2" && selectedTitles.length > 0) {
+          if (valueSelect === "2" && titlesProducts(quatityItems).length > 0) {
             setModalIsOpen(true);
           } else {
             handleConfirmCheckbox();
           }
         }}
         value={
-          valueSelect === "1"
+          hasIncompleteRequiredInputs
+            ? true
+            : valueSelect === "1"
             ? !selectedValue || !checkSeleccionado
             : valueSelect === "2"
             ? !checkSeleccionado
-            : !(
-                valueSelect === "3" &&
-                selectedTitles.some((title) => title.includes("-"))
-              )
+            : !(valueSelect === "3" && titlesProducts(quatityItems).length > 1)
         }
         button={
           valueSelect === "1"
@@ -209,9 +175,13 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             checkboxConfirmed={checkboxConfirmed}
             handleCheckboxChangeConfirmed={handleCheckboxChangeConfirmed}
             handlePaymentChange={handlePaymentChange}
-            infoStep={infoSelect1}
-            idVariation={idVariation}
-            setIdVariation={setIdVariation}
+            infoStep={infoSelect1(
+              valueSelect,
+              selectedValue as string,
+              quatityItems,
+              selectedTitles,
+              optionStep3
+            )}
           />
         ) : (
           <Step3Select2
@@ -229,22 +199,25 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
             }
             checkboxConfirmed={checkboxConfirmed}
             handleEditCheckbox={handleEditCheckbox}
-            selectedTitles={selectedTitles}
+            selectedTitles={titlesProducts(quatityItems)}
             handleCheckboxChange={handleCheckboxChange}
             handleCheckboxChangeConfirmed={handleCheckboxChangeConfirmed}
             checkSeleccionado={checkSeleccionado}
             valueSelect={valueSelect}
-            infoStep={infoSelect2And3}
+            infoStep={infoSelect2And(
+              valueSelect as string,
+              quatityItems,
+              selectedTitles
+            )}
             modalOpen={modalIsOpen}
             setModalOpen={setModalIsOpen}
             setSelectedTitles={setSelectedTitles}
             setConfirmedValue={setConfirmedValue}
             handleConfirmCheckbox={handleConfirmCheckbox}
             products={allProducts}
-            idVariation={idVariation}
-            setIdVariation={setIdVariation}
-            idVariationChange={idVariationChange}
-            setIdVariationChange={setIdVariationChange}
+            productsLoading={productsLoading}
+            setSelectedTitleObjects={setSelectedTitleObjects}
+            setSkuChild={setSkuChild}
           />
         )}
       </StepsHeaders>
@@ -253,9 +226,7 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
           valueSelect={valueSelect || ""}
           selectedValue={selectedValue || ""}
           notionInfo={notionInfo}
-          idVariation={idVariation}
-          idVariationChange={idVariationChange}
-          products={allProducts || []}
+          selectedTitleObjects={quatityItems}
         />
       )}
     </>

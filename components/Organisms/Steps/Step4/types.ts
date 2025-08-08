@@ -1,12 +1,8 @@
-import { IgetProducts } from "@/state/products/types";
-
 export type Step4Props = {
-  products: IgetProducts[];
   valueSelect: string;
   selectedValue: string;
   notionInfo: IInfoForm;
-  idVariation: number[];
-  idVariationChange: number[];
+  selectedTitleObjects: { title: string; checkId: string; quantity: number }[];
 };
 
 export type Piece = { label: string };
@@ -23,8 +19,6 @@ export type ParsedResult = {
 
 export interface IInfoForm {
   problemDescription: string[];
-  productChange?: string[];
-  productReturn?: string[];
 }
 
 export type UploadedImage = {
@@ -63,6 +57,8 @@ export interface IDataSendNotion {
   images: IImagensNotion[];
   skuOriginal?: IMultipleSelect[];
   skuChange?: IMultipleSelect[];
+  skuQuantityOriginal?: string;
+  skuQuantityChange?: string;
   peaces?: IMultipleSelect[];
   peacesChange?: IMultipleSelect[];
   peacesQuantity?: string;
@@ -74,7 +70,6 @@ export interface IDataSendNotion {
 }
 
 export type Issue = {
-  // productId: string;
   name: string;
   comments?: string;
 };

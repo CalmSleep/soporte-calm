@@ -23,4 +23,5 @@ export type ModalStepsProps = {
   modalDevChange?: boolean;
   arrayButton?: IArrayButton[];
   icon?: boolean;
+  productsLoading?: boolean;
 };

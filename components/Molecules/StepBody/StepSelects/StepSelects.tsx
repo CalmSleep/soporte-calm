@@ -1,7 +1,7 @@
 import Input from "@/components/Atoms/Input/Input";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import AccordionUnit from "@/components/Molecules/AccordionUnit/AccordionUnit";
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useMemo, useRef, useState } from "react";
 
 import StepRadio from "@/components/Molecules/StepBody/StepRadio/StepRadio";
 import {
@@ -12,20 +12,22 @@ import {
   CointainText,
   ContainerCheckLabel,
   PieceItem,
-  PieceItems,
   PieceList,
   SelectableDiv,
 } from "./styled";
 import { StepSelectsProps } from "./types";
 import useSelects from "./useSelects";
 import { getMatchingQuizzIds } from "@/components/Organisms/Steps/util";
-import { RadioGroup } from "../StepRadio/styled";
-import { atrrToRender } from "@/utils/productsFunctios";
 import CardProducts from "../../CardRelatedProductsATC/CardProducts";
 import ProductProps from "@/components/Organisms/ProductProps/ProductProps";
-import { IChildrenProd } from "@/state/products/types";
 import Quizz from "../../Quizz/Quizz";
-import { set } from "date-fns";
+import { atrrToRender } from "@/utils/productsFunctios";
+import { ShelfConfiguratorContainer } from "@/components/Organisms/MainBlock/styled";
+import ShelfPreconfigurations from "@/components/Organisms/ShelfConfigurator/ShelfPreconfigurations";
+import ShelfConfigurator from "@/components/Organisms/ShelfConfigurator/ShelfConfigurator";
+import { IShelfProps } from "../../ShelfModule/types";
+import { IChildrenProd } from "@/state/products/types";
+import { tr } from "date-fns/locale";
 
 const StepSelects = ({
   titleParagraph,
@@ -39,8 +41,6 @@ const StepSelects = ({
   changedOption,
   menuData,
   selectedTitle,
-  idVariation,
-  setIdVariation,
 }: StepSelectsProps) => {
   const {
     handleAccordionClick,
@@ -60,23 +60,28 @@ const StepSelects = ({
     handleProductCheckboxChange,
     selectedChild,
     setSelectedChild,
+    shelfConfigurations,
+    setShelfConfigurations,
     setIsColorChange,
+    isSizechange,
     setIsSizeChange,
-    handleCheckboxArrayChange,
+    setIsShelfConfigChanged,
+    selectedGroup,
+    setSelectedGroup,
+    setIsQuatity,
+    quantityOpen,
+    setQuantityOpen,
+    openModuleId,
+    setOpenModuleId,
   } = useSelects({
     selectedTitle,
     onCheckboxChange,
     items,
     radioOptions,
     setSelectedOption,
-    idVariation,
-    setIdVariation,
   });
   const [quizzActive, setQuizzActive] = useState(false);
   const [selectedQuizz, setSelectedQuizz] = useState<undefined | string>();
-  const [selectedGroup, setSelectedGroup] = useState<
-    IChildrenProd[] | undefined
-  >();
   const defaultProds = React.useMemo(() => [], []);
 
   const quizzHandle = (quizzId?: string) => {
@@ -108,18 +113,9 @@ const StepSelects = ({
                   onCheckboxChange &&
                     onCheckboxChange(
                       e.target.checked,
-                      `${check.title} ${check.span ? `(${check.span})` : ""}`
+                      `${check.title} ${check.span ? `(${check.span})` : ""}`,
+                      String(check.id)
                     );
-
-                  if (setIdVariation) {
-                    setIdVariation((prev) =>
-                      handleCheckboxArrayChange({
-                        prev,
-                        isChecked: e.target.checked,
-                        id: Number(check.id),
-                      })
-                    );
-                  }
                 }}
               />
               <CointainText>
@@ -142,7 +138,8 @@ const StepSelects = ({
         })}
       {items &&
         radioOptions &&
-        items.map((item) => {
+        items.map((item, index) => {
+          const uniqueKey = `${item.id}-${index}`;
           return (
             <AccordionUnit
               titleStyle={{
@@ -150,26 +147,28 @@ const StepSelects = ({
                 fontSize: "16px",
                 lineHeight: "-0.48px",
               }}
-              key={item.id}
+              key={uniqueKey}
               itemName={item.title}
               spamName={`(${item.span})`}
-              onClick={() => handleAccordionClick(item.id)}
-              isActive={activeItem === item.id}
-              contentHeight={contentHeights[item.id] || 0}
-              height={contentHeights[item.id] || 0}
+              onClick={() => handleAccordionClick(uniqueKey)}
+              isActive={activeItem === uniqueKey}
+              contentHeight={contentHeights[uniqueKey] || 0}
+              height={contentHeights[uniqueKey] || 0}
               refContent={(el: HTMLDivElement | null) => {
-                contentRefs.current[item.id] = el;
+                contentRefs.current[uniqueKey] = el;
               }}
               itemsSelect={
                 <CointainAcordeonRadio>
                   <StepRadio
                     radioOptions={radioOptions || []}
-                    name={`radio-${item.id}`}
-                    checked={selectedRadios[item.id]}
-                    onChange={(_, value) => handleChangeRadio(item, value)}
+                    name={`radio-${uniqueKey}`}
+                    checked={selectedRadios[uniqueKey]}
+                    onChange={(_, value) =>
+                      handleChangeRadio({ ...item, id: uniqueKey }, value)
+                    }
                   />
 
-                  {selectedRadios[item.id] === "piezas" && (
+                  {selectedRadios[uniqueKey] === "piezas" && (
                     <PieceList>
                       {item.pieces.map((piece) => (
                         <ContainerCheckLabel>
@@ -185,12 +184,15 @@ const StepSelects = ({
                               borderColorFocused="yellowCalm"
                               color="yellowCalm"
                               type="checkbox"
-                              checked={(selectedChecks[item.id] || []).includes(
-                                piece.label
-                              )}
                               onChange={() =>
-                                handlePieceCheckboxChange(item.id, piece.label)
+                                handlePieceCheckboxChange(
+                                  uniqueKey,
+                                  piece.label
+                                )
                               }
+                              checked={(
+                                selectedChecks[uniqueKey] || []
+                              ).includes(piece.label)}
                             />
                             {piece.label}
                           </PieceItem>
@@ -199,15 +201,16 @@ const StepSelects = ({
                               fontSize="12px"
                               borderRadius="0px"
                               borderBottom="2px solid #ccc"
-                              //  borderColor="millionGray"
                               width="236px"
                               height="16px"
                               type="text"
                               placeholder={piece.placeholder}
-                              value={inputValues[item.id]?.[piece.label] || ""}
+                              value={
+                                inputValues[uniqueKey]?.[piece.label] || ""
+                              }
                               onChange={(e) =>
                                 handleInputChange(
-                                  item.id,
+                                  uniqueKey,
                                   piece.label,
                                   e.target.value
                                 )
@@ -225,7 +228,8 @@ const StepSelects = ({
         })}
       {items &&
         !radioOptions &&
-        items.map((item) => {
+        items.map((item, index) => {
+          const uniqueKey = `${item.id}-${index}`;
           return (
             <AccordionUnit
               titleStyle={{
@@ -233,15 +237,15 @@ const StepSelects = ({
                 fontSize: "16px",
                 lineHeight: "-0.48px",
               }}
-              key={item.id}
+              key={uniqueKey}
               itemName={item.title}
               spamName={item.span ? `(${item.span})` : ""}
-              onClick={() => handleAccordionClick(item.id)}
-              isActive={activeItem === item.id}
-              contentHeight={contentHeights[item.id] || 0}
-              height={contentHeights[item.id] || 0}
+              onClick={() => handleAccordionClick(uniqueKey)}
+              isActive={activeItem === uniqueKey}
+              contentHeight={contentHeights[uniqueKey] || 0}
+              height={contentHeights[uniqueKey] || 0}
               refContent={(el: HTMLDivElement | null) => {
-                contentRefs.current[item.id] = el;
+                contentRefs.current[uniqueKey] = el;
               }}
               itemsSelect={
                 item.pieces ? (
@@ -253,25 +257,27 @@ const StepSelects = ({
                             radioOptions={[
                               { value: piece.label, label: piece.label },
                             ]}
-                            name={`radio-group-${item.id}`}
-                            checked={selectedRadios[item.id]}
+                            name={`radio-group-${uniqueKey}`}
+                            checked={selectedRadios[uniqueKey]}
                             onChange={(e, value) =>
-                              handlePieceRadioChange(item.id, value)
+                              handlePieceRadioChange(uniqueKey, value)
                             }
                           />
                         </PieceItem>
                         {piece.hasInput &&
-                          selectedRadios[item.id] === piece.label && (
+                          selectedRadios[uniqueKey] === piece.label && (
                             <Input
                               appearance="none"
                               width="236px"
                               height="16px"
                               type="text"
                               placeholder={piece.placeholder}
-                              value={inputValues[item.id]?.[piece.label] || ""}
+                              value={
+                                inputValues[uniqueKey]?.[piece.label] || ""
+                              }
                               onChange={(e) =>
                                 handleRadioInputChange(
-                                  item.id,
+                                  uniqueKey,
                                   piece.label,
                                   e.target.value
                                 )
@@ -309,65 +315,206 @@ const StepSelects = ({
               }}
               itemsSelect={
                 <CointainAcordeonProducts>
-                  {item.products.map((product) => {
-                    const cardProductDate = menuData.flatMap((item: any) =>
-                      item.columns.flatMap((col: any) => col.products)
+                  {(() => {
+                    const productosDuplicados = item.products.flatMap(
+                      (product) => {
+                        if (Number(product.id) === 2411459) {
+                          return [
+                            product,
+                            {
+                              ...product,
+                              name: "Armá tu estantería",
+                            },
+                          ];
+                        }
+                        return [product];
+                      }
                     );
-                    const descripcion = cardProductDate.find((item: any) =>
-                      item.name
-                        .toLowerCase()
-                        .includes(product.name.toLowerCase())
-                    );
-                    let propsNames = atrrToRender(product.children);
-                    return (
-                      <AcordeonProducts>
-                        <Input
-                          appearance="none"
-                          width="14px"
-                          height="14px"
-                          padding="6px"
-                          borderRadius="2px"
-                          checkBorderColor="yellowCalm"
-                          checkColor="yellowCalm"
-                          borderColorFocused="yellowCalm"
-                          color="yellowCalm"
-                          type="checkbox"
-                          name={product.name}
-                          value={product.name}
-                          onChange={(e) => {
-                            handleProductCheckboxChange(e, product.name);
-                          }}
-                        />
-                        <CardProducts
-                          image={product.image_cross_selling}
-                          name={product.name}
-                          description={descripcion?.description || ""}
-                        />
-                        {selectedProductNames.includes(product.name) && (
-                          <SelectableDiv
-                            $selected={
-                              selectedProductNames.includes(product.name)
-                                ? "true"
-                                : undefined
+
+                    return productosDuplicados.map((product, index) => {
+                      const isLastProduct = index === item.products.length - 1;
+                      const isSecondLastProduct =
+                        index === item.products.length - 2 || isLastProduct;
+                      const isSelected = selectedProductNames.includes(
+                        product.name
+                      );
+                      const cardProductDate = menuData.flatMap((item: any) =>
+                        item.columns.flatMap((col: any) => col.products)
+                      );
+
+                      const menuDataInfo = cardProductDate.find((item: any) =>
+                        item.name
+                          .toLowerCase()
+                          .includes(product.name.toLowerCase())
+                      );
+
+                      let propsNames = atrrToRender(product.children);
+
+                      return (
+                        <AcordeonProducts>
+                          <Input
+                            appearance="none"
+                            width="14px"
+                            height="14px"
+                            padding="6px"
+                            borderRadius="2px"
+                            checkBorderColor="yellowCalm"
+                            checkColor="yellowCalm"
+                            borderColorFocused="yellowCalm"
+                            color="yellowCalm"
+                            type="checkbox"
+                            name={product.name}
+                            value={product.name}
+                            onChange={(e) => {
+                              handleProductCheckboxChange(
+                                e,
+                                product.name,
+                                product.id + "-" + index,
+                                product.children
+                              );
+                            }}
+                          />
+                          <CardProducts
+                            image={
+                              menuDataInfo?.id === "2411459" ||
+                              menuDataInfo?.id === "2411458"
+                                ? menuDataInfo?.image
+                                : product.image_cross_selling
                             }
-                            $items={selectedGroup?.length || 0}
-                          >
-                            <ProductProps
-                              selectedGroup={selectedGroup || []}
-                              setSelectedGroup={setSelectedGroup}
-                              children={product.children}
-                              selectedChild={selectedChild}
-                              setSelectedChild={setSelectedChild}
-                              setIsColorChange={setIsColorChange}
-                              setIsSizeChange={setIsSizeChange}
-                              defaultProds={defaultProds}
-                              propsNames={propsNames}
-                            />
-                          </SelectableDiv>
-                        )}
-                      </AcordeonProducts>
-                    );
-                  })}
+                            name={product.name}
+                            description={menuDataInfo?.description || ""}
+                            shelfConfigurations={
+                              shelfConfigurations[product.id + "-" + index] ||
+                              []
+                            }
+                            propsNames={propsNames}
+                            idProduct={Number(product.id)}
+                            //   openModuleId={openModuleId}
+                          />
+
+                          {selectedProductNames.includes(product.name) && (
+                            <SelectableDiv
+                              $selected={isSelected ? "true" : undefined}
+                              $isSizeChange={
+                                isSelected && isLastProduct
+                                  ? isSizechange[product.id + "-" + index] ||
+                                    false
+                                  : false
+                              }
+                              $isQuantityChange={
+                                isSelected && isSecondLastProduct
+                                  ? quantityOpen[product.id + "-" + index] ||
+                                    false
+                                  : false
+                              }
+                            >
+                              {Number(product.id) === 2411459 ? (
+                                <ShelfConfiguratorContainer>
+                                  {product.name === "Armá tu estantería" ? (
+                                    <ShelfConfigurator
+                                      setShelfConfigurations={(child) =>
+                                        setShelfConfigurations((prev: any) => ({
+                                          ...prev,
+                                          [product.id + "-" + index]: child,
+                                        }))
+                                      }
+                                      shelfConfigurations={
+                                        shelfConfigurations[
+                                          product.id + "-" + index
+                                        ] || []
+                                      }
+                                      handlePreconfigView={() => {}}
+                                      children={product.children}
+                                      openModuleId={openModuleId}
+                                      setOpenModuleId={setOpenModuleId}
+                                      propsNames={propsNames}
+                                      addToCartEnabled={true}
+                                      setShelfConfigChanged={
+                                        setIsShelfConfigChanged
+                                      }
+                                      isPreConfigModalOpen={true}
+                                      setIsPreConfigModalOpen={() => {}}
+                                      setIsShelfConfigChanged={
+                                        setIsShelfConfigChanged
+                                      }
+                                    />
+                                  ) : (
+                                    <ShelfPreconfigurations
+                                      setShelfConfigurations={(child) =>
+                                        setShelfConfigurations((prev: any) => ({
+                                          ...prev,
+                                          [product.id + "-" + index]: child,
+                                        }))
+                                      }
+                                      shelfConfigurations={
+                                        shelfConfigurations[
+                                          product.id + "-" + index
+                                        ] || []
+                                      }
+                                      handlePreconfigView={() => {}}
+                                      children={product.children}
+                                      propsNames={propsNames}
+                                      setShelfConfigChanged={
+                                        setIsShelfConfigChanged
+                                      }
+                                    />
+                                  )}
+                                </ShelfConfiguratorContainer>
+                              ) : (
+                                <ProductProps
+                                  selectedGroup={selectedGroup || []}
+                                  setSelectedGroup={setSelectedGroup}
+                                  // children={childrenWithQuantity}
+                                  children={product.children}
+                                  selectedChild={
+                                    selectedChild[product.id + "-" + index] ||
+                                    undefined
+                                  }
+                                  setSelectedChild={(child) =>
+                                    setSelectedChild((prev: any) => ({
+                                      ...prev,
+                                      [product.id + "-" + index]: child,
+                                    }))
+                                  }
+                                  setIsColorChange={(value) =>
+                                    setIsColorChange((prev) => ({
+                                      ...prev,
+                                      [product.id + "-" + index]:
+                                        Boolean(value) || false,
+                                    }))
+                                  }
+                                  setIsSizeChange={(value) =>
+                                    setIsSizeChange((prev) => ({
+                                      ...prev,
+                                      [product.id + "-" + index]:
+                                        Boolean(value) || false,
+                                    }))
+                                  }
+                                  defaultProds={defaultProds}
+                                  propsNames={propsNames}
+                                  category={item.name_category}
+                                  idProd={product.id_prod}
+                                  setIsQuantity={(value) =>
+                                    setIsQuatity((prev) => ({
+                                      ...prev,
+                                      [product.id + "-" + index]: Number(value),
+                                    }))
+                                  }
+                                  setQuantityOpen={(value) =>
+                                    setQuantityOpen((prev) => ({
+                                      ...prev,
+                                      [product.id + "-" + index]:
+                                        Boolean(value) || false,
+                                    }))
+                                  }
+                                />
+                              )}
+                            </SelectableDiv>
+                          )}
+                        </AcordeonProducts>
+                      );
+                    });
+                  })()}
                   {changedOption && (
                     <Paragraph
                       color="wildViolet"

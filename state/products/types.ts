@@ -66,6 +66,7 @@ export interface IChildrenProd {
   regular_price: number;
   attributes: IAttributes;
   sizeNumber?: number;
+  quantity?: number;
 }
 
 export interface IAttributes {

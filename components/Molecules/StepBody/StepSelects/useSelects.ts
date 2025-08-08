@@ -1,89 +1,82 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { IItems, StepSelectsProps } from "./types";
-import { set } from "date-fns";
 import { IChildrenProd } from "@/state/products/types";
+import { ShelfData } from "@/components/Organisms/ShelfConfigurator/types";
+import { id } from "date-fns/locale";
 
 const useSelects = ({
   onCheckboxChange,
   items,
   radioOptions,
-  selectedOption,
-  selectedTitle,
   setSelectedOption,
-  idVariation,
-  setIdVariation,
 }: StepSelectsProps) => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [selectedProductNames, setSelectedProductNames] = useState<string[]>(
     []
   );
-  const [selectedChild, setSelectedChild] = useState<IChildrenProd>();
+  const [selectedChild, setSelectedChild] = useState<{
+    [id: string]: IChildrenProd | null;
+  }>({});
   const [selectedChildChecked, setSelectedChildChecked] = useState(false);
+  const [idChild, setIdChild] = useState<string | null>(null);
+  const [shelfConfigurations, setShelfConfigurations] = useState<{
+    [key: string]: ShelfData[];
+  }>({});
+
+  const [openModuleId, setOpenModuleId] = useState<number | undefined>(
+    shelfConfigurations[idChild || ""]?.[0]?.moduleId
+  );
+
+  const [selectedGroup, setSelectedGroup] = useState<
+    IChildrenProd[] | undefined
+  >();
+  const [quantityOpen, setQuantityOpen] = useState<{ [id: string]: boolean }>(
+    {}
+  );
+  const [isQuatity, setIsQuatity] = useState<{ [id: string]: number }>({});
+  const [isSizechange, setIsSizeChange] = useState<{ [id: string]: boolean }>(
+    {}
+  );
+  const [isColorchange, setIsColorChange] = useState<{ [id: string]: boolean }>(
+    {}
+  );
+  const [isShelfConfigChanged, setIsShelfConfigChanged] = useState(false);
 
   useEffect(() => {
-    if (!selectedChild || selectedChildChecked === null) return;
+    const child = selectedChild[idChild || ""];
+    const newTitle = child?.name;
+    const skuChild = child?.sku;
 
-    const newTitle = selectedChild.name;
-    const baseName = newTitle.split(" - ")[0];
-    const newId = Number(selectedChild.id);
+    const shelConfigChild =
+      shelfConfigurations[idChild || ""] &&
+      shelfConfigurations[idChild || ""].map((m) => m.children);
 
-    const previousTitle =
-      selectedTitle?.find((title) => title.startsWith(baseName)) || null;
+    const titleShelfConfig =
+      (shelConfigChild && shelConfigChild.map((shelf) => shelf?.name)[0]) || "";
+    const idChildShelfConfig =
+      shelConfigChild && shelConfigChild.map((shelf) => shelf?.id).join(", ");
+    const skuChildShelfConfig =
+      shelConfigChild && shelConfigChild.map((shelf) => shelf?.sku).join(", ");
 
-    const matchedProduct = selectedProductNames.find((productName) =>
-      productName.startsWith(baseName)
-    );
-
-    // ⬇️ 1. Lógica de nombres
-    if (previousTitle && previousTitle !== newTitle && matchedProduct) {
-      onCheckboxChange?.(false, previousTitle);
+    if (idChild !== null) {
+      onCheckboxChange?.(
+        true,
+        newTitle || titleShelfConfig || "",
+        idChild.toString() || idChildShelfConfig || "",
+        [],
+        isQuatity[idChild],
+        skuChild || skuChildShelfConfig || ""
+      );
     }
+  }, [
+    selectedChild[idChild || ""],
+    shelfConfigurations[idChild || ""],
+    openModuleId,
+    selectedChildChecked,
+    idChild,
+    isQuatity,
+  ]);
 
-    if (!matchedProduct) {
-      onCheckboxChange?.(false, previousTitle || newTitle);
-    }
-
-    if (matchedProduct) {
-      onCheckboxChange?.(true, newTitle);
-    }
-
-    // ⬇️ 2. Lógica de IDs
-    if (setIdVariation) {
-      setIdVariation((prev = []) => {
-        // Si es deschequeado, quitamos el ID
-        if (!selectedChildChecked) {
-          return prev.filter((id) => id !== newId);
-        }
-
-        // Si ya existe ese ID exacto, no hacer nada
-        if (prev.includes(newId)) {
-          return prev;
-        }
-
-        // Buscar si hay otro ID en prev con el mismo baseName
-        const conflictingId = selectedProductNames.reduce((acc, name, i) => {
-          if (name.startsWith(baseName)) {
-            const possibleId = prev[i];
-            if (possibleId !== undefined && possibleId !== newId) {
-              return possibleId;
-            }
-          }
-          return acc;
-        }, undefined as number | undefined);
-
-        // Si hay conflicto, reemplazar
-        if (conflictingId !== undefined) {
-          return prev.map((id) => (id === conflictingId ? newId : id));
-        }
-
-        // Si no hay conflicto ni duplicado, agregar
-        return [...prev, newId];
-      });
-    }
-  }, [selectedChild, selectedProductNames, selectedChildChecked]);
-
-  const [isSizechange, setIsSizeChange] = useState(false);
-  const [isColorchange, setIsColorChange] = useState(false);
   const handleAccordionClick = (id: string) => {
     setActiveItem((prev) => (prev === id ? null : id));
   };
@@ -98,30 +91,63 @@ const useSelects = ({
     [itemId: string]: { [pieceLabel: string]: string };
   }>({});
 
-  const handlePieceCheckboxChange = (itemId: string, pieceLabel: string) => {
+  const handlePieceCheckboxChange = (uniqueKey: string, pieceLabel: string) => {
+    const baseId = Number(uniqueKey.split("-")[0]);
 
-    const current = selectedChecks[itemId] || [];
-    const alreadyChecked = current.includes(pieceLabel);
-    const updated = alreadyChecked
-      ? current.filter((p) => p !== pieceLabel)
-      : [...current, pieceLabel];
+    const currentCheckedPieces = selectedChecks[uniqueKey] || [];
+    const isAlreadyChecked = currentCheckedPieces.includes(pieceLabel);
+
+    const updatedCheckedPieces = isAlreadyChecked
+      ? currentCheckedPieces.filter((p) => p !== pieceLabel)
+      : [...currentCheckedPieces, pieceLabel];
 
     setSelectedChecks((prev) => ({
       ...prev,
-      [itemId]: updated,
+      [uniqueKey]: updatedCheckedPieces,
     }));
 
-    const itemTitle =
-      (items && items.find((i) => i.id === itemId)?.title) || "";
-    const inputsForItem = inputValues[itemId] || {};
+    const itemFromItems = items && items.find((i) => Number(i.id) === baseId);
+    const piece = itemFromItems?.pieces.find((p) => p.label === pieceLabel);
 
-    const formatted = updated.length
-      ? `${itemTitle} (${updated
-          .map((p) => `${p}${inputsForItem[p] ? `x${inputsForItem[p]}` : ""}`)
+    if (isAlreadyChecked && piece?.hasInput) {
+      setInputValues((prev) => {
+        const inputsForUniqueKey = { ...(prev[uniqueKey] || {}) };
+        delete inputsForUniqueKey[pieceLabel];
+
+        if (Object.keys(inputsForUniqueKey).length === 0) {
+          const { [uniqueKey]: _, ...rest } = prev;
+          return rest;
+        }
+
+        return {
+          ...prev,
+          [uniqueKey]: inputsForUniqueKey,
+        };
+      });
+    }
+
+    const itemTitle = itemFromItems?.title || "";
+
+    const inputsForUniqueKey = inputValues[uniqueKey] || {};
+
+    const formattedTitle = updatedCheckedPieces.length
+      ? `${itemTitle} (${updatedCheckedPieces
+          .map(
+            (piece) =>
+              piece +
+              (inputsForUniqueKey[piece]
+                ? ` x${inputsForUniqueKey[piece]}`
+                : "")
+          )
           .join(", ")})`
       : itemTitle;
 
-    onCheckboxChange && onCheckboxChange(updated.length > 0, formatted);
+    onCheckboxChange &&
+      onCheckboxChange(
+        updatedCheckedPieces.length > 0,
+        formattedTitle,
+        uniqueKey
+      );
   };
 
   const handleInputChange = (
@@ -142,9 +168,10 @@ const useSelects = ({
       ...(inputValues[itemId] || {}),
       [pieceLabel]: value,
     };
+    const baseId = Number(itemId.split("-")[0]);
 
     const itemTitle =
-      (items && items.find((i) => i.id === itemId)?.title) || "";
+      (items && items.find((i) => Number(i.id) === baseId)?.title) || "";
 
     const formatted = checkedPieces.length
       ? `${itemTitle} (${checkedPieces
@@ -152,34 +179,44 @@ const useSelects = ({
           .join(" , ")})`
       : itemTitle;
 
-    onCheckboxChange && onCheckboxChange(checkedPieces.length > 0, formatted);
+    onCheckboxChange &&
+      onCheckboxChange(checkedPieces.length > 0, formatted, itemId);
   };
 
   const handlePieceRadioChange = (itemId: string, pieceLabel: string) => {
-    // Setea la selección única
+    const baseId = Number(itemId.split("-")[0]);
+    const previous = selectedRadios[itemId];
+    const item = items && items.find((i) => Number(i.id) === baseId);
+    const itemTitle = item?.title || "";
+    const inputsForItem = inputValues[itemId] || {};
+
+    if (previous && previous !== pieceLabel) {
+      const previousPiece = item?.pieces.find((p) => p.label === previous);
+
+      if (previousPiece?.hasInput) {
+        setInputValues((prev) => {
+          const updatedInputs = { ...prev[itemId] };
+          delete updatedInputs[previous];
+          return {
+            ...prev,
+            [itemId]: updatedInputs,
+          };
+        });
+      }
+    }
+
     setSelectedRadios((prev) => ({
       ...prev,
       [itemId]: pieceLabel,
     }));
 
-    setIdVariation &&
-      setIdVariation((prev) => {
-        const next = prev || [];
-        return next.includes(Number(itemId)) ? next : [...next, Number(itemId)];
-      });
-
-    const item = items && items.find((i) => i.id === itemId);
-    const itemTitle = item?.title || "";
-
-    const inputsForItem = inputValues[itemId] || {};
     const labelWithInput = `${pieceLabel}${
       inputsForItem[pieceLabel] ? `x${inputsForItem[pieceLabel]}` : ""
     }`;
 
     const formatted = `${itemTitle} (${labelWithInput})`;
 
-    // Disparar callback al padre
-    onCheckboxChange?.(true, formatted, [pieceLabel]);
+    onCheckboxChange?.(true, formatted, itemId, [pieceLabel]);
   };
 
   const handleRadioInputChange = (
@@ -194,14 +231,14 @@ const useSelects = ({
         [pieceLabel]: value,
       },
     }));
+    const baseId = Number(itemId.split("-")[0]);
 
-    // Solo un radio seleccionado por grupo
     const itemTitle =
-      (items && items.find((i) => i.id === itemId)?.title) || "";
+      (items && items.find((i) => Number(i.id) === baseId)?.title) || "";
     const labelWithInput = `${pieceLabel}${value ? ` x ${value}` : ""}`;
     const formatted = `${itemTitle} (${labelWithInput})`;
 
-    onCheckboxChange?.(true, formatted, [pieceLabel]);
+    onCheckboxChange?.(true, formatted, itemId, [pieceLabel]);
   };
 
   const contentRefs = useRef<{ [id: string]: HTMLDivElement | null }>({});
@@ -229,6 +266,9 @@ const useSelects = ({
     selectedChild,
     isColorchange,
     isSizechange,
+    quantityOpen,
+    selectedProductNames,
+    selectedGroup,
   ]);
 
   const handleChangeRadio = (item: IItems, value: string) => {
@@ -236,19 +276,8 @@ const useSelects = ({
       ...prev,
       [item.id]: value,
     }));
-    setIdVariation &&
-      setIdVariation((prev) => {
-        const next = prev || [];
-        return next.includes(Number(item.id))
-          ? next
-          : [...next, Number(item.id)];
-      });
 
-    if (value === "completo") {
-      onCheckboxChange && onCheckboxChange(true, item.title);
-    } else if (value === "piezas") {
-      onCheckboxChange && onCheckboxChange(false, item.title);
-    }
+    onCheckboxChange && onCheckboxChange(true, item.title, item.id);
   };
 
   const handleInternalRadioChange = (
@@ -258,16 +287,49 @@ const useSelects = ({
     setSelectedOption && setSelectedOption(value);
     const selected = radioOptions?.find((opt) => opt.value === value);
     if (selected && onCheckboxChange) {
-      onCheckboxChange(true, selected.label);
+      onCheckboxChange(true, selected.label, selected.value);
     }
   };
 
   const handleProductCheckboxChange = (
     e: React.ChangeEvent<HTMLInputElement>,
-    productName: string
+    productName: string,
+    productId: string,
+    productChildren?: IChildrenProd[]
   ) => {
     const isChecked = e.target.checked;
     setSelectedChildChecked(isChecked);
+    setIdChild(productId);
+    setSelectedChild((prev) => {
+      const newChild = { ...prev };
+      if (isChecked) {
+        newChild[productId] = null;
+      } else {
+        delete newChild[productId];
+      }
+      return newChild;
+    });
+
+    if (productId.includes("2411459")) {
+      const newShelf: ShelfData = {
+        moduleId: Date.now(),
+        children: productChildren?.[4] as IChildrenProd,
+        position: {
+          row: 1,
+          column: 1,
+        },
+      };
+
+      setShelfConfigurations((prev) => {
+        const newShelfConfig = { ...prev };
+        if (isChecked) {
+          newShelfConfig[productId] = [newShelf];
+        } else {
+          delete newShelfConfig[productId];
+        }
+        return newShelfConfig;
+      });
+    }
 
     setSelectedProductNames((prev) => {
       const cleanedProductNames = prev.filter(
@@ -280,22 +342,8 @@ const useSelects = ({
 
       return updatedProductNames;
     });
-  };
 
-  const handleCheckboxArrayChange = ({
-    prev,
-    isChecked,
-    id,
-  }: {
-    prev: number[];
-    isChecked: boolean;
-    id: number;
-  }) => {
-    if (isChecked) {
-      return prev.includes(id) ? prev : [...prev, id];
-    } else {
-      return prev.filter((item) => item !== id);
-    }
+    onCheckboxChange && onCheckboxChange(isChecked, productName, productId, []);
   };
 
   return {
@@ -319,8 +367,19 @@ const useSelects = ({
     isSizechange,
     setIsSizeChange,
     isColorchange,
+    shelfConfigurations,
+    setShelfConfigurations,
+    isShelfConfigChanged,
+    setIsShelfConfigChanged,
     setIsColorChange,
-    handleCheckboxArrayChange,
+    selectedGroup,
+    setSelectedGroup,
+    quantityOpen,
+    setQuantityOpen,
+    isQuatity,
+    setIsQuatity,
+    openModuleId,
+    setOpenModuleId,
   };
 };
 

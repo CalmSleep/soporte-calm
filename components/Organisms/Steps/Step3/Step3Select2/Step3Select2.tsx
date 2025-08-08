@@ -27,10 +27,9 @@ const Step3Select2 = ({
   handleConfirmCheckbox,
   products,
   resultadoFinal,
-  idVariation,
-  setIdVariation,
-  idVariationChange,
-  setIdVariationChange,
+  productsLoading,
+  setSelectedTitleObjects,
+  setSkuChild,
 }: Step3Select2and3Props) => {
   const newOrders = mapOrdersWithSpan(orders);
   const matchedItems = itemsFilterJson(items, newOrders);
@@ -101,9 +100,12 @@ const Step3Select2 = ({
       text: "Continuemos con la devolución",
       backgroundColor: "lead",
       onClick: () => {
-        handleCheckboxChangeConfirmed(true, "Continuemos con la devolución", [
-          "devolucion",
-        ]);
+        handleCheckboxChangeConfirmed(
+          true,
+          "Continuemos con la devolución",
+          "",
+          ["devolucion"]
+        );
         handleConfirmCheckbox && handleConfirmCheckbox();
         setModalOpen && setModalOpen(false);
       },
@@ -113,48 +115,40 @@ const Step3Select2 = ({
       text: "¡Vamos con cambio!",
       backgroundColor: "yellowCalm",
       onClick: () => {
-        handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
-        setConfirmedValue && setConfirmedValue("3");
-        // setSelectedTitles &&
-        //   setSelectedTitles(
-        //     selectedTitles.filter(
-        //       (title) => !title.toLowerCase().includes("cambio")
-        //     )
-        //   );
-        setModalOpen && setModalOpen(false);
+        if (
+          selectedTitles.length === 1 &&
+          resultadoFinal &&
+          resultadoFinal.length === 1
+        ) {
+          setSelectedTitleObjects &&
+            setSelectedTitleObjects((prev) => [
+              ...prev,
+              {
+                title: resultadoFinal[0].child?.name,
+                checkId: resultadoFinal[0].child?.id.toString(),
+              },
+            ]);
+          setSkuChild &&
+            setSkuChild((prev: { [id: string]: string }) => ({
+              ...prev,
+              [resultadoFinal[0].child?.id]: resultadoFinal[0].child?.sku,
+            }));
+
+          handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", "", [
+            "cambio",
+          ]);
+
+          handleConfirmCheckbox && handleConfirmCheckbox();
+          setConfirmedValue && setConfirmedValue("3");
+          setModalOpen && setModalOpen(false);
+        } else {
+          handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", "", [
+            "cambio",
+          ]);
+          setConfirmedValue && setConfirmedValue("3");
+          setModalOpen && setModalOpen(false);
+        }
       },
-      // onClick: () => {
-      //   //   handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
-      //   if (
-      //     selectedTitles.length === 1 &&
-      //     resultadoFinal &&
-      //     resultadoFinal.length === 1
-      //   ) {
-      //     handleCheckboxChangeConfirmed(true, "Continuemos con la devolución", [
-      //       "devolucion",
-      //     ]);
-      //     setSelectedTitles &&
-      //       setSelectedTitles([
-      //         ...selectedTitles.filter(
-      //           (title) => !title.toLowerCase().includes("cambio")
-      //         ),
-      //         resultadoFinal[0].sku,
-      //         //    resultadoFinal[0].name + ", " + resultadoFinal[0].sku,
-      //       ]);
-      //     handleConfirmCheckbox && handleConfirmCheckbox();
-      //     setModalOpen && setModalOpen(false);
-      //   } else {
-      //     handleCheckboxChangeConfirmed(true, "¡Vamos con cambio!", ["cambio"]);
-      //     setConfirmedValue && setConfirmedValue("3");
-      //     setSelectedTitles &&
-      //       setSelectedTitles(
-      //         selectedTitles.filter(
-      //           (title) => !title.toLowerCase().includes("cambio")
-      //         )
-      //       );
-      //     setModalOpen && setModalOpen(false);
-      //   }
-      // },
     },
   ];
 
@@ -169,9 +163,9 @@ const Step3Select2 = ({
                 : "Selecciona el o los productos que queres cambiar:"
             }
             items={matchedItems.length > 0 ? matchedItems : []}
-            onCheckboxChange={handleCheckboxChange}
-            idVariation={idVariation}
-            setIdVariation={setIdVariation}
+            onCheckboxChange={(isChecked, title, checkId) => {
+              handleCheckboxChange(isChecked, title, checkId);
+            }}
           />
           {modalOpen && (
             <ModalSteps
@@ -181,6 +175,7 @@ const Step3Select2 = ({
                 setModalOpen && setModalOpen(false);
               }}
               icon
+              productsLoading={productsLoading}
             >
               {paragraphArray.map((item) => (
                 <div>{item.text}</div>
@@ -192,8 +187,7 @@ const Step3Select2 = ({
               selectedTitles={selectedTitles}
               handleCheckboxChange={handleCheckboxChange}
               products={products as IgetProducts[]}
-              idVariationChange={idVariationChange}
-              setIdVariationChange={setIdVariationChange}
+              productsLoading={productsLoading}
             />
           )}
         </>

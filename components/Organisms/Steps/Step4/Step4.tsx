@@ -9,10 +9,8 @@ import {
   IconWrapper,
   ImageHover,
   ImagesContainer,
-  ImagesContainerModal,
   ImageWrapper,
 } from "./styled";
-import Image from "next/image";
 import Images from "@/components/Atoms/Images/Images";
 import Input from "@/components/Atoms/Input/Input";
 import StepRadio from "@/components/Molecules/StepBody/StepRadio/StepRadio";
@@ -27,16 +25,16 @@ import { FaTimesCircle } from "react-icons/fa";
 import useStep4 from "./hooks";
 import ModalSendInfo from "../Modals/ModalSendInfo";
 import ModalCarousel from "../../Modals/ModalCarousel/ModalCarousel";
-import { formatDateToISO, itemsFilterJson } from "../util";
+import { itemsFilterJson } from "../util";
 import {
   getActionType,
   getProveedor,
   mapIssuesToNotionValues,
   parsePieces,
-  skuChangeFilter,
-  skuFilterProduct,
-} from "./funtions";
+} from "./Notion/funtions";
 import { getLoadingRedirect } from "@/state/loading/loadingSelector";
+import { infoStep4 } from "../infoStep";
+import { fullInfo } from "./Notion/sendNotion";
 
 const Svg = () => {
   return (
@@ -74,9 +72,7 @@ const Step4 = ({
   valueSelect,
   selectedValue,
   notionInfo,
-  idVariation,
-  idVariationChange,
-  products,
+  selectedTitleObjects,
 }: Step4Props) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [errorNotion, setErrorNotion] = React.useState(false);
@@ -97,9 +93,6 @@ const Step4 = ({
     setPostalCode,
   } = useStep4();
   const dataUser = useSelector(getThankuContent);
-  console.log("valueSelect", valueSelect);
-
-  // console.log(dataUser);
 
   const dispatch = useDispatch();
   const loadingNotion = useSelector(getLoadingRedirect);
@@ -119,217 +112,23 @@ const Step4 = ({
     },
   ];
 
-  const rawString = notionInfo.problemDescription[1];
-
-  const idMatched = dataUser.items.filter((item: any) => {
-    const variationId = Number(item.variation_id);
-    const productId = Number(item.product_id);
-    const ids = idVariation.map((id) => Number(id));
-
-    return variationId === 0
-      ? ids.includes(productId)
-      : ids.includes(variationId);
-  });
-
-  const idChangeMatched = products.flatMap((product) =>
-    product.products.flatMap((chil) => {
-      const productId = Number(chil.id);
-      const ids = idVariationChange.map((id) => Number(id));
-
-      return chil.children.filter((child) => {
-        const variationId = Number(child.id);
-        return variationId === 0
-          ? ids.includes(productId)
-          : ids.includes(variationId);
-      });
-    })
+  const fullInfoSend = fullInfo(
+    dataUser,
+    notionInfo,
+    selectedValue,
+    valueSelect,
+    images,
+    selectedTitleObjects,
+    postalCode,
+    inputValue
   );
 
-  // console.log("dataUser.items", dataUser.items);
-  console.log("idMatched", idMatched);
-  console.log("idChangeMatched", idChangeMatched);
-
-  // console.log("idVariationChange", idVariationChange);
-
-  const matchedItems = itemsFilterJson(items, dataUser.items);
-  const pieces = matchedItems.flatMap((item) => item.pieces);
-  const actionMap = {
-    descuento: "Gestionar cobro extra",
-    devolverlo: "Retiro",
-  };
-  const typeRequestMap = {
-    descuento: "Orden con incidente",
-    devolverlo: "Devolucion",
-  };
-  const differencePriceMap = {
-    descuento: "Abona diferencia",
-    devolverlo: "No aplica/Garantía",
-  };
-
-  const proveedor =
-    dataUser._wc_shipment_tracking_items.length === 0
-      ? "-"
-      : dataUser._wc_shipment_tracking_items[
-          dataUser._wc_shipment_tracking_items.length - 1
-        ].map((item: any) => item.tracking_provider);
-
-  console.log(proveedor);
-  console.log("rawString", notionInfo.problemDescription.includes("cambio"));
-
-  const fullInfo: IDataSendNotion = {
-    orderNumber: String(dataUser.id),
-    name: `${dataUser.billing.first_name} ${dataUser.billing.last_name}`,
-    email: dataUser.billing.email,
-    status: "A revisar 🕵️‍♀️",
-    shippingDate:
-      dataUser.date_created === undefined ? null : dataUser.date_created,
-    requestDate: new Date(),
-    typeRequest:
-      Number(selectedValue) === 1
-        ? "Orden con incidente"
-        : Number(selectedValue) === 2
-        ? getActionType(notionInfo.problemDescription, typeRequestMap)
-        : Number(valueSelect) === 2
-        ? "Devolucion"
-        : "Cambio",
-    typeChange:
-      Number(selectedValue) === 3
-        ? [
-            {
-              name: "Error de P/P",
-            },
-          ]
-        : Number(selectedValue) === 4
-        ? [
-            {
-              name: "Garantía",
-            },
-          ]
-        : Number(valueSelect) === 3 &&
-          notionInfo.problemDescription.includes("cambio")
-        ? [
-            {
-              name: "De devo a cambio",
-            },
-          ]
-        : [],
-    reason:
-      Number(selectedValue) === 1 || Number(selectedValue) === 3
-        ? [{ name: "Otro" }]
-        : Number(selectedValue) === 4
-        ? mapIssuesToNotionValues(rawString).map((value) => ({
-            name: value.name,
-          }))
-        : Number(selectedValue) === 2
-        ? [{ name: "Error en la entrega" }]
-        : Number(valueSelect) === 2 || Number(valueSelect) === 3
-        ? mapIssuesToNotionValues(
-            notionInfo.productReturn?.join(", ") || ""
-          ).map((value) => ({
-            name: value.name,
-          }))
-        : [],
-    action:
-      Number(selectedValue) === 1
-        ? "Nuevo pedido"
-        : Number(selectedValue) === 2
-        ? getActionType(notionInfo.problemDescription, actionMap)
-        : Number(selectedValue) === 3 ||
-          Number(selectedValue) === 4 ||
-          Number(valueSelect) === 2 ||
-          Number(valueSelect) === 3
-        ? "Retiro"
-        : "Ninguna",
-    differencePrice:
-      Number(selectedValue) === 2
-        ? getActionType(notionInfo.problemDescription, differencePriceMap)
-        : Number(valueSelect) === 2
-        ? "Reembolso"
-        : Number(valueSelect) === 3
-        ? "-"
-        : "No aplica/Garantía",
-    refund: Number(valueSelect) === 2 ? "Reembolso pendiente" : "",
-    supplier: proveedor !== false ? getProveedor(proveedor) : "-",
-    images: images
-      .filter((img) => !img.error)
-      .map((img, index) => {
-        return {
-          name: `foto-reclamo-${(index + 1).toString().padStart(2, "0")}`,
-          type: "external",
-          external: {
-            url: img.url || "",
-          },
-        };
-      }),
-    skuOriginal:
-      (idMatched && Number(selectedValue) === 1) ||
-      Number(selectedValue) === 3 ||
-      Number(selectedValue) === 4 ||
-      Number(valueSelect) === 2 ||
-      Number(valueSelect) === 3
-        ? idMatched.map((item: any) => ({
-            name: item.sku,
-          }))
-        : [
-            {
-              name: "-",
-            },
-          ],
-    skuChange:
-      idMatched && Number(selectedValue) === 1
-        ? idMatched.map((item: any) => ({
-            name: item.sku,
-          }))
-        : idChangeMatched &&
-          idChangeMatched.map((item: any) => ({
-            name: item.sku,
-          })),
-    peaces:
-      Number(selectedValue) === 1 ? parsePieces(rawString, pieces).names : [],
-    peacesChange:
-      Number(selectedValue) === 1 ? parsePieces(rawString, pieces).names : [],
-    peacesQuantity:
-      Number(selectedValue) === 1
-        ? parsePieces(rawString, pieces).quantities
-        : "",
-    comments:
-      Number(selectedValue) === 1
-        ? parsePieces(rawString, pieces).otherMessage
-        : Number(selectedValue) === 2 || Number(selectedValue) === 3
-        ? notionInfo.problemDescription.some(
-            (desc: string) => desc.trim() === ""
-          )
-          ? notionInfo.problemDescription[0]
-          : notionInfo.problemDescription.join(", ")
-        : Number(selectedValue) === 4
-        ? mapIssuesToNotionValues(rawString)
-            .filter((value) => value.comments)
-            .map((value) => value.comments)
-            .join(", ")
-        : Number(valueSelect) === 2 || Number(valueSelect) === 3
-        ? mapIssuesToNotionValues(notionInfo.productReturn?.join(", ") || "")
-            .filter((value) => value.comments)
-            .map((value) => value.comments)
-            .join(", ")
-        : "-",
-    addressData: !postalCode
-      ? null
-      : Number(valueSelect) === 4 || postalCode === "no"
-      ? "NO"
-      : "SI",
-    addressNew:
-      inputValue.direcction !== "" && inputValue.postalCode !== ""
-        ? `Direccion: ${inputValue.direcction}, CP: ${inputValue.postalCode}`
-        : "",
-  };
-
-  console.log("formData", notionInfo.productChange);
-  console.log("fullInfo", fullInfo);
+  console.log("fullInfoSend", fullInfoSend);
 
   const handleSubmitToNotion = async () => {
     setOpenModal(false);
     try {
-      await dispatch(onSendDataToNotion(fullInfo));
+      await dispatch(onSendDataToNotion(fullInfoSend));
       setImages([]);
       setOpenModal(true);
     } catch (error) {
@@ -343,53 +142,28 @@ const Step4 = ({
         span="Paso 4/4 - "
         backgroundColor="drWhite"
         title="Envianos algunas imágenes"
-        paragraph={
-          valueSelect === "1" && selectedValue === "1"
-            ? `Gracias por la información. ¡Ya estás en el último paso!\n
-            Solo necesitamos que nos mandes una foto de lo que recibiste, incluyendo todos los productos y piezas que venían en la caja.\n
-            1. Etiquetas con QR que se encuentran en la caja.\n
-            2. Si el producto sigue en caja, una foto donde se vea cerrada con la cinta de seguridad.\n
-            3. Si ya sacaste el producto de la caja, mandanos foto del producto, frente y dorso.`
-            : valueSelect === "1" && selectedValue === "2"
-            ? `Gracias por la información. ¡Ya estás en el último paso!\n
-            Adjuntanos las siguientes &&imágenes del producto que recibiste&& demás para poder avanzar:\n
-            1. Etiquetas con QR que se encuentran en la caja.\n
-            2. Si el producto sigue en caja, una foto donde se vea cerrada con la cinta de seguridad.\n
-            3. Si ya sacaste el producto de la caja, mandanos foto del producto, frente y dorso.`
-            : valueSelect === "1" && selectedValue === "3"
-            ? `Gracias por la información. ¡Ya estás en el último paso!\n
-            Adjuntanos las siguientes &&imágenes del producto que recibiste&& para poder avanzar:\n
-            1. Etiquetas con QR que se encuentran en la caja.\n
-            2. Si el producto sigue en caja, una foto donde se vea cerrada con la cinta de seguridad.\n
-            3. Si ya sacaste el producto de la caja, mandanos foto del producto, frente y dorso.`
-            : valueSelect === "1" && selectedValue === "4"
-            ? `Gracias por la información ¡Último paso!
-            Adjuntanos las siguientes imágenes del producto:\n
-            1. Frente
-            2. Dorso
-            3. Falla`
-            : valueSelect === "2"
-            ? `Gracias por la información ¡Continuamos!\n
-            Adjuntanos las siguientes imágenes del producto a devolver:\n
-            1. Frente
-            2. Dorso\n
-            ❗ Si el producto nunca salió de su caja, mandanos una foto donde se vea la cinta de seguridad.`
-            : `Gracias por la información ¡Continuamos!\n
-            Adjuntanos las siguientes imágenes del producto a cambiar:\n
-            1. Frente
-            2. Dorso\n
-            ❗ Si el producto nunca salió de su caja, mandanos una foto donde se vea la cinta de seguridad.`
-        }
+        paragraph={infoStep4(valueSelect, selectedValue)}
         onClick={() => handleSubmitToNotion()}
         loading={loadingNotion}
         button
         send
-        value={images.length > 0 ? false : true}
+        value={
+          images.length === 0 ||
+          images.every((img) => img.error) ||
+          valueSelect === "2" ||
+          valueSelect === "3" ||
+          fullInfoSend.typeRequest.includes("Cambio") ||
+          fullInfoSend.typeRequest.includes("Devolucion")
+            ? !postalCode ||
+              images.length === 0 ||
+              images.every((img) => img.error)
+            : false
+        }
       >
         {valueSelect === "2" ||
         valueSelect === "3" ||
-        fullInfo.typeRequest.includes("Cambio") ||
-        fullInfo.typeRequest.includes("Devolucion") ? (
+        fullInfoSend.typeRequest.includes("Cambio") ||
+        fullInfoSend.typeRequest.includes("Devolucion") ? (
           <>
             <Paragraph fontSize="20px">
               Por último, ¿la dirección de retiro es la misma que la de entrega?
@@ -482,6 +256,17 @@ const Step4 = ({
             </Paragraph>
           </Cointainer>
         </Button>
+        <Paragraph
+          textTag="span"
+          color="brilliantLiquorice"
+          fontSize="13px"
+          responsiveMobile={{
+            fontSize: "12px",
+          }}
+        >
+          * La imagen debe ser JPG, PNG, WEBP o GIF, pesar menos de 1 MB y no
+          estar vacía ni dañada.
+        </Paragraph>
         <ImagesContainer>
           {images.length > 0 &&
             images
@@ -574,7 +359,9 @@ const Step4 = ({
       <ModalCarousel
         modal={modalImg}
         modalHandle={() => setModalImg(false)}
-        arrImages={images.map((image) => image.url!)}
+        arrImages={images
+          .filter((preview) => !preview.error)
+          .map((image) => image.url!)}
       />
     </>
   );

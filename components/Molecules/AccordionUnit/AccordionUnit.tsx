@@ -4,14 +4,10 @@ import {
   TitleDiv,
   ImgStatic,
   ImgRotate,
-  Content,
-  Inner,
   DivIconPlus,
   DivContainerAccordion,
   DivTitleAccordion,
   DivTextAccordion,
-  SubtitleAccordion,
-  DescriptionAccordion,
   IconTitle,
   ContentItemSelect,
 } from "./styled";
@@ -23,23 +19,16 @@ import Icons from "@/components/Atoms/Icons/Icons";
 import { Less, Plus, Arrow } from "./iconsAcorrdion";
 import Paragraph from "@/components/Atoms/Typography/Text";
 import dynamic from "next/dynamic";
-const Quizz = dynamic(() => import("@/components/Molecules/Quizz/Quizz"), {
-  ssr: false,
-});
 
 const AccordionUnit = ({
   onClick,
   itemName,
-  itemSubtitle,
-  itemContent,
   isActive,
   isProductSS,
   isLastUnit,
   isOrange,
   isFromCapas,
   IconComponent,
-  hasModal,
-  onClickModal,
   imageSpecsCamaOla,
   descriptionCamaOla,
   itemsSelect,
@@ -49,26 +38,6 @@ const AccordionUnit = ({
   spamName,
   height,
 }: IUnitProps) => {
-  const [render, setRender] = useState(false);
-
-  useEffect(() => {
-    setRender(true);
-  }, []);
-
-  const handleContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const target = e.target as HTMLElement;
-    if (
-      target.classList.contains("clickable-link") &&
-      hasModal &&
-      onClickModal
-    ) {
-      e.preventDefault();
-      onClickModal();
-    }
-  };
-
-  /*   if (!render) return null */
-
   return (
     <DivContainerAccordion
       $isLastUnit={isLastUnit}
@@ -146,7 +115,7 @@ const AccordionUnit = ({
         </TitleDiv>
       </DivTitleAccordion>
       <DivTextAccordion>
-        {itemsSelect ? (
+        {itemsSelect && (
           <ContentItemSelect
             id={itemName}
             ref={refContent}
@@ -156,27 +125,6 @@ const AccordionUnit = ({
           >
             {itemsSelect}
           </ContentItemSelect>
-        ) : (
-          <Content
-            id={itemName}
-            $itemName={itemName}
-            $isActive={isActive}
-            $render={render}
-          >
-            <DescriptionAccordion
-              $isProductSS={isProductSS}
-              $isFromCapas={isFromCapas}
-              onClick={handleContentClick}
-              $descriptionCamaOla={descriptionCamaOla}
-            >
-              {itemSubtitle && (
-                <SubtitleAccordion>{itemSubtitle}</SubtitleAccordion>
-              )}
-              <Inner id={itemName}>{parse(itemContent || "")}</Inner>
-
-              {/*configurar estilos en styled component*/}
-            </DescriptionAccordion>
-          </Content>
         )}
       </DivTextAccordion>
     </DivContainerAccordion>

@@ -37,10 +37,11 @@ const Select2Option = ({
       <StepSelects
         titleParagraph="Elegí la mejor opción:"
         radioOptions={radioOptions}
-        onCheckboxChange={(isChecked, title) =>
+        onCheckboxChange={(isChecked, title, checkId) =>
           onCheckboxChange(
             isChecked,
             title,
+            checkId,
             radioOptions.map((r) => r.label)
           )
         }

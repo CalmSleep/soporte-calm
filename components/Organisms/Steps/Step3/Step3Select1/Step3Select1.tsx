@@ -7,22 +7,17 @@ import Select3Option from "./components/Select3Option";
 import Select4Option from "./components/Select4Option";
 import options from "../step3.json";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
-import { selectedTitleOthers, splitQuieroComprar } from "../../util";
 
 const Step3Select1 = ({
   orders,
   selectedValue,
   handleOnchangeWithoutConfirm,
   handleCheckboxChange,
-  selectedTitles,
   handleEditCheckbox,
   checkboxConfirmed,
   handleCheckboxChangeConfirmed,
   handlePaymentChange,
-  valueSelect,
   infoStep,
-  idVariation,
-  setIdVariation,
 }: Step3Select1Props) => {
   return (
     <>
@@ -39,10 +34,10 @@ const Step3Select1 = ({
           />
           {selectedValue === "1" ? (
             <Select1Option
-              onCheckboxChange={handleCheckboxChange}
+              onCheckboxChange={(isChecked, title, checkId) => {
+                handleCheckboxChange(isChecked, title, checkId);
+              }}
               orders={orders}
-              idVariation={idVariation}
-              setIdVariation={setIdVariation}
             />
           ) : selectedValue === "2" ? (
             <Select2Option
@@ -51,17 +46,17 @@ const Step3Select1 = ({
             />
           ) : selectedValue === "3" ? (
             <Select3Option
-              onCheckboxChange={handleCheckboxChange}
+              onCheckboxChange={(isChecked, title, checkId) => {
+                handleCheckboxChange(isChecked, title, checkId);
+              }}
               orders={orders}
-              idVariation={idVariation}
-              setIdVariation={setIdVariation}
             />
           ) : selectedValue === "4" ? (
             <Select4Option
-              onCheckboxChange={handleCheckboxChange}
+              onCheckboxChange={(isChecked, title, checkId) => {
+                handleCheckboxChange(isChecked, title, checkId);
+              }}
               orders={orders}
-              idVariation={idVariation}
-              setIdVariation={setIdVariation}
             />
           ) : null}
         </>

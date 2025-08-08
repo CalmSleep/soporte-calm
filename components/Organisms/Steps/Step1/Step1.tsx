@@ -3,8 +3,6 @@ import React from "react";
 import { StepDniProps } from "./types";
 import StepInfo from "@/components/Molecules/StepBody/StepInfo/StepInfo";
 import StepDni from "./StepDni/StepDni";
-import { useSelector } from "react-redux";
-import { getThankuContent } from "@/state/order/orderSelector";
 import SkeletonLoader from "@/components/Atoms/SkeletonLoader/SkeletonLoader";
 
 const Step1 = ({ order, dniUser }: StepDniProps) => {

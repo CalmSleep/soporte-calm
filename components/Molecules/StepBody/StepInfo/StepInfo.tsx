@@ -4,7 +4,6 @@ import { StepInfoProps } from "./types";
 import { StepInfoStyles } from "./styled";
 
 const StepInfo = ({ info, link, onClick }: StepInfoProps) => {
-
   return (
     <>
       <StepInfoStyles>
@@ -22,6 +21,7 @@ const StepInfo = ({ info, link, onClick }: StepInfoProps) => {
       </StepInfoStyles>
       <Paragraph
         textTag="a"
+        cursor="pointer"
         textDecoration="underline"
         link={link}
         fontSize="20px"

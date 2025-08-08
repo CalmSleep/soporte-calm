@@ -33,6 +33,8 @@ export const searchAttribute = (children?: IChildrenProd[]) => {
     tamano: [] as string[],
     alto: [] as string[],
     color: [] as string[],
+    configuracion: [] as string[],
+    posicion: [] as string[],
   };
 
   if (children) {
@@ -75,9 +77,41 @@ export const searchAttribute = (children?: IChildrenProd[]) => {
             );
           }
         }
+
+        if (clave.includes("configuracion")) {
+          if (
+            !arrValuesAttr.configuracion.includes(
+              attributes[clave as keyof typeof attributes]
+            )
+          ) {
+            arrValuesAttr.configuracion.push(
+              attributes[clave as keyof typeof attributes]
+            );
+          }
+        }
+
+        if (clave.includes("posicion")) {
+          if (
+            !arrValuesAttr.posicion.includes(
+              attributes[clave as keyof typeof attributes]
+            )
+          ) {
+            arrValuesAttr.posicion.push(
+              attributes[clave as keyof typeof attributes]
+            );
+          }
+        }
       }
     });
   }
+
+  if (arrValuesAttr.configuracion.length > 0) {
+    arrValuesAttr.configuracion.sort((a, b) => {
+      const order = { estante: 0, cabinet: 1, nicho: 2 };
+      return order[a as keyof typeof order] - order[b as keyof typeof order];
+    });
+  }
+
   return arrValuesAttr;
 };
 

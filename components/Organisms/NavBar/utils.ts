@@ -610,7 +610,16 @@ export const menuData = [
 ];
 
 export const staticLandings = [
-  { name: "Feria", redirect: "/feria" },
-  { name: "Locales", redirect: "/locales-calm" },
-  { name: "Blog", redirect: "/blog/" },
+  {
+    name: "Feria",
+    redirect: `${process.env.NEXT_PUBLIC_REDIRECT_URL_BASE}/feria`,
+  },
+  {
+    name: "Locales",
+    redirect: `${process.env.NEXT_PUBLIC_REDIRECT_URL_BASE}/locales-calm`,
+  },
+  {
+    name: "Blog",
+    redirect: `${process.env.NEXT_PUBLIC_REDIRECT_URL_BASE}/blog`,
+  },
 ];

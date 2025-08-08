@@ -27,6 +27,13 @@ export default async function handler(
             {
               text: {
                 content: data.orderNumber,
+                link: {
+                  url: `${
+                    process.env.NEXT_PUBLIC_REDIRECT_URL_BASE
+                  }/wp-admin/post.php?post=${String(
+                    data.orderNumber
+                  )}&action=edit`,
+                },
               },
             },
           ],
@@ -105,6 +112,15 @@ export default async function handler(
         "SKU(s) a entregar": {
           multi_select: data.skuChange,
         },
+        "Cantidad de SKU's originales": {
+          rich_text: [
+            {
+              text: {
+                content: data.skuQuantityOriginal,
+              },
+            },
+          ],
+        },
         "Pieza (si aplica)": {
           multi_select: data.peaces,
         },
@@ -115,7 +131,10 @@ export default async function handler(
           rich_text: [
             {
               text: {
-                content: data.peacesQuantity,
+                content:
+                  data.skuQuantityChange === ""
+                    ? data.peacesQuantity
+                    : data.peacesQuantity + " - " + data.skuQuantityChange,
               },
             },
           ],

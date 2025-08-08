@@ -14,6 +14,7 @@ import {
 import { ArrowQuantity } from "@/components/Organisms/MainBlock/mainBlockicons";
 import { useEffect, useRef, useState } from "react";
 import Text from "@/components/Atoms/Typography/Text";
+import { set } from "date-fns";
 
 const SelectorSize = ({
   arrChildren,
@@ -37,6 +38,7 @@ const SelectorSize = ({
         !dropdownRef.current.contains(e.target as Node)
       ) {
         setIsSizeOpen(false);
+        setIsSizeChange(false);
       }
     };
 
@@ -93,7 +95,10 @@ const SelectorSize = ({
     <HeightContainer>
       <DropdownContainer
         $isSize
-        onClick={() => setIsSizeOpen((prevState) => !prevState)}
+        onClick={() => {
+          setIsSizeOpen((prevState) => !prevState);
+          setIsSizeChange((prevState) => !prevState);
+        }}
         ref={dropdownRef}
       >
         <DropdownHeader>
@@ -155,7 +160,8 @@ const SelectorSize = ({
                         e.stopPropagation();
                         setSelected(option.id);
                         setIsSizeOpen(false);
-                        hasRenders && setIsSizeChange(true);
+                        setIsSizeChange(false);
+                        hasRenders && setIsSizeOpen(true);
                       }}
                       $isLast={index === arrChildren.length - 1}
                       $isFirst={index === 0}

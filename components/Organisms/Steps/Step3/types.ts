@@ -5,34 +5,49 @@ type ValueObject = {
 };
 
 export type ProductoData = {
-  id: string;
+  id: string[];
   title: string;
   values: ValueObject[];
 };
-
 export type Resultado = {
   productName: string;
   comentario: string;
-  sku: string;
+  child: any;
 };
 
 export type Step3Props = {
   valueSelect: string | null;
   setConfirmedValue: React.Dispatch<React.SetStateAction<string | null>>;
-  // notionInfo: IDataSendNotion;
-  // setNotionInfo: React.Dispatch<React.SetStateAction<IDataSendNotion>>;
 };
+
+export interface quatityItemsProps {
+  quantity: number;
+  skuChange?: string;
+  title: string;
+  checkId: string;
+}
+[];
+
 export interface Step3Select1Props {
   orders: any;
   selectedValue: string | null;
   handleOnchangeWithoutConfirm: (
     e: React.ChangeEvent<HTMLSelectElement>
   ) => void;
-  handleCheckboxChange: (isChecked: boolean, title: string) => void;
+  handleCheckboxChange: (
+    isChecked: boolean,
+    title: string,
+    checkId: string,
+    quantity?: number,
+    skuChild?: string
+  ) => void;
   handleCheckboxChangeConfirmed: (
     isChecked: boolean,
     title: string,
-    radioGroup: string[]
+    checkId: string,
+    radioGroup: string[],
+    quantity?: number,
+    skuChild?: string
   ) => void;
   selectedTitles: string[];
   handleEditCheckbox: () => void;
@@ -43,8 +58,6 @@ export interface Step3Select1Props {
     payments: { value: string; label: string }[]
   ) => void;
   infoStep: string[];
-  idVariation?: number[];
-  setIdVariation?: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 export interface SelectOptionProps {
@@ -52,14 +65,15 @@ export interface SelectOptionProps {
   onCheckboxChange: (
     isChecked: boolean,
     title: string,
-    radioGroup: string[]
+    checkId: string,
+    radioGroup: string[],
+    quantity?: number,
+    skuChild?: string
   ) => void;
   handlePaymentChange?: (
     paymentLabel: string,
     payments: { value: string; label: string }[]
   ) => void;
-  idVariation?: number[];
-  setIdVariation?: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 export interface Step3Select2and3Props {
@@ -71,11 +85,20 @@ export interface Step3Select2and3Props {
   valueSelect: string | null;
   setConfirmedValue?: React.Dispatch<React.SetStateAction<string | null>>;
   handleEditCheckbox: () => void;
-  handleCheckboxChange: (isChecked: boolean, title: string) => void;
+  handleCheckboxChange: (
+    isChecked: boolean,
+    title: string,
+    checkId: string,
+    quantity?: number,
+    skuChild?: string
+  ) => void;
   handleCheckboxChangeConfirmed: (
     isChecked: boolean,
     title: string,
-    radioGroup: string[]
+    checkId: string,
+    radioGroup: string[],
+    quantity?: number,
+    skuChild?: string
   ) => void;
   infoStep: string[];
   modalOpen?: boolean;
@@ -83,10 +106,9 @@ export interface Step3Select2and3Props {
   handleConfirmCheckbox?: () => void;
   products?: IgetProducts[];
   resultadoFinal?: Resultado[];
-  idVariation?: number[];
-  setIdVariation?: React.Dispatch<React.SetStateAction<number[]>>;
-  idVariationChange?: number[];
-  setIdVariationChange?: React.Dispatch<React.SetStateAction<number[]>>;
+  productsLoading?: boolean;
+  setSelectedTitleObjects?: React.Dispatch<React.SetStateAction<any[]>>;
+  setSkuChild?: React.Dispatch<React.SetStateAction<any>>;
 }
 
 export type Category = {

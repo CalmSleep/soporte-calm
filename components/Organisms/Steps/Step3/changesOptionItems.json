@@ -1,300 +1,389 @@
 [
   {
-    "id": "1",
-    "title": "Colchón Original 23cm",
+    "id": ["335", "336", "11042", "699", "11190", "11191"],
+    "title": "Colchón Original 22cm",
     "values": [
       {
         "Me parece bajo": [
           "Colchón Original Plus (28cm de alto)",
-          "Así, vas a ganar unos centímetros extra en altura sin perder nada de lo que más te gusta: la comodidad y durabilidad que ya conocés y disfrutás. ¡Sí, es igual de cómodo que el que tenés hoy en casa!"
+          "Así, vas a ganar unos centímetros extra en altura sin perder nada de lo que más te gusta: la comodidad y durabilidad que ya conocés y disfrutás. ¡Sí, es igual de cómodo que el que tenés hoy en casa!",
+          ["525870", "525871", "525872", "525873", "525874", "525878"]
         ]
       },
       {
         "Es muy caluroso al usarlo": [
-          "Colchón Híbrido (23cm de alto)",
-          "Cuenta con una excelente circulación de aire, lo que te va a ayudar a mantener una temperatura fresca durante toda la noche. Además, combina resortes y capas de espuma de alta densidad para brindarte un descanso suave y equilibrado."
+          "Colchón Híbrido (22cm de alto)",
+          "Cuenta con una excelente circulación de aire, lo que te va a ayudar a mantener una temperatura fresca durante toda la noche. Además, combina resortes y capas de espuma de alta densidad para brindarte un descanso suave y equilibrado.",
+          ["2067782", "2067784", "2067786", "2067788", "2067790", "2067792"]
         ]
       },
       {
         "Demasiado firme para mi gusto": [
-          "Colchón Híbrido (23cm de alto)",
-          "Tiene una firmeza suave, ideal si te gusta sentirte más cómodo y relajado al acostarte. Además, su combinación de resortes y espuma hace que el descanso sea más liviano, fresco y equilibrado. Perfecto para quienes prefieren una sensación más acogedora sin perder soporte."
+          "Colchón Híbrido (22cm de alto)",
+          "Tiene una firmeza suave, ideal si te gusta sentirte más cómodo y relajado al acostarte. Además, su combinación de resortes y espuma hace que el descanso sea más liviano, fresco y equilibrado. Perfecto para quienes prefieren una sensación más acogedora sin perder soporte.",
+          ["2067782", "2067784", "2067786", "2067788", "2067790", "2067792"]
         ]
       }
     ]
   },
   {
-    "id": "2",
+    "id": ["525870", "525871", "525872", "525873", "525874", "525878"],
     "title": "Colchón Original 28cm",
     "values": [
       {
         "Me parece alto": [
-          "Colchón Original (23cm de alto)",
-          "Así, vas a ganar unos centímetros menos en altura sin perder nada de lo que más te gusta: la comodidad y durabilidad que ya conocés y disfrutás. ¡Sí, es igual de cómodo que el que tenés hoy en casa!"
+          "Colchón Original (22cm de alto)",
+          "Así, vas a ganar unos centímetros menos en altura sin perder nada de lo que más te gusta: la comodidad y durabilidad que ya conocés y disfrutás. ¡Sí, es igual de cómodo que el que tenés hoy en casa!",
+          ["335", "336", "11042", "699", "11190", "11191"]
         ]
       },
       {
         "Es muy caluroso al usarlo": [
           "Colchón Híbrido Plus (28cm de alto)",
-          "Cuenta con una excelente circulación de aire, lo que te va a ayudar a mantener una temperatura fresca durante toda la noche. Además, combina resortes y capas de espuma de alta densidad para brindarte un descanso suave y equilibrado."
+          "Cuenta con una excelente circulación de aire, lo que te va a ayudar a mantener una temperatura fresca durante toda la noche. Además, combina resortes y capas de espuma de alta densidad para brindarte un descanso suave y equilibrado.",
+          ["2067783", "2067785", "2067787", "2067789", "2067791", "2067793"]
         ]
       },
       {
         "Demasiado firme para mi gusto": [
           "Colchón Híbrido Plus (28cm de alto)",
-          "Tiene una firmeza suave, ideal si te gusta sentirte más cómodo y relajado al acostarte. Además, su combinación de resortes y espuma hace que el descanso sea más liviano, fresco y equilibrado. Perfecto para quienes prefieren una sensación más acogedora sin perder soporte."
+          "Tiene una firmeza suave, ideal si te gusta sentirte más cómodo y relajado al acostarte. Además, su combinación de resortes y espuma hace que el descanso sea más liviano, fresco y equilibrado. Perfecto para quienes prefieren una sensación más acogedora sin perder soporte.",
+          ["2067783", "2067785", "2067787", "2067789", "2067791", "2067793"]
         ]
       }
     ]
   },
   {
-    "id": "3",
-    "title": "Colchón Híbrido 23cm",
+    "id": ["2067782", "2067784", "2067786", "2067788", "2067790", "2067792"],
+    "title": "Colchón Híbrido 22cm",
     "values": [
       {
         "Me parece bajo": [
           "Colchón Híbrido Plus (28cm de alto)",
-          "Así, vas a ganar unos centímetros extra en altura sin perder nada de lo que más te gusta: la comodidad y durabilidad que ya conocés y disfrutás. ¡Sí, es igual de cómodo que el que tenés hoy en casa!"
+          "Así, vas a ganar unos centímetros extra en altura sin perder nada de lo que más te gusta: la comodidad y durabilidad que ya conocés y disfrutás. ¡Sí, es igual de cómodo que el que tenés hoy en casa!",
+          ["2067783", "2067785", "2067787", "2067789", "2067791", "2067793"]
         ]
       },
       {
         "Demasiado blando para mi gusto": [
-          "Colchón Original (23cm de alto)",
-          "Así, vas a ganar unos centímetros extra en altura sin perder nada de lo que más te gusta: la comodidad y durabilidad que ya conocés y disfrutás. ¡Sí, es igual de cómodo que el que tenés hoy en casa!"
+          "Colchón Original (22cm de alto)",
+          "Así, vas a ganar unos centímetros extra en altura sin perder nada de lo que más te gusta: la comodidad y durabilidad que ya conocés y disfrutás. ¡Sí, es igual de cómodo que el que tenés hoy en casa!",
+          ["335", "336", "11042", "699", "11190", "11191"]
         ]
       }
     ]
   },
   {
-    "id": "4",
+    "id": ["2067783", "2067785", "2067787", "2067789", "2067791", "2067793"],
     "title": "Colchón Híbrido 28cm",
     "values": [
       {
         "Me parece alto": [
-          "Colchón Híbrido (23cm de alto)",
-          "Así, vas a ganar unos centímetros menos en altura sin perder nada de lo que más te gusta: la comodidad y durabilidad que ya conocés y disfrutás. ¡Sí, es igual de cómodo que el que tenés hoy en casa!"
+          "Colchón Híbrido (22cm de alto)",
+          "Así, vas a ganar unos centímetros menos en altura sin perder nada de lo que más te gusta: la comodidad y durabilidad que ya conocés y disfrutás. ¡Sí, es igual de cómodo que el que tenés hoy en casa!",
+          ["2067782", "2067784", "2067786", "2067788", "2067790", "2067792"]
         ]
       },
       {
         "Demasiado blando para mi gusto": [
           "Colchón Original Plus (28cm de alto)",
-          "Así, vas a ganar unos centímetros extra en altura sin perder nada de lo que más te gusta: la comodidad y durabilidad que ya conocés y disfrutás. ¡Sí, es igual de cómodo que el que tenés hoy en casa!"
+          "Así, vas a ganar unos centímetros extra en altura sin perder nada de lo que más te gusta: la comodidad y durabilidad que ya conocés y disfrutás. ¡Sí, es igual de cómodo que el que tenés hoy en casa!",
+          ["525870", "525871", "525872", "525873", "525874", "525878"]
         ]
       }
     ]
   },
   {
-    "id": "5",
+    "id": ["2381351", "2381352", "2381353", "2381354"],
     "title": "Colchón Cumbre Dual",
     "values": [
       {
         "Me parece alto": [
           "Colchón Original Plus (28cm de alto)",
-          "Este modelo es de menor altura, con 28 cm, manteniendo un gran soporte y comodidad. Es un modelo distinto al que tenes actualmente, pero comparte características clave, como la firmeza perfecta para aliviar dolores de espalda y su capacidad para adaptarse a tu cuerpo, ayudando a mantener la alineación de la columna mientras dormís."
+          "Este modelo es de menor altura, con 28 cm, manteniendo un gran soporte y comodidad. Es un modelo distinto al que tenes actualmente, pero comparte características clave, como la firmeza perfecta para aliviar dolores de espalda y su capacidad para adaptarse a tu cuerpo, ayudando a mantener la alineación de la columna mientras dormís.",
+          ["525870", "525871", "525872", "525873", "525874", "525878"]
         ]
       },
       {
         "Es muy caluroso al usarlo": [
           "Colchón Híbrido Plus (28cm de alto)",
-          "Es un modelo diferente que creemos que va a mejorar tu descanso, ya que ofrece una excelente circulación de aire para mantener una temperatura más fresca durante la noche. Además, combina resortes con capas de espuma de alta densidad, brindando un equilibrio perfecto entre soporte, firmeza y comodidad, ideal para quienes buscan un colchón con una firmeza más suave."
+          "Es un modelo diferente que creemos que va a mejorar tu descanso, ya que ofrece una excelente circulación de aire para mantener una temperatura más fresca durante la noche. Además, combina resortes con capas de espuma de alta densidad, brindando un equilibrio perfecto entre soporte, firmeza y comodidad, ideal para quienes buscan un colchón con una firmeza más suave.",
+          ["2067783", "2067785", "2067787", "2067789", "2067791", "2067793"]
         ]
       },
       {
         "Demasiado firme para mi gusto": [
           "Colchón Híbrido Plus (28cm de alto)",
-          "Es un modelo diferente que creemos que va a mejorar tu descanso, ya que tiene una firmeza más suave y una combinación única de resortes con espuma de alta densidad. Esto te permitirá disfrutar de un descanso más equilibrado, con la firmeza que buscás sin perder el soporte necesario para tu cuerpo."
+          "Es un modelo diferente que creemos que va a mejorar tu descanso, ya que tiene una firmeza más suave y una combinación única de resortes con espuma de alta densidad. Esto te permitirá disfrutar de un descanso más equilibrado, con la firmeza que buscás sin perder el soporte necesario para tu cuerpo.",
+          ["2067783", "2067785", "2067787", "2067789", "2067791", "2067793"]
         ]
       }
     ]
   },
   {
-    "id": "6",
+    "id": ["172659", "172660", "342", "343", "172661", "172662"],
     "title": "Base de cama",
     "values": [
       {
         "Me parece alto": [
           "Sommier Calm",
-          "Con una altura de 32 cm, este sommier tiene el balance perfecto entre comodidad y estabilidad. Su estructura de madera de pino fenólico de 18mm lo hace extra resistente, garantizando un descanso seguro y duradero. Además, es increíblemente fácil de armar: en menos de 15 minutos, y sin necesidad de herramientas, ¡solo con tus manos!"
+          "Con una altura de 32 cm, este sommier tiene el balance perfecto entre comodidad y estabilidad. Su estructura de madera de pino fenólico de 18mm lo hace extra resistente, garantizando un descanso seguro y duradero. Además, es increíblemente fácil de armar: en menos de 15 minutos, y sin necesidad de herramientas, ¡solo con tus manos!",
+          [
+            "1993790",
+            "1993791",
+            "1993793",
+            "1993792",
+            "1993794",
+            "1993795",
+            "2318315",
+            "2318314",
+            "2318313",
+            "2318312",
+            "2318311",
+            "2318310"
+          ]
         ]
       }
     ]
   },
   {
-    "id": "7",
+    "id": [
+      "1993790",
+      "1993791",
+      "1993793",
+      "1993792",
+      "1993794",
+      "1993795",
+      "2318315",
+      "2318314",
+      "2318313",
+      "2318312",
+      "2318311",
+      "2318310"
+    ],
     "title": "Sommier",
     "values": [
       {
         "Me parece bajo": [
           "Base de Hierro",
-          "Con una altura de 35 cm, esta base te ofrecerá el extra de altura que buscás, manteniendo el estilo minimalista que combina con cualquier decoración. Además, está construida con hierro para ofrecerte una máxima estabilidad, y los listones de madera de eucalipto, con espacio óptimo entre ellos, proporcionan una excelente ventilación para tu colchón, alargando su vida útil y asegurando un descanso fresco durante toda la noche."
+          "Con una altura de 35 cm, esta base te ofrecerá el extra de altura que buscás, manteniendo el estilo minimalista que combina con cualquier decoración. Además, está construida con hierro para ofrecerte una máxima estabilidad, y los listones de madera de eucalipto, con espacio óptimo entre ellos, proporcionan una excelente ventilación para tu colchón, alargando su vida útil y asegurando un descanso fresco durante toda la noche.",
+          ["172659", "172660", "342", "343", "172661", "172662"]
         ]
       }
     ]
   },
   {
-    "id": "8",
+    "id": ["2196431", "2196432", "2196433", "2196434"],
     "title": "Cama Suavidad",
     "values": [
       {
         "Me parece bajo": [
           "Base de Hierro",
-          "Con una altura de 35 cm, esta base te ofrecerá el extra de altura que buscás, manteniendo el estilo minimalista que combina con cualquier decoración. Además, está construida con hierro para ofrecerte una máxima estabilidad, y los listones de madera de eucalipto, con espacio óptimo entre ellos, proporcionan una excelente ventilación para tu colchón, alargando su vida útil y asegurando un descanso fresco durante toda la noche."
+          "Con una altura de 35 cm, esta base te ofrecerá el extra de altura que buscás, manteniendo el estilo minimalista que combina con cualquier decoración. Además, está construida con hierro para ofrecerte una máxima estabilidad, y los listones de madera de eucalipto, con espacio óptimo entre ellos, proporcionan una excelente ventilación para tu colchón, alargando su vida útil y asegurando un descanso fresco durante toda la noche.",
+          ["172659", "172660", "342", "343", "172661", "172662"]
         ]
       }
     ]
   },
   {
-    "id": "9",
+    "id": ["2358881", "2358882", "2358883", "2358884"],
     "title": "Cama Articulada Ola",
     "values": [
       {
         "Me parece alto": [
           "Base de Hierro",
-          "Con una altura de 35 cm, esta base te ofrece la altura que buscas, con un diseño minimalista que se adapta perfectamente a cualquier espacio. Su estructura de hierro proporciona gran estabilidad y resistencia, mientras que los listones de madera de eucalipto permiten una excelente circulación de aire, manteniendo tu colchón en perfecto estado y brindándote un descanso fresco cada noche."
+          "Con una altura de 35 cm, esta base te ofrece la altura que buscas, con un diseño minimalista que se adapta perfectamente a cualquier espacio. Su estructura de hierro proporciona gran estabilidad y resistencia, mientras que los listones de madera de eucalipto permiten una excelente circulación de aire, manteniendo tu colchón en perfecto estado y brindándote un descanso fresco cada noche.",
+          ["172659", "172660", "342", "343", "172661", "172662"]
         ]
       }
     ]
   },
   {
-    "id": "10",
+    "id": ["2356437"],
     "title": "Mesa de arrime Ocio",
     "values": [
       {
         "Me parece alto": [
           "Mesa ratona Ocio",
-          "Con una altura de 39 cm, la Mesa Ratona Ocio tiene un diseño igual de elegante, pero te ofrece una altura más ajustada a lo que estás buscando. Su estructura de madera multilaminada de guatambú y base de acero pintado al horno la hacen resistente y fácil de armar, además de brindarte el espacio y la versatilidad que necesitás para tu living. Perfecta para tus momentos de café por la mañana o una noche de películas con amigos."
+          "Con una altura de 39 cm, la Mesa Ratona Ocio tiene un diseño igual de elegante, pero te ofrece una altura más ajustada a lo que estás buscando. Su estructura de madera multilaminada de guatambú y base de acero pintado al horno la hacen resistente y fácil de armar, además de brindarte el espacio y la versatilidad que necesitás para tu living. Perfecta para tus momentos de café por la mañana o una noche de películas con amigos.",
+          ["2356446"]
         ]
       }
     ]
   },
   {
-    "id": "11",
+    "id": ["2356446"],
     "title": "Mesa ratona Ocio",
     "values": [
       {
         "Me parece bajo": [
           "Mesa de arrime Ocio",
-          "Con una altura más elevada, la Mesa de Arrime Ocio tiene el ajuste perfecto para lo que estás buscando, manteniendo el mismo diseño elegante y minimalista. Su estructura de madera multilaminada de guatambú y base de acero pintado al horno ofrecen gran resistencia y un toque de estilo atemporal. Además, es súper funcional para cualquier espacio de tu living, perfecta para poner un libro, café o incluso para adornar tu ambiente."
+          "Con una altura más elevada, la Mesa de Arrime Ocio tiene el ajuste perfecto para lo que estás buscando, manteniendo el mismo diseño elegante y minimalista. Su estructura de madera multilaminada de guatambú y base de acero pintado al horno ofrecen gran resistencia y un toque de estilo atemporal. Además, es súper funcional para cualquier espacio de tu living, perfecta para poner un libro, café o incluso para adornar tu ambiente.",
+          ["2356437"]
         ]
       }
     ]
   },
   {
-    "id": "12",
+    "id": ["2249011"],
     "title": "Mesa de luz Hábito",
     "values": [
       {
         "Me parece bajo": [
           "Mesa de luz Hábito flotante",
-          "Con una altura ajustable gracias a su diseño flotante, esta mesa se adapta mejor a lo que necesitas, manteniendo el mismo estilo funcional y elegante. Hecha de madera multilaminada de guatambú y con un cajón para tus esenciales, es igual de funcional y versátil. Además, ¡ya viene armada! solo necesitarás amurarla a la pared para tenerla lista."
+          "Con una altura ajustable gracias a su diseño flotante, esta mesa se adapta mejor a lo que necesitas, manteniendo el mismo estilo funcional y elegante. Hecha de madera multilaminada de guatambú y con un cajón para tus esenciales, es igual de funcional y versátil. Además, ¡ya viene armada! solo necesitarás amurarla a la pared para tenerla lista.",
+          ["2249192"]
         ]
       }
     ]
   },
   {
-    "id": "13",
+    "id": ["507242", "507243"],
     "title": "Almohada Inteligente",
     "values": [
       {
         "Demasiado firme para mi gusto": [
           "Almohada Infinita",
-          "Este modelo es más mullido gracias a su relleno de microfibra efecto pluma, y te permite regular tanto la altura como la firmeza ajustando su almohada interna, lo que la hace ideal si buscas algo más suave y adaptable a tus necesidades."
+          "Este modelo es más mullido gracias a su relleno de microfibra efecto pluma, y te permite regular tanto la altura como la firmeza ajustando su almohada interna, lo que la hace ideal si buscas algo más suave y adaptable a tus necesidades.",
+          ["724728", "724729"]
         ]
       },
       {
         "Me parece alto": [
           "Alta Almohada",
-          "A pesar de lo que indica su nombre, su suavidad y relleno de microfibra efecto pluma la hacen mucho más mullida y adaptativa, brindándote una sensación más baja y cómoda sin perder el soporte que necesitas. ¡Es como dormir sobre una nube!"
+          "A pesar de lo que indica su nombre, su suavidad y relleno de microfibra efecto pluma la hacen mucho más mullida y adaptativa, brindándote una sensación más baja y cómoda sin perder el soporte que necesitas. ¡Es como dormir sobre una nube!",
+          ["1855363", "1855364"]
         ]
       },
       {
         "Me parece bajo": [
           "Almohada Doble Sensación",
-          "Al usarla sobre su lado más firme, se percibe como un poco más alta, ofreciéndote el descanso que tus sueños estaban esperando. Y si preferís algo más suave, solo tenés que girarla para disfrutar de su lado de firmeza más suave, adaptándose a lo que tu cuerpo pida cada noche."
+          "Al usarla sobre su lado más firme, se percibe como un poco más alta, ofreciéndote el descanso que tus sueños estaban esperando. Y si preferís algo más suave, solo tenés que girarla para disfrutar de su lado de firmeza más suave, adaptándose a lo que tu cuerpo pida cada noche.",
+          ["1831967", "1831968"]
         ]
       },
       {
         "Demasiado blando para mi gusto": [
           "Almohada Doble Sensación",
-          "Su lado más firme es ideal para brindarte el descanso que tus sueños estaban esperando. Y si algún día preferís algo más suave, solo tenés que girarla para disfrutar de su modo nube, adaptándose a lo que tu cuerpo pida cada noche."
+          "Su lado más firme es ideal para brindarte el descanso que tus sueños estaban esperando. Y si algún día preferís algo más suave, solo tenés que girarla para disfrutar de su modo nube, adaptándose a lo que tu cuerpo pida cada noche.",
+          ["1831967", "1831968"]
         ]
       }
     ]
   },
   {
-    "id": "14",
+    "id": ["1831967", "1831968"],
     "title": "Almohada Doble Sensación",
     "values": [
       {
         "Demasiado firme para mi gusto": [
           "Almohada Inteligente",
-          "Este modelo tiene una firmeza media, ideal para quienes buscan un descanso más equilibrado y cómodo. Su espuma viscoelástica se adapta perfectamente a tu cuello y cabeza, brindándote un soporte relajante sin ser excesivamente firme."
+          "Este modelo tiene una firmeza media, ideal para quienes buscan un descanso más equilibrado y cómodo. Su espuma viscoelástica se adapta perfectamente a tu cuello y cabeza, brindándote un soporte relajante sin ser excesivamente firme.",
+          ["507242", "507243"]
         ]
       },
       {
         "Me parece alto": [
           "Almohada Inteligente",
-          "Al igual que la Doble Sensación, la Almohada Inteligente está hecha de espuma viscoelástica, pero se percibe como levemente más baja, brindándote la altura ideal que tu descanso estaba esperando, manteniendo el apoyo perfecto para tu cuello y cabeza."
+          "Al igual que la Doble Sensación, la Almohada Inteligente está hecha de espuma viscoelástica, pero se percibe como levemente más baja, brindándote la altura ideal que tu descanso estaba esperando, manteniendo el apoyo perfecto para tu cuello y cabeza.",
+          ["507242", "507243"]
         ]
       },
       {
         "Me parece bajo": [
           "Almohada Infinita",
-          "Tiene una altura de 18 cm, y lo mejor es que es ajustable, al igual que su firmeza, para que adaptes tu descanso a lo que tu cuerpo necesita cada noche. ¡Un sueño totalmente personalizado!"
+          "Tiene una altura de 18 cm, y lo mejor es que es ajustable, al igual que su firmeza, para que adaptes tu descanso a lo que tu cuerpo necesita cada noche. ¡Un sueño totalmente personalizado!",
+          ["724728", "724729"]
         ]
       }
     ]
   },
   {
-    "id": "15",
+    "id": ["724728", "724729"],
     "title": "Almohada Infinita",
     "values": [
       {
         "Demasiado firme para mi gusto": [
           "Alta Almohada",
-          "Gracias a su relleno de microfibra efecto pluma, se percibe como levemente más baja. Su firmeza suave te brinda un descanso cómodo y adaptado a tus necesidades, con el soporte justo para que duermas en las nubes."
+          "Gracias a su relleno de microfibra efecto pluma, se percibe como levemente más baja. Su firmeza suave te brinda un descanso cómodo y adaptado a tus necesidades, con el soporte justo para que duermas en las nubes.",
+          ["1855363", "1855364"]
         ]
       },
       {
         "Me parece alto": [
           "Alta Almohada",
-          "Gracias a su relleno de microfibra efecto pluma, se percibe levemente más baja, con una firmeza suave que se adapta a tus necesidades, brindándote el descanso cómodo que tus sueños estaban esperando."
+          "Gracias a su relleno de microfibra efecto pluma, se percibe levemente más baja, con una firmeza suave que se adapta a tus necesidades, brindándote el descanso cómodo que tus sueños estaban esperando.",
+          ["1855363", "1855364"]
         ]
       },
       {
         "Demasiado blando para mi gusto": [
           "Almohada Inteligente",
-          "Con su espuma viscoelástica, te ofrece una sensación firme, adaptándose a tu cuerpo para brindarte el apoyo justo y envolverte en un descanso placentero y profundo."
+          "Con su espuma viscoelástica, te ofrece una sensación firme, adaptándose a tu cuerpo para brindarte el apoyo justo y envolverte en un descanso placentero y profundo.",
+          ["507242", "507243"]
         ]
       }
     ]
   },
   {
-    "id": "16",
+    "id": ["1855363", "1855364"],
     "title": "Alta Almohada",
     "values": [
       {
         "Me parece bajo": [
           "Almohada Infinita",
-          "Con su relleno de microfibra efecto pluma, disfrutarás de la misma comodidad que la Alta Almohada, pero con la ventaja de regular su altura y firmeza según lo que tu cuerpo necesite cada noche. ¡Un descanso a medida para tus sueños!"
+          "Con su relleno de microfibra efecto pluma, disfrutarás de la misma comodidad que la Alta Almohada, pero con la ventaja de regular su altura y firmeza según lo que tu cuerpo necesite cada noche. ¡Un descanso a medida para tus sueños!",
+          ["724728", "724729"]
         ]
       },
       {
         "Demasiado blando para mi gusto": [
           "Almohada Inteligente",
-          "Con su espuma viscoelástica, te ofrece una sensación firme, adaptándose a tu cuerpo para brindarte el apoyo justo y envolverte en un descanso placentero y profundo."
+          "Con su espuma viscoelástica, te ofrece una sensación firme, adaptándose a tu cuerpo para brindarte el apoyo justo y envolverte en un descanso placentero y profundo.",
+          ["507242", "507243"]
         ]
       }
     ]
   },
   {
-    "id": "17",
+    "id": [
+      "1835989",
+      "1835990",
+      "1835991",
+      "1835992",
+      "2076372",
+      "2076373",
+      "2076375",
+      "2076376",
+      "1835993",
+      "1835994",
+      "1835995",
+      "1835996",
+      "1835997",
+      "1835998",
+      "1835999",
+      "1836000"
+    ],
     "title": "Sábanas Suavidad",
     "values": [
       {
         "Es muy caluroso al usarlo": [
           "Sábanas Algodón & Frescura",
-          "Están confeccionadas en textil 100% algodón de 200 hilos, lo que las hace perfectas para quienes buscan frescura durante toda la noche."
+          "Están confeccionadas en textil 100% algodón de 200 hilos, lo que las hace perfectas para quienes buscan frescura durante toda la noche.",
+          [
+            "1851246",
+            "1851247",
+            "1851248",
+            "1851249",
+            "1851250",
+            "1851251",
+            "1851252",
+            "1851253",
+            "1851254",
+            "1851255",
+            "1851256",
+            "1851257"
+          ]
         ]
       }
     ]

@@ -13,6 +13,7 @@
   { "name": "Hundimiento", "value": "Espuma" },
   { "name": "Estructura despegada", "value": "Estructura despegada" },
   { "name": "Estructura inestable", "value": "Estructura inestable" },
+  { "name": "Pieza doblada", "value": "Pieza doblada" },
   {
     "name": "Falta de perforaciones o remaches",
     "value": "Falta de agujeros/remaches"

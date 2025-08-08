@@ -1,6 +1,6 @@
 [
   {
-    "id": "172659",
+    "id": ["172659", "172660", "342", "343", "172661", "172662"],
     "title": "Base de hierro",
     "pieces": [
       { "label": "Maderas" },
@@ -14,77 +14,50 @@
     ]
   },
   {
-    "id": "172660",
-    "title": "Base de hierro",
+    "id": [
+      "3191292",
+      "3191847",
+      "3191850",
+      "3191852",
+      "3191854",
+      "3191857",
+      "3191860",
+      "3191862",
+      "3191865",
+      "3191867",
+      "3191869",
+      "3191873",
+      "3191192",
+      "3191194"
+    ],
+    "title": "Sommier Box Terrenal",
     "pieces": [
+      { "label": "Cabecera" },
+      { "label": "Funda" },
       { "label": "Maderas" },
-      { "label": "Recuadros", "hasInput": true, "placeholder": "¿Cuántos?" },
       { "label": "Laterales" },
-      { "label": "Pata media" },
+      { "label": "Travesaño central" },
       { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
       { "label": "Llave" },
-      { "label": "Regatones" },
       { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
     ]
   },
   {
-    "id": "342",
-    "title": "Base de hierro",
-    "pieces": [
-      { "label": "Maderas" },
-      { "label": "Recuadros", "hasInput": true, "placeholder": "¿Cuántos?" },
-      { "label": "Laterales" },
-      { "label": "Pata media" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "343",
-    "title": "Base de hierro",
-    "pieces": [
-      { "label": "Maderas" },
-      { "label": "Recuadros", "hasInput": true, "placeholder": "¿Cuántos?" },
-      { "label": "Laterales" },
-      { "label": "Pata media" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "172661",
-    "title": "Base de hierro",
-    "pieces": [
-      { "label": "Maderas" },
-      { "label": "Recuadros", "hasInput": true, "placeholder": "¿Cuántos?" },
-      { "label": "Laterales" },
-      { "label": "Pata media" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "172662",
-    "title": "Base de hierro",
-    "pieces": [
-      { "label": "Maderas" },
-      { "label": "Recuadros", "hasInput": true, "placeholder": "¿Cuántos?" },
-      { "label": "Laterales" },
-      { "label": "Pata media" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "1993790",
+    "id": [
+      "1993790",
+      "1993791",
+      "1993793",
+      "1993792",
+      "1993794",
+      "1993795",
+      "2318315",
+      "2318314",
+      "2318313",
+      "2318312",
+      "2318311",
+      "2318310"
+    ],
     "title": "Sommier",
     "pieces": [
       { "label": "Funda" },
@@ -101,194 +74,18 @@
     ]
   },
   {
-    "id": "1993791",
-    "title": "Sommier",
+    "id": [
+      "3051570",
+      "3051572"
+    ],
+    "title": "Sommier Elemental",
     "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Frontales" },
-      { "label": "Laterales" },
-      { "label": "Larguero medio" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
       { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
       { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
     ]
   },
   {
-    "id": "1993793",
-    "title": "Sommier",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Frontales" },
-      { "label": "Laterales" },
-      { "label": "Larguero medio" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "1993792",
-    "title": "Sommier",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Frontales" },
-      { "label": "Laterales" },
-      { "label": "Larguero medio" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "1993794",
-    "title": "Sommier",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Frontales" },
-      { "label": "Laterales" },
-      { "label": "Larguero medio" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "1993795",
-    "title": "Sommier",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Frontales" },
-      { "label": "Laterales" },
-      { "label": "Larguero medio" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "2318315",
-    "title": "Sommier",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Frontales" },
-      { "label": "Laterales" },
-      { "label": "Larguero medio" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "2318314",
-    "title": "Sommier",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Frontales" },
-      { "label": "Laterales" },
-      { "label": "Larguero medio" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "2318313",
-    "title": "Sommier",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Frontales" },
-      { "label": "Laterales" },
-      { "label": "Larguero medio" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "2318312",
-    "title": "Sommier",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Frontales" },
-      { "label": "Laterales" },
-      { "label": "Larguero medio" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "2318311",
-    "title": "Sommier",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Frontales" },
-      { "label": "Laterales" },
-      { "label": "Larguero medio" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "2318310",
-    "title": "Sommier",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Frontales" },
-      { "label": "Laterales" },
-      { "label": "Larguero medio" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "2196431",
+    "id": ["2196431", "2196432", "2196433", "2196434"],
     "title": "Cama Suavidad",
     "pieces": [
       { "label": "Funda" },
@@ -305,58 +102,7 @@
     ]
   },
   {
-    "id": "2196432",
-    "title": "Cama Suavidad",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Frontales" },
-      { "label": "Laterales" },
-      { "label": "Larguero medio" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "2196433",
-    "title": "Cama Suavidad",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Frontales" },
-      { "label": "Laterales" },
-      { "label": "Larguero medio" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "2196434",
-    "title": "Cama Suavidad",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Frontales" },
-      { "label": "Laterales" },
-      { "label": "Larguero medio" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Regatones" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "2358881",
+    "id": ["2358881", "2358882", "2358883", "2358884"],
     "title": "Cama Articulada Ola",
     "pieces": [
       { "label": "Pieza de hierro" },
@@ -369,46 +115,7 @@
     ]
   },
   {
-    "id": "2358882",
-    "title": "Cama Articulada Ola",
-    "pieces": [
-      { "label": "Pieza de hierro" },
-      { "label": "Patas" },
-      { "label": "Cable" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Control" },
-      { "label": "Barra de retención" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "2358883",
-    "title": "Cama Articulada Ola",
-    "pieces": [
-      { "label": "Pieza de hierro" },
-      { "label": "Patas" },
-      { "label": "Cable" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Control" },
-      { "label": "Barra de retención" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "2358884",
-    "title": "Cama Articulada Ola",
-    "pieces": [
-      { "label": "Pieza de hierro" },
-      { "label": "Patas" },
-      { "label": "Cable" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Control" },
-      { "label": "Barra de retención" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "2288073",
+    "id": ["2288073", "22880740", "3231785", "3231787"],
     "title": "Sofá Cama 24/7",
     "pieces": [
       { "label": "Placas" },
@@ -418,37 +125,7 @@
     ]
   },
   {
-    "id": "2288074",
-    "title": "Sofá Cama 24/7",
-    "pieces": [
-      { "label": "Placas" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3231787",
-    "title": "Sofá Cama 24/7",
-    "pieces": [
-      { "label": "Placas" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3231785",
-    "title": "Sofá Cama 24/7",
-    "pieces": [
-      { "label": "Placas" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Perillas" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "2356437",
+    "id": ["2356437"],
     "title": "Mesa de arrime Ocio",
     "pieces": [
       { "label": "Columna" },
@@ -460,7 +137,7 @@
     ]
   },
   {
-    "id": "2356446",
+    "id": ["2356446"],
     "title": "Mesa ratona Ocio",
     "pieces": [
       { "label": "Pies" },
@@ -472,7 +149,7 @@
     ]
   },
   {
-    "id": "2249011",
+    "id": ["2249011"],
     "title": "Mesa de luz Hábito",
     "pieces": [
       { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
@@ -481,7 +158,7 @@
     ]
   },
   {
-    "id": "2249192",
+    "id": ["2249192"],
     "title": "Mesa de luz Hábito flotante",
     "pieces": [
       { "label": "Percha metálica" },
@@ -491,214 +168,43 @@
     ]
   },
   {
-    "id": "3191194",
-    "title": "Sommier Box Terrenal",
+    "id": [
+      "2411496",
+      "2411499",
+      "2411493",
+      "2411498",
+      "2411501",
+      "2411495",
+      "2411497",
+      "2411500",
+      "2411503",
+      "2411505",
+      "2411502",
+      "2411494",
+      "2411507",
+      "2411504",
+      "2411506",
+      "2411508",
+      "2411509",
+      "2411510",
+      "2411511",
+      "2411512",
+      "2411513",
+      "2411514",
+      "2411515",
+      "2411516"
+    ],
+    "title": "Estantería Modular Nodo",
     "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
+      { "label": "Travesaños", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Estantes", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Llave allen" },
       { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3191192",
-    "title": "Sommier Box Terrenal",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3191873",
-    "title": "Sommier Box Terrenal",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3191869",
-    "title": "Sommier Box Terrenal",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3191867",
-    "title": "Sommier Box Terrenal",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3191865",
-    "title": "Sommier Box Terrenal",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3191862",
-    "title": "Sommier Box Terrenal",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3191860",
-    "title": "Sommier Box Terrenal",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3191857",
-    "title": "Sommier Box Terrenal",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3191854",
-    "title": "Sommier Box Terrenal",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3191852",
-    "title": "Sommier Box Terrenal",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3191850",
-    "title": "Sommier Box Terrenal",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3191847",
-    "title": "Sommier Box Terrenal",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3191292",
-    "title": "Sommier Box Terrenal",
-    "pieces": [
-      { "label": "Funda" },
-      { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
-      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
-      { "label": "Llave" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3051570",
-    "title": "Sommier Elemental",
-    "pieces": [
-      { "label": "Patas" },
-      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
-    ]
-  },
-  {
-    "id": "3051572",
-    "title": "Sommier Elemental",
-    "pieces": [
-      { "label": "Patas" },
+      { "label": "Columna", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Brackets", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Tirador", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Cabinet abierto" },
+      { "label": "Cabinet cerrado" },
       { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
     ]
   }

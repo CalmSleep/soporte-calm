@@ -6,9 +6,6 @@ import Step1 from "../Organisms/Steps/Step1/Step1";
 import Step2 from "../Organisms/Steps/Step2/Step2";
 import { useDispatch, useSelector } from "react-redux";
 import { onGetOrder } from "@/state/order/orderActions";
-import ModalMeli from "../Organisms/Steps/Modals/ModalMeli";
-import ModalFrav from "../Organisms/Steps/Modals/ModalFrav";
-import ModalNotFound from "../Organisms/Steps/Modals/ModalNotFound";
 import { getThankuContent } from "@/state/order/orderSelector";
 import SkeletonLoader from "../Atoms/SkeletonLoader/SkeletonLoader";
 
