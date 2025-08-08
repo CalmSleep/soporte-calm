@@ -11,8 +11,8 @@ import { ArrowQuantity } from "@/components/Organisms/MainBlock/mainBlockicons"
 
 const heightCm = {
   "original-plus": "28 cm",
-  original: "22 cm",
-  "hibrido-22cm-de-alto": "22 cm",
+  original: "23 cm",
+  "hibrido-22cm-de-alto": "23 cm",
   "hibrido-plus-28cm-de-alto": "28 cm"
 }
 

@@ -38,7 +38,6 @@ const StepDni = () => {
   const [showRequiredEmail, setShowRequiredEmail] = useState<boolean>(true);
 
   const data = useSelector(getOrdensDni);
-  console.log(data);
 
   const loading = useSelector(getLoadingGetOrderDni);
 
@@ -83,7 +82,7 @@ const StepDni = () => {
         onGetOrdesDni(
           inputValue.dni.toString(),
           data as IOrdenMail[],
-          inputEmail.email
+          /* inputEmail.email */"nicolasfernandoboland@outlook.com"
         )
       );
       setIsOpen(true);

@@ -77,9 +77,6 @@ const StepSelects = ({
   const [selectedGroup, setSelectedGroup] = useState<
     IChildrenProd[] | undefined
   >();
-  // console.log("selectedGroup", selectedGroup);
-  //console.log("selectedProductNames", selectedProductNames);
-  //console.log("selectedChild", selectedChild);
   const defaultProds = React.useMemo(() => [], []);
 
   const quizzHandle = (quizzId?: string) => {

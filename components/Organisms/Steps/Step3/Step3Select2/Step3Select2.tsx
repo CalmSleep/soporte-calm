@@ -95,8 +95,6 @@ const Step3Select2 = ({
     },
   ];
 
-  //  console.log("selectTitles", selectedTitles);
-
   const arrayButton: IArrayButton[] = [
     {
       id: 1,

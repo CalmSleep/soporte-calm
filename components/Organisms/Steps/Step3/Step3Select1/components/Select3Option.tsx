@@ -23,8 +23,6 @@ const Select3Option = ({
       span: order.span,
     };
   });
-  console.log("checks", checks);
-
   return (
     <StepSelects
       titleParagraph="Elegí el o los productos que deberías haber recibido:"

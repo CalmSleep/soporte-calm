@@ -65,7 +65,7 @@ const variations_sizes = {
   crudo: "Crudo",
   hueso: "Hueso",
   gris: "Gris",
-  "hibrido-22cm-de-alto": "Híbrido 22cm",
+  "hibrido-22cm-de-alto": "Híbrido 23cm",
   "hibrido-plus-28cm-de-alto": "Híbrido Plus 28cm",
   "2 Plazas o Queen": "2 Plazas o Queen",
   "47x50x35cm": "47 x 50 x 35cm",

@@ -38,12 +38,9 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     idVariationChange,
     setIdVariationChange,
   } = useValueSelect();
-  //  console.log("titles", selectedTitles);
-  // console.log(notionInfo);
   const orders = useSelector(getThankuContent);
   const dispatch = useDispatch();
   const allProducts = useSelector(getAllProductsData);
-  //console.log("allProducts", allProducts);
 
   React.useEffect(() => {
     const productsData = async () => {
@@ -62,8 +59,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     allProducts
   );
 
-  console.log("resultadoFinal", resultadoFinal);
-
   const [quieroComprar, otros] = splitQuieroComprar(selectedTitles);
   const [continuemos, otros2] = splitDevolucion(selectedTitles);
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
@@ -77,7 +72,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
       ? `${quieroComprar}`
       : "";
 
-  // console.log("infoProduct", infoProduct);
 
   const infoMensaje =
     valueSelect === "1" && selectedValue === "2" && otros.length > 0
@@ -97,10 +91,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
     valueSelect === "2"
       ? `${otros2.join(", ")}`
       : `${selectedTitles.filter((title) => !title.includes("-")).join(", ")}`;
-
-  // console.log("valueSelect", valueSelect);
-
-  // console.log("products", products);
 
   const result = selectedTitles
     .filter((title) => title.includes("-"))
@@ -143,8 +133,6 @@ const Step3 = ({ valueSelect, setConfirmedValue }: Step3Props) => {
           : [],
     });
   }, [checkboxConfirmed]);
-
-  console.log("selectedTitles", selectedTitles);
 
   return (
     <>

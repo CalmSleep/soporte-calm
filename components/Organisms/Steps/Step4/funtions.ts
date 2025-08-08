@@ -58,35 +58,6 @@ export const skuFilterProduct = (dataUser: any, rawString: string) => {
     .map((item: any) => ({ name: item.sku }));
 };
 
-// export const skuFilterProduct = (dataUser: any, rawString: string) => {
-//   console.log("rawString funcion", rawString);
-//   console.log("dataUser", dataUser);
-
-//   const productNames = rawString.split(/,(?![^\(]*\))/).map((entry) =>
-//     entry
-//       .replace(/\(.*?\)/g, "")
-//       .trim()
-//       .toLowerCase()
-//   );
-
-//   return dataUser.items
-//     .filter((item: any) => {
-//       const productWords = item.product_name
-//         .replace(/\(.*?\)/g, "")
-//         .trim()
-//         .toLowerCase()
-//         .split(/\s|&|,/)
-//         .filter(Boolean);
-//       console.log("productWords", productWords);
-
-//       return productNames.some((name: string) => {
-//         const nameWords = name.split(/\s|&|,/).filter(Boolean);
-//         return nameWords.some((word) => productWords.includes(word));
-//       });
-//     })
-//     .map((item: any) => ({ name: item.sku }));
-// };
-
 export const skuChangeFilter = (productChange: string[]) => {
   return productChange.map((item) => {
     const sku = item.split(",").pop()?.trim();
@@ -125,35 +96,8 @@ export const mapIssuesToNotionValues = (input: string): Issue[] => {
     }
   }
 
-  console.log("result");
-
   return result;
 };
-
-// export const mapIssuesToNotionValues = (input: string): string[] => {
-//   const result = new Set<string>();
-
-//   const matches = input.match(/\(([^)]+)\)/g);
-
-//   if (!matches) {
-//     result.add("Otro");
-//     return Array.from(result);
-//   }
-
-//   for (const match of matches) {
-//     const items = match.slice(1, -1).split(",");
-//     for (const item of items) {
-//       const normalizedItem = normalize(item);
-//       const found = nomenclaruras.find(
-//         (option) => normalize(option.name) === normalizedItem
-//       );
-//       result.add(found?.value || "Otro");
-//     }
-//   }
-//   console.log("result", Array.from(result));
-
-//   return Array.from(result);
-// };
 
 export function parsePieces(rawString: string, pieces: Piece[]): ParsedResult {
   const normalizedPieces = pieces.map((p) => ({

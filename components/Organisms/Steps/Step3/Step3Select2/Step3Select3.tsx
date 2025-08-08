@@ -22,16 +22,6 @@ const Step3Select3 = ({
   setIdVariationChange?: React.Dispatch<React.SetStateAction<number[]>>;
 }) => {
   const productsLoading = useSelector(getLoadingGetProducts);
-  console.log(
-    "products: ",
-    products
-      .filter((product) => product.name_category === "accesorios")
-      .flatMap((product) =>
-        product.products.filter(
-          (p) => Number(p.id) !== 2677933 && Number(p.id) !== 2677939
-        )
-      )
-  );
 
   return (
     <>

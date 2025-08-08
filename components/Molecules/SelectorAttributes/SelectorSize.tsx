@@ -142,8 +142,6 @@ const SelectorSize = ({
                       ] as keyof typeof variations_sizes
                     ]
                   );
-                  console.log("stock", option.stock);
-                  console.log("backorder", option.backorder);
 
                   return (
                     <ListItem

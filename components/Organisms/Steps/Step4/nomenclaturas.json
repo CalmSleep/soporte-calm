@@ -28,5 +28,7 @@
   { "name": "El producto es diferente a lo que pedí", "value": "Otro" },
   { "name": "Me llegó el tamaño incorrecto", "value": "Otro" },
   { "name": "Tuve un problema con los velcros", "value": "Velcros" },
+  { "name": "Cabecera", "value": "Frontales" },
+  { "name": "Travesaño central", "value": "Travesaños" },
   { "name": "Otro", "value": "Otro" }
 ]

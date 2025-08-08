@@ -40,7 +40,6 @@ export const onSendDataToNotion = (data: IDataSendNotion) => {
       const response = await getDataToNotion(data);
 
       if (response) {
-        console.log("response", response);
         dispatch(onSendDataToNotionSucceeded(response.success));
         dispatch(onRedirectLoadingFinished());
       } else {

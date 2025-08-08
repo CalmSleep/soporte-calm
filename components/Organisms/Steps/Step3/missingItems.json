@@ -428,6 +428,26 @@
     ]
   },
   {
+    "id": "3231787",
+    "title": "Sofá Cama 24/7",
+    "pieces": [
+      { "label": "Placas" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3231785",
+    "title": "Sofá Cama 24/7",
+    "pieces": [
+      { "label": "Placas" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Perillas" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
     "id": "2356437",
     "title": "Mesa de arrime Ocio",
     "pieces": [
@@ -467,6 +487,218 @@
       { "label": "Percha metálica" },
       { "label": "Tarugos", "hasInput": true, "placeholder": "¿Cuántos?" },
       { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3191194",
+    "title": "Sommier Box Terrenal",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Laterales" },
+      { "label": "Travesaño central" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3191192",
+    "title": "Sommier Box Terrenal",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Laterales" },
+      { "label": "Travesaño central" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3191873",
+    "title": "Sommier Box Terrenal",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Laterales" },
+      { "label": "Travesaño central" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3191869",
+    "title": "Sommier Box Terrenal",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Laterales" },
+      { "label": "Travesaño central" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3191867",
+    "title": "Sommier Box Terrenal",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Laterales" },
+      { "label": "Travesaño central" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3191865",
+    "title": "Sommier Box Terrenal",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Laterales" },
+      { "label": "Travesaño central" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3191862",
+    "title": "Sommier Box Terrenal",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Laterales" },
+      { "label": "Travesaño central" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3191860",
+    "title": "Sommier Box Terrenal",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Laterales" },
+      { "label": "Travesaño central" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3191857",
+    "title": "Sommier Box Terrenal",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Laterales" },
+      { "label": "Travesaño central" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3191854",
+    "title": "Sommier Box Terrenal",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Laterales" },
+      { "label": "Travesaño central" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3191852",
+    "title": "Sommier Box Terrenal",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Laterales" },
+      { "label": "Travesaño central" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3191850",
+    "title": "Sommier Box Terrenal",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Laterales" },
+      { "label": "Travesaño central" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3191847",
+    "title": "Sommier Box Terrenal",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Laterales" },
+      { "label": "Travesaño central" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3191292",
+    "title": "Sommier Box Terrenal",
+    "pieces": [
+      { "label": "Funda" },
+      { "label": "Maderas" },
+      { "label": "Laterales" },
+      { "label": "Travesaño central" },
+      { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Patas" },
+      { "label": "Llave" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3051570",
+    "title": "Sommier Elemental",
+    "pieces": [
+      { "label": "Patas" },
+      { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
+    ]
+  },
+  {
+    "id": "3051572",
+    "title": "Sommier Elemental",
+    "pieces": [
+      { "label": "Patas" },
       { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
     ]
   }

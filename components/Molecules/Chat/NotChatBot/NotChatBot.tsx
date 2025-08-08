@@ -40,7 +40,6 @@ const NotChatBot = ({activateChat}: {activateChat: boolean}) => {
     if (activateChat && chatLoaded) {
       setTimeout(() => {
         openChat()
-        console.log("openChat")
       }, 500)
     }
   },[chatLoaded, activateChat]);

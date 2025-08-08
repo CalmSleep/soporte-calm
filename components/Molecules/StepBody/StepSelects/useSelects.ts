@@ -19,7 +19,6 @@ const useSelects = ({
   );
   const [selectedChild, setSelectedChild] = useState<IChildrenProd>();
   const [selectedChildChecked, setSelectedChildChecked] = useState(false);
-  console.log("selectedChild", selectedChild);
 
   useEffect(() => {
     if (!selectedChild || selectedChildChecked === null) return;
@@ -83,8 +82,6 @@ const useSelects = ({
     }
   }, [selectedChild, selectedProductNames, selectedChildChecked]);
 
-  // console.log("selectedChild", selectedChild);
-
   const [isSizechange, setIsSizeChange] = useState(false);
   const [isColorchange, setIsColorChange] = useState(false);
   const handleAccordionClick = (id: string) => {
@@ -102,7 +99,6 @@ const useSelects = ({
   }>({});
 
   const handlePieceCheckboxChange = (itemId: string, pieceLabel: string) => {
-    console.log("itemId", itemId);
 
     const current = selectedChecks[itemId] || [];
     const alreadyChecked = current.includes(pieceLabel);

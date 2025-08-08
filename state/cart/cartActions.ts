@@ -171,11 +171,6 @@ export const onAddItemToCart = (id: number, quantity: number, hasEDE: boolean = 
     try {
       const state = getState() as IStore;
 
-      /* if(state && state.user && state.user.abTesting != undefined) {
-        sendClarityCustomEvent('atcABTesting', state.user.abTesting ? 'con-feature' : 'sin-feature')
-        console.log('atcABTesting', state.user.abTesting ? 'con-feature' : 'sin-feature')
-
-      } */
     } catch (error) {
     }
     dispatch(onAddToCartLoadingStart());
