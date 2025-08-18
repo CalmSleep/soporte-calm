@@ -93,9 +93,9 @@ const StepSelects = ({
     <>
       <Paragraph fontSize="20px">{titleParagraph}</Paragraph>
       {checks &&
-        checks.map((check) => {
+        checks.map((check, index) => {
           return (
-            <CointainCheckbox key={check.id}>
+            <CointainCheckbox key={`${check.id}-${index}`}>
               <Input
                 appearance="none"
                 width="14px"
@@ -293,7 +293,7 @@ const StepSelects = ({
           );
         })}
       {products &&
-        products.map((item) => {
+        products.map((item, index) => {
           return (
             <AccordionUnit
               titleStyle={{
@@ -301,7 +301,7 @@ const StepSelects = ({
                 fontSize: "16px",
                 lineHeight: "-0.48px",
               }}
-              key={item.name_category}
+              key={`${item.name_category}-${index}`}
               itemName={
                 item.name_category.charAt(0).toUpperCase() +
                 item.name_category.slice(1).toLowerCase()

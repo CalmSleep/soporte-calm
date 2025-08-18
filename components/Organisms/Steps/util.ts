@@ -2,6 +2,7 @@ import { searchAttribute } from "@/utils/productsFunctios";
 import variations_products from "@/utils/variations_products";
 import { IOrdenMail } from "./Step1/StepDni/types";
 import { Resultado } from "./Step3/types";
+import variations_sizes from "@/utils/variations_sizes";
 
 export const maskEmail = (email: string) => {
   const [localPart, domain] = email.split("@");
@@ -71,9 +72,9 @@ export function mapOrdersWithSpan(orders: any[]): any[] {
     const spanPosicion = posicion.includes(posicionValue) ? posicionValue : "";
 
     const span = [
-      spanTamano,
-      spanAlto,
-      spanColor,
+      variations_sizes[spanTamano as keyof typeof variations_sizes],
+      variations_sizes[spanAlto as keyof typeof variations_sizes],
+      variations_sizes[spanColor as keyof typeof variations_sizes],
       spanConfiguracion,
       spanPosicion,
     ]

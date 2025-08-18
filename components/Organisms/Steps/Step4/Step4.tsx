@@ -45,13 +45,13 @@ const Svg = () => {
       viewBox="0 0 26 27"
       fill="none"
     >
-      <g clip-path="url(#clip0_3234_7122)">
+      <g clipPath="url(#clip0_3234_7122)">
         <path
           d="M6 9.092V18.8C6 20.7096 6.79018 22.5409 8.1967 23.8912C9.60322 25.2414 11.5109 26 13.5 26C15.4891 26 17.3968 25.2414 18.8033 23.8912C20.2098 22.5409 21 20.7096 21 18.8V6.8C21 5.52696 20.4732 4.30606 19.5355 3.40589C18.5979 2.50571 17.3261 2 16 2C14.6739 2 13.4021 2.50571 12.4645 3.40589C11.5268 4.30606 11 5.52696 11 6.8V17.8184C11 18.1336 11.0647 18.4457 11.1903 18.7368C11.3159 19.028 11.5001 19.2926 11.7322 19.5155C11.9644 19.7383 12.24 19.9151 12.5433 20.0357C12.8466 20.1563 13.1717 20.2184 13.5 20.2184C14.163 20.2184 14.7989 19.9655 15.2678 19.5155C15.7366 19.0654 16 18.4549 16 17.8184V9.2"
           stroke="#202020"
-          stroke-width="1.4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>
@@ -135,7 +135,6 @@ const Step4 = ({
       setErrorNotion(true);
     }
   };
-
   return (
     <>
       <StepsHeaders
@@ -160,14 +159,16 @@ const Step4 = ({
             : false
         }
       >
-        {valueSelect === "2" ||
+        {/* valueSelect === "2" ||
         valueSelect === "3" ||
         fullInfoSend.typeRequest.includes("Cambio") ||
-        fullInfoSend.typeRequest.includes("Devolucion") ? (
+        fullInfoSend.typeRequest.includes("Devolucion") */
+        dataUser ? (
           <>
             <Paragraph fontSize="20px">
               Por último, ¿la dirección de retiro es la misma que la de entrega?
             </Paragraph>
+            <p>Direccion registrada: {dataUser.billing.address_1} {dataUser.billing.address_2} / {dataUser.billing.city.toUpperCase()} / {dataUser.billing.postcode}</p>
             <StepRadio
               radioOptions={radioOptions}
               name="retiro"

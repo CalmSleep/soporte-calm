@@ -32,13 +32,13 @@
     ],
     "title": "Sommier Box Terrenal",
     "pieces": [
-      { "label": "Cabecera" },
+      { "label": "Cabecera", "hasInput": true, "placeholder": "¿Cantidad?" },
       { "label": "Funda" },
       { "label": "Maderas" },
-      { "label": "Laterales" },
-      { "label": "Travesaño central" },
+      { "label": "Laterales", "hasInput": true, "placeholder": "¿Cantidad?" },
+      { "label": "Travesaño central" , "hasInput": true, "placeholder": "¿Cantidad?" },
       { "label": "Tornillos", "hasInput": true, "placeholder": "¿Cantidad?" },
-      { "label": "Patas" },
+      { "label": "Patas", "hasInput": true, "placeholder": "¿Cantidad?" },
       { "label": "Llave" },
       { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
     ]
@@ -80,7 +80,7 @@
     ],
     "title": "Sommier Elemental",
     "pieces": [
-      { "label": "Patas" },
+      { "label": "Patas", "hasInput": true, "placeholder": "¿Cantidad?" },
       { "label": "Otro", "hasInput": true, "placeholder": "Detallanos acá" }
     ]
   },

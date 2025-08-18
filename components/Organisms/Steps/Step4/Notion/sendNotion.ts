@@ -97,7 +97,7 @@ export const fullInfo = (
         : [],
     reason:
       Number(selectedValue) === 1 || Number(selectedValue) === 3
-        ? [{ name: "Otro" }]
+        ? [{ name: "Otro", comments: "Mi pedido está incompleto o faltan piezas" }]
         : Number(selectedValue) === 4 ||
           Number(valueSelect) === 2 ||
           Number(valueSelect) === 3

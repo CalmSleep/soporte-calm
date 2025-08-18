@@ -33,6 +33,7 @@ const Step3Select3 = ({
             products &&
             products
               // .filter((product) => product.name_category !== "muebles")
+              .filter((product) => product.name_category !== "combos")
               .map((product) => {
                 if (product.name_category === "accesorios") {
                   return {

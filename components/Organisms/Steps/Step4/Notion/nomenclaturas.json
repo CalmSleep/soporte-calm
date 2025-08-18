@@ -31,5 +31,7 @@
   { "name": "Tuve un problema con los velcros", "value": "Velcros" },
   { "name": "Cabecera", "value": "Frontales" },
   { "name": "Travesaño central", "value": "Travesaños" },
+  { "name": "Altura final inferior a la informada", "value": "Espuma - Altura" },
+  { "name": "Deformación / forma irregular del colchón", "value": "Espuma - Forma" },
   { "name": "Otro", "value": "Otro" }
 ]

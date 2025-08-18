@@ -40,23 +40,25 @@ export const currentProjectProductURLById = {
   "2023969": "/feria/almohada-infinita-feria",
   "2111657": "/producto/colchon-hibrido-feria",
   "2041984": "/producto/almohada-doble-sensacion-feria",
-  "2411459": "/muebles/sistema-estanteria-modular-nodo",
-  "2411458": "/muebles/estanteria-modular-nodo",
-  "1997330": "/combos/combo-de-ensueno",
-};
+  "2411459" : "/muebles/sistema-estanteria-modular-nodo", 
+  "2411458" : "/muebles/estanteria-modular-nodo" ,
+  "1997330" : "/combos/combo-de-ensueno"
+}
 
 export const oldProductURLById = {
   "2358880": "/producto/cama-articulada-ola",
   "2067781": "/producto/colchon-calm-hibrido",
+  "2067782": "/producto/colchon-calm-hibrido-plus",
   "2381349": "/producto/colchon-cumbre-dual",
   "1835498": "/producto/colchon-bb",
   "1835538": "/producto/colchon-para-perros",
   "334": "/producto/colchon-calm",
+  "337": "/producto/colchon-calm-plus",
   "1993786": "/producto/sommier-calm",
   "339": "/producto/base-de-cama",
-  "2196407": "/producto/cama-suavidad",
-  "2196410": "/producto/marco-suavidad",
-  "2196404": "/producto/respaldo-horizonte",
+  "2196407": "/producto/cama-suavidad",  
+  "2196410": "/producto/marco-suavidad",  
+  "2196404": "/producto/respaldo-horizonte",  
   "172659": "/producto/base-de-cama/?attribute_tamano=1+plaza+80+x+190",
   "172660": "/producto/base-de-cama/?attribute_tamano=Plaza+y+1%2F2+100+x+190",
   "342": "/producto/base-de-cama",
@@ -92,28 +94,28 @@ export const oldProductURLById = {
   "2279959": "/producto/protector-de-colchon-feria",
   "1953560": "/producto/colchon-elemental-feria",
   "336": "/producto/colchon-calm/?attribute_tamano=1%20plaza%2080%20x%20190",
-  "11042":
-    "/producto/colchon-calm/?attribute_tamano=Plaza%20y%201/2%20100%20x%20190",
-  "335": "/producto/colchon-calm/",
+  "11042": "/producto/colchon-calm/?attribute_tamano=Plaza%20y%201/2%20100%20x%20190",
+  "335": "/producto/colchon-calm-plus",
   "699": "/producto/colchon-calm/?attribute_tamano=Queen%20160%20x%20200",
   "11190": "/producto/colchon-calm/?attribute_tamano=King%20180%20x%20200",
   "11191": "/producto/colchon-calm/?attribute_tamano=Superking%20200%20x%20200",
   "2111657": "/producto/colchon-hibrido-feria",
   "2041984": "/producto/almohada-doble-sensacion-feria",
-  "2 Plazas o Queen": "2 Plazas o Queen",
-  "47x50x35cm": "47 x 50 x 35cm",
-  "13x40x35cm": "13 x 40 x 35cm",
+  "2 Plazas o Queen" : "2 Plazas o Queen",
+  "47x50x35cm" : "47 x 50 x 35cm",
+  "13x40x35cm" : "13 x 40 x 35cm",
   "2042008": "/producto/colchon-para-perros-feria",
   "2042026": "/producto/colchon-bb-feria",
-  "2411459": "/producto/sistema-estanteria-modular-nodo",
-  "2411458": "/producto/estanteria-modular-nodo",
-  "1997330": "/combos/combo-de-ensueno",
-};
+  "2411459" : "/producto/sistema-estanteria-modular-nodo", 
+  "2411458" : "/producto/estanteria-modular-nodo", 
+  "1997330" : "/combos/combo-de-ensueno",
+  "3051522" : "/producto/sommier-elemental",
+  "772400" : "/producto/colchon-elemental",
+  "3191041" : "/producto/sommier-box-terrenal",
+  "3191194" : "/producto/sommier-box-terrenal"
+}
 
 export const productURLRedirectionById = (id: string) => {
-  const redirection = !process.env.NEXT_PUBLIC_REDIRECT_URL_BASE
-    ? oldProductURLById[id as keyof typeof oldProductURLById]
-    : process.env.NEXT_PUBLIC_REDIRECT_URL_BASE +
-      oldProductURLById[id as keyof typeof oldProductURLById];
+  const redirection = !process.env.NEXT_PUBLIC_REDIRECT_URL_BASE ? oldProductURLById[id as keyof typeof oldProductURLById] : process.env.NEXT_PUBLIC_REDIRECT_URL_BASE + oldProductURLById[id as keyof typeof oldProductURLById];
   return redirection || "https://calmessimple.com.ar";
-};
+}

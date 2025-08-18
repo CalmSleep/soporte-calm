@@ -19,6 +19,8 @@
     "pieces": [
       { "label": "Costura suelta o deshilachada" },
       { "label": "Hundimiento" },
+      { "label": "Altura final inferior a la informada" },
+      { "label": "Deformación / forma irregular del colchón" },
       { "label": "Presencia de hongos en el colchón" },
       { "label": "Manchas en el producto" },
       { "label": "No me gusta el olor" },
@@ -39,6 +41,8 @@
     "pieces": [
       { "label": "Costura suelta o deshilachada" },
       { "label": "Hundimiento" },
+      { "label": "Altura final inferior a la informada" },
+      { "label": "Deformación / forma irregular del colchón" },
       { "label": "Presencia de hongos en el colchón" },
       { "label": "Manchas en el producto" },
       { "label": "No me gusta el olor" },
@@ -52,6 +56,8 @@
     "pieces": [
       { "label": "Costura suelta o deshilachada" },
       { "label": "Hundimiento" },
+      { "label": "Altura final inferior a la informada" },
+      { "label": "Deformación / forma irregular del colchón" },
       { "label": "Presencia de hongos en el colchón" },
       { "label": "Manchas en el producto" },
       { "label": "No me gusta el olor" },
@@ -78,6 +84,8 @@
     "pieces": [
       { "label": "Costura suelta o deshilachada" },
       { "label": "Hundimiento" },
+      { "label": "Altura final inferior a la informada" },
+      { "label": "Deformación / forma irregular del colchón" },
       { "label": "Presencia de hongos en el colchón" },
       { "label": "No me gusta el olor" },
       { "label": "Problema con los resortes" },
@@ -92,6 +100,8 @@
       { "label": "Falla en el cierre" },
       { "label": "Costura suelta o deshilachada" },
       { "label": "Hundimiento" },
+      { "label": "Altura final inferior a la informada" },
+      { "label": "Deformación / forma irregular del colchón" },
       { "label": "Presencia de hongos en el colchón" },
       { "label": "Manchas en el producto" },
       { "label": "No me gusta el olor" },
@@ -473,6 +483,8 @@
     "pieces": [
       { "label": "Costura suelta o deshilachada" },
       { "label": "Hundimiento" },
+      { "label": "Altura final inferior a la informada" },
+      { "label": "Deformación / forma irregular del colchón" },
       { "label": "Presencia de hongos en el colchón" },
       { "label": "Manchas en el producto" },
       { "label": "No me gusta el olor" },
@@ -499,6 +511,8 @@
     "pieces": [
       { "label": "Costura suelta o deshilachada" },
       { "label": "Hundimiento" },
+      { "label": "Altura final inferior a la informada" },
+      { "label": "Deformación / forma irregular del colchón" },
       { "label": "Presencia de hongos en el colchón" },
       { "label": "Manchas en el producto" },
       { "label": "No me gusta el olor" },
@@ -525,6 +539,8 @@
     "pieces": [
       { "label": "Costura suelta o deshilachada" },
       { "label": "Hundimiento" },
+      { "label": "Altura final inferior a la informada" },
+      { "label": "Deformación / forma irregular del colchón" },
       { "label": "Presencia de hongos en el colchón" },
       { "label": "No me gusta el olor" },
       { "label": "Problema con los resortes" },
@@ -657,6 +673,8 @@
     "pieces": [
       { "label": "Costura suelta o deshilachada" },
       { "label": "Hundimiento" },
+      { "label": "Altura final inferior a la informada" },
+      { "label": "Deformación / forma irregular del colchón" },
       { "label": "Presencia de hongos en el colchón" },
       { "label": "Manchas en el producto" },
       { "label": "No me gusta el olor" },

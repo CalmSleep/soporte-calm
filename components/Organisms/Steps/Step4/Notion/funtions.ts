@@ -35,7 +35,7 @@ export const mapIssuesToNotionValues = (input: string): Issue[] => {
   const result: Issue[] = [];
 
   const matches = input.match(/\(([^)]+)\)/g);
-
+  
   if (!matches) {
     return [{ name: "Otro" }];
   }
